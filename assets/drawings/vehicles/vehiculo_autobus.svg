@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Pequeños Artistas - vehiculo_autobus. Ilustración original creada para el proyecto. -->
+<svg xmlns="http://www.w3.org/2000/svg" id="vehiculo_autobus" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <g id="regiones">
+    <path id="fondo" class="region" fill="#FFFFFF" stroke="none" d="M0,0 L1024,0 L1024,1024 L0,1024Z"/>
+    <path id="carroceria" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M170.1,248.7 L853.9,248.7 A58.7,58.7 0 0 1 912.7,307.5 L912.7,630.5 A58.7,58.7 0 0 1 853.9,689.3 L170.1,689.3 A58.7,58.7 0 0 1 111.3,630.5 L111.3,307.5 A58.7,58.7 0 0 1 170.1,248.7Z"/>
+    <path id="franja" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M111.3,500.5 L912.7,500.5 A0,0 0 0 1 912.7,500.5 L912.7,567.6 A0,0 0 0 1 912.7,567.6 L111.3,567.6 A0,0 0 0 1 111.3,567.6 L111.3,500.5 A0,0 0 0 1 111.3,500.5Z"/>
+    <path id="ventana_1" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M172.2,295.9 L260.3,295.9 A18.9,18.9 0 0 1 279.2,314.8 L279.2,413.4 A18.9,18.9 0 0 1 260.3,432.3 L172.2,432.3 A18.9,18.9 0 0 1 153.3,413.4 L153.3,314.8 A18.9,18.9 0 0 1 172.2,295.9Z"/>
+    <path id="ventana_2" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M329.5,295.9 L417.6,295.9 A18.9,18.9 0 0 1 436.5,314.8 L436.5,413.4 A18.9,18.9 0 0 1 417.6,432.3 L329.5,432.3 A18.9,18.9 0 0 1 310.6,413.4 L310.6,314.8 A18.9,18.9 0 0 1 329.5,295.9Z"/>
+    <path id="ventana_3" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M486.8,295.9 L574.9,295.9 A18.9,18.9 0 0 1 593.8,314.8 L593.8,413.4 A18.9,18.9 0 0 1 574.9,432.3 L486.8,432.3 A18.9,18.9 0 0 1 467.9,413.4 L467.9,314.8 A18.9,18.9 0 0 1 486.8,295.9Z"/>
+    <path id="ventana_4" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M644.2,295.9 L732.3,295.9 A18.9,18.9 0 0 1 751.1,314.8 L751.1,413.4 A18.9,18.9 0 0 1 732.3,432.3 L644.2,432.3 A18.9,18.9 0 0 1 625.3,413.4 L625.3,314.8 A18.9,18.9 0 0 1 644.2,295.9Z"/>
+    <path id="parabrisas" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M801.5,295.9 L856,295.9 A18.9,18.9 0 0 1 874.9,314.8 L874.9,465.9 A18.9,18.9 0 0 1 856,484.7 L801.5,484.7 A18.9,18.9 0 0 1 782.6,465.9 L782.6,314.8 A18.9,18.9 0 0 1 801.5,295.9Z"/>
+    <path id="faro" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M893.8,615.8 A27.3,27.3 0 0 1 839.2,615.8 A27.3,27.3 0 0 1 893.8,615.8Z"/>
+    <path id="luz_trasera" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M140.7,573.9 L157.5,573.9 A12.6,12.6 0 0 1 170.1,586.5 L170.1,630.5 A12.6,12.6 0 0 1 157.5,643.1 L140.7,643.1 A12.6,12.6 0 0 1 128.1,630.5 L128.1,586.5 A12.6,12.6 0 0 1 140.7,573.9Z"/>
+    <path id="rueda_trasera" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M365.2,689.3 A86,86 0 0 1 193.2,689.3 A86,86 0 0 1 365.2,689.3Z"/>
+    <path id="rueda_delantera" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M830.8,689.3 A86,86 0 0 1 658.8,689.3 A86,86 0 0 1 830.8,689.3Z"/>
+    <path id="tapacubos_trasero" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M316.9,689.3 A37.8,37.8 0 0 1 241.4,689.3 A37.8,37.8 0 0 1 316.9,689.3Z"/>
+    <path id="tapacubos_delantero" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M782.6,689.3 A37.8,37.8 0 0 1 707.1,689.3 A37.8,37.8 0 0 1 782.6,689.3Z"/>
+  </g>
+  <g id="detalles" pointer-events="none">
+  </g>
+</svg>

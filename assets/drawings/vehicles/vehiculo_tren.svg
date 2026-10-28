@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Pequeños Artistas - vehiculo_tren. Ilustración original creada para el proyecto. -->
+<svg xmlns="http://www.w3.org/2000/svg" id="vehiculo_tren" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <g id="regiones">
+    <path id="fondo" class="region" fill="#FFFFFF" stroke="none" d="M0,0 L1024,0 L1024,1024 L0,1024Z"/>
+    <path id="humo_1" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M686,278.3 A22.4,22.4 0 0 1 664.3,309.6 A22.4,22.4 0 0 1 612.2,322.6 A22.4,22.4 0 0 1 560,309.6 A22.4,22.4 0 0 1 538.4,278.3 A22.4,22.4 0 0 1 560,247 A22.4,22.4 0 0 1 612.2,234.1 A22.4,22.4 0 0 1 664.3,247 A22.4,22.4 0 0 1 686,278.3Z"/>
+    <path id="humo_2" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M799.8,199.3 A18.3,18.3 0 0 1 781.9,224.6 A18.3,18.3 0 0 1 738.7,235.1 A18.3,18.3 0 0 1 695.4,224.6 A18.3,18.3 0 0 1 677.5,199.3 A18.3,18.3 0 0 1 695.4,173.9 A18.3,18.3 0 0 1 738.7,163.4 A18.3,18.3 0 0 1 781.9,173.9 A18.3,18.3 0 0 1 799.8,199.3Z"/>
+    <path id="chimenea" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M559.4,505 L545.7,383.8 L646.9,383.8 L633.2,505Z"/>
+    <path id="chimenea_borde" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M541.5,346.9 L651.2,346.9 A19,19 0 0 1 670.1,365.8 L670.1,374.3 A19,19 0 0 1 651.2,393.2 L541.5,393.2 A19,19 0 0 1 522.5,374.3 L522.5,365.8 A19,19 0 0 1 541.5,346.9Z"/>
+    <path id="caldera" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M427.7,494.5 L733.4,494.5 A63.3,63.3 0 0 1 796.7,557.7 L796.7,631.5 A63.3,63.3 0 0 1 733.4,694.8 L427.7,694.8 A63.3,63.3 0 0 1 364.4,631.5 L364.4,557.7 A63.3,63.3 0 0 1 427.7,494.5Z"/>
+    <path id="frente" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M794.5,515.5 L809.3,515.5 A19,19 0 0 1 828.3,534.5 L828.3,654.7 A19,19 0 0 1 809.3,673.7 L794.5,673.7 A19,19 0 0 1 775.6,654.7 L775.6,534.5 A19,19 0 0 1 794.5,515.5Z"/>
+    <path id="cabina" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M185.2,399.6 L364.4,399.6 A21.1,21.1 0 0 1 385.5,420.7 L385.5,684.2 A21.1,21.1 0 0 1 364.4,705.3 L185.2,705.3 A21.1,21.1 0 0 1 164.1,684.2 L164.1,420.7 A21.1,21.1 0 0 1 185.2,399.6Z"/>
+    <path id="techo" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M160.9,362.7 L388.7,362.7 A23.2,23.2 0 0 1 411.8,385.9 L411.8,394.3 A23.2,23.2 0 0 1 388.7,417.5 L160.9,417.5 A23.2,23.2 0 0 1 137.7,394.3 L137.7,385.9 A23.2,23.2 0 0 1 160.9,362.7Z"/>
+    <path id="ventana_cabina" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M221,452.3 L328.6,452.3 A16.9,16.9 0 0 1 345.4,469.2 L345.4,546.1 A16.9,16.9 0 0 1 328.6,563 L221,563 A16.9,16.9 0 0 1 204.2,546.1 L204.2,469.2 A16.9,16.9 0 0 1 221,452.3Z"/>
+    <path id="chasis" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M168.3,684.2 L803,684.2 A25.3,25.3 0 0 1 828.3,709.5 L828.3,715.9 A25.3,25.3 0 0 1 803,741.2 L168.3,741.2 A25.3,25.3 0 0 1 143,715.9 L143,709.5 A25.3,25.3 0 0 1 168.3,684.2Z"/>
+    <path id="quitapiedras" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M828.3,689.5 L891.5,789.7 L828.3,789.7Z"/>
+    <path id="rueda_1" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M320.1,789.7 A71.7,71.7 0 0 1 176.7,789.7 A71.7,71.7 0 0 1 320.1,789.7Z"/>
+    <path id="centro_rueda_1" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M275.8,789.7 A27.4,27.4 0 0 1 221,789.7 A27.4,27.4 0 0 1 275.8,789.7Z"/>
+    <path id="rueda_2" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M524.7,789.7 A75.9,75.9 0 0 1 372.8,789.7 A75.9,75.9 0 0 1 524.7,789.7Z"/>
+    <path id="centro_rueda_2" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M476.2,789.7 A27.4,27.4 0 0 1 421.3,789.7 A27.4,27.4 0 0 1 476.2,789.7Z"/>
+    <path id="rueda_3" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M725,789.7 A75.9,75.9 0 0 1 573.1,789.7 A75.9,75.9 0 0 1 725,789.7Z"/>
+    <path id="centro_rueda_3" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M676.5,789.7 A27.4,27.4 0 0 1 621.6,789.7 A27.4,27.4 0 0 1 676.5,789.7Z"/>
+  </g>
+  <g id="detalles" pointer-events="none">
+    <path class="detalle" fill="none" stroke="#000000" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" d="M111.4,876.1 L912.6,876.1"/>
+  </g>
+</svg>

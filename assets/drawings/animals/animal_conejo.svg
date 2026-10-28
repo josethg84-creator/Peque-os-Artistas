@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Pequeños Artistas - animal_conejo. Ilustración original creada para el proyecto. -->
+<svg xmlns="http://www.w3.org/2000/svg" id="animal_conejo" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <g id="regiones">
+    <path id="fondo" class="region" fill="#FFFFFF" stroke="none" d="M0,0 L1024,0 L1024,1024 L0,1024Z"/>
+    <path id="oreja_izquierda" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M483,230.1 A45.3,127.4 -10 0 1 393.8,245.8 A45.3,127.4 -10 0 1 483,230.1Z"/>
+    <path id="oreja_derecha" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M622.6,245.8 A45.3,127.4 10 0 1 533.4,230.1 A45.3,127.4 10 0 1 622.6,245.8Z"/>
+    <path id="oreja_izquierda_interior" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M461.7,245.5 A21.7,89.6 -10 0 1 418.9,253 A21.7,89.6 -10 0 1 461.7,245.5Z"/>
+    <path id="oreja_derecha_interior" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M597.5,253 A21.7,89.6 10 0 1 554.8,245.5 A21.7,89.6 10 0 1 597.5,253Z"/>
+    <path id="cola" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M712.9,756.8 A41.5,41.5 0 0 1 629.9,756.8 A41.5,41.5 0 0 1 712.9,756.8Z"/>
+    <path id="cuerpo" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M663.9,704.9 A155.7,155.7 0 0 1 352.6,704.9 A155.7,155.7 0 0 1 663.9,704.9Z"/>
+    <path id="barriga" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M597.8,733.2 A89.6,99.1 0 0 1 418.6,733.2 A89.6,99.1 0 0 1 597.8,733.2Z"/>
+    <path id="pata_izquierda" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M495,849.2 A64.1,32.1 0 0 1 366.7,849.2 A64.1,32.1 0 0 1 495,849.2Z"/>
+    <path id="pata_derecha" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M649.7,849.2 A64.1,32.1 0 0 1 521.4,849.2 A64.1,32.1 0 0 1 649.7,849.2Z"/>
+    <path id="brazo_izquierdo" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M461.8,671.3 A34,49.1 15 0 1 396.2,653.7 A34,49.1 15 0 1 461.8,671.3Z"/>
+    <path id="brazo_derecho" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M620.3,653.7 A34,49.1 -15 0 1 554.7,671.3 A34,49.1 -15 0 1 620.3,653.7Z"/>
+    <path id="cabeza" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M654.4,421.9 A146.2,146.2 0 0 1 362,421.9 A146.2,146.2 0 0 1 654.4,421.9Z"/>
+    <path id="dientes" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M493.1,471.9 L523.3,471.9 A11.3,11.3 0 0 1 534.6,483.2 L534.6,507.8 A11.3,11.3 0 0 1 523.3,519.1 L493.1,519.1 A11.3,11.3 0 0 1 481.8,507.8 L481.8,483.2 A11.3,11.3 0 0 1 493.1,471.9Z"/>
+  </g>
+  <g id="detalles" pointer-events="none">
+    <path class="detalle" fill="#000000" stroke="none" d="M429,403 A20.8,20.8 0 1 1 470.5,403 A20.8,20.8 0 1 1 429,403Z"/>
+    <path class="detalle" fill="#FFFFFF" stroke="none" d="M448.5,396.4 A7.9,7.9 0 1 1 464.3,396.4 A7.9,7.9 0 1 1 448.5,396.4Z"/>
+    <path class="detalle" fill="#000000" stroke="none" d="M546,403 A20.8,20.8 0 1 1 587.5,403 A20.8,20.8 0 1 1 546,403Z"/>
+    <path class="detalle" fill="#FFFFFF" stroke="none" d="M565.5,396.4 A7.9,7.9 0 1 1 581.2,396.4 A7.9,7.9 0 1 1 565.5,396.4Z"/>
+    <path class="detalle" fill="#000000" stroke="none" d="M525.2,449.3 A17,11.3 0 0 1 491.2,449.3 A17,11.3 0 0 1 525.2,449.3Z"/>
+    <path class="detalle" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" d="M508.2,458.7 L508.2,470"/>
+    <path class="detalle" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" d="M466.7,468.1 Q487.5,479.5 508.2,468.1"/>
+    <path class="detalle" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" d="M508.2,468.1 Q529,479.5 549.7,468.1"/>
+    <path class="detalle" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" d="M508.2,475.7 L508.2,515.3"/>
+  </g>
+</svg>
