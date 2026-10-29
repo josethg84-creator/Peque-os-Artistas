@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Pequeños Artistas - animal_pez. Ilustración original creada para el proyecto. -->
+<svg xmlns="http://www.w3.org/2000/svg" id="animal_pez" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <g id="regiones">
+    <path id="fondo" class="region" fill="#FFFFFF" stroke="none" d="M0,0 L1024,0 L1024,1024 L0,1024Z"/>
+    <path id="cola" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M707.7,534.9 C707.7,486.2 830.4,399.8 862.4,388.8 C894.4,377.8 898.8,444.4 899.7,468.8 C900.6,493.2 867.7,512.9 867.7,534.9 C867.7,557 900.6,576.7 899.7,601.1 C898.8,625.4 894.4,692.1 862.4,681.1 C830.4,670 707.7,583.6 707.7,534.9Z"/>
+    <path id="aleta_superior" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M387.7,394.1 C359.3,371.9 455.3,278.6 494.4,260.8 C533.5,243 594,265.2 622.4,287.5 C650.8,309.7 704.2,376.4 665.1,394.1 C626,411.9 416.2,416.4 387.7,394.1Z"/>
+    <path id="aleta_inferior" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M494.4,660.8 C482,679.5 544.2,772.8 569.1,772.8 C594,772.8 656.2,679.5 643.7,660.8 C631.3,642.1 506.8,642.1 494.4,660.8Z"/>
+    <path id="cuerpo" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M745.1,534.9 A282.7,183.5 0 0 1 179.7,534.9 A282.7,183.5 0 0 1 745.1,534.9Z"/>
+    <path id="franja_1" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M537.1,358 L545.1,359.5 L553.1,361.2 L561.1,363 L569.1,365 L577.1,367.2 L585.1,369.6 L593.1,372.2 L601.1,375.1 L613.9,534.9 L601.1,694.8 L593.1,697.6 L585.1,700.2 L577.1,702.6 L569.1,704.8 L561.1,706.9 L553.1,708.7 L545.1,710.4 L537.1,711.9 L549.9,534.9Z"/>
+    <path id="franja_2" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M659.7,403.6 L665.7,407.5 L671.7,411.6 L677.7,416.1 L683.7,420.8 L689.7,425.9 L695.7,431.4 L701.7,437.3 L707.7,443.8 L720.5,534.9 L707.7,626.1 L701.7,632.6 L695.7,638.5 L689.7,644 L683.7,649 L677.7,653.8 L671.7,658.2 L665.7,662.4 L659.7,666.3 L672.5,534.9Z"/>
+    <path id="aleta_lateral" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M387.7,570.1 C393.1,551.5 452.6,522.1 473.1,527.5 C493.5,532.8 515.7,583.5 510.4,602.1 C505.1,620.8 461.5,644.8 441.1,639.5 C420.6,634.1 382.4,588.8 387.7,570.1Z"/>
+    <path id="ojo" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M345.1,490.1 A42.7,42.7 0 0 1 259.7,490.1 A42.7,42.7 0 0 1 345.1,490.1Z"/>
+    <path id="burbuja_1" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M184,340.8 A36.3,36.3 0 0 1 111.5,340.8 A36.3,36.3 0 0 1 184,340.8Z"/>
+    <path id="burbuja_2" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M223.5,234.1 A27.7,27.7 0 0 1 168,234.1 A27.7,27.7 0 0 1 223.5,234.1Z"/>
+  </g>
+  <g id="detalles" pointer-events="none">
+    <path class="detalle" fill="#000000" stroke="none" d="M289.6,490.1 A21.3,21.3 0 1 1 332.3,490.1 A21.3,21.3 0 1 1 289.6,490.1Z"/>
+    <path class="detalle" fill="#FFFFFF" stroke="none" d="M309.7,483.3 A8.1,8.1 0 1 1 325.9,483.3 A8.1,8.1 0 1 1 309.7,483.3Z"/>
+    <path class="detalle" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" d="M371.7,442.1 C374.8,457.6 389.9,504.2 389.9,534.9 C389.9,565.7 374.8,611.4 371.7,626.7"/>
+    <path class="detalle" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" d="M201.1,570.1 Q233.1,595.7 265.1,570.1"/>
+  </g>
+</svg>

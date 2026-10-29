@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Pequeños Artistas - fruta_manzana. Ilustración original creada para el proyecto. -->
+<svg xmlns="http://www.w3.org/2000/svg" id="fruta_manzana" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <g id="regiones">
+    <path id="fondo" class="region" fill="#FFFFFF" stroke="none" d="M0,0 L1024,0 L1024,1024 L0,1024Z"/>
+    <path id="tallo" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M532.3,302.6 L532.4,300.3 L532.5,297.5 L532.6,294.5 L532.7,291.3 L532.8,287.8 L532.9,284.1 L533,280.2 L533.1,276.1 L533.2,271.8 L533.3,267.5 L533.5,263 L533.7,258.5 L533.9,253.9 L534.1,249.3 L534.3,244.7 L534.6,240.2 L534.9,235.7 L535.2,231.4 L535.6,227.1 L536,223.1 L536.4,219.3 L536.9,215.7 L537.4,212.3 L537.9,209.4 L538.5,206.5 L539.2,203.7 L540,200.7 L540.8,197.8 L541.8,194.8 L542.8,191.8 L543.8,188.8 L544.9,185.8 L546.1,182.9 L547.3,180 L548.5,177.1 L549.7,174.3 L550.9,171.5 L552.1,168.8 L553.3,166.2 L554.5,163.6 L555.6,161.1 L556.7,158.8 L557.8,156.5 L558.8,154.3 L559.7,152.2 L560.6,150.2 L561.4,148.2 L562.1,146.6 A18,18 0 0 0 528.9,132.7 L528.4,134 L527.7,135.3 L527,136.8 L526.1,138.6 L525,140.6 L523.9,142.8 L522.7,145.1 L521.5,147.6 L520.1,150.2 L518.8,153 L517.3,155.9 L515.9,158.9 L514.5,162 L513,165.2 L511.5,168.5 L510.1,171.9 L508.7,175.4 L507.3,178.9 L506,182.6 L504.7,186.3 L503.5,190 L502.4,193.8 L501.4,197.7 L500.4,201.6 L499.6,205.6 L498.9,209.8 L498.2,214.1 L497.6,218.5 L497,223.1 L496.5,227.7 L496,232.5 L495.6,237.3 L495.2,242.1 L494.9,246.9 L494.5,251.7 L494.2,256.5 L493.9,261.1 L493.7,265.7 L493.4,270.2 L493.2,274.5 L493,278.6 L492.8,282.5 L492.6,286.2 L492.4,289.6 L492.2,292.7 L492.1,295.5 L491.9,297.8 L491.7,299.9 A20.3,20.3 0 0 0 532.3,302.6Z"/>
+    <path id="hoja" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M545.5,223.4 C626,249.6 712.2,220.8 760.9,151.6 C680.4,125.5 594.2,154.2 545.5,223.4Z"/>
+    <path id="manzana" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M512,277.3 C401.9,195.9 198.4,241.4 198.4,486.7 C198.4,726.1 354,914 461.7,902 C491.7,898.5 497.6,887.7 512,887.7 C526.4,887.7 532.3,898.5 562.3,902 C670,914 825.6,726.1 825.6,486.7 C825.6,241.4 622.1,195.9 512,277.3Z"/>
+    <path id="brillo" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M342.1,457.9 A38.3,83.8 20 0 1 270.1,431.7 A38.3,83.8 20 0 1 342.1,457.9Z"/>
+  </g>
+  <g id="detalles" pointer-events="none">
+    <path class="detalle" fill="#000000" stroke="none" d="M399.5,564.5 A28.7,28.7 0 1 1 456.9,564.5 A28.7,28.7 0 1 1 399.5,564.5Z"/>
+    <path class="detalle" fill="#FFFFFF" stroke="none" d="M426.5,555.3 A10.9,10.9 0 1 1 448.3,555.3 A10.9,10.9 0 1 1 426.5,555.3Z"/>
+    <path class="detalle" fill="#000000" stroke="none" d="M567.1,564.5 A28.7,28.7 0 1 1 624.5,564.5 A28.7,28.7 0 1 1 567.1,564.5Z"/>
+    <path class="detalle" fill="#FFFFFF" stroke="none" d="M594.1,555.3 A10.9,10.9 0 1 1 615.9,555.3 A10.9,10.9 0 1 1 594.1,555.3Z"/>
+    <path class="detalle" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" d="M452.2,636.3 Q512,684.2 571.8,636.3"/>
+  </g>
+</svg>

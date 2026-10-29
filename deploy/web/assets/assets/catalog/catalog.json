@@ -1,0 +1,340 @@
+{
+  "version": 2,
+  "collection": "Pequeños Artistas - colección inicial",
+  "canvas": {
+    "width": 1024,
+    "height": 1024
+  },
+  "drawings": [
+    {
+      "id": "animal_gato",
+      "name": "Gato",
+      "category": "animales",
+      "file": "assets/drawings/animals/animal_gato.svg",
+      "thumbnail": "assets/thumbnails/animal_gato.png",
+      "difficulty": "facil",
+      "recommended_age": "4-5",
+      "regions": 11,
+      "description": "Gatito sentado de frente con orejas puntiagudas, bigotes y cola curvada."
+    },
+    {
+      "id": "animal_perro",
+      "name": "Perro",
+      "category": "animales",
+      "file": "assets/drawings/animals/animal_perro.svg",
+      "thumbnail": "assets/thumbnails/animal_perro.png",
+      "difficulty": "media",
+      "recommended_age": "5-6",
+      "regions": 14,
+      "description": "Perrito sonriente con orejas caídas, lengua afuera, collar y placa."
+    },
+    {
+      "id": "animal_conejo",
+      "name": "Conejo",
+      "category": "animales",
+      "file": "assets/drawings/animals/animal_conejo.svg",
+      "thumbnail": "assets/thumbnails/animal_conejo.png",
+      "difficulty": "media",
+      "recommended_age": "5-6",
+      "regions": 13,
+      "description": "Conejito de orejas largas con dientes, patitas y cola redonda."
+    },
+    {
+      "id": "animal_leon",
+      "name": "León",
+      "category": "animales",
+      "file": "assets/drawings/animals/animal_leon.svg",
+      "thumbnail": "assets/thumbnails/animal_leon.png",
+      "difficulty": "media",
+      "recommended_age": "5-6",
+      "regions": 13,
+      "description": "Leoncito sentado con melena ondulada y cola con mechón."
+    },
+    {
+      "id": "animal_elefante",
+      "name": "Elefante",
+      "category": "animales",
+      "file": "assets/drawings/animals/animal_elefante.svg",
+      "thumbnail": "assets/thumbnails/animal_elefante.png",
+      "difficulty": "facil",
+      "recommended_age": "4-5",
+      "regions": 9,
+      "description": "Elefante de frente con orejas grandes y trompa curvada."
+    },
+    {
+      "id": "animal_jirafa",
+      "name": "Jirafa",
+      "category": "animales",
+      "file": "assets/drawings/animals/animal_jirafa.svg",
+      "thumbnail": "assets/thumbnails/animal_jirafa.png",
+      "difficulty": "dificil",
+      "recommended_age": "6-7",
+      "regions": 28,
+      "description": "Jirafa de perfil con cuello largo, cuernitos y manchas grandes."
+    },
+    {
+      "id": "animal_oso",
+      "name": "Oso",
+      "category": "animales",
+      "file": "assets/drawings/animals/animal_oso.svg",
+      "thumbnail": "assets/thumbnails/animal_oso.png",
+      "difficulty": "media",
+      "recommended_age": "5-6",
+      "regions": 15,
+      "description": "Osito sentado con orejas redondas, barriga y plantas de las patas."
+    },
+    {
+      "id": "animal_mariposa",
+      "name": "Mariposa",
+      "category": "animales",
+      "file": "assets/drawings/animals/animal_mariposa.svg",
+      "thumbnail": "assets/thumbnails/animal_mariposa.png",
+      "difficulty": "facil",
+      "recommended_age": "4-5",
+      "regions": 12,
+      "description": "Mariposa simétrica con cuatro alas, manchas redondas y antenas."
+    },
+    {
+      "id": "animal_pez",
+      "name": "Pez",
+      "category": "animales",
+      "file": "assets/drawings/animals/animal_pez.svg",
+      "thumbnail": "assets/thumbnails/animal_pez.png",
+      "difficulty": "facil",
+      "recommended_age": "4-5",
+      "regions": 10,
+      "description": "Pez de perfil con aletas, franjas, ojo grande y burbujas."
+    },
+    {
+      "id": "animal_tortuga",
+      "name": "Tortuga",
+      "category": "animales",
+      "file": "assets/drawings/animals/animal_tortuga.svg",
+      "thumbnail": "assets/thumbnails/animal_tortuga.png",
+      "difficulty": "facil",
+      "recommended_age": "4-5",
+      "regions": 11,
+      "description": "Tortuga sonriente de perfil con caparazón de placas grandes."
+    },
+    {
+      "id": "vehiculo_automovil",
+      "name": "Automóvil",
+      "category": "vehiculos",
+      "file": "assets/drawings/vehicles/vehiculo_automovil.svg",
+      "thumbnail": "assets/thumbnails/vehiculo_automovil.png",
+      "difficulty": "facil",
+      "recommended_age": "4-5",
+      "regions": 11,
+      "description": "Coche de perfil con dos ventanas, puerta, faro y ruedas grandes."
+    },
+    {
+      "id": "vehiculo_autobus",
+      "name": "Autobús",
+      "category": "vehiculos",
+      "file": "assets/drawings/vehicles/vehiculo_autobus.svg",
+      "thumbnail": "assets/thumbnails/vehiculo_autobus.png",
+      "difficulty": "media",
+      "recommended_age": "5-6",
+      "regions": 13,
+      "description": "Autobús de perfil con cuatro ventanas, parabrisas y franja lateral."
+    },
+    {
+      "id": "vehiculo_avion",
+      "name": "Avión",
+      "category": "vehiculos",
+      "file": "assets/drawings/vehicles/vehiculo_avion.svg",
+      "thumbnail": "assets/thumbnails/vehiculo_avion.png",
+      "difficulty": "facil",
+      "recommended_age": "4-5",
+      "regions": 12,
+      "description": "Avión sonriente con ventanillas redondas, alas y dos nubes."
+    },
+    {
+      "id": "vehiculo_tren",
+      "name": "Tren",
+      "category": "vehiculos",
+      "file": "assets/drawings/vehicles/vehiculo_tren.svg",
+      "thumbnail": "assets/thumbnails/vehiculo_tren.png",
+      "difficulty": "media",
+      "recommended_age": "5-6",
+      "regions": 17,
+      "description": "Locomotora de vapor con chimenea, humo, cabina y tres ruedas."
+    },
+    {
+      "id": "vehiculo_barco",
+      "name": "Barco",
+      "category": "vehiculos",
+      "file": "assets/drawings/vehicles/vehiculo_barco.svg",
+      "thumbnail": "assets/thumbnails/vehiculo_barco.png",
+      "difficulty": "facil",
+      "recommended_age": "4-5",
+      "regions": 8,
+      "description": "Velero con dos velas, bandera, casco con franja, olas y sol."
+    },
+    {
+      "id": "dinosaurio_01",
+      "name": "Rex sonriente",
+      "category": "dinosaurios",
+      "file": "assets/drawings/dinosaurs/dinosaurio_01.svg",
+      "thumbnail": "assets/thumbnails/dinosaurio_01.png",
+      "difficulty": "facil",
+      "recommended_age": "4-5",
+      "regions": 12,
+      "description": "Pequeño tiranosaurio amigable de perfil con brazitos cortos y manchas."
+    },
+    {
+      "id": "dinosaurio_02",
+      "name": "Triceratops",
+      "category": "dinosaurios",
+      "file": "assets/drawings/dinosaurs/dinosaurio_02.svg",
+      "thumbnail": "assets/thumbnails/dinosaurio_02.png",
+      "difficulty": "media",
+      "recommended_age": "5-6",
+      "regions": 14,
+      "description": "Triceratops sonriente con gola ondulada y tres cuernos redondeados."
+    },
+    {
+      "id": "dinosaurio_03",
+      "name": "Estegosaurio",
+      "category": "dinosaurios",
+      "file": "assets/drawings/dinosaurs/dinosaurio_03.svg",
+      "thumbnail": "assets/thumbnails/dinosaurio_03.png",
+      "difficulty": "media",
+      "recommended_age": "5-6",
+      "regions": 17,
+      "description": "Estegosaurio con cinco placas en el lomo y cola con púas suaves."
+    },
+    {
+      "id": "dinosaurio_04",
+      "name": "Braquiosaurio",
+      "category": "dinosaurios",
+      "file": "assets/drawings/dinosaurs/dinosaurio_04.svg",
+      "thumbnail": "assets/thumbnails/dinosaurio_04.png",
+      "difficulty": "facil",
+      "recommended_age": "4-5",
+      "regions": 12,
+      "description": "Dinosaurio de cuello muy largo con manchas redondas."
+    },
+    {
+      "id": "dinosaurio_05",
+      "name": "Bebé dinosaurio",
+      "category": "dinosaurios",
+      "file": "assets/drawings/dinosaurs/dinosaurio_05.svg",
+      "thumbnail": "assets/thumbnails/dinosaurio_05.png",
+      "difficulty": "facil",
+      "recommended_age": "4-5",
+      "regions": 9,
+      "description": "Bebé dinosaurio saliendo del huevo con la cáscara en la cabeza."
+    },
+    {
+      "id": "fruta_manzana",
+      "name": "Manzana",
+      "category": "frutas",
+      "file": "assets/drawings/fruits/fruta_manzana.svg",
+      "thumbnail": "assets/thumbnails/fruta_manzana.png",
+      "difficulty": "facil",
+      "recommended_age": "4-5",
+      "regions": 4,
+      "description": "Manzana sonriente con tallo, hoja y brillo."
+    },
+    {
+      "id": "fruta_platano",
+      "name": "Plátano",
+      "category": "frutas",
+      "file": "assets/drawings/fruits/fruta_platano.svg",
+      "thumbnail": "assets/thumbnails/fruta_platano.png",
+      "difficulty": "facil",
+      "recommended_age": "4-5",
+      "regions": 3,
+      "description": "Plátano curvado y sonriente con tallo y punta."
+    },
+    {
+      "id": "fruta_fresa",
+      "name": "Fresa",
+      "category": "frutas",
+      "file": "assets/drawings/fruits/fruta_fresa.svg",
+      "thumbnail": "assets/thumbnails/fruta_fresa.png",
+      "difficulty": "facil",
+      "recommended_age": "4-5",
+      "regions": 3,
+      "description": "Fresa sonriente con corona de hojas, tallo y semillas."
+    },
+    {
+      "id": "fruta_naranja",
+      "name": "Naranja",
+      "category": "frutas",
+      "file": "assets/drawings/fruits/fruta_naranja.svg",
+      "thumbnail": "assets/thumbnails/fruta_naranja.png",
+      "difficulty": "facil",
+      "recommended_age": "4-5",
+      "regions": 4,
+      "description": "Naranja redonda y sonriente con tallo, hoja y brillo."
+    },
+    {
+      "id": "fruta_uvas",
+      "name": "Uvas",
+      "category": "frutas",
+      "file": "assets/drawings/fruits/fruta_uvas.svg",
+      "thumbnail": "assets/thumbnails/fruta_uvas.png",
+      "difficulty": "facil",
+      "recommended_age": "4-5",
+      "regions": 12,
+      "description": "Racimo de diez uvas grandes con tallo y hoja."
+    },
+    {
+      "id": "fantasia_hada",
+      "name": "Hada",
+      "category": "fantasia",
+      "file": "assets/drawings/fantasy/fantasia_hada.svg",
+      "thumbnail": "assets/thumbnails/fantasia_hada.png",
+      "difficulty": "media",
+      "recommended_age": "5-6",
+      "regions": 20,
+      "description": "Hada pequeña con cuatro alas, vestido acampanado y varita de estrella."
+    },
+    {
+      "id": "fantasia_robot",
+      "name": "Robot amigable",
+      "category": "fantasia",
+      "file": "assets/drawings/fantasy/fantasia_robot.svg",
+      "thumbnail": "assets/thumbnails/fantasia_robot.png",
+      "difficulty": "dificil",
+      "recommended_age": "6-7",
+      "regions": 22,
+      "description": "Robot que saluda, con antena, panel con corazón y pies grandes."
+    },
+    {
+      "id": "fantasia_dragon",
+      "name": "Dragón sonriente",
+      "category": "fantasia",
+      "file": "assets/drawings/fantasy/fantasia_dragon.svg",
+      "thumbnail": "assets/thumbnails/fantasia_dragon.png",
+      "difficulty": "media",
+      "recommended_age": "5-6",
+      "regions": 14,
+      "description": "Dragoncito sentado con alas, cuernitos y cola terminada en corazón."
+    },
+    {
+      "id": "fantasia_unicornio",
+      "name": "Unicornio",
+      "category": "fantasia",
+      "file": "assets/drawings/fantasy/fantasia_unicornio.svg",
+      "thumbnail": "assets/thumbnails/fantasia_unicornio.png",
+      "difficulty": "media",
+      "recommended_age": "5-6",
+      "regions": 16,
+      "description": "Unicornio de perfil con cuerno, melena, cola ondulada y ojo feliz."
+    },
+    {
+      "id": "fantasia_extraterrestre",
+      "name": "Pequeño extraterrestre",
+      "category": "fantasia",
+      "file": "assets/drawings/fantasy/fantasia_extraterrestre.svg",
+      "thumbnail": "assets/thumbnails/fantasia_extraterrestre.png",
+      "difficulty": "media",
+      "recommended_age": "5-6",
+      "regions": 19,
+      "description": "Extraterrestre simpático con antenas, ojos grandes y dos estrellas."
+    }
+  ]
+}

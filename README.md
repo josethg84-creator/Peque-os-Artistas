@@ -27,6 +27,8 @@ assets/
   sounds/     efectos de sonido WAV propios (tools/make_sounds.py)
   previews/   PNG 1024x1024 para control de calidad (no se empaquetan)
   catalog/    catalog.json (30 entradas)
+web/          index.html, manifest e iconos de la versión web
+deploy/web/   versión web ya compilada (la que publica Vercel, ver vercel.json)
 docs/         DIBUJOS.md (Fase 1), FASE2_INTERFAZ.md, FASE3_MOTOR.md, FASE4_COLECCION.md, FASE5_GUARDADO.md, FASE6_APRENDER.md, FASE7_ANIMACIONES.md y capturas
 tools/        generación, render y control de calidad de los dibujos
 ```
@@ -38,3 +40,18 @@ flutter pub get
 flutter test
 flutter run
 ```
+
+## Versión web (Vercel)
+
+`deploy/web/` contiene la app ya compilada para web (sin dependencias externas:
+el motor gráfico va incluido, no se descarga de ningún CDN). `vercel.json` le dice
+a Vercel que publique esa carpeta tal cual, sin compilar nada.
+
+Para actualizarla tras cambiar el código:
+
+```bash
+bash tools/build_web.sh
+```
+
+y subir (commit y push) la carpeta `deploy/web/`.
+

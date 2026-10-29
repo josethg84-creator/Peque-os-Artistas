@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Pequeños Artistas - vehiculo_barco. Ilustración original creada para el proyecto. -->
+<svg xmlns="http://www.w3.org/2000/svg" id="vehiculo_barco" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <g id="regiones">
+    <path id="fondo" class="region" fill="#FFFFFF" stroke="none" d="M0,0 L1024,0 L1024,1024 L0,1024Z"/>
+    <path id="sol" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M865.9,248.7 A61,61 0 0 1 743.8,248.7 A61,61 0 0 1 865.9,248.7Z"/>
+    <path id="vela_grande" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M489.9,224.1 L489.9,578.4 L253.6,578.4Z"/>
+    <path id="vela_pequena" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M534.1,273.3 L534.1,578.4 L711.3,578.4Z"/>
+    <path id="mastil" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M505.6,199.5 L511.5,199.5 A13.8,13.8 0 0 1 525.3,213.3 L525.3,599.1 A13.8,13.8 0 0 1 511.5,612.9 L505.6,612.9 A13.8,13.8 0 0 1 491.8,599.1 L491.8,213.3 A13.8,13.8 0 0 1 505.6,199.5Z"/>
+    <path id="bandera" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M525.3,201.4 L628.6,234.9 L525.3,270.3Z"/>
+    <path id="casco" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M199.5,612.9 L813.7,612.9 L731,755.6 L288.1,755.6Z"/>
+    <path id="franja" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M231,660.1 L782.2,660.1 L760.5,701.5 L256.6,701.5Z"/>
+    <path id="agua" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M110.9,752.7 A49.5,38 0 0 1 209.8,752.7 A49.5,38 0 0 1 308.7,752.7 A49.5,38 0 0 1 407.7,752.7 A49.5,38 0 0 1 506.6,752.7 A49.5,38 0 0 1 605.5,752.7 A49.5,38 0 0 1 704.4,752.7 A49.5,38 0 0 1 803.4,752.7 A49.5,38 0 0 1 902.3,752.7 L902.3,888.5 L110.9,888.5Z"/>
+  </g>
+  <g id="detalles" pointer-events="none">
+    <path class="detalle" fill="none" stroke="#000000" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" d="M804.8,160.1 L804.8,135.5"/>
+    <path class="detalle" fill="none" stroke="#000000" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" d="M888.5,248.7 L913.1,248.7"/>
+    <path class="detalle" fill="none" stroke="#000000" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" d="M866.8,186.7 L884.6,169"/>
+    <path class="detalle" fill="none" stroke="#000000" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" d="M866.8,310.7 L884.6,328.4"/>
+    <path class="detalle" fill="none" stroke="#000000" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" d="M742.8,186.7 L725.1,169"/>
+  </g>
+</svg>

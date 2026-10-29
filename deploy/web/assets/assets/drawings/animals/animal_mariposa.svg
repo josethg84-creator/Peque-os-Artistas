@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Pequeños Artistas - animal_mariposa. Ilustración original creada para el proyecto. -->
+<svg xmlns="http://www.w3.org/2000/svg" id="animal_mariposa" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <g id="regiones">
+    <path id="fondo" class="region" fill="#FFFFFF" stroke="none" d="M0,0 L1024,0 L1024,1024 L0,1024Z"/>
+    <path id="ala_superior_izquierda" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M504.2,508.7 C515.3,470.6 456.8,369.3 420.6,319.1 C384.4,269 329.6,221.6 286.8,207.7 C244.1,193.7 191.1,209.5 164.2,235.5 C137.3,261.6 120.5,321 125.2,363.7 C129.8,406.5 154,461.3 192.1,491.9 C230.2,522.6 301.7,544.9 353.7,547.7 C405.7,550.5 493,546.7 504.2,508.7Z"/>
+    <path id="ala_superior_derecha" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M519.8,508.7 C508.7,470.6 567.2,369.3 603.4,319.1 C639.6,269 694.4,221.6 737.2,207.7 C779.9,193.7 832.9,209.5 859.8,235.5 C886.7,261.6 903.5,321 898.8,363.7 C894.2,406.5 870,461.3 831.9,491.9 C793.8,522.6 722.3,544.9 670.3,547.7 C618.3,550.5 531,546.7 519.8,508.7Z"/>
+    <path id="ala_inferior_izquierda" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M504.2,575.5 C482.8,556 410,559.7 364.9,570 C319.7,580.2 260.8,603.4 233.3,636.9 C205.8,670.3 192.8,732.5 199.9,770.6 C206.9,808.7 240.7,857.9 275.7,865.4 C310.6,872.8 373.2,844.9 409.4,815.2 C445.7,785.5 477.3,727 493,687 C508.8,647.1 525.6,595 504.2,575.5Z"/>
+    <path id="ala_inferior_derecha" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M519.8,575.5 C541.2,556 614,559.7 659.1,570 C704.3,580.2 763.2,603.4 790.7,636.9 C818.2,670.3 831.2,732.5 824.1,770.6 C817.1,808.7 783.3,857.9 748.3,865.4 C713.4,872.8 650.8,844.9 614.6,815.2 C578.3,785.5 546.7,727 531,687 C515.2,647.1 498.4,595 519.8,575.5Z"/>
+    <path id="mancha_superior_izquierda" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M338.1,352.6 A62.4,62.4 0 0 1 213.2,352.6 A62.4,62.4 0 0 1 338.1,352.6Z"/>
+    <path id="mancha_superior_derecha" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M810.8,352.6 A62.4,62.4 0 0 1 685.9,352.6 A62.4,62.4 0 0 1 810.8,352.6Z"/>
+    <path id="mancha_inferior_izquierda" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M374.9,726 A49,49 0 0 1 276.8,726 A49,49 0 0 1 374.9,726Z"/>
+    <path id="mancha_inferior_derecha" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M747.2,726 A49,49 0 0 1 649.1,726 A49,49 0 0 1 747.2,726Z"/>
+    <path id="antena_izquierda" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M440.7,172 A26.8,26.8 0 0 1 387.1,172 A26.8,26.8 0 0 1 440.7,172Z"/>
+    <path id="antena_derecha" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M636.9,172 A26.8,26.8 0 0 1 583.3,172 A26.8,26.8 0 0 1 636.9,172Z"/>
+    <path id="cuerpo" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M556.6,636.9 A44.6,234.1 0 0 1 467.4,636.9 A44.6,234.1 0 0 1 556.6,636.9Z"/>
+    <path id="cabeza" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M576.7,352.6 A64.7,64.7 0 0 1 447.3,352.6 A64.7,64.7 0 0 1 576.7,352.6Z"/>
+  </g>
+  <g id="detalles" pointer-events="none">
+    <path class="detalle" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" d="M494.2,319.1 C489.3,304.3 477.4,253.2 465.2,230 C452.9,206.7 428,188.2 420.6,179.8"/>
+    <path class="detalle" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" d="M529.8,319.1 C534.7,304.3 546.6,253.2 558.8,230 C571.1,206.7 596,188.2 603.4,179.8"/>
+    <path class="detalle" fill="#000000" stroke="none" d="M475.2,343.7 A12.3,12.3 0 1 1 499.7,343.7 A12.3,12.3 0 1 1 475.2,343.7Z"/>
+    <path class="detalle" fill="#FFFFFF" stroke="none" d="M486.7,339.7 A4.7,4.7 0 1 1 496.1,339.7 A4.7,4.7 0 1 1 486.7,339.7Z"/>
+    <path class="detalle" fill="#000000" stroke="none" d="M524.3,343.7 A12.3,12.3 0 1 1 548.8,343.7 A12.3,12.3 0 1 1 524.3,343.7Z"/>
+    <path class="detalle" fill="#FFFFFF" stroke="none" d="M535.8,339.7 A4.7,4.7 0 1 1 545.1,339.7 A4.7,4.7 0 1 1 535.8,339.7Z"/>
+    <path class="detalle" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" d="M491.9,372.7 Q512,388.3 532.1,372.7"/>
+  </g>
+</svg>

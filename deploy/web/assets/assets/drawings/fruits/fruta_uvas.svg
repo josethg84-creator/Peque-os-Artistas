@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Pequeños Artistas - fruta_uvas. Ilustración original creada para el proyecto. -->
+<svg xmlns="http://www.w3.org/2000/svg" id="fruta_uvas" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <g id="regiones">
+    <path id="fondo" class="region" fill="#FFFFFF" stroke="none" d="M0,0 L1024,0 L1024,1024 L0,1024Z"/>
+    <path id="tallo" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M533.2,318.6 L533.5,315.2 L533.8,311.1 L534.2,306.5 L534.7,301.2 L535.2,295.5 L535.7,289.4 L536.3,282.8 L536.9,276 L537.5,268.9 L538.1,261.6 L538.8,254.2 L539.4,246.7 L540.1,239.2 L540.7,231.8 L541.3,224.5 L542,217.4 L542.6,210.5 L543.1,204 L543.7,197.8 L544.2,192.1 L544.6,186.9 L545,182.2 L545.4,178.2 L545.7,174.8 A21.2,21.2 0 0 0 503.3,171.1 L503,174.5 L502.7,178.5 L502.3,183.2 L501.8,188.4 L501.3,194.2 L500.8,200.3 L500.2,206.9 L499.6,213.7 L499,220.8 L498.4,228.1 L497.7,235.5 L497.1,243 L496.4,250.5 L495.8,257.9 L495.2,265.2 L494.5,272.3 L493.9,279.1 L493.4,285.7 L492.8,291.8 L492.3,297.6 L491.9,302.8 L491.5,307.5 L491.1,311.5 L490.8,314.9 A21.2,21.2 0 0 0 533.2,318.6Z"/>
+    <path id="hoja" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M497,229.2 C448.5,149.8 358.5,119.8 272,154.2 C320.5,233.6 410.5,263.6 497,229.2Z"/>
+    <path id="uva_1" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M604.5,811.7 A92.5,92.5 0 0 1 419.5,811.7 A92.5,92.5 0 0 1 604.5,811.7Z"/>
+    <path id="uva_2" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M523.2,671.7 A92.5,92.5 0 0 1 338.2,671.7 A92.5,92.5 0 0 1 523.2,671.7Z"/>
+    <path id="uva_3" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M685.8,671.7 A92.5,92.5 0 0 1 500.8,671.7 A92.5,92.5 0 0 1 685.8,671.7Z"/>
+    <path id="uva_4" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M442,531.7 A92.5,92.5 0 0 1 257,531.7 A92.5,92.5 0 0 1 442,531.7Z"/>
+    <path id="uva_5" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M604.5,531.7 A92.5,92.5 0 0 1 419.5,531.7 A92.5,92.5 0 0 1 604.5,531.7Z"/>
+    <path id="uva_6" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M767,531.7 A92.5,92.5 0 0 1 582,531.7 A92.5,92.5 0 0 1 767,531.7Z"/>
+    <path id="uva_7" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M360.8,391.7 A92.5,92.5 0 0 1 175.8,391.7 A92.5,92.5 0 0 1 360.8,391.7Z"/>
+    <path id="uva_8" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M523.2,391.7 A92.5,92.5 0 0 1 338.2,391.7 A92.5,92.5 0 0 1 523.2,391.7Z"/>
+    <path id="uva_9" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M685.8,391.7 A92.5,92.5 0 0 1 500.8,391.7 A92.5,92.5 0 0 1 685.8,391.7Z"/>
+    <path id="uva_10" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M848.2,391.7 A92.5,92.5 0 0 1 663.2,391.7 A92.5,92.5 0 0 1 848.2,391.7Z"/>
+  </g>
+  <g id="detalles" pointer-events="none">
+    <path class="detalle" fill="#000000" stroke="none" d="M460.8,519.2 A16.2,16.2 0 1 1 493.2,519.2 A16.2,16.2 0 1 1 460.8,519.2Z"/>
+    <path class="detalle" fill="#FFFFFF" stroke="none" d="M476,514 A6.2,6.2 0 1 1 488.4,514 A6.2,6.2 0 1 1 476,514Z"/>
+    <path class="detalle" fill="#000000" stroke="none" d="M530.8,519.2 A16.2,16.2 0 1 1 563.2,519.2 A16.2,16.2 0 1 1 530.8,519.2Z"/>
+    <path class="detalle" fill="#FFFFFF" stroke="none" d="M546,514 A6.2,6.2 0 1 1 558.4,514 A6.2,6.2 0 1 1 546,514Z"/>
+    <path class="detalle" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" d="M482,559.2 Q512,584.2 542,559.2"/>
+  </g>
+</svg>

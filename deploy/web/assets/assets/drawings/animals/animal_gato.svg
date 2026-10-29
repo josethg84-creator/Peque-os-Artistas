@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Pequeños Artistas - animal_gato. Ilustración original creada para el proyecto. -->
+<svg xmlns="http://www.w3.org/2000/svg" id="animal_gato" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <g id="regiones">
+    <path id="fondo" class="region" fill="#FFFFFF" stroke="none" d="M0,0 L1024,0 L1024,1024 L0,1024Z"/>
+    <path id="cola" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M568,813.4 L570.5,812.9 L573.4,812.3 L576.9,811.7 L581.1,811.1 L585.8,810.4 L591,809.7 L596.5,809 L602.4,808.2 L608.6,807.4 L614.9,806.5 L621.5,805.5 L628.2,804.4 L634.9,803.2 L641.8,801.9 L648.6,800.5 L655.4,799 L662.1,797.3 L668.7,795.4 L675.2,793.3 L681.6,791 L687.8,788.4 L693.8,785.5 L699.7,782.1 L705.1,778.3 L709.9,774.3 L714.3,770.1 L718.3,765.7 L722,761.1 L725.5,756.4 L728.6,751.5 L731.5,746.6 L734.2,741.5 L736.7,736.4 L739,731.2 L741,725.9 L742.9,720.7 L744.6,715.4 L746.1,710.2 L747.4,704.9 L748.6,699.7 L749.6,694.5 L750.5,689.4 L751.2,684.4 L751.8,679.4 L752.3,674.6 L752.6,669.9 L752.7,665.3 L752.7,660.4 L752.4,655.1 L751.7,649.6 L750.6,644.2 L749.1,639.1 L747.4,634.1 L745.5,629.3 L743.4,624.7 L741.2,620.2 L738.9,615.8 L736.5,611.6 L734,607.5 L731.5,603.5 L729,599.7 L726.5,596.1 L724.1,592.6 L721.7,589.3 L719.5,586.2 L717.4,583.3 L715.5,580.6 L713.7,578.2 L712.3,576.1 L711.1,574.4 L710.3,573.2 L709.5,571.9 A21.6,21.6 0 0 0 671.6,592.5 L672.7,594.8 L674.3,597.5 L676,600.1 L677.7,602.8 L679.6,605.6 L681.5,608.5 L683.5,611.4 L685.5,614.4 L687.6,617.5 L689.7,620.7 L691.8,623.9 L693.8,627.2 L695.8,630.5 L697.6,633.8 L699.4,637 L701,640.3 L702.4,643.4 L703.7,646.5 L704.8,649.4 L705.6,652.1 L706.3,654.7 L706.7,657 L706.9,659 L706.9,661.1 L706.8,663.8 L706.6,667.1 L706.3,670.5 L705.9,674.1 L705.3,677.9 L704.7,681.7 L703.9,685.6 L703,689.5 L702,693.4 L700.9,697.4 L699.7,701.3 L698.4,705.2 L696.9,709 L695.4,712.7 L693.7,716.2 L692,719.7 L690.1,722.9 L688.2,726 L686.2,728.9 L684.2,731.5 L682.2,734 L680.1,736.1 L678,738 L676,739.6 L674,740.9 L671.4,742.3 L668.1,743.8 L664.2,745.3 L659.8,746.8 L655,748.3 L649.8,749.6 L644.3,750.9 L638.5,752.1 L632.6,753.3 L626.5,754.3 L620.4,755.3 L614.2,756.1 L608.1,757 L602,757.7 L596.1,758.4 L590.4,759.1 L584.8,759.7 L579.5,760.3 L574.5,760.9 L569.8,761.5 L565.3,762.1 L561.2,762.8 L557.8,763.4 A25.5,25.5 0 0 0 568,813.4Z"/>
+    <path id="cuerpo" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M609.1,705 A171.8,166.9 0 0 1 265.4,705 A171.8,166.9 0 0 1 609.1,705Z"/>
+    <path id="barriga" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M530.5,734.4 A93.3,108 0 0 1 343.9,734.4 A93.3,108 0 0 1 530.5,734.4Z"/>
+    <path id="pata_izquierda" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M432.3,852.2 A60.9,37.3 0 0 1 310.5,852.2 A60.9,37.3 0 0 1 432.3,852.2Z"/>
+    <path id="pata_derecha" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M563.9,852.2 A60.9,37.3 0 0 1 442.1,852.2 A60.9,37.3 0 0 1 563.9,852.2Z"/>
+    <path id="oreja_izquierda" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M253.6,326.9 L273.2,110.9 L420.5,240.5Z"/>
+    <path id="oreja_derecha" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M620.8,326.9 L601.2,110.9 L453.9,240.5Z"/>
+    <path id="oreja_izquierda_interior" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M289.9,277.8 L299.7,169.8 L378.3,240.5Z"/>
+    <path id="oreja_derecha_interior" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M584.5,277.8 L574.7,169.8 L496.1,240.5Z"/>
+    <path id="cabeza" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M628.7,380.9 A191.5,162 0 0 1 245.7,380.9 A191.5,162 0 0 1 628.7,380.9Z"/>
+    <path id="hocico" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M513.8,454.6 A76.6,51.1 0 0 1 360.6,454.6 A76.6,51.1 0 0 1 513.8,454.6Z"/>
+  </g>
+  <g id="detalles" pointer-events="none">
+    <path class="detalle" fill="#000000" stroke="none" d="M342.9,371.1 A23.6,23.6 0 1 1 390.1,371.1 A23.6,23.6 0 1 1 342.9,371.1Z"/>
+    <path class="detalle" fill="#FFFFFF" stroke="none" d="M365.1,363.5 A9,9 0 1 1 383,363.5 A9,9 0 1 1 365.1,363.5Z"/>
+    <path class="detalle" fill="#000000" stroke="none" d="M484.3,371.1 A23.6,23.6 0 1 1 531.5,371.1 A23.6,23.6 0 1 1 484.3,371.1Z"/>
+    <path class="detalle" fill="#FFFFFF" stroke="none" d="M506.5,363.5 A9,9 0 1 1 524.4,363.5 A9,9 0 1 1 506.5,363.5Z"/>
+    <path class="detalle" fill="#000000" stroke="none" d="M460.8,433 A23.6,14.7 0 0 1 413.6,433 A23.6,14.7 0 0 1 460.8,433Z"/>
+    <path class="detalle" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" d="M437.2,444.7 L437.2,464.4"/>
+    <path class="detalle" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" d="M386.1,464.4 Q411.7,484 437.2,464.4"/>
+    <path class="detalle" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" d="M437.2,464.4 Q462.7,484 488.3,464.4"/>
+    <path class="detalle" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" d="M337.1,442.8 L258.5,431"/>
+    <path class="detalle" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" d="M537.4,442.8 L615.9,431"/>
+    <path class="detalle" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" d="M337.1,466.3 L258.5,472.2"/>
+    <path class="detalle" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" d="M537.4,466.3 L615.9,472.2"/>
+  </g>
+</svg>

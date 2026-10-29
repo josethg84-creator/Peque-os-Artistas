@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Pequeños Artistas - vehiculo_avion. Ilustración original creada para el proyecto. -->
+<svg xmlns="http://www.w3.org/2000/svg" id="vehiculo_avion" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <g id="regiones">
+    <path id="fondo" class="region" fill="#FFFFFF" stroke="none" d="M0,0 L1024,0 L1024,1024 L0,1024Z"/>
+    <path id="nube_1" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M341.3,225.3 A23.8,23.8 0 0 1 316.7,257.4 A23.8,23.8 0 0 1 254.5,274.5 A23.8,23.8 0 0 1 183.8,268.6 A23.8,23.8 0 0 1 137.6,242.4 A23.8,23.8 0 0 1 137.6,208.2 A23.8,23.8 0 0 1 183.8,182 A23.8,23.8 0 0 1 254.5,176 A23.8,23.8 0 0 1 316.7,193.1 A23.8,23.8 0 0 1 341.3,225.3Z"/>
+    <path id="nube_2" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M891.5,795.5 A25.2,25.2 0 0 1 864.6,828.9 A25.2,25.2 0 0 1 796.5,846.7 A25.2,25.2 0 0 1 719,840.5 A25.2,25.2 0 0 1 668.4,813.3 A25.2,25.2 0 0 1 668.4,777.7 A25.2,25.2 0 0 1 719,750.4 A25.2,25.2 0 0 1 796.5,744.3 A25.2,25.2 0 0 1 864.6,762.1 A25.2,25.2 0 0 1 891.5,795.5Z"/>
+    <path id="ala_trasera" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M546.4,485.4 C544.7,458.7 612.3,359.5 636.4,335.3 C660.6,311.1 689.8,313.6 691.5,340.3 C693.1,367 670.6,471.2 646.4,495.4 C622.3,519.6 548.1,512.1 546.4,485.4Z"/>
+    <path id="cola" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M201.3,495.4 C172.9,462 154.6,320.3 161.2,285.3 C167.9,250.3 212.9,252 241.3,285.3 C269.6,318.6 338,450.4 331.3,485.4 C324.6,520.4 229.6,528.7 201.3,495.4Z"/>
+    <path id="fuselaje" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M833.5,520.4 A335.1,100 0 0 1 163.2,520.4 A335.1,100 0 0 1 833.5,520.4Z"/>
+    <path id="cabina" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M806.5,487.4 A52,36 0 0 1 702.5,487.4 A52,36 0 0 1 806.5,487.4Z"/>
+    <path id="ventanilla_1" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M376.3,500.4 A30,30 0 0 1 316.3,500.4 A30,30 0 0 1 376.3,500.4Z"/>
+    <path id="ventanilla_2" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M466.4,500.4 A30,30 0 0 1 406.3,500.4 A30,30 0 0 1 466.4,500.4Z"/>
+    <path id="ventanilla_3" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M556.4,500.4 A30,30 0 0 1 496.4,500.4 A30,30 0 0 1 556.4,500.4Z"/>
+    <path id="ventanilla_4" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M646.4,500.4 A30,30 0 0 1 586.4,500.4 A30,30 0 0 1 646.4,500.4Z"/>
+    <path id="estabilizador" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M191.3,540.4 C211.3,527.9 302.1,527.9 316.3,540.4 C330.5,552.9 296.3,602.9 276.3,615.4 C256.3,627.9 210.4,627.9 196.3,615.4 C182.1,602.9 171.3,552.9 191.3,540.4Z"/>
+    <path id="ala" class="region" fill="#FFFFFF" stroke="#000000" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" d="M406.3,555.4 C433,524.6 568.1,524.6 586.4,555.4 C604.8,586.2 543.1,709.6 516.4,740.5 C489.7,771.3 444.7,771.3 426.4,740.5 C408,709.6 379.7,586.2 406.3,555.4Z"/>
+  </g>
+  <g id="detalles" pointer-events="none">
+    <path class="detalle" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" d="M770.5,555.4 Q796.5,575.4 822.5,555.4"/>
+  </g>
+</svg>
