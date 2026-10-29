@@ -153,7 +153,6 @@ class _Actions extends StatelessWidget {
         label: 'Mis dibujos',
         horizontal: horizontal,
         color: AppColors.grape,
-        badge: 'Pronto',
         onTap: () => navigator.pushNamed(AppRoutes.savedDrawings),
       ),
     ];

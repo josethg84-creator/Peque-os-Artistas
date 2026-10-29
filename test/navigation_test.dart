@@ -27,7 +27,7 @@ void main() {
     expect(find.bySemanticsLabel('¡Vamos a pintar!'), findsOneWidget);
     expect(find.bySemanticsLabel('Galería'), findsOneWidget);
     expect(find.bySemanticsLabel('Actividades. Pronto'), findsOneWidget);
-    expect(find.bySemanticsLabel('Mis dibujos. Pronto'), findsOneWidget);
+    expect(find.bySemanticsLabel('Mis dibujos'), findsOneWidget);
     expect(find.bySemanticsLabel('Zona para adultos'), findsOneWidget);
   });
 
@@ -37,7 +37,7 @@ void main() {
     await tapAndSettle(tester, find.bySemanticsLabel('¡Vamos a pintar!'));
     expect(find.byType(ColoringScreen), findsOneWidget);
     expect(find.text('Gato'), findsOneWidget);
-    expect(find.text('Vista previa: pintar llegará pronto'), findsOneWidget);
+    expect(find.bySemanticsLabel('Dibujo para colorear: Gato'), findsOneWidget);
     await tapAndSettle(tester, find.bySemanticsLabel('Volver a la galería'));
     expect(find.byType(HomeScreen), findsOneWidget);
     // La siguiente pulsación propone otro dibujo fácil.
@@ -90,11 +90,10 @@ void main() {
     expect(find.byType(GalleryScreen), findsOneWidget);
   });
 
-  testWidgets('Mis dibujos es una pantalla provisional identificada', (tester) async {
+  testWidgets('Mis dibujos vacío ofrece ir a la galería', (tester) async {
     setScreenSize(tester, const Size(400, 860));
     await pumpApp(tester);
-    await tapAndSettle(tester, find.bySemanticsLabel('Mis dibujos. Pronto'));
-    expect(find.text('En construcción'), findsOneWidget);
+    await tapAndSettle(tester, find.bySemanticsLabel('Mis dibujos'));
     expect(find.text('Aquí verás tus dibujos'), findsOneWidget);
     await tapAndSettle(tester, find.text('Ir a la galería'));
     expect(find.byType(CategoriesScreen), findsOneWidget);

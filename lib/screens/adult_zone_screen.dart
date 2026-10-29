@@ -63,8 +63,8 @@ class AdultZoneScreen extends StatelessWidget {
                   icon: Icons.construction_outlined,
                   title: 'Estado del desarrollo',
                   lines: [
-                    'El coloreado por regiones llegará en la próxima fase.',
-                    '«Mis dibujos» y las actividades educativas son secciones provisionales.',
+                    'El progreso de cada dibujo se guarda solo en este dispositivo.',
+                    'Las actividades educativas son secciones provisionales.',
                     'Los ajustes (sonido, tiempo de uso…) aún no están disponibles.',
                   ],
                 ),

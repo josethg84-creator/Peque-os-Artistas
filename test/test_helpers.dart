@@ -1,23 +1,32 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:pequenos_artistas/app.dart';
+import 'package:pequenos_artistas/coloring/engine/drawing_painter.dart';
+import 'package:pequenos_artistas/coloring/engine/vector_drawing.dart';
 import 'package:pequenos_artistas/services/catalog_service.dart';
+import 'package:pequenos_artistas/services/drawing_loader.dart';
+import 'package:pequenos_artistas/services/progress_store.dart';
 
-/// Bundle en memoria para controlar exactamente qué recursos existen.
+/// Bundle que sirve los textos de [files] y, si [fromDisk], los archivos
+/// reales del proyecto. Lee de forma síncrona para funcionar dentro de las
+/// pruebas de widgets (que usan un reloj simulado).
 class MemoryBundle extends CachingAssetBundle {
-  MemoryBundle(this.files);
+  MemoryBundle(this.files, {this.fromDisk = false});
 
   final Map<String, String> files;
+  final bool fromDisk;
 
   @override
   Future<ByteData> load(String key) async {
     final content = files[key];
-    if (content == null) throw FlutterError('Recurso no encontrado: $key');
-    return ByteData.sublistView(Uint8List.fromList(utf8.encode(content)));
+    if (content != null) return ByteData.sublistView(Uint8List.fromList(utf8.encode(content)));
+    final file = File(key);
+    if (fromDisk && file.existsSync()) return ByteData.sublistView(file.readAsBytesSync());
+    throw FlutterError('Recurso no encontrado: $key');
   }
 }
 
@@ -45,8 +54,23 @@ CatalogService realCatalogService() {
 CatalogService fakeCatalogService(String json, Set<String> assets) =>
     CatalogService(bundle: MemoryBundle({CatalogService.catalogPath: json}), assetLister: () async => assets);
 
-Future<void> pumpApp(WidgetTester tester, {CatalogService? service}) async {
-  await tester.pumpWidget(PequenosArtistasApp(catalogService: service ?? realCatalogService()));
+/// Cargador de dibujos que lee los SVG reales (y [extra], si se indica).
+DrawingLoader diskDrawingLoader([Map<String, String> extra = const {}]) =>
+    DrawingLoader(bundle: MemoryBundle(extra, fromDisk: true));
+
+Future<void> pumpApp(
+  WidgetTester tester, {
+  CatalogService? service,
+  DrawingLoader? loader,
+  ProgressStore? store,
+}) async {
+  await tester.pumpWidget(
+    PequenosArtistasApp(
+      catalogService: service ?? realCatalogService(),
+      drawingLoader: loader ?? diskDrawingLoader(),
+      progressStore: store ?? InMemoryProgressStore(),
+    ),
+  );
   await tester.pumpAndSettle();
 }
 
@@ -56,4 +80,33 @@ void setScreenSize(WidgetTester tester, Size size, {double textScale = 1.0}) {
   tester.platformDispatcher.textScaleFactorTestValue = textScale;
   addTearDown(tester.view.reset);
   addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+}
+
+/// Un punto (en coordenadas del dibujo) claramente dentro de la región [id]
+/// tal como se ve: el punto y sus vecinos a [margin] unidades la tocan.
+Offset interiorPoint(VectorDrawing drawing, String id, {double step = 8, double margin = 12}) {
+  Offset? fallback;
+  final box = drawing.region(id)!.bounds.intersect(drawing.viewBox);
+  for (var y = box.top + step / 2; y < box.bottom; y += step) {
+    for (var x = box.left + step / 2; x < box.right; x += step) {
+      final p = Offset(x, y);
+      if (drawing.regionAt(p) != id) continue;
+      fallback ??= p;
+      final ok = [for (var k = 0; k < 8; k++) p + Offset.fromDirection(k * 3.14159265 / 4, margin)]
+          .every((q) => drawing.regionAt(q) == id);
+      if (ok) return p;
+    }
+  }
+  if (fallback == null) throw StateError('La región $id no es visible');
+  return fallback;
+}
+
+/// El lienzo interactivo en pantalla.
+final drawingCanvasFinder = find.byWidgetPredicate((w) => w is CustomPaint && w.painter is DrawingPainter);
+
+/// Posición global en pantalla de un punto del dibujo.
+Offset screenPointOf(WidgetTester tester, VectorDrawing drawing, Offset viewBoxPoint) {
+  final box = tester.getRect(drawingCanvasFinder);
+  final t = DrawingPainter.fit(drawing.viewBox, box.size);
+  return box.topLeft + t.offset + viewBoxPoint * t.scale;
 }

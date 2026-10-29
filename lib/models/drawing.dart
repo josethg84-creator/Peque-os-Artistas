@@ -38,7 +38,7 @@ class Drawing {
   final String name;
   final DrawingCategory category;
 
-  /// Ruta del SVG con regiones rellenables (lo usará el motor de la Fase 3).
+  /// Ruta del SVG con regiones rellenables (lo usa el motor de coloreado).
   final String file;
 
   /// Ruta del PNG de vista previa, si el catálogo la indica.

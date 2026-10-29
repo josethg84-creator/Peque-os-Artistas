@@ -54,7 +54,7 @@ class _Swatch extends StatelessWidget {
     return Semantics(
       button: true,
       selected: selected,
-      label: color.name,
+      label: color.restoresOriginal ? '${color.name}, sin pintar' : color.name,
       excludeSemantics: true,
       child: Tooltip(
         message: color.name,
@@ -67,7 +67,10 @@ class _Swatch extends StatelessWidget {
             decoration: BoxDecoration(
               color: color.color,
               shape: BoxShape.circle,
-              border: Border.all(color: selected ? AppColors.ink : Colors.white, width: selected ? 5 : 3),
+              border: Border.all(
+                color: selected ? AppColors.ink : (light ? AppColors.inkSoft : Colors.white),
+                width: selected ? 5 : 3,
+              ),
               boxShadow: const [BoxShadow(color: Color(0x33000000), blurRadius: 4, offset: Offset(0, 2))],
             ),
             child: selected

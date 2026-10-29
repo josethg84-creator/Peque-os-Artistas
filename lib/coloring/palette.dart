@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 
 /// Un color de la paleta con su nombre (para accesibilidad y tooltips).
 class PaletteColor {
-  const PaletteColor(this.name, this.color);
+  const PaletteColor(this.name, this.color, {this.restoresOriginal = false});
   final String name;
   final Color color;
+
+  /// El blanco devuelve la región a su estado original (sin pintar).
+  final bool restoresOriginal;
 }
 
-/// Paleta infantil inicial: colores vivos y fáciles de distinguir.
+/// Paleta infantil: colores vivos, fáciles de distinguir, y el blanco para
+/// dejar una zona como estaba.
 const kidPalette = <PaletteColor>[
   PaletteColor('Rojo', Color(0xFFE53935)),
   PaletteColor('Naranja', Color(0xFFFF8F00)),
@@ -21,4 +25,5 @@ const kidPalette = <PaletteColor>[
   PaletteColor('Marrón', Color(0xFF8D5524)),
   PaletteColor('Gris', Color(0xFF9E9E9E)),
   PaletteColor('Negro', Color(0xFF212121)),
+  PaletteColor('Blanco', Color(0xFFFFFFFF), restoresOriginal: true),
 ];

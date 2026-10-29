@@ -5,31 +5,22 @@ import '../coloring/coloring_canvas.dart';
 import '../coloring/coloring_controller.dart';
 import '../coloring/coloring_toolbar.dart';
 import '../models/drawing.dart';
+import '../models/drawing_catalog.dart';
 import '../navigation/app_router.dart';
+import '../navigation/app_routes.dart';
+import '../services/app_services.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_dimens.dart';
 import '../widgets/catalog_builder.dart';
+import '../widgets/drawing_thumbnail.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/kid_icon_button.dart';
 
-/// Pantalla de coloreado (estructura visual; el motor llega en la Fase 3).
-class ColoringScreen extends StatefulWidget {
+/// Pantalla de coloreado de un dibujo del catálogo.
+class ColoringScreen extends StatelessWidget {
   const ColoringScreen({super.key, required this.drawingId});
 
   final String drawingId;
-
-  @override
-  State<ColoringScreen> createState() => _ColoringScreenState();
-}
-
-class _ColoringScreenState extends State<ColoringScreen> {
-  final _controller = ColoringController();
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +28,7 @@ class _ColoringScreenState extends State<ColoringScreen> {
       body: SafeArea(
         child: CatalogBuilder(
           builder: (context, catalog) {
-            final drawing = catalog.byId(widget.drawingId);
+            final drawing = catalog.byId(drawingId);
             if (drawing == null) {
               return EmptyState(
                 icon: Icons.search_off_rounded,
@@ -47,10 +38,8 @@ class _ColoringScreenState extends State<ColoringScreen> {
                 onAction: () => AppRouter.goHome(context),
               );
             }
-            return ListenableBuilder(
-              listenable: _controller,
-              builder: (context, _) => _ColoringLayout(drawing: drawing, controller: _controller),
-            );
+            // La clave garantiza un estado nuevo para cada dibujo.
+            return _ColoringSession(key: ValueKey(drawing.id), drawing: drawing, catalog: catalog);
           },
         ),
       ),
@@ -58,14 +47,163 @@ class _ColoringScreenState extends State<ColoringScreen> {
   }
 }
 
-class _ColoringLayout extends StatelessWidget {
-  const _ColoringLayout({required this.drawing, required this.controller});
+/// Una sesión de coloreado: crea el controlador del dibujo, lo carga y guarda
+/// el progreso al salir o cuando la aplicación pasa a segundo plano.
+class _ColoringSession extends StatefulWidget {
+  const _ColoringSession({super.key, required this.drawing, required this.catalog});
 
   final Drawing drawing;
-  final ColoringController controller;
+  final DrawingCatalog catalog;
+
+  @override
+  State<_ColoringSession> createState() => _ColoringSessionState();
+}
+
+class _ColoringSessionState extends State<_ColoringSession> {
+  ColoringController? _controller;
+  late final AppLifecycleListener _lifecycle;
+
+  @override
+  void initState() {
+    super.initState();
+    _lifecycle = AppLifecycleListener(onHide: () => _controller?.save());
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (_controller == null) {
+      final services = AppServices.of(context);
+      _controller = ColoringController(
+        drawingId: widget.drawing.id,
+        file: widget.drawing.file,
+        loader: services.drawings,
+        store: services.progress,
+      )..load();
+    }
+  }
+
+  @override
+  void dispose() {
+    _lifecycle.dispose();
+    _controller?.dispose();
+    super.dispose();
+  }
+
+  Future<void> _confirmClear() async {
+    final controller = _controller!;
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        icon: const Icon(Icons.delete_outline_rounded, size: 48, color: AppColors.coral),
+        title: const Text('¿Borrar todos los colores?', textAlign: TextAlign.center),
+        actionsAlignment: MainAxisAlignment.spaceEvenly,
+        actions: [
+          KidIconButton(
+            icon: Icons.close_rounded,
+            label: 'No, seguir pintando',
+            color: AppColors.inkSoft,
+            showLabel: true,
+            onPressed: () => Navigator.of(context).pop(false),
+          ),
+          KidIconButton(
+            icon: Icons.check_rounded,
+            label: 'Sí, borrar',
+            color: AppColors.coral,
+            showLabel: true,
+            onPressed: () => Navigator.of(context).pop(true),
+          ),
+        ],
+      ),
+    );
+    if (confirmed == true) controller.clear();
+  }
+
+  void _chooseAnotherDrawing() {
+    final others = widget.catalog.byCategory(widget.drawing.category).where((d) => d.id != widget.drawing.id);
+    showModalBottomSheet<void>(
+      context: context,
+      showDragHandle: true,
+      isScrollControlled: true,
+      builder: (sheetContext) => SafeArea(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxHeight: MediaQuery.sizeOf(sheetContext).height * 0.7),
+          child: GridView.extent(
+            shrinkWrap: true,
+            maxCrossAxisExtent: 150,
+            padding: const EdgeInsets.all(16),
+            mainAxisSpacing: 12,
+            crossAxisSpacing: 12,
+            children: [
+              for (final d in others)
+                Semantics(
+                  button: true,
+                  label: d.name,
+                  excludeSemantics: true,
+                  child: Material(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(AppDimens.radiusMedium),
+                    elevation: 1,
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(AppDimens.radiusMedium),
+                      onTap: () {
+                        Navigator.of(sheetContext).pop();
+                        // Sustituye la pantalla: el dibujo actual se guarda
+                        // al cerrarse y el nuevo empieza con su propio estado.
+                        Navigator.of(context)
+                            .pushReplacementNamed(AppRoutes.coloring, arguments: ColoringArgs(d.id));
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: DrawingThumbnail(asset: d.previewAsset),
+                      ),
+                    ),
+                  ),
+                ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
+    return _ColoringLayout(
+      drawing: widget.drawing,
+      controller: _controller!,
+      onClear: _confirmClear,
+      onChangeDrawing: _chooseAnotherDrawing,
+    );
+  }
+}
+
+class _ColoringLayout extends StatelessWidget {
+  const _ColoringLayout({
+    required this.drawing,
+    required this.controller,
+    required this.onClear,
+    required this.onChangeDrawing,
+  });
+
+  final Drawing drawing;
+  final ColoringController controller;
+  final VoidCallback onClear;
+  final VoidCallback onChangeDrawing;
+
+  @override
+  Widget build(BuildContext context) {
+    // Solo la paleta y las herramientas escuchan al controlador: un toque en
+    // el dibujo no reconstruye la pantalla entera.
+    Widget toolbar(Axis axis) => ListenableBuilder(
+      listenable: controller,
+      builder: (_, _) => ColoringToolbar(controller: controller, onClear: onClear, axis: axis),
+    );
+    Widget palette(Axis axis) => ListenableBuilder(
+      listenable: controller,
+      builder: (_, _) => ColorPaletteBar(controller: controller, axis: axis),
+    );
+
     return LayoutBuilder(
       builder: (context, constraints) {
         final landscape = constraints.maxWidth > constraints.maxHeight;
@@ -78,6 +216,12 @@ class _ColoringLayout extends StatelessWidget {
           label: 'Volver a la galería',
           color: drawing.category.color,
           onPressed: () => Navigator.of(context).maybePop(),
+        );
+        final change = KidIconButton(
+          icon: Icons.grid_view_rounded,
+          label: 'Otro dibujo',
+          color: AppColors.sun,
+          onPressed: onChangeDrawing,
         );
         final title = Semantics(
           header: true,
@@ -97,11 +241,7 @@ class _ColoringLayout extends StatelessWidget {
                 child: Column(
                   children: [
                     Padding(padding: const EdgeInsets.all(8), child: back),
-                    Expanded(
-                      child: SingleChildScrollView(
-                        child: ColoringToolbar(controller: controller, axis: Axis.vertical),
-                      ),
-                    ),
+                    Expanded(child: SingleChildScrollView(child: toolbar(Axis.vertical))),
                   ],
                 ),
               ),
@@ -114,7 +254,12 @@ class _ColoringLayout extends StatelessWidget {
                 ),
               ),
               _Panel(
-                child: ColorPaletteBar(controller: controller, axis: Axis.vertical),
+                child: Column(
+                  children: [
+                    Padding(padding: const EdgeInsets.all(8), child: change),
+                    Expanded(child: palette(Axis.vertical)),
+                  ],
+                ),
               ),
             ],
           );
@@ -128,16 +273,14 @@ class _ColoringLayout extends StatelessWidget {
                   back,
                   const SizedBox(width: 12),
                   Expanded(child: title),
-                  const SizedBox(width: AppDimens.minTouchTarget + 12),
+                  const SizedBox(width: 12),
+                  change,
                 ],
               ),
             ),
             Expanded(child: canvas),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: ColoringToolbar(controller: controller),
-            ),
-            _Panel(child: ColorPaletteBar(controller: controller)),
+            SingleChildScrollView(scrollDirection: Axis.horizontal, child: toolbar(Axis.horizontal)),
+            _Panel(child: palette(Axis.horizontal)),
           ],
         );
       },

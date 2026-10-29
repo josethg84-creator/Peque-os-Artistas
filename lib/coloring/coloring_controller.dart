@@ -1,45 +1,207 @@
-import 'package:flutter/foundation.dart';
+import 'dart:async';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/painting.dart';
+
+import '../services/drawing_loader.dart';
+import '../services/progress_store.dart';
+import 'coloring_history.dart';
+import 'engine/drawing_painter.dart';
+import 'engine/vector_drawing.dart';
 import 'palette.dart';
 
 enum ColoringTool { paint, eraser }
 
-/// Estado de la pantalla de coloreado.
-///
-/// En la Fase 2 solo gestiona la selección de color y de herramienta. El motor
-/// de coloreado por regiones (Fase 3) añadirá aquí el historial: entonces
-/// [canUndo], [canRedo] y [hasColoring] reflejarán cambios reales y
-/// [undo], [redo] y [clear] modificarán el dibujo. Hasta entonces no hay nada
-/// que deshacer ni limpiar y los botones se muestran desactivados.
-class ColoringController extends ChangeNotifier {
-  ColoringController({PaletteColor? initialColor}) : _color = initialColor ?? kidPalette.first;
+enum ColoringStatus { loading, ready, error }
 
+/// Estado y lógica de una sesión de coloreado de UN dibujo.
+///
+/// No depende de widgets: la pantalla lo crea al abrir un dibujo y lo
+/// destruye al salir, así que los colores de un dibujo nunca pasan a otro.
+/// Cada cambio se guarda automáticamente (con un pequeño retraso para agrupar
+/// toques seguidos) y también al cerrar la sesión.
+class ColoringController extends ChangeNotifier implements RegionColors {
+  ColoringController({
+    required this.drawingId,
+    required this.file,
+    required this._loader,
+    required this._store,
+    this.saveDelay = const Duration(milliseconds: 600),
+    PaletteColor? initialColor,
+  }) : _color = initialColor ?? kidPalette.first;
+
+  /// Id del dibujo activo y ruta de su SVG.
+  final String drawingId;
+  final String file;
+  final Duration saveDelay;
+  final DrawingLoader _loader;
+  final ProgressStore _store;
+
+  ColoringStatus _status = ColoringStatus.loading;
+  String? _error;
+  VectorDrawing? _drawing;
   PaletteColor _color;
   ColoringTool _tool = ColoringTool.paint;
+  String? _selectedRegion;
+  final _colors = <String, Color>{};
+  final _history = ColoringHistory();
+  bool _unsaved = false;
+  Timer? _saveTimer;
+  bool _disposed = false;
 
+  ColoringStatus get status => _status;
+  String? get errorMessage => _error;
+  VectorDrawing? get drawing => _drawing;
   PaletteColor get color => _color;
   ColoringTool get tool => _tool;
 
-  /// Disponible cuando exista el motor de coloreado (Fase 3).
-  bool get coloringEngineReady => false;
-  bool get canUndo => false;
-  bool get canRedo => false;
-  bool get hasColoring => false;
+  /// Última región tocada.
+  String? get selectedRegion => _selectedRegion;
+
+  /// Colores aplicados (solo las regiones pintadas).
+  Map<String, Color> get regionColors => Map.unmodifiable(_colors);
+
+  bool get coloringEngineReady => _status == ColoringStatus.ready;
+  bool get canUndo => _history.canUndo;
+  bool get canRedo => _history.canRedo;
+  bool get hasColoring => _colors.isNotEmpty;
+
+  /// Hay cambios que todavía no se han escrito en el almacenamiento.
+  bool get hasUnsavedChanges => _unsaved;
+
+  @override
+  Color? colorOf(String regionId) => _colors[regionId];
+
+  /// Carga el dibujo y, si existe, el progreso guardado.
+  Future<void> load() async {
+    _status = ColoringStatus.loading;
+    _error = null;
+    _notify();
+    try {
+      final drawing = await _loader.load(file);
+      final saved = await _store.load(drawingId).catchError((Object _) => null);
+      if (_disposed) return;
+      _drawing = drawing;
+      _colors.clear();
+      if (saved != null) {
+        // Se ignoran regiones que ya no existen en el dibujo.
+        for (final e in saved.regionColors.entries) {
+          if (drawing.hasRegion(e.key)) _colors[e.key] = e.value;
+        }
+      }
+      _status = ColoringStatus.ready;
+    } on DrawingLoadException catch (e) {
+      _status = ColoringStatus.error;
+      _error = e.reason;
+    } catch (e) {
+      _status = ColoringStatus.error;
+      _error = 'error inesperado';
+    }
+    _notify();
+  }
 
   void selectColor(PaletteColor color) {
     if (_color == color && _tool == ColoringTool.paint) return;
     _color = color;
     _tool = ColoringTool.paint;
-    notifyListeners();
+    _notify();
   }
 
   void toggleEraser() {
     _tool = _tool == ColoringTool.eraser ? ColoringTool.paint : ColoringTool.eraser;
-    notifyListeners();
+    _notify();
   }
 
-  // Puntos de extensión para la Fase 3.
-  void undo() {}
-  void redo() {}
-  void clear() {}
+  /// Color que recibiría una región al tocarla (`null` = original).
+  Color? get _paintValue => _tool == ColoringTool.eraser || _color.restoresOriginal ? null : _color.color;
+
+  /// Pinta (o borra) la región [regionId]. Devuelve `true` si cambió algo.
+  bool tapRegion(String regionId) {
+    final drawing = _drawing;
+    if (drawing == null || !drawing.hasRegion(regionId)) return false;
+    _selectedRegion = regionId;
+    final before = _colors[regionId];
+    final after = _paintValue;
+    if (before == after) {
+      _notify();
+      return false;
+    }
+    _apply({regionId: after});
+    _history.record(ColorEdit({regionId: (before, after)}));
+    _changed();
+    return true;
+  }
+
+  /// Toca en coordenadas del viewBox; [tolerance] ayuda con zonas estrechas.
+  String? tapAt(Offset viewBoxPoint, {double tolerance = 0}) {
+    final id = _drawing?.hitTest(viewBoxPoint, tolerance: tolerance);
+    if (id != null) tapRegion(id);
+    return id;
+  }
+
+  void undo() {
+    final edit = _history.undo();
+    if (edit == null) return;
+    _apply({for (final e in edit.changes.entries) e.key: e.value.$1});
+    _changed();
+  }
+
+  void redo() {
+    final edit = _history.redo();
+    if (edit == null) return;
+    _apply({for (final e in edit.changes.entries) e.key: e.value.$2});
+    _changed();
+  }
+
+  /// Deja el dibujo como el original. Se puede deshacer.
+  void clear() {
+    if (_colors.isEmpty) return;
+    _history.record(ColorEdit({for (final e in _colors.entries) e.key: (e.value, null)}));
+    _apply({for (final id in _colors.keys.toList()) id: null});
+    _changed();
+  }
+
+  void _apply(Map<String, Color?> values) {
+    values.forEach((id, color) => color == null ? _colors.remove(id) : _colors[id] = color);
+  }
+
+  void _changed() {
+    _unsaved = true;
+    _notify();
+    _saveTimer?.cancel();
+    _saveTimer = Timer(saveDelay, save);
+  }
+
+  /// Escribe el progreso ahora. Sin colores, se borra el guardado.
+  Future<void> save() async {
+    _saveTimer?.cancel();
+    if (!_unsaved || _status != ColoringStatus.ready) return;
+    _unsaved = false;
+    _notify();
+    try {
+      if (_colors.isEmpty) {
+        await _store.delete(drawingId);
+      } else {
+        await _store.save(
+          SavedProgress(drawingId: drawingId, regionColors: Map.of(_colors), updatedAt: DateTime.now()),
+        );
+      }
+    } catch (_) {
+      _unsaved = true; // Se reintentará en el próximo cambio o al salir.
+      _notify();
+    }
+  }
+
+  void _notify() {
+    if (!_disposed) notifyListeners();
+  }
+
+  @override
+  void dispose() {
+    _disposed = true;
+    _saveTimer?.cancel();
+    // Lo pendiente se guarda al salir del dibujo.
+    if (_unsaved) unawaited(save());
+    super.dispose();
+  }
 }

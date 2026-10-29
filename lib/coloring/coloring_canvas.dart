@@ -3,21 +3,20 @@ import 'package:flutter/material.dart';
 import '../models/drawing.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_dimens.dart';
-import '../widgets/drawing_thumbnail.dart';
 import 'coloring_controller.dart';
+import 'engine/drawing_painter.dart';
 
-/// Área central del lienzo.
-///
-/// Por ahora muestra el dibujo de línea (PNG de la Fase 1) dentro de un marco
-/// cuadrado y un aviso visible de que el coloreado aún no está disponible.
-/// En la Fase 3, el contenido del marco se sustituirá por el motor que lee las
-/// regiones del SVG ([Drawing.file]); el marco, el tamaño y el controlador
-/// no cambian.
+/// Área central del lienzo: el dibujo vectorial escalado y centrado, sin
+/// deformarse, dentro de un marco cuadrado. Cada toque se convierte a
+/// coordenadas del dibujo y pinta la región correspondiente.
 class ColoringCanvas extends StatelessWidget {
   const ColoringCanvas({super.key, required this.drawing, required this.controller});
 
   final Drawing drawing;
   final ColoringController controller;
+
+  /// Margen de acierto alrededor de las figuras, en píxeles lógicos.
+  static const touchTolerance = 12.0;
 
   @override
   Widget build(BuildContext context) {
@@ -32,21 +31,18 @@ class ColoringCanvas extends StatelessWidget {
             boxShadow: const [BoxShadow(color: Color(0x22000000), blurRadius: 12, offset: Offset(0, 4))],
           ),
           clipBehavior: Clip.antiAlias,
-          child: Stack(
-            children: [
-              Positioned.fill(
-                child: Padding(
-                  padding: const EdgeInsets.all(12),
-                  child: Semantics(
-                    label: 'Dibujo para colorear: ${drawing.name}',
-                    image: true,
-                    child: DrawingThumbnail(asset: drawing.previewAsset),
-                  ),
-                ),
+          padding: const EdgeInsets.all(8),
+          // El lienzo solo se reconstruye cuando cambia el estado de carga;
+          // los colores se repintan directamente sin reconstruir widgets.
+          child: ListenableBuilder(
+            listenable: controller,
+            builder: (context, _) => switch (controller.status) {
+              ColoringStatus.loading => const Center(
+                child: CircularProgressIndicator(color: AppColors.coral, semanticsLabel: 'Cargando dibujo'),
               ),
-              if (!controller.coloringEngineReady)
-                const Positioned(left: 12, right: 12, bottom: 12, child: _PreviewNotice()),
-            ],
+              ColoringStatus.error => _LoadError(message: controller.errorMessage, onRetry: controller.load),
+              ColoringStatus.ready => _InteractiveDrawing(name: drawing.name, controller: controller),
+            },
           ),
         ),
       ),
@@ -54,33 +50,84 @@ class ColoringCanvas extends StatelessWidget {
   }
 }
 
-/// Aviso honesto: la pantalla es una vista previa sin coloreado real.
-class _PreviewNotice extends StatelessWidget {
-  const _PreviewNotice();
+class _InteractiveDrawing extends StatefulWidget {
+  const _InteractiveDrawing({required this.name, required this.controller});
 
-  static const text = 'Vista previa: pintar llegará pronto';
+  final String name;
+  final ColoringController controller;
+
+  @override
+  State<_InteractiveDrawing> createState() => _InteractiveDrawingState();
+}
+
+class _InteractiveDrawingState extends State<_InteractiveDrawing> {
+  DrawingPainter? _painter;
+
+  @override
+  Widget build(BuildContext context) {
+    final vector = widget.controller.drawing!;
+    // El pintor se crea una vez por dibujo; los toques solo lo repintan.
+    final painter = _painter?.drawing == vector
+        ? _painter!
+        : _painter = DrawingPainter(drawing: vector, colors: widget.controller);
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final size = constraints.biggest;
+        return Semantics(
+          label: 'Dibujo para colorear: ${widget.name}',
+          hint: 'Toca una zona para pintarla',
+          image: true,
+          child: GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTapUp: (details) {
+              final scale = DrawingPainter.fit(vector.viewBox, size).scale;
+              widget.controller.tapAt(
+                DrawingPainter.toViewBox(details.localPosition, vector.viewBox, size),
+                tolerance: ColoringCanvas.touchTolerance / scale,
+              );
+            },
+            child: RepaintBoundary(
+              child: CustomPaint(size: size, painter: painter),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _LoadError extends StatelessWidget {
+  const _LoadError({required this.message, required this.onRetry});
+
+  final String? message;
+  final VoidCallback onRetry;
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-        decoration: BoxDecoration(
-          color: AppColors.sun,
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: AppColors.ink, width: 1.5),
-        ),
-        child: const Row(
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
+        child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Icons.construction_rounded, size: 20, color: AppColors.ink),
-            SizedBox(width: 6),
-            Flexible(
-              child: Text(
-                text,
+            const Icon(Icons.broken_image_rounded, size: 72, color: AppColors.inkSoft),
+            const SizedBox(height: 8),
+            Text(
+              'No pudimos abrir este dibujo',
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            if (message != null)
+              Text(
+                message!,
                 textAlign: TextAlign.center,
-                style: TextStyle(fontWeight: FontWeight.w800, color: AppColors.ink),
+                style: const TextStyle(color: AppColors.inkSoft),
               ),
+            const SizedBox(height: 12),
+            FilledButton.icon(
+              onPressed: onRetry,
+              icon: const Icon(Icons.refresh_rounded),
+              label: const Text('Reintentar'),
             ),
           ],
         ),

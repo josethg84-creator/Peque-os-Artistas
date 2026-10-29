@@ -1,5 +1,9 @@
 # Fase 2 — Interfaz y navegación
 
+> **Actualización:** la Fase 3 implementó el coloreado real y «Mis dibujos». Lo
+> descrito aquí como provisional en esas dos pantallas está superado; ver
+> [FASE3_MOTOR.md](FASE3_MOTOR.md).
+
 Aplicación Flutter (Android) creada sobre el repositorio de la Fase 1, reutilizando
 sus 30 dibujos y su catálogo. **El coloreado todavía no funciona**: la pantalla de
 coloreado es la estructura visual que recibirá el motor en la Fase 3.
