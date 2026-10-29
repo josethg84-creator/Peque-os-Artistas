@@ -41,7 +41,7 @@ class AdultZoneScreen extends StatelessWidget {
                   title: 'Colección de dibujos',
                   lines: [
                     '${catalog.drawings.length} dibujos disponibles '
-                        '(${catalog.drawings.where((d) => !d.previewAvailable).length} sin vista previa).',
+                        '(${catalog.drawings.where((d) => !d.thumbnailAvailable).length} sin miniatura).',
                     if (catalog.issues.isEmpty)
                       'El catálogo (${CatalogService.catalogPath}) se leyó sin incidencias.'
                     else ...[

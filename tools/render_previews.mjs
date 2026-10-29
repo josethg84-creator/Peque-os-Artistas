@@ -1,4 +1,6 @@
 // Renderiza cada SVG del catálogo a PNG 1024x1024 (fondo blanco) con Chromium.
+// Son vistas previas de alta resolución para control de calidad; la app usa
+// las miniaturas de tools/make_thumbnails.py.
 // Uso (desde la raíz del proyecto): node tools/render_previews.mjs
 import { createRequire } from "node:module";
 import { readFileSync, mkdirSync } from "node:fs";
@@ -19,10 +21,10 @@ const catalog = JSON.parse(readFileSync(resolve(root, "assets/catalog/catalog.js
 const browser = await playwright.chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1024, height: 1024 }, deviceScaleFactor: 1 });
 for (const item of catalog.drawings) {
-  const out = resolve(root, item.preview);
+  const out = resolve(root, `assets/previews/${item.id}.png`);
   mkdirSync(dirname(out), { recursive: true });
   await page.goto(pathToFileURL(resolve(root, item.file)).href);
   await page.screenshot({ path: out, omitBackground: false });
-  console.log(`${item.id} -> ${item.preview}`);
+  console.log(`${item.id} -> assets/previews/${item.id}.png`);
 }
 await browser.close();

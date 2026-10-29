@@ -15,13 +15,24 @@ class DrawingThumbnail extends StatelessWidget {
   Widget build(BuildContext context) {
     final path = asset;
     if (path == null) return const MissingImagePlaceholder();
-    return Image.asset(
-      path,
-      fit: fit,
-      // Las miniaturas no necesitan la resolución completa (1024 px).
-      cacheWidth: 512,
-      excludeFromSemantics: true,
-      errorBuilder: (_, _, _) => const MissingImagePlaceholder(),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        // Se decodifica al tamaño que ocupa en pantalla (en pasos de 128 px,
+        // hasta los 512 px del archivo). La caché de imágenes de Flutter
+        // reutiliza el resultado entre tarjetas y pantallas.
+        final dpr = MediaQuery.devicePixelRatioOf(context);
+        final side = constraints.biggest.shortestSide;
+        final target = side.isFinite ? ((side * dpr / 128).ceil() * 128).clamp(128, 512) : 512;
+        return Image.asset(
+          path,
+          fit: fit,
+          cacheWidth: target,
+          gaplessPlayback: true,
+          filterQuality: FilterQuality.medium,
+          excludeFromSemantics: true,
+          errorBuilder: (_, _, _) => const MissingImagePlaceholder(),
+        );
+      },
     );
   }
 }

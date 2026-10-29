@@ -29,9 +29,9 @@ class Drawing {
     required this.difficulty,
     required this.recommendedAge,
     required this.description,
-    this.preview,
+    this.thumbnail,
     this.regions,
-    this.previewAvailable = false,
+    this.thumbnailAvailable = false,
   });
 
   final String id;
@@ -41,16 +41,16 @@ class Drawing {
   /// Ruta del SVG con regiones rellenables (lo usa el motor de coloreado).
   final String file;
 
-  /// Ruta del PNG de vista previa, si el catálogo la indica.
-  final String? preview;
+  /// Ruta de la miniatura PNG (512×512) para la galería, si el catálogo la indica.
+  final String? thumbnail;
   final Difficulty difficulty;
   final String recommendedAge;
   final String description;
   final int? regions;
 
-  /// `true` solo si el PNG de [preview] existe realmente entre los assets.
-  final bool previewAvailable;
+  /// `true` solo si el PNG de [thumbnail] existe realmente entre los assets.
+  final bool thumbnailAvailable;
 
   /// Ruta de imagen segura para mostrar, o `null` si hay que usar un marcador.
-  String? get previewAsset => previewAvailable ? preview : null;
+  String? get thumbnailAsset => thumbnailAvailable ? thumbnail : null;
 }

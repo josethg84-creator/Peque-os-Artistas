@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Control de calidad de la colección de dibujos.
 
-Comprueba el catálogo, la estructura de cada SVG, las vistas previas PNG y el
+Comprueba el catálogo, la estructura de cada SVG, las miniaturas, las vistas previas PNG y el
 área visible de cada región (medida antes con tools/measure_regions.mjs).
 Termina con código 1 si encuentra errores. Uso: python3 tools/validate_assets.py
 """
@@ -21,7 +21,9 @@ AREAS = ROOT / "build" / "qa" / "region_areas.json"
 NS = "{http://www.w3.org/2000/svg}"
 
 EXPECTED = {"animales": 10, "vehiculos": 5, "dinosaurios": 5, "frutas": 5, "fantasia": 5}
-REQUIRED = ["id", "name", "category", "file", "difficulty", "recommended_age", "description"]
+REQUIRED = ["id", "name", "category", "file", "thumbnail", "difficulty", "recommended_age", "description"]
+DIFFICULTIES = {"facil", "media", "dificil"}
+THUMB_SIZE = (512, 512)
 FORBIDDEN_TAGS = {"text", "image", "linearGradient", "radialGradient", "pattern", "filter", "use", "font"}
 ALLOWED_COLORS = {"#FFFFFF", "#000000", "none"}
 SAFE_NAME = re.compile(r"^[a-z0-9_]+\.(svg|png)$")
@@ -76,8 +78,24 @@ def check_svg(item):
     return regions
 
 
+def preview_path(item):
+    """Vista previa de 1024 px (solo control de calidad, no la usa la app)."""
+    return ROOT / "assets" / "previews" / f"{item['id']}.png"
+
+
+def check_thumbnail(item):
+    img = Image.open(ROOT / item["thumbnail"])
+    if img.size != THUMB_SIZE:
+        errors.append(f"{item['id']}: miniatura de tamaño {img.size}, se esperaba {THUMB_SIZE}")
+    if img.mode not in ("L", "LA"):
+        errors.append(f"{item['id']}: la miniatura debe estar en escala de grises (modo {img.mode})")
+    gray = np.asarray(img.convert("L"))
+    if (gray < 64).mean() < 0.005:
+        errors.append(f"{item['id']}: la miniatura parece vacía (casi sin trazos)")
+
+
 def check_png(item):
-    img = Image.open(ROOT / item["preview"])
+    img = Image.open(preview_path(item))
     if img.size != (1024, 1024):
         errors.append(f"{item['id']}: PNG de tamaño {img.size}, se esperaba 1024x1024")
     rgb = np.asarray(img.convert("RGB")).astype(int)
@@ -115,7 +133,7 @@ def main():
         warnings.append("no existe build/qa/region_areas.json: no se comprobó el tamaño de las zonas")
     if len(items) != 30:
         errors.append(f"el catálogo tiene {len(items)} entradas, se esperaban 30")
-    for key in ("id", "name", "file", "preview"):
+    for key in ("id", "name", "file", "thumbnail"):
         values = [i.get(key) for i in items]
         dup = {v for v in values if values.count(v) > 1}
         if dup:
@@ -128,12 +146,14 @@ def main():
 
     print(f"{'id':26s} {'zonas':>5s} {'menor zona (px²)':>17s}  dificultad")
     for item in items:
-        missing = [k for k in REQUIRED if not item.get(k)]
+        missing = [k for k in REQUIRED if not str(item.get(k) or "").strip()]
         if missing:
             errors.append(f"{item.get('id')}: faltan campos {missing}")
             continue
+        if item["difficulty"] not in DIFFICULTIES:
+            errors.append(f"{item['id']}: dificultad desconocida {item['difficulty']!r}")
         ok = True
-        for key in ("file", "preview"):
+        for key in ("file", "thumbnail"):
             rel = item.get(key)
             if not rel:
                 continue
@@ -150,8 +170,11 @@ def main():
         if not ok:
             continue
         regions = check_svg(item)
-        if item.get("preview"):
+        check_thumbnail(item)
+        if preview_path(item).is_file():
             check_png(item)
+        else:
+            warnings.append(f"{item['id']}: falta la vista previa de control (node tools/render_previews.mjs)")
         smallest = check_areas(item, areas)
         print(f"{item['id']:26s} {regions:5d} {smallest if smallest is not None else '-':>17}  {item['difficulty']}")
 

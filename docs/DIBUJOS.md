@@ -1,5 +1,10 @@
 # Colección inicial de dibujos — Pequeños Artistas
 
+> **Actualización (Fase 4):** el catálogo usa ahora el campo `thumbnail`
+> (miniaturas de 512 px en `assets/thumbnails/`, generadas con
+> `tools/make_thumbnails.py`). Las vistas previas de 1024 px de `assets/previews/`
+> quedan solo para control de calidad. Ver [FASE4_COLECCION.md](FASE4_COLECCION.md).
+
 Primera colección de **30 dibujos para colorear** (niños de 4 a 7 años), preparada
 para integrarse después en una aplicación Flutter para Android.
 

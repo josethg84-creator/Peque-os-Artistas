@@ -9,6 +9,7 @@ abstract final class AppRoutes {
   static const savedDrawings = '/mis-dibujos';
   static const activities = '/actividades';
   static const adultZone = '/adultos';
+  static const search = '/buscar';
 }
 
 /// Argumento de [AppRoutes.gallery].

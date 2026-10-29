@@ -155,7 +155,7 @@ class _ColoringSessionState extends State<_ColoringSession> {
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(8),
-                        child: DrawingThumbnail(asset: d.previewAsset),
+                        child: DrawingThumbnail(asset: d.thumbnailAsset),
                       ),
                     ),
                   ),

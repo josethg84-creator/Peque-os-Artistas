@@ -16,6 +16,7 @@ class KidScaffold extends StatelessWidget {
     this.titleIcon,
     this.accent = AppColors.coral,
     this.badge,
+    this.trailing,
   });
 
   final String title;
@@ -29,6 +30,9 @@ class KidScaffold extends StatelessWidget {
 
   /// Marca opcional bajo el título (p. ej. «En construcción»).
   final Widget? badge;
+
+  /// Acción opcional a la derecha del título (p. ej. «Buscar»).
+  final Widget? trailing;
 
   @override
   Widget build(BuildContext context) {
@@ -73,6 +77,7 @@ class KidScaffold extends StatelessWidget {
                           ],
                         ),
                       ),
+                      if (trailing != null) ...[const SizedBox(width: AppDimens.gap), trailing!],
                     ],
                   ),
                 ),

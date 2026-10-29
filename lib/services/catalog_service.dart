@@ -89,17 +89,25 @@ class CatalogService {
         issues.add('$label: no existe el archivo $file');
         continue;
       }
-      final preview = _text(entry['preview']);
-      final previewOk = preview != null && _isSafePath(preview) && assets.contains(preview);
-      if (preview != null && !previewOk) issues.add('$label: falta la vista previa $preview');
+      // `preview` es el nombre del campo en la versión 1 del catálogo.
+      final thumbnail = _text(entry['thumbnail']) ?? _text(entry['preview']);
+      final thumbnailOk = thumbnail != null && _isSafePath(thumbnail) && assets.contains(thumbnail);
+      if (thumbnail == null) {
+        issues.add('$label: no tiene miniatura');
+      } else if (!thumbnailOk) {
+        issues.add('$label: falta la miniatura $thumbnail');
+      }
+      if (difficulty == null) {
+        issues.add('$label: dificultad desconocida "${entry['difficulty']}" (se usa fácil)');
+      }
       drawings.add(
         Drawing(
           id: id,
           name: name,
           category: category,
           file: file,
-          preview: preview,
-          previewAvailable: previewOk,
+          thumbnail: thumbnail,
+          thumbnailAvailable: thumbnailOk,
           difficulty: difficulty ?? Difficulty.easy,
           recommendedAge: _text(entry['recommended_age']) ?? '4-7',
           description: _text(entry['description']) ?? '',

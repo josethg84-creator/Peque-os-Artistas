@@ -6,19 +6,28 @@ import '../theme/app_dimens.dart';
 import 'drawing_thumbnail.dart';
 
 /// Tarjeta de un dibujo en la galería: miniatura, nombre y dificultad
-/// (con estrellas además de texto, para no depender del color).
+/// (con estrellas además de texto, para no depender del color) y, si ya se
+/// empezó a pintar, una insignia con un pincel.
 class DrawingCard extends StatelessWidget {
-  const DrawingCard({super.key, required this.drawing, required this.onTap});
+  const DrawingCard({super.key, required this.drawing, required this.onTap, this.painted = false});
 
   final Drawing drawing;
   final VoidCallback onTap;
+
+  /// Tiene colores guardados.
+  final bool painted;
+
+  static const paintedLabel = 'ya pintado';
 
   @override
   Widget build(BuildContext context) {
     final accent = drawing.category.color;
     return Semantics(
       button: true,
-      label: '${drawing.name}. Dificultad ${drawing.difficulty.label.toLowerCase()}',
+      label: [
+        '${drawing.name}. Dificultad ${drawing.difficulty.label.toLowerCase()}',
+        if (painted) paintedLabel,
+      ].join('. '),
       hint: 'Abre el dibujo para colorear',
       excludeSemantics: true,
       child: Material(
@@ -33,7 +42,14 @@ class DrawingCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Expanded(child: DrawingThumbnail(asset: drawing.previewAsset)),
+                Expanded(
+                  child: Stack(
+                    children: [
+                      Positioned.fill(child: DrawingThumbnail(asset: drawing.thumbnailAsset)),
+                      if (painted) Positioned(top: 0, right: 0, child: _PaintedBadge(color: accent)),
+                    ],
+                  ),
+                ),
                 const SizedBox(height: 8),
                 Text(
                   drawing.name,
@@ -59,6 +75,28 @@ class DrawingCard extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+/// Pincel en un círculo: indica que el dibujo tiene colores guardados.
+class _PaintedBadge extends StatelessWidget {
+  const _PaintedBadge({required this.color});
+
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 40,
+      height: 40,
+      decoration: BoxDecoration(
+        color: color,
+        shape: BoxShape.circle,
+        border: Border.all(color: Colors.white, width: 3),
+        boxShadow: const [BoxShadow(color: Color(0x33000000), blurRadius: 4, offset: Offset(0, 2))],
+      ),
+      child: const Icon(Icons.brush_rounded, color: Colors.white, size: 22),
     );
   }
 }

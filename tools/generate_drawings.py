@@ -3,7 +3,8 @@
 
 Uso (desde la raíz del proyecto):
     python3 tools/generate_drawings.py
-    node tools/render_previews.mjs      # PNG 1024x1024 de vista previa
+    node tools/render_previews.mjs      # PNG 1024x1024 de vista previa (control de calidad)
+    python3 tools/make_thumbnails.py    # miniaturas 512x512 que usa la app
     python3 tools/validate_assets.py    # control de calidad
 """
 
@@ -108,7 +109,7 @@ def main():
             "name": name,
             "category": category,
             "file": f"assets/drawings/{folder}/{did}.svg",
-            "preview": f"assets/previews/{did}.png",
+            "thumbnail": f"assets/thumbnails/{did}.png",
             "difficulty": diff,
             "recommended_age": age,
             "regions": regions,
@@ -117,7 +118,7 @@ def main():
         print(f"{did:26s} {regions:3d} zonas  {diff}")
     CATALOG.parent.mkdir(parents=True, exist_ok=True)
     data = {
-        "version": 1,
+        "version": 2,
         "collection": "Pequeños Artistas - colección inicial",
         "canvas": {"width": 1024, "height": 1024},
         "drawings": catalog,

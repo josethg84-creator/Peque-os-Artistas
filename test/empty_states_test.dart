@@ -23,7 +23,7 @@ void main() {
           'name': 'Gato',
           'category': 'animales',
           'file': 'assets/drawings/animals/animal_gato.svg',
-          'preview': 'assets/previews/animal_gato.png',
+          'thumbnail': 'assets/thumbnails/animal_gato.png',
           'difficulty': 'facil',
           'recommended_age': '4-5',
           'description': 'Prueba',
@@ -69,7 +69,7 @@ void main() {
           home: SizedBox(
             width: 200,
             height: 200,
-            child: DrawingThumbnail(asset: 'assets/previews/no_existe.png'),
+            child: DrawingThumbnail(asset: 'assets/thumbnails/no_existe.png'),
           ),
         ),
       );

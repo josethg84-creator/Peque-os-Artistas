@@ -11,12 +11,12 @@ import 'test_helpers.dart';
 
 String catalogWith(List<Object?> drawings) => jsonEncode({'drawings': drawings});
 
-Map<String, Object?> entry(String id, {String category = 'animales', String? preview}) => {
+Map<String, Object?> entry(String id, {String category = 'animales', String? thumbnail}) => {
   'id': id,
   'name': 'Nombre $id',
   'category': category,
   'file': 'assets/drawings/$id.svg',
-  'preview': preview ?? 'assets/previews/$id.png',
+  'thumbnail': thumbnail ?? 'assets/thumbnails/$id.png',
   'difficulty': 'facil',
   'recommended_age': '4-5',
   'description': 'Descripción',
@@ -28,11 +28,11 @@ void main() {
       final catalog = await realCatalogService().load();
       expect(catalog.issues, isEmpty);
       expect(catalog.drawings, hasLength(30));
-      expect(catalog.drawings.every((d) => d.previewAvailable), isTrue);
+      expect(catalog.drawings.every((d) => d.thumbnailAvailable), isTrue);
       final assets = diskAssets();
       for (final d in catalog.drawings) {
         expect(assets, contains(d.file));
-        expect(assets, contains(d.preview));
+        expect(assets, contains(d.thumbnail));
       }
     });
 
@@ -61,7 +61,7 @@ void main() {
       final pubspec = File('pubspec.yaml').readAsStringSync();
       final data = jsonDecode(realCatalogJson()) as Map<String, dynamic>;
       for (final d in (data['drawings'] as List).cast<Map<String, dynamic>>()) {
-        for (final key in ['file', 'preview']) {
+        for (final key in ['file', 'thumbnail']) {
           final path = d[key] as String;
           final folder = path.substring(0, path.lastIndexOf('/') + 1);
           expect(pubspec, contains('- $folder'), reason: path);
@@ -72,21 +72,21 @@ void main() {
   });
 
   group('Lectura robusta', () {
-    test('marca la vista previa ausente sin descartar el dibujo', () {
+    test('marca la miniatura ausente sin descartar el dibujo', () {
       final catalog = CatalogService.parse(catalogWith([entry('a')]), {'assets/drawings/a.svg'});
-      expect(catalog.drawings.single.previewAvailable, isFalse);
-      expect(catalog.drawings.single.previewAsset, isNull);
-      expect(catalog.issues.single, contains('vista previa'));
+      expect(catalog.drawings.single.thumbnailAvailable, isFalse);
+      expect(catalog.drawings.single.thumbnailAsset, isNull);
+      expect(catalog.issues.single, contains('falta la miniatura'));
     });
 
     test('descarta dibujos cuyo SVG no existe', () {
-      final catalog = CatalogService.parse(catalogWith([entry('a')]), {'assets/previews/a.png'});
+      final catalog = CatalogService.parse(catalogWith([entry('a')]), {'assets/thumbnails/a.png'});
       expect(catalog.drawings, isEmpty);
       expect(catalog.issues.single, contains('no existe'));
     });
 
     test('descarta categorías desconocidas, ids duplicados y campos ausentes', () {
-      final assets = {'assets/drawings/a.svg', 'assets/drawings/b.svg', 'assets/previews/a.png'};
+      final assets = {'assets/drawings/a.svg', 'assets/drawings/b.svg', 'assets/thumbnails/a.png'};
       final catalog = CatalogService.parse(
         catalogWith([
           entry('a'),

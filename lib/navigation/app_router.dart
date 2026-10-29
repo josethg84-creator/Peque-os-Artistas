@@ -8,6 +8,7 @@ import '../screens/gallery_screen.dart';
 import '../screens/home_screen.dart';
 import '../screens/not_found_screen.dart';
 import '../screens/saved_drawings_screen.dart';
+import '../screens/search_screen.dart';
 import 'app_routes.dart';
 
 /// Construye cada ruta validando sus argumentos. Una ruta desconocida o con
@@ -23,6 +24,7 @@ abstract final class AppRouter {
       AppRoutes.coloring when args is ColoringArgs => ColoringScreen(drawingId: args.drawingId),
       AppRoutes.savedDrawings => const SavedDrawingsScreen(),
       AppRoutes.activities => const ActivitiesScreen(),
+      AppRoutes.search => const SearchScreen(),
       AppRoutes.adultZone when args is AdultZoneArgs => const AdultZoneScreen(),
       _ => const NotFoundScreen(),
     };

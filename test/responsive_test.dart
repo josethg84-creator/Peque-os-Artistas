@@ -22,6 +22,7 @@ void main() {
     'coloreado': (AppRoutes.coloring, const ColoringArgs('animal_jirafa')),
     'mis dibujos': (AppRoutes.savedDrawings, null),
     'actividades': (AppRoutes.activities, null),
+    'búsqueda': (AppRoutes.search, null),
     'adultos': (AppRoutes.adultZone, const AdultZoneArgs.verified()),
   };
 

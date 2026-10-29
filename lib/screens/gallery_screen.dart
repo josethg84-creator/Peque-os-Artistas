@@ -7,6 +7,7 @@ import '../widgets/catalog_builder.dart';
 import '../widgets/drawing_card.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/kid_scaffold.dart';
+import '../widgets/saved_ids_builder.dart';
 
 /// Dibujos de una categoría, leídos del catálogo de la Fase 1.
 class GalleryScreen extends StatelessWidget {
@@ -35,16 +36,20 @@ class GalleryScreen extends StatelessWidget {
               onAction: () => Navigator.of(context).maybePop(),
             );
           }
-          return AdaptiveGrid(
-            itemCount: drawings.length,
-            itemBuilder: (context, index) {
-              final drawing = drawings[index];
-              return DrawingCard(
-                drawing: drawing,
-                onTap: () =>
-                    Navigator.of(context).pushNamed(AppRoutes.coloring, arguments: ColoringArgs(drawing.id)),
-              );
-            },
+          return SavedIdsBuilder(
+            builder: (context, saved) => AdaptiveGrid(
+              itemCount: drawings.length,
+              itemBuilder: (context, index) {
+                final drawing = drawings[index];
+                return DrawingCard(
+                  drawing: drawing,
+                  painted: saved.contains(drawing.id),
+                  onTap: () =>
+                      Navigator.of(context)
+                          .pushNamed(AppRoutes.coloring, arguments: ColoringArgs(drawing.id)),
+                );
+              },
+            ),
           );
         },
       ),
