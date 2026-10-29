@@ -26,7 +26,7 @@ void main() {
     expect(find.text('¡Hola! ¿Qué quieres pintar hoy?'), findsOneWidget);
     expect(find.bySemanticsLabel('¡Vamos a pintar!'), findsOneWidget);
     expect(find.bySemanticsLabel('Galería'), findsOneWidget);
-    expect(find.bySemanticsLabel('Actividades. Pronto'), findsOneWidget);
+    expect(find.bySemanticsLabel('Aprender jugando'), findsOneWidget);
     expect(find.bySemanticsLabel('Mis dibujos'), findsOneWidget);
     expect(find.bySemanticsLabel('Zona para adultos'), findsOneWidget);
   });
@@ -101,14 +101,18 @@ void main() {
     expect(find.byType(HomeScreen), findsOneWidget);
   });
 
-  testWidgets('las actividades están marcadas como «Pronto» y avisan al tocarlas', (tester) async {
+  testWidgets('«Aprender jugando» muestra los cuatro juegos y vuelve al inicio', (tester) async {
     setScreenSize(tester, const Size(400, 860));
     await pumpApp(tester);
-    await tapAndSettle(tester, find.bySemanticsLabel('Actividades. Pronto'));
-    expect(find.bySemanticsLabel('Los colores. Pronto'), findsOneWidget);
-    await tapAndSettle(tester, find.bySemanticsLabel('Los colores. Pronto'));
-    expect(find.text('¡Esta actividad llegará muy pronto!'), findsOneWidget);
-    await tapAndSettle(tester, find.text('Vale'));
+    await tapAndSettle(tester, find.bySemanticsLabel('Aprender jugando'));
+    for (final title in [
+      'Aprende los colores',
+      'Descubre las formas',
+      'Encuentra a los animales',
+      'Une las parejas',
+    ]) {
+      expect(find.bySemanticsLabel(title), findsOneWidget, reason: title);
+    }
     await tapAndSettle(tester, find.bySemanticsLabel('Volver al inicio'));
     expect(find.byType(HomeScreen), findsOneWidget);
   });

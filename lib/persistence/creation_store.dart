@@ -269,7 +269,7 @@ class KeyValueCreationStore implements CreationStore {
       if (json is! Map<String, dynamic> || json['format_version'] != 1 || json['drawing_id'] != drawingId) {
         return null;
       }
-      final updated = DateTime.tryParse(json['updated_at'] as String? ?? '');
+      final updated = _date(json['updated_at']);
       final regions = json['regions'];
       if (updated == null || regions is! Map<String, dynamic>) return null;
       final colors = <String, Color>{};
@@ -303,3 +303,6 @@ class InMemoryCreationStore extends KeyValueCreationStore {
 
   MemoryBackend get memory => backend as MemoryBackend;
 }
+
+/// Fecha guardada como texto ISO; cualquier otro tipo cuenta como ausente.
+DateTime? _date(Object? value) => value is String ? DateTime.tryParse(value) : null;

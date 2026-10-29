@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:pequenos_artistas/learning/learning_level.dart';
 import 'package:pequenos_artistas/models/drawing_category.dart';
 import 'package:pequenos_artistas/navigation/app_routes.dart';
 
@@ -23,6 +24,11 @@ void main() {
     'mis dibujos': (AppRoutes.savedDrawings, null),
     'actividades': (AppRoutes.activities, null),
     'búsqueda': (AppRoutes.search, null),
+    'premios': (AppRoutes.rewards, null),
+    'colores': (AppRoutes.learningGame, const LearningGameArgs(GameId.colors)),
+    'formas': (AppRoutes.learningGame, const LearningGameArgs(GameId.shapes)),
+    'animales': (AppRoutes.learningGame, const LearningGameArgs(GameId.animals)),
+    'parejas': (AppRoutes.learningGame, const LearningGameArgs(GameId.memory)),
     'adultos': (AppRoutes.adultZone, const AdultZoneArgs.verified()),
   };
 

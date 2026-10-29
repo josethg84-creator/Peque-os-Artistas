@@ -142,10 +142,9 @@ class _Actions extends StatelessWidget {
       ),
       MenuTile(
         icon: Icons.extension_rounded,
-        label: 'Actividades',
+        label: 'Aprender jugando',
         horizontal: horizontal,
         color: AppColors.leaf,
-        badge: 'Pronto',
         onTap: () => navigator.pushNamed(AppRoutes.activities),
       ),
       MenuTile(

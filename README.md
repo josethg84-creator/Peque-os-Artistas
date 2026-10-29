@@ -11,6 +11,8 @@ Aplicación móvil de colorear para niños de 4 a 7 años (Flutter / Android).
 - **Fase 5 (terminada):** guardado local seguro de las creaciones (con copia de
   seguridad y migración), «Mis dibujos» con miniaturas, progreso, nueva versión
   y borrado con confirmación. Sin cuentas ni conexión.
+- **Fase 6 (terminada):** «Aprender jugando»: colores, formas, animales y parejas
+  en tres niveles, sonidos y voz con controles, estrellas y pegatinas.
 
 ```
 lib/          código de la aplicación Flutter (pantallas, componentes, servicios…)
@@ -19,13 +21,14 @@ android/      proyecto Android
 assets/
   drawings/   animals/ vehicles/ dinosaurs/ fruits/ fantasy/   SVG con regiones rellenables
   thumbnails/ miniaturas PNG 512x512 que usa la app
+  sounds/     efectos de sonido WAV propios (tools/make_sounds.py)
   previews/   PNG 1024x1024 para control de calidad (no se empaquetan)
   catalog/    catalog.json (30 entradas)
-docs/         DIBUJOS.md (Fase 1), FASE2_INTERFAZ.md, FASE3_MOTOR.md, FASE4_COLECCION.md, FASE5_GUARDADO.md y capturas
+docs/         DIBUJOS.md (Fase 1), FASE2_INTERFAZ.md, FASE3_MOTOR.md, FASE4_COLECCION.md, FASE5_GUARDADO.md, FASE6_APRENDER.md y capturas
 tools/        generación, render y control de calidad de los dibujos
 ```
 
-Detalles en [docs/DIBUJOS.md](docs/DIBUJOS.md), [docs/FASE2_INTERFAZ.md](docs/FASE2_INTERFAZ.md), [docs/FASE3_MOTOR.md](docs/FASE3_MOTOR.md), [docs/FASE4_COLECCION.md](docs/FASE4_COLECCION.md) y [docs/FASE5_GUARDADO.md](docs/FASE5_GUARDADO.md).
+Detalles en [docs/DIBUJOS.md](docs/DIBUJOS.md), [docs/FASE2_INTERFAZ.md](docs/FASE2_INTERFAZ.md), [docs/FASE3_MOTOR.md](docs/FASE3_MOTOR.md), [docs/FASE4_COLECCION.md](docs/FASE4_COLECCION.md), [docs/FASE5_GUARDADO.md](docs/FASE5_GUARDADO.md) y [docs/FASE6_APRENDER.md](docs/FASE6_APRENDER.md).
 
 ```bash
 flutter pub get

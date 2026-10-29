@@ -5,7 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:pequenos_artistas/app.dart';
+import 'package:pequenos_artistas/learning/audio/learning_audio.dart';
+import 'package:pequenos_artistas/learning/learning_controller.dart';
+import 'package:pequenos_artistas/learning/learning_store.dart';
+import 'package:pequenos_artistas/persistence/key_value_backend.dart';
 import 'package:pequenos_artistas/coloring/engine/drawing_painter.dart';
+import 'package:pequenos_artistas/coloring/engine/svg_drawing_parser.dart';
 import 'package:pequenos_artistas/coloring/engine/vector_drawing.dart';
 import 'package:pequenos_artistas/services/catalog_service.dart';
 import 'package:pequenos_artistas/services/drawing_loader.dart';
@@ -59,17 +64,29 @@ CatalogService fakeCatalogService(String json, Set<String> assets) =>
 DrawingLoader diskDrawingLoader([Map<String, String> extra = const {}]) =>
     DrawingLoader(bundle: MemoryBundle(extra, fromDisk: true));
 
+/// Audio simulado de la última app montada (para comprobar sonidos y voz).
+RecordingSoundEffects? lastSounds;
+RecordingNarrator? lastNarrator;
+
 Future<void> pumpApp(
   WidgetTester tester, {
   CatalogService? service,
   DrawingLoader? loader,
   CreationStore? store,
+  LearningController? learning,
+  KeyValueBackend? learningBackend,
 }) async {
+  final controller = learning ?? LearningController(LearningStore(learningBackend ?? MemoryBackend()));
+  await controller.load();
+  final sounds = lastSounds = RecordingSoundEffects();
+  final narrator = lastNarrator = RecordingNarrator();
   await tester.pumpWidget(
     PequenosArtistasApp(
       catalogService: service ?? realCatalogService(),
       drawingLoader: loader ?? diskDrawingLoader(),
       creationStore: store ?? InMemoryCreationStore(),
+      learningController: controller,
+      learningAudio: LearningAudio(effects: sounds, narrator: narrator, settings: () => controller.settings),
     ),
   );
   await tester.pumpAndSettle();
@@ -117,3 +134,7 @@ Future<Map<String, String>?> savedHex(CreationStore store, String drawingId) asy
   final c = await store.latestFor(drawingId);
   return c?.regionColors.map((k, v) => MapEntry(k, Creation.colorToHex(v)));
 }
+
+/// Dibujo vectorial real de la colección.
+VectorDrawing svgOf(String folder, String id) =>
+    parseColoringSvg(File('assets/drawings/$folder/$id.svg').readAsStringSync());

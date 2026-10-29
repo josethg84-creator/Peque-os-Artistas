@@ -1,3 +1,4 @@
+import '../learning/learning_level.dart';
 import '../models/drawing_category.dart';
 
 /// Nombres de las rutas de la aplicación.
@@ -10,6 +11,8 @@ abstract final class AppRoutes {
   static const activities = '/actividades';
   static const adultZone = '/adultos';
   static const search = '/buscar';
+  static const learningGame = '/aprender';
+  static const rewards = '/premios';
 }
 
 /// Argumento de [AppRoutes.gallery].
@@ -32,4 +35,10 @@ class ColoringArgs {
 /// Argumento de [AppRoutes.adultZone]: solo se concede tras la verificación.
 class AdultZoneArgs {
   const AdultZoneArgs.verified();
+}
+
+/// Argumento de [AppRoutes.learningGame].
+class LearningGameArgs {
+  const LearningGameArgs(this.game);
+  final GameId game;
 }

@@ -66,6 +66,7 @@ class AdaptiveSliverGrid extends StatelessWidget {
     this.minTileWidth = 170,
     this.maxColumns = 5,
     this.childAspectRatio = 0.85,
+    this.tileHeight,
   });
 
   final int itemCount;
@@ -73,6 +74,9 @@ class AdaptiveSliverGrid extends StatelessWidget {
   final double minTileWidth;
   final int maxColumns;
   final double childAspectRatio;
+
+  /// Altura fija (escalada con el texto); sustituye a [childAspectRatio].
+  final double? tileHeight;
 
   @override
   Widget build(BuildContext context) {
@@ -95,6 +99,7 @@ class AdaptiveSliverGrid extends StatelessWidget {
             mainAxisSpacing: AppDimens.gap,
             crossAxisSpacing: AppDimens.gap,
             childAspectRatio: childAspectRatio / textScale,
+            mainAxisExtent: tileHeight == null ? null : tileHeight! * textScale,
           ),
           itemCount: itemCount,
           itemBuilder: itemBuilder,

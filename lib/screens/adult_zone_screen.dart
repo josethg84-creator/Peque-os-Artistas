@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../navigation/app_router.dart';
+import '../learning/learning_controller.dart';
+import '../learning/learning_level.dart';
 import '../persistence/creation_store.dart';
 import '../services/app_services.dart';
 import '../services/catalog_service.dart';
@@ -53,6 +55,7 @@ class AdultZoneScreen extends StatelessWidget {
                   ],
                 ),
                 _StoredDataSection(catalogIds: {for (final d in catalog.drawings) d.id}),
+                _LearningSection(learning: AppServices.of(context).learning),
                 const _Section(
                   icon: Icons.shield_outlined,
                   title: 'Privacidad y seguridad',
@@ -206,6 +209,34 @@ class _StoredDataSectionState extends State<_StoredDataSection> {
           ],
         );
       },
+    );
+  }
+}
+
+/// Resumen de «Aprender jugando» para las familias.
+class _LearningSection extends StatelessWidget {
+  const _LearningSection({required this.learning});
+
+  final LearningController learning;
+
+  @override
+  Widget build(BuildContext context) {
+    final p = learning.progress;
+    final s = p.settings;
+    return _Section(
+      icon: Icons.school_outlined,
+      title: 'Aprender jugando',
+      lines: [
+        'Nivel: ${s.level.label}. Sonidos: ${s.soundOn ? 'sí' : 'no'}. Voz: ${s.voiceOn ? 'sí' : 'no'}.',
+        for (final g in GameId.values) '${g.title}: ${p.game(g).sessions} partida(s) terminada(s).',
+        '${p.rewards.length} pegatina(s) y ${p.stars} estrella(s).',
+        'La voz usa el motor de texto a voz del dispositivo (sin conexión); '
+            'si no hay una voz en español instalada, no se oirá.',
+        if (learning.recoveredFromBackup) 'El progreso se recuperó desde la copia de seguridad.',
+        if (learning.startedFromDamagedData)
+          'El progreso guardado estaba dañado: se empezó de cero (los datos dañados se conservan).',
+        if (learning.saveFailed) 'El último guardado del progreso falló; se reintentará.',
+      ],
     );
   }
 }

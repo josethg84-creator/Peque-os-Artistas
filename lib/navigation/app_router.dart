@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../screens/activities_screen.dart';
+import '../learning/screens/learning_game_screen.dart';
+import '../learning/screens/learning_hub_screen.dart';
+import '../learning/screens/rewards_screen.dart';
 import '../screens/adult_zone_screen.dart';
 import '../screens/categories_screen.dart';
 import '../screens/coloring_screen.dart';
@@ -27,7 +29,9 @@ abstract final class AppRouter {
         startNew: args.startNew,
       ),
       AppRoutes.savedDrawings => const SavedDrawingsScreen(),
-      AppRoutes.activities => const ActivitiesScreen(),
+      AppRoutes.activities => const LearningHubScreen(),
+      AppRoutes.learningGame when args is LearningGameArgs => LearningGameScreen(game: args.game),
+      AppRoutes.rewards => const RewardsScreen(),
       AppRoutes.search => const SearchScreen(),
       AppRoutes.adultZone when args is AdultZoneArgs => const AdultZoneScreen(),
       _ => const NotFoundScreen(),

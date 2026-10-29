@@ -58,6 +58,13 @@ void main() {
         'versión': raw.replaceFirst('"format_version":2', '"format_version":3'),
         'vacío': '',
         'no objeto': '[1,2]',
+        // Tipos inesperados con una suma válida (p. ej. escritos por un error).
+        'fecha numérica': () {
+          final payload = (jsonDecode(raw) as Map<String, dynamic>)
+            ..remove('checksum')
+            ..['created_at'] = 12345;
+          return jsonEncode({...payload, 'checksum': Creation.checksumOf(payload)});
+        }(),
       };
       cases.forEach((name, value) {
         expect(() => Creation.decode(value), throwsFormatException, reason: name);

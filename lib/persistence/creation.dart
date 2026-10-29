@@ -94,8 +94,8 @@ class Creation {
     }
     final id = json['id'];
     final drawingId = json['drawing_id'];
-    final created = DateTime.tryParse(json['created_at'] as String? ?? '');
-    final updated = DateTime.tryParse(json['updated_at'] as String? ?? '');
+    final created = _date(json['created_at']);
+    final updated = _date(json['updated_at']);
     final total = json['total_regions'];
     final regions = json['regions'];
     if (id is! String || !idPattern.hasMatch(id)) throw const FormatException('id no válido');
@@ -146,3 +146,6 @@ class Creation {
     return jsonEncode(value);
   }
 }
+
+/// Fecha guardada como texto ISO; cualquier otro tipo cuenta como ausente.
+DateTime? _date(Object? value) => value is String ? DateTime.tryParse(value) : null;
