@@ -8,7 +8,7 @@ import 'package:pequenos_artistas/coloring/engine/vector_drawing.dart';
 import 'package:pequenos_artistas/coloring/palette.dart';
 import 'package:pequenos_artistas/screens/coloring_screen.dart';
 import 'package:pequenos_artistas/screens/home_screen.dart';
-import 'package:pequenos_artistas/services/progress_store.dart';
+import 'package:pequenos_artistas/persistence/creation_store.dart';
 
 import '../test_helpers.dart';
 
@@ -35,15 +35,12 @@ bool enabled(WidgetTester tester, String label) =>
 bool selected(WidgetTester tester, String label) =>
     isSemantics(isSelected: true).matches(tester.getSemantics(find.bySemanticsLabel(label)), {});
 
-Map<String, dynamic> savedRegions(InMemoryProgressStore store, String id) =>
-    (jsonDecode(store.raw[id]!) as Map<String, dynamic>)['regions'] as Map<String, dynamic>;
-
 const gatoFile = 'assets/drawings/animals/animal_gato.svg';
 
 void main() {
   testWidgets('elegir dibujo y color, pintar zonas, deshacer, rehacer y guardar al salir', (tester) async {
     setScreenSize(tester, const Size(420, 900));
-    final store = InMemoryProgressStore();
+    final store = InMemoryCreationStore();
     await pumpApp(tester, store: store);
     await tapAndSettle(tester, find.bySemanticsLabel('Galería'));
     await tapAndSettle(tester, find.bySemanticsLabel('Animales, 10 dibujos'));
@@ -74,7 +71,7 @@ void main() {
     await tapAndSettle(tester, find.bySemanticsLabel('Rehacer')); // cabeza amarilla
 
     await tapAndSettle(tester, find.bySemanticsLabel('Volver a la galería'));
-    expect(savedRegions(store, 'animal_gato'), {
+    expect(await savedHex(store, 'animal_gato'), {
       'cuerpo':
           '#${kidPalette.firstWhere((c) => c.name == 'Azul').color.toARGB32().toRadixString(16).toUpperCase()}',
       'cabeza':
@@ -84,7 +81,7 @@ void main() {
 
   testWidgets('el progreso se recupera desde «Mis dibujos» y limpiar pide confirmación', (tester) async {
     setScreenSize(tester, const Size(420, 900));
-    final store = InMemoryProgressStore();
+    final store = InMemoryCreationStore();
     await pumpApp(tester, store: store);
     await tapAndSettle(tester, find.bySemanticsLabel('¡Vamos a pintar!')); // abre el gato
     final d = svgOf(gatoFile);
@@ -94,7 +91,7 @@ void main() {
     expect(find.byType(HomeScreen), findsOneWidget);
 
     await tapAndSettle(tester, find.bySemanticsLabel('Mis dibujos'));
-    await tapAndSettle(tester, find.bySemanticsLabel('Gato, pintado'));
+    await tapAndSettle(tester, find.bySemanticsLabel(RegExp(r'^Gato\. ')));
     // Los colores vuelven, pero el historial empieza de cero.
     expect(enabled(tester, 'Limpiar'), isTrue);
     expect(enabled(tester, 'Deshacer'), isFalse);
@@ -110,13 +107,13 @@ void main() {
     expect(enabled(tester, 'Deshacer'), isTrue); // limpiar se puede deshacer
 
     await tapAndSettle(tester, find.bySemanticsLabel('Volver a la galería'));
-    expect(store.raw, isEmpty); // un dibujo limpio no ocupa espacio
-    expect(find.text('Aquí verás tus dibujos'), findsOneWidget);
+    expect((await store.loadAll()).creations, isEmpty); // un dibujo limpio no ocupa espacio
+    expect(find.text('¡Tu galería te espera!'), findsOneWidget);
   });
 
   testWidgets('«Otro dibujo» abre un dibujo nuevo sin arrastrar los colores', (tester) async {
     setScreenSize(tester, const Size(420, 900));
-    final store = InMemoryProgressStore();
+    final store = InMemoryCreationStore();
     await pumpApp(tester, store: store);
     await tapAndSettle(tester, find.bySemanticsLabel('¡Vamos a pintar!'));
     await paint(tester, svgOf(gatoFile), 'cabeza', 'Morado');
@@ -126,8 +123,8 @@ void main() {
     expect(find.text('Perro'), findsOneWidget);
     expect(enabled(tester, 'Limpiar'), isFalse);
     expect(enabled(tester, 'Deshacer'), isFalse);
-    expect(savedRegions(store, 'animal_gato').keys, ['cabeza']);
-    expect(store.raw.containsKey('animal_perro'), isFalse);
+    expect((await savedHex(store, 'animal_gato'))!.keys, ['cabeza']);
+    expect(await store.latestFor('animal_perro'), isNull);
 
     // Volver lleva al inicio (el dibujo anterior se sustituyó).
     await tapAndSettle(tester, find.bySemanticsLabel('Volver a la galería'));
@@ -136,7 +133,7 @@ void main() {
 
   testWidgets('el borrador quita el color de una zona', (tester) async {
     setScreenSize(tester, const Size(420, 900));
-    final store = InMemoryProgressStore();
+    final store = InMemoryCreationStore();
     await pumpApp(tester, store: store);
     await tapAndSettle(tester, find.bySemanticsLabel('¡Vamos a pintar!'));
     final d = svgOf(gatoFile);
@@ -148,12 +145,12 @@ void main() {
     await tester.tapAt(screenPointOf(tester, d, interiorPoint(d, 'cola')));
     await tester.pump();
     await tapAndSettle(tester, find.bySemanticsLabel('Volver a la galería'));
-    expect(savedRegions(store, 'animal_gato').keys, ['cuerpo']);
+    expect((await savedHex(store, 'animal_gato'))!.keys, ['cuerpo']);
   });
 
   testWidgets('en horizontal el lienzo sigue respondiendo con precisión', (tester) async {
     setScreenSize(tester, const Size(900, 420));
-    final store = InMemoryProgressStore();
+    final store = InMemoryCreationStore();
     await pumpApp(tester, store: store);
     await tapAndSettle(tester, find.bySemanticsLabel('¡Vamos a pintar!'));
     final d = svgOf(gatoFile);
@@ -161,7 +158,10 @@ void main() {
       await paint(tester, d, region, 'Celeste');
     }
     await tapAndSettle(tester, find.bySemanticsLabel('Volver a la galería'));
-    expect(savedRegions(store, 'animal_gato').keys, ['oreja_izquierda_interior', 'hocico', 'pata_derecha']);
+    expect(
+      (await savedHex(store, 'animal_gato'))!.keys,
+      unorderedEquals(['oreja_izquierda_interior', 'hocico', 'pata_derecha']),
+    );
   });
 
   testWidgets('un SVG ausente muestra un error amable con reintento', (tester) async {

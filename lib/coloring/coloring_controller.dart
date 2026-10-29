@@ -4,7 +4,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/painting.dart';
 
 import '../services/drawing_loader.dart';
-import '../services/progress_store.dart';
+import '../persistence/creation.dart';
+import '../persistence/creation_store.dart';
 import 'coloring_history.dart';
 import 'engine/drawing_painter.dart';
 import 'engine/vector_drawing.dart';
@@ -14,18 +15,33 @@ enum ColoringTool { paint, eraser }
 
 enum ColoringStatus { loading, ready, error }
 
-/// Estado y lógica de una sesión de coloreado de UN dibujo.
+/// Estado del guardado automático, visible en la pantalla.
+enum SaveState {
+  /// Todo está guardado (o no hay nada que guardar).
+  saved,
+
+  /// Hay cambios que se guardarán en un momento.
+  pending,
+
+  /// La última escritura falló; se reintentará.
+  failed,
+}
+
+/// Estado y lógica de una sesión de coloreado de UNA creación.
 ///
 /// No depende de widgets: la pantalla lo crea al abrir un dibujo y lo
 /// destruye al salir, así que los colores de un dibujo nunca pasan a otro.
 /// Cada cambio se guarda automáticamente (con un pequeño retraso para agrupar
-/// toques seguidos) y también al cerrar la sesión.
+/// toques seguidos), al salir de la pantalla y cuando la app pasa a segundo
+/// plano.
 class ColoringController extends ChangeNotifier implements RegionColors {
   ColoringController({
     required this.drawingId,
     required this.file,
     required this._loader,
     required this._store,
+    this.creationId,
+    this.startNew = false,
     this.saveDelay = const Duration(milliseconds: 600),
     PaletteColor? initialColor,
   }) : _color = initialColor ?? kidPalette.first;
@@ -33,9 +49,20 @@ class ColoringController extends ChangeNotifier implements RegionColors {
   /// Id del dibujo activo y ruta de su SVG.
   final String drawingId;
   final String file;
+
+  /// Creación concreta que se quiere continuar (desde «Mis dibujos»). Si es
+  /// null, se continúa la más reciente de este dibujo o se empieza una nueva.
+  final String? creationId;
+
+  /// Empezar una creación nueva desde el dibujo original.
+  final bool startNew;
   final Duration saveDelay;
   final DrawingLoader _loader;
-  final ProgressStore _store;
+  final CreationStore _store;
+  String? _activeCreationId;
+  DateTime? _createdAt;
+  SaveState _saveState = SaveState.saved;
+  Future<void>? _saving;
 
   ColoringStatus _status = ColoringStatus.loading;
   String? _error;
@@ -69,6 +96,14 @@ class ColoringController extends ChangeNotifier implements RegionColors {
   /// Hay cambios que todavía no se han escrito en el almacenamiento.
   bool get hasUnsavedChanges => _unsaved;
 
+  SaveState get saveState => _saveState;
+
+  /// Id de la creación que se está pintando (disponible tras [load]).
+  String? get activeCreationId => _activeCreationId;
+
+  /// Zonas del dibujo sin contar el fondo.
+  int get totalRegions => _drawing?.regions.where((r) => r.id != VectorDrawing.backgroundId).length ?? 0;
+
   @override
   Color? colorOf(String regionId) => _colors[regionId];
 
@@ -79,10 +114,12 @@ class ColoringController extends ChangeNotifier implements RegionColors {
     _notify();
     try {
       final drawing = await _loader.load(file);
-      final saved = await _store.load(drawingId).catchError((Object _) => null);
+      final saved = await _findCreation();
       if (_disposed) return;
       _drawing = drawing;
       _colors.clear();
+      _activeCreationId = saved?.id ?? _store.newCreationId(drawingId);
+      _createdAt = saved?.createdAt;
       if (saved != null) {
         // Se ignoran regiones que ya no existen en el dibujo.
         for (final e in saved.regionColors.entries) {
@@ -98,6 +135,18 @@ class ColoringController extends ChangeNotifier implements RegionColors {
       _error = 'error inesperado';
     }
     _notify();
+  }
+
+  /// La creación a continuar. Un error de lectura no impide pintar: se
+  /// empieza una creación nueva y los datos guardados no se tocan.
+  Future<Creation?> _findCreation() async {
+    if (startNew) return null;
+    try {
+      final c = creationId != null ? await _store.load(creationId!) : await _store.latestFor(drawingId);
+      return c != null && c.drawingId == drawingId ? c : null;
+    } catch (_) {
+      return null;
+    }
   }
 
   void selectColor(PaletteColor color) {
@@ -167,29 +216,48 @@ class ColoringController extends ChangeNotifier implements RegionColors {
 
   void _changed() {
     _unsaved = true;
+    _saveState = SaveState.pending;
     _notify();
     _saveTimer?.cancel();
     _saveTimer = Timer(saveDelay, save);
   }
 
-  /// Escribe el progreso ahora. Sin colores, se borra el guardado.
+  /// Escribe la creación ahora (no espera al guardado automático). Una
+  /// creación sin colores no se guarda: se borra su entrada, si existía.
   Future<void> save() async {
     _saveTimer?.cancel();
-    if (!_unsaved || _status != ColoringStatus.ready) return;
-    _unsaved = false;
-    _notify();
-    try {
-      if (_colors.isEmpty) {
-        await _store.delete(drawingId);
-      } else {
-        await _store.save(
-          SavedProgress(drawingId: drawingId, regionColors: Map.of(_colors), updatedAt: DateTime.now()),
-        );
-      }
-    } catch (_) {
-      _unsaved = true; // Se reintentará en el próximo cambio o al salir.
-      _notify();
+    // Si ya hay una escritura en marcha, se espera y se guarda lo que falte.
+    while (_saving != null) {
+      await _saving!.catchError((Object _) {});
     }
+    if (!_unsaved || _status != ColoringStatus.ready) return;
+    final id = _activeCreationId!;
+    final colors = Map.of(_colors);
+    _unsaved = false;
+    final now = DateTime.now();
+    final future = colors.isEmpty
+        ? _store.delete(id)
+        : _store.save(
+            Creation(
+              id: id,
+              drawingId: drawingId,
+              regionColors: colors,
+              createdAt: _createdAt ??= now,
+              updatedAt: now,
+              totalRegions: totalRegions,
+            ),
+          );
+    _saving = future;
+    try {
+      await future;
+      if (!_unsaved) _saveState = SaveState.saved;
+    } catch (_) {
+      _unsaved = true; // Se reintentará en el próximo cambio, al salir o al tocar «Reintentar».
+      _saveState = SaveState.failed;
+    } finally {
+      _saving = null;
+    }
+    _notify();
   }
 
   void _notify() {

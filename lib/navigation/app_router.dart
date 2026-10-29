@@ -21,7 +21,11 @@ abstract final class AppRouter {
       AppRoutes.home => const HomeScreen(),
       AppRoutes.categories => const CategoriesScreen(),
       AppRoutes.gallery when args is GalleryArgs => GalleryScreen(category: args.category),
-      AppRoutes.coloring when args is ColoringArgs => ColoringScreen(drawingId: args.drawingId),
+      AppRoutes.coloring when args is ColoringArgs => ColoringScreen(
+        drawingId: args.drawingId,
+        creationId: args.creationId,
+        startNew: args.startNew,
+      ),
       AppRoutes.savedDrawings => const SavedDrawingsScreen(),
       AppRoutes.activities => const ActivitiesScreen(),
       AppRoutes.search => const SearchScreen(),

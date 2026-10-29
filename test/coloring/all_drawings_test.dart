@@ -7,7 +7,7 @@ import 'package:pequenos_artistas/coloring/engine/svg_drawing_parser.dart';
 import 'package:pequenos_artistas/coloring/coloring_controller.dart';
 import 'package:pequenos_artistas/coloring/engine/vector_drawing.dart';
 import 'package:pequenos_artistas/coloring/palette.dart';
-import 'package:pequenos_artistas/services/progress_store.dart';
+import 'package:pequenos_artistas/persistence/creation_store.dart';
 
 import '../test_helpers.dart';
 
@@ -65,7 +65,7 @@ void main() {
         drawingId: id,
         file: entry['file'] as String,
         loader: diskDrawingLoader(),
-        store: InMemoryProgressStore(),
+        store: InMemoryCreationStore(),
         saveDelay: const Duration(days: 1),
       );
       await c.load();

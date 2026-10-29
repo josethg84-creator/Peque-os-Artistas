@@ -20,8 +20,13 @@ class GalleryArgs {
 
 /// Argumento de [AppRoutes.coloring].
 class ColoringArgs {
-  const ColoringArgs(this.drawingId);
+  /// Sin más datos se continúa la creación más reciente del dibujo (o se
+  /// empieza una). [creationId] abre una creación concreta; [startNew] empieza
+  /// una nueva desde el dibujo original.
+  const ColoringArgs(this.drawingId, {this.creationId, this.startNew = false});
   final String drawingId;
+  final String? creationId;
+  final bool startNew;
 }
 
 /// Argumento de [AppRoutes.adultZone]: solo se concede tras la verificación.

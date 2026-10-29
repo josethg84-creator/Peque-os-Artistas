@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../navigation/app_router.dart';
+import '../persistence/creation_store.dart';
+import '../services/app_services.dart';
 import '../services/catalog_service.dart';
 import '../theme/app_theme.dart';
 import '../widgets/catalog_builder.dart';
@@ -50,6 +52,7 @@ class AdultZoneScreen extends StatelessWidget {
                     ],
                   ],
                 ),
+                _StoredDataSection(catalogIds: {for (final d in catalog.drawings) d.id}),
                 const _Section(
                   icon: Icons.shield_outlined,
                   title: 'Privacidad y seguridad',
@@ -105,6 +108,104 @@ class _Section extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+/// Estado de las creaciones guardadas. Los datos dañados o de dibujos que ya no
+/// existen se conservan; solo se borran si un adulto lo confirma aquí.
+class _StoredDataSection extends StatefulWidget {
+  const _StoredDataSection({required this.catalogIds});
+
+  final Set<String> catalogIds;
+
+  @override
+  State<_StoredDataSection> createState() => _StoredDataSectionState();
+}
+
+class _StoredDataSectionState extends State<_StoredDataSection> {
+  Future<CreationReport>? _report;
+
+  CreationStore get _store => AppServices.of(context).creations;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _report ??= _store.loadAll();
+  }
+
+  Future<void> _discard(List<StoredProblem> problems) async {
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('¿Eliminar los datos dañados?'),
+        content: Text(
+          'Se eliminarán ${problems.length} registro(s) que no se pueden leer. '
+          'Las creaciones válidas no se tocan. Esta acción no se puede deshacer.',
+        ),
+        actions: [
+          TextButton(onPressed: () => Navigator.of(context).pop(false), child: const Text('Cancelar')),
+          FilledButton(onPressed: () => Navigator.of(context).pop(true), child: const Text('Eliminar')),
+        ],
+      ),
+    );
+    if (ok != true) return;
+    for (final p in problems) {
+      try {
+        await _store.discardProblem(p);
+      } catch (_) {
+        // Se mostrará de nuevo en el recuento.
+      }
+    }
+    if (!mounted) return;
+    setState(() {
+      _report = _store.loadAll();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<CreationReport>(
+      future: _report,
+      builder: (context, snapshot) {
+        final lines = <String>[
+          'Las creaciones se guardan solo en este dispositivo, sin cuentas ni conexión a internet. '
+              'Borrar los datos de la aplicación o desinstalarla las elimina.',
+        ];
+        final report = snapshot.data;
+        if (snapshot.hasError) {
+          lines.add('No se pudo leer el almacenamiento en este momento.');
+        } else if (report != null) {
+          final orphans = report.creations.where((c) => !widget.catalogIds.contains(c.drawingId)).length;
+          lines.add('${report.creations.length} creación(es) guardada(s).');
+          if (report.recovered.isNotEmpty) {
+            lines.add('${report.recovered.length} recuperada(s) desde la copia de seguridad.');
+          }
+          if (orphans > 0) {
+            lines.add('$orphans de dibujos que ya no están en el catálogo (se conservan, no se muestran).');
+          }
+          if (report.problems.isNotEmpty) {
+            lines.add(
+              '${report.problems.length} registro(s) dañado(s) o ilegible(s) (se conservan, no se muestran).',
+            );
+          }
+        }
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            _Section(icon: Icons.save_outlined, title: 'Dibujos guardados', lines: lines),
+            if (report != null && report.problems.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 12),
+                child: OutlinedButton.icon(
+                  onPressed: () => _discard(report.problems),
+                  icon: const Icon(Icons.delete_sweep_outlined),
+                  label: Text('Eliminar datos dañados (${report.problems.length})'),
+                ),
+              ),
+          ],
+        );
+      },
     );
   }
 }

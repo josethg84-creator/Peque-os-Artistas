@@ -94,8 +94,8 @@ void main() {
     setScreenSize(tester, const Size(400, 860));
     await pumpApp(tester);
     await tapAndSettle(tester, find.bySemanticsLabel('Mis dibujos'));
-    expect(find.text('Aquí verás tus dibujos'), findsOneWidget);
-    await tapAndSettle(tester, find.text('Ir a la galería'));
+    expect(find.text('¡Tu galería te espera!'), findsOneWidget);
+    await tapAndSettle(tester, find.text('Ir a pintar'));
     expect(find.byType(CategoriesScreen), findsOneWidget);
     await tapAndSettle(tester, find.bySemanticsLabel('Volver al inicio'));
     expect(find.byType(HomeScreen), findsOneWidget);

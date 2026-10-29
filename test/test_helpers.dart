@@ -9,7 +9,8 @@ import 'package:pequenos_artistas/coloring/engine/drawing_painter.dart';
 import 'package:pequenos_artistas/coloring/engine/vector_drawing.dart';
 import 'package:pequenos_artistas/services/catalog_service.dart';
 import 'package:pequenos_artistas/services/drawing_loader.dart';
-import 'package:pequenos_artistas/services/progress_store.dart';
+import 'package:pequenos_artistas/persistence/creation.dart';
+import 'package:pequenos_artistas/persistence/creation_store.dart';
 
 /// Bundle que sirve los textos de [files] y, si [fromDisk], los archivos
 /// reales del proyecto. Lee de forma síncrona para funcionar dentro de las
@@ -62,13 +63,13 @@ Future<void> pumpApp(
   WidgetTester tester, {
   CatalogService? service,
   DrawingLoader? loader,
-  ProgressStore? store,
+  CreationStore? store,
 }) async {
   await tester.pumpWidget(
     PequenosArtistasApp(
       catalogService: service ?? realCatalogService(),
       drawingLoader: loader ?? diskDrawingLoader(),
-      progressStore: store ?? InMemoryProgressStore(),
+      creationStore: store ?? InMemoryCreationStore(),
     ),
   );
   await tester.pumpAndSettle();
@@ -109,4 +110,10 @@ Offset screenPointOf(WidgetTester tester, VectorDrawing drawing, Offset viewBoxP
   final box = tester.getRect(drawingCanvasFinder);
   final t = DrawingPainter.fit(drawing.viewBox, box.size);
   return box.topLeft + t.offset + viewBoxPoint * t.scale;
+}
+
+/// Colores guardados de la creación más reciente de un dibujo (en hexadecimal).
+Future<Map<String, String>?> savedHex(CreationStore store, String drawingId) async {
+  final c = await store.latestFor(drawingId);
+  return c?.regionColors.map((k, v) => MapEntry(k, Creation.colorToHex(v)));
 }

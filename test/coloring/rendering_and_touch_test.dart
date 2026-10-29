@@ -11,7 +11,7 @@ import 'package:pequenos_artistas/coloring/engine/vector_drawing.dart';
 import 'package:pequenos_artistas/coloring/palette.dart';
 import 'package:pequenos_artistas/models/drawing.dart';
 import 'package:pequenos_artistas/models/drawing_category.dart';
-import 'package:pequenos_artistas/services/progress_store.dart';
+import 'package:pequenos_artistas/persistence/creation_store.dart';
 
 import '../test_helpers.dart';
 
@@ -107,7 +107,7 @@ void main() {
         drawingId: 'prueba',
         file: file,
         loader: diskDrawingLoader({'mem/two.svg': twoSquares}),
-        store: InMemoryProgressStore(),
+        store: InMemoryCreationStore(),
         saveDelay: Duration.zero,
       )..selectColor(kidPalette.first);
       await controller.load();

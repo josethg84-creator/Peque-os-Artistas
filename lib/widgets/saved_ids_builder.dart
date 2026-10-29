@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 import '../services/app_services.dart';
-import '../services/progress_store.dart';
+import '../persistence/creation_store.dart';
 
 /// Proporciona los ids de los dibujos que tienen colores guardados y se
 /// actualiza cuando el almacén avisa de un cambio. Mientras carga, o si el
@@ -16,24 +16,24 @@ class SavedIdsBuilder extends StatefulWidget {
 }
 
 class _SavedIdsBuilderState extends State<SavedIdsBuilder> {
-  ProgressStore? _store;
+  CreationStore? _store;
   Set<String> _ids = const {};
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     if (_store == null) {
-      _store = AppServices.of(context).progress..changes.addListener(_load);
+      _store = AppServices.of(context).creations..changes.addListener(_load);
       _load();
     }
   }
 
   Future<void> _load() async {
     try {
-      final all = await _store!.loadAll();
+      final report = await _store!.loadAll();
       if (!mounted) return;
       setState(() {
-        _ids = {for (final p in all) p.drawingId};
+        _ids = {for (final c in report.creations) c.drawingId};
       });
     } catch (_) {
       // Sin indicadores: no impide usar la galería.

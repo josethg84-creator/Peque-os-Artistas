@@ -5,7 +5,7 @@ import 'navigation/app_routes.dart';
 import 'services/app_services.dart';
 import 'services/catalog_service.dart';
 import 'services/drawing_loader.dart';
-import 'services/progress_store.dart';
+import 'persistence/creation_store.dart';
 import 'theme/app_theme.dart';
 
 class PequenosArtistasApp extends StatelessWidget {
@@ -13,12 +13,12 @@ class PequenosArtistasApp extends StatelessWidget {
     super.key,
     required this.catalogService,
     required this.drawingLoader,
-    required this.progressStore,
+    required this.creationStore,
   });
 
   final CatalogService catalogService;
   final DrawingLoader drawingLoader;
-  final ProgressStore progressStore;
+  final CreationStore creationStore;
 
   /// Se respeta el tamaño de texto del sistema, con un tope para que las
   /// pantallas sigan siendo usables.
@@ -29,7 +29,7 @@ class PequenosArtistasApp extends StatelessWidget {
     return AppServices(
       catalog: catalogService,
       drawings: drawingLoader,
-      progress: progressStore,
+      creations: creationStore,
       child: MaterialApp(
         title: 'Pequeños Artistas',
         debugShowCheckedModeBanner: false,

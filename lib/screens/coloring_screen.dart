@@ -4,6 +4,7 @@ import '../coloring/color_palette_bar.dart';
 import '../coloring/coloring_canvas.dart';
 import '../coloring/coloring_controller.dart';
 import '../coloring/coloring_toolbar.dart';
+import '../coloring/save_indicator.dart';
 import '../models/drawing.dart';
 import '../models/drawing_catalog.dart';
 import '../navigation/app_router.dart';
@@ -18,9 +19,11 @@ import '../widgets/kid_icon_button.dart';
 
 /// Pantalla de coloreado de un dibujo del catálogo.
 class ColoringScreen extends StatelessWidget {
-  const ColoringScreen({super.key, required this.drawingId});
+  const ColoringScreen({super.key, required this.drawingId, this.creationId, this.startNew = false});
 
   final String drawingId;
+  final String? creationId;
+  final bool startNew;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +42,13 @@ class ColoringScreen extends StatelessWidget {
               );
             }
             // La clave garantiza un estado nuevo para cada dibujo.
-            return _ColoringSession(key: ValueKey(drawing.id), drawing: drawing, catalog: catalog);
+            return _ColoringSession(
+              key: ValueKey((drawing.id, creationId, startNew)),
+              drawing: drawing,
+              catalog: catalog,
+              creationId: creationId,
+              startNew: startNew,
+            );
           },
         ),
       ),
@@ -50,10 +59,18 @@ class ColoringScreen extends StatelessWidget {
 /// Una sesión de coloreado: crea el controlador del dibujo, lo carga y guarda
 /// el progreso al salir o cuando la aplicación pasa a segundo plano.
 class _ColoringSession extends StatefulWidget {
-  const _ColoringSession({super.key, required this.drawing, required this.catalog});
+  const _ColoringSession({
+    super.key,
+    required this.drawing,
+    required this.catalog,
+    this.creationId,
+    this.startNew = false,
+  });
 
   final Drawing drawing;
   final DrawingCatalog catalog;
+  final String? creationId;
+  final bool startNew;
 
   @override
   State<_ColoringSession> createState() => _ColoringSessionState();
@@ -78,7 +95,9 @@ class _ColoringSessionState extends State<_ColoringSession> {
         drawingId: widget.drawing.id,
         file: widget.drawing.file,
         loader: services.drawings,
-        store: services.progress,
+        store: services.creations,
+        creationId: widget.creationId,
+        startNew: widget.startNew,
       )..load();
     }
   }
@@ -223,15 +242,24 @@ class _ColoringLayout extends StatelessWidget {
           color: AppColors.sun,
           onPressed: onChangeDrawing,
         );
-        final title = Semantics(
-          header: true,
-          child: Text(
-            drawing.name,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
+        final title = Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Semantics(
+              header: true,
+              child: Text(
+                drawing.name,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.headlineSmall,
+              ),
+            ),
+            ListenableBuilder(
+              listenable: controller,
+              builder: (_, _) => SaveIndicator(controller: controller),
+            ),
+          ],
         );
 
         if (landscape) {

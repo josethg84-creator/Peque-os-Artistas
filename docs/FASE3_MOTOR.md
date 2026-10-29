@@ -106,6 +106,9 @@ en el siguiente fotograma.
 
 ## Guardado del progreso
 
+> **Actualización (Fase 5):** este formato (v1) se sustituyó por creaciones v2
+> con copia de seguridad y migración automática; ver [FASE5_GUARDADO.md](FASE5_GUARDADO.md).
+
 `shared_preferences` (paquete oficial de flutter.dev; almacenamiento privado de la
 app). Una clave por dibujo, `progress.v1.<id>`:
 

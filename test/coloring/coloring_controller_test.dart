@@ -1,13 +1,14 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:pequenos_artistas/coloring/coloring_controller.dart';
 import 'package:pequenos_artistas/coloring/palette.dart';
 import 'package:pequenos_artistas/services/drawing_loader.dart';
-import 'package:pequenos_artistas/services/progress_store.dart';
+import 'package:pequenos_artistas/persistence/creation.dart';
+import 'package:pequenos_artistas/persistence/creation_store.dart';
+import 'package:pequenos_artistas/persistence/key_value_backend.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shared_preferences_platform_interface/in_memory_shared_preferences_async.dart';
 import 'package:shared_preferences_platform_interface/shared_preferences_async_platform_interface.dart';
@@ -27,14 +28,14 @@ const perroFile = 'assets/drawings/animals/animal_perro.svg';
 Future<ColoringController> openDrawing(
   String id,
   String file, {
-  ProgressStore? store,
+  CreationStore? store,
   DrawingLoader? loader,
 }) async {
   final c = ColoringController(
     drawingId: id,
     file: file,
     loader: loader ?? diskDrawingLoader(),
-    store: store ?? InMemoryProgressStore(),
+    store: store ?? InMemoryCreationStore(),
     saveDelay: Duration.zero,
   );
   await c.load();
@@ -184,7 +185,7 @@ void main() {
 
   group('Sesiones y guardado', () {
     test('8. cambiar de dibujo no mezcla estados', () async {
-      final store = InMemoryProgressStore();
+      final store = InMemoryCreationStore();
       final gato = await openDrawing('animal_gato', gatoFile, store: store);
       gato.selectColor(red);
       gato.tapRegion('cabeza');
@@ -203,8 +204,8 @@ void main() {
       expect(gatoOtraVez.canUndo, isFalse); // El historial no se guarda.
     });
 
-    test('9. los colores guardados se recuperan (formato versionado)', () async {
-      final store = InMemoryProgressStore();
+    test('9. los colores guardados se recuperan (formato versionado con verificación)', () async {
+      final store = InMemoryCreationStore();
       final c = await openDrawing('animal_gato', gatoFile, store: store);
       c.selectColor(red);
       c.tapRegion('cola');
@@ -213,19 +214,25 @@ void main() {
       expect(c.hasUnsavedChanges, isTrue);
       await c.save();
       expect(c.hasUnsavedChanges, isFalse);
+      expect(c.saveState, SaveState.saved);
 
-      final json = jsonDecode(store.raw['animal_gato']!) as Map<String, dynamic>;
-      expect(json['format_version'], SavedProgress.formatVersion);
+      final raw = store.memory.data[KeyValueCreationStore.keyFor(c.activeCreationId!)]!;
+      final json = jsonDecode(raw) as Map<String, dynamic>;
+      expect(json['format_version'], Creation.formatVersion);
       expect(json['drawing_id'], 'animal_gato');
-      expect(DateTime.tryParse(json['updated_at'] as String), isNotNull);
+      expect(json['total_regions'], 11);
+      expect(json['painted_regions'], 1); // el fondo no cuenta
+      expect(json['status'], 'en_progreso');
+      expect(json['checksum'], isA<String>());
       expect(json['regions'], {'cola': '#FFE53935', 'fondo': '#FF29B6F6'});
 
       final again = await openDrawing('animal_gato', gatoFile, store: store);
       expect(again.regionColors, c.regionColors);
+      expect(again.activeCreationId, c.activeCreationId);
     });
 
     testWidgets('9b. el guardado automático se hace tras una pausa y al cerrar', (tester) async {
-      final store = InMemoryProgressStore();
+      final store = InMemoryCreationStore();
       final c = ColoringController(
         drawingId: 'animal_gato',
         file: gatoFile,
@@ -235,51 +242,57 @@ void main() {
       );
       await c.load();
       c.tapRegion('cola');
+      expect(c.saveState, SaveState.pending);
       await tester.pump(const Duration(milliseconds: 300));
-      expect(store.raw, isEmpty);
+      expect(store.memory.data, isEmpty);
       await tester.pump(const Duration(milliseconds: 400));
-      expect(store.raw.keys, ['animal_gato']);
+      expect((await store.latestFor('animal_gato'))!.regionColors.keys, ['cola']);
+      expect(c.saveState, SaveState.saved);
 
       c.tapRegion('cabeza');
       c.dispose(); // Se guarda al salir aunque no haya pasado la pausa.
       await tester.pump();
-      expect(store.raw['animal_gato'], contains('cabeza'));
+      expect((await store.latestFor('animal_gato'))!.regionColors.keys, unorderedEquals(['cola', 'cabeza']));
     });
 
-    test('limpiar y guardar borra el progreso guardado', () async {
-      final store = InMemoryProgressStore();
+    test('limpiar y guardar borra la creación (y solo esa)', () async {
+      final store = InMemoryCreationStore();
+      final perro = await openDrawing('animal_perro', perroFile, store: store);
+      perro.tapRegion('cabeza');
+      await perro.save();
       final c = await openDrawing('animal_gato', gatoFile, store: store);
       c.tapRegion('cola');
       await c.save();
       c.clear();
       await c.save();
-      expect(store.raw, isEmpty);
+      expect(await store.latestFor('animal_gato'), isNull);
+      expect(await store.latestFor('animal_perro'), isNotNull);
     });
 
-    test('datos guardados dañados, de otra versión o con regiones desconocidas', () async {
-      final store = InMemoryProgressStore();
-      store.raw['animal_gato'] = jsonEncode({
+    test('regiones o colores no válidos en datos de la versión 1 se migran sin ellos', () async {
+      final store = InMemoryCreationStore();
+      store.memory.data['progress.v1.animal_gato'] = jsonEncode({
         'format_version': 1,
         'drawing_id': 'animal_gato',
         'updated_at': '2026-01-01T00:00:00Z',
         'regions': {'cola': '#FFE53935', 'region_borrada': '#FF000000', 'cabeza': 'rojo'},
       });
-      var c = await openDrawing('animal_gato', gatoFile, store: store);
+      final c = await openDrawing('animal_gato', gatoFile, store: store);
       expect(c.regionColors, {'cola': const Color(0xFFE53935)});
+    });
 
-      store.raw['animal_gato'] = '{esto no es json';
-      c = await openDrawing('animal_gato', gatoFile, store: store);
+    test('una creación dañada no se usa, no se borra y se puede empezar otra', () async {
+      final store = InMemoryCreationStore();
+      store.memory.data['creation.v2.animal_gato-roto'] = '{"format_version": 2, "id": "animal_gato-ro';
+      final c = await openDrawing('animal_gato', gatoFile, store: store);
       expect(c.status, ColoringStatus.ready);
       expect(c.regionColors, isEmpty);
-
-      store.raw['animal_gato'] = jsonEncode({'format_version': 99, 'drawing_id': 'animal_gato'});
-      c = await openDrawing('animal_gato', gatoFile, store: store);
-      expect(c.regionColors, isEmpty);
+      expect(store.memory.data, contains('creation.v2.animal_gato-roto'));
     });
 
     test('almacén real con shared_preferences: guarda, lista y borra', () async {
       SharedPreferencesAsyncPlatform.instance = InMemorySharedPreferencesAsync.empty();
-      final store = SharedPreferencesProgressStore(SharedPreferencesAsync());
+      final store = KeyValueCreationStore(SharedPreferencesBackend(SharedPreferencesAsync()));
       final c = await openDrawing('animal_gato', gatoFile, store: store);
       c.tapRegion('cola');
       await c.save();
@@ -287,11 +300,12 @@ void main() {
       p.tapRegion('cabeza');
       await p.save();
 
-      final all = await store.loadAll();
+      final all = (await store.loadAll()).creations;
       expect(all.map((e) => e.drawingId), ['animal_perro', 'animal_gato']);
-      expect((await store.load('animal_gato'))!.regionColors.keys, ['cola']);
-      await store.delete('animal_gato');
-      expect(await store.load('animal_gato'), isNull);
+      expect((await store.load(c.activeCreationId!))!.regionColors.keys, ['cola']);
+      await store.delete(c.activeCreationId!);
+      expect(await store.load(c.activeCreationId!), isNull);
+      expect(await store.latestFor('animal_perro'), isNotNull);
     });
   });
 
@@ -317,13 +331,22 @@ void main() {
       expect(c.errorMessage, contains('cerrado'));
     });
 
-    test('un fallo del almacén no impide pintar', () async {
-      final c = await openDrawing('animal_gato', gatoFile, store: _BrokenStore());
+    test('un fallo del almacén no impide pintar y se reintenta', () async {
+      final store = InMemoryCreationStore()..memory.failReads = true;
+      store.memory.failWrites = true;
+      final c = await openDrawing('animal_gato', gatoFile, store: store);
       expect(c.status, ColoringStatus.ready);
       c.tapRegion('cola');
       await c.save();
-      expect(c.hasUnsavedChanges, isTrue); // Se reintentará.
+      expect(c.hasUnsavedChanges, isTrue);
+      expect(c.saveState, SaveState.failed);
       expect(c.colorOf('cola'), red.color);
+      store.memory
+        ..failReads = false
+        ..failWrites = false;
+      await c.save(); // «Reintentar»
+      expect(c.saveState, SaveState.saved);
+      expect((await store.latestFor('animal_gato'))!.regionColors.keys, ['cola']);
     });
 
     test('el cargador no guarda los fallos: se puede reintentar', () async {
@@ -334,18 +357,4 @@ void main() {
       expect((await loader.load('a.svg')).regions, isNotEmpty);
     });
   });
-}
-
-class _BrokenStore implements ProgressStore {
-  @override
-  Listenable get changes => ChangeNotifier();
-
-  @override
-  Future<SavedProgress?> load(String drawingId) => Future.error(StateError('disco'));
-  @override
-  Future<void> save(SavedProgress progress) => Future.error(StateError('disco'));
-  @override
-  Future<void> delete(String drawingId) => Future.error(StateError('disco'));
-  @override
-  Future<List<SavedProgress>> loadAll() => Future.error(StateError('disco'));
 }

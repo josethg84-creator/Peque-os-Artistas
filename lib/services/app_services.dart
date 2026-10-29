@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 
 import 'catalog_service.dart';
 import 'drawing_loader.dart';
-import 'progress_store.dart';
+import '../persistence/creation_store.dart';
 
 /// Pone los servicios compartidos al alcance de todas las pantallas.
 class AppServices extends InheritedWidget {
@@ -10,13 +10,13 @@ class AppServices extends InheritedWidget {
     super.key,
     required this.catalog,
     required this.drawings,
-    required this.progress,
+    required this.creations,
     required super.child,
   });
 
   final CatalogService catalog;
   final DrawingLoader drawings;
-  final ProgressStore progress;
+  final CreationStore creations;
 
   static AppServices of(BuildContext context) {
     final services = context.dependOnInheritedWidgetOfExactType<AppServices>();
@@ -26,5 +26,5 @@ class AppServices extends InheritedWidget {
 
   @override
   bool updateShouldNotify(AppServices oldWidget) =>
-      catalog != oldWidget.catalog || drawings != oldWidget.drawings || progress != oldWidget.progress;
+      catalog != oldWidget.catalog || drawings != oldWidget.drawings || creations != oldWidget.creations;
 }

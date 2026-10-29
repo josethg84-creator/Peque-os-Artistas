@@ -9,7 +9,7 @@ import 'package:pequenos_artistas/models/drawing_category.dart';
 import 'package:pequenos_artistas/screens/coloring_screen.dart';
 import 'package:pequenos_artistas/screens/gallery_screen.dart';
 import 'package:pequenos_artistas/screens/search_screen.dart';
-import 'package:pequenos_artistas/services/progress_store.dart';
+import 'package:pequenos_artistas/persistence/creation_store.dart';
 import 'package:pequenos_artistas/widgets/drawing_card.dart';
 
 import 'test_helpers.dart';
@@ -67,7 +67,7 @@ void main() {
 
   testWidgets('las tarjetas marcan los dibujos pintados y los colores no se mezclan', (tester) async {
     setScreenSize(tester, const Size(1000, 1400));
-    final store = InMemoryProgressStore();
+    final store = InMemoryCreationStore();
     await pumpApp(tester, store: store);
     await tapAndSettle(tester, find.bySemanticsLabel('Galería'));
     await tapAndSettle(tester, find.bySemanticsLabel('Animales, 10 dibujos'));
@@ -89,8 +89,8 @@ void main() {
     expect(find.bySemanticsLabel('Perro. Dificultad media. ${DrawingCard.paintedLabel}'), findsOneWidget);
     expect(find.bySemanticsLabel('Conejo. Dificultad media'), findsOneWidget); // sin insignia
 
-    final gato = SavedProgress.fromJson(jsonDecode(store.raw['animal_gato']!))!;
-    final perro = SavedProgress.fromJson(jsonDecode(store.raw['animal_perro']!))!;
+    final gato = (await store.latestFor('animal_gato'))!;
+    final perro = (await store.latestFor('animal_perro'))!;
     expect(gato.regionColors, {'cabeza': const Color(0xFFE53935)});
     expect(perro.regionColors, {'cabeza': const Color(0xFF1E57C8)});
   });
