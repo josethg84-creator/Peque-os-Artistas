@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../theme/app_colors.dart';
 import '../theme/app_dimens.dart';
+import 'doodle_background.dart';
 import 'kid_icon_button.dart';
 
 /// Estructura común de las pantallas infantiles: cabecera con botón grande de
@@ -37,52 +38,54 @@ class KidScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: AppDimens.maxContentWidth),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(AppDimens.pagePadding, 12, AppDimens.pagePadding, 8),
-                  child: Row(
-                    children: [
-                      KidIconButton(
-                        icon: Icons.arrow_back_rounded,
-                        label: backLabel,
-                        color: accent,
-                        onPressed: onBack ?? () => Navigator.of(context).maybePop(),
-                      ),
-                      const SizedBox(width: AppDimens.gap),
-                      if (titleIcon != null) ...[
-                        Icon(titleIcon, color: accent, size: 36),
-                        const SizedBox(width: 8),
-                      ],
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Semantics(
-                              header: true,
-                              child: Text(
-                                title,
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                                style: Theme.of(context).textTheme.headlineMedium,
-                              ),
-                            ),
-                            if (badge != null) ...[const SizedBox(height: 4), badge!],
-                          ],
+      body: DoodleBackground(
+        child: SafeArea(
+          child: Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: AppDimens.maxContentWidth),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(AppDimens.pagePadding, 12, AppDimens.pagePadding, 8),
+                    child: Row(
+                      children: [
+                        KidIconButton(
+                          icon: Icons.arrow_back_rounded,
+                          label: backLabel,
+                          color: accent,
+                          onPressed: onBack ?? () => Navigator.of(context).maybePop(),
                         ),
-                      ),
-                      if (trailing != null) ...[const SizedBox(width: AppDimens.gap), trailing!],
-                    ],
+                        const SizedBox(width: AppDimens.gap),
+                        if (titleIcon != null) ...[
+                          Icon(titleIcon, color: accent, size: 36),
+                          const SizedBox(width: 8),
+                        ],
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Semantics(
+                                header: true,
+                                child: Text(
+                                  title,
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: Theme.of(context).textTheme.headlineMedium,
+                                ),
+                              ),
+                              if (badge != null) ...[const SizedBox(height: 4), badge!],
+                            ],
+                          ),
+                        ),
+                        if (trailing != null) ...[const SizedBox(width: AppDimens.gap), trailing!],
+                      ],
+                    ),
                   ),
-                ),
-                Expanded(child: body),
-              ],
+                  Expanded(child: body),
+                ],
+              ),
             ),
           ),
         ),

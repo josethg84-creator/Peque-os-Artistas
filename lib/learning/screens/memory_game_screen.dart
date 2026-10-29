@@ -7,6 +7,7 @@ import '../../models/drawing_catalog.dart';
 import '../../services/app_services.dart';
 import '../../theme/app_colors.dart';
 import '../../theme/app_dimens.dart';
+import '../../theme/app_motion.dart';
 import '../../widgets/drawing_thumbnail.dart';
 import '../../widgets/kid_icon_button.dart';
 import '../../widgets/kid_scaffold.dart';
@@ -225,6 +226,8 @@ class _MemoryGameScreenState extends State<MemoryGameScreen> {
 class _CardView extends StatelessWidget {
   const _CardView({required this.card, required this.catalog, required this.onTap});
 
+  static const flipDuration = Duration(milliseconds: 260);
+
   final MemoryCard card;
   final DrawingCatalog catalog;
   final VoidCallback onTap;
@@ -237,51 +240,69 @@ class _CardView extends StatelessWidget {
     final label = card.matched
         ? '$name, pareja encontrada'
         : (shown ? name : 'Carta ${card.id + 1}, boca abajo');
-    final reduceMotion = MediaQuery.disableAnimationsOf(context);
+    final reduceMotion = AppMotion.reduced(context);
+    Widget side(bool front) => Material(
+      color: front ? AppColors.surface : AppColors.grape,
+      elevation: 2,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppDimens.radiusMedium),
+        side: BorderSide(color: card.matched ? AppColors.leaf : Colors.white, width: card.matched ? 5 : 3),
+      ),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(AppDimens.radiusMedium),
+        // El toque depende del estado real de la carta, no de la animación:
+        // una carta que se está dando la vuelta ya se puede volver a tocar.
+        onTap: shown ? null : onTap,
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: Padding(
+                padding: const EdgeInsets.all(8),
+                child: front
+                    ? DrawingThumbnail(asset: drawing?.thumbnailAsset)
+                    : const FittedBox(child: Icon(Icons.question_mark_rounded, color: Colors.white)),
+              ),
+            ),
+            if (card.matched)
+              Positioned(
+                top: 4,
+                right: 4,
+                child: Container(
+                  decoration: const BoxDecoration(color: AppColors.leaf, shape: BoxShape.circle),
+                  child: const Icon(Icons.check_rounded, color: Colors.white, size: 26),
+                ),
+              ),
+          ],
+        ),
+      ),
+    );
     return Semantics(
       button: !shown,
       label: label,
       excludeSemantics: true,
-      child: AnimatedSwitcher(
-        duration: reduceMotion ? Duration.zero : const Duration(milliseconds: 220),
-        transitionBuilder: (child, animation) => ScaleTransition(scale: animation, child: child),
-        child: Material(
-          key: ValueKey(shown),
-          color: shown ? AppColors.surface : AppColors.grape,
-          elevation: 2,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppDimens.radiusMedium),
-            side: BorderSide(
-              color: card.matched ? AppColors.leaf : Colors.white,
-              width: card.matched ? 5 : 3,
+      onTap: shown ? null : onTap,
+      // Giro de la carta: un único hijo que gira sobre el eje vertical; a mitad
+      // de giro (de canto) se cambia la cara visible.
+      child: TweenAnimationBuilder<double>(
+        tween: Tween(end: shown ? 1 : 0),
+        duration: reduceMotion ? Duration.zero : _CardView.flipDuration,
+        curve: Curves.easeInOut,
+        builder: (context, t, _) {
+          final edge = (t - 0.5).abs() * 2; // 1 = de frente, 0 = de canto
+          return Transform(
+            alignment: Alignment.center,
+            transform: Matrix4.identity()..scaleByDouble(0.2 + 0.8 * edge, 1, 1, 1),
+            // Pequeño latido al encontrar la pareja (una vez).
+            child: TweenAnimationBuilder<double>(
+              key: ValueKey(card.matched),
+              tween: Tween(begin: card.matched && !reduceMotion ? 1.12 : 1, end: 1),
+              duration: const Duration(milliseconds: 420),
+              curve: Curves.easeOutBack,
+              builder: (context, scale, child) => Transform.scale(scale: scale, child: child),
+              child: side(t >= 0.5),
             ),
-          ),
-          child: InkWell(
-            borderRadius: BorderRadius.circular(AppDimens.radiusMedium),
-            onTap: shown ? null : onTap,
-            child: Stack(
-              children: [
-                Positioned.fill(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: shown
-                        ? DrawingThumbnail(asset: drawing?.thumbnailAsset)
-                        : const FittedBox(child: Icon(Icons.question_mark_rounded, color: Colors.white)),
-                  ),
-                ),
-                if (card.matched)
-                  Positioned(
-                    top: 4,
-                    right: 4,
-                    child: Container(
-                      decoration: const BoxDecoration(color: AppColors.leaf, shape: BoxShape.circle),
-                      child: const Icon(Icons.check_rounded, color: Colors.white, size: 26),
-                    ),
-                  ),
-              ],
-            ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }

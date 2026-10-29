@@ -5,14 +5,21 @@ import '../learning_progress.dart';
 
 enum SoundCue {
   tap('sounds/tap.wav'),
+  select('sounds/select.wav'),
+  pop('sounds/pop.wav'),
   correct('sounds/correct.wav'),
   tryAgain('sounds/try_again.wav'),
-  celebrate('sounds/celebrate.wav');
+  saved('sounds/saved.wav'),
+  celebrate('sounds/celebrate.wav', important: true),
+  reward('sounds/reward.wav', important: true);
 
-  const SoundCue(this.asset);
+  const SoundCue(this.asset, {this.important = false});
 
   /// Ruta dentro de `assets/` (archivos generados por tools/make_sounds.py).
   final String asset;
+
+  /// Las celebraciones no se cortan con un toque.
+  final bool important;
 }
 
 /// Reproduce efectos de sonido locales.
@@ -29,26 +36,25 @@ abstract interface class Narrator {
   Future<void> stop();
 }
 
-/// Efectos con `audioplayers`. Un reproductor de baja latencia por sonido,
-/// creado al primer uso; volumen moderado.
+/// Efectos con `audioplayers`: UN solo reproductor de baja latencia, creado
+/// al primer uso. Cada efecto detiene el anterior, así nunca suenan varios a
+/// la vez. Volumen moderado.
 class AudioPlayersSoundEffects implements SoundEffects {
   static const volume = 0.5;
-  final _players = <SoundCue, AudioPlayer>{};
+  AudioPlayer? _player;
 
   @override
   Future<void> play(SoundCue cue) async {
-    final player = _players[cue] ??= AudioPlayer()..setPlayerMode(PlayerMode.lowLatency);
+    final player = _player ??= AudioPlayer()..setPlayerMode(PlayerMode.lowLatency);
     await player.stop();
     await player.play(AssetSource(cue.asset), volume: volume);
   }
 
   @override
   Future<void> release() async {
-    final players = _players.values.toList();
-    _players.clear();
-    for (final p in players) {
-      await p.dispose();
-    }
+    final player = _player;
+    _player = null;
+    await player?.dispose();
   }
 }
 
@@ -91,14 +97,27 @@ class DeviceTtsNarrator implements Narrator {
 /// niño (sonidos y voz por separado) y nunca deja que un fallo de audio
 /// interrumpa el juego.
 class LearningAudio {
-  LearningAudio({required this.effects, required this.narrator, required this.settings});
+  LearningAudio({
+    required this.effects,
+    required this.narrator,
+    required this.settings,
+    DateTime Function()? clock,
+  }) : _clock = clock ?? DateTime.now;
 
   final SoundEffects effects;
   final Narrator narrator;
   final LearningSettings Function() settings;
+  final DateTime Function() _clock;
+  DateTime? _importantUntil;
+
+  /// Tiempo durante el que una celebración no se interrumpe con un toque.
+  static const importantWindow = Duration(milliseconds: 900);
 
   Future<void> play(SoundCue cue) async {
     if (!settings().soundOn) return;
+    final now = _clock();
+    if (!cue.important && _importantUntil != null && now.isBefore(_importantUntil!)) return;
+    if (cue.important) _importantUntil = now.add(importantWindow);
     try {
       await effects.play(cue);
     } catch (_) {

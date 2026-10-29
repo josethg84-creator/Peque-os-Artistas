@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 
 import '../models/drawing_catalog.dart';
 import '../navigation/app_routes.dart';
+import '../services/app_services.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_dimens.dart';
 import '../widgets/adult_gate.dart';
 import '../widgets/app_logo.dart';
 import '../widgets/big_action_button.dart';
 import '../widgets/catalog_builder.dart';
+import '../widgets/doodle_background.dart';
+import '../widgets/kid_icon_button.dart';
+import '../widgets/mascot.dart';
 import '../widgets/menu_tile.dart';
 
 /// Pantalla de inicio: el botón principal abre un dibujo para colorear con un
@@ -44,47 +48,50 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: CatalogBuilder(
-          builder: (context, catalog) => LayoutBuilder(
-            builder: (context, constraints) {
-              final wide = constraints.maxWidth > constraints.maxHeight && constraints.maxWidth >= 600;
-              final header = _Header(compact: wide && constraints.maxHeight < 500);
-              final actions = _Actions(onStart: () => _startPainting(catalog));
-              return Stack(
-                children: [
-                  Center(
-                    child: SingleChildScrollView(
-                      padding: const EdgeInsets.fromLTRB(
-                        AppDimens.pagePadding,
-                        64,
-                        AppDimens.pagePadding,
-                        AppDimens.pagePadding,
-                      ),
-                      child: ConstrainedBox(
-                        constraints: const BoxConstraints(maxWidth: AppDimens.maxContentWidth),
-                        child: wide
-                            ? Row(
-                                children: [
-                                  Expanded(flex: 4, child: header),
-                                  const SizedBox(width: AppDimens.gapLarge),
-                                  Expanded(flex: 5, child: actions),
-                                ],
-                              )
-                            : Column(
-                                children: [
-                                  header,
-                                  const SizedBox(height: AppDimens.gapLarge),
-                                  actions,
-                                ],
-                              ),
+      body: DoodleBackground(
+        child: SafeArea(
+          child: CatalogBuilder(
+            builder: (context, catalog) => LayoutBuilder(
+              builder: (context, constraints) {
+                final wide = constraints.maxWidth > constraints.maxHeight && constraints.maxWidth >= 600;
+                final header = _Header(compact: wide && constraints.maxHeight < 500);
+                final actions = _Actions(onStart: () => _startPainting(catalog));
+                return Stack(
+                  children: [
+                    Center(
+                      child: SingleChildScrollView(
+                        padding: const EdgeInsets.fromLTRB(
+                          AppDimens.pagePadding,
+                          64,
+                          AppDimens.pagePadding,
+                          AppDimens.pagePadding,
+                        ),
+                        child: ConstrainedBox(
+                          constraints: const BoxConstraints(maxWidth: AppDimens.maxContentWidth),
+                          child: wide
+                              ? Row(
+                                  children: [
+                                    Expanded(flex: 4, child: header),
+                                    const SizedBox(width: AppDimens.gapLarge),
+                                    Expanded(flex: 5, child: actions),
+                                  ],
+                                )
+                              : Column(
+                                  children: [
+                                    header,
+                                    const SizedBox(height: AppDimens.gapLarge),
+                                    actions,
+                                  ],
+                                ),
+                        ),
                       ),
                     ),
-                  ),
-                  Positioned(top: 8, right: 8, child: _AdultAccessButton(onConfirmed: _openAdultZone)),
-                ],
-              );
-            },
+                    const Positioned(top: 8, left: 8, child: _SoundToggle()),
+                    Positioned(top: 8, right: 8, child: _AdultAccessButton(onConfirmed: _openAdultZone)),
+                  ],
+                );
+              },
+            ),
           ),
         ),
       ),
@@ -113,11 +120,8 @@ class _Header extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 6),
-        Text(
-          '¡Hola! ¿Qué quieres pintar hoy?',
-          textAlign: TextAlign.center,
-          style: text.titleLarge?.copyWith(color: AppColors.inkSoft),
-        ),
+        const SizedBox(height: 4),
+        MascotBubble(text: '¡Hola! ¿Qué quieres pintar hoy?', size: compact ? 56 : 76),
       ],
     );
   }
@@ -192,6 +196,31 @@ class _Actions extends StatelessWidget {
   }
 }
 
+/// Interruptor global de sonidos (el mismo ajuste que en «Aprender jugando»):
+/// silencia también los efectos al pintar.
+class _SoundToggle extends StatelessWidget {
+  const _SoundToggle();
+
+  @override
+  Widget build(BuildContext context) {
+    final learning = AppServices.of(context).learning;
+    return ListenableBuilder(
+      listenable: learning,
+      builder: (context, _) {
+        final on = learning.settings.soundOn;
+        return KidIconButton(
+          icon: on ? Icons.volume_up_rounded : Icons.volume_off_rounded,
+          label: on ? 'Sonidos activados' : 'Sonidos desactivados',
+          color: on ? AppColors.sky : AppColors.inkSoft,
+          size: 52,
+          selected: on,
+          onPressed: () => learning.updateSettings(learning.settings.copyWith(soundOn: !on)),
+        );
+      },
+    );
+  }
+}
+
 /// Acceso discreto para adultos: hay que mantenerlo pulsado y después
 /// superar la verificación.
 class _AdultAccessButton extends StatelessWidget {
@@ -206,6 +235,7 @@ class _AdultAccessButton extends StatelessWidget {
       label: 'Zona para adultos',
       hint: 'Mantén pulsado para entrar',
       excludeSemantics: true,
+      onLongPress: onConfirmed,
       child: Tooltip(
         message: 'Adultos: mantén pulsado',
         triggerMode: TooltipTriggerMode.tap,

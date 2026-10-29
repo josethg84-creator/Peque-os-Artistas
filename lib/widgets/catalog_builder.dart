@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../models/drawing_catalog.dart';
 import '../services/app_services.dart';
-import '../theme/app_colors.dart';
+import 'motion/delayed_loading.dart';
 
 /// Carga el catálogo una sola vez (el servicio lo guarda en caché) y muestra
 /// un indicador mientras tanto.
@@ -30,9 +30,7 @@ class _CatalogBuilderState extends State<CatalogBuilder> {
       future: _future,
       builder: (context, snapshot) {
         if (snapshot.connectionState != ConnectionState.done) {
-          return const Center(
-            child: CircularProgressIndicator(color: AppColors.coral, semanticsLabel: 'Cargando'),
-          );
+          return const DelayedLoading(message: 'Preparando tus colores…');
         }
         return widget.builder(context, snapshot.data ?? DrawingCatalog.empty);
       },

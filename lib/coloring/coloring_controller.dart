@@ -13,6 +13,20 @@ import 'palette.dart';
 
 enum ColoringTool { paint, eraser }
 
+/// Último relleno hecho con un toque (para la animación de relleno). No
+/// afecta a los datos: el color ya está aplicado cuando se crea el evento.
+class FillEvent {
+  const FillEvent({required this.serial, required this.regionId, this.from, this.to, this.origin});
+
+  final int serial;
+  final String regionId;
+  final Color? from;
+  final Color? to;
+
+  /// Punto tocado (coordenadas del dibujo), si se conoce.
+  final Offset? origin;
+}
+
 enum ColoringStatus { loading, ready, error }
 
 /// Estado del guardado automático, visible en la pantalla.
@@ -165,7 +179,7 @@ class ColoringController extends ChangeNotifier implements RegionColors {
   Color? get _paintValue => _tool == ColoringTool.eraser || _color.restoresOriginal ? null : _color.color;
 
   /// Pinta (o borra) la región [regionId]. Devuelve `true` si cambió algo.
-  bool tapRegion(String regionId) {
+  bool tapRegion(String regionId, {Offset? origin}) {
     final drawing = _drawing;
     if (drawing == null || !drawing.hasRegion(regionId)) return false;
     _selectedRegion = regionId;
@@ -175,8 +189,12 @@ class ColoringController extends ChangeNotifier implements RegionColors {
       _notify();
       return false;
     }
+    final wasComplete = isComplete;
     _apply({regionId: after});
     _history.record(ColorEdit({regionId: (before, after)}));
+    _lastFill = FillEvent(serial: ++_fillSerial, regionId: regionId, from: before, to: after, origin: origin);
+    // Solo se celebra al pasar de «sin terminar» a «terminado» con un toque.
+    if (!wasComplete && isComplete) _completionSerial++;
     _changed();
     return true;
   }
@@ -184,8 +202,25 @@ class ColoringController extends ChangeNotifier implements RegionColors {
   /// Toca en coordenadas del viewBox; [tolerance] ayuda con zonas estrechas.
   String? tapAt(Offset viewBoxPoint, {double tolerance = 0}) {
     final id = _drawing?.hitTest(viewBoxPoint, tolerance: tolerance);
-    if (id != null) tapRegion(id);
+    if (id != null) tapRegion(id, origin: viewBoxPoint);
     return id;
+  }
+
+  int _fillSerial = 0;
+  FillEvent? _lastFill;
+  int _completionSerial = 0;
+
+  /// Último relleno (para animarlo en la vista).
+  FillEvent? get lastFill => _lastFill;
+
+  /// Aumenta cada vez que un toque termina el dibujo.
+  int get completionSerial => _completionSerial;
+
+  /// Todas las zonas (sin contar el fondo) tienen color.
+  bool get isComplete {
+    final d = _drawing;
+    if (d == null) return false;
+    return d.regions.every((r) => r.id == VectorDrawing.backgroundId || _colors.containsKey(r.id));
   }
 
   void undo() {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../theme/app_dimens.dart';
+import 'motion/staggered_entrance.dart';
 
 /// Rejilla que calcula cuántas columnas caben según el ancho disponible,
 /// para adaptarse a teléfonos, tabletas y orientación horizontal.
@@ -50,7 +51,7 @@ class AdaptiveGrid extends StatelessWidget {
             mainAxisExtent: tileHeight == null ? null : tileHeight! * textScale,
           ),
           itemCount: itemCount,
-          itemBuilder: itemBuilder,
+          itemBuilder: (context, i) => StaggeredEntrance.wrap(i, itemBuilder(context, i)),
         );
       },
     );
@@ -102,7 +103,7 @@ class AdaptiveSliverGrid extends StatelessWidget {
             mainAxisExtent: tileHeight == null ? null : tileHeight! * textScale,
           ),
           itemCount: itemCount,
-          itemBuilder: itemBuilder,
+          itemBuilder: (context, i) => StaggeredEntrance.wrap(i, itemBuilder(context, i)),
         ),
       ),
     );

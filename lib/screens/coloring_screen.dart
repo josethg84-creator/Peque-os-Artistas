@@ -144,45 +144,49 @@ class _ColoringSessionState extends State<_ColoringSession> {
       context: context,
       showDragHandle: true,
       isScrollControlled: true,
-      builder: (sheetContext) => SafeArea(
-        child: ConstrainedBox(
-          constraints: BoxConstraints(maxHeight: MediaQuery.sizeOf(sheetContext).height * 0.7),
-          child: GridView.extent(
-            shrinkWrap: true,
-            maxCrossAxisExtent: 150,
-            padding: const EdgeInsets.all(16),
-            mainAxisSpacing: 12,
-            crossAxisSpacing: 12,
-            children: [
-              for (final d in others)
-                Semantics(
-                  button: true,
-                  label: d.name,
-                  excludeSemantics: true,
-                  child: Material(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(AppDimens.radiusMedium),
-                    elevation: 1,
-                    child: InkWell(
+      builder: (sheetContext) {
+        void open(Drawing d) {
+          Navigator.of(sheetContext).pop();
+          // Sustituye la pantalla: el dibujo actual se guarda al cerrarse y el
+          // nuevo empieza con su propio estado.
+          Navigator.of(context).pushReplacementNamed(AppRoutes.coloring, arguments: ColoringArgs(d.id));
+        }
+
+        return SafeArea(
+          child: ConstrainedBox(
+            constraints: BoxConstraints(maxHeight: MediaQuery.sizeOf(sheetContext).height * 0.7),
+            child: GridView.extent(
+              shrinkWrap: true,
+              maxCrossAxisExtent: 150,
+              padding: const EdgeInsets.all(16),
+              mainAxisSpacing: 12,
+              crossAxisSpacing: 12,
+              children: [
+                for (final d in others)
+                  Semantics(
+                    button: true,
+                    label: d.name,
+                    excludeSemantics: true,
+                    onTap: () => open(d),
+                    child: Material(
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(AppDimens.radiusMedium),
-                      onTap: () {
-                        Navigator.of(sheetContext).pop();
-                        // Sustituye la pantalla: el dibujo actual se guarda
-                        // al cerrarse y el nuevo empieza con su propio estado.
-                        Navigator.of(context)
-                            .pushReplacementNamed(AppRoutes.coloring, arguments: ColoringArgs(d.id));
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: DrawingThumbnail(asset: d.thumbnailAsset),
+                      elevation: 1,
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(AppDimens.radiusMedium),
+                        onTap: () => open(d),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: DrawingThumbnail(asset: d.thumbnailAsset),
+                        ),
                       ),
                     ),
                   ),
-                ),
-            ],
+              ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 

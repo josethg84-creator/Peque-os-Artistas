@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/motion/kid_page_transitions.dart';
 import 'app_colors.dart';
 import 'app_dimens.dart';
 
@@ -26,7 +27,14 @@ abstract final class AppTheme {
       materialTapTargetSize: MaterialTapTargetSize.padded,
       // Transiciones suaves sin efectos intensos.
       pageTransitionsTheme: const PageTransitionsTheme(
-        builders: {TargetPlatform.android: FadeForwardsPageTransitionsBuilder()},
+        builders: {
+          TargetPlatform.android: KidPageTransitionsBuilder(),
+          TargetPlatform.iOS: KidPageTransitionsBuilder(),
+          TargetPlatform.linux: KidPageTransitionsBuilder(),
+          TargetPlatform.macOS: KidPageTransitionsBuilder(),
+          TargetPlatform.windows: KidPageTransitionsBuilder(),
+          TargetPlatform.fuchsia: KidPageTransitionsBuilder(),
+        },
       ),
       filledButtonTheme: FilledButtonThemeData(
         style: FilledButton.styleFrom(

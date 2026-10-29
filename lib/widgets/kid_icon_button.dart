@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'motion/pressable.dart';
+
 import '../theme/app_colors.dart';
 import '../theme/app_dimens.dart';
 
@@ -36,29 +38,33 @@ class KidIconButton extends StatelessWidget {
     final enabled = onPressed != null;
     final fg = enabled ? Colors.white : AppColors.inkSoft;
     final bg = enabled ? color : const Color(0xFFE4E1EA);
-    final button = Semantics(
-      button: true,
-      enabled: enabled,
-      selected: selected,
-      label: label,
-      excludeSemantics: true,
-      child: Tooltip(
-        message: label,
-        child: Material(
-          color: bg,
-          shape: CircleBorder(
-            side: BorderSide(color: selected ? AppColors.ink : Colors.transparent, width: 4),
-          ),
-          elevation: enabled ? 2 : 0,
-          child: InkWell(
-            customBorder: const CircleBorder(),
-            onTap: onPressed,
-            child: SizedBox.square(
-              dimension: size,
-              child: Center(
-                child: IconTheme(
-                  data: IconThemeData(color: fg, size: size * 0.5),
-                  child: iconWidget ?? Icon(icon),
+    final button = Pressable(
+      enabled: onPressed != null,
+      child: Semantics(
+        button: true,
+        enabled: enabled,
+        selected: selected,
+        label: label,
+        excludeSemantics: true,
+        onTap: guardRoute(context, onPressed),
+        child: Tooltip(
+          message: label,
+          child: Material(
+            color: bg,
+            shape: CircleBorder(
+              side: BorderSide(color: selected ? AppColors.ink : Colors.transparent, width: 4),
+            ),
+            elevation: enabled ? 2 : 0,
+            child: InkWell(
+              customBorder: const CircleBorder(),
+              onTap: guardRoute(context, onPressed),
+              child: SizedBox.square(
+                dimension: size,
+                child: Center(
+                  child: IconTheme(
+                    data: IconThemeData(color: fg, size: size * 0.5),
+                    child: iconWidget ?? Icon(icon),
+                  ),
                 ),
               ),
             ),

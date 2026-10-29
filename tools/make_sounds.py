@@ -62,6 +62,17 @@ SOUNDS = {
     "correct": ([note(1046.5, 0, 0.16), note(1318.5, 0.12, 0.28)], 0.42),
     # Error: neutro y grave, nada de «zumbidos» de castigo.
     "try_again": ([note(392, 0, 0.18, gain=0.8, harmonic=0.0), note(349.2, 0.14, 0.22, gain=0.8, harmonic=0.0)], 0.38),
+    # Elegir un color: un «tic» agudo y muy breve.
+    "select": ([note(1318.5, 0, 0.06, gain=0.7, harmonic=0.0)], 0.08),
+    # Rellenar una zona: «pop» suave y grave, casi imperceptible.
+    "pop": ([note(587.3, 0, 0.09, gain=0.8, harmonic=0.3)], 0.11),
+    # Guardado manual: dos notas descendentes suaves (sol-do).
+    "saved": ([note(784.0, 0, 0.14, gain=0.8), note(523.3, 0.1, 0.22, gain=0.8)], 0.34),
+    # Pegatina nueva: arpegio brillante algo más largo que la celebración.
+    "reward": ([
+        note(659.3, 0.00, 0.22), note(784.0, 0.10, 0.22), note(1046.5, 0.20, 0.25),
+        note(1318.5, 0.32, 0.3), note(1568.0, 0.44, 0.6), note(2093.0, 0.44, 0.6, gain=0.35),
+    ], 1.1),
     # Celebración al terminar: arpegio do-mi-sol-do.
     "celebrate": ([
         note(523.3, 0.00, 0.25), note(659.3, 0.12, 0.25), note(784.0, 0.24, 0.3),

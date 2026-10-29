@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../widgets/motion/pressable.dart';
+
 import '../../theme/app_colors.dart';
 import '../../theme/app_dimens.dart';
 import '../learning_controller.dart';
@@ -91,36 +93,39 @@ class _Toggle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final fg = selected ? Colors.white : AppColors.ink;
-    return Semantics(
-      button: true,
-      selected: selected,
-      label: semantics,
-      excludeSemantics: true,
-      child: Material(
-        color: selected ? color : AppColors.surface,
-        shape: StadiumBorder(side: BorderSide(color: selected ? AppColors.ink : color, width: 2)),
-        child: InkWell(
-          customBorder: const StadiumBorder(),
-          onTap: onTap,
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(minHeight: 56),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 14),
-              child: IconTheme(
-                data: IconThemeData(color: fg),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    leading,
-                    const SizedBox(width: 6),
-                    Flexible(
-                      child: Text(
-                        label,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: fg),
+    return Pressable(
+      child: Semantics(
+        button: true,
+        selected: selected,
+        label: semantics,
+        excludeSemantics: true,
+        onTap: onTap,
+        child: Material(
+          color: selected ? color : AppColors.surface,
+          shape: StadiumBorder(side: BorderSide(color: selected ? AppColors.ink : color, width: 2)),
+          child: InkWell(
+            customBorder: const StadiumBorder(),
+            onTap: onTap,
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(minHeight: 56),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 14),
+                child: IconTheme(
+                  data: IconThemeData(color: fg),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      leading,
+                      const SizedBox(width: 6),
+                      Flexible(
+                        child: Text(
+                          label,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: fg),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),

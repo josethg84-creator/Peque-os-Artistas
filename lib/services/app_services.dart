@@ -26,6 +26,11 @@ class AppServices extends InheritedWidget {
   final LearningController learning;
   final LearningAudio audio;
 
+  /// Igual que [of], pero sin exigirlos (componentes que también se usan
+  /// fuera de la app completa, p. ej. en pruebas).
+  static AppServices? maybeOf(BuildContext context) =>
+      context.dependOnInheritedWidgetOfExactType<AppServices>();
+
   static AppServices of(BuildContext context) {
     final services = context.dependOnInheritedWidgetOfExactType<AppServices>();
     assert(services != null, 'AppServices no está en el árbol de widgets');

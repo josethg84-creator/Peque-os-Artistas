@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'motion/pressable.dart';
+
 import '../models/drawing.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_dimens.dart';
@@ -22,55 +24,58 @@ class DrawingCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final accent = drawing.category.color;
-    return Semantics(
-      button: true,
-      label: [
-        '${drawing.name}. Dificultad ${drawing.difficulty.label.toLowerCase()}',
-        if (painted) paintedLabel,
-      ].join('. '),
-      hint: 'Abre el dibujo para colorear',
-      excludeSemantics: true,
-      child: Material(
-        color: AppColors.surface,
-        elevation: 2,
-        borderRadius: BorderRadius.circular(AppDimens.radiusLarge),
-        child: InkWell(
+    return Pressable(
+      child: Semantics(
+        button: true,
+        label: [
+          '${drawing.name}. Dificultad ${drawing.difficulty.label.toLowerCase()}',
+          if (painted) paintedLabel,
+        ].join('. '),
+        hint: 'Abre el dibujo para colorear',
+        excludeSemantics: true,
+        onTap: guardRoute(context, onTap),
+        child: Material(
+          color: AppColors.surface,
+          elevation: 2,
           borderRadius: BorderRadius.circular(AppDimens.radiusLarge),
-          onTap: onTap,
-          child: Padding(
-            padding: const EdgeInsets.all(12),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Expanded(
-                  child: Stack(
+          child: InkWell(
+            borderRadius: BorderRadius.circular(AppDimens.radiusLarge),
+            onTap: guardRoute(context, onTap),
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Expanded(
+                    child: Stack(
+                      children: [
+                        Positioned.fill(child: DrawingThumbnail(asset: drawing.thumbnailAsset)),
+                        if (painted) Positioned(top: 0, right: 0, child: _PaintedBadge(color: accent)),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    drawing.name,
+                    textAlign: TextAlign.center,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                  const SizedBox(height: 2),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Positioned.fill(child: DrawingThumbnail(asset: drawing.thumbnailAsset)),
-                      if (painted) Positioned(top: 0, right: 0, child: _PaintedBadge(color: accent)),
+                      for (var i = 0; i < 3; i++)
+                        Icon(
+                          i < drawing.difficulty.stars ? Icons.star_rounded : Icons.star_outline_rounded,
+                          size: 22,
+                          color: i < drawing.difficulty.stars ? accent : AppColors.inkSoft,
+                        ),
                     ],
                   ),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  drawing.name,
-                  textAlign: TextAlign.center,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
-                const SizedBox(height: 2),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    for (var i = 0; i < 3; i++)
-                      Icon(
-                        i < drawing.difficulty.stars ? Icons.star_rounded : Icons.star_outline_rounded,
-                        size: 22,
-                        color: i < drawing.difficulty.stars ? accent : AppColors.inkSoft,
-                      ),
-                  ],
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

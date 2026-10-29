@@ -13,6 +13,7 @@ import '../theme/app_dimens.dart';
 import '../widgets/adaptive_grid.dart';
 import '../widgets/catalog_builder.dart';
 import '../widgets/empty_state.dart';
+import '../widgets/motion/delayed_loading.dart';
 import '../widgets/friendly_date.dart';
 import '../widgets/kid_icon_button.dart';
 import '../widgets/kid_scaffold.dart';
@@ -127,7 +128,7 @@ class _SavedDrawingsScreenState extends State<SavedDrawingsScreen> {
           future: _report,
           builder: (context, snapshot) {
             if (snapshot.connectionState != ConnectionState.done) {
-              return const Center(child: CircularProgressIndicator(color: AppColors.grape));
+              return const DelayedLoading(message: 'Buscando tus dibujos…', color: AppColors.grape);
             }
             if (snapshot.hasError) {
               return EmptyState(
@@ -146,7 +147,8 @@ class _SavedDrawingsScreenState extends State<SavedDrawingsScreen> {
                 icon: Icons.palette_rounded,
                 color: AppColors.grape,
                 title: '¡Tu galería te espera!',
-                message: 'Pinta un dibujo y aparecerá aquí.',
+                message: 'Aquí aparecerán tus dibujos favoritos. ¡Pinta uno!',
+                showMascot: true,
                 actionLabel: 'Ir a pintar',
                 actionIcon: Icons.brush_rounded,
                 onAction: () => Navigator.of(context).pushReplacementNamed(AppRoutes.categories),
@@ -216,6 +218,7 @@ class _CreationCard extends StatelessWidget {
                 label: '${drawing.name}. ${done ? '¡Terminado!' : 'Sin terminar'}. $date',
                 hint: 'Sigue pintando',
                 excludeSemantics: true,
+                onTap: onOpen,
                 child: InkWell(
                   borderRadius: BorderRadius.circular(AppDimens.radiusMedium),
                   onTap: onOpen,

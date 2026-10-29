@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/motion/pressable.dart';
+
 import '../models/drawing.dart';
 import '../models/drawing_category.dart';
 import '../models/drawing_filter.dart';
@@ -239,44 +241,51 @@ class _BigChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final fg = data.selected ? Colors.white : AppColors.ink;
-    return Semantics(
-      button: true,
-      selected: data.selected,
-      label: data.label,
-      excludeSemantics: true,
-      child: Material(
-        color: data.selected ? data.color : AppColors.surface,
-        shape: StadiumBorder(
-          side: BorderSide(
-            color: data.selected ? AppColors.ink : data.color.withValues(alpha: 0.5),
-            width: 2,
+    return Pressable(
+      child: Semantics(
+        button: true,
+        selected: data.selected,
+        label: data.label,
+        excludeSemantics: true,
+        onTap: data.onTap,
+        child: Material(
+          color: data.selected ? data.color : AppColors.surface,
+          shape: StadiumBorder(
+            side: BorderSide(
+              color: data.selected ? AppColors.ink : data.color.withValues(alpha: 0.5),
+              width: 2,
+            ),
           ),
-        ),
-        child: InkWell(
-          customBorder: const StadiumBorder(),
-          onTap: data.onTap,
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(minHeight: 56),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  if (data.stars > 0)
-                    for (var i = 0; i < data.stars; i++)
-                      Icon(Icons.star_rounded, size: 22, color: data.selected ? Colors.white : AppColors.sun)
-                  else
-                    Icon(data.icon, size: 26, color: data.selected ? Colors.white : data.color),
-                  const SizedBox(width: 6),
-                  Text(
-                    data.label,
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: fg),
-                  ),
-                  if (data.selected) ...[
-                    const SizedBox(width: 4),
-                    const Icon(Icons.check_rounded, size: 22, color: Colors.white),
+          child: InkWell(
+            customBorder: const StadiumBorder(),
+            onTap: data.onTap,
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(minHeight: 56),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (data.stars > 0)
+                      for (var i = 0; i < data.stars; i++)
+                        Icon(
+                          Icons.star_rounded,
+                          size: 22,
+                          color: data.selected ? Colors.white : AppColors.sun,
+                        )
+                    else
+                      Icon(data.icon, size: 26, color: data.selected ? Colors.white : data.color),
+                    const SizedBox(width: 6),
+                    Text(
+                      data.label,
+                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: fg),
+                    ),
+                    if (data.selected) ...[
+                      const SizedBox(width: 4),
+                      const Icon(Icons.check_rounded, size: 22, color: Colors.white),
+                    ],
                   ],
-                ],
+                ),
               ),
             ),
           ),

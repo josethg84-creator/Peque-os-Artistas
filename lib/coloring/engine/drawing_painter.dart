@@ -13,10 +13,16 @@ abstract interface class RegionColors implements Listenable {
 /// SVG; después los detalles. Los contornos se pintan siempre encima del
 /// relleno de su región, así que nunca quedan tapados por el color.
 class DrawingPainter extends CustomPainter {
-  DrawingPainter({required this.drawing, required this.colors}) : super(repaint: colors);
+  DrawingPainter({required this.drawing, required this.colors, this.fill})
+    : super(repaint: fill == null ? colors : Listenable.merge([colors, fill]));
 
   final VectorDrawing drawing;
   final RegionColors colors;
+
+  /// Animación opcional del último relleno: el color nuevo se extiende en
+  /// círculo desde el punto tocado, recortado a la región. Solo es visual;
+  /// los contornos se pintan siempre encima.
+  final FillReveal? fill;
 
   static const unpainted = Color(0xFFFFFFFF);
 
@@ -52,9 +58,15 @@ class DrawingPainter extends CustomPainter {
       ..strokeJoin = StrokeJoin.round
       ..strokeCap = StrokeCap.round;
 
+    final reveal = this.fill;
+    final revealing = reveal != null && reveal.isActive;
     for (final region in drawing.regions) {
-      fill.color = colors.colorOf(region.id) ?? unpainted;
-      canvas.drawPath(region.path, fill);
+      if (revealing && reveal.regionId == region.id) {
+        _paintReveal(canvas, region, reveal, fill);
+      } else {
+        fill.color = colors.colorOf(region.id) ?? unpainted;
+        canvas.drawPath(region.path, fill);
+      }
       final strokeColor = region.strokeColor;
       if (strokeColor != null && region.strokeWidth > 0) {
         stroke
@@ -77,9 +89,35 @@ class DrawingPainter extends CustomPainter {
     canvas.restore();
   }
 
+  void _paintReveal(Canvas canvas, DrawingRegion region, FillReveal reveal, Paint fill) {
+    fill.color = reveal.from ?? unpainted;
+    canvas.drawPath(region.path, fill);
+    final b = region.bounds;
+    final origin = reveal.origin ?? b.center;
+    final corners = [b.topLeft, b.topRight, b.bottomLeft, b.bottomRight];
+    final maxRadius = corners.map((c) => (c - origin).distance).reduce((a, c) => a > c ? a : c);
+    canvas.save();
+    canvas.clipPath(region.path);
+    fill.color = reveal.to ?? unpainted;
+    canvas.drawCircle(origin, maxRadius * reveal.progress, fill);
+    canvas.restore();
+  }
+
   @override
   bool shouldRepaint(DrawingPainter oldDelegate) =>
-      oldDelegate.drawing != drawing || oldDelegate.colors != colors;
+      oldDelegate.drawing != drawing || oldDelegate.colors != colors || oldDelegate.fill != fill;
+}
+
+/// Estado de la animación de relleno que consulta el pintor.
+abstract interface class FillReveal implements Listenable {
+  bool get isActive;
+  String get regionId;
+  Color? get from;
+  Color? get to;
+  Offset? get origin;
+
+  /// 0 → solo el color anterior; 1 → región completa con el nuevo.
+  double get progress;
 }
 
 /// Colores fijos (p. ej. la miniatura de un dibujo guardado).

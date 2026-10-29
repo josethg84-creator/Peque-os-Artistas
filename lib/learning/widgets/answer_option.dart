@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../widgets/motion/pressable.dart';
+
 import '../../theme/app_colors.dart';
 import '../../theme/app_dimens.dart';
 
@@ -42,70 +44,73 @@ class AnswerOption extends StatelessWidget {
       OptionState.wrong => ', inténtalo con otra',
       _ => '',
     };
-    return Semantics(
-      button: true,
-      enabled: onTap != null,
-      label: '$label$stateText',
-      excludeSemantics: true,
-      child: AnimatedOpacity(
-        duration: duration,
-        opacity: switch (state) {
-          OptionState.wrong => 0.45,
-          OptionState.faded => 0.35,
-          _ => 1,
-        },
-        child: AnimatedScale(
+    return Pressable(
+      child: Semantics(
+        button: true,
+        enabled: onTap != null,
+        label: '$label$stateText',
+        excludeSemantics: true,
+        onTap: onTap,
+        child: AnimatedOpacity(
           duration: duration,
-          curve: Curves.easeOutBack,
-          scale: state == OptionState.correct ? 1.05 : 1,
-          child: Material(
-            color: AppColors.surface,
-            elevation: state == OptionState.correct ? 4 : 2,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(AppDimens.radiusLarge),
-              side: BorderSide(color: border, width: width),
-            ),
-            child: InkWell(
-              borderRadius: BorderRadius.circular(AppDimens.radiusLarge),
-              onTap: onTap,
-              child: Stack(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(12),
-                    child: Column(
-                      children: [
-                        Expanded(child: Center(child: child)),
-                        if (caption != null)
-                          Padding(
-                            padding: const EdgeInsets.only(top: 6),
-                            child: FittedBox(
-                              fit: BoxFit.scaleDown,
-                              child: Text(
-                                caption!,
-                                style: const TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w800,
-                                  color: AppColors.ink,
+          opacity: switch (state) {
+            OptionState.wrong => 0.45,
+            OptionState.faded => 0.35,
+            _ => 1,
+          },
+          child: AnimatedScale(
+            duration: duration,
+            curve: Curves.easeOutBack,
+            scale: state == OptionState.correct ? 1.05 : 1,
+            child: Material(
+              color: AppColors.surface,
+              elevation: state == OptionState.correct ? 4 : 2,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(AppDimens.radiusLarge),
+                side: BorderSide(color: border, width: width),
+              ),
+              child: InkWell(
+                borderRadius: BorderRadius.circular(AppDimens.radiusLarge),
+                onTap: onTap,
+                child: Stack(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(12),
+                      child: Column(
+                        children: [
+                          Expanded(child: Center(child: child)),
+                          if (caption != null)
+                            Padding(
+                              padding: const EdgeInsets.only(top: 6),
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  caption!,
+                                  style: const TextStyle(
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.w800,
+                                    color: AppColors.ink,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                  if (state == OptionState.correct)
-                    const Positioned(
-                      top: 6,
-                      right: 6,
-                      child: _Badge(icon: Icons.check_rounded, color: AppColors.leaf),
-                    ),
-                  if (state == OptionState.wrong)
-                    const Positioned(
-                      top: 6,
-                      right: 6,
-                      child: _Badge(icon: Icons.close_rounded, color: AppColors.inkSoft),
-                    ),
-                ],
+                    if (state == OptionState.correct)
+                      const Positioned(
+                        top: 6,
+                        right: 6,
+                        child: _Badge(icon: Icons.check_rounded, color: AppColors.leaf),
+                      ),
+                    if (state == OptionState.wrong)
+                      const Positioned(
+                        top: 6,
+                        right: 6,
+                        child: _Badge(icon: Icons.close_rounded, color: AppColors.inkSoft),
+                      ),
+                  ],
+                ),
               ),
             ),
           ),

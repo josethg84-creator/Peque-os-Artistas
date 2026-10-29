@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'motion/pressable.dart';
+
 import '../theme/app_colors.dart';
 import '../theme/app_dimens.dart';
 
@@ -29,22 +31,25 @@ class MenuTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Semantics(
-      button: true,
-      label: badge == null ? label : '$label. $badge',
-      hint: semanticsHint,
-      excludeSemantics: true,
-      child: Material(
-        color: color.withValues(alpha: 0.16),
-        borderRadius: BorderRadius.circular(AppDimens.radiusLarge),
-        child: InkWell(
+    return Pressable(
+      child: Semantics(
+        button: true,
+        label: badge == null ? label : '$label. $badge',
+        hint: semanticsHint,
+        excludeSemantics: true,
+        onTap: guardRoute(context, onTap),
+        child: Material(
+          color: color.withValues(alpha: 0.16),
           borderRadius: BorderRadius.circular(AppDimens.radiusLarge),
-          onTap: onTap,
-          child: ConstrainedBox(
-            constraints: BoxConstraints(minHeight: horizontal ? 88 : 120),
-            child: Padding(
-              padding: EdgeInsets.all(horizontal ? 12 : AppDimens.gap),
-              child: horizontal ? _row(context) : _column(context),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(AppDimens.radiusLarge),
+            onTap: guardRoute(context, onTap),
+            child: ConstrainedBox(
+              constraints: BoxConstraints(minHeight: horizontal ? 88 : 120),
+              child: Padding(
+                padding: EdgeInsets.all(horizontal ? 12 : AppDimens.gap),
+                child: horizontal ? _row(context) : _column(context),
+              ),
             ),
           ),
         ),

@@ -5,8 +5,11 @@ import 'package:flutter/material.dart';
 
 import '../../services/app_services.dart';
 import '../../theme/app_dimens.dart';
+import '../../theme/app_motion.dart';
 import '../../widgets/kid_icon_button.dart';
 import '../../widgets/kid_scaffold.dart';
+import '../../widgets/motion/celebration.dart';
+import '../../widgets/motion/staggered_entrance.dart';
 import '../audio/learning_audio.dart';
 import '../games/quiz_game.dart';
 import '../learning_content.dart';
@@ -44,6 +47,9 @@ class _QuizGameScreenState<T> extends State<QuizGameScreen<T>> {
   late AppServices _services;
   bool _started = false;
   int _rounds = 0;
+
+  /// Cuenta los fallos para sacudir las opciones una vez por fallo.
+  int _misses = 0;
 
   @override
   void didChangeDependencies() {
@@ -88,6 +94,7 @@ class _QuizGameScreenState<T> extends State<QuizGameScreen<T>> {
         ),
       );
     } else {
+      _misses++;
       unawaited(audio.play(SoundCue.tryAgain));
       unawaited(audio.say('¡Inténtalo otra vez!'));
     }
@@ -171,59 +178,88 @@ class _QuizGameScreenState<T> extends State<QuizGameScreen<T>> {
       builder: (context, constraints) {
         final wide = constraints.maxWidth > 700;
         final columns = q.options.length == 3 ? (constraints.maxWidth < 330 ? 2 : 3) : (wide ? 4 : 2);
-        return SingleChildScrollView(
-          padding: const EdgeInsets.fromLTRB(
-            AppDimens.pagePadding,
-            4,
-            AppDimens.pagePadding,
-            AppDimens.pagePadding,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              QuestionProgress(done: _game.index + (_game.answered ? 1 : 0), total: _game.questionCount),
-              const SizedBox(height: 10),
-              InstructionCard(
-                text: spec.instruction(q.target),
-                visual: spec.prompt(context, q.target, _level),
-                accent: spec.accent,
-                onListen: voiceOn ? _sayInstruction : null,
-              ),
-              const SizedBox(height: 14),
-              GridView.count(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                crossAxisCount: columns,
-                mainAxisSpacing: 14,
-                crossAxisSpacing: 14,
-                childAspectRatio: spec.caption(q.target, _level) != null ? 0.82 : 1,
-                children: [
-                  for (final (i, option) in q.options.indexed)
-                    AnswerOption(
-                      key: ValueKey('${_game.index}-${spec.name(option)}'),
-                      label: spec.name(option),
-                      caption: spec.caption(option, _level),
+        // Cada pregunta entra con un desvanecimiento suave (una sola copia en
+        // pantalla: no hay dos preguntas a la vez durante la transición).
+        return StaggeredEntrance(
+          key: ValueKey('pregunta-${_game.index}-$_rounds'),
+          index: 0,
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.fromLTRB(
+              AppDimens.pagePadding,
+              4,
+              AppDimens.pagePadding,
+              AppDimens.pagePadding,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                QuestionProgress(done: _game.index + (_game.answered ? 1 : 0), total: _game.questionCount),
+                const SizedBox(height: 10),
+                Stack(
+                  children: [
+                    InstructionCard(
+                      text: spec.instruction(q.target),
+                      visual: _popIn(context, spec.prompt(context, q.target, _level)),
                       accent: spec.accent,
-                      state: _stateOf(option),
-                      onTap: _game.answered ? null : () => _choose(option),
-                      child: spec.option(context, option, _level, i),
+                      onListen: voiceOn ? _sayInstruction : null,
                     ),
-                ],
-              ),
-              const SizedBox(height: 14),
-              if (_game.answered)
-                FeedbackPanel.success(
-                  title: _praise[_game.index % _praise.length],
-                  message: spec.explanation(q.target),
-                  actionLabel: _game.isLastQuestion ? '¡Terminar!' : 'Siguiente',
-                  onAction: _next,
-                )
-              else if (_showTryAgain)
-                const FeedbackPanel.tryAgain(),
-            ],
+                    // Estrellas que suben al acertar (una vez por pregunta).
+                    if (_game.answered)
+                      Positioned.fill(child: RisingStars(key: ValueKey('estrellas-${_game.index}'))),
+                  ],
+                ),
+                const SizedBox(height: 14),
+                Shake(
+                  trigger: _misses,
+                  child: GridView.count(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    crossAxisCount: columns,
+                    mainAxisSpacing: 14,
+                    crossAxisSpacing: 14,
+                    childAspectRatio: spec.caption(q.target, _level) != null ? 0.82 : 1,
+                    children: [
+                      for (final (i, option) in q.options.indexed)
+                        AnswerOption(
+                          key: ValueKey('${_game.index}-${spec.name(option)}'),
+                          label: spec.name(option),
+                          caption: spec.caption(option, _level),
+                          accent: spec.accent,
+                          state: _stateOf(option),
+                          onTap: _game.answered ? null : () => _choose(option),
+                          child: spec.option(context, option, _level, i),
+                        ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 14),
+                if (_game.answered)
+                  FeedbackPanel.success(
+                    title: _praise[_game.index % _praise.length],
+                    message: spec.explanation(q.target),
+                    actionLabel: _game.isLastQuestion ? '¡Terminar!' : 'Siguiente',
+                    onAction: _next,
+                  )
+                else if (_showTryAgain)
+                  const FeedbackPanel.tryAgain(),
+              ],
+            ),
           ),
         );
       },
+    );
+  }
+
+  /// El modelo de la pregunta (color, forma o animal) aparece con un pequeño salto.
+  Widget? _popIn(BuildContext context, Widget? visual) {
+    if (visual == null || AppMotion.reduced(context)) return visual;
+    return TweenAnimationBuilder<double>(
+      key: ValueKey('modelo-${_game.index}-$_rounds'),
+      tween: Tween(begin: 0.5, end: 1),
+      duration: const Duration(milliseconds: 450),
+      curve: Curves.elasticOut,
+      builder: (context, t, child) => Transform.scale(scale: t, child: child),
+      child: visual,
     );
   }
 
