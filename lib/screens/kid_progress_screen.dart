@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../navigation/app_routes.dart';
+import '../learning/learning_level.dart';
 import '../services/app_services.dart';
 import '../widgets/catalog_builder.dart';
 
@@ -36,14 +37,14 @@ class KidProgressScreen extends StatelessWidget {
                 _Panel(
                   title: '🎨 Tus aventuras',
                   child: Column(children: [
-                    for (final game in learning.progress.gameStats.entries)
+                    for (final game in GameId.values)
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 7),
                         child: Row(children: [
                           const Icon(Icons.extension_rounded, color: Color(0xFF7C70DE)),
                           const SizedBox(width: 10),
-                          Expanded(child: Text(game.key.title, style: const TextStyle(fontWeight: FontWeight.w700))),
-                          Text('${game.value.sessions} partidas', style: const TextStyle(color: Color(0xFF7B638A))),
+                          Expanded(child: Text(game.title, style: const TextStyle(fontWeight: FontWeight.w700))),
+                          Text('${learning.progress.game(game).sessions} partidas', style: const TextStyle(color: Color(0xFF7B638A))),
                         ]),
                       ),
                   ]),
