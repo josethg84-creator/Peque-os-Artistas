@@ -67,6 +67,7 @@ DrawingLoader diskDrawingLoader([Map<String, String> extra = const {}]) =>
 /// Audio simulado de la última app montada (para comprobar sonidos y voz).
 RecordingSoundEffects? lastSounds;
 RecordingNarrator? lastNarrator;
+RecordingMusic? lastMusic;
 
 Future<void> pumpApp(
   WidgetTester tester, {
@@ -80,13 +81,19 @@ Future<void> pumpApp(
   await controller.load();
   final sounds = lastSounds = RecordingSoundEffects();
   final narrator = lastNarrator = RecordingNarrator();
+  final music = lastMusic = RecordingMusic();
   await tester.pumpWidget(
     PequenosArtistasApp(
       catalogService: service ?? realCatalogService(),
       drawingLoader: loader ?? diskDrawingLoader(),
       creationStore: store ?? InMemoryCreationStore(),
       learningController: controller,
-      learningAudio: LearningAudio(effects: sounds, narrator: narrator, settings: () => controller.settings),
+      learningAudio: LearningAudio(
+        effects: sounds,
+        narrator: narrator,
+        music: music,
+        settings: () => controller.settings,
+      ),
     ),
   );
   await tester.pumpAndSettle();

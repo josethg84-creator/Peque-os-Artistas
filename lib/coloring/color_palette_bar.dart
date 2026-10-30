@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../theme/app_colors.dart';
 import '../learning/audio/learning_audio.dart';
-import '../services/app_services.dart';
+import '../audio/ui_sounds.dart';
 import '../theme/app_motion.dart';
 import '../widgets/motion/pressable.dart';
 import 'coloring_controller.dart';
@@ -29,16 +29,15 @@ class ColorPaletteBar extends StatelessWidget {
         child: Flex(
           direction: axis,
           children: [
-            for (final c in kidPalette)
+            for (final (i, c) in kidPalette.indexed)
               Padding(
                 padding: const EdgeInsets.all(5),
                 child: _Swatch(
                   color: c,
                   selected: controller.tool == ColoringTool.paint && controller.color == c,
-                  onTap: () {
-                    controller.selectColor(c);
-                    AppServices.maybeOf(context)?.audio.play(SoundCue.select);
-                  },
+                  // Cada color tiene su nota (escala pentatónica): elegir colores
+                  // suena como una pequeña melodía.
+                  onTap: withSound(context, SoundCue.color, () => controller.selectColor(c), variant: i)!,
                 ),
               ),
           ],

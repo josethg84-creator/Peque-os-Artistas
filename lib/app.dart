@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'learning/audio/learning_audio.dart';
@@ -38,15 +40,65 @@ class PequenosArtistasApp extends StatelessWidget {
       creations: creationStore,
       learning: learningController,
       audio: learningAudio,
-      child: MaterialApp(
-        title: 'Pequeños Artistas',
-        debugShowCheckedModeBanner: false,
-        theme: AppTheme.light(),
-        initialRoute: AppRoutes.home,
-        onGenerateRoute: AppRouter.onGenerateRoute,
-        builder: (context, child) =>
-            MediaQuery.withClampedTextScaling(maxScaleFactor: maxTextScale, child: child!),
+      child: _AudioBinding(
+        audio: learningAudio,
+        settings: learningController,
+        child: MaterialApp(
+          title: 'Pequeños Artistas',
+          debugShowCheckedModeBanner: false,
+          theme: AppTheme.light(),
+          initialRoute: AppRoutes.home,
+          onGenerateRoute: AppRouter.onGenerateRoute,
+          builder: (context, child) =>
+              MediaQuery.withClampedTextScaling(maxScaleFactor: maxTextScale, child: child!),
+        ),
       ),
     );
   }
+}
+
+/// Conecta el audio con la app: aplica al momento los cambios de preferencias,
+/// pausa la música y calla la voz cuando la app pasa a segundo plano (llamada,
+/// otra app, pantalla apagada) y lo recupera al volver. Libera todo al cerrar.
+class _AudioBinding extends StatefulWidget {
+  const _AudioBinding({required this.audio, required this.settings, required this.child});
+
+  final LearningAudio audio;
+  final Listenable settings;
+  final Widget child;
+
+  @override
+  State<_AudioBinding> createState() => _AudioBindingState();
+}
+
+class _AudioBindingState extends State<_AudioBinding> with WidgetsBindingObserver {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    widget.settings.addListener(widget.audio.refresh);
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    switch (state) {
+      case AppLifecycleState.resumed:
+        widget.audio.setForeground(true);
+      case AppLifecycleState.paused || AppLifecycleState.hidden || AppLifecycleState.detached:
+        widget.audio.setForeground(false);
+      case AppLifecycleState.inactive:
+        break; // Algo pasajero (p. ej. la persiana de notificaciones).
+    }
+  }
+
+  @override
+  void dispose() {
+    widget.settings.removeListener(widget.audio.refresh);
+    WidgetsBinding.instance.removeObserver(this);
+    unawaited(widget.audio.dispose());
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) => widget.child;
 }

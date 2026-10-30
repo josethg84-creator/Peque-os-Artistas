@@ -281,11 +281,16 @@ void main() {
     await pumpApp(tester);
     await tapAndSettle(tester, find.bySemanticsLabel('Sonidos activados'));
     expect(find.bySemanticsLabel('Sonidos desactivados'), findsOneWidget);
+    // El propio botón suena (un clic) antes de silenciar; a partir de ahí, nada.
+    expect(lastSounds!.played, [SoundCue.tap]);
+    lastSounds!.played.clear();
     await openPlatano(tester);
     final d = platano();
     await paintAll(tester, d, 'Rosa');
     await tester.pumpAndSettle();
     expect(lastSounds!.played, isEmpty);
+    expect(lastNarrator!.spoken, isEmpty); // el silencio total también calla la voz
+    expect(lastMusic!.playing, isNull); // y la música
     expect(anyCompletionMessage(), findsNothing); // ya se ocultó
   });
 

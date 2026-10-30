@@ -223,6 +223,14 @@ class ColoringController extends ChangeNotifier implements RegionColors {
     return d.regions.every((r) => r.id == VectorDrawing.backgroundId || _colors.containsKey(r.id));
   }
 
+  /// Fracción de zonas (sin el fondo) que ya tienen color, de 0 a 1.
+  double get coloredFraction {
+    final total = totalRegions;
+    if (total == 0) return 0;
+    final colored = _colors.keys.where((id) => id != VectorDrawing.backgroundId).length;
+    return colored / total;
+  }
+
   void undo() {
     final edit = _history.undo();
     if (edit == null) return;

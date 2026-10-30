@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../models/drawing.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_dimens.dart';
+import '../audio/phrases.dart';
 import '../learning/audio/learning_audio.dart';
 import '../services/app_services.dart';
 import '../theme/app_motion.dart';
@@ -18,6 +19,12 @@ import 'engine/drawing_painter.dart';
 /// deformarse, dentro de un marco cuadrado. Cada toque se convierte a
 /// coordenadas del dibujo y pinta la región correspondiente.
 class ColoringCanvas extends StatelessWidget {
+  /// «¡Elige tu color favorito!» solo con el primer dibujo de cada sesión.
+  static bool _greetedThisSession = false;
+
+  @visibleForTesting
+  static void resetSessionGreeting() => _greetedThisSession = false;
+
   const ColoringCanvas({super.key, required this.drawing, required this.controller});
 
   final Drawing drawing;
@@ -86,11 +93,27 @@ class _InteractiveDrawingState extends State<_InteractiveDrawing> with TickerPro
   late int _seenCompletion = widget.controller.completionSerial;
   int _celebrations = 0;
 
+  /// El ánimo de «vas por la mitad» se dice una vez por dibujo abierto.
+  bool _encouraged = false;
+
   @override
   void initState() {
     super.initState();
     _seenFill = widget.controller.lastFill?.serial ?? 0;
+    _encouraged = widget.controller.coloredFraction >= 0.5;
     widget.controller.addListener(_onChange);
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (ColoringCanvas._greetedThisSession) return;
+    final audio = AppServices.maybeOf(context)?.audio;
+    if (audio == null) return;
+    ColoringCanvas._greetedThisSession = true;
+    if (widget.controller.coloredFraction == 0) {
+      unawaited(audio.sayOneOf(Phrases.coloringStart, mode: VoiceMode.ambient));
+    }
   }
 
   /// Reacciona a los toques: anima el relleno y, si el dibujo se acaba de
@@ -106,8 +129,13 @@ class _InteractiveDrawingState extends State<_InteractiveDrawing> with TickerPro
     }
     if (c.completionSerial != _seenCompletion) {
       _seenCompletion = c.completionSerial;
+      _encouraged = true;
       unawaited(audio?.play(SoundCue.celebrate) ?? Future.value());
+      unawaited(audio?.sayOneOf(Phrases.drawingDone, mode: VoiceMode.queue) ?? Future.value());
       setState(() => _celebrations++);
+    } else if (!_encouraged && c.coloredFraction >= 0.5) {
+      _encouraged = true;
+      unawaited(audio?.sayOneOf(Phrases.coloringProgress, mode: VoiceMode.ambient) ?? Future.value());
     }
   }
 

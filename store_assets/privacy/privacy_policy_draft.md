@@ -53,8 +53,8 @@ el propio dispositivo**, la siguiente información:
   creación y de última modificación. No se guardan fotos ni imágenes de la cámara.
 - **El progreso de «Aprender jugando»:** partidas jugadas, estrellas, pegatinas conseguidas y
   fechas.
-- **Las preferencias:** nivel de dificultad, sonido activado o desactivado y voz activada o
-  desactivada.
+- **Las preferencias:** nivel de dificultad y ajustes de sonido (silencio, música, efectos y
+  voz, con sus volúmenes).
 
 Esta información no se envía a nosotros ni a nadie. La copia de seguridad automática de
 Android está desactivada para esta app.
@@ -74,7 +74,8 @@ software que funcionan dentro del dispositivo:
 
 - Flutter;
 - `shared_preferences`, para guardar datos localmente;
-- `audioplayers`, para reproducir sonidos incluidos en la app;
+- `audioplayers`, para reproducir la música y los sonidos incluidos en la app (originales, sin
+  descargas);
 - `flutter_tts`, para usar la voz del sistema.
 
 ## 6. Datos de menores

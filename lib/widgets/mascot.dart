@@ -132,20 +132,49 @@ class _MascotPainter extends CustomPainter {
 }
 
 /// La mascota con un bocadillo de texto corto.
-class MascotBubble extends StatelessWidget {
-  const MascotBubble({super.key, required this.text, this.size = 72, this.waves = 2});
+class MascotBubble extends StatefulWidget {
+  const MascotBubble({super.key, required this.text, this.size = 72, this.waves = 2, this.onTap});
 
   final String text;
   final double size;
   final int waves;
 
+  /// Si se indica, Pincelín se puede tocar: vuelve a saludar y llama a [onTap].
+  final VoidCallback? onTap;
+
+  @override
+  State<MascotBubble> createState() => _MascotBubbleState();
+}
+
+class _MascotBubbleState extends State<MascotBubble> {
+  int _greetings = 0;
+
+  void _greet(VoidCallback onTap) {
+    setState(() => _greetings++);
+    onTap();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final text = widget.text;
+    final size = widget.size;
+    Widget mascot = Mascot(key: ValueKey(_greetings), size: size, waves: _greetings == 0 ? widget.waves : 1);
+    final onTap = widget.onTap;
+    if (onTap != null) {
+      mascot = Semantics(
+        button: true,
+        label: 'Pincelín, la mascota',
+        hint: 'Toca para que te salude',
+        excludeSemantics: true,
+        onTap: () => _greet(onTap),
+        child: GestureDetector(behavior: HitTestBehavior.opaque, onTap: () => _greet(onTap), child: mascot),
+      );
+    }
     return Row(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        Mascot(size: size, waves: waves),
+        mascot,
         const SizedBox(width: 8),
         Flexible(
           child: Container(

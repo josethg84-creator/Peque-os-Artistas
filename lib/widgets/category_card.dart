@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../audio/app_audio.dart';
+import '../audio/ui_sounds.dart';
+
 import 'motion/pressable.dart';
 
 import '../models/drawing_category.dart';
@@ -30,14 +33,14 @@ class CategoryCard extends StatelessWidget {
         button: true,
         label: '${category.label}, $countText',
         excludeSemantics: true,
-        onTap: guardRoute(context, onTap),
+        onTap: guardRoute(context, withSound(context, SoundCue.category, onTap)),
         child: Material(
           color: category.color,
           borderRadius: BorderRadius.circular(AppDimens.radiusLarge),
           elevation: 2,
           child: InkWell(
             borderRadius: BorderRadius.circular(AppDimens.radiusLarge),
-            onTap: guardRoute(context, onTap),
+            onTap: guardRoute(context, withSound(context, SoundCue.category, onTap)),
             child: Padding(
               padding: const EdgeInsets.all(12),
               child: Column(

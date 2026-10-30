@@ -22,6 +22,11 @@ Cuatro minijuegos con tres niveles de dificultad:
 • Une las parejas.
 Con instrucciones cortas, voz opcional (usa la voz en español del propio dispositivo, si está instalada), sonidos suaves y sin límite de tiempo: equivocarse solo invita a intentarlo otra vez.
 
+🎵 MÚSICA Y SONIDOS
+• Música instrumental suave y original en los menús y al colorear; en los juegos se calla para ayudar a concentrarse.
+• Efectos alegres para cada acción: cada color suena con su propia nota.
+• Música, efectos y voz con interruptor y volumen independientes, y un botón para silenciarlo todo.
+
 ⭐ ESTRELLAS Y PEGATINAS
 • Estrellas por cada actividad completada.
 • 7 pegatinas para coleccionar en «Mis premios».

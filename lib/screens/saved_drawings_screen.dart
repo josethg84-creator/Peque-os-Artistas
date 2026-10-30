@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../audio/app_audio.dart';
+import '../audio/ui_sounds.dart';
+
 import '../coloring/engine/drawing_painter.dart';
 import '../coloring/engine/vector_drawing.dart';
 import '../models/drawing.dart';
@@ -218,10 +221,10 @@ class _CreationCard extends StatelessWidget {
                 label: '${drawing.name}. ${done ? '¡Terminado!' : 'Sin terminar'}. $date',
                 hint: 'Sigue pintando',
                 excludeSemantics: true,
-                onTap: onOpen,
+                onTap: withSound(context, SoundCue.open, onOpen),
                 child: InkWell(
                   borderRadius: BorderRadius.circular(AppDimens.radiusMedium),
-                  onTap: onOpen,
+                  onTap: withSound(context, SoundCue.open, onOpen),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [

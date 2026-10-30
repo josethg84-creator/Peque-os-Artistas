@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../audio/app_audio.dart';
+import '../audio/ui_sounds.dart';
+
 import 'motion/pressable.dart';
 
 import '../theme/app_colors.dart';
@@ -37,13 +40,13 @@ class MenuTile extends StatelessWidget {
         label: badge == null ? label : '$label. $badge',
         hint: semanticsHint,
         excludeSemantics: true,
-        onTap: guardRoute(context, onTap),
+        onTap: guardRoute(context, withSound(context, SoundCue.tap, onTap)),
         child: Material(
           color: color.withValues(alpha: 0.16),
           borderRadius: BorderRadius.circular(AppDimens.radiusLarge),
           child: InkWell(
             borderRadius: BorderRadius.circular(AppDimens.radiusLarge),
-            onTap: guardRoute(context, onTap),
+            onTap: guardRoute(context, withSound(context, SoundCue.tap, onTap)),
             child: ConstrainedBox(
               constraints: BoxConstraints(minHeight: horizontal ? 88 : 120),
               child: Padding(

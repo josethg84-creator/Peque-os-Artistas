@@ -80,11 +80,10 @@ class _LearningHubScreenState extends State<LearningHubScreen> {
                   label: game.title,
                   color: color,
                   badge: played > 0 ? (played == 1 ? 'Jugado 1 vez' : 'Jugado $played veces') : null,
-                  onTap: () {
-                    unawaited(AppServices.of(context).audio.play(SoundCue.tap));
-                    Navigator.of(context)
-                        .pushNamed(AppRoutes.learningGame, arguments: LearningGameArgs(game));
-                  },
+                  // MenuTile ya suena al tocarlo.
+                  onTap: () =>
+                      Navigator.of(context)
+                          .pushNamed(AppRoutes.learningGame, arguments: LearningGameArgs(game)),
                 );
               },
             ),

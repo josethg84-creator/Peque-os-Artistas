@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../widgets/motion/pressable.dart';
 
+import '../../navigation/app_routes.dart';
 import '../../theme/app_colors.dart';
 import '../../theme/app_dimens.dart';
 import '../learning_controller.dart';
@@ -66,6 +67,14 @@ class LearningSettingsBar extends StatelessWidget {
             ),
             semantics: s.voiceOn ? 'Voz activada' : 'Voz desactivada',
             onTap: () => controller.updateSettings(s.copyWith(voiceOn: !s.voiceOn)),
+          ),
+          _Toggle(
+            label: 'Más ajustes',
+            selected: false,
+            color: AppColors.coral,
+            leading: const Icon(Icons.tune_rounded, size: 24),
+            semantics: 'Sonido y música: más ajustes',
+            onTap: () => Navigator.of(context).pushNamed(AppRoutes.soundSettings),
           ),
         ],
       ),

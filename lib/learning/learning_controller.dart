@@ -57,10 +57,12 @@ class LearningController extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> updateSettings(LearningSettings settings) async {
+  /// Cambia las preferencias. Con [save] en `false` solo se aplican (p. ej.
+  /// mientras se arrastra un control de volumen); se guardan al soltarlo.
+  Future<void> updateSettings(LearningSettings settings, {bool save = true}) async {
     _progress = _progress.copyWith(settings: settings);
     notifyListeners();
-    await _save();
+    if (save) await _save();
   }
 
   /// Registra una partida (terminada o no). [points] son las preguntas

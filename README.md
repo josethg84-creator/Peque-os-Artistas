@@ -17,6 +17,10 @@ Aplicación móvil de colorear para niños de 4 a 7 años (Flutter / Android).
   colorear, celebraciones, la mascota Pincelín, sonidos con prioridad, estados de
   carga y vacíos amables, y respeto de «reducir movimiento».
 - **Fase 8 (terminada):** versión web publicable (Vercel) y APK de Android.
+- **Fase especial de sonido (terminada):** música de fondo original y opcional
+  (silencio en los juegos), 27 efectos con variantes, voz que no se interrumpe ni se
+  repite, pantalla «Sonido y música» con volúmenes independientes y pausa en segundo
+  plano. Ver [docs/FASE_SONIDO.md](docs/FASE_SONIDO.md).
 - **Fase 9 (preparación, sin publicar):** recursos y documentación para Google Play en
   [`store_assets/`](store_assets/RELEASE_READINESS.md): icono, imagen destacada, capturas,
   textos de la ficha, borrador de política de privacidad, auditoría de privacidad,
@@ -30,7 +34,7 @@ android/      proyecto Android
 assets/
   drawings/   animals/ vehicles/ dinosaurs/ fruits/ fantasy/   SVG con regiones rellenables
   thumbnails/ miniaturas PNG 512x512 que usa la app
-  sounds/     efectos de sonido WAV propios (tools/make_sounds.py)
+  audio/      música (Ogg) y efectos (WAV) originales (tools/make_audio.py, ver LICENCIAS.md)
   previews/   PNG 1024x1024 para control de calidad (no se empaquetan)
   catalog/    catalog.json (30 entradas)
 web/          index.html, manifest e iconos de la versión web

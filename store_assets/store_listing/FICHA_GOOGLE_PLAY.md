@@ -14,7 +14,7 @@ Textos listos para copiar y pegar en Play Console:
 |---|---|---|---|
 | Nombre de la app | [`title_es-419.txt`](title_es-419.txt) | 26 | 30 |
 | Descripción breve | [`short_description_es-419.txt`](short_description_es-419.txt) | 78 | 80 |
-| Descripción completa | [`full_description_es-419.txt`](full_description_es-419.txt) | 1856 | 4000 |
+| Descripción completa | [`full_description_es-419.txt`](full_description_es-419.txt) | 2167 | 4000 |
 
 Los recuentos se han medido con Python (caracteres Unicode). Los límites de 30, 80 y 4000
 caracteres son los de la ayuda de Play Console; consultados mediante búsqueda web, porque
@@ -72,7 +72,8 @@ contrastado con el código:
 | Búsqueda y filtros por categoría y dificultad | `lib/screens/search_screen.dart` |
 | Guardado automático y «Mis dibujos» (continuar, otra versión, borrar) | `lib/persistence/`, `lib/screens/saved_drawings_screen.dart` |
 | 4 minijuegos y 3 niveles | `lib/learning/` (Fase 6) |
-| Voz opcional con la voz del dispositivo | `flutter_tts`: usa el motor de voz del sistema y no descarga nada |
+| Voz opcional con la voz del dispositivo | `flutter_tts`: usa solo una voz en español instalada (sin red); ver `docs/FASE_SONIDO.md` |
+| Música original y opcional, silencio en los juegos, volúmenes independientes | `lib/audio/`, `assets/audio/LICENCIAS.md`, `test/audio_system_test.dart` |
 | 7 pegatinas | `lib/learning/rewards.dart` |
 | Sin anuncios ni compras | No hay SDK de anuncios ni de facturación (`pubspec.lock`) |
 | Sin cuentas, registro ni chat | No existe ninguna pantalla de cuenta o chat |

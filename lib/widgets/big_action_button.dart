@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../audio/app_audio.dart';
+import '../audio/ui_sounds.dart';
+
 import 'motion/pressable.dart';
 
 import '../theme/app_colors.dart';
@@ -27,7 +30,7 @@ class BigActionButton extends StatelessWidget {
         button: true,
         label: label,
         excludeSemantics: true,
-        onTap: guardRoute(context, onPressed),
+        onTap: guardRoute(context, withSound(context, SoundCue.tap, onPressed)),
         child: Material(
           color: color,
           elevation: 4,
@@ -35,7 +38,7 @@ class BigActionButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(AppDimens.radiusLarge),
           child: InkWell(
             borderRadius: BorderRadius.circular(AppDimens.radiusLarge),
-            onTap: guardRoute(context, onPressed),
+            onTap: guardRoute(context, withSound(context, SoundCue.tap, onPressed)),
             child: ConstrainedBox(
               constraints: const BoxConstraints(minHeight: 96),
               child: Padding(

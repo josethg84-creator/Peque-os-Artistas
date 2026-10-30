@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import '../../audio/phrases.dart';
 import '../../services/app_services.dart';
 import '../../theme/app_colors.dart';
 import '../../theme/app_motion.dart';
@@ -59,7 +60,17 @@ class _ActivityCompleteState extends State<ActivityComplete> {
   void _playReward() {
     // Lectura puntual (sin dependencia): también vale desde initState.
     final audio = context.getInheritedWidgetOfExactType<AppServices>()?.audio;
-    if (audio != null) unawaited(audio.play(SoundCue.reward));
+    if (audio == null) return;
+    unawaited(audio.play(SoundCue.reward));
+    unawaited(audio.say(Phrases.newSticker, mode: VoiceMode.queue));
+  }
+
+  /// Las estrellas aparecen con un pequeño salto después de la celebración y
+  /// suenan con un brillo (si no hay pegatina nueva, que ya tiene su sonido).
+  void _starsShown() {
+    if (widget.newRewards.isNotEmpty) return;
+    final audio = context.getInheritedWidgetOfExactType<AppServices>()?.audio;
+    if (audio != null) unawaited(audio.play(SoundCue.star));
   }
 
   @override
@@ -97,12 +108,20 @@ class _ActivityCompleteState extends State<ActivityComplete> {
               Semantics(
                 label: 'Ganaste ${widget.stars} estrellas',
                 excludeSemantics: true,
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Icon(Icons.star_rounded, color: AppColors.sun, size: 40),
-                    Text('+${widget.stars}', style: text.headlineSmall),
-                  ],
+                child: TweenAnimationBuilder<double>(
+                  // Después de la celebración (para no taparla).
+                  tween: Tween(begin: reduceMotion ? 1 : 0, end: 1),
+                  duration: const Duration(milliseconds: 1200),
+                  curve: const Interval(0.75, 1, curve: Curves.easeOutBack),
+                  onEnd: _starsShown,
+                  builder: (context, t, child) => Transform.scale(scale: 0.6 + 0.4 * t, child: child),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Icon(Icons.star_rounded, color: AppColors.sun, size: 40),
+                      Text('+${widget.stars}', style: text.headlineSmall),
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(height: 10),

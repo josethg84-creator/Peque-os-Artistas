@@ -24,7 +24,10 @@ void main() {
       learningAudio: LearningAudio(
         effects: AudioPlayersSoundEffects(),
         narrator: DeviceTtsNarrator(),
+        music: AudioPlayersMusic(),
         settings: () => learning.settings,
+        // La música no empieza hasta conocer las preferencias guardadas.
+        settingsReady: () => learning.isLoaded,
       ),
     ),
   );

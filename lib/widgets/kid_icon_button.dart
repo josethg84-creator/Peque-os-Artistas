@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../audio/app_audio.dart';
+import '../audio/ui_sounds.dart';
+
 import 'motion/pressable.dart';
 
 import '../theme/app_colors.dart';
@@ -46,7 +49,7 @@ class KidIconButton extends StatelessWidget {
         selected: selected,
         label: label,
         excludeSemantics: true,
-        onTap: guardRoute(context, onPressed),
+        onTap: guardRoute(context, withSound(context, SoundCue.tap, onPressed)),
         child: Tooltip(
           message: label,
           child: Material(
@@ -57,7 +60,7 @@ class KidIconButton extends StatelessWidget {
             elevation: enabled ? 2 : 0,
             child: InkWell(
               customBorder: const CircleBorder(),
-              onTap: guardRoute(context, onPressed),
+              onTap: guardRoute(context, withSound(context, SoundCue.tap, onPressed)),
               child: SizedBox.square(
                 dimension: size,
                 child: Center(

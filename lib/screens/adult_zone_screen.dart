@@ -71,7 +71,9 @@ class AdultZoneScreen extends StatelessWidget {
                   icon: Icons.tune_rounded,
                   title: 'Ajustes',
                   lines: [
-                    'Sonido: botón del altavoz en la pantalla de inicio.',
+                    'Silencio total: botón del altavoz en la pantalla de inicio.',
+                    'Música, efectos y voz (con sus volúmenes): «Sonido y música», '
+                        'botón de ajustes junto al altavoz.',
                     'Nivel, sonidos y voz de los juegos: en «Aprender jugando».',
                     'Cada dibujo se puede borrar desde «Mis dibujos».',
                   ],

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../audio/app_audio.dart';
+import '../audio/music_zone.dart';
 import '../learning/screens/learning_game_screen.dart';
 import '../learning/screens/learning_hub_screen.dart';
 import '../learning/screens/rewards_screen.dart';
@@ -11,6 +13,7 @@ import '../screens/home_screen.dart';
 import '../screens/not_found_screen.dart';
 import '../screens/saved_drawings_screen.dart';
 import '../screens/search_screen.dart';
+import '../screens/sound_settings_screen.dart';
 import 'app_routes.dart';
 
 /// Construye cada ruta validando sus argumentos. Una ruta desconocida o con
@@ -34,9 +37,22 @@ abstract final class AppRouter {
       AppRoutes.rewards => const RewardsScreen(),
       AppRoutes.search => const SearchScreen(),
       AppRoutes.adultZone when args is AdultZoneArgs => const AdultZoneScreen(),
+      AppRoutes.soundSettings => const SoundSettingsScreen(),
       _ => const NotFoundScreen(),
     };
-    return MaterialPageRoute<void>(settings: settings, builder: (_) => page);
+    return MaterialPageRoute<void>(
+      settings: settings,
+      builder: (_) => MusicZone(track: musicFor(settings.name, page), child: page),
+    );
+  }
+
+  /// Música de cada pantalla: la misma en todos los menús (sin cambios
+  /// innecesarios), una más suave al colorear y silencio en los juegos, que
+  /// piden concentración y tienen instrucciones habladas.
+  static MusicTrack? musicFor(String? route, Widget page) {
+    if (page is LearningGameScreen) return null;
+    if (page is ColoringScreen) return MusicTrack.coloring;
+    return MusicTrack.main;
   }
 
   /// Vuelve al inicio desde cualquier pantalla.

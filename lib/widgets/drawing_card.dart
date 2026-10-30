@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../audio/app_audio.dart';
+import '../audio/ui_sounds.dart';
+
 import 'motion/pressable.dart';
 
 import '../models/drawing.dart';
@@ -33,14 +36,14 @@ class DrawingCard extends StatelessWidget {
         ].join('. '),
         hint: 'Abre el dibujo para colorear',
         excludeSemantics: true,
-        onTap: guardRoute(context, onTap),
+        onTap: guardRoute(context, withSound(context, SoundCue.open, onTap)),
         child: Material(
           color: AppColors.surface,
           elevation: 2,
           borderRadius: BorderRadius.circular(AppDimens.radiusLarge),
           child: InkWell(
             borderRadius: BorderRadius.circular(AppDimens.radiusLarge),
-            onTap: guardRoute(context, onTap),
+            onTap: guardRoute(context, withSound(context, SoundCue.open, onTap)),
             child: Padding(
               padding: const EdgeInsets.all(12),
               child: Column(

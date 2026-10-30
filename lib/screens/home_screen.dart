@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
+import '../audio/phrases.dart';
 import '../models/drawing_catalog.dart';
 import '../navigation/app_routes.dart';
 import '../services/app_services.dart';
@@ -86,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                     ),
-                    const Positioned(top: 8, left: 8, child: _SoundToggle()),
+                    const Positioned(top: 8, left: 8, child: _SoundControls()),
                     Positioned(top: 8, right: 8, child: _AdultAccessButton(onConfirmed: _openAdultZone)),
                   ],
                 );
@@ -121,7 +124,12 @@ class _Header extends StatelessWidget {
         ),
         const SizedBox(height: 6),
         const SizedBox(height: 4),
-        MascotBubble(text: '¡Hola! ¿Qué quieres pintar hoy?', size: compact ? 56 : 76),
+        MascotBubble(
+          text: '¡Hola! ¿Qué quieres pintar hoy?',
+          size: compact ? 56 : 76,
+          // La voz solo saluda si el niño toca a Pincelín: nada automático.
+          onTap: () => unawaited(AppServices.of(context).audio.sayOneOf(Phrases.welcome)),
+        ),
       ],
     );
   }
@@ -196,10 +204,10 @@ class _Actions extends StatelessWidget {
   }
 }
 
-/// Interruptor global de sonidos (el mismo ajuste que en «Aprender jugando»):
-/// silencia también los efectos al pintar.
-class _SoundToggle extends StatelessWidget {
-  const _SoundToggle();
+/// Silencio total de un toque (música, efectos y voz) y acceso a «Sonido y
+/// música» para ajustar cada cosa por separado.
+class _SoundControls extends StatelessWidget {
+  const _SoundControls();
 
   @override
   Widget build(BuildContext context) {
@@ -207,14 +215,27 @@ class _SoundToggle extends StatelessWidget {
     return ListenableBuilder(
       listenable: learning,
       builder: (context, _) {
-        final on = learning.settings.soundOn;
-        return KidIconButton(
-          icon: on ? Icons.volume_up_rounded : Icons.volume_off_rounded,
-          label: on ? 'Sonidos activados' : 'Sonidos desactivados',
-          color: on ? AppColors.sky : AppColors.inkSoft,
-          size: 52,
-          selected: on,
-          onPressed: () => learning.updateSettings(learning.settings.copyWith(soundOn: !on)),
+        final on = !learning.settings.muted;
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            KidIconButton(
+              icon: on ? Icons.volume_up_rounded : Icons.volume_off_rounded,
+              label: on ? 'Sonidos activados' : 'Sonidos desactivados',
+              color: on ? AppColors.sky : AppColors.inkSoft,
+              size: 52,
+              selected: on,
+              onPressed: () => learning.updateSettings(learning.settings.copyWith(muted: on)),
+            ),
+            const SizedBox(width: 8),
+            KidIconButton(
+              icon: Icons.tune_rounded,
+              label: 'Sonido y música',
+              color: AppColors.grape,
+              size: 52,
+              onPressed: () => Navigator.of(context).pushNamed(AppRoutes.soundSettings),
+            ),
+          ],
         );
       },
     );

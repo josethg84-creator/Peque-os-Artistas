@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
+import '../../audio/app_audio.dart';
 import '../../services/app_services.dart';
 import '../../theme/app_colors.dart';
 import '../../theme/app_dimens.dart';
@@ -9,8 +12,23 @@ import '../widgets/reward_sticker.dart';
 
 /// «Mis premios»: estrellas acumuladas y pegatinas. Las que faltan se ven en
 /// gris con una pista; no hay clasificaciones ni comparaciones.
-class RewardsScreen extends StatelessWidget {
+class RewardsScreen extends StatefulWidget {
   const RewardsScreen({super.key});
+
+  @override
+  State<RewardsScreen> createState() => _RewardsScreenState();
+}
+
+class _RewardsScreenState extends State<RewardsScreen> {
+  @override
+  void initState() {
+    super.initState();
+    // Celebración musical corta al abrir la colección (si ya hay estrellas).
+    final services = context.getInheritedWidgetOfExactType<AppServices>();
+    if (services != null && services.learning.progress.stars > 0) {
+      unawaited(services.audio.play(SoundCue.star));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -17,6 +17,7 @@ import '../learning_content.dart';
 import '../learning_level.dart';
 import '../rewards.dart';
 import '../widgets/activity_complete.dart';
+import 'quiz_game_screen.dart' show activityDonePhrase;
 import '../widgets/question_progress.dart';
 
 /// «Une las parejas» con dibujos del catálogo. Sin tiempo ni penalizaciones.
@@ -103,7 +104,7 @@ class _MemoryGameScreenState extends State<MemoryGameScreen> {
   Future<void> _finish() async {
     _recorded = true;
     unawaited(_services.audio.play(SoundCue.celebrate));
-    unawaited(_services.audio.say('¡Excelente trabajo! ¿Jugamos otra vez?'));
+    unawaited(_services.audio.say(activityDonePhrase(_game.pairs)));
     final earned = await _services.learning.recordSession(
       GameId.memory,
       completed: true,

@@ -34,28 +34,92 @@ class GameProgress {
   }
 }
 
-/// Preferencias que el niño (o un adulto) cambia con botones grandes.
+/// Preferencias que el niño (o un adulto) cambia con botones grandes: nivel de
+/// los juegos y todo el sonido de la app (música, efectos y voz, cada uno con su
+/// volumen, más un volumen general y un botón de silencio).
 class LearningSettings {
-  const LearningSettings({this.soundOn = true, this.voiceOn = true, this.level = LearningLevel.initial});
+  const LearningSettings({
+    this.soundOn = true,
+    this.voiceOn = true,
+    this.level = LearningLevel.initial,
+    this.muted = false,
+    this.musicOn = true,
+    this.masterVolume = 1.0,
+    this.musicVolume = 0.5,
+    this.effectsVolume = 0.8,
+    this.voiceVolume = 1.0,
+  });
 
+  /// Efectos de sonido activados.
   final bool soundOn;
   final bool voiceOn;
   final LearningLevel level;
 
-  LearningSettings copyWith({bool? soundOn, bool? voiceOn, LearningLevel? level}) => LearningSettings(
+  /// Silencio total (botón del altavoz de la pantalla de inicio).
+  final bool muted;
+  final bool musicOn;
+
+  /// Volúmenes de 0 a 1.
+  final double masterVolume;
+  final double musicVolume;
+  final double effectsVolume;
+  final double voiceVolume;
+
+  LearningSettings copyWith({
+    bool? soundOn,
+    bool? voiceOn,
+    LearningLevel? level,
+    bool? muted,
+    bool? musicOn,
+    double? masterVolume,
+    double? musicVolume,
+    double? effectsVolume,
+    double? voiceVolume,
+  }) => LearningSettings(
     soundOn: soundOn ?? this.soundOn,
     voiceOn: voiceOn ?? this.voiceOn,
     level: level ?? this.level,
+    muted: muted ?? this.muted,
+    musicOn: musicOn ?? this.musicOn,
+    masterVolume: masterVolume ?? this.masterVolume,
+    musicVolume: musicVolume ?? this.musicVolume,
+    effectsVolume: effectsVolume ?? this.effectsVolume,
+    voiceVolume: voiceVolume ?? this.voiceVolume,
   );
 
-  Map<String, Object> toJson() => {'sound_on': soundOn, 'voice_on': voiceOn, 'level': level.id};
+  Map<String, Object> toJson() => {
+    'sound_on': soundOn,
+    'voice_on': voiceOn,
+    'level': level.id,
+    'muted': muted,
+    'music_on': musicOn,
+    'master_volume': masterVolume,
+    'music_volume': musicVolume,
+    'effects_volume': effectsVolume,
+    'voice_volume': voiceVolume,
+  };
 
+  /// Acepta datos antiguos (sin los campos de sonido) o dañados: cada campo
+  /// que falte o no sea válido toma su valor por defecto.
   static LearningSettings fromJson(Object? json) {
     if (json is! Map<String, dynamic>) return const LearningSettings();
+    const d = LearningSettings();
+    bool flag(String key, bool fallback) => json[key] is bool ? json[key] as bool : fallback;
+    double volume(String key, double fallback) {
+      final v = json[key];
+      return v is num && v.isFinite ? v.toDouble().clamp(0.0, 1.0) : fallback;
+    }
+
     return LearningSettings(
-      soundOn: json['sound_on'] is bool ? json['sound_on'] as bool : true,
-      voiceOn: json['voice_on'] is bool ? json['voice_on'] as bool : true,
+      soundOn: flag('sound_on', d.soundOn),
+      voiceOn: flag('voice_on', d.voiceOn),
       level: LearningLevel.fromId(json['level'] is String ? json['level'] as String : null),
+      muted: flag('muted', d.muted),
+      musicOn: flag('music_on', d.musicOn),
+      masterVolume: volume('master_volume', d.masterVolume),
+      musicVolume: volume('music_volume', d.musicVolume),
+      effectsVolume: volume('effects_volume', d.effectsVolume),
+      voiceVolume: volume('voice_volume', d.voiceVolume),
     );
   }
 }

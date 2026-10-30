@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import '../../audio/phrases.dart';
 import '../../services/app_services.dart';
 import '../../theme/app_dimens.dart';
 import '../../theme/app_motion.dart';
@@ -36,7 +37,7 @@ class QuizGameScreen<T> extends StatefulWidget {
 }
 
 class _QuizGameScreenState<T> extends State<QuizGameScreen<T>> {
-  static const _praise = ['¡Muy bien!', '¡Lo encontraste!', '¡Genial!', '¡Excelente!'];
+  static const _praise = Phrases.correct;
 
   late QuizGame<T> _game;
   late LearningLevel _level;
@@ -96,7 +97,7 @@ class _QuizGameScreenState<T> extends State<QuizGameScreen<T>> {
     } else {
       _misses++;
       unawaited(audio.play(SoundCue.tryAgain));
-      unawaited(audio.say('¡Inténtalo otra vez!'));
+      unawaited(audio.say(Phrases.tryAgain));
     }
   }
 
@@ -104,7 +105,7 @@ class _QuizGameScreenState<T> extends State<QuizGameScreen<T>> {
     if (_game.isFinished) {
       setState(() => _finished = true);
       unawaited(_services.audio.play(SoundCue.celebrate));
-      unawaited(_services.audio.say('¡Excelente trabajo! ¿Jugamos otra vez?'));
+      unawaited(_services.audio.say(activityDonePhrase(_game.questionCount)));
       _recorded = true;
       final earned = await _services.learning.recordSession(
         widget.spec.game,
@@ -268,3 +269,11 @@ class _QuizGameScreenState<T> extends State<QuizGameScreen<T>> {
     return _game.wrongAnswers.contains(option) ? OptionState.wrong : OptionState.idle;
   }
 }
+
+/// Frase al terminar una actividad: alterna el comienzo y dice las estrellas.
+String activityDonePhrase(int stars) {
+  final opener = Phrases.activityDone[_completions++ % Phrases.activityDone.length];
+  return '$opener ${Phrases.stars(stars)}';
+}
+
+int _completions = 0;

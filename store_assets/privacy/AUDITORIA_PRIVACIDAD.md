@@ -21,7 +21,7 @@ para el formulario «Seguridad de los datos» de Play Console.
 | Pregunta | Resultado | Evidencia |
 |---|---|---|
 | ¿Recopila datos personales? | **No** | No hay formularios, cuentas ni campos de texto libres que se guarden. El campo de búsqueda filtra en memoria y no se guarda. |
-| ¿Qué guarda en el dispositivo? | Dibujos (id del dibujo, colores por zona, fechas); progreso de juegos (partidas, estrellas, pegatinas, fechas); preferencias (nivel, sonido, voz) | `shared_preferences`, claves `creation.v2.*` y `learning.v1.*` |
+| ¿Qué guarda en el dispositivo? | Dibujos (id del dibujo, colores por zona, fechas); progreso de juegos (partidas, estrellas, pegatinas, fechas); preferencias (nivel, silencio, música, efectos y voz con sus volúmenes) | `shared_preferences`, claves `creation.v2.*` y `learning.v1.*` |
 | ¿Transmite información? | **No** | Sin permiso INTERNET; ningún código de red en `lib/` |
 | ¿SDK de terceros que recojan datos? | **No** | Directas: `audioplayers` 6.8.1, `flutter_tts` 4.2.5, `shared_preferences` 2.5.6. Ninguna es SDK de anuncios, analítica ni errores. |
 | ¿Analítica, anuncios, ID de publicidad (AAID)? | **No** | No hay `play-services-ads`, `firebase_*` ni `com.google.android.gms.permission.AD_ID` en el manifiesto final |
@@ -38,7 +38,7 @@ para el formulario «Seguridad de los datos» de Play Console.
 - **`http` aparece en `pubspec.lock`** como dependencia indirecta de `audioplayers` (para
   reproducir sonidos desde URL). La app solo usa `AssetSource`, sonidos empaquetados. Además,
   sin el permiso INTERNET, Android bloquea cualquier conexión.
-- **Voz (`flutter_tts`):** usa el motor de texto a voz del sistema. La app le pasa solo frases
+- **Voz (`flutter_tts`):** usa el motor de texto a voz del sistema, y desde la fase de sonido **solo una voz en español instalada que no necesita red** (en Android se comprueba `network_required`). La app le pasa solo frases
   fijas de instrucciones. El motor es otra app (por ejemplo, Speech Services by Google), con
   sus propios permisos y política. Esto está explicado en el borrador de política.
 - **Transferencia entre dispositivos:** con targetSdk 31 o superior, `allowBackup=false`

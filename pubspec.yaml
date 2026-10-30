@@ -64,7 +64,8 @@ flutter:
   assets:
     - assets/catalog/catalog.json
     - assets/thumbnails/
-    - assets/sounds/
+    - assets/audio/effects/
+    - assets/audio/music/
     - assets/drawings/animals/
     - assets/drawings/vehicles/
     - assets/drawings/dinosaurs/
