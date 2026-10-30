@@ -60,6 +60,13 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+  # Fredoka (SIL Open Font License 1.1, ver assets/fonts/Fredoka-OFL.txt):
+  # tipografía redondeada del logo y de la pantalla de inicio.
+  fonts:
+    - family: Fredoka
+      fonts:
+        - asset: assets/fonts/Fredoka.ttf
+
   # Recursos de la Fase 1 (ver docs/DIBUJOS.md).
   assets:
     - assets/catalog/catalog.json

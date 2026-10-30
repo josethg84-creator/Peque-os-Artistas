@@ -145,3 +145,27 @@ Future<Map<String, String>?> savedHex(CreationStore store, String drawingId) asy
 /// Dibujo vectorial real de la colección.
 VectorDrawing svgOf(String folder, String id) =>
     parseColoringSvg(File('assets/drawings/$folder/$id.svg').readAsStringSync());
+
+/// «¡Vamos a pintar!» (dentro de «Colorear»): abre el siguiente dibujo fácil.
+/// Desde el inicio entra antes en «Colorear».
+Future<void> startPainting(WidgetTester tester) async {
+  final button = find.bySemanticsLabel('¡Vamos a pintar!');
+  if (button.evaluate().isEmpty) {
+    await tester.tap(find.bySemanticsLabel('Colorear'));
+    await tester.pumpAndSettle();
+  }
+  await tester.tap(button);
+  await tester.pumpAndSettle();
+}
+
+/// Abre «Galería» (los dibujos guardados) del inicio. Si se está en
+/// «Colorear» (a donde se vuelve tras «¡Vamos a pintar!»), vuelve antes al inicio.
+Future<void> openMyGallery(WidgetTester tester) async {
+  final home = find.bySemanticsLabel('Volver al inicio');
+  if (home.evaluate().isNotEmpty) {
+    await tester.tap(home);
+    await tester.pumpAndSettle();
+  }
+  await tester.tap(find.bySemanticsLabel('Galería'));
+  await tester.pumpAndSettle();
+}

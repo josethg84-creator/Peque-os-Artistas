@@ -36,7 +36,7 @@ void main() {
   testWidgets('cada una de las 31 tarjetas abre su propio dibujo con sus regiones', (tester) async {
     setScreenSize(tester, const Size(1000, 1400));
     await pumpApp(tester);
-    await tapAndSettle(tester, find.bySemanticsLabel('Galería'));
+    await tapAndSettle(tester, find.bySemanticsLabel('Colorear'));
     var opened = 0;
     for (final category in DrawingCategory.values) {
       final entries = catalog.where((d) => d['category'] == category.id).toList();
@@ -69,7 +69,7 @@ void main() {
     setScreenSize(tester, const Size(1000, 1400));
     final store = InMemoryCreationStore();
     await pumpApp(tester, store: store);
-    await tapAndSettle(tester, find.bySemanticsLabel('Galería'));
+    await tapAndSettle(tester, find.bySemanticsLabel('Colorear'));
     await tapAndSettle(tester, find.bySemanticsLabel('Animales, 11 dibujos'));
     expect(find.bySemanticsLabel(RegExp(DrawingCard.paintedLabel)), findsNothing);
 
@@ -99,7 +99,7 @@ void main() {
     Future<void> openSearch(WidgetTester tester) async {
       setScreenSize(tester, const Size(800, 1300));
       await pumpApp(tester);
-      await tapAndSettle(tester, find.bySemanticsLabel('Galería'));
+      await tapAndSettle(tester, find.bySemanticsLabel('Colorear'));
       await tapAndSettle(tester, find.bySemanticsLabel('Buscar dibujos'));
       expect(find.byType(SearchScreen), findsOneWidget);
     }

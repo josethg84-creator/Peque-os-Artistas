@@ -7,7 +7,7 @@ import 'package:pequenos_artistas/coloring/engine/svg_drawing_parser.dart';
 import 'package:pequenos_artistas/coloring/engine/vector_drawing.dart';
 import 'package:pequenos_artistas/coloring/palette.dart';
 import 'package:pequenos_artistas/screens/coloring_screen.dart';
-import 'package:pequenos_artistas/screens/home_screen.dart';
+import 'package:pequenos_artistas/screens/categories_screen.dart';
 import 'package:pequenos_artistas/persistence/creation_store.dart';
 
 import '../test_helpers.dart';
@@ -42,7 +42,7 @@ void main() {
     setScreenSize(tester, const Size(420, 900));
     final store = InMemoryCreationStore();
     await pumpApp(tester, store: store);
-    await tapAndSettle(tester, find.bySemanticsLabel('Galería'));
+    await tapAndSettle(tester, find.bySemanticsLabel('Colorear'));
     await tapAndSettle(tester, find.bySemanticsLabel('Animales, 11 dibujos'));
     await tapAndSettle(tester, find.bySemanticsLabel('Gato. Dificultad fácil'));
     expect(find.byType(ColoringScreen), findsOneWidget);
@@ -83,14 +83,14 @@ void main() {
     setScreenSize(tester, const Size(420, 900));
     final store = InMemoryCreationStore();
     await pumpApp(tester, store: store);
-    await tapAndSettle(tester, find.bySemanticsLabel('¡Vamos a pintar!')); // abre el gato
+    await startPainting(tester); // abre el gato
     final d = svgOf(gatoFile);
     await paint(tester, d, 'cola', 'Verde');
     await paint(tester, d, 'barriga', 'Naranja');
     await tapAndSettle(tester, find.bySemanticsLabel('Volver a la galería'));
-    expect(find.byType(HomeScreen), findsOneWidget);
+    expect(find.byType(CategoriesScreen), findsOneWidget);
 
-    await tapAndSettle(tester, find.bySemanticsLabel('Mis dibujos'));
+    await openMyGallery(tester);
     await tapAndSettle(tester, find.bySemanticsLabel(RegExp(r'^Gato\. ')));
     // Los colores vuelven, pero el historial empieza de cero.
     expect(enabled(tester, 'Limpiar'), isTrue);
@@ -115,7 +115,7 @@ void main() {
     setScreenSize(tester, const Size(420, 900));
     final store = InMemoryCreationStore();
     await pumpApp(tester, store: store);
-    await tapAndSettle(tester, find.bySemanticsLabel('¡Vamos a pintar!'));
+    await startPainting(tester);
     await paint(tester, svgOf(gatoFile), 'cabeza', 'Morado');
 
     await tapAndSettle(tester, find.bySemanticsLabel('Otro dibujo'));
@@ -126,16 +126,16 @@ void main() {
     expect((await savedHex(store, 'animal_gato'))!.keys, ['cabeza']);
     expect(await store.latestFor('animal_perro'), isNull);
 
-    // Volver lleva al inicio (el dibujo anterior se sustituyó).
+    // Volver lleva a «Colorear» (el dibujo anterior se sustituyó).
     await tapAndSettle(tester, find.bySemanticsLabel('Volver a la galería'));
-    expect(find.byType(HomeScreen), findsOneWidget);
+    expect(find.byType(CategoriesScreen), findsOneWidget);
   });
 
   testWidgets('el borrador quita el color de una zona', (tester) async {
     setScreenSize(tester, const Size(420, 900));
     final store = InMemoryCreationStore();
     await pumpApp(tester, store: store);
-    await tapAndSettle(tester, find.bySemanticsLabel('¡Vamos a pintar!'));
+    await startPainting(tester);
     final d = svgOf(gatoFile);
     await paint(tester, d, 'cola', 'Rojo');
     await paint(tester, d, 'cuerpo', 'Rojo');
@@ -152,7 +152,7 @@ void main() {
     setScreenSize(tester, const Size(900, 420));
     final store = InMemoryCreationStore();
     await pumpApp(tester, store: store);
-    await tapAndSettle(tester, find.bySemanticsLabel('¡Vamos a pintar!'));
+    await startPainting(tester);
     final d = svgOf(gatoFile);
     for (final region in ['oreja_izquierda_interior', 'hocico', 'pata_derecha']) {
       await paint(tester, d, region, 'Celeste');
@@ -182,13 +182,13 @@ void main() {
       tester,
       service: fakeCatalogService(catalog, {'assets/drawings/animals/animal_fantasma.svg'}),
     );
-    await tapAndSettle(tester, find.bySemanticsLabel('¡Vamos a pintar!'));
+    await startPainting(tester);
     expect(find.text('No pudimos abrir este dibujo'), findsOneWidget);
     expect(find.text('Reintentar'), findsOneWidget);
     expect(enabled(tester, 'Borrador'), isFalse);
     await tapAndSettle(tester, find.text('Reintentar'));
     expect(find.text('No pudimos abrir este dibujo'), findsOneWidget);
     await tapAndSettle(tester, find.bySemanticsLabel('Volver a la galería'));
-    expect(find.byType(HomeScreen), findsOneWidget);
+    expect(find.byType(CategoriesScreen), findsOneWidget);
   });
 }

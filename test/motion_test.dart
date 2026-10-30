@@ -41,7 +41,7 @@ DrawingPainter canvasPainter(WidgetTester tester) =>
 int count(SoundCue cue) => lastSounds!.played.where((c) => c == cue).length;
 
 Future<void> openPlatano(WidgetTester tester) async {
-  await tapAndSettle(tester, find.bySemanticsLabel('Galería'));
+  await tapAndSettle(tester, find.bySemanticsLabel('Colorear'));
   await tapAndSettle(tester, find.bySemanticsLabel('Frutas, 5 dibujos'));
   await tapAndSettle(tester, find.bySemanticsLabel('Plátano. Dificultad fácil'));
 }
@@ -66,14 +66,14 @@ void main() {
   testWidgets('un doble toque rápido en un botón solo abre una pantalla', (tester) async {
     setScreenSize(tester, const Size(420, 900));
     await pumpApp(tester);
-    final galeria = find.bySemanticsLabel('Galería');
+    final galeria = find.bySemanticsLabel('Colorear');
     await tester.tap(galeria);
     await tester.tap(galeria);
     await tester.pumpAndSettle();
     expect(find.byType(CategoriesScreen, skipOffstage: false), findsOneWidget);
     // Si se hubieran abierto dos, al volver una vez seguiríamos en la galería.
     await tapAndSettle(tester, find.bySemanticsLabel('Volver al inicio'));
-    expect(find.text('¡Hola! ¿Qué quieres pintar hoy?'), findsOneWidget);
+    expect(find.bySemanticsLabel('Pequeños Artistas'), findsOneWidget); // de vuelta en el inicio
   });
 
   testWidgets('los botones responden al lector de pantalla y una doble activación abre una sola pantalla', (
@@ -82,13 +82,13 @@ void main() {
     setScreenSize(tester, const Size(420, 900));
     await pumpApp(tester);
     // Dos activaciones seguidas con TalkBack (acción «tocar» de accesibilidad).
-    tester.semantics.tap(find.semantics.byLabel('Galería'));
-    tester.semantics.tap(find.semantics.byLabel('Galería'));
+    tester.semantics.tap(find.semantics.byLabel('Colorear'));
+    tester.semantics.tap(find.semantics.byLabel('Colorear'));
     await tester.pumpAndSettle();
     expect(find.byType(CategoriesScreen, skipOffstage: false), findsOneWidget);
     tester.semantics.tap(find.semantics.byLabel('Volver al inicio'));
     await tester.pumpAndSettle();
-    expect(find.text('¡Hola! ¿Qué quieres pintar hoy?'), findsOneWidget);
+    expect(find.bySemanticsLabel('Pequeños Artistas'), findsOneWidget); // de vuelta en el inicio
   });
 
   testWidgets('el color se aplica al instante y el relleno se anima sin tocar los contornos', (tester) async {
@@ -138,7 +138,7 @@ void main() {
     await tapAndSettle(tester, find.bySemanticsLabel('Volver a la galería'));
     await tapAndSettle(tester, find.bySemanticsLabel('Volver a categorías'));
     await tapAndSettle(tester, find.bySemanticsLabel('Volver al inicio'));
-    await tapAndSettle(tester, find.bySemanticsLabel('Mis dibujos'));
+    await tapAndSettle(tester, find.bySemanticsLabel('Galería'));
     await tapAndSettle(tester, find.bySemanticsLabel(RegExp(r'^Plátano\. ')));
     expect(drawingCanvasFinder, findsOneWidget);
     expect(anyCompletionMessage(), findsNothing);
@@ -164,7 +164,7 @@ void main() {
     await tapAndSettle(tester, find.bySemanticsLabel('Volver a la galería'));
     await tapAndSettle(tester, find.bySemanticsLabel('Volver a categorías'));
     await tapAndSettle(tester, find.bySemanticsLabel('Volver al inicio'));
-    await tapAndSettle(tester, find.bySemanticsLabel('Aprender jugando'));
+    await tapAndSettle(tester, find.bySemanticsLabel('Mini Juegos'));
     await tapAndSettle(tester, find.bySemanticsLabel(RegExp('^Une las parejas')));
     await tester.tap(find.byKey(const ValueKey('carta-0')));
     await tester.pump();
@@ -215,7 +215,7 @@ void main() {
   testWidgets('el premio nuevo suena una vez con confeti; repetir no lo vuelve a celebrar', (tester) async {
     setScreenSize(tester, const Size(420, 900));
     await pumpApp(tester);
-    await tapAndSettle(tester, find.bySemanticsLabel('Aprender jugando'));
+    await tapAndSettle(tester, find.bySemanticsLabel('Mini Juegos'));
     await tapAndSettle(tester, find.bySemanticsLabel(RegExp('^Une las parejas')));
     // Nivel inicial: 2 parejas. Se prueban parejas de cartas boca abajo hasta terminar.
     bool finished() => find.text('¡Excelente trabajo!').evaluate().isNotEmpty;
@@ -253,7 +253,7 @@ void main() {
     setScreenSize(tester, const Size(420, 900));
     await pumpApp(tester);
     expect(find.byType(Mascot), findsOneWidget); // en el inicio
-    await tapAndSettle(tester, find.bySemanticsLabel('Mis dibujos'));
+    await tapAndSettle(tester, find.bySemanticsLabel('Galería'));
     expect(find.text('¡Tu galería te espera!'), findsOneWidget);
     expect(find.textContaining('Aquí aparecerán tus dibujos favoritos'), findsOneWidget);
     expect(find.byType(Mascot), findsOneWidget);
@@ -276,14 +276,15 @@ void main() {
     await tester.pumpWidget(const SizedBox()); // se cancela el temporizador al salir
   });
 
-  testWidgets('el interruptor de sonido del inicio silencia todos los efectos', (tester) async {
+  testWidgets('«Todo el sonido» (en Configuración) silencia todos los efectos', (tester) async {
     setScreenSize(tester, const Size(420, 900));
     await pumpApp(tester);
-    await tapAndSettle(tester, find.bySemanticsLabel('Sonidos activados'));
-    expect(find.bySemanticsLabel('Sonidos desactivados'), findsOneWidget);
-    // El propio botón suena (un clic) antes de silenciar; a partir de ahí, nada.
-    expect(lastSounds!.played, [SoundCue.tap]);
+    await tapAndSettle(tester, find.bySemanticsLabel('Configuración').first);
+    await tapAndSettle(tester, find.bySemanticsLabel('Todo el sonido: activado'));
+    expect(find.bySemanticsLabel('Todo el sonido: desactivado'), findsOneWidget);
+    // A partir de aquí no suena nada.
     lastSounds!.played.clear();
+    await tapAndSettle(tester, find.bySemanticsLabel('Volver'));
     await openPlatano(tester);
     final d = platano();
     await paintAll(tester, d, 'Rosa');

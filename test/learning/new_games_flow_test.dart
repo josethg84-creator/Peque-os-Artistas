@@ -21,7 +21,10 @@ Future<void> tapAndSettle(WidgetTester tester, Finder finder) async {
 
 /// Abre un juego del menú (con siete juegos, algunos quedan más abajo).
 Future<void> openGame(WidgetTester tester, String title) async {
-  await tapAndSettle(tester, find.bySemanticsLabel('Aprender jugando'));
+  final group = const {'Rompecabezas', 'Laberintos', 'Une las parejas'}.contains(title)
+      ? 'Mini Juegos'
+      : 'Actividades';
+  await tapAndSettle(tester, find.bySemanticsLabel(group));
   final tile = find.bySemanticsLabel(RegExp('^${RegExp.escape(title)}'));
   if (tile.evaluate().isEmpty) {
     await tester.dragUntilVisible(tile, find.byType(CustomScrollView), const Offset(0, -300));
@@ -80,7 +83,7 @@ void main() {
     setScreenSize(tester, const Size(420, 900));
     await pumpApp(tester);
     for (final (level, pieces) in [('Intermedio', 9), ('Avanzado', 16)]) {
-      await tapAndSettle(tester, find.bySemanticsLabel('Aprender jugando'));
+      await tapAndSettle(tester, find.bySemanticsLabel('Mini Juegos'));
       await tapAndSettle(tester, find.bySemanticsLabel('Nivel $level'));
       final tile = find.bySemanticsLabel(RegExp('^Rompecabezas'));
       await tester.dragUntilVisible(tile, find.byType(CustomScrollView), const Offset(0, -300));

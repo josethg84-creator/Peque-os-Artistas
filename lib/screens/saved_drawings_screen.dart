@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import '../audio/app_audio.dart';
 import '../audio/ui_sounds.dart';
 
-import '../coloring/engine/drawing_painter.dart';
-import '../coloring/engine/vector_drawing.dart';
 import '../models/drawing.dart';
 import '../models/drawing_catalog.dart';
 import '../navigation/app_routes.dart';
@@ -15,6 +13,7 @@ import '../theme/app_colors.dart';
 import '../theme/app_dimens.dart';
 import '../widgets/adaptive_grid.dart';
 import '../widgets/catalog_builder.dart';
+import '../widgets/creation_thumbnail.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/motion/delayed_loading.dart';
 import '../widgets/friendly_date.dart';
@@ -83,7 +82,7 @@ class _SavedDrawingsScreenState extends State<SavedDrawingsScreen> {
           children: [
             SizedBox.square(
               dimension: 140,
-              child: _CreationThumbnail(drawing: drawing, creation: creation),
+              child: CreationThumbnail(drawing: drawing, creation: creation),
             ),
             const SizedBox(height: 12),
             const Text(
@@ -232,7 +231,7 @@ class _CreationCard extends StatelessWidget {
                         child: Stack(
                           children: [
                             Positioned.fill(
-                              child: _CreationThumbnail(drawing: drawing, creation: creation),
+                              child: CreationThumbnail(drawing: drawing, creation: creation),
                             ),
                             if (done) const Positioned(top: 0, right: 0, child: _DoneBadge()),
                           ],
@@ -340,42 +339,3 @@ class _DoneBadge extends StatelessWidget {
 /// Miniatura de una creación: se reconstruye pintando el dibujo vectorial con
 /// los colores guardados (no se guardan imágenes). Así siempre refleja el
 /// último estado y no puede faltar ni estar desactualizada.
-class _CreationThumbnail extends StatefulWidget {
-  const _CreationThumbnail({required this.drawing, required this.creation});
-
-  final Drawing drawing;
-  final Creation creation;
-
-  @override
-  State<_CreationThumbnail> createState() => _CreationThumbnailState();
-}
-
-class _CreationThumbnailState extends State<_CreationThumbnail> {
-  Future<VectorDrawing>? _vector;
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    _vector ??= AppServices.of(context).drawings.load(widget.drawing.file);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return FutureBuilder<VectorDrawing>(
-      future: _vector,
-      builder: (context, snapshot) {
-        final vector = snapshot.data;
-        if (vector == null) {
-          return snapshot.hasError
-              ? const Icon(Icons.broken_image_rounded, size: 48, color: AppColors.inkSoft)
-              : const SizedBox.shrink();
-        }
-        return RepaintBoundary(
-          child: CustomPaint(
-            painter: DrawingPainter(drawing: vector, colors: FixedRegionColors(widget.creation.regionColors)),
-          ),
-        );
-      },
-    );
-  }
-}

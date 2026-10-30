@@ -25,6 +25,9 @@ Aplicación móvil de colorear para niños de 4 a 7 años (Flutter / Android).
 - **Juegos nuevos (terminados):** rompecabezas (4, 9 o 16 piezas), laberintos con recorridos
   generados y comprobados, y trazos y escritura (líneas, letras, números y unir puntos). Ver
   [docs/FASE_JUEGOS.md](docs/FASE_JUEGOS.md).
+- **Nuevo inicio (terminado):** pantalla de inicio rediseñada (logo multicolor, niños con
+  pinceles y perrito, tarjetas Colorear, Mini Juegos, Actividades y Galería, barra con
+  Perfil, Logros y Configuración) y panel del niño. Ver [docs/FASE_INICIO.md](docs/FASE_INICIO.md).
 - **Fase 9 (preparación, sin publicar):** recursos y documentación para Google Play en
   [`store_assets/`](store_assets/RELEASE_READINESS.md): icono, imagen destacada, capturas,
   textos de la ficha, borrador de política de privacidad, auditoría de privacidad,

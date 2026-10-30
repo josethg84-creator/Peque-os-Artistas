@@ -33,7 +33,9 @@ Future<void> tapLevel(WidgetTester tester, String level) async {
   await tapAndSettle(tester, button);
 }
 
-Future<void> openHub(WidgetTester tester) => tapAndSettle(tester, find.bySemanticsLabel('Aprender jugando'));
+/// Abre un grupo de juegos del inicio: «Actividades» o «Mini Juegos».
+Future<void> openHub(WidgetTester tester, [String group = 'Actividades']) =>
+    tapAndSettle(tester, find.bySemanticsLabel(group));
 
 Future<void> openGame(WidgetTester tester, String title) =>
     tapAndSettle(tester, find.bySemanticsLabel(RegExp('^${RegExp.escape(title)}')));
@@ -213,7 +215,7 @@ void main() {
   testWidgets('Une las parejas: 2, 4 y 6 parejas según el nivel, sin tiempo ni castigo', (tester) async {
     setScreenSize(tester, setScreenSizeDefault);
     await pumpApp(tester);
-    await openHub(tester);
+    await openHub(tester, 'Mini Juegos');
     for (final (level, pairs) in [('Inicial', 2), ('Intermedio', 4), ('Avanzado', 6)]) {
       await tapLevel(tester, level);
       await openGame(tester, 'Une las parejas');
@@ -262,7 +264,7 @@ void main() {
     await tapAndSettle(tester, find.bySemanticsLabel('Mis premios'));
     expect(find.bySemanticsLabel('Pegatina Explorador de colores, conseguida'), findsOneWidget);
     expect(find.bySemanticsLabel('Tienes 5 estrellas'), findsOneWidget);
-    await tapAndSettle(tester, find.bySemanticsLabel('Volver a los juegos'));
+    await tapAndSettle(tester, find.bySemanticsLabel('Volver'));
 
     // Con los sonidos desactivados no suena nada.
     await openGame(tester, 'Aprende los colores');
@@ -310,20 +312,21 @@ void main() {
     final backend = MemoryBackend(); // mismo almacenamiento para todo, como en la app
     final creations = KeyValueCreationStore(backend);
     await pumpApp(tester, store: creations, learningBackend: backend);
-    await tapAndSettle(tester, find.bySemanticsLabel('¡Vamos a pintar!'));
+    await startPainting(tester);
     final gato = svgOf('animals', 'animal_gato');
     await tapAndSettle(tester, find.bySemanticsLabel('Rojo'));
     await tester.tapAt(screenPointOf(tester, gato, interiorPoint(gato, 'cabeza')));
     await tester.pump();
     await tapAndSettle(tester, find.bySemanticsLabel('Volver a la galería'));
     final before = Map.of((await creations.latestFor('animal_gato'))!.regionColors);
+    await tapAndSettle(tester, find.bySemanticsLabel('Volver al inicio'));
 
-    await openHub(tester);
+    await openHub(tester, 'Mini Juegos');
     await openGame(tester, 'Une las parejas');
     await playMemory(tester, 4);
     await tapAndSettle(tester, find.text('Otros juegos'));
     await tapAndSettle(tester, find.bySemanticsLabel('Volver al inicio'));
-    await tapAndSettle(tester, find.bySemanticsLabel('Mis dibujos'));
+    await openMyGallery(tester);
     expect(find.bySemanticsLabel(RegExp(r'^Gato\. ')), findsOneWidget);
     final report = await creations.loadAll();
     expect(report.creations.single.regionColors, before);

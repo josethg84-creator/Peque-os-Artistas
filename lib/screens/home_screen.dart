@@ -1,46 +1,33 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../audio/phrases.dart';
-import '../models/drawing_catalog.dart';
 import '../navigation/app_routes.dart';
 import '../services/app_services.dart';
 import '../theme/app_colors.dart';
-import '../theme/app_dimens.dart';
 import '../widgets/adult_gate.dart';
-import '../widgets/app_logo.dart';
-import '../widgets/big_action_button.dart';
-import '../widgets/catalog_builder.dart';
-import '../widgets/doodle_background.dart';
-import '../widgets/kid_icon_button.dart';
 import '../widgets/mascot.dart';
-import '../widgets/menu_tile.dart';
+import '../widgets/motion/staggered_entrance.dart';
+import 'home/home_art.dart';
+import 'home/home_widgets.dart';
 
-/// Pantalla de inicio: el botón principal abre un dibujo para colorear con un
-/// solo toque; debajo están la galería, las actividades y «Mis dibujos».
+/// Pantalla de inicio: logo, personajes y el menú principal (Colorear, Mini
+/// juegos, Actividades y Galería), con Perfil, Logros y Configuración abajo.
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  /// Ilustración profesional opcional de los personajes. Si se añade este
+  /// archivo (y su carpeta en pubspec.yaml), sustituye a la versión vectorial.
+  static const heroAsset = 'assets/images/home/personajes.png';
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  /// Cada pulsación de «¡Vamos a pintar!» propone el siguiente dibujo fácil.
-  int _suggestion = 0;
-
-  void _startPainting(DrawingCatalog catalog) {
-    final options = catalog.suggestions;
-    if (options.isEmpty) {
-      Navigator.of(context).pushNamed(AppRoutes.categories);
-      return;
-    }
-    final drawing = options[_suggestion % options.length];
-    _suggestion++;
-    Navigator.of(context).pushNamed(AppRoutes.coloring, arguments: ColoringArgs(drawing.id));
-  }
-
   Future<void> _openAdultZone() async {
     final navigator = Navigator.of(context);
     if (await showAdultGate(context)) {
@@ -48,166 +35,354 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
+  void _go(String route) => Navigator.of(context).pushNamed(route);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: DoodleBackground(
-        child: SafeArea(
-          child: CatalogBuilder(
-            builder: (context, catalog) => LayoutBuilder(
-              builder: (context, constraints) {
-                final wide = constraints.maxWidth > constraints.maxHeight && constraints.maxWidth >= 600;
-                final header = _Header(compact: wide && constraints.maxHeight < 500);
-                final actions = _Actions(onStart: () => _startPainting(catalog));
-                return Stack(
-                  children: [
-                    Center(
-                      child: SingleChildScrollView(
-                        padding: const EdgeInsets.fromLTRB(
-                          AppDimens.pagePadding,
-                          64,
-                          AppDimens.pagePadding,
-                          AppDimens.pagePadding,
-                        ),
-                        child: ConstrainedBox(
-                          constraints: const BoxConstraints(maxWidth: AppDimens.maxContentWidth),
-                          child: wide
-                              ? Row(
-                                  children: [
-                                    Expanded(flex: 4, child: header),
-                                    const SizedBox(width: AppDimens.gapLarge),
-                                    Expanded(flex: 5, child: actions),
-                                  ],
-                                )
-                              : Column(
-                                  children: [
-                                    header,
-                                    const SizedBox(height: AppDimens.gapLarge),
-                                    actions,
-                                  ],
-                                ),
-                        ),
-                      ),
-                    ),
-                    const Positioned(top: 8, left: 8, child: _SoundControls()),
-                    Positioned(top: 8, right: 8, child: _AdultAccessButton(onConfirmed: _openAdultZone)),
-                  ],
-                );
+      backgroundColor: const Color(0xFFFFF3E6),
+      body: Stack(
+        children: [
+          const Positioned.fill(
+            child: RepaintBoundary(child: CustomPaint(painter: SkyScenePainter())),
+          ),
+          SafeArea(
+            child: LayoutBuilder(
+              builder: (context, box) {
+                final wide = box.maxWidth > box.maxHeight && box.maxWidth >= 700;
+                return wide ? _wide(box) : _portrait(box);
               },
             ),
           ),
+        ],
+      ),
+    );
+  }
+
+  Widget _topBar() => Padding(
+    padding: const EdgeInsets.fromLTRB(12, 8, 12, 0),
+    child: Row(
+      children: [
+        CornerButton(
+          icon: Icons.settings_rounded,
+          label: 'Configuración',
+          colors: const [Color(0xFF7CC8FF), Color(0xFF3D8FE0)],
+          onPressed: () => _go(AppRoutes.soundSettings),
+        ),
+        const Spacer(),
+        _AdultAccessButton(onConfirmed: _openAdultZone),
+        const SizedBox(width: 10),
+        const _MusicButton(),
+      ],
+    ),
+  );
+
+  Widget _header(double titleSize) => Stack(
+    clipBehavior: Clip.none,
+    alignment: Alignment.center,
+    children: [
+      Padding(
+        padding: EdgeInsets.symmetric(horizontal: titleSize * 0.9),
+        child: RainbowTitle(size: titleSize),
+      ),
+      Positioned(
+        left: 0,
+        top: titleSize * 0.05,
+        child: ExcludeSemantics(
+          child: CustomPaint(size: Size.square(titleSize * 1.15), painter: const SmilingStarPainter()),
+        ),
+      ),
+      Positioned(
+        right: 0,
+        top: titleSize * 0.3,
+        child: ExcludeSemantics(
+          child: CustomPaint(size: Size.square(titleSize * 1.2), painter: const TitleBrushPainter()),
+        ),
+      ),
+      Positioned(
+        left: titleSize * 1.4,
+        top: -titleSize * 0.1,
+        child: FloatingSparkle(size: titleSize * 0.32),
+      ),
+      Positioned(
+        right: titleSize * 1.3,
+        bottom: -titleSize * 0.05,
+        child: FloatingSparkle(size: titleSize * 0.26, color: const Color(0xFFFF8FB8), delay: 0.4),
+      ),
+    ],
+  );
+
+  Widget _subtitle(double size) => Container(
+    padding: EdgeInsets.symmetric(horizontal: size * 0.9, vertical: size * 0.35),
+    decoration: BoxDecoration(
+      color: Colors.white.withValues(alpha: 0.85),
+      borderRadius: BorderRadius.circular(30),
+      boxShadow: const [BoxShadow(color: Color(0x1F000000), blurRadius: 8, offset: Offset(0, 3))],
+    ),
+    child: Text(
+      'Un mundo de colores, juegos y creatividad',
+      textAlign: TextAlign.center,
+      style: fredoka(size, weight: FontWeight.w600, color: const Color(0xFF7A4FD1)),
+    ),
+  );
+
+  Widget _hero() => _Hero(onTap: () => unawaited(AppServices.of(context).audio.sayOneOf(Phrases.welcome)));
+
+  Widget _board(double width) {
+    final gap = width * 0.035;
+    Widget card(String title, String subtitle, HomeIcon icon, Color color, String route) => Expanded(
+      child: HomeMenuCard(
+        title: title,
+        subtitle: subtitle,
+        icon: icon,
+        color: color,
+        onTap: () => _go(route),
+      ),
+    );
+    return Container(
+      padding: EdgeInsets.all(gap),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(32),
+        gradient: const LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [Color(0xFFFBE7C6), Color(0xFFF1D19F)],
+        ),
+        border: Border.all(color: const Color(0xFFFFF6E6), width: 3),
+        boxShadow: const [
+          BoxShadow(color: Color(0xFFD9B27A), offset: Offset(0, 6)),
+          BoxShadow(color: Color(0x26000000), blurRadius: 16, offset: Offset(0, 10)),
+        ],
+      ),
+      child: Column(
+        children: [
+          Expanded(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                card(
+                  'Colorear',
+                  '¡Dibuja y da vida!',
+                  HomeIcon.palette,
+                  const Color(0xFF8EC9FF),
+                  AppRoutes.categories,
+                ),
+                SizedBox(width: gap),
+                card(
+                  'Mini Juegos',
+                  '¡Aprende jugando!',
+                  HomeIcon.puzzle,
+                  const Color(0xFFFFA9CB),
+                  AppRoutes.miniGames,
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: gap * 1.3),
+          Expanded(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                card(
+                  'Actividades',
+                  '¡Descubre y aprende!',
+                  HomeIcon.bookBulb,
+                  const Color(0xFF92E2BC),
+                  AppRoutes.activities,
+                ),
+                SizedBox(width: gap),
+                card(
+                  'Galería',
+                  '¡Tus obras de arte!',
+                  HomeIcon.frame,
+                  const Color(0xFFC9AEFF),
+                  AppRoutes.savedDrawings,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _bottomNav() => Row(
+    children: [
+      Expanded(
+        flex: 3,
+        child: BottomPillButton(
+          label: 'Perfil',
+          art: const Mascot(size: 38, waves: 0),
+          onTap: () => _go(AppRoutes.profile),
+        ),
+      ),
+      const SizedBox(width: 10),
+      Expanded(
+        flex: 3,
+        child: BottomPillButton(
+          label: 'Logros',
+          art: const CustomPaint(painter: HomeIconPainter(HomeIcon.star)),
+          onTap: () => _go(AppRoutes.rewards),
+        ),
+      ),
+      const SizedBox(width: 10),
+      Expanded(
+        flex: 4,
+        child: BottomPillButton(
+          label: 'Configuración',
+          art: const CustomPaint(painter: HomeIconPainter(HomeIcon.gear)),
+          onTap: () => _go(AppRoutes.soundSettings),
+        ),
+      ),
+    ],
+  );
+
+  Widget _portrait(BoxConstraints box) {
+    final w = box.maxWidth;
+    final content = min(w, 640.0);
+    final titleSize = min(content * 0.125, 60.0);
+    const navH = 72.0;
+    // Lo fijo (barra superior, logo, subtítulo y barra inferior) va primero; el
+    // tablero se encoge en pantallas bajas para que quepan los personajes.
+    final fixed = 64 + titleSize * 1.95 + titleSize * 0.55 + 20 + navH + 24;
+    final boardH = min((content - 32) * 0.86, max(250.0, box.maxHeight - fixed - 120));
+    final heroH = (box.maxHeight - fixed - boardH).clamp(110.0, 330.0);
+    final column = Column(
+      children: [
+        _topBar(),
+        StaggeredEntrance(index: 0, child: _header(titleSize)),
+        SizedBox(height: titleSize * 0.12),
+        StaggeredEntrance(index: 1, child: _subtitle(max(13, titleSize * 0.3))),
+        StaggeredEntrance(
+          index: 2,
+          child: SizedBox(height: heroH, width: content, child: _hero()),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: StaggeredEntrance(
+            index: 3,
+            child: SizedBox(height: boardH, child: _board(content - 32)),
+          ),
+        ),
+        const SizedBox(height: 14),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(16, 0, 16, 10),
+          child: StaggeredEntrance(index: 4, child: _bottomNav()),
+        ),
+      ],
+    );
+    return Center(
+      child: SingleChildScrollView(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: content),
+          child: column,
         ),
       ),
     );
   }
-}
 
-class _Header extends StatelessWidget {
-  const _Header({this.compact = false});
-
-  final bool compact;
-
-  @override
-  Widget build(BuildContext context) {
-    final text = Theme.of(context).textTheme;
+  Widget _wide(BoxConstraints box) {
+    final titleSize = min(box.maxHeight * 0.1, 64.0);
     return Column(
       children: [
-        AppLogo(size: compact ? 96 : 140),
-        const SizedBox(height: 8),
-        Semantics(
-          header: true,
-          child: Text(
-            'Pequeños Artistas',
-            textAlign: TextAlign.center,
-            style: text.displaySmall?.copyWith(color: AppColors.coral),
+        _topBar(),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 5,
+                  child: Column(
+                    children: [
+                      StaggeredEntrance(index: 0, child: _header(titleSize)),
+                      SizedBox(height: titleSize * 0.1),
+                      StaggeredEntrance(index: 1, child: _subtitle(max(13, titleSize * 0.3))),
+                      Expanded(child: StaggeredEntrance(index: 2, child: _hero())),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  flex: 5,
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: LayoutBuilder(
+                          builder: (context, c) => StaggeredEntrance(index: 3, child: _board(c.maxWidth)),
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+                      StaggeredEntrance(index: 4, child: _bottomNav()),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
-        const SizedBox(height: 6),
-        const SizedBox(height: 4),
-        MascotBubble(
-          text: '¡Hola! ¿Qué quieres pintar hoy?',
-          size: compact ? 56 : 76,
-          // La voz solo saluda si el niño toca a Pincelín: nada automático.
-          onTap: () => unawaited(AppServices.of(context).audio.sayOneOf(Phrases.welcome)),
         ),
       ],
     );
   }
 }
 
-class _Actions extends StatelessWidget {
-  const _Actions({required this.onStart});
+/// Personajes: ilustración profesional si existe; si no, la versión vectorial
+/// original. Al tocarlos, saludan con la voz (si está activada).
+class _Hero extends StatefulWidget {
+  const _Hero({required this.onTap});
 
-  final VoidCallback onStart;
+  final VoidCallback onTap;
+
+  @override
+  State<_Hero> createState() => _HeroState();
+}
+
+class _HeroState extends State<_Hero> {
+  static Future<bool>? _hasAsset;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final bundle = DefaultAssetBundle.of(context);
+    _hasAsset ??= AssetManifest.loadFromAssetBundle(bundle)
+        .then((m) => m.listAssets().contains(HomeScreen.heroAsset))
+        .catchError((Object _) => false);
+  }
 
   @override
   Widget build(BuildContext context) {
-    final navigator = Navigator.of(context);
-    List<Widget> tiles({required bool horizontal}) => [
-      MenuTile(
-        icon: Icons.photo_library_rounded,
-        label: 'Galería',
-        horizontal: horizontal,
-        color: AppColors.sky,
-        semanticsHint: 'Elige un dibujo por categoría',
-        onTap: () => navigator.pushNamed(AppRoutes.categories),
-      ),
-      MenuTile(
-        icon: Icons.extension_rounded,
-        label: 'Aprender jugando',
-        horizontal: horizontal,
-        color: AppColors.leaf,
-        onTap: () => navigator.pushNamed(AppRoutes.activities),
-      ),
-      MenuTile(
-        icon: Icons.collections_rounded,
-        label: 'Mis dibujos',
-        horizontal: horizontal,
-        color: AppColors.grape,
-        onTap: () => navigator.pushNamed(AppRoutes.savedDrawings),
-      ),
-    ];
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        BigActionButton(label: '¡Vamos a pintar!', icon: Icons.brush_rounded, onPressed: onStart),
-        const SizedBox(height: AppDimens.gapLarge),
-        LayoutBuilder(
-          builder: (context, constraints) {
-            // Tres tarjetas en fila si caben; si no, en columna y en formato horizontal.
-            if (constraints.maxWidth >= 420) {
-              return IntrinsicHeight(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    for (final (i, tile) in tiles(horizontal: false).indexed) ...[
-                      if (i > 0) const SizedBox(width: AppDimens.gap),
-                      Expanded(child: tile),
-                    ],
-                  ],
-                ),
-              );
+    return Semantics(
+      button: true,
+      label: 'Un niño y una niña con pinceles y su perrito',
+      hint: 'Toca para que te saluden',
+      excludeSemantics: true,
+      onTap: widget.onTap,
+      child: GestureDetector(
+        onTap: widget.onTap,
+        child: FutureBuilder<bool>(
+          future: _hasAsset,
+          builder: (context, snapshot) {
+            if (snapshot.data == true) {
+              return Image.asset(HomeScreen.heroAsset, fit: BoxFit.contain);
             }
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                for (final (i, tile) in tiles(horizontal: true).indexed) ...[
-                  if (i > 0) const SizedBox(height: 12),
-                  tile,
-                ],
-              ],
+            return TweenAnimationBuilder<double>(
+              tween: Tween(begin: 0.85, end: 1),
+              duration: const Duration(milliseconds: 600),
+              curve: Curves.easeOutBack,
+              builder: (context, s, child) =>
+                  Transform.scale(scale: s, alignment: Alignment.bottomCenter, child: child),
+              child: const CustomPaint(size: Size.infinite, painter: CharactersPainter()),
             );
           },
         ),
-      ],
+      ),
     );
   }
 }
 
-/// Silencio total de un toque (música, efectos y voz) y acceso a «Sonido y
-/// música» para ajustar cada cosa por separado.
-class _SoundControls extends StatelessWidget {
-  const _SoundControls();
+/// Música de fondo: un toque la enciende o la apaga.
+class _MusicButton extends StatelessWidget {
+  const _MusicButton();
 
   @override
   Widget build(BuildContext context) {
@@ -215,35 +390,21 @@ class _SoundControls extends StatelessWidget {
     return ListenableBuilder(
       listenable: learning,
       builder: (context, _) {
-        final on = !learning.settings.muted;
-        return Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            KidIconButton(
-              icon: on ? Icons.volume_up_rounded : Icons.volume_off_rounded,
-              label: on ? 'Sonidos activados' : 'Sonidos desactivados',
-              color: on ? AppColors.sky : AppColors.inkSoft,
-              size: 52,
-              selected: on,
-              onPressed: () => learning.updateSettings(learning.settings.copyWith(muted: on)),
-            ),
-            const SizedBox(width: 8),
-            KidIconButton(
-              icon: Icons.tune_rounded,
-              label: 'Sonido y música',
-              color: AppColors.grape,
-              size: 52,
-              onPressed: () => Navigator.of(context).pushNamed(AppRoutes.soundSettings),
-            ),
-          ],
+        final s = learning.settings;
+        final on = s.musicOn && !s.muted;
+        return CornerButton(
+          icon: on ? Icons.music_note_rounded : Icons.music_off_rounded,
+          label: on ? 'Música activada' : 'Música desactivada',
+          colors: on
+              ? const [Color(0xFFFF9CC4), Color(0xFFE85C93)]
+              : const [Color(0xFFC9C5D6), Color(0xFF8E89A3)],
+          onPressed: () => learning.updateSettings(s.copyWith(musicOn: !on, muted: on ? s.muted : false)),
         );
       },
     );
   }
 }
 
-/// Acceso discreto para adultos: hay que mantenerlo pulsado y después
-/// superar la verificación.
 class _AdultAccessButton extends StatelessWidget {
   const _AdultAccessButton({required this.onConfirmed});
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:pequenos_artistas/learning/learning_level.dart';
 import 'package:pequenos_artistas/models/drawing_category.dart';
 import 'package:pequenos_artistas/navigation/app_router.dart';
 import 'package:pequenos_artistas/navigation/app_routes.dart';
@@ -19,36 +20,74 @@ Future<void> tapAndSettle(WidgetTester tester, Finder finder) async {
 }
 
 void main() {
-  testWidgets('el inicio muestra nombre, bienvenida, botón principal y accesos', (tester) async {
+  testWidgets('el inicio muestra logo, subtítulo, personajes, tarjetas y barra inferior', (tester) async {
     setScreenSize(tester, const Size(400, 860));
     await pumpApp(tester);
-    expect(find.text('Pequeños Artistas'), findsOneWidget);
-    expect(find.text('¡Hola! ¿Qué quieres pintar hoy?'), findsOneWidget);
-    expect(find.bySemanticsLabel('¡Vamos a pintar!'), findsOneWidget);
-    expect(find.bySemanticsLabel('Galería'), findsOneWidget);
-    expect(find.bySemanticsLabel('Aprender jugando'), findsOneWidget);
-    expect(find.bySemanticsLabel('Mis dibujos'), findsOneWidget);
+    expect(find.bySemanticsLabel('Pequeños Artistas'), findsOneWidget);
+    expect(find.text('Un mundo de colores, juegos y creatividad'), findsOneWidget);
+    expect(find.bySemanticsLabel('Un niño y una niña con pinceles y su perrito'), findsOneWidget);
+    for (final label in ['Colorear', 'Mini Juegos', 'Actividades', 'Galería', 'Perfil', 'Logros']) {
+      expect(find.bySemanticsLabel(label), findsOneWidget, reason: label);
+    }
+    // Configuración: arriba a la izquierda y en la barra inferior.
+    expect(find.bySemanticsLabel('Configuración'), findsNWidgets(2));
+    expect(find.bySemanticsLabel('Música activada'), findsOneWidget);
     expect(find.bySemanticsLabel('Zona para adultos'), findsOneWidget);
   });
 
-  testWidgets('«¡Vamos a pintar!» abre un dibujo con un solo toque y se puede volver', (tester) async {
+  testWidgets('cada botón del inicio abre su pantalla y se puede volver', (tester) async {
     setScreenSize(tester, const Size(400, 860));
     await pumpApp(tester);
-    await tapAndSettle(tester, find.bySemanticsLabel('¡Vamos a pintar!'));
+    const destinations = {
+      'Colorear': ('Elige una categoría', 'Volver al inicio'),
+      'Mini Juegos': ('Mini juegos', 'Volver al inicio'),
+      'Actividades': ('Actividades', 'Volver al inicio'),
+      'Galería': ('Mis dibujos', 'Volver al inicio'),
+      'Perfil': ('¡Hola, artista!', 'Volver al inicio'),
+      'Logros': ('Mis premios', 'Volver'),
+    };
+    for (final MapEntry(key: button, value: (title, back)) in destinations.entries) {
+      await tapAndSettle(tester, find.bySemanticsLabel(button));
+      expect(find.byType(HomeScreen), findsNothing, reason: button);
+      expect(find.text(title), findsWidgets, reason: button);
+      await tapAndSettle(tester, find.bySemanticsLabel(back));
+      expect(find.byType(HomeScreen), findsOneWidget, reason: button);
+    }
+    for (final settings in find.bySemanticsLabel('Configuración').evaluate().toList().indexed) {
+      await tapAndSettle(tester, find.bySemanticsLabel('Configuración').at(settings.$1));
+      expect(find.text('Sonido y música'), findsWidgets);
+      await tapAndSettle(tester, find.bySemanticsLabel('Volver'));
+      expect(find.byType(HomeScreen), findsOneWidget);
+    }
+  });
+
+  testWidgets('el botón de música enciende y apaga la música', (tester) async {
+    setScreenSize(tester, const Size(400, 860));
+    await pumpApp(tester);
+    await tapAndSettle(tester, find.bySemanticsLabel('Música activada'));
+    expect(find.bySemanticsLabel('Música desactivada'), findsOneWidget);
+    await tapAndSettle(tester, find.bySemanticsLabel('Música desactivada'));
+    expect(find.bySemanticsLabel('Música activada'), findsOneWidget);
+  });
+
+  testWidgets('«¡Vamos a pintar!» (en Colorear) abre un dibujo fácil y se puede volver', (tester) async {
+    setScreenSize(tester, const Size(400, 860));
+    await pumpApp(tester);
+    await startPainting(tester);
     expect(find.byType(ColoringScreen), findsOneWidget);
     expect(find.text('Gato'), findsOneWidget);
     expect(find.bySemanticsLabel('Dibujo para colorear: Gato'), findsOneWidget);
     await tapAndSettle(tester, find.bySemanticsLabel('Volver a la galería'));
-    expect(find.byType(HomeScreen), findsOneWidget);
+    expect(find.byType(CategoriesScreen), findsOneWidget);
     // La siguiente pulsación propone otro dibujo fácil.
-    await tapAndSettle(tester, find.bySemanticsLabel('¡Vamos a pintar!'));
+    await startPainting(tester);
     expect(find.text('Conejo'), findsOneWidget);
   });
 
   testWidgets('las cinco categorías abren su galería con el número correcto de dibujos', (tester) async {
     setScreenSize(tester, const Size(800, 1280));
     await pumpApp(tester);
-    await tapAndSettle(tester, find.bySemanticsLabel('Galería'));
+    await tapAndSettle(tester, find.bySemanticsLabel('Colorear'));
     expect(find.byType(CategoriesScreen), findsOneWidget);
 
     const expected = {
@@ -81,7 +120,7 @@ void main() {
   testWidgets('galería → dibujo → volver a la galería', (tester) async {
     setScreenSize(tester, const Size(400, 860));
     await pumpApp(tester);
-    await tapAndSettle(tester, find.bySemanticsLabel('Galería'));
+    await tapAndSettle(tester, find.bySemanticsLabel('Colorear'));
     await tapAndSettle(tester, find.bySemanticsLabel('Frutas, 5 dibujos'));
     await tapAndSettle(tester, find.bySemanticsLabel('Fresa. Dificultad fácil'));
     expect(find.byType(ColoringScreen), findsOneWidget);
@@ -93,7 +132,7 @@ void main() {
   testWidgets('Mis dibujos vacío ofrece ir a la galería', (tester) async {
     setScreenSize(tester, const Size(400, 860));
     await pumpApp(tester);
-    await tapAndSettle(tester, find.bySemanticsLabel('Mis dibujos'));
+    await tapAndSettle(tester, find.bySemanticsLabel('Galería'));
     expect(find.text('¡Tu galería te espera!'), findsOneWidget);
     await tapAndSettle(tester, find.text('Ir a pintar'));
     expect(find.byType(CategoriesScreen), findsOneWidget);
@@ -101,20 +140,54 @@ void main() {
     expect(find.byType(HomeScreen), findsOneWidget);
   });
 
-  testWidgets('«Aprender jugando» muestra los cuatro juegos y vuelve al inicio', (tester) async {
+  testWidgets('«Actividades» y «Mini Juegos» muestran cada uno sus juegos', (tester) async {
     setScreenSize(tester, const Size(400, 860));
     await pumpApp(tester);
-    await tapAndSettle(tester, find.bySemanticsLabel('Aprender jugando'));
-    for (final title in [
-      'Aprende los colores',
-      'Descubre las formas',
-      'Encuentra a los animales',
-      'Une las parejas',
-    ]) {
-      expect(find.bySemanticsLabel(title), findsOneWidget, reason: title);
+    const groups = {
+      'Actividades': [
+        'Aprende los colores',
+        'Descubre las formas',
+        'Encuentra a los animales',
+        'Trazos y escritura',
+      ],
+      'Mini Juegos': ['Une las parejas', 'Rompecabezas', 'Laberintos'],
+    };
+    for (final MapEntry(key: group, value: games) in groups.entries) {
+      await tapAndSettle(tester, find.bySemanticsLabel(group));
+      for (final title in GameId.values.map((g) => g.title)) {
+        final tile = find.bySemanticsLabel(RegExp('^${RegExp.escape(title)}'));
+        expect(tile, games.contains(title) ? findsOneWidget : findsNothing, reason: '$group: $title');
+      }
+      await tapAndSettle(tester, find.bySemanticsLabel('Volver al inicio'));
+      expect(find.byType(HomeScreen), findsOneWidget);
     }
+  });
+
+  testWidgets('«Perfil» muestra el progreso, los dibujos recientes y abre uno', (tester) async {
+    setScreenSize(tester, const Size(400, 860));
+    await pumpApp(tester);
+    await tapAndSettle(tester, find.bySemanticsLabel('Perfil'));
+    expect(find.text('¡Hola, artista!'), findsOneWidget);
+    expect(find.bySemanticsLabel('Dibujos: 0'), findsOneWidget);
+    expect(find.text('Aún no hay dibujos. ¡Pinta el primero!'), findsOneWidget);
     await tapAndSettle(tester, find.bySemanticsLabel('Volver al inicio'));
-    expect(find.byType(HomeScreen), findsOneWidget);
+
+    // Se pinta una zona del gato y el panel lo refleja.
+    await startPainting(tester);
+    final gato = svgOf('animals', 'animal_gato');
+    await tapAndSettle(tester, find.bySemanticsLabel('Rojo'));
+    await tester.tapAt(screenPointOf(tester, gato, interiorPoint(gato, 'cabeza')));
+    await tester.pump();
+    await tapAndSettle(tester, find.bySemanticsLabel('Volver a la galería'));
+    await tapAndSettle(tester, find.bySemanticsLabel('Volver al inicio'));
+    await tapAndSettle(tester, find.bySemanticsLabel('Perfil'));
+    expect(find.bySemanticsLabel('Dibujos: 1'), findsOneWidget);
+    expect(find.bySemanticsLabel(RegExp(r'^Mini juegos probados: 0 de 3')), findsOneWidget);
+    expect(find.bySemanticsLabel(RegExp(r'^Actividades probadas: 0 de 4')), findsOneWidget);
+    final recent = find.bySemanticsLabel(RegExp(r'^Gato\. '));
+    await tapAndSettle(tester, recent);
+    expect(find.byType(ColoringScreen), findsOneWidget);
+    expect(find.text('Gato'), findsOneWidget);
   });
 
   testWidgets('la zona de adultos exige mantener pulsado y responder bien', (tester) async {

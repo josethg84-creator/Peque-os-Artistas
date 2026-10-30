@@ -37,7 +37,6 @@ class _RewardsScreenState extends State<RewardsScreen> {
       title: 'Mis premios',
       titleIcon: Icons.emoji_events_rounded,
       accent: AppColors.sun,
-      backLabel: 'Volver a los juegos',
       body: ListenableBuilder(
         listenable: learning,
         builder: (context, _) {

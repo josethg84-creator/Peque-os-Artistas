@@ -14,9 +14,28 @@ import '../audio/learning_audio.dart';
 import '../learning_level.dart';
 import '../widgets/learning_settings_bar.dart';
 
-/// «Aprender jugando»: los cuatro minijuegos, el nivel y los sonidos.
+/// Las dos secciones de juegos del inicio.
+enum HubGroup {
+  activities('Actividades', Icons.lightbulb_rounded, AppColors.leaf, [
+    GameId.colors,
+    GameId.shapes,
+    GameId.animals,
+    GameId.tracing,
+  ]),
+  games('Mini juegos', Icons.extension_rounded, AppColors.berry, [GameId.memory, GameId.puzzle, GameId.maze]);
+
+  const HubGroup(this.title, this.icon, this.color, this.members);
+  final String title;
+  final IconData icon;
+  final Color color;
+  final List<GameId> members;
+}
+
+/// «Actividades» o «Mini juegos»: sus juegos, el nivel y los sonidos.
 class LearningHubScreen extends StatefulWidget {
-  const LearningHubScreen({super.key});
+  const LearningHubScreen({super.key, this.group = HubGroup.activities});
+
+  final HubGroup group;
 
   static const games = [
     (GameId.colors, Icons.palette_rounded, AppColors.coral),
@@ -51,10 +70,15 @@ class _LearningHubScreenState extends State<LearningHubScreen> {
   @override
   Widget build(BuildContext context) {
     final learning = AppServices.of(context).learning;
+    final group = widget.group;
+    final games = [
+      for (final g in LearningHubScreen.games)
+        if (group.members.contains(g.$1)) g,
+    ];
     return KidScaffold(
-      title: 'Aprender jugando',
-      titleIcon: Icons.extension_rounded,
-      accent: AppColors.leaf,
+      title: group.title,
+      titleIcon: group.icon,
+      accent: group.color,
       backLabel: 'Volver al inicio',
       trailing: KidIconButton(
         icon: Icons.emoji_events_rounded,
@@ -71,12 +95,12 @@ class _LearningHubScreenState extends State<LearningHubScreen> {
               sliver: SliverToBoxAdapter(child: LearningSettingsBar(controller: learning)),
             ),
             AdaptiveSliverGrid(
-              itemCount: LearningHubScreen.games.length,
+              itemCount: games.length,
               minTileWidth: 200,
               maxColumns: 4,
               tileHeight: 220,
               itemBuilder: (context, i) {
-                final (game, icon, color) = LearningHubScreen.games[i];
+                final (game, icon, color) = games[i];
                 final played = learning.progress.game(game).sessions;
                 return MenuTile(
                   icon: icon,

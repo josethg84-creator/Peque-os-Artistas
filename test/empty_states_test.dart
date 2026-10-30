@@ -38,7 +38,7 @@ void main() {
     testWidgets('una categoría sin dibujos muestra un estado vacío amable', (tester) async {
       setScreenSize(tester, const Size(400, 860));
       await pumpApp(tester, service: service());
-      await tapAndSettle(tester, find.bySemanticsLabel('Galería'));
+      await tapAndSettle(tester, find.bySemanticsLabel('Colorear'));
       await tapAndSettle(tester, find.bySemanticsLabel('Frutas, 0 dibujos'));
       expect(find.text('Todavía no hay dibujos aquí'), findsOneWidget);
       await tapAndSettle(tester, find.text('Ver categorías'));
@@ -48,18 +48,21 @@ void main() {
     testWidgets('una imagen ausente se sustituye por un marcador identificado', (tester) async {
       setScreenSize(tester, const Size(400, 860));
       await pumpApp(tester, service: service());
-      await tapAndSettle(tester, find.bySemanticsLabel('Galería'));
+      await tapAndSettle(tester, find.bySemanticsLabel('Colorear'));
       await tapAndSettle(tester, find.bySemanticsLabel('Animales, 1 dibujo'));
       expect(find.byType(MissingImagePlaceholder), findsOneWidget);
       expect(find.text(MissingImagePlaceholder.label), findsOneWidget);
       expect(find.byType(Image), findsNothing);
     });
 
-    testWidgets('sin catálogo, «¡Vamos a pintar!» lleva a las categorías vacías', (tester) async {
+    testWidgets('sin catálogo, «Colorear» muestra las categorías vacías sin «¡Vamos a pintar!»', (
+      tester,
+    ) async {
       setScreenSize(tester, const Size(400, 860));
       await pumpApp(tester, service: fakeCatalogService('{"drawings": []}', {}));
-      await tapAndSettle(tester, find.bySemanticsLabel('¡Vamos a pintar!'));
+      await tapAndSettle(tester, find.bySemanticsLabel('Colorear'));
       expect(find.text('Elige una categoría'), findsOneWidget);
+      expect(find.bySemanticsLabel('¡Vamos a pintar!'), findsNothing);
       expect(find.bySemanticsLabel('Animales, 0 dibujos'), findsOneWidget);
     });
 

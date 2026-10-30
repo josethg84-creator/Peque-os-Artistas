@@ -273,7 +273,7 @@ void main() {
       await pumpApp(tester);
       expect(lastMusic!.playing, MusicTrack.main);
       expect(lastNarrator!.spoken, isEmpty, reason: 'nada de voz automática al abrir');
-      await tapAndSettle(tester, find.bySemanticsLabel('Galería'));
+      await tapAndSettle(tester, find.bySemanticsLabel('Colorear'));
       expect(lastSounds!.played.last, SoundCue.tap);
       await tapAndSettle(tester, find.bySemanticsLabel('Frutas, 5 dibujos'));
       expect(lastSounds!.played.last, SoundCue.category);
@@ -285,7 +285,7 @@ void main() {
       expect(lastMusic!.playing, MusicTrack.main);
       await tapAndSettle(tester, find.bySemanticsLabel('Volver a categorías'));
       await tapAndSettle(tester, find.bySemanticsLabel('Volver al inicio'));
-      await tapAndSettle(tester, find.bySemanticsLabel('Aprender jugando'));
+      await tapAndSettle(tester, find.bySemanticsLabel('Actividades'));
       expect(lastMusic!.playing, MusicTrack.main);
       await tapAndSettle(tester, find.bySemanticsLabel(RegExp('^Aprende los colores')));
       expect(lastMusic!.playing, isNull, reason: 'concentración');
@@ -306,11 +306,13 @@ void main() {
       expect(lastMusic!.playing, MusicTrack.main);
     });
 
-    testWidgets('tocar a Pincelín saluda con voz (sin repetir la misma frase)', (tester) async {
+    testWidgets('tocar a los personajes del inicio saluda con voz (sin repetir la misma frase)', (
+      tester,
+    ) async {
       setScreenSize(tester, const Size(420, 900));
       await pumpApp(tester);
       for (var i = 0; i < 3; i++) {
-        await tapAndSettle(tester, find.bySemanticsLabel('Pincelín, la mascota'));
+        await tapAndSettle(tester, find.bySemanticsLabel('Un niño y una niña con pinceles y su perrito'));
       }
       expect(lastNarrator!.spoken, hasLength(3));
       expect(lastNarrator!.spoken.every(Phrases.welcome.contains), isTrue);
@@ -321,7 +323,7 @@ void main() {
       ColoringCanvas.resetSessionGreeting();
       setScreenSize(tester, const Size(420, 900));
       await pumpApp(tester);
-      await tapAndSettle(tester, find.bySemanticsLabel('Galería'));
+      await tapAndSettle(tester, find.bySemanticsLabel('Colorear'));
       await tapAndSettle(tester, find.bySemanticsLabel('Frutas, 5 dibujos'));
       await tapAndSettle(tester, find.bySemanticsLabel('Plátano. Dificultad fácil'));
       expect(lastNarrator!.spoken, ['¡Elige tu color favorito!']);
@@ -344,7 +346,7 @@ void main() {
       setScreenSize(tester, const Size(420, 900));
       final backend = MemoryBackend();
       await pumpApp(tester, learningBackend: backend);
-      await tapAndSettle(tester, find.bySemanticsLabel('Sonido y música'));
+      await tapAndSettle(tester, find.bySemanticsLabel('Configuración').first);
       expect(find.byType(SoundSettingsScreen), findsOneWidget);
       expect(find.text('Voz de prueba'), findsOneWidget); // estado real de la voz
 
@@ -360,7 +362,7 @@ void main() {
       await tester.pumpWidget(const SizedBox());
       await pumpApp(tester, learningBackend: backend);
       expect(lastMusic!.playing, isNull, reason: 'la música sigue apagada');
-      await tapAndSettle(tester, find.bySemanticsLabel('Sonido y música'));
+      await tapAndSettle(tester, find.bySemanticsLabel('Configuración').first);
       expect(find.bySemanticsLabel('Música: desactivado'), findsOneWidget);
       final slider = tester.widget<Slider>(find.byType(Slider).at(2));
       expect(slider.value, 0);

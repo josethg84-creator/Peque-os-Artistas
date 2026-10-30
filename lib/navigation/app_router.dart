@@ -7,6 +7,7 @@ import '../learning/screens/learning_hub_screen.dart';
 import '../learning/screens/rewards_screen.dart';
 import '../screens/adult_zone_screen.dart';
 import '../screens/categories_screen.dart';
+import '../screens/child_panel_screen.dart';
 import '../screens/coloring_screen.dart';
 import '../screens/gallery_screen.dart';
 import '../screens/home_screen.dart';
@@ -33,6 +34,8 @@ abstract final class AppRouter {
       ),
       AppRoutes.savedDrawings => const SavedDrawingsScreen(),
       AppRoutes.activities => const LearningHubScreen(),
+      AppRoutes.miniGames => const LearningHubScreen(group: HubGroup.games),
+      AppRoutes.profile => const ChildPanelScreen(),
       AppRoutes.learningGame when args is LearningGameArgs => LearningGameScreen(game: args.game),
       AppRoutes.rewards => const RewardsScreen(),
       AppRoutes.search => const SearchScreen(),

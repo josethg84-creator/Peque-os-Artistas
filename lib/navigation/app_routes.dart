@@ -14,6 +14,8 @@ abstract final class AppRoutes {
   static const learningGame = '/aprender';
   static const rewards = '/premios';
   static const soundSettings = '/sonido';
+  static const miniGames = '/minijuegos';
+  static const profile = '/perfil';
 }
 
 /// Argumento de [AppRoutes.gallery].

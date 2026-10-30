@@ -13,6 +13,6 @@ void main() {
     await tester.pumpAndSettle();
     expect(tester.takeException(), isNull);
     expect(find.byType(HomeScreen), findsOneWidget);
-    expect(find.text('Pequeños Artistas'), findsOneWidget);
+    expect(find.bySemanticsLabel('Pequeños Artistas'), findsOneWidget);
   });
 }

@@ -61,7 +61,7 @@ void main() {
     setScreenSize(tester, const Size(420, 900));
     final backend = MemoryBackend();
     await pumpApp(tester, store: KeyValueCreationStore(backend));
-    await tapAndSettle(tester, find.bySemanticsLabel('¡Vamos a pintar!'));
+    await startPainting(tester);
     await paint(tester, gato, 'cuerpo', 'Naranja');
     await paint(tester, gato, 'cabeza', 'Naranja');
     await paint(tester, gato, 'barriga', 'Amarillo');
@@ -69,7 +69,7 @@ void main() {
     await tapAndSettle(tester, find.bySemanticsLabel('Volver a la galería'));
 
     await restartApp(tester, backend);
-    await tapAndSettle(tester, find.bySemanticsLabel('Mis dibujos'));
+    await openMyGallery(tester);
     expect(card('Gato'), findsOneWidget);
     expect(find.text('Hoy'), findsOneWidget);
     expect(find.bySemanticsLabel(RegExp('Sin terminar')), findsOneWidget);
@@ -89,7 +89,7 @@ void main() {
     setScreenSize(tester, const Size(420, 900));
     final store = InMemoryCreationStore();
     await pumpApp(tester, store: store);
-    await tapAndSettle(tester, find.bySemanticsLabel('¡Vamos a pintar!')); // gato
+    await startPainting(tester); // gato
     await paint(tester, gato, 'cabeza', 'Rojo');
     await tapAndSettle(tester, find.bySemanticsLabel('Otro dibujo'));
     await tapAndSettle(tester, find.bySemanticsLabel('Perro'));
@@ -97,7 +97,7 @@ void main() {
     await paint(tester, perro, 'cabeza', 'Azul');
     await tapAndSettle(tester, find.bySemanticsLabel('Volver a la galería'));
 
-    await tapAndSettle(tester, find.bySemanticsLabel('Mis dibujos'));
+    await openMyGallery(tester);
     expect(card('Gato'), findsOneWidget);
     expect(card('Perro'), findsOneWidget);
     Color? thumbColor(String drawingId) =>
@@ -120,7 +120,7 @@ void main() {
   testWidgets('«¡Terminado!» solo cuando todas las zonas tienen color', (tester) async {
     setScreenSize(tester, const Size(420, 900));
     await pumpApp(tester);
-    await tapAndSettle(tester, find.bySemanticsLabel('Galería'));
+    await tapAndSettle(tester, find.bySemanticsLabel('Colorear'));
     await tapAndSettle(tester, find.bySemanticsLabel('Frutas, 5 dibujos'));
     await tapAndSettle(tester, find.bySemanticsLabel('Plátano. Dificultad fácil'));
     final platano = svgOf('fruta_platano', 'fruits');
@@ -129,7 +129,7 @@ void main() {
     await tapAndSettle(tester, find.bySemanticsLabel('Volver a la galería'));
     await tapAndSettle(tester, find.bySemanticsLabel('Volver a categorías'));
     await tapAndSettle(tester, find.bySemanticsLabel('Volver al inicio'));
-    await tapAndSettle(tester, find.bySemanticsLabel('Mis dibujos'));
+    await openMyGallery(tester);
     expect(find.text('¡Terminado!'), findsNothing);
 
     await tapAndSettle(tester, card('Plátano'));
@@ -142,10 +142,10 @@ void main() {
     setScreenSize(tester, const Size(420, 900));
     final store = InMemoryCreationStore();
     await pumpApp(tester, store: store);
-    await tapAndSettle(tester, find.bySemanticsLabel('¡Vamos a pintar!'));
+    await startPainting(tester);
     await paint(tester, gato, 'cabeza', 'Rojo');
     await tapAndSettle(tester, find.bySemanticsLabel('Volver a la galería'));
-    await tapAndSettle(tester, find.bySemanticsLabel('Mis dibujos'));
+    await openMyGallery(tester);
 
     await tapAndSettle(tester, find.bySemanticsLabel('Pintar otra vez'));
     expect(canvasColor(tester, 'cabeza'), isNull); // empieza desde el original
@@ -161,13 +161,13 @@ void main() {
     setScreenSize(tester, const Size(420, 900));
     final store = InMemoryCreationStore();
     await pumpApp(tester, store: store);
-    await tapAndSettle(tester, find.bySemanticsLabel('¡Vamos a pintar!'));
+    await startPainting(tester);
     await paint(tester, gato, 'cabeza', 'Rojo');
     await tapAndSettle(tester, find.bySemanticsLabel('Otro dibujo'));
     await tapAndSettle(tester, find.bySemanticsLabel('Perro'));
     await paint(tester, svgOf('animal_perro', 'animals'), 'cabeza', 'Azul');
     await tapAndSettle(tester, find.bySemanticsLabel('Volver a la galería'));
-    await tapAndSettle(tester, find.bySemanticsLabel('Mis dibujos'));
+    await openMyGallery(tester);
 
     // Las tarjetas están ordenadas por fecha: el perro es el primero.
     await tapAndSettle(tester, find.bySemanticsLabel('Borrar').first);
@@ -183,7 +183,7 @@ void main() {
 
     // El perro sigue en la galería y se puede volver a pintar.
     await tapAndSettle(tester, find.bySemanticsLabel('Volver al inicio'));
-    await tapAndSettle(tester, find.bySemanticsLabel('Galería'));
+    await tapAndSettle(tester, find.bySemanticsLabel('Colorear'));
     await tapAndSettle(tester, find.bySemanticsLabel('Animales, 11 dibujos'));
     await tapAndSettle(tester, find.bySemanticsLabel('Perro. Dificultad media'));
     expect(canvasColor(tester, 'cabeza'), isNull);
@@ -195,7 +195,7 @@ void main() {
     final backend = MemoryBackend();
     backend.data['creation.v2.animal_oso-roto'] = '{"format_version":2,"id":"animal_oso-ro';
     await pumpApp(tester, store: KeyValueCreationStore(backend));
-    await tapAndSettle(tester, find.bySemanticsLabel('Mis dibujos'));
+    await openMyGallery(tester);
     expect(find.text('¡Tu galería te espera!'), findsOneWidget);
     expect(backend.data, contains('creation.v2.animal_oso-roto')); // se conserva
   });
@@ -228,7 +228,7 @@ void main() {
     setScreenSize(tester, const Size(420, 900));
     final backend = MemoryBackend();
     await pumpApp(tester, store: KeyValueCreationStore(backend));
-    await tapAndSettle(tester, find.bySemanticsLabel('¡Vamos a pintar!'));
+    await startPainting(tester);
     backend.failWrites = true;
     await paint(tester, gato, 'cabeza', 'Rojo');
     await tester.pump(const Duration(seconds: 1));
@@ -250,7 +250,7 @@ void main() {
     setScreenSize(tester, const Size(420, 900));
     final backend = MemoryBackend()..failReads = true;
     await pumpApp(tester, store: KeyValueCreationStore(backend));
-    await tapAndSettle(tester, find.bySemanticsLabel('Mis dibujos'));
+    await openMyGallery(tester);
     expect(find.text('No pudimos abrir tus dibujos'), findsOneWidget);
     backend.failReads = false;
     await tapAndSettle(tester, find.text('Reintentar'));
@@ -261,7 +261,7 @@ void main() {
     setScreenSize(tester, const Size(420, 900));
     final backend = MemoryBackend();
     await pumpApp(tester, store: KeyValueCreationStore(backend));
-    await tapAndSettle(tester, find.bySemanticsLabel('¡Vamos a pintar!'));
+    await startPainting(tester);
     await paint(tester, gato, 'cola', 'Morado');
     expect(backend.data, isEmpty); // todavía dentro de la pausa de 0,6 s
     tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.inactive);
@@ -276,7 +276,7 @@ void main() {
   testWidgets('11b. el estado se mantiene al navegar entre pantallas', (tester) async {
     setScreenSize(tester, const Size(420, 900));
     await pumpApp(tester);
-    await tapAndSettle(tester, find.bySemanticsLabel('Galería'));
+    await tapAndSettle(tester, find.bySemanticsLabel('Colorear'));
     await tapAndSettle(tester, find.bySemanticsLabel('Animales, 11 dibujos'));
     await tapAndSettle(tester, find.bySemanticsLabel('Gato. Dificultad fácil'));
     await paint(tester, gato, 'cola', 'Rosa');
@@ -300,11 +300,11 @@ void main() {
 
     final backend = MemoryBackend();
     await pumpApp(tester, store: KeyValueCreationStore(backend));
-    await tapAndSettle(tester, find.bySemanticsLabel('¡Vamos a pintar!'));
+    await startPainting(tester);
     await paint(tester, gato, 'cabeza', 'Rojo');
     await tapAndSettle(tester, find.bySemanticsLabel('Volver a la galería'));
     await restartApp(tester, backend);
-    await tapAndSettle(tester, find.bySemanticsLabel('Mis dibujos'));
+    await openMyGallery(tester);
     await tapAndSettle(tester, card('Gato'));
     expect(canvasColor(tester, 'cabeza'), const Color(0xFFE53935));
     expect(noNetwork.attempts, 0);
