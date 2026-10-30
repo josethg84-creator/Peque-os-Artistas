@@ -20,7 +20,7 @@ CATALOG = ROOT / "assets" / "catalog" / "catalog.json"
 AREAS = ROOT / "build" / "qa" / "region_areas.json"
 NS = "{http://www.w3.org/2000/svg}"
 
-EXPECTED = {"animales": 10, "vehiculos": 5, "dinosaurios": 5, "frutas": 5, "fantasia": 5}
+EXPECTED = {"animales": 11, "vehiculos": 5, "dinosaurios": 5, "frutas": 5, "fantasia": 5}
 REQUIRED = ["id", "name", "category", "file", "thumbnail", "difficulty", "recommended_age", "description"]
 DIFFICULTIES = {"facil", "media", "dificil"}
 THUMB_SIZE = (512, 512)
@@ -131,8 +131,8 @@ def main():
     areas = json.loads(AREAS.read_text(encoding="utf-8")) if AREAS.is_file() else None
     if areas is None:
         warnings.append("no existe build/qa/region_areas.json: no se comprobó el tamaño de las zonas")
-    if len(items) != 30:
-        errors.append(f"el catálogo tiene {len(items)} entradas, se esperaban 30")
+    if len(items) != sum(EXPECTED.values()):
+        errors.append(f"el catálogo tiene {len(items)} entradas, se esperaban {sum(EXPECTED.values())}")
     for key in ("id", "name", "file", "thumbnail"):
         values = [i.get(key) for i in items]
         dup = {v for v in values if values.count(v) > 1}

@@ -31,6 +31,7 @@ void main() {
       'Mariposa',
       'Pez',
       'Tortuga',
+      'Cebra',
     ],
     'vehiculos': ['Automóvil', 'Autobús', 'Avión', 'Tren', 'Barco'],
     'frutas': ['Manzana', 'Plátano', 'Fresa', 'Naranja', 'Uvas'],
@@ -49,14 +50,14 @@ void main() {
       if (d['category'] == category) d['name'] as String,
   ];
 
-  test('hay exactamente 30 entradas', () => expect(drawings, hasLength(30)));
+  test('hay exactamente 31 entradas', () => expect(drawings, hasLength(31)));
 
-  test('las cinco categorías tienen 10, 5, 5, 5 y 5 dibujos', () {
+  test('las cinco categorías tienen 11, 5, 5, 5 y 5 dibujos', () {
     final counts = <String, int>{};
     for (final d in drawings) {
       counts[d['category'] as String] = (counts[d['category']] ?? 0) + 1;
     }
-    expect(counts, {'animales': 10, 'vehiculos': 5, 'dinosaurios': 5, 'frutas': 5, 'fantasia': 5});
+    expect(counts, {'animales': 11, 'vehiculos': 5, 'dinosaurios': 5, 'frutas': 5, 'fantasia': 5});
   });
 
   test('cada categoría contiene exactamente los dibujos pedidos', () {
@@ -121,7 +122,7 @@ void main() {
     }
   });
 
-  testWidgets('las 30 miniaturas se pueden decodificar y son cuadradas de 512 px', (tester) async {
+  testWidgets('las 31 miniaturas se pueden decodificar y son cuadradas de 512 px', (tester) async {
     await tester.runAsync(() async {
       for (final d in drawings) {
         final bytes = File(d['thumbnail'] as String).readAsBytesSync();

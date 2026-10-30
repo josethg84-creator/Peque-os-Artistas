@@ -1,7 +1,7 @@
 Pequeños Artistas es una aplicación para colorear y aprender pensada para niños y niñas de 4 a 7 años. Con un toque, cada zona del dibujo se llena de color: sin salirse de la línea y sin frustraciones.
 
-🎨 30 DIBUJOS PARA COLOREAR
-• 30 ilustraciones originales en 5 categorías: animales, vehículos, dinosaurios, frutas y fantasía.
+🎨 31 DIBUJOS PARA COLOREAR
+• 31 ilustraciones en 5 categorías: animales, vehículos, dinosaurios, frutas y fantasía.
 • Dibujos de dificultad fácil, media y difícil, con zonas grandes y contornos claros.
 • Búsqueda y filtros por categoría y dificultad.
 

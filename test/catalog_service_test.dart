@@ -24,10 +24,10 @@ Map<String, Object?> entry(String id, {String category = 'animales', String? thu
 
 void main() {
   group('Catálogo real de la Fase 1', () {
-    test('tiene 30 dibujos válidos, sin incidencias y con todos sus archivos', () async {
+    test('tiene 31 dibujos válidos, sin incidencias y con todos sus archivos', () async {
       final catalog = await realCatalogService().load();
       expect(catalog.issues, isEmpty);
-      expect(catalog.drawings, hasLength(30));
+      expect(catalog.drawings, hasLength(31));
       expect(catalog.drawings.every((d) => d.thumbnailAvailable), isTrue);
       final assets = diskAssets();
       for (final d in catalog.drawings) {
@@ -38,7 +38,7 @@ void main() {
 
     test('reparte 10/5/5/5/5 entre las cinco categorías', () async {
       final catalog = await realCatalogService().load();
-      expect(catalog.byCategory(DrawingCategory.animals), hasLength(10));
+      expect(catalog.byCategory(DrawingCategory.animals), hasLength(11));
       for (final c in [
         DrawingCategory.vehicles,
         DrawingCategory.dinosaurs,

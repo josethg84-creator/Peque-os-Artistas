@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Genera los 30 dibujos SVG de la colección inicial y el catálogo JSON.
+"""Genera los dibujos SVG de la colección inicial y el catálogo JSON.
 
 Uso (desde la raíz del proyecto):
     python3 tools/generate_drawings.py
@@ -43,6 +43,9 @@ DRAWINGS = [
      "Pez de perfil con aletas, franjas, ojo grande y burbujas."),
     ("animal_tortuga", "Tortuga", "animales", "animals", animals.tortuga,
      "Tortuga sonriente de perfil con caparazón de placas grandes."),
+    # Convertida de «Catalogo Imagenes/» (sin función: ver FROM_IMAGES).
+    ("animal_cebra", "Cebra", "animales", "animals", None,
+     "Cebra tierna de pie con rayas, crin, orejas y cola con mechón."),
     ("vehiculo_automovil", "Automóvil", "vehiculos", "vehicles", vehicles.automovil,
      "Coche de perfil con dos ventanas, puerta, faro y ruedas grandes."),
     ("vehiculo_autobus", "Autobús", "vehiculos", "vehicles", vehicles.autobus,
@@ -96,6 +99,7 @@ FROM_IMAGES = {
     "animal_elefante": "Elefante kawaii sentado con orejas grandes y trompa curvada.",
     "animal_jirafa": "Jirafa de cuello largo con cuernitos, manchas redondas y cola con mechón.",
     "animal_tortuga": "Tortuga sonriente con caparazón de placas, patitas y cola.",
+    "animal_cebra": "Cebra tierna de pie con rayas, crin, orejas y cola con mechón.",
 }
 
 

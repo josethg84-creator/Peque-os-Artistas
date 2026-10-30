@@ -184,7 +184,7 @@ void main() {
     // El perro sigue en la galería y se puede volver a pintar.
     await tapAndSettle(tester, find.bySemanticsLabel('Volver al inicio'));
     await tapAndSettle(tester, find.bySemanticsLabel('Galería'));
-    await tapAndSettle(tester, find.bySemanticsLabel('Animales, 10 dibujos'));
+    await tapAndSettle(tester, find.bySemanticsLabel('Animales, 11 dibujos'));
     await tapAndSettle(tester, find.bySemanticsLabel('Perro. Dificultad media'));
     expect(canvasColor(tester, 'cabeza'), isNull);
     await tester.pump(const Duration(seconds: 1));
@@ -277,7 +277,7 @@ void main() {
     setScreenSize(tester, const Size(420, 900));
     await pumpApp(tester);
     await tapAndSettle(tester, find.bySemanticsLabel('Galería'));
-    await tapAndSettle(tester, find.bySemanticsLabel('Animales, 10 dibujos'));
+    await tapAndSettle(tester, find.bySemanticsLabel('Animales, 11 dibujos'));
     await tapAndSettle(tester, find.bySemanticsLabel('Gato. Dificultad fácil'));
     await paint(tester, gato, 'cola', 'Rosa');
     await tapAndSettle(tester, find.bySemanticsLabel('Volver a la galería'));

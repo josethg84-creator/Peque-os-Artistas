@@ -52,7 +52,7 @@ void main() {
     expect(find.byType(CategoriesScreen), findsOneWidget);
 
     const expected = {
-      DrawingCategory.animals: 10,
+      DrawingCategory.animals: 11,
       DrawingCategory.vehicles: 5,
       DrawingCategory.dinosaurs: 5,
       DrawingCategory.fruits: 5,
@@ -145,7 +145,7 @@ void main() {
     (a, b) = _question(tester);
     await tapAndSettle(tester, find.widgetWithText(OutlinedButton, '${a * b}'));
     expect(find.text('Zona para adultos'), findsOneWidget);
-    expect(find.textContaining('30 dibujos disponibles'), findsOneWidget);
+    expect(find.textContaining('31 dibujos disponibles'), findsOneWidget);
     await tapAndSettle(tester, find.byTooltip('Salir al inicio'));
     expect(find.byType(HomeScreen), findsOneWidget);
   });

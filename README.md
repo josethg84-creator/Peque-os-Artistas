@@ -2,7 +2,8 @@
 
 Aplicación móvil de colorear para niños de 4 a 7 años (Flutter / Android).
 
-- **Fase 1 (terminada):** colección de 30 dibujos para colorear y su catálogo.
+- **Fase 1 (terminada):** colección de 30 dibujos para colorear y su catálogo (hoy son 31: ocho
+  animales proceden de las imágenes de `Catalogo Imagenes/`, ver docs/DIBUJOS.md).
 - **Fase 2 (terminada):** interfaz y navegación de la app Flutter.
 - **Fase 3 (terminada):** motor real de coloreado por regiones vectoriales,
   deshacer/rehacer/limpiar y guardado local del progreso («Mis dibujos»).
@@ -36,7 +37,7 @@ assets/
   thumbnails/ miniaturas PNG 512x512 que usa la app
   audio/      música (Ogg) y efectos (WAV) originales (tools/make_audio.py, ver LICENCIAS.md)
   previews/   PNG 1024x1024 para control de calidad (no se empaquetan)
-  catalog/    catalog.json (30 entradas)
+  catalog/    catalog.json (31 entradas)
 web/          index.html, manifest e iconos de la versión web
 deploy/web/   versión web ya compilada (la que publica Vercel, ver vercel.json)
 store_assets/ recursos y documentos para Google Play (Fase 9)

@@ -14,7 +14,7 @@ Textos listos para copiar y pegar en Play Console:
 |---|---|---|---|
 | Nombre de la app | [`title_es-419.txt`](title_es-419.txt) | 26 | 30 |
 | Descripción breve | [`short_description_es-419.txt`](short_description_es-419.txt) | 78 | 80 |
-| Descripción completa | [`full_description_es-419.txt`](full_description_es-419.txt) | 2167 | 4000 |
+| Descripción completa | [`full_description_es-419.txt`](full_description_es-419.txt) | 2156 | 4000 |
 
 Los recuentos se han medido con Python (caracteres Unicode). Los límites de 30, 80 y 4000
 caracteres son los de la ayuda de Play Console; consultados mediante búsqueda web, porque
@@ -58,7 +58,7 @@ El **nombre comercial** (ficha) y el **identificador del paquete** son cosas dis
 
 ## 2. Descripción breve (78/80)
 
-> Colorea 30 dibujos y aprende colores, formas y animales jugando. Sin conexión.
+> Colorea 31 dibujos y aprende colores, formas y animales jugando. Sin conexión.
 
 ## 3. Descripción completa
 
@@ -67,7 +67,7 @@ contrastado con el código:
 
 | Afirmación | Dónde se comprueba |
 |---|---|
-| 30 dibujos en 5 categorías y 3 dificultades | `assets/catalog/catalog.json`, `test/catalog_integrity_test.dart` |
+| 31 dibujos en 5 categorías y 3 dificultades | `assets/catalog/catalog.json`, `test/catalog_integrity_test.dart` |
 | Toque para pintar, borrador, deshacer, rehacer, limpiar | `lib/coloring/`, `test/coloring/` |
 | Búsqueda y filtros por categoría y dificultad | `lib/screens/search_screen.dart` |
 | Guardado automático y «Mis dibujos» (continuar, otra versión, borrar) | `lib/persistence/`, `lib/screens/saved_drawings_screen.dart` |

@@ -43,7 +43,7 @@ void main() {
     final store = InMemoryCreationStore();
     await pumpApp(tester, store: store);
     await tapAndSettle(tester, find.bySemanticsLabel('Galería'));
-    await tapAndSettle(tester, find.bySemanticsLabel('Animales, 10 dibujos'));
+    await tapAndSettle(tester, find.bySemanticsLabel('Animales, 11 dibujos'));
     await tapAndSettle(tester, find.bySemanticsLabel('Gato. Dificultad fácil'));
     expect(find.byType(ColoringScreen), findsOneWidget);
     expect(find.text('Vista previa: pintar llegará pronto'), findsNothing);

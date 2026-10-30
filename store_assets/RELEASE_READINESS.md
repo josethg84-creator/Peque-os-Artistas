@@ -52,7 +52,7 @@ store_assets/
 | Estado del AAB | ✅ / 🟡 | `app-release.aab`, 52,5 MB. Compila correctamente; el manifiesto final está comprobado y el AAB contiene `arm64-v8a`, `armeabi-v7a` y `x86_64`. **Está firmado con la clave de depuración, así que Play lo rechazaría:** hay que recompilarlo con la clave de subida. No se ha podido usar bundletool (la descarga se denegó en este entorno). |
 | Firma | 🟡 | No hay clave de subida. `build.gradle.kts` ya la lee de `android/key.properties` si existe, y las claves están excluidas de git. Pasos en [SIGNING.md](SIGNING.md). |
 | Secretos en el repositorio | ✅ | No hay `.jks`, `.keystore` ni `key.properties` en git. Están añadidos a `.gitignore`. |
-| Pruebas automáticas | ✅ | `flutter analyze` sin avisos; `flutter test`: 273 pruebas superadas (incluye el sistema de sonido). |
+| Pruebas automáticas | ✅ | `flutter analyze` sin avisos; `flutter test`: 280 pruebas superadas (incluye el sistema de sonido). |
 | Prueba en un dispositivo real | 🟡 | No hay dispositivo en este entorno. El emulador sin aceleración solo permitió comprobar la instalación, la pantalla de carga y el inicio. **El propietario debe probarla en un móvil real**: miniaturas, colorear, guardar, juegos, voz y sonido (checklists de `docs/FASE5_GUARDADO.md` y `docs/FASE7_ANIMACIONES.md`). |
 | Tamaño de descarga | 🟡 | Con AAB, Google genera APK por arquitectura. El APK arm64 equivalente pesa unos 19 MB (Fase 8). La cifra exacta la mostrará Play Console. |
 
@@ -65,7 +65,7 @@ store_assets/
 | Capturas de pantalla | ✅ / 🟡 | 8 de teléfono (más 3 extra) a 1080 × 2160, RGB, reales y recorridas jugando. Proceden de la **build web** del mismo código, porque el emulador era demasiado lento. Ver `screenshots/README.md`. Conviene repetirlas en un móvil real. |
 | Capturas de tableta | 🟡 | No hechas. Son opcionales, pero recomendables si se quiere aparecer bien en tabletas (la app se adapta a ellas). |
 | Nombre y descripción breve | 🟡 | Redactados y medidos: 26/30 y 78/80. **Falta la aprobación del propietario.** |
-| Descripción completa | 🟡 | Redactada (2167/4000, con la música y los sonidos) y contrastada con el código. Falta la aprobación del propietario. |
+| Descripción completa | 🟡 | Redactada (2156/4000, con la música y los sonidos) y contrastada con el código. Falta la aprobación del propietario. |
 | Categoría y etiquetas | 🟡 | Propuesta: «Educación» (alternativa: «Arte y diseño») y etiquetas de colorear y educación infantil. Las elige el propietario en Play Console. |
 | Idioma principal | 🟡 | Propuesta: Español (Latinoamérica), `es-419`. |
 
@@ -96,7 +96,7 @@ store_assets/
 ## Riesgos y bloqueos
 
 0. **Miniaturas en Android (crítico):** comprobar en un móvil real que la galería muestra las miniaturas. En el emulador no se veían; la causa probable es el entorno emulado.
-0b. **Derechos de las imágenes de «Catalogo Imagenes/»:** 7 animales proceden de imágenes subidas por el propietario. Antes de publicar, confirma que puedes usarlas comercialmente (si se generaron con una herramienta de IA, revisa sus condiciones de uso).
+0b. **Derechos de las imágenes de «Catalogo Imagenes/»:** 8 animales (7 sustituidos y la cebra) proceden de imágenes subidas por el propietario. Antes de publicar, confirma que puedes usarlas comercialmente (si se generaron con una herramienta de IA, revisa sus condiciones de uso).
 1. **Firma:** sin clave de subida, Play rechaza el AAB. Si se pierde la clave de subida, se
    puede restablecer con Play App Signing, pero conviene hacer una copia de seguridad.
 2. **Nombre:** el nombre propuesto no cabe en 30 caracteres, y «Pequeño Artista» ya existe.

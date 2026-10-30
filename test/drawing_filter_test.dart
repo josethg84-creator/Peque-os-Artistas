@@ -12,7 +12,7 @@ void main() {
 
   List<String> ids(DrawingFilter f) => f.apply(catalog.drawings).map((d) => d.id).toList();
 
-  test('sin filtros devuelve los 30 en el orden del catálogo', () {
+  test('sin filtros devuelve los 31 en el orden del catálogo', () {
     expect(ids(const DrawingFilter()), catalog.drawings.map((d) => d.id).toList());
     expect(const DrawingFilter().isActive, isFalse);
   });
@@ -32,7 +32,7 @@ void main() {
 
   test('filtro por categoría', () {
     for (final (c, n) in [
-      (DrawingCategory.animals, 10),
+      (DrawingCategory.animals, 11),
       (DrawingCategory.vehicles, 5),
       (DrawingCategory.dinosaurs, 5),
       (DrawingCategory.fruits, 5),
@@ -52,6 +52,7 @@ void main() {
     expect(ids(const DrawingFilter(difficulty: Difficulty.hard)), [
       'animal_jirafa',
       'animal_tortuga',
+      'animal_cebra',
       'fantasia_robot',
     ]);
   });

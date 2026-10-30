@@ -50,12 +50,21 @@ IMAGES = {
     "animal_elefante": ("Elefante Kawaii para Colorear.png", "animals"),
     "animal_jirafa": ("Jirafa kawaii para colorear_edited.png", "animals"),
     "animal_tortuga": ("Tortuga tierna para colorear.png", "animals"),
+    "animal_cebra": ("Cebra adorable para colorear.png", "animals"),
 }
 
 # Algunos dibujos tienen pequeñas aberturas en la línea por las que una zona
 # «se escapa» al fondo: se cierran con este radio (px a 1024), y la línea
 # dibujada también queda cerrada.
 CLOSE = {"animal_elefante": 5}
+
+# Aberturas demasiado anchas para cerrarlas sin estropear otras líneas: se
+# sellan con un trazo corto (coordenadas a 1024 y grosor en px), que pasa a
+# formar parte de la línea dibujada.
+SEALS = {
+    # La línea exterior de la oreja izquierda acaba suelta junto a la cabeza.
+    "animal_cebra": [((145, 243), (172, 243), 10)],
+}
 
 # Nombres de las regiones (número de la imagen anotada build/qa/anotado_*.png ->
 # nombre). Las que no aparecen se llaman zona_NN.
@@ -98,6 +107,15 @@ NAMES: dict[str, dict[int, str]] = {
         12: "barriga", 13: "placa_6", 14: "placa_7", 15: "placa_8", 16: "cola", 17: "pata_trasera_2",
         18: "dedo_1", 19: "dedo_2", 20: "dedo_3", 21: "dedo_4", 22: "dedo_5", 23: "dedo_6",
     },
+    "animal_cebra": {
+        1: "cuerpo", 2: "cabeza", 3: "hocico", 4: "cuello", 5: "pata_trasera_derecha", 6: "oreja_derecha",
+        7: "oreja_izquierda", 8: "mechon_cola", 9: "pezuna_delantera_derecha", 10: "pezuna_trasera_derecha",
+        11: "pata_trasera_izquierda_1", 12: "pezuna_trasera_izquierda", 13: "pezuna_delantera_izquierda",
+        14: "crin_1", 15: "crin_2", 16: "oreja_derecha_interior", 17: "crin_3", 18: "lomo", 19: "cola",
+        20: "pata_delantera_izquierda_1", 21: "oreja_izquierda_interior", 22: "pata_delantera_izquierda_2",
+        23: "pata_trasera_izquierda_2", 24: "mejilla", 25: "crin_7", 26: "crin_6",
+        27: "pata_delantera_izquierda_3", 28: "crin_5", 29: "crin_8", 30: "crin_4",
+    },
 }
 
 
@@ -129,6 +147,8 @@ def segment(gray, did=None):
     if radius:
         kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (2 * radius + 1,) * 2)
         ink = cv2.morphologyEx(ink, cv2.MORPH_CLOSE, kernel)
+    for (x1, y1), (x2, y2), width in SEALS.get(did, []):
+        cv2.line(ink, (x1 * WORK, y1 * WORK), (x2 * WORK, y2 * WORK), 1, width * WORK, cv2.LINE_AA)
     paper = (1 - ink).astype(np.uint8)
     n, labels, stats, _ = cv2.connectedComponentsWithStats(paper, connectivity=4)
     size = gray.shape[0]

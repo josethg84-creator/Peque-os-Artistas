@@ -117,6 +117,17 @@
       "description": "Tortuga sonriente con caparazón de placas, patitas y cola."
     },
     {
+      "id": "animal_cebra",
+      "name": "Cebra",
+      "category": "animales",
+      "file": "assets/drawings/animals/animal_cebra.svg",
+      "thumbnail": "assets/thumbnails/animal_cebra.png",
+      "difficulty": "dificil",
+      "recommended_age": "6-7",
+      "regions": 30,
+      "description": "Cebra tierna de pie con rayas, crin, orejas y cola con mechón."
+    },
+    {
       "id": "vehiculo_automovil",
       "name": "Automóvil",
       "category": "vehiculos",

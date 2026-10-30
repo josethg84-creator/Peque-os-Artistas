@@ -16,7 +16,7 @@ para integrarse después en una aplicación Flutter para Android.
 |---|---|---|
 | 30 SVG con regiones cerradas e identificadas | ✅ Terminado | `assets/drawings/<categoría>/` |
 | 30 PNG 1024×1024 (fondo blanco) | ✅ Terminado | `assets/previews/` |
-| Catálogo JSON (30 entradas) | ✅ Terminado | `assets/catalog/catalog.json` |
+| Catálogo JSON (31 entradas) | ✅ Terminado | `assets/catalog/catalog.json` |
 | Scripts de generación, render y control de calidad | ✅ Terminado | `tools/` |
 | Revisión por un ilustrador / prueba con niños | ⏳ Pendiente | — |
 | Variante PNG con fondo transparente | ⏳ Pendiente (no se necesita aún) | — |
@@ -35,6 +35,7 @@ para integrarse después en una aplicación Flutter para Android.
 | `animal_mariposa` | Mariposa | animales | 12 | facil | 4-5 | `assets/drawings/animals/animal_mariposa.svg` |
 | `animal_pez` | Pez | animales | 10 | facil | 4-5 | `assets/drawings/animals/animal_pez.svg` |
 | `animal_tortuga` | Tortuga | animales | 23 | dificil | 6-7 | `assets/drawings/animals/animal_tortuga.svg` |
+| `animal_cebra` | Cebra | animales | 30 | dificil | 6-7 | `assets/drawings/animals/animal_cebra.svg` |
 | `vehiculo_automovil` | Automóvil | vehiculos | 11 | facil | 4-5 | `assets/drawings/vehicles/vehiculo_automovil.svg` |
 | `vehiculo_autobus` | Autobús | vehiculos | 13 | media | 5-6 | `assets/drawings/vehicles/vehiculo_autobus.svg` |
 | `vehiculo_avion` | Avión | vehiculos | 12 | facil | 4-5 | `assets/drawings/vehicles/vehiculo_avion.svg` |
@@ -67,8 +68,8 @@ para integrarse después en una aplicación Flutter para Android.
 
 ## Dibujos convertidos de imágenes («Catalogo Imagenes/»)
 
-Siete animales (gato, perro, conejo, león, elefante, jirafa y tortuga) se han sustituido por
-los dibujos de línea que subió el propietario a `Catalogo Imagenes/`. La app colorea por
+Siete animales (gato, perro, conejo, león, elefante, jirafa y tortuga) se han sustituido, y
+la **cebra** se ha añadido como dibujo 31, a partir de los dibujos de línea que subió el propietario a `Catalogo Imagenes/`. La app colorea por
 regiones vectoriales, así que cada PNG se convierte en SVG con
 `tools/drawings_from_images.py`.
 
@@ -97,8 +98,10 @@ regiones vectoriales, así que cada PNG se convierte en SVG con
   (dedos, nariz) son del mismo tipo que los del resto de la colección.
 - Se colorearon en la app (versión web) el gato, el elefante y la tortuga.
 
-**Pendiente del propietario:** `Cebra adorable para colorear.png` no sustituye a ningún
-dibujo existente. Falta decidir si se añade como dibujo 31 o si sustituye a otro animal.
+- **Cebra:** la línea exterior de la oreja izquierda acababa suelta junto a la cabeza, así que
+  la oreja se unía al fondo. Un cierre general habría partido el cuerpo entre las rayas, por
+  lo que se sella con un trazo corto (`SEALS` en el script). Tiene 30 zonas y dificultad
+  difícil.
 
 **Licencia:** el propietario debe confirmar que tiene derecho a usar estas imágenes en una
 app comercial; la ficha de Google Play las presenta como ilustraciones propias.
@@ -115,7 +118,7 @@ python3 tools/drawings_from_images.py
 python3 tools/generate_drawings.py
 ```
 
-Este último ya no sobrescribe los 7 SVG convertidos.
+Este último ya no sobrescribe los 8 SVG convertidos.
 
 ## Estilo gráfico
 
@@ -173,11 +176,11 @@ Reglas que cumple cada archivo (verificadas por `tools/validate_assets.py`):
 
 ## Control de calidad
 
-Resultado de `python3 tools/validate_assets.py`: **30 dibujos, 0 errores**.
+Resultado de `python3 tools/validate_assets.py`: **31 dibujos, 0 errores** (tras añadir la cebra).
 
 Se comprueba:
 
-- Exactamente 30 entradas, reparto 10/5/5/5/5 por categoría.
+- Exactamente 31 entradas, reparto 11/5/5/5/5 por categoría (era 30 y 10/5/5/5/5 antes de la cebra).
 - Sin `id`, nombres ni rutas duplicados; todos los campos obligatorios presentes.
 - Cada archivo del catálogo existe, la ruta es relativa y el nombre coincide con
   el `id` (solo `a-z`, `0-9`, `_`).

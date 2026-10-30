@@ -8,7 +8,7 @@
 
 | Requisito (resumen) | Situación en Pequeños Artistas | Estado |
 |---|---|---|
-| Contenido adecuado para niños: sin violencia, miedo, contenido sexual, etc. | 30 dibujos amables, sonidos suaves, mensajes positivos y sin castigos | Cumple; lo verificará Google |
+| Contenido adecuado para niños: sin violencia, miedo, contenido sexual, etc. | 31 dibujos amables, sonidos suaves, mensajes positivos y sin castigos | Cumple; lo verificará Google |
 | Política de privacidad que refleje las prácticas reales | Borrador hecho y aún no publicado | **PENDIENTE** |
 | No transmitir identificadores del dispositivo, AAID ni ubicación de niños | No se transmite nada; sin permiso INTERNET ni SDK | Cumple (verificado en el código) |
 | Solo SDK de anuncios autocertificados para Familias y sin anuncios personalizados | No hay anuncios ni SDK de anuncios | No aplica |
