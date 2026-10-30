@@ -10,6 +10,7 @@ import '../screens/categories_screen.dart';
 import '../screens/coloring_screen.dart';
 import '../screens/gallery_screen.dart';
 import '../screens/home_screen.dart';
+import '../screens/kid_progress_screen.dart';
 import '../screens/not_found_screen.dart';
 import '../screens/saved_drawings_screen.dart';
 import '../screens/search_screen.dart';
@@ -24,6 +25,7 @@ abstract final class AppRouter {
     final args = settings.arguments;
     final Widget page = switch (settings.name) {
       AppRoutes.home => const HomeScreen(),
+      AppRoutes.kidProgress => const KidProgressScreen(),
       AppRoutes.categories => const CategoriesScreen(),
       AppRoutes.gallery when args is GalleryArgs => GalleryScreen(category: args.category),
       AppRoutes.coloring when args is ColoringArgs => ColoringScreen(

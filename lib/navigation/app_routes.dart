@@ -4,6 +4,7 @@ import '../models/drawing_category.dart';
 /// Nombres de las rutas de la aplicación.
 abstract final class AppRoutes {
   static const home = '/';
+  static const kidProgress = '/mi-progreso';
   static const categories = '/categorias';
   static const gallery = '/galeria';
   static const coloring = '/colorear';
