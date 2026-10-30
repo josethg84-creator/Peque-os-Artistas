@@ -311,7 +311,9 @@ class _ColoringLayout extends StatelessWidget {
               ),
             ),
             Expanded(child: canvas),
-            SingleChildScrollView(scrollDirection: Axis.horizontal, child: toolbar(Axis.horizontal)),
+            // En teléfonos estrechos la barra se reduce un poco en lugar de
+            // cortarse (los botones siguen siendo mayores de 48 dp).
+            FittedBox(fit: BoxFit.scaleDown, child: toolbar(Axis.horizontal)),
             _Panel(child: palette(Axis.horizontal)),
           ],
         );

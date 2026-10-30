@@ -16,6 +16,12 @@ Aplicación móvil de colorear para niños de 4 a 7 años (Flutter / Android).
 - **Fase 7 (terminada):** animaciones y transiciones suaves, relleno animado al
   colorear, celebraciones, la mascota Pincelín, sonidos con prioridad, estados de
   carga y vacíos amables, y respeto de «reducir movimiento».
+- **Fase 8 (terminada):** versión web publicable (Vercel) y APK de Android.
+- **Fase 9 (preparación, sin publicar):** recursos y documentación para Google Play en
+  [`store_assets/`](store_assets/RELEASE_READINESS.md): icono, imagen destacada, capturas,
+  textos de la ficha, borrador de política de privacidad, auditoría de privacidad,
+  declaraciones de Play Console y firma. Ver
+  [store_assets/RELEASE_READINESS.md](store_assets/RELEASE_READINESS.md).
 
 ```
 lib/          código de la aplicación Flutter (pantallas, componentes, servicios…)
@@ -29,6 +35,7 @@ assets/
   catalog/    catalog.json (30 entradas)
 web/          index.html, manifest e iconos de la versión web
 deploy/web/   versión web ya compilada (la que publica Vercel, ver vercel.json)
+store_assets/ recursos y documentos para Google Play (Fase 9)
 docs/         DIBUJOS.md (Fase 1), FASE2_INTERFAZ.md, FASE3_MOTOR.md, FASE4_COLECCION.md, FASE5_GUARDADO.md, FASE6_APRENDER.md, FASE7_ANIMACIONES.md y capturas
 tools/        generación, render y control de calidad de los dibujos
 ```

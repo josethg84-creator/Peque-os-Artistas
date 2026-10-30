@@ -36,7 +36,7 @@ class AdultZoneScreen extends StatelessWidget {
                   icon: Icons.info_outline_rounded,
                   title: 'Acerca de la aplicación',
                   lines: [
-                    'Pequeños Artistas · versión 1.0.0 (en desarrollo)',
+                    'Pequeños Artistas · versión 1.0.0',
                     'Aplicación de dibujo y coloreado para niños de 4 a 7 años.',
                   ],
                 ),
@@ -60,18 +60,20 @@ class AdultZoneScreen extends StatelessWidget {
                   icon: Icons.shield_outlined,
                   title: 'Privacidad y seguridad',
                   lines: [
-                    'No se solicitan datos personales.',
-                    'Sin publicidad, sin compras y sin chat.',
-                    'Sin enlaces externos en las pantallas infantiles.',
+                    'No se piden datos personales ni se crean cuentas.',
+                    'Sin publicidad, sin compras, sin chat y sin enlaces externos.',
+                    'La aplicación no usa Internet: todo se guarda solo en este dispositivo.',
+                    'Para borrar todos los datos: Ajustes de Android → Aplicaciones → '
+                        'Pequeños Artistas → Almacenamiento → Borrar datos (o desinstalar la app).',
                   ],
                 ),
                 const _Section(
-                  icon: Icons.construction_outlined,
-                  title: 'Estado del desarrollo',
+                  icon: Icons.tune_rounded,
+                  title: 'Ajustes',
                   lines: [
-                    'El progreso de cada dibujo se guarda solo en este dispositivo.',
-                    'Las actividades educativas son secciones provisionales.',
-                    'Los ajustes (sonido, tiempo de uso…) aún no están disponibles.',
+                    'Sonido: botón del altavoz en la pantalla de inicio.',
+                    'Nivel, sonidos y voz de los juegos: en «Aprender jugando».',
+                    'Cada dibujo se puede borrar desde «Mis dibujos».',
                   ],
                 ),
               ],

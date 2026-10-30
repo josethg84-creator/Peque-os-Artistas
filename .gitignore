@@ -15,3 +15,8 @@ __pycache__/
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Firma de Android: claves y contraseñas nunca van al repositorio.
+android/key.properties
+*.jks
+*.keystore
