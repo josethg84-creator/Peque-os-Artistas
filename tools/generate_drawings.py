@@ -86,6 +86,19 @@ DRAWINGS = [
 ]
 
 
+# Dibujos convertidos de «Catalogo Imagenes/» con tools/drawings_from_images.py:
+# su SVG no se genera aquí (se conserva) y la descripción es la de la imagen.
+FROM_IMAGES = {
+    "animal_gato": "Gatito kawaii sentado con orejas puntiagudas, bigotes, barriga y cola curvada.",
+    "animal_perro": "Perrito sonriente con orejas caídas, mancha en el ojo, collar con placa y cola.",
+    "animal_conejo": "Conejito de orejas largas con dientes, bigotes, patitas y cola redonda.",
+    "animal_leon": "Leoncito tierno con melena ondulada, orejas redondas y cola con mechón.",
+    "animal_elefante": "Elefante kawaii sentado con orejas grandes y trompa curvada.",
+    "animal_jirafa": "Jirafa de cuello largo con cuernitos, manchas redondas y cola con mechón.",
+    "animal_tortuga": "Tortuga sonriente con caparazón de placas, patitas y cola.",
+}
+
+
 def difficulty(regions):
     """Dificultad según el número de zonas para colorear (sin contar el fondo)."""
     if regions <= 12:
@@ -98,11 +111,16 @@ def difficulty(regions):
 def main():
     catalog = []
     for did, name, category, folder, func, desc in DRAWINGS:
-        drawing = build(func)
         out = DRAWINGS_DIR / folder / f"{did}.svg"
-        out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(drawing.to_svg(did), encoding="utf-8")
-        regions = len(drawing.regions)
+        if did in FROM_IMAGES:
+            # Regiones del SVG convertido (sin contar el fondo).
+            regions = out.read_text(encoding="utf-8").count('class="region"') - 1
+            desc = FROM_IMAGES[did]
+        else:
+            drawing = build(func)
+            out.parent.mkdir(parents=True, exist_ok=True)
+            out.write_text(drawing.to_svg(did), encoding="utf-8")
+            regions = len(drawing.regions)
         diff, age = difficulty(regions)
         catalog.append({
             "id": did,

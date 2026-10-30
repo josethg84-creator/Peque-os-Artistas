@@ -25,16 +25,16 @@ para integrarse después en una aplicación Flutter para Android.
 
 | id | Nombre | Categoría | Zonas | Dificultad | Edad | Archivo |
 |---|---|---|---:|---|---|---|
-| `animal_gato` | Gato | animales | 11 | facil | 4-5 | `assets/drawings/animals/animal_gato.svg` |
-| `animal_perro` | Perro | animales | 14 | media | 5-6 | `assets/drawings/animals/animal_perro.svg` |
-| `animal_conejo` | Conejo | animales | 13 | media | 5-6 | `assets/drawings/animals/animal_conejo.svg` |
-| `animal_leon` | León | animales | 13 | media | 5-6 | `assets/drawings/animals/animal_leon.svg` |
-| `animal_elefante` | Elefante | animales | 9 | facil | 4-5 | `assets/drawings/animals/animal_elefante.svg` |
-| `animal_jirafa` | Jirafa | animales | 28 | dificil | 6-7 | `assets/drawings/animals/animal_jirafa.svg` |
+| `animal_gato` | Gato | animales | 12 | facil | 4-5 | `assets/drawings/animals/animal_gato.svg` |
+| `animal_perro` | Perro | animales | 16 | media | 5-6 | `assets/drawings/animals/animal_perro.svg` |
+| `animal_conejo` | Conejo | animales | 9 | facil | 4-5 | `assets/drawings/animals/animal_conejo.svg` |
+| `animal_leon` | León | animales | 15 | media | 5-6 | `assets/drawings/animals/animal_leon.svg` |
+| `animal_elefante` | Elefante | animales | 14 | media | 5-6 | `assets/drawings/animals/animal_elefante.svg` |
+| `animal_jirafa` | Jirafa | animales | 21 | dificil | 6-7 | `assets/drawings/animals/animal_jirafa.svg` |
 | `animal_oso` | Oso | animales | 15 | media | 5-6 | `assets/drawings/animals/animal_oso.svg` |
 | `animal_mariposa` | Mariposa | animales | 12 | facil | 4-5 | `assets/drawings/animals/animal_mariposa.svg` |
 | `animal_pez` | Pez | animales | 10 | facil | 4-5 | `assets/drawings/animals/animal_pez.svg` |
-| `animal_tortuga` | Tortuga | animales | 11 | facil | 4-5 | `assets/drawings/animals/animal_tortuga.svg` |
+| `animal_tortuga` | Tortuga | animales | 23 | dificil | 6-7 | `assets/drawings/animals/animal_tortuga.svg` |
 | `vehiculo_automovil` | Automóvil | vehiculos | 11 | facil | 4-5 | `assets/drawings/vehicles/vehiculo_automovil.svg` |
 | `vehiculo_autobus` | Autobús | vehiculos | 13 | media | 5-6 | `assets/drawings/vehicles/vehiculo_autobus.svg` |
 | `vehiculo_avion` | Avión | vehiculos | 12 | facil | 4-5 | `assets/drawings/vehicles/vehiculo_avion.svg` |
@@ -64,6 +64,58 @@ para integrarse después en una aplicación Flutter para Android.
   la app: `preview` (ruta del PNG) y `regions` (número de zonas).
 - Todas las rutas son relativas a la raíz del proyecto, igual que las declarará
   `pubspec.yaml` (`assets/drawings/animals/` …).
+
+## Dibujos convertidos de imágenes («Catalogo Imagenes/»)
+
+Siete animales (gato, perro, conejo, león, elefante, jirafa y tortuga) se han sustituido por
+los dibujos de línea que subió el propietario a `Catalogo Imagenes/`. La app colorea por
+regiones vectoriales, así que cada PNG se convierte en SVG con
+`tools/drawings_from_images.py`.
+
+**Cómo se convierte:**
+
+1. Se encaja la imagen en 1024 × 1024 con margen.
+2. Se separa la tinta del papel.
+3. Cada zona blanca cerrada pasa a ser una región coloreable, y el exterior, el `fondo`.
+4. Las zonas diminutas (brillos de los ojos, huecos entre dedos) quedan blancas y no se
+   pueden colorear.
+5. Cada región se ensancha 3 px por debajo de la línea, para que el color no deje huecos
+   blancos, y la tinta se dibuja encima como detalle negro.
+
+**Ajustes manuales:**
+
+- **Elefante:** tenía una pequeña abertura en la línea del cuerpo. Se cierra con un radio de
+  5 px, y la línea dibujada también queda cerrada.
+- **Nombres de las regiones:** se asignaron mirando las imágenes numeradas que genera
+  `--annotate` (en `build/qa/`). Se usan nombres como `cabeza`, `cuerpo` o `cola`, igual que
+  en el resto de la colección, así que los dibujos ya guardados conservan los colores de las
+  zonas que siguen existiendo.
+
+**Comprobación:**
+
+- El control de calidad (`validate_assets.py`) da 0 errores. Los avisos de zonas pequeñas
+  (dedos, nariz) son del mismo tipo que los del resto de la colección.
+- Se colorearon en la app (versión web) el gato, el elefante y la tortuga.
+
+**Pendiente del propietario:** `Cebra adorable para colorear.png` no sustituye a ningún
+dibujo existente. Falta decidir si se añade como dibujo 31 o si sustituye a otro animal.
+
+**Licencia:** el propietario debe confirmar que tiene derecho a usar estas imágenes en una
+app comercial; la ficha de Google Play las presenta como ilustraciones propias.
+
+```bash
+python3 tools/drawings_from_images.py --annotate
+```
+
+```bash
+python3 tools/drawings_from_images.py
+```
+
+```bash
+python3 tools/generate_drawings.py
+```
+
+Este último ya no sobrescribe los 7 SVG convertidos.
 
 ## Estilo gráfico
 

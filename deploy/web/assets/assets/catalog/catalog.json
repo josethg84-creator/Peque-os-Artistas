@@ -14,8 +14,8 @@
       "thumbnail": "assets/thumbnails/animal_gato.png",
       "difficulty": "facil",
       "recommended_age": "4-5",
-      "regions": 11,
-      "description": "Gatito sentado de frente con orejas puntiagudas, bigotes y cola curvada."
+      "regions": 12,
+      "description": "Gatito kawaii sentado con orejas puntiagudas, bigotes, barriga y cola curvada."
     },
     {
       "id": "animal_perro",
@@ -25,8 +25,8 @@
       "thumbnail": "assets/thumbnails/animal_perro.png",
       "difficulty": "media",
       "recommended_age": "5-6",
-      "regions": 14,
-      "description": "Perrito sonriente con orejas caídas, lengua afuera, collar y placa."
+      "regions": 16,
+      "description": "Perrito sonriente con orejas caídas, mancha en el ojo, collar con placa y cola."
     },
     {
       "id": "animal_conejo",
@@ -34,10 +34,10 @@
       "category": "animales",
       "file": "assets/drawings/animals/animal_conejo.svg",
       "thumbnail": "assets/thumbnails/animal_conejo.png",
-      "difficulty": "media",
-      "recommended_age": "5-6",
-      "regions": 13,
-      "description": "Conejito de orejas largas con dientes, patitas y cola redonda."
+      "difficulty": "facil",
+      "recommended_age": "4-5",
+      "regions": 9,
+      "description": "Conejito de orejas largas con dientes, bigotes, patitas y cola redonda."
     },
     {
       "id": "animal_leon",
@@ -47,8 +47,8 @@
       "thumbnail": "assets/thumbnails/animal_leon.png",
       "difficulty": "media",
       "recommended_age": "5-6",
-      "regions": 13,
-      "description": "Leoncito sentado con melena ondulada y cola con mechón."
+      "regions": 15,
+      "description": "Leoncito tierno con melena ondulada, orejas redondas y cola con mechón."
     },
     {
       "id": "animal_elefante",
@@ -56,10 +56,10 @@
       "category": "animales",
       "file": "assets/drawings/animals/animal_elefante.svg",
       "thumbnail": "assets/thumbnails/animal_elefante.png",
-      "difficulty": "facil",
-      "recommended_age": "4-5",
-      "regions": 9,
-      "description": "Elefante de frente con orejas grandes y trompa curvada."
+      "difficulty": "media",
+      "recommended_age": "5-6",
+      "regions": 14,
+      "description": "Elefante kawaii sentado con orejas grandes y trompa curvada."
     },
     {
       "id": "animal_jirafa",
@@ -69,8 +69,8 @@
       "thumbnail": "assets/thumbnails/animal_jirafa.png",
       "difficulty": "dificil",
       "recommended_age": "6-7",
-      "regions": 28,
-      "description": "Jirafa de perfil con cuello largo, cuernitos y manchas grandes."
+      "regions": 21,
+      "description": "Jirafa de cuello largo con cuernitos, manchas redondas y cola con mechón."
     },
     {
       "id": "animal_oso",
@@ -111,10 +111,10 @@
       "category": "animales",
       "file": "assets/drawings/animals/animal_tortuga.svg",
       "thumbnail": "assets/thumbnails/animal_tortuga.png",
-      "difficulty": "facil",
-      "recommended_age": "4-5",
-      "regions": 11,
-      "description": "Tortuga sonriente de perfil con caparazón de placas grandes."
+      "difficulty": "dificil",
+      "recommended_age": "6-7",
+      "regions": 23,
+      "description": "Tortuga sonriente con caparazón de placas, patitas y cola."
     },
     {
       "id": "vehiculo_automovil",

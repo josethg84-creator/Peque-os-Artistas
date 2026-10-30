@@ -49,7 +49,11 @@ void main() {
       final expected = catalog.drawings.where((d) => d.difficulty == level).map((d) => d.id).toList();
       expect(ids(DrawingFilter(difficulty: level)), expected, reason: level.label);
     }
-    expect(ids(const DrawingFilter(difficulty: Difficulty.hard)), ['animal_jirafa', 'fantasia_robot']);
+    expect(ids(const DrawingFilter(difficulty: Difficulty.hard)), [
+      'animal_jirafa',
+      'animal_tortuga',
+      'fantasia_robot',
+    ]);
   });
 
   test('orden alfabético (las tildes no alteran el orden)', () {
@@ -64,9 +68,9 @@ void main() {
 
   test('filtros combinados y copyWith', () {
     var f = const DrawingFilter(category: DrawingCategory.animals, difficulty: Difficulty.easy);
-    expect(ids(f), ['animal_gato', 'animal_elefante', 'animal_mariposa', 'animal_pez', 'animal_tortuga']);
+    expect(ids(f), ['animal_gato', 'animal_conejo', 'animal_mariposa', 'animal_pez']);
     f = f.copyWith(sort: DrawingSort.alphabetical);
-    expect(ids(f), ['animal_elefante', 'animal_gato', 'animal_mariposa', 'animal_pez', 'animal_tortuga']);
+    expect(ids(f), ['animal_conejo', 'animal_gato', 'animal_mariposa', 'animal_pez']);
     f = f.copyWith(category: () => null, query: 'o');
     expect(f.category, isNull);
     expect(f.apply(catalog.drawings).every((d) => d.difficulty == Difficulty.easy), isTrue);

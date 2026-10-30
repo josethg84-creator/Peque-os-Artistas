@@ -220,7 +220,7 @@ void main() {
       final json = jsonDecode(raw) as Map<String, dynamic>;
       expect(json['format_version'], Creation.formatVersion);
       expect(json['drawing_id'], 'animal_gato');
-      expect(json['total_regions'], 11);
+      expect(json['total_regions'], 12);
       expect(json['painted_regions'], 1); // el fondo no cuenta
       expect(json['status'], 'en_progreso');
       expect(json['checksum'], isA<String>());

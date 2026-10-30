@@ -87,7 +87,7 @@ void main() {
 
     expect(find.bySemanticsLabel('Gato. Dificultad fácil. ${DrawingCard.paintedLabel}'), findsOneWidget);
     expect(find.bySemanticsLabel('Perro. Dificultad media. ${DrawingCard.paintedLabel}'), findsOneWidget);
-    expect(find.bySemanticsLabel('Conejo. Dificultad media'), findsOneWidget); // sin insignia
+    expect(find.bySemanticsLabel('Conejo. Dificultad fácil'), findsOneWidget); // sin insignia
 
     final gato = (await store.latestFor('animal_gato'))!;
     final perro = (await store.latestFor('animal_perro'))!;
@@ -151,8 +151,9 @@ void main() {
 
       await tapAndSettle(tester, find.bySemanticsLabel('Todos'));
       await tapAndSettle(tester, find.bySemanticsLabel('Difícil'));
-      expect(find.text('2 dibujos'), findsOneWidget);
-      expect(cardIds(tester), ['animal_jirafa', 'fantasia_robot']);
+      expect(find.text('3 dibujos'), findsOneWidget);
+      // Orden de la A a la Z: Jirafa, Robot amigable, Tortuga.
+      expect(cardIds(tester), ['animal_jirafa', 'fantasia_robot', 'animal_tortuga']);
 
       await tapAndSettle(tester, find.bySemanticsLabel('Todas'));
       await tapAndSettle(tester, find.bySemanticsLabel('Normal'));

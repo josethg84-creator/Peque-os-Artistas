@@ -42,7 +42,7 @@ void main() {
     expect(find.byType(HomeScreen), findsOneWidget);
     // La siguiente pulsación propone otro dibujo fácil.
     await tapAndSettle(tester, find.bySemanticsLabel('¡Vamos a pintar!'));
-    expect(find.text('Elefante'), findsOneWidget);
+    expect(find.text('Conejo'), findsOneWidget);
   });
 
   testWidgets('las cinco categorías abren su galería con el número correcto de dibujos', (tester) async {

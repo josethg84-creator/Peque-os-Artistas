@@ -96,6 +96,7 @@ store_assets/
 ## Riesgos y bloqueos
 
 0. **Miniaturas en Android (crítico):** comprobar en un móvil real que la galería muestra las miniaturas. En el emulador no se veían; la causa probable es el entorno emulado.
+0b. **Derechos de las imágenes de «Catalogo Imagenes/»:** 7 animales proceden de imágenes subidas por el propietario. Antes de publicar, confirma que puedes usarlas comercialmente (si se generaron con una herramienta de IA, revisa sus condiciones de uso).
 1. **Firma:** sin clave de subida, Play rechaza el AAB. Si se pierde la clave de subida, se
    puede restablecer con Play App Signing, pero conviene hacer una copia de seguridad.
 2. **Nombre:** el nombre propuesto no cabe en 30 caracteres, y «Pequeño Artista» ya existe.

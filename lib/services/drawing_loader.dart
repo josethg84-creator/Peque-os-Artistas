@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/services.dart';
 
 import '../coloring/engine/svg_drawing_parser.dart';
@@ -48,7 +50,11 @@ class DrawingLoader {
   Future<VectorDrawing> _load(String file) async {
     final String source;
     try {
-      source = await _bundle.loadString(file, cache: false);
+      // Se decodifica aquí: `loadString` pasa a otro isolate los textos de más
+      // de 50 KB (algunos dibujos convertidos de imágenes rondan ese tamaño),
+      // lo que añade espera sin ninguna ventaja para archivos tan pequeños.
+      final data = await _bundle.load(file);
+      source = utf8.decode(data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes));
     } catch (_) {
       throw DrawingLoadException(file, 'el archivo no existe');
     }
