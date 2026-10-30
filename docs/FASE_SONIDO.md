@@ -123,6 +123,22 @@ Cómo se evita que molesten:
     - con Playwright, un navegador cuya voz llega 3 s tarde: la versión anterior no decía
       nada y la corregida lee «¿Dónde está el círculo?» al empezar y al pulsar «Escuchar».
 
+- **Corrección posterior: voz más natural.**
+  - **Velocidad:** se usaba 0,42 en todas las plataformas, pero las escalas no son iguales.
+    En Android `flutter_tts` multiplica por 2 (salía al 84 %); en la web se usa tal cual
+    (salía al **42 %**, lentísima y robótica). Ahora se habla al ≈ 92 % en todas:
+    0,92 en la web y 0,46 en Android.
+  - **Tono:** se elimina el tono subido (1,12), que hacía la voz más artificial.
+  - **Elección de voz:** se elige primero por calidad («muy alta» o «alta» en Android; en la
+    web y en iOS, nombres como «Natural», «Neural», «Google», «Enhanced» o «Siri») y después
+    por variante de español. Antes se elegía solo por país y podía tocar una voz robótica.
+  - **Cortes:** el motor solo se corta si está hablando; en Chrome, cortar justo antes de
+    hablar provoca a veces cortes al inicio de la frase.
+  - **Nota para la web:** las voces más naturales del navegador (p. ej., «Google español»)
+    pueden usar Internet. En Android solo se usan voces instaladas y sin red, como antes.
+  - **Comprobado:** con pruebas de selección y velocidad, y en el navegador con eSpeak y
+    Google disponibles: se elige Google, a 0,92, con tono 1 y sin cortes previos.
+
 ## 5. Configuración («Sonido y música»)
 
 - **Cómo se llega:**

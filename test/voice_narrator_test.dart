@@ -72,4 +72,38 @@ void main() {
     expect(spoken(), isEmpty);
     expect((await narrator.voice()).available, isFalse);
   });
+
+  test('voz natural: se prefiere la de más calidad y luego la variante latinoamericana', () {
+    final android = DeviceTtsNarrator.chooseVoice([
+      {'name': 'es-us-x-normal', 'locale': 'es-US', 'quality': 'normal'},
+      {'name': 'es-es-x-muy-buena', 'locale': 'es-ES', 'quality': 'very high'},
+      {'name': 'es-us-x-muy-buena', 'locale': 'es-US', 'quality': 'very high'},
+    ]);
+    expect(android!['name'], 'es-us-x-muy-buena');
+    final web = DeviceTtsNarrator.chooseVoice([
+      {'name': 'eSpeak Spanish', 'locale': 'es-PE'},
+      {'name': 'Microsoft Sabina - Spanish (Mexico)', 'locale': 'es-MX'},
+      {'name': 'Google español de Estados Unidos', 'locale': 'es-US'},
+    ]);
+    expect(web!['name'], 'Google español de Estados Unidos');
+  });
+
+  test('velocidad natural en cada plataforma (las escalas son distintas)', () {
+    final web = DeviceTtsNarrator.prosody(web: true, platform: TargetPlatform.android);
+    final android = DeviceTtsNarrator.prosody(web: false, platform: TargetPlatform.android);
+    // Web: 1 = normal. Android: flutter_tts multiplica por 2 (0,5 = normal).
+    expect(web.rate, inInclusiveRange(0.85, 1.0));
+    expect(android.rate * 2, inInclusiveRange(0.85, 1.0));
+    expect(web.pitch, 1.0);
+  });
+
+  test('en Android se aplica la velocidad natural al motor', () async {
+    voices = [
+      {'name': 'es-us-local', 'locale': 'es-US', 'network_required': '0', 'features': '', 'quality': 'high'},
+    ];
+    await DeviceTtsNarrator().speak('Hola');
+    final rate = calls.lastWhere((c) => c.method == 'setSpeechRate').arguments as double;
+    expect(rate * 2, inInclusiveRange(0.85, 1.0), reason: 'antes era 0,42 → 84 %, y en la web 42 %');
+    expect(calls.where((c) => c.method == 'stop'), isEmpty, reason: 'no se corta si no estaba hablando');
+  });
 }

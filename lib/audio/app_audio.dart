@@ -292,12 +292,16 @@ class DeviceTtsNarrator implements Narrator {
       final locale = voice['locale']!;
       await _tts.setLanguage(locale);
       if ((voice['name'] ?? '').isNotEmpty) await _tts.setVoice({'name': voice['name']!, 'locale': locale});
-      await _tts.setSpeechRate(0.42); // Pausada.
-      await _tts.setPitch(1.12); // Amable.
+      final p = prosody(web: kIsWeb, platform: defaultTargetPlatform);
+      await _tts.setSpeechRate(p.rate);
+      await _tts.setPitch(p.pitch);
       await _tts.setVolume(_volume);
       return VoiceInfo(
         available: true,
-        description: 'Voz del dispositivo en español ($locale), instalada: funciona sin conexión.',
+        description: kIsWeb
+            ? 'Voz del navegador en español: ${voice['name']} ($locale). '
+                  'Algunas voces del navegador necesitan conexión.'
+            : 'Voz del dispositivo en español ($locale), instalada: funciona sin conexión.',
       );
     } catch (_) {
       return const VoiceInfo(available: false, description: 'La voz del dispositivo no está disponible.');
@@ -332,16 +336,8 @@ class DeviceTtsNarrator implements Narrator {
           v['network_required'] != '1' &&
           !(v['features'] ?? '').contains('notInstalled');
     }).toList();
-    if (offline.isNotEmpty) {
-      int rank(Map<String, String> v) {
-        final i = preferredLocales.indexOf((v['locale'] ?? '').replaceAll('_', '-'));
-        return i < 0 ? preferredLocales.length : i;
-      }
-
-      offline.sort((a, b) => rank(a).compareTo(rank(b)));
-      final v = offline.first;
-      return {'name': v['name'] ?? '', 'locale': (v['locale'] ?? 'es-ES').replaceAll('_', '-')};
-    }
+    final best = chooseVoice(offline);
+    if (best != null) return best;
     // Plataformas sin lista de voces: se comprueba el idioma instalado.
     for (final lang in preferredLocales) {
       try {
@@ -371,16 +367,86 @@ class DeviceTtsNarrator implements Narrator {
     return info;
   }
 
+  /// Velocidad y tono naturales. La escala de velocidad NO es igual en todas
+  /// las plataformas: en Android `flutter_tts` la multiplica por 2 (0,5 =
+  /// normal); en iOS 0,5 es la normal; en la web se usa tal cual (1 = normal).
+  /// Se habla un poco más despacio que lo normal (≈ 90 %) para niños, sin
+  /// llegar a sonar arrastrado, y sin subir el tono (lo hace más artificial).
+  static ({double rate, double pitch}) prosody({required bool web, required TargetPlatform platform}) {
+    if (web) return (rate: 0.92, pitch: 1.0);
+    return switch (platform) {
+      TargetPlatform.android => (rate: 0.46, pitch: 1.0),
+      _ => (rate: 0.47, pitch: 1.0),
+    };
+  }
+
+  /// Elige la voz más natural: primero la calidad (Android informa de ella; en
+  /// la web y en iOS las voces buenas se reconocen por el nombre: «Natural»,
+  /// «Neural», «Google», «Enhanced/Premium», «Siri»…) y después la variante de
+  /// español (Perú y Latinoamérica primero).
+  static Map<String, String>? chooseVoice(List<Map<String, String>> voices) {
+    if (voices.isEmpty) return null;
+    int quality(Map<String, String> v) {
+      switch (v['quality']) {
+        case 'very high':
+          return 0;
+        case 'high':
+          return 1;
+      }
+      final name = (v['name'] ?? '').toLowerCase();
+      const natural = [
+        'natural',
+        'neural',
+        'online',
+        'google',
+        'enhanced',
+        'premium',
+        'mejorad',
+        'siri',
+        'wavenet',
+      ];
+      if (natural.any(name.contains)) return 0;
+      if (name.contains('compact') || name.contains('espeak')) return 3;
+      return 2;
+    }
+
+    int locale(Map<String, String> v) {
+      final i = preferredLocales.indexOf((v['locale'] ?? '').replaceAll('_', '-'));
+      return i < 0 ? preferredLocales.length : i;
+    }
+
+    final sorted = [...voices]
+      ..sort((a, b) {
+        final q = quality(a).compareTo(quality(b));
+        return q != 0 ? q : locale(a).compareTo(locale(b));
+      });
+    final v = sorted.first;
+    return {'name': v['name'] ?? '', 'locale': (v['locale'] ?? 'es-ES').replaceAll('_', '-')};
+  }
+
+  /// Solo se corta el motor si está hablando: en Chrome, cortar y hablar justo
+  /// después provoca a veces pequeños cortes al inicio de la frase.
+  bool _talking = false;
+  int _turn = 0;
+
   @override
   Future<void> speak(String text) async {
     if (!(await voice()).available) return;
-    await _tts.stop();
-    await _tts.speak(text);
+    if (_talking) await _tts.stop();
+    final turn = ++_turn;
+    _talking = true;
+    try {
+      await _tts.speak(text);
+    } finally {
+      // Una frase cortada puede terminar tarde: no debe borrar el estado de la nueva.
+      if (turn == _turn) _talking = false;
+    }
   }
 
   @override
   Future<void> stop() async {
-    if (_ready == null) return;
+    if (_ready == null || !_talking) return;
+    _talking = false;
     await _tts.stop();
   }
 
