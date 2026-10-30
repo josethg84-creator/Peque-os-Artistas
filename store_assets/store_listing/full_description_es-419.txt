@@ -15,11 +15,14 @@ Pequeños Artistas es una aplicación para colorear y aprender pensada para niñ
 • Galería personal con miniaturas para continuar un dibujo, empezar otra versión o borrarlo.
 
 🧩 APRENDER JUGANDO
-Cuatro minijuegos con tres niveles de dificultad:
+Siete minijuegos con tres niveles de dificultad:
 • Aprende los colores.
 • Descubre las formas.
 • Encuentra a los animales.
 • Une las parejas.
+• Rompecabezas de 4, 9 o 16 piezas con los dibujos de la app.
+• Laberintos: lleva al conejo hasta su fresa, el coche hasta la meta, la mariposa hasta la flor o encuentra el tesoro. Con pistas y sin límite de tiempo.
+• Trazos y escritura: líneas, letras mayúsculas (con la Ñ), números del 1 al 10 y unir puntos, con una guía que se adapta al nivel.
 Con instrucciones cortas, voz opcional (usa la voz en español del propio dispositivo, si está instalada), sonidos suaves y sin límite de tiempo: equivocarse solo invita a intentarlo otra vez.
 
 🎵 MÚSICA Y SONIDOS
@@ -29,7 +32,7 @@ Con instrucciones cortas, voz opcional (usa la voz en español del propio dispos
 
 ⭐ ESTRELLAS Y PEGATINAS
 • Estrellas por cada actividad completada.
-• 7 pegatinas para coleccionar en «Mis premios».
+• 10 pegatinas para coleccionar en «Mis premios».
 
 👨‍👩‍👧 PENSADA PARA FAMILIAS
 • Sin anuncios y sin compras dentro de la aplicación.

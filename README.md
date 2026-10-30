@@ -22,6 +22,9 @@ Aplicación móvil de colorear para niños de 4 a 7 años (Flutter / Android).
   (silencio en los juegos), 27 efectos con variantes, voz que no se interrumpe ni se
   repite, pantalla «Sonido y música» con volúmenes independientes y pausa en segundo
   plano. Ver [docs/FASE_SONIDO.md](docs/FASE_SONIDO.md).
+- **Juegos nuevos (terminados):** rompecabezas (4, 9 o 16 piezas), laberintos con recorridos
+  generados y comprobados, y trazos y escritura (líneas, letras, números y unir puntos). Ver
+  [docs/FASE_JUEGOS.md](docs/FASE_JUEGOS.md).
 - **Fase 9 (preparación, sin publicar):** recursos y documentación para Google Play en
   [`store_assets/`](store_assets/RELEASE_READINESS.md): icono, imagen destacada, capturas,
   textos de la ficha, borrador de política de privacidad, auditoría de privacidad,

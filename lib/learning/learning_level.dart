@@ -20,7 +20,10 @@ enum GameId {
   colors('colores', 'Aprende los colores'),
   shapes('formas', 'Descubre las formas'),
   animals('animales', 'Encuentra a los animales'),
-  memory('parejas', 'Une las parejas');
+  memory('parejas', 'Une las parejas'),
+  puzzle('rompecabezas', 'Rompecabezas'),
+  maze('laberintos', 'Laberintos'),
+  tracing('trazos', 'Trazos y escritura');
 
   const GameId(this.id, this.title);
 

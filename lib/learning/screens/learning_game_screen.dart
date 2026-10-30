@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import '../../widgets/catalog_builder.dart';
 import '../learning_level.dart';
 import '../quiz_specs.dart';
+import 'maze_game_screen.dart';
 import 'memory_game_screen.dart';
+import 'puzzle_game_screen.dart';
 import 'quiz_game_screen.dart';
+import 'tracing_game_screen.dart';
 
 /// Abre el minijuego indicado. Los que usan dibujos esperan al catálogo.
 class LearningGameScreen extends StatelessWidget {
@@ -27,5 +30,16 @@ class LearningGameScreen extends StatelessWidget {
         builder: (context, catalog) => MemoryGameScreen(catalog: catalog, seed: seed),
       ),
     ),
+    GameId.puzzle => Scaffold(
+      body: CatalogBuilder(
+        builder: (context, catalog) => PuzzleGameScreen(catalog: catalog, seed: seed),
+      ),
+    ),
+    GameId.maze => Scaffold(
+      body: CatalogBuilder(
+        builder: (context, catalog) => MazeGameScreen(catalog: catalog, seed: seed),
+      ),
+    ),
+    GameId.tracing => const TracingGameScreen(),
   };
 }

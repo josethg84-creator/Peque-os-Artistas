@@ -28,4 +28,12 @@ abstract final class Phrases {
   static String stars(int n) => n == 1 ? '¡Ganaste una estrella!' : '¡Ganaste $n estrellas!';
 
   static const newSticker = '¡Ganaste una pegatina nueva!';
+
+  // Juegos de la segunda tanda.
+  static const puzzleStart = 'Arrastra cada pieza a su sitio';
+  static const puzzleWrong = 'Esa pieza va en otro sitio';
+  static const puzzlePlaced = ['¡Muy bien!', '¡Encaja!', '¡Perfecto!'];
+  static const mazeBump = '¡Ahí hay una pared! Busca otro camino';
+  static const traceDone = ['¡Muy bien!', '¡Lo hiciste genial!', '¡Qué bonito trazo!'];
+  static const traceFollow = 'Intenta seguir la línea';
 }

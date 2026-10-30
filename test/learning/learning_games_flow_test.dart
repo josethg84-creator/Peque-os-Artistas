@@ -24,6 +24,15 @@ Future<void> tapAndSettle(WidgetTester tester, Finder finder) async {
   await tester.pumpAndSettle();
 }
 
+/// Con siete juegos el menú se desplaza: se vuelve arriba hasta ver los niveles.
+Future<void> tapLevel(WidgetTester tester, String level) async {
+  final button = find.bySemanticsLabel('Nivel $level');
+  if (button.evaluate().isEmpty) {
+    await tester.dragUntilVisible(button, find.byType(CustomScrollView), const Offset(0, 300));
+  }
+  await tapAndSettle(tester, button);
+}
+
 Future<void> openHub(WidgetTester tester) => tapAndSettle(tester, find.bySemanticsLabel('Aprender jugando'));
 
 Future<void> openGame(WidgetTester tester, String title) =>
@@ -206,7 +215,7 @@ void main() {
     await pumpApp(tester);
     await openHub(tester);
     for (final (level, pairs) in [('Inicial', 2), ('Intermedio', 4), ('Avanzado', 6)]) {
-      await tapAndSettle(tester, find.bySemanticsLabel('Nivel $level'));
+      await tapLevel(tester, level);
       await openGame(tester, 'Une las parejas');
       expect(find.byKey(ValueKey('carta-${pairs * 2 - 1}')), findsOneWidget);
       expect(find.byKey(ValueKey('carta-${pairs * 2}')), findsNothing);

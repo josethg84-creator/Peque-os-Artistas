@@ -23,6 +23,9 @@ class LearningHubScreen extends StatefulWidget {
     (GameId.shapes, Icons.category_rounded, AppColors.sky),
     (GameId.animals, Icons.pets_rounded, AppColors.leaf),
     (GameId.memory, Icons.style_rounded, AppColors.grape),
+    (GameId.puzzle, Icons.extension_rounded, AppColors.sun),
+    (GameId.maze, Icons.alt_route_rounded, AppColors.sky),
+    (GameId.tracing, Icons.gesture_rounded, AppColors.berry),
   ];
 
   @override
@@ -79,6 +82,7 @@ class _LearningHubScreenState extends State<LearningHubScreen> {
                   icon: icon,
                   label: game.title,
                   color: color,
+                  fitLabel: true,
                   badge: played > 0 ? (played == 1 ? 'Jugado 1 vez' : 'Jugado $played veces') : null,
                   // MenuTile ya suena al tocarlo.
                   onTap: () =>

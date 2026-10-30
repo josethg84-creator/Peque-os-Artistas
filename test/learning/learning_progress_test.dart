@@ -62,7 +62,7 @@ void main() {
     }
   });
 
-  test('premios de constancia: cinco actividades y los cuatro juegos', () async {
+  test('premios de constancia: cinco actividades y todos los juegos', () async {
     final c = await open(MemoryBackend());
     final all = <String>[];
     for (final g in [GameId.colors, GameId.colors, GameId.shapes, GameId.animals]) {
@@ -70,8 +70,17 @@ void main() {
     }
     expect(all, isNot(contains('cinco_actividades')));
     expect(all, isNot(contains('todos_los_juegos')));
-    final last = (await c.recordSession(GameId.memory, completed: true, points: 2)).map((r) => r.id);
-    expect(last, containsAll(['maestro_parejas', 'cinco_actividades', 'todos_los_juegos']));
+    final fifth = (await c.recordSession(GameId.memory, completed: true, points: 2)).map((r) => r.id);
+    expect(fifth, containsAll(['maestro_parejas', 'cinco_actividades']));
+    expect(fifth, isNot(contains('todos_los_juegos')), reason: 'faltan los juegos nuevos');
+    expect((await c.recordSession(GameId.puzzle, completed: true, points: 3)).map((r) => r.id), [
+      'maestro_rompecabezas',
+    ]);
+    expect((await c.recordSession(GameId.maze, completed: true, points: 3)).map((r) => r.id), [
+      'explorador_laberintos',
+    ]);
+    final last = (await c.recordSession(GameId.tracing, completed: true, points: 3)).map((r) => r.id);
+    expect(last, containsAll(['pequeno_escritor', 'todos_los_juegos']));
     expect(c.progress.rewards, hasLength(rewards.length));
   });
 

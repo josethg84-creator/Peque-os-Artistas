@@ -29,6 +29,9 @@ void main() {
     'formas': (AppRoutes.learningGame, const LearningGameArgs(GameId.shapes)),
     'animales': (AppRoutes.learningGame, const LearningGameArgs(GameId.animals)),
     'parejas': (AppRoutes.learningGame, const LearningGameArgs(GameId.memory)),
+    'rompecabezas': (AppRoutes.learningGame, const LearningGameArgs(GameId.puzzle)),
+    'laberintos': (AppRoutes.learningGame, const LearningGameArgs(GameId.maze)),
+    'trazos': (AppRoutes.learningGame, const LearningGameArgs(GameId.tracing)),
     'adultos': (AppRoutes.adultZone, const AdultZoneArgs.verified()),
   };
 
