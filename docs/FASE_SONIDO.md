@@ -111,6 +111,18 @@ Cómo se evita que molesten:
   - En el emulador de la Fase 9, el motor de voz tardó en arrancar y la app siguió sin voz,
     sin errores.
 
+- **Corrección posterior: voz en la web.**
+  - **Problema:** Chrome carga su lista de voces un momento después de abrir la página. Si
+    la primera instrucción se pedía antes, la app concluía «no hay voz» **para siempre** y
+    no leía nada, ni siquiera con «Escuchar».
+  - **Solución:** en la web se espera hasta 2 s a que aparezcan las voces, y un «no hay voz»
+    se vuelve a comprobar a los 5 s (también sirve si se instala una voz en Android con la
+    app abierta).
+  - **Comprobado:**
+    - `test/voice_narrator_test.dart` simula el canal de `flutter_tts`;
+    - con Playwright, un navegador cuya voz llega 3 s tarde: la versión anterior no decía
+      nada y la corregida lee «¿Dónde está el círculo?» al empezar y al pulsar «Escuchar».
+
 ## 5. Configuración («Sonido y música»)
 
 - **Cómo se llega:**

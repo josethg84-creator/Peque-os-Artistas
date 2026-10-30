@@ -250,8 +250,28 @@ class AudioPlayersMusic implements MusicPlayer {
 /// pantalla de ajustes lo explica. No es una voz infantil grabada: es la voz
 /// sintética del sistema, algo más aguda y pausada.
 class DeviceTtsNarrator implements Narrator {
-  final _tts = FlutterTts();
+  DeviceTtsNarrator({
+    FlutterTts? tts,
+    DateTime Function()? clock,
+    this.voicesWait = const Duration(seconds: 2),
+  }) : _tts = tts ?? FlutterTts(),
+       _clock = clock ?? DateTime.now;
+
+  final FlutterTts _tts;
+  final DateTime Function() _clock;
+
+  /// En la web, el navegador carga su lista de voces un momento después de
+  /// abrir la página: se espera hasta este tiempo a que aparezca.
+  final Duration voicesWait;
+
+  /// Si no hay voz, se vuelve a comprobar pasado este tiempo (las voces de la
+  /// web llegan tarde y en Android se puede instalar una con la app abierta).
+  static const retryAfter = Duration(seconds: 5);
+
+  /// Solo se guarda una voz encontrada; un «no hay voz» caduca.
   Future<VoiceInfo>? _ready;
+  VoiceInfo? _lastFailure;
+  DateTime? _failedAt;
   double _volume = 1;
 
   /// Preferencia de variantes de español (Perú y Latinoamérica primero).
@@ -285,17 +305,27 @@ class DeviceTtsNarrator implements Narrator {
   }
 
   /// Busca una voz española que no necesite Internet.
-  Future<Map<String, String>?> _pickOfflineVoice() async {
-    List<Map<String, String>> voices = const [];
+  Future<List<Map<String, String>>> _voices() async {
     try {
       final raw = await _tts.getVoices;
       if (raw is List) {
-        voices = [
+        return [
           for (final v in raw)
             if (v is Map) {for (final e in v.entries) '${e.key}': '${e.value}'},
         ];
       }
     } catch (_) {}
+    return const [];
+  }
+
+  Future<Map<String, String>?> _pickOfflineVoice() async {
+    var voices = await _voices();
+    // Web: la lista llega vacía hasta que el navegador termina de cargarla.
+    final deadline = _clock().add(voicesWait);
+    while (kIsWeb && voices.isEmpty && _clock().isBefore(deadline)) {
+      await Future<void>.delayed(const Duration(milliseconds: 250));
+      voices = await _voices();
+    }
     final offline = voices.where((v) {
       final locale = (v['locale'] ?? '').replaceAll('_', '-');
       return locale.toLowerCase().startsWith('es') &&
@@ -325,7 +355,21 @@ class DeviceTtsNarrator implements Narrator {
   }
 
   @override
-  Future<VoiceInfo> voice() => _ready ??= _init();
+  Future<VoiceInfo> voice() async {
+    final ready = _ready;
+    if (ready != null) return ready;
+    final failedAt = _failedAt;
+    if (failedAt != null && _clock().difference(failedAt) < retryAfter) return _lastFailure!;
+    final pending = _ready = _init();
+    final info = await pending;
+    if (!info.available) {
+      // No se da por perdida: se vuelve a mirar más tarde.
+      _ready = null;
+      _lastFailure = info;
+      _failedAt = _clock();
+    }
+    return info;
+  }
 
   @override
   Future<void> speak(String text) async {
