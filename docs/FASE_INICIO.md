@@ -1,16 +1,29 @@
 # Nueva pantalla de inicio
 
-Rediseño de la pantalla de inicio a partir de la imagen de referencia: estilo infantil
-pastel con relieve, cielo, nubes, arcoíris y flores; logo multicolor; un niño y una niña
-con pinceles y su perrito; cuatro tarjetas grandes y una barra inferior. No se ha creado
-una app nueva: todo usa las pantallas y servicios que ya existían.
+El inicio muestra **la ilustración original completa**
+(`assets/ui/pequenos_artistas_inicio.webp`, 1024 × 1536), tal cual, sin deformarla ni
+redibujarla. Encima hay zonas táctiles transparentes, colocadas en proporción a la imagen,
+que hacen funcionar cada botón dibujado (`lib/screens/home/illustrated_home_cover.dart`).
+
+- **Teléfono vertical:** la imagen ocupa todo el ancho; si el teléfono es más alargado que
+  la imagen (2:3), los bordes de arriba y abajo se funden con un fondo hecho con la misma
+  imagen desenfocada.
+- **Tableta y navegador:** la imagen cabe entera, centrada, con el mismo fondo a los lados.
+- **Teléfono horizontal:** la imagen no baja de 360 de ancho y se desplaza en vertical.
+- Las zonas táctiles se iluminan con un brillo blanco al pulsar, suenan (si el sonido está
+  activado), muestran la mano con el ratón, evitan abrir dos pantallas con un doble toque y
+  tienen etiqueta para el lector de pantalla (el logo y el subtítulo también se anuncian).
+- La imagen aparece con un fundido suave. No se animan personajes, estrellas ni nubes por
+  separado, porque forman parte de una sola imagen (haría falta tenerlos como capas aparte).
+- Si la imagen no se pudiera cargar, se muestra el inicio vectorial descrito más abajo, con
+  los mismos botones.
 
 ## Qué hay en el inicio y adónde lleva
 
 | Elemento | Dónde | Abre |
 |---|---|---|
 | Botón redondo azul (engranaje) | Arriba a la izquierda | «Sonido y música» (`/sonido`) |
-| Candado (mantener pulsado) | Arriba | Pregunta para adultos → zona para adultos (como antes) |
+| Estrella sonriente del logo (mantener pulsada) | Arriba a la izquierda | Pregunta para adultos → zona para adultos (un toque no hace nada) |
 | Botón redondo rosa (nota musical) | Arriba a la derecha | Enciende o apaga la música; si estaba todo silenciado, vuelve a activar el sonido |
 | Logo «Pequeños Artistas» y subtítulo | Centro | — |
 | Niño, niña y perrito | Centro | Al tocarlos saludan con voz (frases de bienvenida sin repetir) |
@@ -50,7 +63,11 @@ en el dispositivo; no pide nombre ni foto ni ningún dato personal:
   pintando. «Ver todos» abre «Mis dibujos».
 - «¡Sigue jugando!»: la próxima pegatina y cómo conseguirla.
 
-## Animaciones
+## Inicio vectorial de reserva
+
+Lo que sigue describe el inicio dibujado con código, que solo se ve si falta la imagen.
+
+### Animaciones
 
 - Entrada escalonada de las partes del inicio (barra, logo, personajes, tarjetas, barra
   inferior) y aparición con rebote de los personajes.
@@ -103,6 +120,8 @@ profesional (propia o con licencia compatible):
 
 Nuevos:
 
+- `assets/ui/pequenos_artistas_inicio.webp` y `lib/screens/home/illustrated_home_cover.dart`:
+  inicio con la ilustración original y sus zonas táctiles.
 - `lib/screens/home/home_art.dart`: ilustraciones del inicio (escena, personajes, iconos).
 - `lib/screens/home/home_widgets.dart`: logo, botones de esquina, tarjetas, botones de la
   barra inferior y destellos.

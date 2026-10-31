@@ -7,6 +7,8 @@ import 'package:pequenos_artistas/navigation/app_routes.dart';
 import 'package:pequenos_artistas/screens/categories_screen.dart';
 import 'package:pequenos_artistas/screens/coloring_screen.dart';
 import 'package:pequenos_artistas/screens/gallery_screen.dart';
+import 'package:pequenos_artistas/screens/home/home_art.dart';
+import 'package:pequenos_artistas/screens/home/illustrated_home_cover.dart';
 import 'package:pequenos_artistas/screens/home_screen.dart';
 import 'package:pequenos_artistas/widgets/drawing_card.dart';
 
@@ -24,7 +26,7 @@ void main() {
     setScreenSize(tester, const Size(400, 860));
     await pumpApp(tester);
     expect(find.bySemanticsLabel('Pequeños Artistas'), findsOneWidget);
-    expect(find.text('Un mundo de colores, juegos y creatividad'), findsOneWidget);
+    expect(find.bySemanticsLabel('Un mundo de colores, juegos y creatividad'), findsOneWidget);
     expect(find.bySemanticsLabel('Un niño y una niña con pinceles y su perrito'), findsOneWidget);
     for (final label in ['Colorear', 'Mini Juegos', 'Actividades', 'Galería', 'Perfil', 'Logros']) {
       expect(find.bySemanticsLabel(label), findsOneWidget, reason: label);
@@ -34,6 +36,44 @@ void main() {
     expect(find.bySemanticsLabel('Música activada'), findsOneWidget);
     expect(find.bySemanticsLabel('Zona para adultos'), findsOneWidget);
   });
+
+  for (final size in const [Size(360, 640), Size(400, 860), Size(740, 360), Size(1280, 800)]) {
+    testWidgets(
+      '${size.width.round()}×${size.height.round()}: el inicio es la ilustración original, entera y sin deformar',
+      (tester) async {
+        setScreenSize(tester, size);
+        await pumpApp(tester);
+        final art = find.byWidgetPredicate(
+          (w) =>
+              w is Image &&
+              w.image is AssetImage &&
+              (w.image as AssetImage).assetName == IllustratedHomeCover.artwork &&
+              w.fit == BoxFit.fill,
+        );
+        expect(art, findsOneWidget);
+        expect(
+          find
+              .byType(CustomPaint)
+              .evaluate()
+              .where((e) => (e.widget as CustomPaint).painter is CharactersPainter),
+          isEmpty,
+        );
+        final rect = tester.getRect(art);
+        expect(rect.height / rect.width, closeTo(IllustratedHomeCover.aspect, 0.01));
+        expect(rect.left, greaterThanOrEqualTo(0));
+        expect(rect.right, lessThanOrEqualTo(size.width));
+        // Cada zona táctil queda dentro de la ilustración.
+        for (final label in ['Colorear', 'Mini Juegos', 'Actividades', 'Galería', 'Perfil', 'Logros']) {
+          final zone = tester.getRect(find.bySemanticsLabel(label));
+          expect(
+            rect.inflate(0.5).contains(zone.topLeft) && rect.inflate(0.5).contains(zone.bottomRight),
+            isTrue,
+            reason: label,
+          );
+        }
+      },
+    );
+  }
 
   testWidgets('cada botón del inicio abre su pantalla y se puede volver', (tester) async {
     setScreenSize(tester, const Size(400, 860));

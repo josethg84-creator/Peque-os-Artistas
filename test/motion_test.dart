@@ -252,7 +252,7 @@ void main() {
   testWidgets('Mis dibujos vacío muestra a la mascota y un mensaje amable', (tester) async {
     setScreenSize(tester, const Size(420, 900));
     await pumpApp(tester);
-    expect(find.byType(Mascot), findsOneWidget); // en el inicio
+    expect(find.byType(Mascot), findsNothing); // el inicio es la ilustración original
     await tapAndSettle(tester, find.bySemanticsLabel('Galería'));
     expect(find.text('¡Tu galería te espera!'), findsOneWidget);
     expect(find.textContaining('Aquí aparecerán tus dibujos favoritos'), findsOneWidget);

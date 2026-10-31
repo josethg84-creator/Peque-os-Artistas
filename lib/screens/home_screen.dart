@@ -40,10 +40,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final viewport = MediaQuery.sizeOf(context);
-    if (viewport.width <= viewport.height) {
-      return IllustratedHomeCover(onAdultAccess: _openAdultZone);
-    }
+    // La ilustración original es el inicio en todas las pantallas; el inicio
+    // vectorial queda de reserva por si la imagen no se pudiera cargar.
+    return IllustratedHomeCover(onAdultAccess: _openAdultZone, fallback: _vectorHome);
+  }
+
+  Widget _vectorHome(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFFFF3E6),
       body: Stack(
