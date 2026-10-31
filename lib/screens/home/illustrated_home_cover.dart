@@ -36,7 +36,7 @@ class IllustratedHomeCover extends StatelessWidget {
                           artwork,
                           fit: BoxFit.fill,
                           filterQuality: FilterQuality.medium,
-                          errorBuilder: (_, _, _) => const Center(
+                          errorBuilder: (context, error, stackTrace) => const Center(
                             child: Text('Pequeños Artistas',
                               style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900)),
                           ),
