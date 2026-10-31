@@ -12,6 +12,7 @@ import '../widgets/adult_gate.dart';
 import '../widgets/mascot.dart';
 import '../widgets/motion/staggered_entrance.dart';
 import 'home/home_art.dart';
+import 'home/illustrated_home_cover.dart';
 import 'home/home_widgets.dart';
 
 /// Pantalla de inicio: logo, personajes y el menú principal (Colorear, Mini
@@ -39,6 +40,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final viewport = MediaQuery.sizeOf(context);
+    if (viewport.width <= viewport.height) {
+      return IllustratedHomeCover(onAdultAccess: _openAdultZone);
+    }
     return Scaffold(
       backgroundColor: const Color(0xFFFFF3E6),
       body: Stack(
