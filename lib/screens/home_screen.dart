@@ -108,24 +108,25 @@ class _Hotspot extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Positioned.fill(
-    child: Align(
-      alignment: Alignment.topLeft,
-      child: FractionallySizedBox(
-        widthFactor: w,
-        heightFactor: h,
-        child: Transform.translate(
-          offset: Offset.zero,
-          child: LayoutBuilder(
-            builder: (context, area) => GestureDetector(
+    child: LayoutBuilder(
+      builder: (context, size) => Stack(children: [
+        Positioned(
+          left: size.maxWidth * x,
+          top: size.maxHeight * y,
+          width: size.maxWidth * w,
+          height: size.maxHeight * h,
+          child: Semantics(
+            button: true,
+            label: label,
+            child: GestureDetector(
               behavior: HitTestBehavior.opaque,
               onTap: onTap,
               onLongPress: onLongPress,
-              child: Semantics(button: true, label: label,
-                child: const SizedBox.expand()),
+              child: const SizedBox.expand(),
             ),
           ),
         ),
-      ),
+      ]),
     ),
   );
 }
