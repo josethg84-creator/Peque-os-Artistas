@@ -62,6 +62,7 @@ flutter:
 
   # Recursos de la Fase 1 (ver docs/DIBUJOS.md).
   assets:
+    - assets/ui/
     - assets/catalog/catalog.json
     - assets/thumbnails/
     - assets/audio/effects/
