@@ -6,7 +6,11 @@ import 'package:flutter/services.dart';
 
 import '../persistence/creation.dart';
 import '../persistence/key_value_backend.dart';
+import 'mission.dart';
 import 'speech_content.dart';
+import 'speech_preferences.dart';
+
+export 'speech_preferences.dart';
 import 'voice_practice.dart';
 
 /// Lo que el niño ha hecho de verdad en «Aprendo a Hablar». No es una
@@ -31,7 +35,18 @@ class SpeechProgress {
     Set<String>? listeningDone,
     this.answers = 0,
     this.stars = 0,
-  }) : conversationsDone = conversationsDone ?? {},
+    SpeechPreferences? preferences,
+    Map<String, int>? visits,
+    Map<String, int>? repeats,
+    this.today,
+    Set<String>? storiesBuilt,
+    Set<String>? syllablesDone,
+  }) : preferences = preferences ?? SpeechPreferences(),
+       visits = visits ?? {},
+       repeats = repeats ?? {},
+       storiesBuilt = storiesBuilt ?? {},
+       syllablesDone = syllablesDone ?? {},
+       conversationsDone = conversationsDone ?? {},
        storiesHeard = storiesHeard ?? {},
        storiesQuizzed = storiesQuizzed ?? {},
        storiesTold = storiesTold ?? {},
@@ -103,6 +118,25 @@ class SpeechProgress {
   /// Estrellas ganadas en «Aprendo a Hablar».
   int stars;
 
+  /// Fase 4: ajustes del adulto.
+  final SpeechPreferences preferences;
+
+  /// Veces que ha abierto cada actividad (por ruta): sus favoritas.
+  final Map<String, int> visits;
+
+  /// Veces que ha pedido repetir en cada actividad (por ruta). Pedir repetir
+  /// es bueno: sirve para ofrecer más práctica, nunca para penalizar.
+  final Map<String, int> repeats;
+
+  /// Lo hecho hoy («Mi aventura de hoy»).
+  DailyRecord? today;
+
+  /// Historias creadas en «Mi historia» (el texto).
+  final Set<String> storiesBuilt;
+
+  /// Palabras de «Palmas y sílabas» resueltas (ids).
+  final Set<String> syllablesDone;
+
   Map<String, dynamic> toJson() => {
     'format_version': formatVersion,
     'words_heard': wordsHeard.toList()..sort(),
@@ -125,6 +159,21 @@ class SpeechProgress {
     'listening_done': listeningDone.toList()..sort(),
     'answers': answers,
     'stars': stars,
+    'preferences': preferences.toJson(),
+    'visits': _sorted(visits),
+    'repeats': _sorted(repeats),
+    'today': today?.toJson(),
+    'stories_built': storiesBuilt.toList()..sort(),
+    'syllables_done': syllablesDone.toList()..sort(),
+  };
+
+  static Map<String, int> _sorted(Map<String, int> m) =>
+      Map.fromEntries(m.entries.toList()..sort((a, b) => a.key.compareTo(b.key)));
+
+  static Map<String, int> _counts(Object? json) => {
+    if (json case final Map<String, dynamic> m)
+      for (final MapEntry(:key, :value) in m.entries)
+        if (value is int) key: value,
   };
 
   static SpeechProgress fromJson(Map<String, dynamic> json) {
@@ -152,8 +201,24 @@ class SpeechProgress {
       listeningDone: set('listening_done'),
       answers: json['answers'] is int ? json['answers'] as int : 0,
       stars: json['stars'] is int ? json['stars'] as int : 0,
+      preferences: SpeechPreferences.fromJson(json['preferences']),
+      visits: _counts(json['visits']),
+      repeats: _counts(json['repeats']),
+      today: DailyRecord.fromJson(json['today']),
+      storiesBuilt: set('stories_built'),
+      syllablesDone: set('syllables_done'),
     );
   }
+}
+
+/// Claves de lo hecho hoy.
+abstract final class Daily {
+  static const words = 'palabras';
+  static const sentences = 'oraciones';
+  static const verbs = 'verbos';
+  static const stories = 'cuentos';
+  static const conversations = 'conversaciones';
+  static const sounds = 'sonidos';
 }
 
 /// Guarda el progreso en el almacenamiento local de la app (clave propia
@@ -237,9 +302,10 @@ class SpeechController extends ChangeNotifier {
     notifyListeners();
   }();
 
-  void markWordHeard(String id) => _record(() => _progress.wordsHeard.add(id));
-  void markVerbHeard(String id) => _record(() => _progress.verbsHeard.add(id));
-  void markSentenceBuilt(String text) => _record(() => _progress.sentencesBuilt.add(text));
+  void markWordHeard(String id) => _record(() => _progress.wordsHeard.add(id) | _bump(Daily.words));
+  void markVerbHeard(String id) => _record(() => _progress.verbsHeard.add(id) | _bump(Daily.verbs));
+  void markSentenceBuilt(String text) =>
+      _record(() => _progress.sentencesBuilt.add(text) | _bump(Daily.sentences));
   void markSentenceOrdered(String text) => _record(() => _progress.sentencesOrdered.add(text));
   void markActivityDone(String kind) => _record(() {
     _progress.activitiesDone[kind] = (_progress.activitiesDone[kind] ?? 0) + 1;
@@ -253,11 +319,13 @@ class SpeechController extends ChangeNotifier {
   /// Fase 3. Cada actividad terminada da estrellas (solo la primera vez que
   /// se termina cada conversación, cuento o historia, para no inflarlas).
   void markConversationDone(String id) => _record(() {
+    _bump(Daily.conversations);
     if (!_progress.conversationsDone.add(id)) return true;
     _progress.stars += 1;
     return true;
   });
   void markStoryHeard(String id) => _record(() {
+    _bump(Daily.stories);
     if (!_progress.storiesHeard.add(id)) return true;
     _progress.stars += 1;
     return true;
@@ -268,6 +336,7 @@ class SpeechController extends ChangeNotifier {
     return true;
   });
   void markStoryTold(String id) => _record(() {
+    _bump(Daily.stories);
     if (!_progress.storiesTold.add(id)) return true;
     _progress.stars += 2;
     return true;
@@ -291,6 +360,86 @@ class SpeechController extends ChangeNotifier {
     return true;
   });
 
+  /// Fase 4. Una historia creada en «Mi historia»: cuenta como historia y
+  /// como oración del día; una estrella la primera vez que se crea cada una.
+  void markStoryBuilt(String text) => _record(() {
+    _bump(Daily.stories);
+    _bump(Daily.sentences);
+    if (_progress.storiesBuilt.add(text)) _progress.stars += 1;
+    return true;
+  });
+
+  /// Una palabra de «Palmas y sílabas» resuelta.
+  void markSyllables(String id) => _record(() => _progress.syllablesDone.add(id) | _bump(Daily.sounds));
+
+  /// Una ronda de un juego de sonidos (empieza, rimas, encuentro).
+  void markSoundGame() => _record(() => _bump(Daily.sounds));
+
+  /// Se abrió una actividad (para conocer sus favoritas).
+  void markVisit(String route) => _record(() {
+    _progress.visits[route] = (_progress.visits[route] ?? 0) + 1;
+    return true;
+  });
+
+  /// Pidió repetir (escuchar otra vez) en una actividad.
+  void markRepeat(String route) => _record(() {
+    _progress.repeats[route] = (_progress.repeats[route] ?? 0) + 1;
+    return true;
+  });
+
+  /// Lo hecho hoy (vacío si aún no ha hecho nada hoy).
+  DailyRecord get today {
+    final day = _dayKey(_clock());
+    final t = _progress.today;
+    return t != null && t.day == day ? t : DailyRecord(day: day);
+  }
+
+  DailyRecord _todayForWrite() {
+    final t = today;
+    _progress.today = t;
+    return t;
+  }
+
+  /// La primera vez que se completa la aventura de hoy, se anota (para las
+  /// medallas). No hay rachas: los días sin aventura no cuentan en contra.
+  bool _adventureDone() {
+    final t = _progress.today;
+    if (t == null || t.day != _dayKey(_clock()) || t.counts.containsKey(_adventureKey)) return false;
+    if (!DailyMission.complete(t)) return false;
+    t.counts[_adventureKey] = 1;
+    _progress.activitiesDone['aventura'] = (_progress.activitiesDone['aventura'] ?? 0) + 1;
+    _progress.stars += 1;
+    return true;
+  }
+
+  static const _adventureKey = '_aventura';
+
+  bool _bump(String key) {
+    final t = _todayForWrite();
+    t.counts[key] = t.count(key) + 1;
+    return true;
+  }
+
+  /// Saltar una misión de hoy (o volver a ponerla). Saltar no tiene castigo.
+  void setMissionSkipped(String id, bool skipped) => _record(() {
+    final t = _todayForWrite();
+    return skipped ? t.skipped.add(id) : t.skipped.remove(id);
+  });
+
+  /// Cambia los ajustes del adulto.
+  void updatePreferences(void Function(SpeechPreferences p) change) {
+    change(_progress.preferences);
+    notifyListeners();
+    unawaited(_save());
+  }
+
+  /// Desde cuándo se usa el módulo en esta sesión (para sugerir un descanso).
+  DateTime? _sessionStart;
+  Duration get sessionTime => _sessionStart == null ? Duration.zero : _clock().difference(_sessionStart!);
+
+  /// Lo llama el menú de «Aprendo a Hablar» al abrirse.
+  void startSession() => _sessionStart ??= _clock();
+
   /// Activa o desactiva la práctica con el micrófono (zona de adultos).
   void setMicAllowed(bool allowed) {
     if (_progress.micAllowed == allowed) return;
@@ -307,7 +456,7 @@ class SpeechController extends ChangeNotifier {
       '${d.day.toString().padLeft(2, '0')}';
 
   void _record(bool Function() change) {
-    final changed = change() | _progress.practiceDays.add(_dayKey(_clock()));
+    final changed = change() | _progress.practiceDays.add(_dayKey(_clock())) | _adventureDone();
     if (!changed) return;
     notifyListeners();
     unawaited(_save());

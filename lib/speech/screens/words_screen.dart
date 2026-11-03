@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../screens/home/home_widgets.dart';
+import '../../navigation/app_routes.dart';
 import '../../services/app_services.dart';
 import '../../theme/app_colors.dart';
 import '../../theme/app_dimens.dart';
@@ -99,7 +100,7 @@ class _WordsPagerState extends State<_WordsPager> {
     final c = widget.category;
     return KidScaffold(
       title: c.name,
-      titleIcon: SpeechIcons.byName[c.icon],
+      titleIcon: SpeechIcons.lookup(c.icon),
       accent: Color.lerp(c.color, Colors.black, 0.1)!,
       backLabel: 'Volver a los grupos',
       body: _finished ? _done(c) : _pager(c),
@@ -150,7 +151,10 @@ class _WordsPagerState extends State<_WordsPager> {
         icon: Icons.volume_up_rounded,
         label: 'Escuchar',
         color: const Color(0xFF29B6F6),
-        onPressed: () => _say(slow: false),
+        onPressed: () {
+          AppServices.of(context).speech.markRepeat(AppRoutes.speechWords);
+          _say(slow: false);
+        },
       ),
       SpeechActionButton(
         icon: Icons.slow_motion_video_rounded,
@@ -158,6 +162,13 @@ class _WordsPagerState extends State<_WordsPager> {
         color: const Color(0xFFAB47BC),
         onPressed: () => _say(slow: true),
       ),
+      if (_words[_index].example case final example?)
+        SpeechActionButton(
+          icon: Icons.chat_rounded,
+          label: 'En una frase',
+          color: const Color(0xFF26A69A),
+          onPressed: () => speak(context, example),
+        ),
       if (practiceAllowed(context))
         SpeechActionButton(
           icon: Icons.mic_rounded,
@@ -291,6 +302,19 @@ class _WordCard extends StatelessWidget {
                   fit: BoxFit.scaleDown,
                   child: Text(word.text.toUpperCase(), style: fredoka(56, color: ink)),
                 ),
+                // Fase 4: cómo se pronuncia, por sílabas.
+                if (word.pronunciation != null)
+                  Semantics(
+                    label: 'Sílabas: ${word.syllables.join(', ')}',
+                    excludeSemantics: true,
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        word.syllables.join(' · '),
+                        style: fredoka(24, color: ink.withValues(alpha: 0.7)),
+                      ),
+                    ),
+                  ),
               ],
             ),
           ),

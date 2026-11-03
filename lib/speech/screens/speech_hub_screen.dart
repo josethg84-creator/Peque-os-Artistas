@@ -4,12 +4,16 @@ import '../../navigation/app_routes.dart';
 import '../../screens/home/home_widgets.dart';
 import '../../services/app_services.dart';
 import '../../theme/app_dimens.dart';
+import '../../theme/app_colors.dart';
 import '../../widgets/adaptive_grid.dart';
 import '../../widgets/kid_scaffold.dart';
 import '../../widgets/motion/delayed_loading.dart';
+import '../recommendations.dart';
 import '../speech_content.dart';
+import '../speech_progress.dart';
 import '../speech_summary.dart';
 import '../widgets/speech_widgets.dart';
+import 'mission_screen.dart';
 
 /// Una actividad del menú. Las que llegarán en entregas posteriores se
 /// muestran como «Muy pronto»: al tocarlas, Lolo lo explica.
@@ -26,8 +30,9 @@ class SpeechActivity {
   bool get available => route != null;
 }
 
-/// Menú de «Aprendo a Hablar».
-class SpeechHubScreen extends StatelessWidget {
+/// Menú de «Aprendo a Hablar»: el saludo de Lolo, «Mi aventura de hoy»,
+/// sus sugerencias y todas las actividades.
+class SpeechHubScreen extends StatefulWidget {
   const SpeechHubScreen({super.key});
 
   static const activities = [
@@ -95,7 +100,28 @@ class SpeechHubScreen extends StatelessWidget {
       AppRoutes.speechTellList,
     ),
     SpeechActivity(
-      'Mi progreso',
+      'Sílabas y sonidos',
+      '¡Palmas, rimas y más!',
+      Icons.music_note_rounded,
+      Color(0xFFB0E57C),
+      AppRoutes.speechSounds,
+    ),
+    SpeechActivity(
+      'Juegos de palabras',
+      '¡Más de 300 palabras!',
+      Icons.extension_rounded,
+      Color(0xFF9FC5F8),
+      AppRoutes.speechWordGames,
+    ),
+    SpeechActivity(
+      'Mi historia',
+      '¡Inventa tu cuento!',
+      Icons.menu_book_rounded,
+      Color(0xFFF7B2D9),
+      AppRoutes.speechMyStory,
+    ),
+    SpeechActivity(
+      'Mis aventuras con Lolo',
       '¡Mira lo que aprendiste!',
       Icons.insights_rounded,
       Color(0xFFFF9E9E),
@@ -106,42 +132,64 @@ class SpeechHubScreen extends StatelessWidget {
   static const comingSoon = '¡Esta actividad llegará muy pronto! Mientras, juguemos con las demás.';
 
   @override
+  State<SpeechHubScreen> createState() => _SpeechHubScreenState();
+}
+
+class _SpeechHubScreenState extends State<SpeechHubScreen> {
+  @override
+  void initState() {
+    super.initState();
+    context.getInheritedWidgetOfExactType<AppServices>()?.speech.startSession();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final speech = AppServices.of(context).speech;
     return KidScaffold(
       title: 'Aprendo a Hablar',
       titleIcon: Icons.record_voice_over_rounded,
       accent: speechAccent,
       backLabel: 'Volver al inicio',
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          const Padding(
+      body: CustomScrollView(
+        slivers: [
+          const SliverPadding(
             padding: EdgeInsets.fromLTRB(AppDimens.pagePadding, 0, AppDimens.pagePadding, 8),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: LoloBubble(text: '¡Hola! Soy Lolo. ¿Aprendemos a hablar juntos?', size: 64),
+            sliver: SliverList(
+              delegate: SliverChildListDelegate.fixed([
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: LoloBubble(text: '¡Hola! Soy Lolo. ¿Aprendemos a hablar juntos?', size: 64),
+                ),
+                SizedBox(height: 8),
+                MissionBanner(),
+                SizedBox(height: 10),
+                LoloSuggestions(),
+              ]),
             ),
           ),
-          Expanded(
-            child: AdaptiveGrid(
-              itemCount: activities.length,
-              minTileWidth: 170,
-              childAspectRatio: 1.05,
-              itemBuilder: (context, i) {
-                final a = activities[i];
-                final route = a.route;
-                return HomeMenuCard(
-                  title: a.title,
-                  subtitle: a.subtitle,
-                  color: a.color,
-                  art: SpeechActivityArt(icon: a.icon, color: a.color),
-                  badge: a.available ? null : 'Muy pronto',
-                  dimmed: !a.available,
-                  opensRoute: a.available,
-                  onTap: route != null ? () => Navigator.of(context).pushNamed(route) : () => _soon(context),
-                );
-              },
-            ),
+          AdaptiveSliverGrid(
+            itemCount: SpeechHubScreen.activities.length,
+            minTileWidth: 170,
+            childAspectRatio: 1.05,
+            itemBuilder: (context, i) {
+              final a = SpeechHubScreen.activities[i];
+              final route = a.route;
+              return HomeMenuCard(
+                title: a.title,
+                subtitle: a.subtitle,
+                color: a.color,
+                art: SpeechActivityArt(icon: a.icon, color: a.color),
+                badge: a.available ? null : 'Muy pronto',
+                dimmed: !a.available,
+                opensRoute: a.available,
+                onTap: route != null
+                    ? () {
+                        speech.markVisit(route);
+                        Navigator.of(context).pushNamed(route);
+                      }
+                    : () => _soon(context),
+              );
+            },
           ),
         ],
       ),
@@ -149,10 +197,108 @@ class SpeechHubScreen extends StatelessWidget {
   }
 
   static void _soon(BuildContext context) {
-    speak(context, comingSoon);
+    speak(context, SpeechHubScreen.comingSoon);
     ScaffoldMessenger.of(context)
       ..hideCurrentSnackBar()
-      ..showSnackBar(const SnackBar(content: Text(comingSoon)));
+      ..showSnackBar(const SnackBar(content: Text(SpeechHubScreen.comingSoon)));
+  }
+}
+
+/// «Lolo te propone»: hasta tres sugerencias según su progreso y los ajustes
+/// (ver `recommendActivities`). Se pueden ignorar: todo el menú sigue abierto.
+class LoloSuggestions extends StatelessWidget {
+  const LoloSuggestions({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final speech = AppServices.of(context).speech;
+    return FutureBuilder<SpeechContent>(
+      future: speech.content(),
+      builder: (context, snapshot) {
+        final content = snapshot.data;
+        if (content == null) return const SizedBox.shrink();
+        return ListenableBuilder(
+          listenable: speech,
+          builder: (context, _) {
+            final list = recommendActivities(
+              speech.progress,
+              content,
+              now: DateTime.now(),
+              sessionTime: speech.sessionTime,
+            );
+            if (list.isEmpty) return const SizedBox.shrink();
+            return Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(24),
+                border: Border.all(color: const Color(0xFFB9E6C9), width: 3),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Semantics(
+                    header: true,
+                    child: Text('Lolo te propone', style: fredoka(20, color: const Color(0xFF2E7D4F))),
+                  ),
+                  const SizedBox(height: 6),
+                  for (final r in list) _Suggestion(recommendation: r),
+                ],
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
+}
+
+class _Suggestion extends StatelessWidget {
+  const _Suggestion({required this.recommendation});
+
+  final Recommendation recommendation;
+
+  @override
+  Widget build(BuildContext context) {
+    final r = recommendation;
+    void tap() {
+      final route = r.route;
+      if (route == null) {
+        speak(context, r.lolo);
+        return;
+      }
+      AppServices.of(context).speech.markVisit(route);
+      speak(context, r.lolo);
+      Navigator.of(context).pushNamed(route, arguments: r.args);
+    }
+
+    return Semantics(
+      container: true,
+      button: true,
+      label: r.lolo,
+      excludeSemantics: true,
+      onTap: tap,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(18),
+        onTap: tap,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 4),
+          child: Row(
+            children: [
+              Icon(
+                r.route == null ? Icons.bedtime_rounded : Icons.play_circle_fill_rounded,
+                color: speechAccent,
+                size: 40,
+              ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Text(r.lolo, style: fredoka(18, color: const Color(0xFF2A2350))),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 
@@ -272,7 +418,7 @@ class SpeechProgressScreen extends StatelessWidget {
     final speech = AppServices.of(context).speech;
     final text = Theme.of(context).textTheme;
     return KidScaffold(
-      title: 'Mi progreso',
+      title: 'Mis aventuras con Lolo',
       titleIcon: Icons.insights_rounded,
       accent: speechAccent,
       backLabel: 'Volver a Aprendo a Hablar',
@@ -302,6 +448,8 @@ class SpeechProgressScreen extends StatelessWidget {
                     size: 60,
                   ),
                 ),
+                const SizedBox(height: 12),
+                _Rewards(progress: p),
                 const SizedBox(height: 12),
                 _Counter(
                   icon: Icons.abc_rounded,
@@ -433,6 +581,35 @@ class SpeechProgressScreen extends StatelessWidget {
                   ];
                 }(),
                 const SizedBox(height: 8),
+                Semantics(header: true, child: Text('Sonidos, juegos e historias', style: text.titleLarge)),
+                const SizedBox(height: 4),
+                _Counter(
+                  icon: Icons.menu_book_rounded,
+                  color: const Color(0xFFEC407A),
+                  label: 'Historias que inventaste',
+                  done: p.storiesBuilt.length,
+                ),
+                _Counter(
+                  icon: Icons.sign_language_rounded,
+                  color: const Color(0xFF7CB342),
+                  label: 'Palabras con palmas y sílabas',
+                  done: p.syllablesDone.length,
+                ),
+                _Counter(
+                  icon: Icons.extension_rounded,
+                  color: const Color(0xFF5C9DED),
+                  label: 'Juegos de palabras y sonidos',
+                  done: p.activitiesDone.entries
+                      .where((e) => e.key.startsWith('juego_'))
+                      .fold(0, (a, e) => a + e.value),
+                ),
+                _Counter(
+                  icon: Icons.looks_rounded,
+                  color: const Color(0xFF7E57C2),
+                  label: 'Aventuras completadas',
+                  done: p.activitiesDone['aventura'] ?? 0,
+                ),
+                const SizedBox(height: 8),
                 Semantics(header: true, child: Text('Palabras por grupo', style: text.titleLarge)),
                 const SizedBox(height: 4),
                 for (final c in content.categories)
@@ -517,6 +694,126 @@ class _Counter extends StatelessWidget {
             ),
             const SizedBox(width: 10),
             Text(total == null ? '$done' : '$done/$total', style: text.titleMedium),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Estrellas, recompensas y actividades favoritas.
+class _Rewards extends StatelessWidget {
+  const _Rewards({required this.progress});
+
+  final SpeechProgress progress;
+
+  @override
+  Widget build(BuildContext context) {
+    final medals = speechMedals(progress);
+    final favorites = favoriteActivities(progress);
+    final earned = medals.where((m) => m.earned).length;
+    return Container(
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(26),
+        boxShadow: const [BoxShadow(color: Color(0x1A000000), blurRadius: 10, offset: Offset(0, 4))],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Semantics(
+            container: true,
+            label: 'Estrellas: ${progress.stars}. Recompensas: $earned de ${medals.length}',
+            excludeSemantics: true,
+            child: Row(
+              children: [
+                const Icon(Icons.star_rounded, color: AppColors.sun, size: 44),
+                Text('${progress.stars}', style: fredoka(34, color: const Color(0xFF2A2350))),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Text(
+                    'Recompensas: $earned de ${medals.length}',
+                    style: fredoka(20, color: AppColors.inkSoft),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 10),
+          Wrap(
+            spacing: 10,
+            runSpacing: 10,
+            alignment: WrapAlignment.center,
+            children: [for (final m in medals) _Medal(medal: m)],
+          ),
+          if (favorites.isNotEmpty) ...[
+            const SizedBox(height: 12),
+            Text('Tus favoritas', style: fredoka(20, color: const Color(0xFF2A2350))),
+            const SizedBox(height: 4),
+            Wrap(
+              spacing: 8,
+              runSpacing: 6,
+              children: [
+                for (final f in favorites)
+                  Semantics(
+                    container: true,
+                    label: 'Favorita: $f',
+                    excludeSemantics: true,
+                    child: Chip(
+                      avatar: const Icon(Icons.favorite_rounded, color: Color(0xFFE91E63), size: 20),
+                      label: Text(f),
+                    ),
+                  ),
+              ],
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
+class _Medal extends StatelessWidget {
+  const _Medal({required this.medal});
+
+  final SpeechMedal medal;
+
+  @override
+  Widget build(BuildContext context) {
+    final m = medal;
+    final color = m.earned ? const Color(0xFFFFB300) : const Color(0xFFCFD8DC);
+    return Semantics(
+      container: true,
+      label: m.earned ? 'Recompensa: ${m.title}' : '${m.title}: ${m.progress.clamp(0, m.goal)} de ${m.goal}',
+      excludeSemantics: true,
+      child: SizedBox(
+        width: 96,
+        child: Column(
+          children: [
+            Container(
+              width: 64,
+              height: 64,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: RadialGradient(colors: [Color.lerp(color, Colors.white, 0.5)!, color]),
+                border: Border.all(color: Colors.white, width: 3),
+                boxShadow: [BoxShadow(color: color.withValues(alpha: 0.6), offset: const Offset(0, 3))],
+              ),
+              child: Icon(SpeechIcons.lookup(m.icon) ?? Icons.star_rounded, color: Colors.white, size: 34),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              m.title,
+              textAlign: TextAlign.center,
+              maxLines: 2,
+              style: fredoka(13, color: m.earned ? const Color(0xFF2A2350) : AppColors.inkSoft),
+            ),
+            if (!m.earned)
+              Text(
+                '${m.progress.clamp(0, m.goal)} / ${m.goal}',
+                style: fredoka(12, color: AppColors.inkSoft),
+              ),
           ],
         ),
       ),

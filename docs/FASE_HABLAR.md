@@ -1,4 +1,4 @@
-# Aprendo a Hablar — entregas 1, 2 y 3
+# Aprendo a Hablar — entregas 1 a 4
 
 Módulo para niños desde los 4 años que enseña vocabulario y frases con voz en español,
 dentro de la misma app y con su mismo estilo. Lo acompaña **Lolo**, un lorito original.
@@ -165,9 +165,57 @@ escucha +1.
 - **No se ha probado en un teléfono real.** Se ha probado con pruebas automáticas y en el
   navegador.
 
+## Cuarta entrega: aprendizaje personalizado y seguimiento
+
+| Pedido (fase 4) | Estado |
+|---|---|
+| 1 · Recomendaciones según el progreso local, explicables y deterministas | Hecho: `recommendActivities` (reglas fijas, sin IA ni servicios externos). «Lolo te propone» en el menú; los adultos ven el porqué |
+| 2 · «Mi aventura de hoy»: 5 misiones opcionales, elegir o saltar, progreso con un arcoíris, sin rachas | Hecho |
+| 3 · Palmas y sílabas, ¿Con qué empieza?, Palabras que riman, Escucho y encuentro | Hecho, siempre tocando: no hay reconocimiento de voz |
+| 4 · 200 palabras nuevas en 10 temas, con id, texto, categoría, ilustración, pronunciación, ejemplo y nivel | Hecho: 213 palabras (313 en total) y 3 grupos nuevos; juegos «¿Cuál es?», «¿De qué grupo es?» y «Completa la frase» |
+| 5 · Conversaciones adaptativas dentro de un catálogo controlado | Hecho: 4 conversaciones «Tú eliges» (animal → qué hace → oración, comida, juego, color) |
+| 6 · «Mi historia»: personaje, lugar, acción, objeto y final, con gramática correcta | Hecho: más de 1000 combinaciones comprobadas; escuchar, despacio, «Repite conmigo» y grabarse (opcional) |
+| 7 · Panel infantil «Mis aventuras con Lolo» y resumen para adultos | Hecho: estrellas, 9 recompensas, favoritas y contadores; resumen en la zona de adultos sin etiquetas diagnósticas |
+| 8 · Ajustes del adulto | Hecho: edad orientativa, nivel (cambiable siempre), grupos favoritos, minutos sugeridos, narración lenta y micrófono sí/no |
+| 9 · Voz y accesibilidad | Se reutiliza el sistema de audio (una sola voz a la vez, silencio y ciclo de vida de la app). Botones grandes con nombre para el lector de pantalla (comprobado con las guías de Flutter) |
+
+### Cómo decide Lolo qué proponer
+
+Solo con datos educativos guardados en el dispositivo (actividades abiertas, palabras
+escuchadas, oraciones construidas, veces que pidió repetir, niveles terminados y los ajustes):
+
+1. Si ya pasó el tiempo sugerido, propone **descansar** (no corta nada).
+2. Si pidió **repetir** 3 o más veces una actividad, ofrece más práctica de ella (pedir repetir
+   nunca penaliza).
+3. **Palabras** nuevas de su grupo favorito (el elegido por el adulto o el que más practica):
+   «¡Hoy podemos aprender nuevas palabras de animales!».
+4. **Oraciones**: la primera, otra más o, si ya construye varias, «¡Vamos a formar una oración
+   más larga e inventar una historia!».
+5. El resto (cuento, escucha, sílabas, conversación, verbo, historia) **rota según el día**:
+   el mismo día y con los mismos datos, la misma propuesta.
+
+No hay diagnósticos, puntuaciones ni clasificaciones: solo propuestas que el niño puede ignorar.
+
+### Mi aventura de hoy
+
+Escuchar 3 palabras, construir 2 frases, practicar un verbo, escuchar una historia corta y
+charlar con Lolo. Cada misión lleva a la actividad adecuada. Se pueden hacer en cualquier orden
+o saltar; la aventura se completa haciendo al menos una y saltando las demás. Cada día empieza de
+cero: no hay rachas ni nada que se pierda.
+
+### Vocabulario
+
+`tools/speech/vocabulary.py` genera `assets/speech/vocabulary.json` (y la lista de iconos
+`lib/speech/speech_icons_extra.dart`). Comprueba que cada icono existe en Flutter, que no se
+repite ninguna palabra, que la pronunciación sin guiones es la palabra y que el ejemplo la
+contiene. Las ilustraciones son dibujos del catálogo, dibujos propios (niños, escenas, caritas,
+zapato y zanahoria) o pictogramas de Material.
+
 ## Lo que falta
 
 - Probarlo en un teléfono Android real (voz, micrófono y sin conexión).
+- Más dibujos propios para palabras que hoy usan pictogramas genéricos (por ejemplo,
+  «vecino» y «tío» comparten figura con colores distintos).
 - Audios grabados por una persona (ahora la voz es la del dispositivo).
 
 ## Voz
@@ -187,7 +235,11 @@ escucha +1.
 
 ## Privacidad
 
-- El micrófono solo se usa en las prácticas de voz (ver arriba): nada se envía ni se guarda.
+- El micrófono solo se usa en las prácticas de voz (ver arriba): nada se envía ni se guarda, y
+  las grabaciones no se usan para entrenar modelos.
+- Las recomendaciones, la aventura del día y los ajustes se calculan y guardan **en el
+  dispositivo**. No se piden nombres, fotos ni datos personales («Mi historia» usa personajes
+  dibujados).
 - El progreso se guarda **solo en el dispositivo** (clave `speech.v1.state`, con suma de
   verificación y copia de seguridad). No hay cuentas, servidores, anuncios ni datos personales.
 
@@ -295,5 +347,11 @@ assets/speech/words.json, phrases.json, verbs.json, sentences.json,
   el menú: charla con estrella, cuento con pausa y controles, emociones y constructor,
   ordenar y contar una historia, una ronda de escucha con error y «despacio», e instrucción
   de dos pasos en orden).
-- `test/responsive_test.dart`: las 31 pantallas del módulo sin desbordamientos en 5 tamaños,
+- 4.ª entrega: `recommendations_test.dart` (reglas, reproducibilidad, ajustes, día y aventura),
+  `vocabulary_test.dart` (213 palabras sin repetir, campos, sílabas, juegos y sonidos),
+  `my_story_test.dart` (gramática de todas las combinaciones), `dialogue_test.dart`
+  (conversaciones adaptativas) y `phase4_flow_test.dart` (menú y sugerencias, misiones, palmas,
+  rimas, juegos, conversación adaptativa, «Mi historia» sin micrófono, panel, ajustes del adulto,
+  voz lenta y guías de accesibilidad).
+- `test/responsive_test.dart`: las 43 pantallas del módulo sin desbordamientos en 5 tamaños,
   con texto normal y al 160 %.

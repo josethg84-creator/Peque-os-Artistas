@@ -139,12 +139,12 @@ class _ReaderState extends State<_Reader> {
   int _turn = 0;
 
   Story get _s => widget.story;
-  late LearningAudio _audio;
+  late SpeechVoice _audio;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _audio = AppServices.of(context).audio;
+    _audio = SpeechVoice.of(context);
   }
 
   @override

@@ -48,6 +48,26 @@ abstract final class AppRoutes {
   static const speechTell = '/hablar/cuentamelo/historia';
   static const speechListening = '/hablar/responder';
   static const speechListeningLevel = '/hablar/responder/nivel';
+
+  // Fase 4.
+  static const speechMission = '/hablar/aventura';
+  static const speechSounds = '/hablar/sonidos';
+  static const speechClaps = '/hablar/sonidos/palmas';
+  static const speechSoundGame = '/hablar/sonidos/juego';
+  static const speechWordGames = '/hablar/palabras/juegos';
+  static const speechWordGame = '/hablar/palabras/juego';
+  static const speechMyStory = '/hablar/mi-historia';
+}
+
+/// Argumento de los juegos con nivel (sílabas, sonidos y palabras).
+class SpeechGameArgs {
+  const SpeechGameArgs(this.game, {this.level});
+
+  /// Qué juego («empieza», «rimas», «encuentro», «cual», «grupo», «frase»).
+  final String game;
+
+  /// Nivel (1 a 3); si es `null`, el de los ajustes.
+  final int? level;
 }
 
 /// Argumento de [AppRoutes.speechListeningLevel].

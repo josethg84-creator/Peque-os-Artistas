@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import '../../coloring/auto_colors.dart';
 import '../../coloring/engine/drawing_painter.dart';
 import '../../coloring/engine/vector_drawing.dart';
+import '../../audio/app_audio.dart';
 import '../../services/app_services.dart';
 import '../../theme/app_colors.dart';
 import '../../theme/app_motion.dart';
@@ -154,7 +155,7 @@ class SpeechPictureView extends StatelessWidget {
         final IconPicture p => _IconTile(
           icon: p.icon,
           color: p.color ?? tint ?? AppColors.grape,
-          shoe: p.name == 'shoes',
+          drawn: p.name,
         ),
         LoloPicture() => const CustomPaint(painter: LoloPainter()),
         final KidPicture k => CustomPaint(
@@ -198,8 +199,8 @@ class _Scene extends StatelessWidget {
                     height: side * item.size,
                     child: switch (item.picture) {
                       // En una escena, los pictogramas van sin baldosa, como parte del dibujo.
-                      final IconPicture p when p.name == 'shoes' => CustomPaint(
-                        painter: ShoePainter(p.color ?? tint ?? AppColors.grape),
+                      final IconPicture p when ownPainter(p.name, Colors.black) != null => CustomPaint(
+                        painter: ownPainter(p.name, p.color ?? tint ?? AppColors.grape),
                       ),
                       final IconPicture p => FittedBox(
                         child: Icon(
@@ -223,14 +224,21 @@ class _Scene extends StatelessWidget {
 }
 
 /// Pictograma grande sobre una baldosa redondeada con relieve.
+/// Pictogramas que se dibujan a mano porque Material no tiene uno adecuado.
+CustomPainter? ownPainter(String? name, Color color) => switch (name) {
+  'shoes' => ShoePainter(color),
+  'carrot' => CarrotPainter(color),
+  _ => null,
+};
+
 class _IconTile extends StatelessWidget {
-  const _IconTile({required this.icon, required this.color, this.shoe = false});
+  const _IconTile({required this.icon, required this.color, this.drawn});
 
   final IconData icon;
   final Color color;
 
   /// Se dibuja un zapato propio en lugar del icono.
-  final bool shoe;
+  final String? drawn;
 
   @override
   Widget build(BuildContext context) {
@@ -254,10 +262,10 @@ class _IconTile extends StatelessWidget {
                 const BoxShadow(color: Color(0x22000000), blurRadius: 10, offset: Offset(0, 6)),
               ],
             ),
-            child: shoe
+            child: ownPainter(drawn, color) != null
                 ? Padding(
                     padding: EdgeInsets.all(side * 0.1),
-                    child: CustomPaint(painter: ShoePainter(color)),
+                    child: CustomPaint(painter: ownPainter(drawn, color)),
                   )
                 : Icon(
                     icon,
@@ -339,8 +347,10 @@ class _PictureColors extends AutoColors {
   final DrawingPicture picture;
 
   @override
+  // El fondo del dibujo queda transparente: así el animal se ve sobre la
+  // escena (y no dentro de un recuadro blanco).
   Color? colorOf(String regionId) => regionId == VectorDrawing.backgroundId
-      ? super.colorOf(regionId)
+      ? const Color(0x00FFFFFF)
       : picture.colorFor(regionId) ?? super.colorOf(regionId);
 }
 
@@ -352,12 +362,16 @@ class SpeechActionButton extends StatelessWidget {
     required this.label,
     required this.color,
     required this.onPressed,
+    this.semanticLabel,
   });
 
   final IconData icon;
   final String label;
   final Color color;
   final VoidCallback? onPressed;
+
+  /// Lo que lee el lector de pantalla, si es más largo que [label].
+  final String? semanticLabel;
 
   @override
   Widget build(BuildContext context) {
@@ -366,7 +380,7 @@ class SpeechActionButton extends StatelessWidget {
       container: true,
       button: true,
       enabled: enabled,
-      label: label,
+      label: semanticLabel ?? label,
       excludeSemantics: true,
       onTap: onPressed,
       child: Opacity(
@@ -413,8 +427,29 @@ class SpeechActionButton extends StatelessWidget {
   }
 }
 
+/// La voz del módulo: la del sistema de audio común, más lenta en todo si un
+/// adulto lo eligió en la zona de adultos.
+class SpeechVoice {
+  SpeechVoice(this.audio, {this.alwaysSlow = false});
+
+  factory SpeechVoice.of(BuildContext context) {
+    final services = AppServices.of(context);
+    return SpeechVoice(services.audio, alwaysSlow: services.speech.progress.preferences.slowVoice);
+  }
+
+  final LearningAudio audio;
+  final bool alwaysSlow;
+
+  Future<void> say(String text, {VoiceMode mode = VoiceMode.interrupt, bool slow = false}) =>
+      audio.say(text, mode: mode, slow: slow || alwaysSlow);
+  Future<void> play(SoundCue cue) => audio.play(cue);
+  Future<void> stopVoice() => audio.stopVoice();
+}
+
 /// Dice [text] (normal o despacio) con la voz de la app.
 void speak(BuildContext context, String text, {bool slow = false}) {
-  final audio = AppServices.maybeOf(context)?.audio;
-  if (audio != null) unawaited(audio.say(text, slow: slow));
+  final services = AppServices.maybeOf(context);
+  // Un adulto puede pedir que toda la narración vaya más lenta.
+  final alwaysSlow = services?.speech.progress.preferences.slowVoice ?? false;
+  if (services != null) unawaited(services.audio.say(text, slow: slow || alwaysSlow));
 }

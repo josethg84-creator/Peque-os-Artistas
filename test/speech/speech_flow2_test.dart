@@ -16,6 +16,10 @@ import '../test_helpers.dart';
 import 'speech_activities_test.dart' show realContent;
 
 Future<void> tapAndSettle(WidgetTester tester, Finder finder) async {
+  // Las listas largas construyen sus tarjetas al desplazarse.
+  if (finder.evaluate().isEmpty) {
+    await tester.scrollUntilVisible(finder, 250, scrollable: find.byType(Scrollable).first);
+  }
   await tester.ensureVisible(finder);
   await tester.pumpAndSettle();
   await tester.tap(finder);
@@ -221,7 +225,7 @@ void main() {
   testWidgets('un adulto puede quitar «Practicar» desde la zona de adultos', (tester) async {
     final speech = await openApp(tester);
     await push(tester, AppRoutes.adultZone, const AdultZoneArgs.verified());
-    final toggle = find.byType(SwitchListTile);
+    final toggle = find.widgetWithText(SwitchListTile, 'Practicar con el micrófono');
     await tester.scrollUntilVisible(toggle, 300);
     expect(find.text('Practicar con el micrófono'), findsOneWidget);
     await tapAndSettle(tester, toggle);

@@ -8,7 +8,9 @@ void main() {
   final json = jsonDecode(File(SpeechContent.conversationsAsset).readAsStringSync()) as Map<String, dynamic>;
   final parsed = parseConversations(json);
 
-  test('12 categorías con 3 conversaciones cada una, todas válidas', () {
+  final guided = parsed.conversations.where((c) => c.category != 'elige').toList();
+
+  test('12 categorías guiadas con 3 conversaciones cada una y «Tú eliges», todas válidas', () {
     expect(parsed.categories.map((c) => c.name), [
       'Saludos y despedidas',
       'Mi familia',
@@ -22,14 +24,15 @@ void main() {
       'Pedir ayuda',
       'Expresar necesidades',
       'Describir objetos',
+      'Tú eliges',
     ]);
     // Ninguna se descartó por errores de contenido.
-    expect((json['conversations'] as List), hasLength(36));
-    expect(parsed.conversations, hasLength(36));
-    for (final c in parsed.categories) {
+    expect((json['conversations'] as List), hasLength(40));
+    expect(parsed.conversations, hasLength(40));
+    for (final c in parsed.categories.where((c) => c.id != 'elige')) {
       expect(parsed.conversations.where((x) => x.category == c.id), hasLength(3), reason: c.name);
     }
-    for (final c in parsed.conversations) {
+    for (final c in guided) {
       expect(c.validate(), isEmpty, reason: c.id);
       for (final n in c.nodes.values) {
         expect(n.options.length, inInclusiveRange(3, 4), reason: '${c.id}: ${n.lolo}');
@@ -38,7 +41,7 @@ void main() {
   });
 
   test('cualquier camino termina en 3 a 5 intercambios', () {
-    for (final c in parsed.conversations) {
+    for (final c in guided) {
       // Recorre todos los caminos posibles.
       void walk(String? node, int depth) {
         if (node == null) {
@@ -151,5 +154,50 @@ void main() {
       },
     };
     expect(Conversation.fromJson(bad), isNull);
+  });
+
+  group('conversaciones adaptativas (fase 4)', () {
+    final adaptive = parsed.conversations.where((c) => c.category == 'elige').toList();
+
+    test('la pregunta siguiente depende de lo elegido y termina con una oración', () {
+      final animal = adaptive.firstWhere((c) => c.id == 'elige_animal');
+      var s = DialogueSession(animal);
+      expect(s.current!.lolo, '¿Qué animal te gusta?');
+      int pick(String text) => s.current!.options.indexWhere((o) => o.text == text);
+      s.choose(pick('El perro.'));
+      expect(s.current!.lolo, '¿Qué hace el perro?');
+      expect(s.current!.options.map((o) => o.text), ['Corre.', 'Duerme.', 'Come.']);
+      expect(s.choose(pick('Corre.')), '¡El perro corre!');
+      expect(s.current!.lolo, '¿Quieres escuchar la oración?');
+      expect(s.choose(pick('Sí, quiero escucharla.')), 'El perro corre por el parque.');
+      expect(s.finished, isTrue);
+
+      // Otro camino, otra pregunta.
+      s = DialogueSession(animal);
+      s.choose(pick('El pájaro.'));
+      expect(s.current!.lolo, '¿Qué hace el pájaro?');
+      expect(s.current!.options.map((o) => o.text), contains('Vuela.'));
+    });
+
+    test('todas las combinaciones llevan a una oración bien escrita y el bucle se corta', () {
+      for (final c in adaptive) {
+        expect(c.validate(), isEmpty, reason: c.id);
+        for (final first in c.nodes[c.start]!.options) {
+          for (final second in c.nodes[first.next]!.options) {
+            final ask = c.nodes[second.next]!;
+            final yes = ask.options.first;
+            expect(yes.next, isNull);
+            expect(yes.reply, matches(RegExp(r'^[A-ZÁÉÍÓÚ].*\.$')), reason: yes.reply);
+            expect(ask.options.last.next, c.start, reason: 'elegir otra vez');
+          }
+        }
+        // Eligiendo «otra vez» siempre, la sesión se corta a los 5 intercambios.
+        final s = DialogueSession(c);
+        while (!s.finished) {
+          s.choose(s.current!.options.length - 1);
+        }
+        expect(s.exchanges, hasLength(5));
+      }
+    });
   });
 }

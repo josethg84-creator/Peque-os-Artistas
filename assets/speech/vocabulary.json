@@ -1,0 +1,2842 @@
+{
+ "format_version": 1,
+ "categories": [
+  {
+   "id": "escuela",
+   "name": "Escuela",
+   "color": "#5C9DED",
+   "icon": "school"
+  },
+  {
+   "id": "transporte",
+   "name": "Transporte",
+   "color": "#FF7043",
+   "icon": "directions_bus"
+  },
+  {
+   "id": "objetos",
+   "name": "Objetos cotidianos",
+   "color": "#AB47BC",
+   "icon": "inventory_2"
+  }
+ ],
+ "words": [
+  {
+   "id": "jirafa",
+   "text": "jirafa",
+   "article": "la",
+   "picture": {
+    "drawing": "animal_jirafa"
+   },
+   "pronunciation": "ji-ra-fa",
+   "example": "La jirafa tiene el cuello muy largo.",
+   "level": 1,
+   "category": "animales"
+  },
+  {
+   "id": "oso",
+   "text": "oso",
+   "article": "el",
+   "picture": {
+    "drawing": "animal_oso"
+   },
+   "pronunciation": "o-so",
+   "example": "El oso duerme en su cueva.",
+   "level": 1,
+   "category": "animales"
+  },
+  {
+   "id": "tortuga",
+   "text": "tortuga",
+   "article": "la",
+   "picture": {
+    "drawing": "animal_tortuga"
+   },
+   "pronunciation": "tor-tu-ga",
+   "example": "La tortuga camina muy despacio.",
+   "level": 1,
+   "category": "animales"
+  },
+  {
+   "id": "cebra",
+   "text": "cebra",
+   "article": "la",
+   "picture": {
+    "drawing": "animal_cebra"
+   },
+   "pronunciation": "ce-bra",
+   "example": "La cebra tiene rayas blancas y negras.",
+   "level": 2,
+   "category": "animales"
+  },
+  {
+   "id": "cerdo",
+   "text": "cerdo",
+   "article": "el",
+   "picture": {
+    "drawing": "granja_cerdito"
+   },
+   "pronunciation": "cer-do",
+   "example": "El cerdo juega en el barro.",
+   "level": 1,
+   "category": "animales"
+  },
+  {
+   "id": "gallina",
+   "text": "gallina",
+   "article": "la",
+   "picture": {
+    "drawing": "granja_gallina"
+   },
+   "pronunciation": "ga-lli-na",
+   "example": "La gallina pone un huevo.",
+   "level": 1,
+   "category": "animales"
+  },
+  {
+   "id": "gallo",
+   "text": "gallo",
+   "article": "el",
+   "picture": {
+    "drawing": "granja_gallo"
+   },
+   "pronunciation": "ga-llo",
+   "example": "El gallo canta por la mañana.",
+   "level": 1,
+   "category": "animales"
+  },
+  {
+   "id": "oveja",
+   "text": "oveja",
+   "article": "la",
+   "picture": {
+    "drawing": "granja_oveja"
+   },
+   "pronunciation": "o-ve-ja",
+   "example": "La oveja tiene mucha lana.",
+   "level": 1,
+   "category": "animales"
+  },
+  {
+   "id": "caballo",
+   "text": "caballo",
+   "article": "el",
+   "picture": {
+    "drawing": "granja_poni"
+   },
+   "pronunciation": "ca-ba-llo",
+   "example": "El caballo corre por el campo.",
+   "level": 1,
+   "category": "animales"
+  },
+  {
+   "id": "ballena",
+   "text": "ballena",
+   "article": "la",
+   "picture": {
+    "drawing": "mar_ballena"
+   },
+   "pronunciation": "ba-lle-na",
+   "example": "La ballena nada en el mar.",
+   "level": 2,
+   "category": "animales"
+  },
+  {
+   "id": "cangrejo",
+   "text": "cangrejo",
+   "article": "el",
+   "picture": {
+    "drawing": "mar_cangrejo"
+   },
+   "pronunciation": "can-gre-jo",
+   "example": "El cangrejo camina por la arena.",
+   "level": 2,
+   "category": "animales"
+  },
+  {
+   "id": "delfin",
+   "text": "delfín",
+   "article": "el",
+   "picture": {
+    "drawing": "mar_delfin"
+   },
+   "pronunciation": "del-fín",
+   "example": "El delfín salta en el agua.",
+   "level": 2,
+   "category": "animales"
+  },
+  {
+   "id": "estrella_mar",
+   "text": "estrella de mar",
+   "article": "la",
+   "picture": {
+    "drawing": "mar_estrella"
+   },
+   "pronunciation": "es-tre-lla de mar",
+   "example": "La estrella de mar vive en el agua.",
+   "level": 3,
+   "category": "animales"
+  },
+  {
+   "id": "pulpo",
+   "text": "pulpo",
+   "article": "el",
+   "picture": {
+    "drawing": "mar_pulpo"
+   },
+   "pronunciation": "pul-po",
+   "example": "El pulpo tiene ocho brazos.",
+   "level": 2,
+   "category": "animales"
+  },
+  {
+   "id": "dinosaurio",
+   "text": "dinosaurio",
+   "article": "el",
+   "picture": {
+    "drawing": "dinosaurio_01"
+   },
+   "pronunciation": "di-no-sau-rio",
+   "example": "El dinosaurio es muy grande.",
+   "level": 2,
+   "category": "animales"
+  },
+  {
+   "id": "unicornio",
+   "text": "unicornio",
+   "article": "el",
+   "picture": {
+    "drawing": "fantasia_unicornio"
+   },
+   "pronunciation": "u-ni-cor-nio",
+   "example": "El unicornio tiene un cuerno.",
+   "level": 3,
+   "category": "animales"
+  },
+  {
+   "id": "dragon",
+   "text": "dragón",
+   "article": "el",
+   "picture": {
+    "drawing": "fantasia_dragon"
+   },
+   "pronunciation": "dra-gón",
+   "example": "El dragón vuela sobre el castillo.",
+   "level": 2,
+   "category": "animales"
+  },
+  {
+   "id": "pajaro",
+   "text": "pájaro",
+   "article": "el",
+   "picture": {
+    "icon": "flutter_dash",
+    "color": "#29B6F6"
+   },
+   "pronunciation": "pá-ja-ro",
+   "example": "El pájaro canta en el árbol.",
+   "level": 1,
+   "category": "animales"
+  },
+  {
+   "id": "abeja",
+   "text": "abeja",
+   "article": "la",
+   "picture": {
+    "icon": "emoji_nature",
+    "color": "#F9A825"
+   },
+   "pronunciation": "a-be-ja",
+   "example": "La abeja vuela de flor en flor.",
+   "level": 1,
+   "category": "animales"
+  },
+  {
+   "id": "escarabajo",
+   "text": "escarabajo",
+   "article": "el",
+   "picture": {
+    "icon": "bug_report",
+    "color": "#43A047"
+   },
+   "pronunciation": "es-ca-ra-ba-jo",
+   "example": "El escarabajo camina por la hoja.",
+   "level": 3,
+   "category": "animales"
+  },
+  {
+   "id": "mascota",
+   "text": "mascota",
+   "article": "la",
+   "picture": {
+    "icon": "pets",
+    "color": "#8D6E63"
+   },
+   "pronunciation": "mas-co-ta",
+   "example": "Mi mascota es un perro.",
+   "level": 2,
+   "category": "animales"
+  },
+  {
+   "id": "sofa",
+   "text": "sofá",
+   "article": "el",
+   "picture": {
+    "icon": "weekend",
+    "color": "#7E57C2"
+   },
+   "pronunciation": "so-fá",
+   "example": "Leemos un cuento en el sofá.",
+   "level": 1,
+   "category": "hogar"
+  },
+  {
+   "id": "television",
+   "text": "televisión",
+   "article": "la",
+   "picture": {
+    "icon": "tv",
+    "color": "#455A64"
+   },
+   "pronunciation": "te-le-vi-sión",
+   "example": "Vemos dibujos en la televisión.",
+   "level": 2,
+   "category": "hogar"
+  },
+  {
+   "id": "nevera",
+   "text": "nevera",
+   "article": "la",
+   "picture": {
+    "icon": "kitchen",
+    "color": "#78909C"
+   },
+   "pronunciation": "ne-ve-ra",
+   "example": "La leche está en la nevera.",
+   "level": 2,
+   "category": "hogar"
+  },
+  {
+   "id": "cocina",
+   "text": "cocina",
+   "article": "la",
+   "picture": {
+    "scene": "cocina",
+    "items": []
+   },
+   "pronunciation": "co-ci-na",
+   "example": "Papá prepara la comida en la cocina.",
+   "level": 1,
+   "category": "hogar"
+  },
+  {
+   "id": "bano",
+   "text": "baño",
+   "article": "el",
+   "picture": {
+    "icon": "wc",
+    "color": "#29B6F6"
+   },
+   "pronunciation": "ba-ño",
+   "example": "Me lavo las manos en el baño.",
+   "level": 1,
+   "category": "hogar"
+  },
+  {
+   "id": "ducha",
+   "text": "ducha",
+   "article": "la",
+   "picture": {
+    "icon": "shower",
+    "color": "#039BE5"
+   },
+   "pronunciation": "du-cha",
+   "example": "Me lavo el pelo en la ducha.",
+   "level": 1,
+   "category": "hogar"
+  },
+  {
+   "id": "banera",
+   "text": "bañera",
+   "article": "la",
+   "picture": {
+    "icon": "bathtub",
+    "color": "#26C6DA"
+   },
+   "pronunciation": "ba-ñe-ra",
+   "example": "El bebé juega en la bañera.",
+   "level": 2,
+   "category": "hogar"
+  },
+  {
+   "id": "escalera",
+   "text": "escalera",
+   "article": "la",
+   "picture": {
+    "icon": "stairs",
+    "color": "#8D6E63"
+   },
+   "pronunciation": "es-ca-le-ra",
+   "example": "Subo la escalera despacio.",
+   "level": 2,
+   "category": "hogar"
+  },
+  {
+   "id": "jardin",
+   "text": "jardín",
+   "article": "el",
+   "picture": {
+    "icon": "yard",
+    "color": "#43A047"
+   },
+   "pronunciation": "jar-dín",
+   "example": "Las flores crecen en el jardín.",
+   "level": 1,
+   "category": "hogar"
+  },
+  {
+   "id": "dormitorio",
+   "text": "dormitorio",
+   "article": "el",
+   "picture": {
+    "scene": "dormitorio",
+    "items": []
+   },
+   "pronunciation": "dor-mi-to-rio",
+   "example": "Mi cama está en el dormitorio.",
+   "level": 3,
+   "category": "hogar"
+  },
+  {
+   "id": "cuna",
+   "text": "cuna",
+   "article": "la",
+   "picture": {
+    "icon": "crib",
+    "color": "#F48FB1"
+   },
+   "pronunciation": "cu-na",
+   "example": "El bebé duerme en la cuna.",
+   "level": 1,
+   "category": "hogar"
+  },
+  {
+   "id": "microondas",
+   "text": "microondas",
+   "article": "el",
+   "picture": {
+    "icon": "microwave",
+    "color": "#607D8B"
+   },
+   "pronunciation": "mi-cro-on-das",
+   "example": "Calentamos la sopa en el microondas.",
+   "level": 3,
+   "category": "hogar"
+  },
+  {
+   "id": "lavadora",
+   "text": "lavadora",
+   "article": "la",
+   "picture": {
+    "icon": "local_laundry_service",
+    "color": "#42A5F5"
+   },
+   "pronunciation": "la-va-do-ra",
+   "example": "La ropa se lava en la lavadora.",
+   "level": 2,
+   "category": "hogar"
+  },
+  {
+   "id": "llave",
+   "text": "llave",
+   "article": "la",
+   "picture": {
+    "icon": "key",
+    "color": "#FFB300"
+   },
+   "pronunciation": "lla-ve",
+   "example": "Abro la puerta con la llave.",
+   "level": 1,
+   "category": "hogar"
+  },
+  {
+   "id": "escoba",
+   "text": "escoba",
+   "article": "la",
+   "picture": {
+    "icon": "cleaning_services",
+    "color": "#8D6E63"
+   },
+   "pronunciation": "es-co-ba",
+   "example": "Barro el suelo con la escoba.",
+   "level": 2,
+   "category": "hogar"
+  },
+  {
+   "id": "telefono",
+   "text": "teléfono",
+   "article": "el",
+   "picture": {
+    "icon": "phone",
+    "color": "#43A047"
+   },
+   "pronunciation": "te-lé-fo-no",
+   "example": "La abuela llama por teléfono.",
+   "level": 2,
+   "category": "hogar"
+  },
+  {
+   "id": "garaje",
+   "text": "garaje",
+   "article": "el",
+   "picture": {
+    "icon": "garage",
+    "color": "#78909C"
+   },
+   "pronunciation": "ga-ra-je",
+   "example": "El coche duerme en el garaje.",
+   "level": 2,
+   "category": "hogar"
+  },
+  {
+   "id": "tejado",
+   "text": "tejado",
+   "article": "el",
+   "picture": {
+    "icon": "roofing",
+    "color": "#E53935"
+   },
+   "pronunciation": "te-ja-do",
+   "example": "El gato sube al tejado.",
+   "level": 2,
+   "category": "hogar"
+  },
+  {
+   "id": "valla",
+   "text": "valla",
+   "article": "la",
+   "picture": {
+    "icon": "fence",
+    "color": "#A1887F"
+   },
+   "pronunciation": "va-lla",
+   "example": "La valla está alrededor del jardín.",
+   "level": 3,
+   "category": "hogar"
+  },
+  {
+   "id": "radio",
+   "text": "radio",
+   "article": "la",
+   "picture": {
+    "icon": "radio",
+    "color": "#5C6BC0"
+   },
+   "pronunciation": "ra-dio",
+   "example": "Escuchamos música en la radio.",
+   "level": 2,
+   "category": "hogar"
+  },
+  {
+   "id": "plancha",
+   "text": "plancha",
+   "article": "la",
+   "picture": {
+    "icon": "iron",
+    "color": "#90A4AE"
+   },
+   "pronunciation": "plan-cha",
+   "example": "Mamá usa la plancha con cuidado.",
+   "level": 3,
+   "category": "hogar"
+  },
+  {
+   "id": "cortina",
+   "text": "cortina",
+   "article": "la",
+   "picture": {
+    "icon": "curtains",
+    "color": "#BA68C8"
+   },
+   "pronunciation": "cor-ti-na",
+   "example": "Abro la cortina para ver el sol.",
+   "level": 2,
+   "category": "hogar"
+  },
+  {
+   "id": "escuela",
+   "text": "escuela",
+   "article": "la",
+   "picture": {
+    "icon": "school",
+    "color": "#5C9DED"
+   },
+   "pronunciation": "es-cue-la",
+   "example": "Voy a la escuela con mi mochila.",
+   "level": 1,
+   "category": "escuela"
+  },
+  {
+   "id": "lapiz",
+   "text": "lápiz",
+   "article": "el",
+   "picture": {
+    "icon": "edit",
+    "color": "#FFB300"
+   },
+   "pronunciation": "lá-piz",
+   "example": "Escribo mi nombre con el lápiz.",
+   "level": 1,
+   "category": "escuela"
+  },
+  {
+   "id": "mochila",
+   "text": "mochila",
+   "article": "la",
+   "picture": {
+    "icon": "backpack",
+    "color": "#E53935"
+   },
+   "pronunciation": "mo-chi-la",
+   "example": "Guardo mis libros en la mochila.",
+   "level": 1,
+   "category": "escuela"
+  },
+  {
+   "id": "tijeras",
+   "text": "tijeras",
+   "article": "las",
+   "picture": {
+    "icon": "content_cut",
+    "color": "#EF6C00"
+   },
+   "pronunciation": "ti-je-ras",
+   "example": "Corto el papel con las tijeras.",
+   "level": 2,
+   "category": "escuela"
+  },
+  {
+   "id": "regla",
+   "text": "regla",
+   "article": "la",
+   "picture": {
+    "icon": "straighten",
+    "color": "#00897B"
+   },
+   "pronunciation": "re-gla",
+   "example": "Dibujo una línea con la regla.",
+   "level": 2,
+   "category": "escuela"
+  },
+  {
+   "id": "pincel",
+   "text": "pincel",
+   "article": "el",
+   "picture": {
+    "icon": "brush",
+    "color": "#8E24AA"
+   },
+   "pronunciation": "pin-cel",
+   "example": "Pinto un sol con el pincel.",
+   "level": 1,
+   "category": "escuela"
+  },
+  {
+   "id": "pinturas",
+   "text": "pinturas",
+   "article": "las",
+   "picture": {
+    "icon": "palette",
+    "color": "#EC407A"
+   },
+   "pronunciation": "pin-tu-ras",
+   "example": "Mezclo las pinturas de colores.",
+   "level": 2,
+   "category": "escuela"
+  },
+  {
+   "id": "cuaderno",
+   "text": "cuaderno",
+   "article": "el",
+   "picture": {
+    "icon": "menu_book",
+    "color": "#3949AB"
+   },
+   "pronunciation": "cua-der-no",
+   "example": "Dibujo en mi cuaderno.",
+   "level": 2,
+   "category": "escuela"
+  },
+  {
+   "id": "pizarra",
+   "text": "pizarra",
+   "article": "la",
+   "picture": {
+    "icon": "co_present",
+    "color": "#2E7D32"
+   },
+   "pronunciation": "pi-za-rra",
+   "example": "La maestra escribe en la pizarra.",
+   "level": 2,
+   "category": "escuela"
+  },
+  {
+   "id": "calculadora",
+   "text": "calculadora",
+   "article": "la",
+   "picture": {
+    "icon": "calculate",
+    "color": "#546E7A"
+   },
+   "pronunciation": "cal-cu-la-do-ra",
+   "example": "Sumamos con la calculadora.",
+   "level": 3,
+   "category": "escuela"
+  },
+  {
+   "id": "mapa",
+   "text": "mapa",
+   "article": "el",
+   "picture": {
+    "icon": "map",
+    "color": "#26A69A"
+   },
+   "pronunciation": "ma-pa",
+   "example": "Buscamos el mar en el mapa.",
+   "level": 2,
+   "category": "escuela"
+  },
+  {
+   "id": "companeros",
+   "text": "compañeros",
+   "article": "los",
+   "picture": {
+    "icon": "groups",
+    "color": "#FB8C00"
+   },
+   "pronunciation": "com-pa-ñe-ros",
+   "example": "Juego con mis compañeros en el recreo.",
+   "level": 3,
+   "category": "escuela"
+  },
+  {
+   "id": "musica",
+   "text": "música",
+   "article": "la",
+   "picture": {
+    "icon": "music_note",
+    "color": "#AB47BC"
+   },
+   "pronunciation": "mú-si-ca",
+   "example": "En clase cantamos con música.",
+   "level": 1,
+   "category": "escuela"
+  },
+  {
+   "id": "letras",
+   "text": "letras",
+   "article": "las",
+   "picture": {
+    "icon": "abc",
+    "color": "#E53935"
+   },
+   "pronunciation": "le-tras",
+   "example": "Aprendo las letras del abecedario.",
+   "level": 2,
+   "category": "escuela"
+  },
+  {
+   "id": "numeros",
+   "text": "números",
+   "article": "los",
+   "picture": {
+    "icon": "pin",
+    "color": "#1E88E5"
+   },
+   "pronunciation": "nú-me-ros",
+   "example": "Cuento los números del uno al diez.",
+   "level": 2,
+   "category": "escuela"
+  },
+  {
+   "id": "cuento",
+   "text": "cuento",
+   "article": "el",
+   "picture": {
+    "icon": "auto_stories",
+    "color": "#8E24AA"
+   },
+   "pronunciation": "cuen-to",
+   "example": "La maestra lee un cuento.",
+   "level": 1,
+   "category": "escuela"
+  },
+  {
+   "id": "calendario",
+   "text": "calendario",
+   "article": "el",
+   "picture": {
+    "icon": "calendar_month",
+    "color": "#F4511E"
+   },
+   "pronunciation": "ca-len-da-rio",
+   "example": "Miramos el día en el calendario.",
+   "level": 3,
+   "category": "escuela"
+  },
+  {
+   "id": "trofeo",
+   "text": "trofeo",
+   "article": "el",
+   "picture": {
+    "icon": "emoji_events",
+    "color": "#FBC02D"
+   },
+   "pronunciation": "tro-fe-o",
+   "example": "Ganamos un trofeo en la carrera.",
+   "level": 3,
+   "category": "escuela"
+  },
+  {
+   "id": "campana",
+   "text": "campana",
+   "article": "la",
+   "picture": {
+    "icon": "notifications",
+    "color": "#FFA000"
+   },
+   "pronunciation": "cam-pa-na",
+   "example": "Suena la campana del recreo.",
+   "level": 2,
+   "category": "escuela"
+  },
+  {
+   "id": "ciencia",
+   "text": "ciencia",
+   "article": "la",
+   "picture": {
+    "icon": "science",
+    "color": "#00ACC1"
+   },
+   "pronunciation": "cien-cia",
+   "example": "Hacemos un experimento de ciencia.",
+   "level": 3,
+   "category": "escuela"
+  },
+  {
+   "id": "piano",
+   "text": "piano",
+   "article": "el",
+   "picture": {
+    "icon": "piano",
+    "color": "#37474F"
+   },
+   "pronunciation": "pia-no",
+   "example": "La niña toca el piano.",
+   "level": 2,
+   "category": "escuela"
+  },
+  {
+   "id": "balon",
+   "text": "balón",
+   "article": "el",
+   "picture": {
+    "icon": "sports_soccer",
+    "color": "#424242"
+   },
+   "pronunciation": "ba-lón",
+   "example": "Pateamos el balón en el patio.",
+   "level": 1,
+   "category": "escuela"
+  },
+  {
+   "id": "dibujo",
+   "text": "dibujo",
+   "article": "el",
+   "picture": {
+    "icon": "draw",
+    "color": "#EC407A"
+   },
+   "pronunciation": "di-bu-jo",
+   "example": "Hago un dibujo de mi familia.",
+   "level": 1,
+   "category": "escuela"
+  },
+  {
+   "id": "autobus",
+   "text": "autobús",
+   "article": "el",
+   "picture": {
+    "drawing": "vehiculo_autobus"
+   },
+   "pronunciation": "au-to-bús",
+   "example": "Vamos a la escuela en autobús.",
+   "level": 1,
+   "category": "transporte"
+  },
+  {
+   "id": "camion",
+   "text": "camión",
+   "article": "el",
+   "picture": {
+    "icon": "local_shipping",
+    "color": "#1E88E5"
+   },
+   "pronunciation": "ca-mión",
+   "example": "El camión lleva muchas cajas.",
+   "level": 1,
+   "category": "transporte"
+  },
+  {
+   "id": "moto",
+   "text": "moto",
+   "article": "la",
+   "picture": {
+    "icon": "two_wheeler",
+    "color": "#E53935"
+   },
+   "pronunciation": "mo-to",
+   "example": "La moto hace mucho ruido.",
+   "level": 1,
+   "category": "transporte"
+  },
+  {
+   "id": "taxi",
+   "text": "taxi",
+   "article": "el",
+   "picture": {
+    "icon": "local_taxi",
+    "color": "#FBC02D"
+   },
+   "pronunciation": "ta-xi",
+   "example": "Tomamos un taxi para ir al médico.",
+   "level": 2,
+   "category": "transporte"
+  },
+  {
+   "id": "bomberos",
+   "text": "camión de bomberos",
+   "article": "el",
+   "picture": {
+    "icon": "fire_truck",
+    "color": "#D32F2F"
+   },
+   "pronunciation": "ca-mión de bom-be-ros",
+   "example": "El camión de bomberos es rojo.",
+   "level": 3,
+   "category": "transporte"
+  },
+  {
+   "id": "cohete",
+   "text": "cohete",
+   "article": "el",
+   "picture": {
+    "icon": "rocket_launch",
+    "color": "#5E35B1"
+   },
+   "pronunciation": "co-he-te",
+   "example": "El cohete viaja a la luna.",
+   "level": 2,
+   "category": "transporte"
+  },
+  {
+   "id": "tractor",
+   "text": "tractor",
+   "article": "el",
+   "picture": {
+    "icon": "agriculture",
+    "color": "#43A047"
+   },
+   "pronunciation": "trac-tor",
+   "example": "El tractor trabaja en el campo.",
+   "level": 2,
+   "category": "transporte"
+  },
+  {
+   "id": "velero",
+   "text": "velero",
+   "article": "el",
+   "picture": {
+    "icon": "sailing",
+    "color": "#039BE5"
+   },
+   "pronunciation": "ve-le-ro",
+   "example": "El velero navega con el viento.",
+   "level": 2,
+   "category": "transporte"
+  },
+  {
+   "id": "canoa",
+   "text": "canoa",
+   "article": "la",
+   "picture": {
+    "icon": "kayaking",
+    "color": "#FB8C00"
+   },
+   "pronunciation": "ca-no-a",
+   "example": "Remamos en la canoa por el río.",
+   "level": 2,
+   "category": "transporte"
+  },
+  {
+   "id": "tranvia",
+   "text": "tranvía",
+   "article": "el",
+   "picture": {
+    "icon": "tram",
+    "color": "#00897B"
+   },
+   "pronunciation": "tran-ví-a",
+   "example": "El tranvía pasa por la ciudad.",
+   "level": 3,
+   "category": "transporte"
+  },
+  {
+   "id": "metro",
+   "text": "metro",
+   "article": "el",
+   "picture": {
+    "icon": "subway",
+    "color": "#3949AB"
+   },
+   "pronunciation": "me-tro",
+   "example": "El metro va por debajo de la tierra.",
+   "level": 2,
+   "category": "transporte"
+  },
+  {
+   "id": "patinete",
+   "text": "patinete",
+   "article": "el",
+   "picture": {
+    "icon": "electric_scooter",
+    "color": "#EC407A"
+   },
+   "pronunciation": "pa-ti-ne-te",
+   "example": "Voy al parque en patinete.",
+   "level": 2,
+   "category": "transporte"
+  },
+  {
+   "id": "furgoneta",
+   "text": "furgoneta",
+   "article": "la",
+   "picture": {
+    "icon": "airport_shuttle",
+    "color": "#6D4C41"
+   },
+   "pronunciation": "fur-go-ne-ta",
+   "example": "La furgoneta lleva a toda la familia.",
+   "level": 3,
+   "category": "transporte"
+  },
+  {
+   "id": "semaforo",
+   "text": "semáforo",
+   "article": "el",
+   "picture": {
+    "icon": "traffic",
+    "color": "#43A047"
+   },
+   "pronunciation": "se-má-fo-ro",
+   "example": "Cruzamos cuando el semáforo está en verde.",
+   "level": 3,
+   "category": "transporte"
+  },
+  {
+   "id": "caravana",
+   "text": "caravana",
+   "article": "la",
+   "picture": {
+    "icon": "rv_hookup",
+    "color": "#8D6E63"
+   },
+   "pronunciation": "ca-ra-va-na",
+   "example": "Dormimos en la caravana de vacaciones.",
+   "level": 3,
+   "category": "transporte"
+  },
+  {
+   "id": "trineo",
+   "text": "trineo",
+   "article": "el",
+   "picture": {
+    "icon": "sledding",
+    "color": "#0288D1"
+   },
+   "pronunciation": "tri-ne-o",
+   "example": "Bajamos por la nieve en trineo.",
+   "level": 3,
+   "category": "transporte"
+  },
+  {
+   "id": "gasolinera",
+   "text": "gasolinera",
+   "article": "la",
+   "picture": {
+    "icon": "local_gas_station",
+    "color": "#F4511E"
+   },
+   "pronunciation": "ga-so-li-ne-ra",
+   "example": "El coche se llena en la gasolinera.",
+   "level": 3,
+   "category": "transporte"
+  },
+  {
+   "id": "aeropuerto",
+   "text": "aeropuerto",
+   "article": "el",
+   "picture": {
+    "icon": "flight_takeoff",
+    "color": "#1565C0"
+   },
+   "pronunciation": "a-e-ro-puer-to",
+   "example": "El avión sale del aeropuerto.",
+   "level": 3,
+   "category": "transporte"
+  },
+  {
+   "id": "estacion",
+   "text": "estación",
+   "article": "la",
+   "picture": {
+    "icon": "train",
+    "color": "#6A1B9A"
+   },
+   "pronunciation": "es-ta-ción",
+   "example": "Esperamos el tren en la estación.",
+   "level": 3,
+   "category": "transporte"
+  },
+  {
+   "id": "puerto",
+   "text": "puerto",
+   "article": "el",
+   "picture": {
+    "icon": "anchor",
+    "color": "#455A64"
+   },
+   "pronunciation": "puer-to",
+   "example": "Los barcos descansan en el puerto.",
+   "level": 3,
+   "category": "transporte"
+  },
+  {
+   "id": "pizza",
+   "text": "pizza",
+   "article": "la",
+   "picture": {
+    "icon": "local_pizza",
+    "color": "#F4511E"
+   },
+   "pronunciation": "piz-za",
+   "example": "Comemos pizza con queso.",
+   "level": 1,
+   "category": "alimentos"
+  },
+  {
+   "id": "hamburguesa",
+   "text": "hamburguesa",
+   "article": "la",
+   "picture": {
+    "icon": "lunch_dining",
+    "color": "#A1887F"
+   },
+   "pronunciation": "ham-bur-gue-sa",
+   "example": "La hamburguesa tiene pan y tomate.",
+   "level": 2,
+   "category": "alimentos"
+  },
+  {
+   "id": "sopa",
+   "text": "sopa",
+   "article": "la",
+   "picture": {
+    "icon": "soup_kitchen",
+    "color": "#FB8C00"
+   },
+   "pronunciation": "so-pa",
+   "example": "La sopa está muy caliente.",
+   "level": 1,
+   "category": "alimentos"
+  },
+  {
+   "id": "arroz",
+   "text": "arroz",
+   "article": "el",
+   "picture": {
+    "icon": "rice_bowl",
+    "color": "#8D6E63"
+   },
+   "pronunciation": "a-rroz",
+   "example": "Como arroz con verduras.",
+   "level": 1,
+   "category": "alimentos"
+  },
+  {
+   "id": "espaguetis",
+   "text": "espaguetis",
+   "article": "los",
+   "picture": {
+    "icon": "dinner_dining",
+    "color": "#F9A825"
+   },
+   "pronunciation": "es-pa-gue-tis",
+   "example": "Me encantan los espaguetis con tomate.",
+   "level": 3,
+   "category": "alimentos"
+  },
+  {
+   "id": "tostada",
+   "text": "tostada",
+   "article": "la",
+   "picture": {
+    "icon": "breakfast_dining",
+    "color": "#D7A86E"
+   },
+   "pronunciation": "tos-ta-da",
+   "example": "Desayuno una tostada con mantequilla.",
+   "level": 2,
+   "category": "alimentos"
+  },
+  {
+   "id": "galleta",
+   "text": "galleta",
+   "article": "la",
+   "picture": {
+    "icon": "cookie",
+    "color": "#8D6E63"
+   },
+   "pronunciation": "ga-lle-ta",
+   "example": "Mi galleta tiene chocolate.",
+   "level": 1,
+   "category": "alimentos"
+  },
+  {
+   "id": "cruasan",
+   "text": "cruasán",
+   "article": "el",
+   "picture": {
+    "icon": "bakery_dining",
+    "color": "#E0A35A"
+   },
+   "pronunciation": "crua-sán",
+   "example": "El cruasán está recién hecho.",
+   "level": 3,
+   "category": "alimentos"
+  },
+  {
+   "id": "leche",
+   "text": "leche",
+   "article": "la",
+   "picture": {
+    "icon": "local_drink",
+    "color": "#90A4AE"
+   },
+   "pronunciation": "le-che",
+   "example": "Bebo un vaso de leche.",
+   "level": 1,
+   "category": "alimentos"
+  },
+  {
+   "id": "jugo",
+   "text": "jugo",
+   "article": "el",
+   "picture": {
+    "icon": "local_drink",
+    "color": "#FB8C00"
+   },
+   "pronunciation": "ju-go",
+   "example": "El jugo de naranja es dulce.",
+   "level": 1,
+   "category": "alimentos"
+  },
+  {
+   "id": "pescado",
+   "text": "pescado",
+   "article": "el",
+   "picture": {
+    "icon": "set_meal",
+    "color": "#0288D1"
+   },
+   "pronunciation": "pes-ca-do",
+   "example": "Hoy comemos pescado.",
+   "level": 2,
+   "category": "alimentos"
+  },
+  {
+   "id": "huevo_frito",
+   "text": "huevo frito",
+   "article": "el",
+   "picture": {
+    "icon": "egg_alt",
+    "color": "#FBC02D"
+   },
+   "pronunciation": "hue-vo fri-to",
+   "example": "Desayuno un huevo frito.",
+   "level": 2,
+   "category": "alimentos"
+  },
+  {
+   "id": "ensalada",
+   "text": "ensalada",
+   "article": "la",
+   "picture": {
+    "icon": "eco",
+    "color": "#43A047"
+   },
+   "pronunciation": "en-sa-la-da",
+   "example": "La ensalada tiene lechuga y tomate.",
+   "level": 2,
+   "category": "alimentos"
+  },
+  {
+   "id": "fideos",
+   "text": "fideos",
+   "article": "los",
+   "picture": {
+    "icon": "ramen_dining",
+    "color": "#FFB74D"
+   },
+   "pronunciation": "fi-de-os",
+   "example": "La sopa de fideos está rica.",
+   "level": 2,
+   "category": "alimentos"
+  },
+  {
+   "id": "miel",
+   "text": "miel",
+   "article": "la",
+   "picture": {
+    "icon": "hive",
+    "color": "#FFA000"
+   },
+   "pronunciation": "miel",
+   "example": "La abeja hace miel.",
+   "level": 2,
+   "category": "alimentos"
+  },
+  {
+   "id": "desayuno",
+   "text": "desayuno",
+   "article": "el",
+   "picture": {
+    "icon": "free_breakfast",
+    "color": "#6D4C41"
+   },
+   "pronunciation": "de-sa-yu-no",
+   "example": "El desayuno es por la mañana.",
+   "level": 2,
+   "category": "alimentos"
+  },
+  {
+   "id": "cena",
+   "text": "cena",
+   "article": "la",
+   "picture": {
+    "icon": "restaurant_menu",
+    "color": "#5C6BC0"
+   },
+   "pronunciation": "ce-na",
+   "example": "La cena es por la noche.",
+   "level": 2,
+   "category": "alimentos"
+  },
+  {
+   "id": "comida",
+   "text": "comida",
+   "article": "la",
+   "picture": {
+    "icon": "restaurant",
+    "color": "#E53935"
+   },
+   "pronunciation": "co-mi-da",
+   "example": "La comida está en la mesa.",
+   "level": 1,
+   "category": "alimentos"
+  },
+  {
+   "id": "brocheta",
+   "text": "brocheta",
+   "article": "la",
+   "picture": {
+    "icon": "kebab_dining",
+    "color": "#8D6E63"
+   },
+   "pronunciation": "bro-che-ta",
+   "example": "La brocheta tiene carne y verduras.",
+   "level": 3,
+   "category": "alimentos"
+  },
+  {
+   "id": "merienda",
+   "text": "merienda",
+   "article": "la",
+   "picture": {
+    "icon": "brunch_dining",
+    "color": "#EC407A"
+   },
+   "pronunciation": "me-rien-da",
+   "example": "La merienda es a media tarde.",
+   "level": 3,
+   "category": "alimentos"
+  },
+  {
+   "id": "tio",
+   "text": "tío",
+   "article": "el",
+   "picture": {
+    "icon": "man",
+    "color": "#00897B"
+   },
+   "pronunciation": "tí-o",
+   "example": "Mi tío me lleva al parque.",
+   "level": 1,
+   "category": "familia"
+  },
+  {
+   "id": "tia",
+   "text": "tía",
+   "article": "la",
+   "picture": {
+    "icon": "woman",
+    "color": "#AB47BC"
+   },
+   "pronunciation": "tí-a",
+   "example": "Mi tía hace un pastel.",
+   "level": 1,
+   "category": "familia"
+  },
+  {
+   "id": "primo",
+   "text": "primo",
+   "article": "el",
+   "picture": {
+    "kid": {
+     "emotion": "feliz",
+     "girl": false,
+     "shirt": "#81C784"
+    }
+   },
+   "pronunciation": "pri-mo",
+   "example": "Juego a la pelota con mi primo.",
+   "level": 1,
+   "category": "familia"
+  },
+  {
+   "id": "prima",
+   "text": "prima",
+   "article": "la",
+   "picture": {
+    "kid": {
+     "emotion": "feliz",
+     "girl": true,
+     "shirt": "#FFB74D"
+    }
+   },
+   "pronunciation": "pri-ma",
+   "example": "Mi prima canta muy bonito.",
+   "level": 1,
+   "category": "familia"
+  },
+  {
+   "id": "hijo",
+   "text": "hijo",
+   "article": "el",
+   "picture": {
+    "kid": {
+     "emotion": "emocionado",
+     "girl": false,
+     "shirt": "#64B5F6",
+     "arms_up": true
+    }
+   },
+   "pronunciation": "hi-jo",
+   "example": "El hijo abraza a su papá.",
+   "level": 2,
+   "category": "familia"
+  },
+  {
+   "id": "hija",
+   "text": "hija",
+   "article": "la",
+   "picture": {
+    "kid": {
+     "emotion": "emocionado",
+     "girl": true,
+     "shirt": "#F48FB1",
+     "arms_up": true
+    }
+   },
+   "pronunciation": "hi-ja",
+   "example": "La hija ayuda a su mamá.",
+   "level": 2,
+   "category": "familia"
+  },
+  {
+   "id": "nieto",
+   "text": "nieto",
+   "article": "el",
+   "picture": {
+    "kid": {
+     "emotion": "tranquilo",
+     "girl": false,
+     "shirt": "#9575CD"
+    }
+   },
+   "pronunciation": "nie-to",
+   "example": "El abuelo juega con su nieto.",
+   "level": 2,
+   "category": "familia"
+  },
+  {
+   "id": "nieta",
+   "text": "nieta",
+   "article": "la",
+   "picture": {
+    "kid": {
+     "emotion": "tranquilo",
+     "girl": true,
+     "shirt": "#4DD0E1"
+    }
+   },
+   "pronunciation": "nie-ta",
+   "example": "La abuela peina a su nieta.",
+   "level": 2,
+   "category": "familia"
+  },
+  {
+   "id": "vecino",
+   "text": "vecino",
+   "article": "el",
+   "picture": {
+    "icon": "man",
+    "color": "#6D4C41"
+   },
+   "pronunciation": "ve-ci-no",
+   "example": "El vecino tiene un perro.",
+   "level": 2,
+   "category": "familia"
+  },
+  {
+   "id": "vecina",
+   "text": "vecina",
+   "article": "la",
+   "picture": {
+    "icon": "woman",
+    "color": "#EF6C00"
+   },
+   "pronunciation": "ve-ci-na",
+   "example": "La vecina riega sus flores.",
+   "level": 2,
+   "category": "familia"
+  },
+  {
+   "id": "gemelos",
+   "text": "gemelos",
+   "article": "los",
+   "picture": {
+    "icon": "people",
+    "color": "#1E88E5"
+   },
+   "pronunciation": "ge-me-los",
+   "example": "Los gemelos se parecen mucho.",
+   "level": 3,
+   "category": "familia"
+  },
+  {
+   "id": "bisabuela",
+   "text": "bisabuela",
+   "article": "la",
+   "picture": {
+    "icon": "elderly_woman",
+    "color": "#8E24AA"
+   },
+   "pronunciation": "bi-sa-bue-la",
+   "example": "La bisabuela cuenta historias.",
+   "level": 3,
+   "category": "familia"
+  },
+  {
+   "id": "padres",
+   "text": "padres",
+   "article": "los",
+   "picture": {
+    "icon": "family_restroom",
+    "color": "#E91E63"
+   },
+   "pronunciation": "pa-dres",
+   "example": "Mis padres me quieren mucho.",
+   "level": 2,
+   "category": "familia"
+  },
+  {
+   "id": "lluvia",
+   "text": "lluvia",
+   "article": "la",
+   "picture": {
+    "icon": "thunderstorm",
+    "color": "#039BE5"
+   },
+   "pronunciation": "llu-via",
+   "example": "La lluvia moja el jardín.",
+   "level": 1,
+   "category": "naturaleza"
+  },
+  {
+   "id": "viento",
+   "text": "viento",
+   "article": "el",
+   "picture": {
+    "icon": "air",
+    "color": "#78909C"
+   },
+   "pronunciation": "vien-to",
+   "example": "El viento mueve las hojas.",
+   "level": 1,
+   "category": "naturaleza"
+  },
+  {
+   "id": "arcoiris",
+   "text": "arcoíris",
+   "article": "el",
+   "picture": {
+    "icon": "looks",
+    "color": "#EC407A"
+   },
+   "pronunciation": "ar-co-í-ris",
+   "example": "Después de la lluvia sale el arcoíris.",
+   "level": 2,
+   "category": "naturaleza"
+  },
+  {
+   "id": "hoja",
+   "text": "hoja",
+   "article": "la",
+   "picture": {
+    "icon": "eco",
+    "color": "#66BB6A"
+   },
+   "pronunciation": "ho-ja",
+   "example": "La hoja es verde.",
+   "level": 1,
+   "category": "naturaleza"
+  },
+  {
+   "id": "semilla",
+   "text": "semilla",
+   "article": "la",
+   "picture": {
+    "icon": "grain",
+    "color": "#8D6E63"
+   },
+   "pronunciation": "se-mi-lla",
+   "example": "Planto una semilla en la tierra.",
+   "level": 2,
+   "category": "naturaleza"
+  },
+  {
+   "id": "planta",
+   "text": "planta",
+   "article": "la",
+   "picture": {
+    "icon": "spa",
+    "color": "#43A047"
+   },
+   "pronunciation": "plan-ta",
+   "example": "La planta necesita agua.",
+   "level": 1,
+   "category": "naturaleza"
+  },
+  {
+   "id": "bosque",
+   "text": "bosque",
+   "article": "el",
+   "picture": {
+    "scene": "bosque",
+    "items": []
+   },
+   "pronunciation": "bos-que",
+   "example": "En el bosque hay muchos árboles.",
+   "level": 2,
+   "category": "naturaleza"
+  },
+  {
+   "id": "rio",
+   "text": "río",
+   "article": "el",
+   "picture": {
+    "icon": "water",
+    "color": "#0288D1"
+   },
+   "pronunciation": "rí-o",
+   "example": "El río lleva agua fría.",
+   "level": 1,
+   "category": "naturaleza"
+  },
+  {
+   "id": "playa",
+   "text": "playa",
+   "article": "la",
+   "picture": {
+    "scene": "playa",
+    "items": []
+   },
+   "pronunciation": "pla-ya",
+   "example": "Hacemos castillos en la playa.",
+   "level": 1,
+   "category": "naturaleza"
+  },
+  {
+   "id": "volcan",
+   "text": "volcán",
+   "article": "el",
+   "picture": {
+    "icon": "volcano",
+    "color": "#E64A19"
+   },
+   "pronunciation": "vol-cán",
+   "example": "El volcán está dormido.",
+   "level": 3,
+   "category": "naturaleza"
+  },
+  {
+   "id": "tormenta",
+   "text": "tormenta",
+   "article": "la",
+   "picture": {
+    "scene": "lluvia",
+    "items": []
+   },
+   "pronunciation": "tor-men-ta",
+   "example": "En la tormenta hay rayos y truenos.",
+   "level": 2,
+   "category": "naturaleza"
+  },
+  {
+   "id": "rayo",
+   "text": "rayo",
+   "article": "el",
+   "picture": {
+    "icon": "flash_on",
+    "color": "#FBC02D"
+   },
+   "pronunciation": "ra-yo",
+   "example": "El rayo ilumina el cielo.",
+   "level": 2,
+   "category": "naturaleza"
+  },
+  {
+   "id": "gota",
+   "text": "gota",
+   "article": "la",
+   "picture": {
+    "icon": "water_drop",
+    "color": "#29B6F6"
+   },
+   "pronunciation": "go-ta",
+   "example": "Una gota de agua cae de la nube.",
+   "level": 2,
+   "category": "naturaleza"
+  },
+  {
+   "id": "hierba",
+   "text": "hierba",
+   "article": "la",
+   "picture": {
+    "icon": "grass",
+    "color": "#7CB342"
+   },
+   "pronunciation": "hier-ba",
+   "example": "La vaca come hierba.",
+   "level": 2,
+   "category": "naturaleza"
+  },
+  {
+   "id": "tierra",
+   "text": "tierra",
+   "article": "la",
+   "picture": {
+    "icon": "public",
+    "color": "#1E88E5"
+   },
+   "pronunciation": "tie-rra",
+   "example": "Vivimos en el planeta Tierra.",
+   "level": 2,
+   "category": "naturaleza"
+  },
+  {
+   "id": "cielo",
+   "text": "cielo",
+   "article": "el",
+   "picture": {
+    "scene": "cielo",
+    "items": []
+   },
+   "pronunciation": "cie-lo",
+   "example": "El cielo está azul.",
+   "level": 1,
+   "category": "naturaleza"
+  },
+  {
+   "id": "noche",
+   "text": "noche",
+   "article": "la",
+   "picture": {
+    "scene": "noche",
+    "items": []
+   },
+   "pronunciation": "no-che",
+   "example": "Por la noche salen las estrellas.",
+   "level": 1,
+   "category": "naturaleza"
+  },
+  {
+   "id": "dia",
+   "text": "día",
+   "article": "el",
+   "picture": {
+    "icon": "light_mode",
+    "color": "#FFB300"
+   },
+   "pronunciation": "dí-a",
+   "example": "Hoy es un día muy bonito.",
+   "level": 1,
+   "category": "naturaleza"
+  },
+  {
+   "id": "amanecer",
+   "text": "amanecer",
+   "article": "el",
+   "picture": {
+    "icon": "wb_twilight",
+    "color": "#FF7043"
+   },
+   "pronunciation": "a-ma-ne-cer",
+   "example": "Al amanecer canta el gallo.",
+   "level": 3,
+   "category": "naturaleza"
+  },
+  {
+   "id": "frio",
+   "text": "frío",
+   "article": "el",
+   "picture": {
+    "icon": "severe_cold",
+    "color": "#4FC3F7"
+   },
+   "pronunciation": "frí-o",
+   "example": "En invierno hace mucho frío.",
+   "level": 2,
+   "category": "naturaleza"
+  },
+  {
+   "id": "calor",
+   "text": "calor",
+   "article": "el",
+   "picture": {
+    "icon": "thermostat",
+    "color": "#F4511E"
+   },
+   "pronunciation": "ca-lor",
+   "example": "En verano hace calor.",
+   "level": 2,
+   "category": "naturaleza"
+  },
+  {
+   "id": "ola",
+   "text": "ola",
+   "article": "la",
+   "picture": {
+    "icon": "waves",
+    "color": "#0288D1"
+   },
+   "pronunciation": "o-la",
+   "example": "La ola llega a la orilla.",
+   "level": 2,
+   "category": "naturaleza"
+  },
+  {
+   "id": "campo",
+   "text": "campo",
+   "article": "el",
+   "picture": {
+    "icon": "terrain",
+    "color": "#689F38"
+   },
+   "pronunciation": "cam-po",
+   "example": "Las vacas viven en el campo.",
+   "level": 2,
+   "category": "naturaleza"
+  },
+  {
+   "id": "tornado",
+   "text": "tornado",
+   "article": "el",
+   "picture": {
+    "icon": "tornado",
+    "color": "#78909C"
+   },
+   "pronunciation": "tor-na-do",
+   "example": "El tornado gira muy rápido.",
+   "level": 3,
+   "category": "naturaleza"
+  },
+  {
+   "id": "emocionado",
+   "text": "emocionado",
+   "article": null,
+   "picture": {
+    "emotion": "emocionado"
+   },
+   "pronunciation": "e-mo-cio-na-do",
+   "example": "Estoy emocionado por mi cumpleaños.",
+   "level": 2,
+   "category": "emociones"
+  },
+  {
+   "id": "contento",
+   "text": "contento",
+   "article": null,
+   "picture": {
+    "kid": {
+     "emotion": "feliz",
+     "girl": false,
+     "shirt": "#4DB6AC"
+    }
+   },
+   "pronunciation": "con-ten-to",
+   "example": "Estoy contento con mi dibujo.",
+   "level": 1,
+   "category": "emociones"
+  },
+  {
+   "id": "nervioso",
+   "text": "nervioso",
+   "article": null,
+   "picture": {
+    "icon": "sentiment_neutral",
+    "color": "#FFA726"
+   },
+   "pronunciation": "ner-vio-so",
+   "example": "Estoy nervioso antes de la función.",
+   "level": 3,
+   "category": "emociones"
+  },
+  {
+   "id": "orgulloso",
+   "text": "orgulloso",
+   "article": null,
+   "picture": {
+    "kid": {
+     "emotion": "emocionado",
+     "girl": true,
+     "shirt": "#7986CB",
+     "arms_up": true
+    }
+   },
+   "pronunciation": "or-gu-llo-so",
+   "example": "Estoy orgulloso de mi torre.",
+   "level": 3,
+   "category": "emociones"
+  },
+  {
+   "id": "preocupado",
+   "text": "preocupado",
+   "article": null,
+   "picture": {
+    "icon": "sentiment_dissatisfied",
+    "color": "#7E57C2"
+   },
+   "pronunciation": "pre-o-cu-pa-do",
+   "example": "Estoy preocupado porque mi gato no vuelve.",
+   "level": 3,
+   "category": "emociones"
+  },
+  {
+   "id": "valiente",
+   "text": "valiente",
+   "article": null,
+   "picture": {
+    "kid": {
+     "emotion": "feliz",
+     "girl": false,
+     "shirt": "#E57373",
+     "arms_up": true
+    }
+   },
+   "pronunciation": "va-lien-te",
+   "example": "Soy valiente en la oscuridad.",
+   "level": 2,
+   "category": "emociones"
+  },
+  {
+   "id": "timido",
+   "text": "tímido",
+   "article": null,
+   "picture": {
+    "icon": "face",
+    "color": "#F48FB1"
+   },
+   "pronunciation": "tí-mi-do",
+   "example": "Estoy tímido en mi primer día.",
+   "level": 3,
+   "category": "emociones"
+  },
+  {
+   "id": "alegre",
+   "text": "alegre",
+   "article": null,
+   "picture": {
+    "icon": "sentiment_satisfied",
+    "color": "#FFB300"
+   },
+   "pronunciation": "a-le-gre",
+   "example": "Hoy me siento alegre.",
+   "level": 1,
+   "category": "emociones"
+  },
+  {
+   "id": "amor",
+   "text": "amor",
+   "article": "el",
+   "picture": {
+    "icon": "favorite",
+    "color": "#E91E63"
+   },
+   "pronunciation": "a-mor",
+   "example": "Siento mucho amor por mi familia.",
+   "level": 2,
+   "category": "emociones"
+  },
+  {
+   "id": "confundido",
+   "text": "confundido",
+   "article": null,
+   "picture": {
+    "icon": "psychology",
+    "color": "#5C6BC0"
+   },
+   "pronunciation": "con-fun-di-do",
+   "example": "Estoy confundido con el juego.",
+   "level": 3,
+   "category": "emociones"
+  },
+  {
+   "id": "divertido",
+   "text": "divertido",
+   "article": null,
+   "picture": {
+    "icon": "celebration",
+    "color": "#EC407A"
+   },
+   "pronunciation": "di-ver-ti-do",
+   "example": "El juego es muy divertido.",
+   "level": 2,
+   "category": "emociones"
+  },
+  {
+   "id": "curioso",
+   "text": "curioso",
+   "article": null,
+   "picture": {
+    "icon": "travel_explore",
+    "color": "#00897B"
+   },
+   "pronunciation": "cu-rio-so",
+   "example": "Soy curioso y hago preguntas.",
+   "level": 2,
+   "category": "emociones"
+  },
+  {
+   "id": "miedo",
+   "text": "miedo",
+   "article": "el",
+   "picture": {
+    "icon": "mood_bad",
+    "color": "#5E35B1"
+   },
+   "pronunciation": "mie-do",
+   "example": "Tengo miedo de los truenos.",
+   "level": 1,
+   "category": "emociones"
+  },
+  {
+   "id": "sueno",
+   "text": "sueño",
+   "article": "el",
+   "picture": {
+    "icon": "bedtime",
+    "color": "#3949AB"
+   },
+   "pronunciation": "sue-ño",
+   "example": "Tengo sueño por la noche.",
+   "level": 1,
+   "category": "emociones"
+  },
+  {
+   "id": "hambre",
+   "text": "hambre",
+   "article": "el",
+   "picture": {
+    "icon": "fastfood",
+    "color": "#FB8C00"
+   },
+   "pronunciation": "ham-bre",
+   "example": "Tengo hambre a la hora de comer.",
+   "level": 1,
+   "category": "emociones"
+  },
+  {
+   "id": "sed",
+   "text": "sed",
+   "article": "la",
+   "picture": {
+    "icon": "local_drink",
+    "color": "#29B6F6"
+   },
+   "pronunciation": "sed",
+   "example": "Tengo sed después de correr.",
+   "level": 1,
+   "category": "emociones"
+  },
+  {
+   "id": "risa",
+   "text": "risa",
+   "article": "la",
+   "picture": {
+    "icon": "sentiment_very_satisfied",
+    "color": "#FFCA28"
+   },
+   "pronunciation": "ri-sa",
+   "example": "Me da risa el payaso.",
+   "level": 1,
+   "category": "emociones"
+  },
+  {
+   "id": "abrazo",
+   "text": "abrazo",
+   "article": "el",
+   "picture": {
+    "icon": "volunteer_activism",
+    "color": "#F06292"
+   },
+   "pronunciation": "a-bra-zo",
+   "example": "Le doy un abrazo a mi hermano.",
+   "level": 1,
+   "category": "emociones"
+  },
+  {
+   "id": "escribir",
+   "text": "escribir",
+   "article": null,
+   "picture": {
+    "icon": "edit_note",
+    "color": "#3949AB"
+   },
+   "pronunciation": "es-cri-bir",
+   "example": "Me gusta escribir mi nombre.",
+   "level": 1,
+   "category": "acciones"
+  },
+  {
+   "id": "dibujar",
+   "text": "dibujar",
+   "article": null,
+   "picture": {
+    "icon": "draw",
+    "color": "#EC407A"
+   },
+   "pronunciation": "di-bu-jar",
+   "example": "Vamos a dibujar un sol.",
+   "level": 1,
+   "category": "acciones"
+  },
+  {
+   "id": "cocinar",
+   "text": "cocinar",
+   "article": null,
+   "picture": {
+    "icon": "outdoor_grill",
+    "color": "#E64A19"
+   },
+   "pronunciation": "co-ci-nar",
+   "example": "Papá va a cocinar la cena.",
+   "level": 2,
+   "category": "acciones"
+  },
+  {
+   "id": "lavar",
+   "text": "lavar",
+   "article": null,
+   "picture": {
+    "icon": "wash",
+    "color": "#29B6F6"
+   },
+   "pronunciation": "la-var",
+   "example": "Voy a lavar mis manos.",
+   "level": 1,
+   "category": "acciones"
+  },
+  {
+   "id": "abrazar",
+   "text": "abrazar",
+   "article": null,
+   "picture": {
+    "icon": "favorite",
+    "color": "#F06292"
+   },
+   "pronunciation": "a-bra-zar",
+   "example": "Me gusta abrazar a mi mamá.",
+   "level": 1,
+   "category": "acciones"
+  },
+  {
+   "id": "escuchar",
+   "text": "escuchar",
+   "article": null,
+   "picture": {
+    "icon": "hearing",
+    "color": "#7E57C2"
+   },
+   "pronunciation": "es-cu-char",
+   "example": "Me gusta escuchar cuentos.",
+   "level": 1,
+   "category": "acciones"
+  },
+  {
+   "id": "reir",
+   "text": "reír",
+   "article": null,
+   "picture": {
+    "icon": "emoji_emotions",
+    "color": "#FFB300"
+   },
+   "pronunciation": "re-ír",
+   "example": "Nos gusta reír con los amigos.",
+   "level": 2,
+   "category": "acciones"
+  },
+  {
+   "id": "llorar",
+   "text": "llorar",
+   "article": null,
+   "picture": {
+    "icon": "sentiment_very_dissatisfied",
+    "color": "#5C6BC0"
+   },
+   "pronunciation": "llo-rar",
+   "example": "El bebé empieza a llorar.",
+   "level": 2,
+   "category": "acciones"
+  },
+  {
+   "id": "aplaudir",
+   "text": "aplaudir",
+   "article": null,
+   "picture": {
+    "icon": "sign_language",
+    "color": "#FB8C00"
+   },
+   "pronunciation": "a-plau-dir",
+   "example": "Vamos a aplaudir al final.",
+   "level": 2,
+   "category": "acciones"
+  },
+  {
+   "id": "subir",
+   "text": "subir",
+   "article": null,
+   "picture": {
+    "icon": "north",
+    "color": "#43A047"
+   },
+   "pronunciation": "su-bir",
+   "example": "Voy a subir al tobogán.",
+   "level": 2,
+   "category": "acciones"
+  },
+  {
+   "id": "bajar",
+   "text": "bajar",
+   "article": null,
+   "picture": {
+    "icon": "south",
+    "color": "#E53935"
+   },
+   "pronunciation": "ba-jar",
+   "example": "Voy a bajar por la escalera.",
+   "level": 2,
+   "category": "acciones"
+  },
+  {
+   "id": "empujar",
+   "text": "empujar",
+   "article": null,
+   "picture": {
+    "icon": "pan_tool",
+    "color": "#8D6E63"
+   },
+   "pronunciation": "em-pu-jar",
+   "example": "Ayudo a empujar el carrito.",
+   "level": 3,
+   "category": "acciones"
+  },
+  {
+   "id": "lanzar",
+   "text": "lanzar",
+   "article": null,
+   "picture": {
+    "icon": "sports_baseball",
+    "color": "#F4511E"
+   },
+   "pronunciation": "lan-zar",
+   "example": "Voy a lanzar la pelota.",
+   "level": 2,
+   "category": "acciones"
+  },
+  {
+   "id": "atrapar",
+   "text": "atrapar",
+   "article": null,
+   "picture": {
+    "icon": "sports_handball",
+    "color": "#00897B"
+   },
+   "pronunciation": "a-tra-par",
+   "example": "Intento atrapar la pelota.",
+   "level": 3,
+   "category": "acciones"
+  },
+  {
+   "id": "construir",
+   "text": "construir",
+   "article": null,
+   "picture": {
+    "icon": "construction",
+    "color": "#FFA000"
+   },
+   "pronunciation": "cons-truir",
+   "example": "Vamos a construir una torre.",
+   "level": 3,
+   "category": "acciones"
+  },
+  {
+   "id": "regar",
+   "text": "regar",
+   "article": null,
+   "picture": {
+    "icon": "water_drop",
+    "color": "#039BE5"
+   },
+   "pronunciation": "re-gar",
+   "example": "Ayudo a regar las plantas.",
+   "level": 2,
+   "category": "acciones"
+  },
+  {
+   "id": "plantar",
+   "text": "plantar",
+   "article": null,
+   "picture": {
+    "icon": "local_florist",
+    "color": "#EC407A"
+   },
+   "pronunciation": "plan-tar",
+   "example": "Vamos a plantar una flor.",
+   "level": 2,
+   "category": "acciones"
+  },
+  {
+   "id": "volar",
+   "text": "volar",
+   "article": null,
+   "picture": {
+    "icon": "flight",
+    "color": "#1E88E5"
+   },
+   "pronunciation": "vo-lar",
+   "example": "Los pájaros saben volar.",
+   "level": 1,
+   "category": "acciones"
+  },
+  {
+   "id": "comprar",
+   "text": "comprar",
+   "article": null,
+   "picture": {
+    "icon": "shopping_cart",
+    "color": "#43A047"
+   },
+   "pronunciation": "com-prar",
+   "example": "Vamos a comprar fruta.",
+   "level": 2,
+   "category": "acciones"
+  },
+  {
+   "id": "llamar",
+   "text": "llamar",
+   "article": null,
+   "picture": {
+    "icon": "call",
+    "color": "#26A69A"
+   },
+   "pronunciation": "lla-mar",
+   "example": "Voy a llamar a la abuela.",
+   "level": 2,
+   "category": "acciones"
+  },
+  {
+   "id": "vestirse",
+   "text": "vestirse",
+   "article": null,
+   "picture": {
+    "icon": "checkroom",
+    "color": "#7E57C2"
+   },
+   "pronunciation": "ves-tir-se",
+   "example": "Es hora de vestirse para salir.",
+   "level": 3,
+   "category": "acciones"
+  },
+  {
+   "id": "montar",
+   "text": "montar",
+   "article": null,
+   "picture": {
+    "icon": "pedal_bike",
+    "color": "#E53935"
+   },
+   "pronunciation": "mon-tar",
+   "example": "Me gusta montar en bici.",
+   "level": 2,
+   "category": "acciones"
+  },
+  {
+   "id": "esconder",
+   "text": "esconder",
+   "article": null,
+   "picture": {
+    "icon": "visibility_off",
+    "color": "#5D4037"
+   },
+   "pronunciation": "es-con-der",
+   "example": "Vamos a esconder el tesoro.",
+   "level": 2,
+   "category": "acciones"
+  },
+  {
+   "id": "buscar",
+   "text": "buscar",
+   "article": null,
+   "picture": {
+    "icon": "search",
+    "color": "#3949AB"
+   },
+   "pronunciation": "bus-car",
+   "example": "Vamos a buscar mis zapatos.",
+   "level": 1,
+   "category": "acciones"
+  },
+  {
+   "id": "saludar",
+   "text": "saludar",
+   "article": null,
+   "picture": {
+    "icon": "waving_hand",
+    "color": "#FFB300"
+   },
+   "pronunciation": "sa-lu-dar",
+   "example": "Vamos a saludar a la maestra.",
+   "level": 1,
+   "category": "acciones"
+  },
+  {
+   "id": "compartir",
+   "text": "compartir",
+   "article": null,
+   "picture": {
+    "icon": "share",
+    "color": "#00ACC1"
+   },
+   "pronunciation": "com-par-tir",
+   "example": "Me gusta compartir mis juguetes.",
+   "level": 2,
+   "category": "acciones"
+  },
+  {
+   "id": "ayudar",
+   "text": "ayudar",
+   "article": null,
+   "picture": {
+    "icon": "handshake",
+    "color": "#FB8C00"
+   },
+   "pronunciation": "a-yu-dar",
+   "example": "Me gusta ayudar en casa.",
+   "level": 1,
+   "category": "acciones"
+  },
+  {
+   "id": "soplar",
+   "text": "soplar",
+   "article": null,
+   "picture": {
+    "icon": "air",
+    "color": "#4FC3F7"
+   },
+   "pronunciation": "so-plar",
+   "example": "Vamos a soplar las velas.",
+   "level": 2,
+   "category": "acciones"
+  },
+  {
+   "id": "zapatos",
+   "text": "zapatos",
+   "article": "los",
+   "picture": {
+    "icon": "shoes",
+    "color": "#6D4C41"
+   },
+   "pronunciation": "za-pa-tos",
+   "example": "Me pongo los zapatos para salir.",
+   "level": 1,
+   "category": "objetos"
+  },
+  {
+   "id": "paraguas",
+   "text": "paraguas",
+   "article": "el",
+   "picture": {
+    "icon": "umbrella",
+    "color": "#7E57C2"
+   },
+   "pronunciation": "pa-ra-guas",
+   "example": "Llevo el paraguas porque llueve.",
+   "level": 1,
+   "category": "objetos"
+  },
+  {
+   "id": "jabon",
+   "text": "jabón",
+   "article": "el",
+   "picture": {
+    "icon": "soap",
+    "color": "#4FC3F7"
+   },
+   "pronunciation": "ja-bón",
+   "example": "Me lavo las manos con jabón.",
+   "level": 1,
+   "category": "objetos"
+  },
+  {
+   "id": "toalla",
+   "text": "toalla",
+   "article": "la",
+   "picture": {
+    "icon": "dry",
+    "color": "#F48FB1"
+   },
+   "pronunciation": "to-a-lla",
+   "example": "Me seco con la toalla.",
+   "level": 1,
+   "category": "objetos"
+  },
+  {
+   "id": "regalo",
+   "text": "regalo",
+   "article": "el",
+   "picture": {
+    "icon": "card_giftcard",
+    "color": "#E53935"
+   },
+   "pronunciation": "re-ga-lo",
+   "example": "Abro mi regalo de cumpleaños.",
+   "level": 1,
+   "category": "objetos"
+  },
+  {
+   "id": "caja",
+   "text": "caja",
+   "article": "la",
+   "picture": {
+    "icon": "inventory_2",
+    "color": "#A1887F"
+   },
+   "pronunciation": "ca-ja",
+   "example": "Guardo los juguetes en la caja.",
+   "level": 1,
+   "category": "objetos"
+  },
+  {
+   "id": "bolsa",
+   "text": "bolsa",
+   "article": "la",
+   "picture": {
+    "icon": "shopping_bag",
+    "color": "#EC407A"
+   },
+   "pronunciation": "bol-sa",
+   "example": "Llevo la fruta en la bolsa.",
+   "level": 1,
+   "category": "objetos"
+  },
+  {
+   "id": "cesta",
+   "text": "cesta",
+   "article": "la",
+   "picture": {
+    "icon": "shopping_basket",
+    "color": "#8D6E63"
+   },
+   "pronunciation": "ces-ta",
+   "example": "Ponemos las manzanas en la cesta.",
+   "level": 2,
+   "category": "objetos"
+  },
+  {
+   "id": "linterna",
+   "text": "linterna",
+   "article": "la",
+   "picture": {
+    "icon": "flashlight_on",
+    "color": "#FBC02D"
+   },
+   "pronunciation": "lin-ter-na",
+   "example": "Con la linterna veo en la oscuridad.",
+   "level": 2,
+   "category": "objetos"
+  },
+  {
+   "id": "carta",
+   "text": "carta",
+   "article": "la",
+   "picture": {
+    "icon": "mail",
+    "color": "#1E88E5"
+   },
+   "pronunciation": "car-ta",
+   "example": "Escribo una carta a la abuela.",
+   "level": 2,
+   "category": "objetos"
+  },
+  {
+   "id": "taza",
+   "text": "taza",
+   "article": "la",
+   "picture": {
+    "icon": "local_cafe",
+    "color": "#8D6E63"
+   },
+   "pronunciation": "ta-za",
+   "example": "Bebo leche en mi taza.",
+   "level": 1,
+   "category": "objetos"
+  },
+  {
+   "id": "camiseta",
+   "text": "camiseta",
+   "article": "la",
+   "picture": {
+    "icon": "checkroom",
+    "color": "#42A5F5"
+   },
+   "pronunciation": "ca-mi-se-ta",
+   "example": "Mi camiseta es azul.",
+   "level": 1,
+   "category": "objetos"
+  },
+  {
+   "id": "auriculares",
+   "text": "auriculares",
+   "article": "los",
+   "picture": {
+    "icon": "headphones",
+    "color": "#455A64"
+   },
+   "pronunciation": "au-ri-cu-la-res",
+   "example": "Escucho música con los auriculares.",
+   "level": 3,
+   "category": "objetos"
+  },
+  {
+   "id": "camara",
+   "text": "cámara",
+   "article": "la",
+   "picture": {
+    "icon": "photo_camera",
+    "color": "#37474F"
+   },
+   "pronunciation": "cá-ma-ra",
+   "example": "Hago una foto con la cámara.",
+   "level": 2,
+   "category": "objetos"
+  },
+  {
+   "id": "curita",
+   "text": "curita",
+   "article": "la",
+   "picture": {
+    "icon": "healing",
+    "color": "#FFAB91"
+   },
+   "pronunciation": "cu-ri-ta",
+   "example": "Me pongo una curita en la rodilla.",
+   "level": 2,
+   "category": "objetos"
+  },
+  {
+   "id": "termometro",
+   "text": "termómetro",
+   "article": "el",
+   "picture": {
+    "icon": "thermostat",
+    "color": "#E53935"
+   },
+   "pronunciation": "ter-mó-me-tro",
+   "example": "El termómetro mide la fiebre.",
+   "level": 3,
+   "category": "objetos"
+  },
+  {
+   "id": "moneda",
+   "text": "moneda",
+   "article": "la",
+   "picture": {
+    "icon": "savings",
+    "color": "#FFB300"
+   },
+   "pronunciation": "mo-ne-da",
+   "example": "Guardo una moneda en mi alcancía.",
+   "level": 2,
+   "category": "objetos"
+  },
+  {
+   "id": "papelera",
+   "text": "papelera",
+   "article": "la",
+   "picture": {
+    "icon": "delete",
+    "color": "#78909C"
+   },
+   "pronunciation": "pa-pe-le-ra",
+   "example": "Tiro el papel a la papelera.",
+   "level": 2,
+   "category": "objetos"
+  },
+  {
+   "id": "pila",
+   "text": "pila",
+   "article": "la",
+   "picture": {
+    "icon": "battery_full",
+    "color": "#43A047"
+   },
+   "pronunciation": "pi-la",
+   "example": "El juguete necesita una pila.",
+   "level": 3,
+   "category": "objetos"
+  },
+  {
+   "id": "computadora",
+   "text": "computadora",
+   "article": "la",
+   "picture": {
+    "icon": "computer",
+    "color": "#5C6BC0"
+   },
+   "pronunciation": "com-pu-ta-do-ra",
+   "example": "Papá trabaja en la computadora.",
+   "level": 2,
+   "category": "objetos"
+  },
+  {
+   "id": "tableta",
+   "text": "tableta",
+   "article": "la",
+   "picture": {
+    "icon": "tablet",
+    "color": "#26A69A"
+   },
+   "pronunciation": "ta-ble-ta",
+   "example": "Vemos un cuento en la tableta.",
+   "level": 2,
+   "category": "objetos"
+  },
+  {
+   "id": "lupa",
+   "text": "lupa",
+   "article": "la",
+   "picture": {
+    "icon": "zoom_in",
+    "color": "#00897B"
+   },
+   "pronunciation": "lu-pa",
+   "example": "Miro la hormiga con la lupa.",
+   "level": 2,
+   "category": "objetos"
+  },
+  {
+   "id": "cuchara",
+   "text": "cuchara",
+   "article": "la",
+   "picture": {
+    "icon": "restaurant",
+    "color": "#90A4AE"
+   },
+   "pronunciation": "cu-cha-ra",
+   "example": "Tomo la sopa con la cuchara.",
+   "level": 1,
+   "category": "objetos"
+  },
+  {
+   "id": "foco",
+   "text": "foco",
+   "article": "el",
+   "picture": {
+    "icon": "lightbulb",
+    "color": "#FFCA28"
+   },
+   "pronunciation": "fo-co",
+   "example": "El foco da luz a la casa.",
+   "level": 2,
+   "category": "objetos"
+  }
+ ],
+ "pronunciation": {
+  "mama": "ma-má",
+  "papa": "pa-pá",
+  "perro": "pe-rro",
+  "gato": "ga-to",
+  "conejo": "co-ne-jo",
+  "elefante": "e-le-fan-te",
+  "pato": "pa-to",
+  "mariposa": "ma-ri-po-sa",
+  "mono": "mo-no",
+  "manzana": "man-za-na",
+  "platano": "plá-ta-no",
+  "fresa": "fre-sa",
+  "helado": "he-la-do",
+  "pelota": "pe-lo-ta",
+  "coche": "co-che",
+  "tren": "tren",
+  "avion": "a-vión",
+  "barco": "bar-co",
+  "bicicleta": "bi-ci-cle-ta",
+  "casa": "ca-sa",
+  "cama": "ca-ma",
+  "silla": "si-lla",
+  "mesa": "me-sa",
+  "ventana": "ven-ta-na",
+  "libro": "li-bro",
+  "sol": "sol",
+  "luna": "lu-na",
+  "estrella": "es-tre-lla",
+  "nube": "nu-be",
+  "flor": "flor",
+  "arbol": "ár-bol",
+  "pez": "pez",
+  "leon": "le-ón",
+  "vaca": "va-ca"
+ }
+}

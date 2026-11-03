@@ -160,7 +160,7 @@ class _TellState extends State<_Tell> {
   }
 
   void _choose(String phrase) {
-    final audio = AppServices.of(context).audio;
+    final audio = SpeechVoice.of(context);
     if (phrase == _s.steps[_step].phrase) {
       unawaited(audio.play(SoundCue.correct));
       speak(context, phrase);
@@ -184,14 +184,14 @@ class _TellState extends State<_Tell> {
   void _toStory() {
     setState(() => _stage = _Stage.story);
     AppServices.of(context).speech.markStoryTold(_s.id);
-    unawaited(AppServices.of(context).audio.play(SoundCue.celebrate));
+    unawaited(SpeechVoice.of(context).play(SoundCue.celebrate));
     unawaited(
-      AppServices.of(context).audio.say('¡Qué bien lo contaste! Escucha tu historia.', mode: VoiceMode.queue),
+      SpeechVoice.of(context).say('¡Qué bien lo contaste! Escucha tu historia.', mode: VoiceMode.queue),
     );
   }
 
   Future<void> _listenStory() async {
-    final audio = AppServices.of(context).audio;
+    final audio = SpeechVoice.of(context);
     await audio.say(_told.join(' '));
     await audio.say(_s.ending, mode: VoiceMode.queue);
   }

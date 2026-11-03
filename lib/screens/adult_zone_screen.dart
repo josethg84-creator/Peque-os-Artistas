@@ -8,7 +8,9 @@ import '../services/app_services.dart';
 import '../services/catalog_service.dart';
 import '../speech/speech_content.dart';
 import '../speech/speech_progress.dart';
+import '../speech/recommendations.dart';
 import '../speech/speech_summary.dart';
+import '../speech/widgets/preferences_panel.dart';
 import '../theme/app_theme.dart';
 import '../widgets/catalog_builder.dart';
 
@@ -270,8 +272,9 @@ class _SpeechSection extends StatelessWidget {
                   'Práctica con su voz: ${p.recordings} vez/veces. Días de práctica en los últimos 7: '
                       '${speech.daysPracticedThisWeek()}.',
                   ...?phase3?.adultLines,
-                  'Solo cuenta actividades hechas en este dispositivo. No es una evaluación del habla ni '
-                      'sustituye la opinión de un profesional.',
+                  ...speechPhase4AdultLines(p, favorites: favoriteActivities(p)),
+                  'Solo cuenta actividades hechas en este dispositivo. No es una evaluación del habla ni del '
+                      'desarrollo del lenguaje, no clasifica al niño y no sustituye la opinión de un profesional.',
                 ])
                   Padding(padding: const EdgeInsets.only(top: 4), child: Text(line)),
                 const SizedBox(height: 8),
@@ -287,6 +290,7 @@ class _SpeechSection extends StatelessWidget {
                   value: p.micAllowed,
                   onChanged: speech.setMicAllowed,
                 ),
+                SpeechPreferencesPanel(speech: speech, content: content),
               ],
             ),
           ),

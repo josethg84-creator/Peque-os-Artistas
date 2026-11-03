@@ -418,7 +418,7 @@ class _SpeechPanel extends StatelessWidget {
           final f = SpeechPhase3Summary(speech.progress, content);
           return _Section(
             icon: Icons.record_voice_over_rounded,
-            title: 'Aprendo a Hablar',
+            title: 'Mis aventuras con Lolo',
             action: TextButton(
               onPressed: () => Navigator.of(context).pushNamed(AppRoutes.speechProgress),
               child: const Text('Ver más'),
@@ -452,6 +452,13 @@ class _SpeechPanel extends StatelessWidget {
                   label: 'Historias que contaste',
                   done: f.told,
                   total: f.tellTotal,
+                ),
+                _ProgressRow(
+                  icon: Icons.abc_rounded,
+                  color: const Color(0xFF4FA8F0),
+                  label: 'Palabras practicadas',
+                  done: content.words.where((w) => speech.progress.wordsHeard.contains(w.id)).length,
+                  total: content.words.length,
                 ),
                 _ProgressRow(
                   icon: Icons.hearing_rounded,

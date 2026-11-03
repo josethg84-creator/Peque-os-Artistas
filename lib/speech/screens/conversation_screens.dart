@@ -183,7 +183,7 @@ class _ChatState extends State<_Chat> {
   }
 
   void _choose(int i) {
-    final audio = AppServices.of(context).audio;
+    final audio = SpeechVoice.of(context);
     final reply = _session.choose(i);
     setState(() {});
     unawaited(audio.say(reply));
@@ -197,7 +197,7 @@ class _ChatState extends State<_Chat> {
   }
 
   void _finish() {
-    final audio = AppServices.of(context).audio;
+    final audio = SpeechVoice.of(context);
     unawaited(audio.say(widget.conversation.goodbye, mode: VoiceMode.queue));
     if (!_session.endedEarly && !_rewarded) {
       _rewarded = true;

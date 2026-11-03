@@ -926,3 +926,60 @@ class ShoePainter extends CustomPainter {
   @override
   bool shouldRepaint(ShoePainter old) => old.color != color;
 }
+
+/// Una zanahoria (los iconos de Material no tienen ninguna).
+class CarrotPainter extends CustomPainter {
+  const CarrotPainter(this.color);
+
+  final Color color;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final s = size.shortestSide;
+    canvas.translate((size.width - s) / 2, (size.height - s) / 2);
+    Offset p(double x, double y) => Offset(x * s, y * s);
+    // Hojas.
+    const leaf = Color(0xFF43A047);
+    for (final (dx, dy) in [(-0.12, -0.2), (0.0, -0.26), (0.12, -0.2)]) {
+      final l = Path()
+        ..moveTo(p(0.36, 0.32).dx, p(0.36, 0.32).dy)
+        ..quadraticBezierTo(
+          p(0.36 + dx - 0.06, 0.32 + dy).dx,
+          p(0.36 + dx - 0.06, 0.32 + dy).dy,
+          p(0.36 + dx, 0.2 + dy).dx,
+          p(0.36 + dx, 0.2 + dy).dy,
+        )
+        ..quadraticBezierTo(
+          p(0.36 + dx + 0.08, 0.3 + dy).dx,
+          p(0.36 + dx + 0.08, 0.3 + dy).dy,
+          p(0.4, 0.34).dx,
+          p(0.4, 0.34).dy,
+        )
+        ..close();
+      shape3d(canvas, l, leaf, outline: s * 0.01);
+    }
+    // Raíz.
+    final body = Path()
+      ..moveTo(p(0.28, 0.36).dx, p(0.28, 0.36).dy)
+      ..quadraticBezierTo(p(0.38, 0.26).dx, p(0.38, 0.26).dy, p(0.5, 0.36).dx, p(0.5, 0.36).dy)
+      ..quadraticBezierTo(p(0.62, 0.48).dx, p(0.62, 0.48).dy, p(0.86, 0.88).dx, p(0.86, 0.88).dy)
+      ..quadraticBezierTo(p(0.5, 0.74).dx, p(0.5, 0.74).dy, p(0.3, 0.52).dx, p(0.3, 0.52).dy)
+      ..quadraticBezierTo(p(0.24, 0.44).dx, p(0.24, 0.44).dy, p(0.28, 0.36).dx, p(0.28, 0.36).dy)
+      ..close();
+    shape3d(canvas, body, color, outline: s * 0.012);
+    final line = Paint()
+      ..color = Color.lerp(color, Colors.black, 0.3)!
+      ..strokeWidth = s * 0.018
+      ..strokeCap = StrokeCap.round;
+    for (final (a, b) in [
+      ((0.38, 0.44), (0.46, 0.42)),
+      ((0.5, 0.56), (0.58, 0.54)),
+      ((0.6, 0.68), (0.68, 0.67)),
+    ]) {
+      canvas.drawLine(p(a.$1, a.$2), p(b.$1, b.$2), line);
+    }
+  }
+
+  @override
+  bool shouldRepaint(CarrotPainter old) => old.color != color;
+}

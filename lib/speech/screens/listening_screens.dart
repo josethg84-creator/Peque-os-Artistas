@@ -125,6 +125,7 @@ class ListeningScreen extends StatelessWidget {
             seed: seed,
             color: _listenColor,
             slowButton: true,
+            repeatRoute: AppRoutes.speechListeningLevel,
             build: (Random random) {
               round = pickRound(content.listening.ofLevel(level), random, count);
               return [for (final e in round) e.toQuestion()];

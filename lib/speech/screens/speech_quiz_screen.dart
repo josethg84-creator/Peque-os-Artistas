@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import '../../audio/app_audio.dart';
+import '../../navigation/app_routes.dart';
 import '../../screens/home/home_widgets.dart';
 import '../../services/app_services.dart';
 import '../../theme/app_colors.dart';
@@ -32,6 +33,13 @@ class SpeechQuizScreen extends StatelessWidget {
     SpeechQuizKind.comprehension: Icons.hearing_rounded,
   };
 
+  static const routes = {
+    SpeechQuizKind.complete: AppRoutes.speechComplete,
+    SpeechQuizKind.questionOrStatement: AppRoutes.speechQuestion,
+    SpeechQuizKind.verbs: AppRoutes.speechVerbGames,
+    SpeechQuizKind.comprehension: AppRoutes.speechListen,
+  };
+
   static const colors = {
     SpeechQuizKind.complete: Color(0xFF26A69A),
     SpeechQuizKind.questionOrStatement: Color(0xFF7E57C2),
@@ -50,6 +58,7 @@ class SpeechQuizScreen extends StatelessWidget {
           build: (random) => quiz.build(content, random),
           seed: seed,
           color: colors[quiz]!,
+          repeatRoute: routes[quiz],
           onFinished: () => AppServices.of(context).speech.markActivityDone(quiz.kind),
         ),
       ),
@@ -70,6 +79,7 @@ class SpeechQuizBody extends StatefulWidget {
     this.onAnswered,
     this.finishedExtra,
     this.slowButton = false,
+    this.repeatRoute,
   });
 
   /// Crea las preguntas (con el azar dado, para poder repetirlas en pruebas).
@@ -88,6 +98,10 @@ class SpeechQuizBody extends StatefulWidget {
 
   /// Botón «Despacio» para volver a oír la pregunta lentamente.
   final bool slowButton;
+
+  /// Si se indica, pedir «Escuchar» o «Despacio» se anota en el progreso de
+  /// esa actividad (para ofrecer más práctica; nunca penaliza).
+  final String? repeatRoute;
 
   @override
   State<SpeechQuizBody> createState() => _QuizState();
@@ -116,6 +130,11 @@ class _QuizState extends State<SpeechQuizBody> {
   void _ask({bool slow = false}) {
     if (!mounted || _finished) return;
     speak(context, _q.speech, slow: slow);
+  }
+
+  void _repeat({bool slow = false}) {
+    if (widget.repeatRoute case final route?) AppServices.of(context).speech.markRepeat(route);
+    _ask(slow: slow);
   }
 
   int get _expected => _q.steps?[_step] ?? _q.answer;
@@ -251,7 +270,7 @@ class _QuizState extends State<SpeechQuizBody> {
                     icon: Icons.volume_up_rounded,
                     label: 'Escuchar',
                     color: const Color(0xFF29B6F6),
-                    onPressed: _ask,
+                    onPressed: _repeat,
                   ),
                 ),
                 if (widget.slowButton) ...[
@@ -262,7 +281,7 @@ class _QuizState extends State<SpeechQuizBody> {
                       icon: Icons.slow_motion_video_rounded,
                       label: 'Despacio',
                       color: const Color(0xFF7E57C2),
-                      onPressed: () => _ask(slow: true),
+                      onPressed: () => _repeat(slow: true),
                     ),
                   ),
                 ],

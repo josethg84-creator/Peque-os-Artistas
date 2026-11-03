@@ -6,12 +6,17 @@ import 'dialogue.dart';
 import 'expressions.dart';
 import 'stories.dart';
 import 'listening.dart';
+import 'my_story.dart';
+import 'phonology.dart';
+import 'speech_icons_extra.dart';
 import 'tell.dart';
 
 export 'dialogue.dart';
 export 'expressions.dart';
 export 'stories.dart';
 export 'listening.dart';
+export 'my_story.dart';
+export 'phonology.dart';
 export 'tell.dart';
 
 /// Contenido de «Aprendo a Hablar»: palabras por categorías y frases cortas.
@@ -31,6 +36,8 @@ class SpeechContent {
     this.expressions = const ExpressionContent(),
     this.tell = const [],
     this.listening = const ListeningContent(),
+    this.phonology = const PhonologyContent(),
+    this.myStory = const MyStoryContent(),
   });
 
   static const wordsAsset = 'assets/speech/words.json';
@@ -42,6 +49,9 @@ class SpeechContent {
   static const expressionsAsset = 'assets/speech/expressions.json';
   static const tellAsset = 'assets/speech/tell.json';
   static const listeningAsset = 'assets/speech/listening.json';
+  static const vocabularyAsset = 'assets/speech/vocabulary.json';
+  static const phonologyAsset = 'assets/speech/phonology.json';
+  static const myStoryAsset = 'assets/speech/mystory.json';
 
   final List<WordCategory> categories;
   final List<SpeechPhrase> phrases;
@@ -63,6 +73,12 @@ class SpeechContent {
 
   /// «Escucho y respondo».
   final ListeningContent listening;
+
+  /// «Sílabas y sonidos».
+  final PhonologyContent phonology;
+
+  /// «Mi historia».
+  final MyStoryContent myStory;
 
   List<SpeechWord> get words => [for (final c in categories) ...c.words];
 
@@ -89,6 +105,9 @@ class SpeechContent {
       expressions: await read(expressionsAsset),
       tell: await read(tellAsset),
       listening: await read(listeningAsset),
+      vocabulary: await read(vocabularyAsset),
+      phonology: await read(phonologyAsset),
+      myStory: await read(myStoryAsset),
     );
   }
 
@@ -102,6 +121,9 @@ class SpeechContent {
     Map<String, dynamic>? expressions,
     Map<String, dynamic>? tell,
     Map<String, dynamic>? listening,
+    Map<String, dynamic>? vocabulary,
+    Map<String, dynamic>? phonology,
+    Map<String, dynamic>? myStory,
   }) {
     final dialogue = parseConversations(conversations);
     final seen = <String>{};
@@ -116,6 +138,7 @@ class SpeechContent {
       final category = WordCategory.fromJson(c, list);
       if (category != null) categories.add(category);
     }
+    if (vocabulary != null) _mergeVocabulary(categories, seen, vocabulary);
     final phraseList = <SpeechPhrase>[];
     final phraseIds = <String>{};
     for (final p in (phrases['phrases'] as List? ?? const [])) {
@@ -138,7 +161,57 @@ class SpeechContent {
       expressions: ExpressionContent.fromJson(expressions),
       tell: parseTell(tell),
       listening: ListeningContent.fromJson(listening),
+      phonology: PhonologyContent.fromJson(phonology),
+      myStory: MyStoryContent.fromJson(myStory),
     );
+  }
+}
+
+/// Fase 4: añade el banco de vocabulario a los grupos (y crea los grupos
+/// nuevos). Las palabras repetidas o mal escritas se descartan.
+void _mergeVocabulary(List<WordCategory> categories, Set<String> seen, Map<String, dynamic> json) {
+  final pronunciation = json['pronunciation'];
+  if (pronunciation is Map<String, dynamic>) {
+    for (final (i, c) in categories.indexed) {
+      categories[i] = WordCategory(
+        id: c.id,
+        name: c.name,
+        color: c.color,
+        icon: c.icon,
+        words: [
+          for (final w in c.words)
+            if (pronunciation[w.id] case final String p when p.replaceAll('-', '') == w.text.toLowerCase())
+              w.copyWith(pronunciation: p)
+            else
+              w,
+        ],
+      );
+    }
+  }
+  final byCategory = <String, List<SpeechWord>>{};
+  for (final w in (json['words'] as List? ?? const [])) {
+    if (w is! Map<String, dynamic> || w['category'] is! String) continue;
+    final word = SpeechWord.fromJson(w);
+    if (word != null && seen.add(word.id)) (byCategory[w['category'] as String] ??= []).add(word);
+  }
+  for (final (i, c) in categories.indexed) {
+    final more = byCategory.remove(c.id);
+    if (more != null) {
+      categories[i] = WordCategory(
+        id: c.id,
+        name: c.name,
+        color: c.color,
+        icon: c.icon,
+        words: [...c.words, ...more],
+      );
+    }
+  }
+  for (final c in (json['categories'] as List? ?? const [])) {
+    if (c is! Map<String, dynamic>) continue;
+    final more = byCategory.remove(c['id']);
+    if (more == null) continue;
+    final category = WordCategory.fromJson(c, more);
+    if (category != null) categories.add(category);
   }
 }
 
@@ -342,7 +415,15 @@ class WordCategory {
 }
 
 class SpeechWord {
-  const SpeechWord({required this.id, required this.text, required this.picture, this.article});
+  const SpeechWord({
+    required this.id,
+    required this.text,
+    required this.picture,
+    this.article,
+    this.pronunciation,
+    this.example,
+    this.level = 1,
+  });
 
   final String id;
 
@@ -353,15 +434,51 @@ class SpeechWord {
   final String? article;
   final SpeechPicture picture;
 
+  /// Fase 4: cómo se pronuncia, por sílabas («ma-ri-po-sa»).
+  final String? pronunciation;
+
+  /// Una frase de ejemplo con la palabra («La jirafa tiene el cuello largo.»).
+  final String? example;
+
+  /// Nivel orientativo (1 a 3).
+  final int level;
+
+  /// Las sílabas («ma», «ri», «po», «sa»), si se conocen.
+  List<String> get syllables => [
+    for (final s in (pronunciation ?? '').split(RegExp(r'[-\s]+')))
+      if (s.isNotEmpty) s,
+  ];
+
+  /// La palabra con su artículo («la jirafa»).
+  String get withArticle => article == null ? text : '$article $text';
+
+  SpeechWord copyWith({String? pronunciation}) => SpeechWord(
+    id: id,
+    text: text,
+    picture: picture,
+    article: article,
+    pronunciation: pronunciation ?? this.pronunciation,
+    example: example,
+    level: level,
+  );
+
   static SpeechWord? fromJson(Map<String, dynamic> json) {
     final id = json['id'], text = json['text'];
     final picture = SpeechPicture.fromJson(json['picture']);
     if (id is! String || text is! String || text.trim().isEmpty || picture == null) return null;
+    final pronunciation = json['pronunciation'];
+    final level = json['level'];
     return SpeechWord(
       id: id,
       text: text.trim(),
       article: json['article'] is String ? json['article'] as String : null,
       picture: picture,
+      // La pronunciación debe corresponder a la palabra (sin guiones).
+      pronunciation: pronunciation is String && pronunciation.replaceAll('-', '') == text.trim().toLowerCase()
+          ? pronunciation
+          : null,
+      example: json['example'] is String ? json['example'] as String : null,
+      level: level is int && level >= 1 && level <= 3 ? level : 1,
     );
   }
 }
@@ -422,7 +539,7 @@ sealed class SpeechPicture {
       {'emotion': final String e} when FacePictogram.emotions.contains(e) => EmotionPicture(e),
       {'body': final String b} when FacePictogram.bodyParts.contains(b) => BodyPicture(b),
       {'swatch': final Object c} when parseColor(c) != null => SwatchPicture(parseColor(c)!),
-      {'icon': final String name} when SpeechIcons.byName.containsKey(name) => IconPicture(
+      {'icon': final String name} when SpeechIcons.lookup(name) != null => IconPicture(
         name,
         parseColor(json['color']),
       ),
@@ -523,7 +640,7 @@ class IconPicture extends SpeechPicture {
   const IconPicture(this.name, this.color);
   final String name;
   final Color? color;
-  IconData get icon => SpeechIcons.byName[name]!;
+  IconData get icon => SpeechIcons.lookup(name)!;
 }
 
 /// Nombres de emociones y partes del cuerpo que saben dibujar los pictogramas.
@@ -558,6 +675,10 @@ abstract final class FacePictogram {
 /// Iconos que se pueden nombrar desde el JSON (los de Material, que vienen con
 /// la app y funcionan sin conexión).
 abstract final class SpeechIcons {
+  /// Un icono por su nombre corto o por su nombre de Material (los del banco
+  /// de vocabulario, en [extraSpeechIcons]).
+  static IconData? lookup(String name) => byName[name] ?? extraSpeechIcons[name];
+
   static const byName = <String, IconData>{
     'family': Icons.family_restroom,
     'pets': Icons.pets,

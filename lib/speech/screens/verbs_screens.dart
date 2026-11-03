@@ -126,7 +126,7 @@ class _VerbViewState extends State<_VerbView> {
   }
 
   Future<void> _sayAll() async {
-    final audio = AppServices.of(context).audio;
+    final audio = SpeechVoice.of(context);
     AppServices.of(context).speech.markVerbHeard(_v.id);
     final verb = _v;
     for (final p in VerbPerson.values) {

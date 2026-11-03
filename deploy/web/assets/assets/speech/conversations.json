@@ -72,6 +72,12 @@
    "name": "Describir objetos",
    "icon": "search",
    "color": "#C5E1A5"
+  },
+  {
+   "id": "elige",
+   "name": "Tú eliges",
+   "icon": "star",
+   "color": "#FFD54F"
   }
  ],
  "conversations": [
@@ -4692,6 +4698,1168 @@
     }
    },
    "goodbye": "¡Tu osito es especial!"
+  },
+  {
+   "id": "elige_animal",
+   "category": "elige",
+   "title": "¿Qué animal te gusta?",
+   "picture": {
+    "scene": "parque",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_perro"
+      },
+      "x": 0.3,
+      "y": 0.7,
+      "s": 0.35
+     },
+     {
+      "p": {
+       "drawing": "animal_gato"
+      },
+      "x": 0.7,
+      "y": 0.7,
+      "s": 0.3
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "¿Qué animal te gusta?",
+     "options": [
+      {
+       "text": "El perro.",
+       "picture": {
+        "drawing": "animal_perro"
+       },
+       "reply": "¡El perro! A mí también me gusta.",
+       "next": "q_perro"
+      },
+      {
+       "text": "El gato.",
+       "picture": {
+        "drawing": "animal_gato"
+       },
+       "reply": "¡El gato! Es muy suave.",
+       "next": "q_gato"
+      },
+      {
+       "text": "El pájaro.",
+       "picture": {
+        "icon": "bird",
+        "color": "#29B6F6"
+       },
+       "reply": "¡El pájaro! Tiene alas.",
+       "next": "q_pajaro"
+      }
+     ]
+    },
+    "q_perro": {
+     "lolo": "¿Qué hace el perro?",
+     "options": [
+      {
+       "text": "Corre.",
+       "picture": {
+        "icon": "run",
+        "color": "#E53935"
+       },
+       "reply": "¡El perro corre!",
+       "next": "o_perro_corre"
+      },
+      {
+       "text": "Duerme.",
+       "picture": {
+        "icon": "sleep",
+        "color": "#5C6BC0"
+       },
+       "reply": "¡El perro duerme!",
+       "next": "o_perro_duerme"
+      },
+      {
+       "text": "Come.",
+       "picture": {
+        "icon": "eat",
+        "color": "#FB8C00"
+       },
+       "reply": "¡El perro come!",
+       "next": "o_perro_come"
+      }
+     ]
+    },
+    "o_perro_corre": {
+     "lolo": "¿Quieres escuchar la oración?",
+     "options": [
+      {
+       "text": "Sí, quiero escucharla.",
+       "picture": {
+        "icon": "hearing",
+        "color": "#7E57C2"
+       },
+       "reply": "El perro corre por el parque."
+      },
+      {
+       "text": "Otro animal.",
+       "picture": {
+        "icon": "arrow",
+        "color": "#26A69A"
+       },
+       "reply": "¡Vale! Elige otra vez.",
+       "next": "p1"
+      }
+     ]
+    },
+    "o_perro_duerme": {
+     "lolo": "¿Quieres escuchar la oración?",
+     "options": [
+      {
+       "text": "Sí, quiero escucharla.",
+       "picture": {
+        "icon": "hearing",
+        "color": "#7E57C2"
+       },
+       "reply": "El perro duerme en su cama."
+      },
+      {
+       "text": "Otro animal.",
+       "picture": {
+        "icon": "arrow",
+        "color": "#26A69A"
+       },
+       "reply": "¡Vale! Elige otra vez.",
+       "next": "p1"
+      }
+     ]
+    },
+    "o_perro_come": {
+     "lolo": "¿Quieres escuchar la oración?",
+     "options": [
+      {
+       "text": "Sí, quiero escucharla.",
+       "picture": {
+        "icon": "hearing",
+        "color": "#7E57C2"
+       },
+       "reply": "El perro come en su plato."
+      },
+      {
+       "text": "Otro animal.",
+       "picture": {
+        "icon": "arrow",
+        "color": "#26A69A"
+       },
+       "reply": "¡Vale! Elige otra vez.",
+       "next": "p1"
+      }
+     ]
+    },
+    "q_gato": {
+     "lolo": "¿Qué hace el gato?",
+     "options": [
+      {
+       "text": "Salta.",
+       "picture": {
+        "icon": "jump",
+        "color": "#43A047"
+       },
+       "reply": "¡El gato salta!",
+       "next": "o_gato_salta"
+      },
+      {
+       "text": "Duerme.",
+       "picture": {
+        "icon": "sleep",
+        "color": "#5C6BC0"
+       },
+       "reply": "¡El gato duerme!",
+       "next": "o_gato_duerme"
+      },
+      {
+       "text": "Come.",
+       "picture": {
+        "icon": "eat",
+        "color": "#FB8C00"
+       },
+       "reply": "¡El gato come!",
+       "next": "o_gato_come"
+      }
+     ]
+    },
+    "o_gato_salta": {
+     "lolo": "¿Quieres escuchar la oración?",
+     "options": [
+      {
+       "text": "Sí, quiero escucharla.",
+       "picture": {
+        "icon": "hearing",
+        "color": "#7E57C2"
+       },
+       "reply": "El gato salta muy alto."
+      },
+      {
+       "text": "Otro animal.",
+       "picture": {
+        "icon": "arrow",
+        "color": "#26A69A"
+       },
+       "reply": "¡Vale! Elige otra vez.",
+       "next": "p1"
+      }
+     ]
+    },
+    "o_gato_duerme": {
+     "lolo": "¿Quieres escuchar la oración?",
+     "options": [
+      {
+       "text": "Sí, quiero escucharla.",
+       "picture": {
+        "icon": "hearing",
+        "color": "#7E57C2"
+       },
+       "reply": "El gato duerme al sol."
+      },
+      {
+       "text": "Otro animal.",
+       "picture": {
+        "icon": "arrow",
+        "color": "#26A69A"
+       },
+       "reply": "¡Vale! Elige otra vez.",
+       "next": "p1"
+      }
+     ]
+    },
+    "o_gato_come": {
+     "lolo": "¿Quieres escuchar la oración?",
+     "options": [
+      {
+       "text": "Sí, quiero escucharla.",
+       "picture": {
+        "icon": "hearing",
+        "color": "#7E57C2"
+       },
+       "reply": "El gato come pescado."
+      },
+      {
+       "text": "Otro animal.",
+       "picture": {
+        "icon": "arrow",
+        "color": "#26A69A"
+       },
+       "reply": "¡Vale! Elige otra vez.",
+       "next": "p1"
+      }
+     ]
+    },
+    "q_pajaro": {
+     "lolo": "¿Qué hace el pájaro?",
+     "options": [
+      {
+       "text": "Vuela.",
+       "picture": {
+        "icon": "cloud",
+        "color": "#78909C"
+       },
+       "reply": "¡El pájaro vuela!",
+       "next": "o_pajaro_vuela"
+      },
+      {
+       "text": "Canta.",
+       "picture": {
+        "icon": "music",
+        "color": "#AB47BC"
+       },
+       "reply": "¡El pájaro canta!",
+       "next": "o_pajaro_canta"
+      },
+      {
+       "text": "Come.",
+       "picture": {
+        "icon": "eat",
+        "color": "#FB8C00"
+       },
+       "reply": "¡El pájaro come!",
+       "next": "o_pajaro_come"
+      }
+     ]
+    },
+    "o_pajaro_vuela": {
+     "lolo": "¿Quieres escuchar la oración?",
+     "options": [
+      {
+       "text": "Sí, quiero escucharla.",
+       "picture": {
+        "icon": "hearing",
+        "color": "#7E57C2"
+       },
+       "reply": "El pájaro vuela por el cielo."
+      },
+      {
+       "text": "Otro animal.",
+       "picture": {
+        "icon": "arrow",
+        "color": "#26A69A"
+       },
+       "reply": "¡Vale! Elige otra vez.",
+       "next": "p1"
+      }
+     ]
+    },
+    "o_pajaro_canta": {
+     "lolo": "¿Quieres escuchar la oración?",
+     "options": [
+      {
+       "text": "Sí, quiero escucharla.",
+       "picture": {
+        "icon": "hearing",
+        "color": "#7E57C2"
+       },
+       "reply": "El pájaro canta en el árbol."
+      },
+      {
+       "text": "Otro animal.",
+       "picture": {
+        "icon": "arrow",
+        "color": "#26A69A"
+       },
+       "reply": "¡Vale! Elige otra vez.",
+       "next": "p1"
+      }
+     ]
+    },
+    "o_pajaro_come": {
+     "lolo": "¿Quieres escuchar la oración?",
+     "options": [
+      {
+       "text": "Sí, quiero escucharla.",
+       "picture": {
+        "icon": "hearing",
+        "color": "#7E57C2"
+       },
+       "reply": "El pájaro come semillas."
+      },
+      {
+       "text": "Otro animal.",
+       "picture": {
+        "icon": "arrow",
+        "color": "#26A69A"
+       },
+       "reply": "¡Vale! Elige otra vez.",
+       "next": "p1"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Me encantó hablar de animales contigo!"
+  },
+  {
+   "id": "elige_comida",
+   "category": "elige",
+   "title": "¿Qué te gusta comer?",
+   "picture": {
+    "scene": "cocina",
+    "items": [
+     {
+      "p": {
+       "icon": "pizza",
+       "color": "#F4511E"
+      },
+      "x": 0.35,
+      "y": 0.6,
+      "s": 0.3
+     },
+     {
+      "p": {
+       "drawing": "fruta_manzana",
+       "colors": {
+        "manzana": "#E53935",
+        "hoja": "#43A047",
+        "tallo": "#8D5524",
+        "brillo": "#FFFFFF"
+       }
+      },
+      "x": 0.7,
+      "y": 0.65,
+      "s": 0.25
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "¿Qué te gusta comer?",
+     "options": [
+      {
+       "text": "La pizza.",
+       "picture": {
+        "icon": "pizza",
+        "color": "#F4511E"
+       },
+       "reply": "¡La pizza! ¡Qué rica!",
+       "next": "q_pizza"
+      },
+      {
+       "text": "La sopa.",
+       "picture": {
+        "icon": "soup",
+        "color": "#FB8C00"
+       },
+       "reply": "¡La sopa! Muy sana.",
+       "next": "q_sopa"
+      },
+      {
+       "text": "La manzana.",
+       "picture": {
+        "drawing": "fruta_manzana",
+        "colors": {
+         "manzana": "#E53935",
+         "hoja": "#43A047",
+         "tallo": "#8D5524",
+         "brillo": "#FFFFFF"
+        }
+       },
+       "reply": "¡La manzana! Es una fruta.",
+       "next": "q_manzana"
+      }
+     ]
+    },
+    "q_pizza": {
+     "lolo": "¿Cómo está la pizza?",
+     "options": [
+      {
+       "text": "Caliente.",
+       "picture": {
+        "icon": "hot",
+        "color": "#F4511E"
+       },
+       "reply": "¡La pizza está caliente!",
+       "next": "o_pizza_caliente"
+      },
+      {
+       "text": "Rica.",
+       "picture": {
+        "icon": "thumb_up",
+        "color": "#43A047"
+       },
+       "reply": "¡La pizza está rica!",
+       "next": "o_pizza_rica"
+      }
+     ]
+    },
+    "o_pizza_caliente": {
+     "lolo": "¿Quieres escuchar la oración?",
+     "options": [
+      {
+       "text": "Sí, quiero escucharla.",
+       "picture": {
+        "icon": "hearing",
+        "color": "#7E57C2"
+       },
+       "reply": "Me gusta la pizza caliente."
+      },
+      {
+       "text": "Otra comida.",
+       "picture": {
+        "icon": "arrow",
+        "color": "#26A69A"
+       },
+       "reply": "¡Vale! Elige otra vez.",
+       "next": "p1"
+      }
+     ]
+    },
+    "o_pizza_rica": {
+     "lolo": "¿Quieres escuchar la oración?",
+     "options": [
+      {
+       "text": "Sí, quiero escucharla.",
+       "picture": {
+        "icon": "hearing",
+        "color": "#7E57C2"
+       },
+       "reply": "La pizza está muy rica."
+      },
+      {
+       "text": "Otra comida.",
+       "picture": {
+        "icon": "arrow",
+        "color": "#26A69A"
+       },
+       "reply": "¡Vale! Elige otra vez.",
+       "next": "p1"
+      }
+     ]
+    },
+    "q_sopa": {
+     "lolo": "¿Cómo está la sopa?",
+     "options": [
+      {
+       "text": "Caliente.",
+       "picture": {
+        "icon": "hot",
+        "color": "#F4511E"
+       },
+       "reply": "¡La sopa está caliente!",
+       "next": "o_sopa_caliente"
+      },
+      {
+       "text": "Rica.",
+       "picture": {
+        "icon": "thumb_up",
+        "color": "#43A047"
+       },
+       "reply": "¡La sopa está rica!",
+       "next": "o_sopa_rica"
+      }
+     ]
+    },
+    "o_sopa_caliente": {
+     "lolo": "¿Quieres escuchar la oración?",
+     "options": [
+      {
+       "text": "Sí, quiero escucharla.",
+       "picture": {
+        "icon": "hearing",
+        "color": "#7E57C2"
+       },
+       "reply": "La sopa está caliente: hay que soplar."
+      },
+      {
+       "text": "Otra comida.",
+       "picture": {
+        "icon": "arrow",
+        "color": "#26A69A"
+       },
+       "reply": "¡Vale! Elige otra vez.",
+       "next": "p1"
+      }
+     ]
+    },
+    "o_sopa_rica": {
+     "lolo": "¿Quieres escuchar la oración?",
+     "options": [
+      {
+       "text": "Sí, quiero escucharla.",
+       "picture": {
+        "icon": "hearing",
+        "color": "#7E57C2"
+       },
+       "reply": "Me gusta la sopa porque está rica."
+      },
+      {
+       "text": "Otra comida.",
+       "picture": {
+        "icon": "arrow",
+        "color": "#26A69A"
+       },
+       "reply": "¡Vale! Elige otra vez.",
+       "next": "p1"
+      }
+     ]
+    },
+    "q_manzana": {
+     "lolo": "¿De qué color es tu manzana?",
+     "options": [
+      {
+       "text": "Roja.",
+       "picture": {
+        "swatch": "#E53935"
+       },
+       "reply": "¡La manzana es roja!",
+       "next": "o_manzana_roja"
+      },
+      {
+       "text": "Verde.",
+       "picture": {
+        "swatch": "#43A047"
+       },
+       "reply": "¡La manzana es verde!",
+       "next": "o_manzana_verde"
+      }
+     ]
+    },
+    "o_manzana_roja": {
+     "lolo": "¿Quieres escuchar la oración?",
+     "options": [
+      {
+       "text": "Sí, quiero escucharla.",
+       "picture": {
+        "icon": "hearing",
+        "color": "#7E57C2"
+       },
+       "reply": "La manzana roja es dulce."
+      },
+      {
+       "text": "Otra comida.",
+       "picture": {
+        "icon": "arrow",
+        "color": "#26A69A"
+       },
+       "reply": "¡Vale! Elige otra vez.",
+       "next": "p1"
+      }
+     ]
+    },
+    "o_manzana_verde": {
+     "lolo": "¿Quieres escuchar la oración?",
+     "options": [
+      {
+       "text": "Sí, quiero escucharla.",
+       "picture": {
+        "icon": "hearing",
+        "color": "#7E57C2"
+       },
+       "reply": "La manzana verde es un poco ácida."
+      },
+      {
+       "text": "Otra comida.",
+       "picture": {
+        "icon": "arrow",
+        "color": "#26A69A"
+       },
+       "reply": "¡Vale! Elige otra vez.",
+       "next": "p1"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Qué hambre me dio! Gracias por contármelo."
+  },
+  {
+   "id": "elige_juego",
+   "category": "elige",
+   "title": "¿A qué jugamos?",
+   "picture": {
+    "scene": "parque",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "feliz",
+        "girl": true,
+        "shirt": "#F48FB1",
+        "arms_up": true
+       }
+      },
+      "x": 0.35,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "ball",
+       "color": "#E53935"
+      },
+      "x": 0.72,
+      "y": 0.78,
+      "s": 0.14
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "¿A qué jugamos?",
+     "options": [
+      {
+       "text": "A la pelota.",
+       "picture": {
+        "icon": "ball",
+        "color": "#E53935"
+       },
+       "reply": "¡A la pelota! Me encanta.",
+       "next": "q_pelota"
+      },
+      {
+       "text": "Al escondite.",
+       "picture": {
+        "icon": "search",
+        "color": "#5C6BC0"
+       },
+       "reply": "¡Al escondite! ¿Dónde me escondo?",
+       "next": "q_escondite"
+      },
+      {
+       "text": "A pintar.",
+       "picture": {
+        "icon": "paint",
+        "color": "#AB47BC"
+       },
+       "reply": "¡A pintar! Qué bonito.",
+       "next": "q_pintar"
+      }
+     ]
+    },
+    "q_pelota": {
+     "lolo": "¿Dónde jugamos?",
+     "options": [
+      {
+       "text": "En el parque.",
+       "picture": {
+        "scene": "parque",
+        "items": []
+       },
+       "reply": "¡En el parque!",
+       "next": "o_pelota_parque"
+      },
+      {
+       "text": "En la playa.",
+       "picture": {
+        "scene": "playa",
+        "items": []
+       },
+       "reply": "¡En la playa!",
+       "next": "o_pelota_playa"
+      }
+     ]
+    },
+    "o_pelota_parque": {
+     "lolo": "¿Quieres escuchar la oración?",
+     "options": [
+      {
+       "text": "Sí, quiero escucharla.",
+       "picture": {
+        "icon": "hearing",
+        "color": "#7E57C2"
+       },
+       "reply": "Hoy jugamos a la pelota en el parque."
+      },
+      {
+       "text": "Otro juego.",
+       "picture": {
+        "icon": "arrow",
+        "color": "#26A69A"
+       },
+       "reply": "¡Vale! Elige otra vez.",
+       "next": "p1"
+      }
+     ]
+    },
+    "o_pelota_playa": {
+     "lolo": "¿Quieres escuchar la oración?",
+     "options": [
+      {
+       "text": "Sí, quiero escucharla.",
+       "picture": {
+        "icon": "hearing",
+        "color": "#7E57C2"
+       },
+       "reply": "Hoy jugamos a la pelota en la playa."
+      },
+      {
+       "text": "Otro juego.",
+       "picture": {
+        "icon": "arrow",
+        "color": "#26A69A"
+       },
+       "reply": "¡Vale! Elige otra vez.",
+       "next": "p1"
+      }
+     ]
+    },
+    "q_escondite": {
+     "lolo": "¿Dónde jugamos?",
+     "options": [
+      {
+       "text": "En casa.",
+       "picture": {
+        "scene": "casa",
+        "items": []
+       },
+       "reply": "¡En casa!",
+       "next": "o_escondite_casa"
+      },
+      {
+       "text": "En el parque.",
+       "picture": {
+        "scene": "parque",
+        "items": []
+       },
+       "reply": "¡En el parque!",
+       "next": "o_escondite_parque"
+      }
+     ]
+    },
+    "o_escondite_casa": {
+     "lolo": "¿Quieres escuchar la oración?",
+     "options": [
+      {
+       "text": "Sí, quiero escucharla.",
+       "picture": {
+        "icon": "hearing",
+        "color": "#7E57C2"
+       },
+       "reply": "Hoy jugamos al escondite en casa."
+      },
+      {
+       "text": "Otro juego.",
+       "picture": {
+        "icon": "arrow",
+        "color": "#26A69A"
+       },
+       "reply": "¡Vale! Elige otra vez.",
+       "next": "p1"
+      }
+     ]
+    },
+    "o_escondite_parque": {
+     "lolo": "¿Quieres escuchar la oración?",
+     "options": [
+      {
+       "text": "Sí, quiero escucharla.",
+       "picture": {
+        "icon": "hearing",
+        "color": "#7E57C2"
+       },
+       "reply": "Hoy jugamos al escondite en el parque."
+      },
+      {
+       "text": "Otro juego.",
+       "picture": {
+        "icon": "arrow",
+        "color": "#26A69A"
+       },
+       "reply": "¡Vale! Elige otra vez.",
+       "next": "p1"
+      }
+     ]
+    },
+    "q_pintar": {
+     "lolo": "¿Dónde jugamos?",
+     "options": [
+      {
+       "text": "En casa.",
+       "picture": {
+        "scene": "casa",
+        "items": []
+       },
+       "reply": "¡En casa!",
+       "next": "o_pintar_casa"
+      },
+      {
+       "text": "En la escuela.",
+       "picture": {
+        "scene": "escuela",
+        "items": []
+       },
+       "reply": "¡En la escuela!",
+       "next": "o_pintar_escuela"
+      }
+     ]
+    },
+    "o_pintar_casa": {
+     "lolo": "¿Quieres escuchar la oración?",
+     "options": [
+      {
+       "text": "Sí, quiero escucharla.",
+       "picture": {
+        "icon": "hearing",
+        "color": "#7E57C2"
+       },
+       "reply": "Hoy jugamos a pintar en casa."
+      },
+      {
+       "text": "Otro juego.",
+       "picture": {
+        "icon": "arrow",
+        "color": "#26A69A"
+       },
+       "reply": "¡Vale! Elige otra vez.",
+       "next": "p1"
+      }
+     ]
+    },
+    "o_pintar_escuela": {
+     "lolo": "¿Quieres escuchar la oración?",
+     "options": [
+      {
+       "text": "Sí, quiero escucharla.",
+       "picture": {
+        "icon": "hearing",
+        "color": "#7E57C2"
+       },
+       "reply": "Hoy jugamos a pintar en la escuela."
+      },
+      {
+       "text": "Otro juego.",
+       "picture": {
+        "icon": "arrow",
+        "color": "#26A69A"
+       },
+       "reply": "¡Vale! Elige otra vez.",
+       "next": "p1"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Qué divertido es jugar contigo!"
+  },
+  {
+   "id": "elige_color",
+   "category": "elige",
+   "title": "Mi color favorito",
+   "picture": {
+    "scene": "jardin",
+    "items": [
+     {
+      "p": {
+       "icon": "rainbow",
+       "color": "#EC407A"
+      },
+      "x": 0.5,
+      "y": 0.4,
+      "s": 0.5
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "¿Cuál es tu color favorito?",
+     "options": [
+      {
+       "text": "El rojo.",
+       "picture": {
+        "swatch": "#E53935"
+       },
+       "reply": "¡El rojo! Como el fuego.",
+       "next": "q_rojo"
+      },
+      {
+       "text": "El azul.",
+       "picture": {
+        "swatch": "#1E88E5"
+       },
+       "reply": "¡El azul! Como el agua.",
+       "next": "q_azul"
+      },
+      {
+       "text": "El amarillo.",
+       "picture": {
+        "swatch": "#FDD835"
+       },
+       "reply": "¡El amarillo! Como el sol.",
+       "next": "q_amarillo"
+      }
+     ]
+    },
+    "q_rojo": {
+     "lolo": "¿Qué cosa es de color rojo?",
+     "options": [
+      {
+       "text": "La fresa.",
+       "picture": {
+        "drawing": "fruta_fresa",
+        "colors": {
+         "fresa": "#E53935",
+         "hojas": "#43A047",
+         "tallo": "#2E7D32"
+        }
+       },
+       "reply": "¡La fresa es roja!",
+       "next": "o_rojo_fresa"
+      },
+      {
+       "text": "La manzana.",
+       "picture": {
+        "drawing": "fruta_manzana",
+        "colors": {
+         "manzana": "#E53935",
+         "hoja": "#43A047",
+         "tallo": "#8D5524",
+         "brillo": "#FFFFFF"
+        }
+       },
+       "reply": "¡La manzana es roja!",
+       "next": "o_rojo_manzana"
+      }
+     ]
+    },
+    "o_rojo_fresa": {
+     "lolo": "¿Quieres escuchar la oración?",
+     "options": [
+      {
+       "text": "Sí, quiero escucharla.",
+       "picture": {
+        "icon": "hearing",
+        "color": "#7E57C2"
+       },
+       "reply": "La fresa es de color rojo."
+      },
+      {
+       "text": "Otro color.",
+       "picture": {
+        "icon": "arrow",
+        "color": "#26A69A"
+       },
+       "reply": "¡Vale! Elige otra vez.",
+       "next": "p1"
+      }
+     ]
+    },
+    "o_rojo_manzana": {
+     "lolo": "¿Quieres escuchar la oración?",
+     "options": [
+      {
+       "text": "Sí, quiero escucharla.",
+       "picture": {
+        "icon": "hearing",
+        "color": "#7E57C2"
+       },
+       "reply": "La manzana es de color rojo."
+      },
+      {
+       "text": "Otro color.",
+       "picture": {
+        "icon": "arrow",
+        "color": "#26A69A"
+       },
+       "reply": "¡Vale! Elige otra vez.",
+       "next": "p1"
+      }
+     ]
+    },
+    "q_azul": {
+     "lolo": "¿Qué cosa es de color azul?",
+     "options": [
+      {
+       "text": "El mar.",
+       "picture": {
+        "icon": "sea",
+        "color": "#1E88E5"
+       },
+       "reply": "¡El mar es azul!",
+       "next": "o_azul_mar"
+      },
+      {
+       "text": "El cielo.",
+       "picture": {
+        "scene": "cielo",
+        "items": []
+       },
+       "reply": "¡El cielo es azul!",
+       "next": "o_azul_cielo"
+      }
+     ]
+    },
+    "o_azul_mar": {
+     "lolo": "¿Quieres escuchar la oración?",
+     "options": [
+      {
+       "text": "Sí, quiero escucharla.",
+       "picture": {
+        "icon": "hearing",
+        "color": "#7E57C2"
+       },
+       "reply": "El mar es de color azul."
+      },
+      {
+       "text": "Otro color.",
+       "picture": {
+        "icon": "arrow",
+        "color": "#26A69A"
+       },
+       "reply": "¡Vale! Elige otra vez.",
+       "next": "p1"
+      }
+     ]
+    },
+    "o_azul_cielo": {
+     "lolo": "¿Quieres escuchar la oración?",
+     "options": [
+      {
+       "text": "Sí, quiero escucharla.",
+       "picture": {
+        "icon": "hearing",
+        "color": "#7E57C2"
+       },
+       "reply": "El cielo es de color azul."
+      },
+      {
+       "text": "Otro color.",
+       "picture": {
+        "icon": "arrow",
+        "color": "#26A69A"
+       },
+       "reply": "¡Vale! Elige otra vez.",
+       "next": "p1"
+      }
+     ]
+    },
+    "q_amarillo": {
+     "lolo": "¿Qué cosa es de color amarillo?",
+     "options": [
+      {
+       "text": "El plátano.",
+       "picture": {
+        "drawing": "fruta_platano",
+        "colors": {
+         "platano": "#FFD600",
+         "tallo": "#8D6E63",
+         "punta": "#6D4C41"
+        }
+       },
+       "reply": "¡El plátano es amarillo!",
+       "next": "o_amarillo_platano"
+      },
+      {
+       "text": "El sol.",
+       "picture": {
+        "icon": "sun",
+        "color": "#FFB300"
+       },
+       "reply": "¡El sol es amarillo!",
+       "next": "o_amarillo_sol"
+      }
+     ]
+    },
+    "o_amarillo_platano": {
+     "lolo": "¿Quieres escuchar la oración?",
+     "options": [
+      {
+       "text": "Sí, quiero escucharla.",
+       "picture": {
+        "icon": "hearing",
+        "color": "#7E57C2"
+       },
+       "reply": "El plátano es de color amarillo."
+      },
+      {
+       "text": "Otro color.",
+       "picture": {
+        "icon": "arrow",
+        "color": "#26A69A"
+       },
+       "reply": "¡Vale! Elige otra vez.",
+       "next": "p1"
+      }
+     ]
+    },
+    "o_amarillo_sol": {
+     "lolo": "¿Quieres escuchar la oración?",
+     "options": [
+      {
+       "text": "Sí, quiero escucharla.",
+       "picture": {
+        "icon": "hearing",
+        "color": "#7E57C2"
+       },
+       "reply": "El sol es de color amarillo."
+      },
+      {
+       "text": "Otro color.",
+       "picture": {
+        "icon": "arrow",
+        "color": "#26A69A"
+       },
+       "reply": "¡Vale! Elige otra vez.",
+       "next": "p1"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Los colores son preciosos! Gracias por jugar."
   }
  ]
 }

@@ -23,6 +23,7 @@ CATEGORIES = [
     ("ayuda", "Pedir ayuda", "help", "#CE93D8"),
     ("necesidades", "Expresar necesidades", "water", "#81D4FA"),
     ("describir", "Describir objetos", "search", "#C5E1A5"),
+    ("elige", "Tú eliges", "star", "#FFD54F"),
 ]
 
 
@@ -721,6 +722,96 @@ C += [
             O("Juego con él.", I("play", "#FB8C00"), "¡Qué divertido!"),
         ]),
     ], "¡Tu osito es especial!"),
+]
+
+
+# 13. Fase 4: conversaciones adaptativas. La pregunta siguiente y la oración
+# final dependen de lo que eligió el niño (cada combinación es un nodo, todo
+# dentro del catálogo revisado).
+def adaptive(cid, title, picture, first_q, items, second_q, goodbye, again):
+    """items: (id, texto elegido, dibujo, reacción, [(id2, texto2, dibujo2, reacción2, oración)])."""
+    nodes = {"p1": {"lolo": first_q, "options": [
+        O(text, pic, reply, f"q_{iid}") for iid, text, pic, reply, _ in items]}}
+    for iid, text, pic, reply, subs in items:
+        nodes[f"q_{iid}"] = {"lolo": second_q(iid), "options": [
+            O(t2, p2, r2, f"o_{iid}_{sid}") for sid, t2, p2, r2, _ in subs]}
+        for sid, t2, p2, r2, sentence in subs:
+            nodes[f"o_{iid}_{sid}"] = {"lolo": "¿Quieres escuchar la oración?", "options": [
+                O("Sí, quiero escucharla.", I("hearing", "#7E57C2"), sentence),
+                O(again, I("arrow", "#26A69A"), "¡Vale! Elige otra vez.", "p1"),
+            ]}
+    return {"id": cid, "category": "elige", "title": title, "picture": picture, "start": "p1", "nodes": nodes, "goodbye": goodbye}
+
+
+DOG, CAT, BIRD = D("animal_perro"), D("animal_gato"), I("bird", "#29B6F6")
+RUN, SLEEP, EAT = I("run", "#E53935"), I("sleep", "#5C6BC0"), I("eat", "#FB8C00")
+C += [
+    adaptive("elige_animal", "¿Qué animal te gusta?", S("parque", (DOG, .3, .7, .35), (CAT, .7, .7, .3)),
+             "¿Qué animal te gusta?", [
+        ("perro", "El perro.", DOG, "¡El perro! A mí también me gusta.", [
+            ("corre", "Corre.", RUN, "¡El perro corre!", "El perro corre por el parque."),
+            ("duerme", "Duerme.", SLEEP, "¡El perro duerme!", "El perro duerme en su cama."),
+            ("come", "Come.", EAT, "¡El perro come!", "El perro come en su plato."),
+        ]),
+        ("gato", "El gato.", CAT, "¡El gato! Es muy suave.", [
+            ("salta", "Salta.", I("jump", "#43A047"), "¡El gato salta!", "El gato salta muy alto."),
+            ("duerme", "Duerme.", SLEEP, "¡El gato duerme!", "El gato duerme al sol."),
+            ("come", "Come.", EAT, "¡El gato come!", "El gato come pescado."),
+        ]),
+        ("pajaro", "El pájaro.", BIRD, "¡El pájaro! Tiene alas.", [
+            ("vuela", "Vuela.", I("cloud", "#78909C"), "¡El pájaro vuela!", "El pájaro vuela por el cielo."),
+            ("canta", "Canta.", I("music", "#AB47BC"), "¡El pájaro canta!", "El pájaro canta en el árbol."),
+            ("come", "Come.", EAT, "¡El pájaro come!", "El pájaro come semillas."),
+        ]),
+    ], lambda a: {"perro": "¿Qué hace el perro?", "gato": "¿Qué hace el gato?", "pajaro": "¿Qué hace el pájaro?"}[a],
+             "¡Me encantó hablar de animales contigo!", "Otro animal."),
+    adaptive("elige_comida", "¿Qué te gusta comer?", S("cocina", (I("pizza", "#F4511E"), .35, .6, .3), (APPLE, .7, .65, .25)),
+             "¿Qué te gusta comer?", [
+        ("pizza", "La pizza.", I("pizza", "#F4511E"), "¡La pizza! ¡Qué rica!", [
+            ("caliente", "Caliente.", I("hot", "#F4511E"), "¡La pizza está caliente!", "Me gusta la pizza caliente."),
+            ("rica", "Rica.", I("thumb_up", "#43A047"), "¡La pizza está rica!", "La pizza está muy rica."),
+        ]),
+        ("sopa", "La sopa.", I("soup", "#FB8C00"), "¡La sopa! Muy sana.", [
+            ("caliente", "Caliente.", I("hot", "#F4511E"), "¡La sopa está caliente!", "La sopa está caliente: hay que soplar."),
+            ("rica", "Rica.", I("thumb_up", "#43A047"), "¡La sopa está rica!", "Me gusta la sopa porque está rica."),
+        ]),
+        ("manzana", "La manzana.", APPLE, "¡La manzana! Es una fruta.", [
+            ("roja", "Roja.", {"swatch": "#E53935"}, "¡La manzana es roja!", "La manzana roja es dulce."),
+            ("verde", "Verde.", {"swatch": "#43A047"}, "¡La manzana es verde!", "La manzana verde es un poco ácida."),
+        ]),
+    ], lambda a: {"pizza": "¿Cómo está la pizza?", "sopa": "¿Cómo está la sopa?", "manzana": "¿De qué color es tu manzana?"}[a],
+             "¡Qué hambre me dio! Gracias por contármelo.", "Otra comida."),
+    adaptive("elige_juego", "¿A qué jugamos?", S("parque", (K("feliz", True, GIRL, True), .35, .62, .4), (I("ball", "#E53935"), .72, .78, .14)),
+             "¿A qué jugamos?", [
+        ("pelota", "A la pelota.", I("ball", "#E53935"), "¡A la pelota! Me encanta.", [
+            ("parque", "En el parque.", S("parque"), "¡En el parque!", "Hoy jugamos a la pelota en el parque."),
+            ("playa", "En la playa.", S("playa"), "¡En la playa!", "Hoy jugamos a la pelota en la playa."),
+        ]),
+        ("escondite", "Al escondite.", I("search", "#5C6BC0"), "¡Al escondite! ¿Dónde me escondo?", [
+            ("casa", "En casa.", S("casa"), "¡En casa!", "Hoy jugamos al escondite en casa."),
+            ("parque", "En el parque.", S("parque"), "¡En el parque!", "Hoy jugamos al escondite en el parque."),
+        ]),
+        ("pintar", "A pintar.", I("paint", "#AB47BC"), "¡A pintar! Qué bonito.", [
+            ("casa", "En casa.", S("casa"), "¡En casa!", "Hoy jugamos a pintar en casa."),
+            ("escuela", "En la escuela.", S("escuela"), "¡En la escuela!", "Hoy jugamos a pintar en la escuela."),
+        ]),
+    ], lambda a: "¿Dónde jugamos?", "¡Qué divertido es jugar contigo!", "Otro juego."),
+    adaptive("elige_color", "Mi color favorito", S("jardin", (I("rainbow", "#EC407A"), .5, .4, .5)),
+             "¿Cuál es tu color favorito?", [
+        ("rojo", "El rojo.", {"swatch": "#E53935"}, "¡El rojo! Como el fuego.", [
+            ("fresa", "La fresa.", STRAWBERRY, "¡La fresa es roja!", "La fresa es de color rojo."),
+            ("manzana", "La manzana.", APPLE, "¡La manzana es roja!", "La manzana es de color rojo."),
+        ]),
+        ("azul", "El azul.", {"swatch": "#1E88E5"}, "¡El azul! Como el agua.", [
+            ("mar", "El mar.", I("sea", "#1E88E5"), "¡El mar es azul!", "El mar es de color azul."),
+            ("cielo", "El cielo.", S("cielo"), "¡El cielo es azul!", "El cielo es de color azul."),
+        ]),
+        ("amarillo", "El amarillo.", {"swatch": "#FDD835"}, "¡El amarillo! Como el sol.", [
+            ("platano", "El plátano.", BANANA, "¡El plátano es amarillo!", "El plátano es de color amarillo."),
+            ("sol", "El sol.", I("sun", "#FFB300"), "¡El sol es amarillo!", "El sol es de color amarillo."),
+        ]),
+    ], lambda a: {"rojo": "¿Qué cosa es de color rojo?", "azul": "¿Qué cosa es de color azul?", "amarillo": "¿Qué cosa es de color amarillo?"}[a],
+             "¡Los colores son preciosos! Gracias por jugar.", "Otro color."),
 ]
 
 

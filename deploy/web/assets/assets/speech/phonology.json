@@ -1,0 +1,239 @@
+{
+ "format_version": 1,
+ "starts": [
+  {
+   "target": "mama",
+   "answer": "mariposa",
+   "others": [
+    "perro",
+    "sol"
+   ]
+  },
+  {
+   "target": "pelota",
+   "answer": "perro",
+   "others": [
+    "gato",
+    "luna"
+   ]
+  },
+  {
+   "target": "gato",
+   "answer": "galleta",
+   "others": [
+    "sol",
+    "mesa"
+   ]
+  },
+  {
+   "target": "sol",
+   "answer": "sopa",
+   "others": [
+    "casa",
+    "nube"
+   ]
+  },
+  {
+   "target": "luna",
+   "answer": "lupa",
+   "others": [
+    "mesa",
+    "oso"
+   ]
+  },
+  {
+   "target": "casa",
+   "answer": "camion",
+   "others": [
+    "pez",
+    "flor"
+   ]
+  },
+  {
+   "target": "mesa",
+   "answer": "metro",
+   "others": [
+    "gato",
+    "sol"
+   ]
+  },
+  {
+   "target": "pato",
+   "answer": "papa",
+   "others": [
+    "nube",
+    "oso"
+   ]
+  },
+  {
+   "target": "taza",
+   "answer": "taxi",
+   "others": [
+    "perro",
+    "luna"
+   ]
+  },
+  {
+   "target": "conejo",
+   "answer": "cocina",
+   "others": [
+    "mesa",
+    "pez"
+   ]
+  },
+  {
+   "target": "ballena",
+   "answer": "balon",
+   "others": [
+    "sol",
+    "flor"
+   ]
+  },
+  {
+   "target": "lavadora",
+   "answer": "lapiz",
+   "others": [
+    "oso",
+    "nube"
+   ]
+  },
+  {
+   "target": "dinosaurio",
+   "answer": "dibujo",
+   "others": [
+    "gato",
+    "sol"
+   ]
+  },
+  {
+   "target": "regalo",
+   "answer": "regla",
+   "others": [
+    "luna",
+    "oso"
+   ]
+  },
+  {
+   "target": "tortuga",
+   "answer": "tormenta",
+   "others": [
+    "casa",
+    "pez"
+   ]
+  },
+  {
+   "target": "vaca",
+   "answer": "valla",
+   "others": [
+    "luna",
+    "flor"
+   ]
+  }
+ ],
+ "rhymes": [
+  {
+   "target": "gato",
+   "answer": "pato",
+   "others": [
+    "sol",
+    "mesa"
+   ]
+  },
+  {
+   "target": "mesa",
+   "answer": "fresa",
+   "others": [
+    "perro",
+    "luna"
+   ]
+  },
+  {
+   "target": "luna",
+   "answer": "cuna",
+   "others": [
+    "gato",
+    "flor"
+   ]
+  },
+  {
+   "target": "camion",
+   "answer": "avion",
+   "others": [
+    "mesa",
+    "gato"
+   ]
+  },
+  {
+   "target": "leche",
+   "answer": "coche",
+   "others": [
+    "luna",
+    "oso"
+   ]
+  },
+  {
+   "target": "abeja",
+   "answer": "oveja",
+   "others": [
+    "sol",
+    "tren"
+   ]
+  },
+  {
+   "target": "flor",
+   "answer": "tractor",
+   "others": [
+    "mesa",
+    "luna"
+   ]
+  },
+  {
+   "target": "semilla",
+   "answer": "silla",
+   "others": [
+    "gato",
+    "sol"
+   ]
+  },
+  {
+   "target": "campana",
+   "answer": "ventana",
+   "others": [
+    "perro",
+    "flor"
+   ]
+  },
+  {
+   "target": "toalla",
+   "answer": "valla",
+   "others": [
+    "luna",
+    "tren"
+   ]
+  },
+  {
+   "target": "cohete",
+   "answer": "patinete",
+   "others": [
+    "casa",
+    "oso"
+   ]
+  },
+  {
+   "target": "escalera",
+   "answer": "nevera",
+   "others": [
+    "luna",
+    "gato"
+   ]
+  },
+  {
+   "target": "ballena",
+   "answer": "cena",
+   "others": [
+    "sol",
+    "pato"
+   ]
+  }
+ ]
+}

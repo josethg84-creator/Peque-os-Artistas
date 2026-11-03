@@ -1,0 +1,329 @@
+{
+ "format_version": 1,
+ "characters": [
+  {
+   "id": "conejo",
+   "noun": "conejo",
+   "feminine": false,
+   "picture": {
+    "drawing": "animal_conejo"
+   }
+  },
+  {
+   "id": "nina",
+   "noun": "niña",
+   "feminine": true,
+   "picture": {
+    "kid": {
+     "emotion": "feliz",
+     "girl": true,
+     "shirt": "#F48FB1"
+    }
+   }
+  },
+  {
+   "id": "nino",
+   "noun": "niño",
+   "feminine": false,
+   "picture": {
+    "kid": {
+     "emotion": "feliz",
+     "girl": false,
+     "shirt": "#64B5F6"
+    }
+   }
+  },
+  {
+   "id": "oso",
+   "noun": "oso",
+   "feminine": false,
+   "picture": {
+    "drawing": "animal_oso"
+   }
+  },
+  {
+   "id": "tortuga",
+   "noun": "tortuga",
+   "feminine": true,
+   "picture": {
+    "drawing": "animal_tortuga"
+   }
+  },
+  {
+   "id": "dragon",
+   "noun": "dragón",
+   "feminine": false,
+   "picture": {
+    "drawing": "fantasia_dragon"
+   }
+  },
+  {
+   "id": "gallina",
+   "noun": "gallina",
+   "feminine": true,
+   "picture": {
+    "drawing": "granja_gallina"
+   }
+  },
+  {
+   "id": "mariposa",
+   "noun": "mariposa",
+   "feminine": true,
+   "picture": {
+    "drawing": "animal_mariposa",
+    "colors": {
+     "*": "#AB47BC"
+    }
+   }
+  }
+ ],
+ "places": [
+  {
+   "id": "bosque",
+   "noun": "bosque",
+   "feminine": false,
+   "scene": "bosque"
+  },
+  {
+   "id": "playa",
+   "noun": "playa",
+   "feminine": true,
+   "scene": "playa"
+  },
+  {
+   "id": "parque",
+   "noun": "parque",
+   "feminine": false,
+   "scene": "parque"
+  },
+  {
+   "id": "jardin",
+   "noun": "jardín",
+   "feminine": false,
+   "scene": "jardin"
+  },
+  {
+   "id": "escuela",
+   "noun": "escuela",
+   "feminine": true,
+   "scene": "escuela"
+  },
+  {
+   "id": "cocina",
+   "noun": "cocina",
+   "feminine": true,
+   "scene": "cocina"
+  }
+ ],
+ "actions": [
+  {
+   "id": "buscar",
+   "verb": "buscar",
+   "prep": "",
+   "picture": {
+    "icon": "search",
+    "color": "#3949AB"
+   },
+   "objects": [
+    "comida",
+    "juguete",
+    "planta",
+    "cosa"
+   ]
+  },
+  {
+   "id": "comer",
+   "verb": "comer",
+   "prep": "",
+   "picture": {
+    "icon": "eat",
+    "color": "#FB8C00"
+   },
+   "objects": [
+    "comida"
+   ]
+  },
+  {
+   "id": "jugar",
+   "verb": "jugar",
+   "prep": "con",
+   "picture": {
+    "icon": "play",
+    "color": "#EC407A"
+   },
+   "objects": [
+    "juguete"
+   ]
+  },
+  {
+   "id": "recoger",
+   "verb": "recoger",
+   "prep": "",
+   "picture": {
+    "icon": "help",
+    "color": "#26A69A"
+   },
+   "objects": [
+    "comida",
+    "planta",
+    "juguete"
+   ]
+  },
+  {
+   "id": "plantar",
+   "verb": "plantar",
+   "prep": "",
+   "picture": {
+    "icon": "plant",
+    "color": "#43A047"
+   },
+   "objects": [
+    "planta"
+   ]
+  },
+  {
+   "id": "mirar",
+   "verb": "mirar",
+   "prep": "",
+   "picture": {
+    "icon": "look",
+    "color": "#5C6BC0"
+   },
+   "objects": [
+    "cosa",
+    "planta",
+    "juguete"
+   ]
+  }
+ ],
+ "objects": [
+  {
+   "id": "zanahoria",
+   "noun": "zanahoria",
+   "feminine": true,
+   "kind": "comida",
+   "picture": {
+    "icon": "carrot",
+    "color": "#FB8C00"
+   }
+  },
+  {
+   "id": "manzana",
+   "noun": "manzana",
+   "feminine": true,
+   "kind": "comida",
+   "picture": {
+    "drawing": "fruta_manzana",
+    "colors": {
+     "manzana": "#E53935",
+     "hoja": "#43A047",
+     "tallo": "#8D5524",
+     "brillo": "#FFFFFF"
+    }
+   }
+  },
+  {
+   "id": "pastel",
+   "noun": "pastel",
+   "feminine": false,
+   "kind": "comida",
+   "picture": {
+    "icon": "cake",
+    "color": "#AB47BC"
+   }
+  },
+  {
+   "id": "pelota",
+   "noun": "pelota",
+   "feminine": true,
+   "kind": "juguete",
+   "picture": {
+    "icon": "ball",
+    "color": "#E53935"
+   }
+  },
+  {
+   "id": "robot",
+   "noun": "robot",
+   "feminine": false,
+   "kind": "juguete",
+   "picture": {
+    "icon": "robot",
+    "color": "#546E7A"
+   }
+  },
+  {
+   "id": "flor",
+   "noun": "flor",
+   "feminine": true,
+   "kind": "planta",
+   "picture": {
+    "icon": "flower",
+    "color": "#EC407A"
+   }
+  },
+  {
+   "id": "semilla",
+   "noun": "semilla",
+   "feminine": true,
+   "kind": "planta",
+   "picture": {
+    "icon": "seed",
+    "color": "#8D6E63"
+   }
+  },
+  {
+   "id": "estrella",
+   "noun": "estrella",
+   "feminine": true,
+   "kind": "cosa",
+   "picture": {
+    "icon": "star",
+    "color": "#FBC02D"
+   }
+  },
+  {
+   "id": "regalo",
+   "noun": "regalo",
+   "feminine": false,
+   "kind": "cosa",
+   "picture": {
+    "icon": "gift",
+    "color": "#E53935"
+   }
+  }
+ ],
+ "endings": [
+  {
+   "id": "feliz",
+   "template": "¡Y {el} se puso muy {contento}!",
+   "picture": {
+    "emotion": "feliz"
+   }
+  },
+  {
+   "id": "compartir",
+   "template": "Después, {el} {lo} compartió con sus amigos.",
+   "picture": {
+    "icon": "friends",
+    "color": "#FB8C00"
+   }
+  },
+  {
+   "id": "casa",
+   "template": "Al final, {el} volvió a casa a descansar.",
+   "picture": {
+    "icon": "home2",
+    "color": "#E57373"
+   }
+  },
+  {
+   "id": "dormir",
+   "template": "Por la noche, {el} durmió muy {contento}.",
+   "picture": {
+    "icon": "sleepz",
+    "color": "#5C6BC0"
+   }
+  }
+ ]
+}

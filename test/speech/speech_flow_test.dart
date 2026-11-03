@@ -9,6 +9,10 @@ import 'package:pequenos_artistas/speech/voice_practice.dart';
 import '../test_helpers.dart';
 
 Future<void> tapAndSettle(WidgetTester tester, Finder finder) async {
+  // Las listas largas construyen sus tarjetas al desplazarse.
+  if (finder.evaluate().isEmpty) {
+    await tester.scrollUntilVisible(finder, 250, scrollable: find.byType(Scrollable).first);
+  }
   await tester.ensureVisible(finder);
   await tester.pumpAndSettle();
   await tester.tap(finder);
@@ -37,7 +41,7 @@ void main() {
       await tester.scrollUntilVisible(find.bySemanticsLabel(a.title), 200);
       expect(find.bySemanticsLabel(a.title), findsOneWidget, reason: a.title);
     }
-    await tester.scrollUntilVisible(find.bySemanticsLabel(SpeechHubScreen.activities.first.title), -200);
+    await tester.scrollUntilVisible(find.bySemanticsLabel(RegExp('^Lolo dice: ¡Hola! Soy Lolo')), -200);
     // Ya no queda ninguna «Muy pronto».
     expect(SpeechHubScreen.activities.every((a) => a.available), isTrue);
     // Tocar a Lolo repite su saludo.
@@ -50,7 +54,8 @@ void main() {
   testWidgets('palabras: escuchar, despacio, siguiente, deslizar y terminar el grupo', (tester) async {
     final speech = await openHub(tester);
     await tapAndSettle(tester, find.bySemanticsLabel('Mis primeras palabras'));
-    expect(find.text('0 de 10 escuchadas'), findsWidgets);
+    // Fase 4: los grupos crecieron con el banco de vocabulario.
+    expect(find.text('0 de 23 escuchadas'), findsWidgets);
     await tapAndSettle(tester, find.bySemanticsLabel('Animales'));
 
     // La palabra se dice sola al aparecer, sin música de fondo.
@@ -76,20 +81,20 @@ void main() {
     expect(spoken.last, 'gato');
     expect(speech.progress.wordsHeard, {'perro', 'gato', 'conejo'});
 
-    for (var i = 0; i < 9; i++) {
+    for (var i = 0; i < 30; i++) {
       await tapAndSettle(tester, find.bySemanticsLabel('Siguiente'));
     }
     expect(
       find.bySemanticsLabel(RegExp('^Lolo dice: ¡Muy bien! Escuchaste todas las palabras de animales')),
       findsOneWidget,
     );
-    expect(speech.progress.wordsHeard, hasLength(10));
+    expect(speech.progress.wordsHeard, hasLength(31));
     await tapAndSettle(tester, find.bySemanticsLabel('Otra vez'));
     expect(find.text('PERRO'), findsOneWidget);
     expect(spoken.last, 'perro');
 
     await tapAndSettle(tester, find.bySemanticsLabel('Volver a los grupos'));
-    expect(find.text('10 de 10 escuchadas'), findsOneWidget);
+    expect(find.text('31 de 31 escuchadas'), findsOneWidget);
   });
 
   testWidgets('frases: escuchar entera o palabra a palabra, y ordenarla sin castigos', (tester) async {
@@ -128,7 +133,7 @@ void main() {
     expect(speech.progress.phrasesHeard, {'quiero_agua', 'tengo_hambre'});
   });
 
-  testWidgets('«Mi progreso» muestra solo lo que se ha hecho de verdad', (tester) async {
+  testWidgets('«Mis aventuras con Lolo» muestra solo lo que se ha hecho de verdad', (tester) async {
     final backend = MemoryBackend();
     final previous = SpeechController(SpeechStore(backend), clock: () => DateTime.now());
     await previous.load();
@@ -139,16 +144,16 @@ void main() {
     await tester.runAsync(() => Future<void>.delayed(const Duration(milliseconds: 10)));
 
     await openHub(tester, speech: SpeechController(SpeechStore(backend)));
-    await tester.scrollUntilVisible(find.bySemanticsLabel('Mi progreso'), 200);
-    await tapAndSettle(tester, find.bySemanticsLabel('Mi progreso'));
-    expect(find.bySemanticsLabel('Palabras escuchadas: 2 de 100'), findsOneWidget);
+    await tester.scrollUntilVisible(find.bySemanticsLabel('Mis aventuras con Lolo'), 200);
+    await tapAndSettle(tester, find.bySemanticsLabel('Mis aventuras con Lolo'));
+    expect(find.bySemanticsLabel('Palabras escuchadas: 2 de 313'), findsOneWidget);
     expect(find.bySemanticsLabel('Frases escuchadas: 1 de 12'), findsOneWidget);
     expect(find.bySemanticsLabel('Frases ordenadas: 0 de 12'), findsOneWidget);
     expect(find.bySemanticsLabel('Días de práctica esta semana: 1 de 7'), findsOneWidget);
-    await tester.scrollUntilVisible(find.bySemanticsLabel('Familia: 1 de 10'), 150);
-    expect(find.bySemanticsLabel('Familia: 1 de 10'), findsOneWidget);
-    await tester.scrollUntilVisible(find.bySemanticsLabel('Animales: 1 de 10'), 150);
-    expect(find.bySemanticsLabel('Animales: 1 de 10'), findsOneWidget);
+    await tester.scrollUntilVisible(find.bySemanticsLabel('Familia: 1 de 23'), 150);
+    expect(find.bySemanticsLabel('Familia: 1 de 23'), findsOneWidget);
+    await tester.scrollUntilVisible(find.bySemanticsLabel('Animales: 1 de 31'), 150);
+    expect(find.bySemanticsLabel('Animales: 1 de 31'), findsOneWidget);
     await tester.scrollUntilVisible(find.textContaining('No es una evaluación del habla'), 300);
     expect(find.textContaining('No es una evaluación del habla'), findsOneWidget);
   });
