@@ -23,7 +23,21 @@ class SpeechProgress {
     Map<String, int>? activitiesDone,
     this.recordings = 0,
     this.micAllowed = true,
-  }) : wordsHeard = wordsHeard ?? {},
+    Set<String>? conversationsDone,
+    Set<String>? storiesHeard,
+    Set<String>? storiesQuizzed,
+    Set<String>? storiesTold,
+    Set<String>? expressionsPracticed,
+    Set<String>? listeningDone,
+    this.answers = 0,
+    this.stars = 0,
+  }) : conversationsDone = conversationsDone ?? {},
+       storiesHeard = storiesHeard ?? {},
+       storiesQuizzed = storiesQuizzed ?? {},
+       storiesTold = storiesTold ?? {},
+       expressionsPracticed = expressionsPracticed ?? {},
+       listeningDone = listeningDone ?? {},
+       wordsHeard = wordsHeard ?? {},
        phrasesHeard = phrasesHeard ?? {},
        phrasesOrdered = phrasesOrdered ?? {},
        practiceDays = practiceDays ?? {},
@@ -65,6 +79,30 @@ class SpeechProgress {
   /// Un adulto puede desactivar la práctica con el micrófono.
   bool micAllowed;
 
+  /// Fase 3: conversaciones terminadas con Lolo (ids).
+  final Set<String> conversationsDone;
+
+  /// Cuentos escuchados hasta el final (ids).
+  final Set<String> storiesHeard;
+
+  /// Cuentos cuyas preguntas de comprensión ha respondido (ids).
+  final Set<String> storiesQuizzed;
+
+  /// Historias de «Ahora cuéntamelo tú» que ha construido (ids).
+  final Set<String> storiesTold;
+
+  /// Necesidades y emociones que ha escuchado o construido (ids).
+  final Set<String> expressionsPracticed;
+
+  /// Ejercicios de «Escucho y respondo» resueltos (ids).
+  final Set<String> listeningDone;
+
+  /// Preguntas de comprensión respondidas (cuentos y ejercicios).
+  int answers;
+
+  /// Estrellas ganadas en «Aprendo a Hablar».
+  int stars;
+
   Map<String, dynamic> toJson() => {
     'format_version': formatVersion,
     'words_heard': wordsHeard.toList()..sort(),
@@ -79,6 +117,14 @@ class SpeechProgress {
     ),
     'recordings': recordings,
     'mic_allowed': micAllowed,
+    'conversations_done': conversationsDone.toList()..sort(),
+    'stories_heard': storiesHeard.toList()..sort(),
+    'stories_quizzed': storiesQuizzed.toList()..sort(),
+    'stories_told': storiesTold.toList()..sort(),
+    'expressions_practiced': expressionsPracticed.toList()..sort(),
+    'listening_done': listeningDone.toList()..sort(),
+    'answers': answers,
+    'stars': stars,
   };
 
   static SpeechProgress fromJson(Map<String, dynamic> json) {
@@ -98,6 +144,14 @@ class SpeechProgress {
       },
       recordings: json['recordings'] is int ? json['recordings'] as int : 0,
       micAllowed: json['mic_allowed'] is bool ? json['mic_allowed'] as bool : true,
+      conversationsDone: set('conversations_done'),
+      storiesHeard: set('stories_heard'),
+      storiesQuizzed: set('stories_quizzed'),
+      storiesTold: set('stories_told'),
+      expressionsPracticed: set('expressions_practiced'),
+      listeningDone: set('listening_done'),
+      answers: json['answers'] is int ? json['answers'] as int : 0,
+      stars: json['stars'] is int ? json['stars'] as int : 0,
     );
   }
 }
@@ -193,6 +247,47 @@ class SpeechController extends ChangeNotifier {
   });
   void markRecording() => _record(() {
     _progress.recordings++;
+    return true;
+  });
+
+  /// Fase 3. Cada actividad terminada da estrellas (solo la primera vez que
+  /// se termina cada conversación, cuento o historia, para no inflarlas).
+  void markConversationDone(String id) => _record(() {
+    if (!_progress.conversationsDone.add(id)) return true;
+    _progress.stars += 1;
+    return true;
+  });
+  void markStoryHeard(String id) => _record(() {
+    if (!_progress.storiesHeard.add(id)) return true;
+    _progress.stars += 1;
+    return true;
+  });
+  void markStoryQuizzed(String id) => _record(() {
+    if (!_progress.storiesQuizzed.add(id)) return true;
+    _progress.stars += 2;
+    return true;
+  });
+  void markStoryTold(String id) => _record(() {
+    if (!_progress.storiesTold.add(id)) return true;
+    _progress.stars += 2;
+    return true;
+  });
+  void markExpressionPracticed(String id) => _record(() => _progress.expressionsPracticed.add(id));
+
+  /// Un ejercicio de «Escucho y respondo» resuelto (sin estrella: la estrella
+  /// llega al terminar el nivel).
+  void markListeningDone(String id) => _record(() => _progress.listeningDone.add(id));
+
+  /// Un nivel de «Escucho y respondo» terminado: una estrella la primera vez.
+  void markListeningLevel(int level) => _record(() {
+    final key = 'escucho_nivel_$level';
+    final first = !_progress.activitiesDone.containsKey(key);
+    _progress.activitiesDone[key] = (_progress.activitiesDone[key] ?? 0) + 1;
+    if (first) _progress.stars += 1;
+    return true;
+  });
+  void markAnswer() => _record(() {
+    _progress.answers++;
     return true;
   });
 

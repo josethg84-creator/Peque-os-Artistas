@@ -9,7 +9,6 @@ import '../../services/app_services.dart';
 import '../../theme/app_colors.dart';
 import '../../widgets/kid_scaffold.dart';
 import '../speech_activities.dart';
-import '../speech_content.dart';
 import '../widgets/speech_widgets.dart';
 import 'speech_hub_screen.dart';
 
@@ -47,31 +46,63 @@ class SpeechQuizScreen extends StatelessWidget {
       titleIcon: icons[quiz],
       accent: colors[quiz]!,
       body: SpeechContentBuilder(
-        builder: (context, content) => _Quiz(quiz: quiz, content: content, seed: seed, color: colors[quiz]!),
+        builder: (context, content) => SpeechQuizBody(
+          build: (random) => quiz.build(content, random),
+          seed: seed,
+          color: colors[quiz]!,
+          onFinished: () => AppServices.of(context).speech.markActivityDone(quiz.kind),
+        ),
       ),
     );
   }
 }
 
-class _Quiz extends StatefulWidget {
-  const _Quiz({required this.quiz, required this.content, required this.seed, required this.color});
+/// Las preguntas, una a una, con sus respuestas en tarjetas. Se reutiliza en
+/// todas las actividades con preguntas (también en los cuentos y en «Escucho
+/// y respondo»).
+class SpeechQuizBody extends StatefulWidget {
+  const SpeechQuizBody({
+    super.key,
+    required this.build,
+    required this.color,
+    this.seed,
+    this.onFinished,
+    this.onAnswered,
+    this.finishedExtra,
+    this.slowButton = false,
+  });
 
-  final SpeechQuizKind quiz;
-  final SpeechContent content;
-  final int? seed;
+  /// Crea las preguntas (con el azar dado, para poder repetirlas en pruebas).
+  final List<QuizQuestion> Function(Random random) build;
   final Color color;
+  final int? seed;
+
+  /// Al terminar todas las preguntas.
+  final VoidCallback? onFinished;
+
+  /// Al acertar cada pregunta (su índice).
+  final void Function(int index)? onAnswered;
+
+  /// Algo más en la pantalla final (por ejemplo, ordenar las escenas).
+  final Widget? finishedExtra;
+
+  /// Botón «Despacio» para volver a oír la pregunta lentamente.
+  final bool slowButton;
 
   @override
-  State<_Quiz> createState() => _QuizState();
+  State<SpeechQuizBody> createState() => _QuizState();
 }
 
-class _QuizState extends State<_Quiz> {
+class _QuizState extends State<SpeechQuizBody> {
   late Random _random = Random(widget.seed);
-  late List<QuizQuestion> _questions = widget.quiz.build(widget.content, _random);
+  late List<QuizQuestion> _questions = widget.build(_random);
   int _index = 0;
   int _misses = 0;
   bool _solved = false;
   final _wrong = <int>{};
+
+  /// Pasos ya tocados de una instrucción en orden.
+  int _step = 0;
 
   QuizQuestion get _q => _questions[_index];
   bool get _finished => _index >= _questions.length;
@@ -82,16 +113,34 @@ class _QuizState extends State<_Quiz> {
     WidgetsBinding.instance.addPostFrameCallback((_) => _ask());
   }
 
-  void _ask() {
+  void _ask({bool slow = false}) {
     if (!mounted || _finished) return;
-    speak(context, _q.speech);
+    speak(context, _q.speech, slow: slow);
   }
+
+  int get _expected => _q.steps?[_step] ?? _q.answer;
 
   void _answer(int i) {
     if (_solved || _finished) return;
     final audio = AppServices.of(context).audio;
-    if (i == _q.answer) {
+    final steps = _q.steps;
+    if (steps != null && i == _expected && _step < steps.length - 1) {
+      // Un paso bien hecho de la instrucción: falta el siguiente.
+      setState(() {
+        _step++;
+        _misses = 0;
+        _wrong.clear();
+      });
+      unawaited(audio.play(SoundCue.correct));
+      speak(context, '¡Bien! ¿Y después?');
+      return;
+    }
+    // Tocar otra vez un paso ya hecho no cuenta como error.
+    if (steps != null && steps.take(_step).contains(i)) return;
+    if (i == _expected) {
       setState(() => _solved = true);
+      AppServices.of(context).speech.markAnswer();
+      widget.onAnswered?.call(_index);
       unawaited(audio.play(SoundCue.correct));
       speak(context, _q.afterCorrect ?? '¡Muy bien!');
     } else {
@@ -110,9 +159,10 @@ class _QuizState extends State<_Quiz> {
       _misses = 0;
       _solved = false;
       _wrong.clear();
+      _step = 0;
     });
     if (_finished) {
-      AppServices.of(context).speech.markActivityDone(widget.quiz.kind);
+      widget.onFinished?.call();
       unawaited(AppServices.of(context).audio.play(SoundCue.celebrate));
       speak(context, '¡Terminaste! ¡Qué bien lo has hecho!');
     } else {
@@ -123,11 +173,12 @@ class _QuizState extends State<_Quiz> {
   void _again() {
     setState(() {
       _random = Random(widget.seed == null ? null : widget.seed! + 1);
-      _questions = widget.quiz.build(widget.content, _random);
+      _questions = widget.build(_random);
       _index = 0;
       _misses = 0;
       _solved = false;
       _wrong.clear();
+      _step = 0;
     });
     _ask();
   }
@@ -143,6 +194,7 @@ class _QuizState extends State<_Quiz> {
             mainAxisSize: MainAxisSize.min,
             children: [
               const LoloBubble(text: '¡Terminaste! ¡Qué bien lo has hecho!', size: 90),
+              if (widget.finishedExtra case final extra?) ...[const SizedBox(height: 16), extra],
               const SizedBox(height: 24),
               Wrap(
                 spacing: 16,
@@ -202,12 +254,49 @@ class _QuizState extends State<_Quiz> {
                     onPressed: _ask,
                   ),
                 ),
+                if (widget.slowButton) ...[
+                  const SizedBox(width: 8),
+                  SizedBox(
+                    width: 96,
+                    child: SpeechActionButton(
+                      icon: Icons.slow_motion_video_rounded,
+                      label: 'Despacio',
+                      color: const Color(0xFF7E57C2),
+                      onPressed: () => _ask(slow: true),
+                    ),
+                  ),
+                ],
               ],
             ),
             Text(
               'Pregunta ${_index + 1} de ${_questions.length}',
               style: fredoka(16, color: AppColors.inkSoft),
             ),
+            if (q.scene case final scene?) ...[
+              const SizedBox(height: 12),
+              Center(
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 420),
+                  child: Semantics(
+                    container: true,
+                    image: true,
+                    label: 'Dibujo para mirar',
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(24),
+                      child: SpeechPictureView(picture: scene, tint: widget.color),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+            if (q.steps case final steps?)
+              Padding(
+                padding: const EdgeInsets.only(top: 4),
+                child: Text(
+                  _solved ? '¡Hecho en orden!' : 'Paso ${_step + 1} de ${steps.length}',
+                  style: fredoka(18, color: ink),
+                ),
+              ),
             if (q.prompt != null) ...[
               const SizedBox(height: 12),
               Container(
@@ -238,11 +327,15 @@ class _QuizState extends State<_Quiz> {
                     child: _OptionCard(
                       option: o,
                       color: widget.color,
-                      state: _solved && i == q.answer
+                      order: switch (q.steps?.indexOf(i)) {
+                        final k? when k >= 0 && (k < _step || _solved) => k + 1,
+                        _ => null,
+                      },
+                      state: _solved && i == q.answer || (q.steps?.take(_step).contains(i) ?? false)
                           ? _OptionState.right
                           : _wrong.contains(i)
                           ? _OptionState.wrong
-                          : (_misses >= 2 && i == q.answer ? _OptionState.hint : _OptionState.normal),
+                          : (_misses >= 2 && i == _expected ? _OptionState.hint : _OptionState.normal),
                       onTap: () => _answer(i),
                     ),
                   ),
@@ -271,9 +364,18 @@ class _QuizState extends State<_Quiz> {
 enum _OptionState { normal, right, wrong, hint }
 
 class _OptionCard extends StatelessWidget {
-  const _OptionCard({required this.option, required this.color, required this.state, required this.onTap});
+  const _OptionCard({
+    required this.option,
+    required this.color,
+    required this.state,
+    required this.onTap,
+    this.order,
+  });
 
   final QuizOption option;
+
+  /// En una instrucción en orden: el número del paso ya hecho.
+  final int? order;
   final Color color;
   final _OptionState state;
   final VoidCallback onTap;
@@ -292,7 +394,7 @@ class _OptionCard extends StatelessWidget {
     return Semantics(
       container: true,
       button: true,
-      label: option.label,
+      label: order == null ? option.label : '${option.label}, paso $order',
       selected: state == _OptionState.right,
       excludeSemantics: true,
       onTap: onTap,
@@ -330,6 +432,18 @@ class _OptionCard extends StatelessWidget {
                             decoration: const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
                             padding: const EdgeInsets.all(2),
                             child: SpeechPictureView(picture: badge, tint: color),
+                          ),
+                        ),
+                      if (order != null)
+                        Positioned(
+                          left: 0,
+                          top: 0,
+                          child: Container(
+                            width: 40,
+                            height: 40,
+                            alignment: Alignment.center,
+                            decoration: const BoxDecoration(color: Color(0xFF43A047), shape: BoxShape.circle),
+                            child: Text('$order', style: fredoka(24, color: Colors.white)),
                           ),
                         ),
                     ],

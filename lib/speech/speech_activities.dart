@@ -30,9 +30,18 @@ class QuizQuestion {
     this.prompt,
     this.spoken,
     this.afterCorrect,
+    this.scene,
+    this.steps,
   });
 
   final String instruction;
+
+  /// Dibujo grande que se mira antes de responder («Mira el dibujo…»).
+  final SpeechPicture? scene;
+
+  /// Instrucción de varios pasos: las opciones se tocan en este orden (y
+  /// [answer] es la última).
+  final List<int>? steps;
   final String? prompt;
 
   /// Lo que se dice al presentar la pregunta (por defecto, [instruction]).

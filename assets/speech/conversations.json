@@ -1,0 +1,4697 @@
+{
+ "format_version": 1,
+ "categories": [
+  {
+   "id": "saludos",
+   "name": "Saludos y despedidas",
+   "icon": "wave",
+   "color": "#FFB74D"
+  },
+  {
+   "id": "familia",
+   "name": "Mi familia",
+   "icon": "family",
+   "color": "#F48FB1"
+  },
+  {
+   "id": "emociones",
+   "name": "Mis emociones",
+   "icon": "emotions",
+   "color": "#FF8A80"
+  },
+  {
+   "id": "juguetes",
+   "name": "Mis juguetes",
+   "icon": "toys",
+   "color": "#B39DDB"
+  },
+  {
+   "id": "alimentos",
+   "name": "Mis alimentos",
+   "icon": "food",
+   "color": "#FFAB91"
+  },
+  {
+   "id": "animales",
+   "name": "Mis animales favoritos",
+   "icon": "pets",
+   "color": "#A5D6A7"
+  },
+  {
+   "id": "dia",
+   "name": "Mis actividades diarias",
+   "icon": "clock",
+   "color": "#90CAF9"
+  },
+  {
+   "id": "escuela",
+   "name": "Mi escuela",
+   "icon": "school",
+   "color": "#FFE082"
+  },
+  {
+   "id": "amigos",
+   "name": "Mis amigos",
+   "icon": "friends",
+   "color": "#80DEEA"
+  },
+  {
+   "id": "ayuda",
+   "name": "Pedir ayuda",
+   "icon": "help",
+   "color": "#CE93D8"
+  },
+  {
+   "id": "necesidades",
+   "name": "Expresar necesidades",
+   "icon": "water",
+   "color": "#81D4FA"
+  },
+  {
+   "id": "describir",
+   "name": "Describir objetos",
+   "icon": "search",
+   "color": "#C5E1A5"
+  }
+ ],
+ "conversations": [
+  {
+   "id": "saludo_hola",
+   "category": "saludos",
+   "title": "¡Hola, Lolo!",
+   "picture": {
+    "scene": "jardin",
+    "items": [
+     {
+      "p": {
+       "lolo": true
+      },
+      "x": 0.35,
+      "y": 0.6,
+      "s": 0.45
+     },
+     {
+      "p": {
+       "kid": {
+        "emotion": "feliz",
+        "girl": true,
+        "shirt": "#F48FB1",
+        "arms_up": true
+       }
+      },
+      "x": 0.7,
+      "y": 0.6,
+      "s": 0.45
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "¡Hola! ¿Cómo estás hoy?",
+     "options": [
+      {
+       "text": "Estoy feliz.",
+       "picture": {
+        "kid": {
+         "emotion": "feliz",
+         "girl": false,
+         "arms_up": true
+        }
+       },
+       "reply": "¡Qué alegría! Me gusta verte feliz.",
+       "next": "p2"
+      },
+      {
+       "text": "Estoy cansado.",
+       "picture": {
+        "kid": {
+         "emotion": "cansado",
+         "girl": false
+        }
+       },
+       "reply": "Gracias por contármelo. Descansar un poquito ayuda mucho.",
+       "next": "p2"
+      },
+      {
+       "text": "Estoy triste.",
+       "picture": {
+        "kid": {
+         "emotion": "triste",
+         "girl": false
+        }
+       },
+       "reply": "Gracias por decírmelo. Aquí estoy contigo.",
+       "next": "consuelo"
+      },
+      {
+       "text": "Estoy emocionado.",
+       "picture": {
+        "kid": {
+         "emotion": "emocionado",
+         "girl": true,
+         "shirt": "#F48FB1"
+        }
+       },
+       "reply": "¡Qué bien! Se nota que hoy tienes mucha energía.",
+       "next": "p2"
+      }
+     ]
+    },
+    "p2": {
+     "lolo": "¿Quieres jugar conmigo?",
+     "options": [
+      {
+       "text": "¡Sí, quiero jugar!",
+       "picture": {
+        "icon": "play",
+        "color": "#FB8C00"
+       },
+       "reply": "¡Bien! Me encanta jugar contigo.",
+       "next": "p3"
+      },
+      {
+       "text": "Ahora no, gracias.",
+       "picture": {
+        "icon": "thumb_up",
+        "color": "#5C6BC0"
+       },
+       "reply": "Está bien. Podemos jugar en otro momento.",
+       "next": "p3"
+      },
+      {
+       "text": "Quiero hablar.",
+       "picture": {
+        "icon": "talk",
+        "color": "#26A69A"
+       },
+       "reply": "¡Claro! Hablar juntos también es divertido.",
+       "next": "p3"
+      }
+     ]
+    },
+    "p3": {
+     "lolo": "¡Me tengo que ir! ¿Cómo nos despedimos?",
+     "options": [
+      {
+       "text": "¡Adiós, Lolo!",
+       "picture": {
+        "icon": "wave",
+        "color": "#FFB300"
+       },
+       "reply": "¡Adiós! Fue un gusto hablar contigo."
+      },
+      {
+       "text": "¡Hasta mañana!",
+       "picture": {
+        "icon": "moon",
+        "color": "#5C6BC0"
+       },
+       "reply": "¡Hasta mañana! Que descanses."
+      },
+      {
+       "text": "¡Nos vemos pronto!",
+       "picture": {
+        "icon": "love",
+        "color": "#E91E63"
+       },
+       "reply": "¡Nos vemos pronto, amigo!"
+      }
+     ]
+    },
+    "consuelo": {
+     "lolo": "¿Quieres que hagamos algo juntos para sentirnos mejor?",
+     "options": [
+      {
+       "text": "Un abrazo.",
+       "picture": {
+        "icon": "help",
+        "color": "#E91E63"
+       },
+       "reply": "¡Aquí tienes un abrazo grande de Lolo!",
+       "next": "p2"
+      },
+      {
+       "text": "Respirar despacio.",
+       "picture": {
+        "kid": {
+         "emotion": "tranquilo",
+         "girl": false
+        }
+       },
+       "reply": "Respiremos juntos: tomamos aire… y lo soltamos despacio.",
+       "next": "p2"
+      },
+      {
+       "text": "Escuchar música.",
+       "picture": {
+        "icon": "dance",
+        "color": "#AB47BC"
+       },
+       "reply": "La música puede ayudarnos a sentirnos mejor.",
+       "next": "p2"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Hasta la próxima! Me encantó saludarte."
+  },
+  {
+   "id": "saludo_nombre",
+   "category": "saludos",
+   "title": "Nos presentamos",
+   "picture": {
+    "scene": "parque",
+    "items": [
+     {
+      "p": {
+       "lolo": true
+      },
+      "x": 0.3,
+      "y": 0.58,
+      "s": 0.42
+     },
+     {
+      "p": {
+       "kid": {
+        "emotion": "feliz",
+        "girl": false,
+        "shirt": "#64B5F6"
+       }
+      },
+      "x": 0.72,
+      "y": 0.6,
+      "s": 0.45
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "¡Hola! Yo soy Lolo, un lorito. ¿Cómo te saludas tú?",
+     "options": [
+      {
+       "text": "¡Hola, Lolo!",
+       "picture": {
+        "icon": "wave",
+        "color": "#FFB300"
+       },
+       "reply": "¡Hola! ¡Qué bonito saludo!",
+       "next": "p2"
+      },
+      {
+       "text": "¡Buenos días!",
+       "picture": {
+        "icon": "sun",
+        "color": "#FFB300"
+       },
+       "reply": "¡Buenos días! Que tengas un día precioso.",
+       "next": "p2"
+      },
+      {
+       "text": "¡Buenas tardes!",
+       "picture": {
+        "icon": "cloud",
+        "color": "#64B5F6"
+       },
+       "reply": "¡Buenas tardes! Qué gusto verte.",
+       "next": "p2"
+      }
+     ]
+    },
+    "p2": {
+     "lolo": "¿Qué le dices a alguien que acabas de conocer?",
+     "options": [
+      {
+       "text": "Mucho gusto.",
+       "picture": {
+        "icon": "love",
+        "color": "#E91E63"
+       },
+       "reply": "¡Muy bien! «Mucho gusto» es muy amable.",
+       "next": "p3"
+      },
+      {
+       "text": "¿Quieres jugar?",
+       "picture": {
+        "icon": "play",
+        "color": "#FB8C00"
+       },
+       "reply": "¡Qué buena idea para hacer amigos!",
+       "next": "p3"
+      },
+      {
+       "text": "Me llamo… y tú, ¿cómo te llamas?",
+       "picture": {
+        "icon": "talk",
+        "color": "#26A69A"
+       },
+       "reply": "¡Perfecto! Así nos presentamos.",
+       "next": "p3"
+      }
+     ]
+    },
+    "p3": {
+     "lolo": "¿Cómo te despides de tus amigos?",
+     "options": [
+      {
+       "text": "¡Adiós!",
+       "picture": {
+        "icon": "wave",
+        "color": "#FFB300"
+       },
+       "reply": "¡Adiós! Un saludo con la mano también ayuda."
+      },
+      {
+       "text": "¡Hasta luego!",
+       "picture": {
+        "icon": "clock",
+        "color": "#00897B"
+       },
+       "reply": "¡Hasta luego! Muy bien dicho."
+      },
+      {
+       "text": "¡Chao!",
+       "picture": {
+        "icon": "love",
+        "color": "#E91E63"
+       },
+       "reply": "¡Chao, chao!"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Mucho gusto! Hasta pronto."
+  },
+  {
+   "id": "saludo_noche",
+   "category": "saludos",
+   "title": "Buenas noches",
+   "picture": {
+    "scene": "noche",
+    "items": [
+     {
+      "p": {
+       "lolo": true
+      },
+      "x": 0.3,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "kid": {
+        "emotion": "tranquilo",
+        "girl": true,
+        "shirt": "#F48FB1"
+       }
+      },
+      "x": 0.7,
+      "y": 0.62,
+      "s": 0.45
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "Ya es de noche. ¿Qué decimos antes de dormir?",
+     "options": [
+      {
+       "text": "Buenas noches.",
+       "picture": {
+        "icon": "moon",
+        "color": "#5C6BC0"
+       },
+       "reply": "¡Buenas noches! Qué palabras tan bonitas.",
+       "next": "p2"
+      },
+      {
+       "text": "Que descanses.",
+       "picture": {
+        "icon": "sleep",
+        "color": "#5C6BC0"
+       },
+       "reply": "Gracias. ¡Que descanses tú también!",
+       "next": "p2"
+      },
+      {
+       "text": "Hasta mañana.",
+       "picture": {
+        "icon": "sun",
+        "color": "#FFB300"
+       },
+       "reply": "¡Hasta mañana! Mañana será otro gran día.",
+       "next": "p2"
+      }
+     ]
+    },
+    "p2": {
+     "lolo": "¿Qué haces antes de ir a la cama?",
+     "options": [
+      {
+       "text": "Me lavo los dientes.",
+       "picture": {
+        "icon": "wash",
+        "color": "#29B6F6"
+       },
+       "reply": "¡Muy bien! Los dientes quedan limpios y brillantes.",
+       "next": "p3"
+      },
+      {
+       "text": "Me pongo el pijama.",
+       "picture": {
+        "icon": "bed",
+        "color": "#5C6BC0"
+       },
+       "reply": "¡Qué cómodo es el pijama!",
+       "next": "p3"
+      },
+      {
+       "text": "Escucho un cuento.",
+       "picture": {
+        "icon": "read",
+        "color": "#8E24AA"
+       },
+       "reply": "¡A mí también me encantan los cuentos!",
+       "next": "p3"
+      }
+     ]
+    },
+    "p3": {
+     "lolo": "¿A quién le das las buenas noches?",
+     "options": [
+      {
+       "text": "A mamá.",
+       "picture": {
+        "icon": "woman",
+        "color": "#AB47BC"
+       },
+       "reply": "¡Qué bonito! Mamá también te quiere."
+      },
+      {
+       "text": "A papá.",
+       "picture": {
+        "icon": "man",
+        "color": "#3949AB"
+       },
+       "reply": "¡Qué bonito! Papá estará contento."
+      },
+      {
+       "text": "A mi peluche.",
+       "picture": {
+        "drawing": "animal_oso"
+       },
+       "reply": "¡Tu peluche te acompaña toda la noche!"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Buenas noches! Que sueñes cosas bonitas."
+  },
+  {
+   "id": "familia_quien",
+   "category": "familia",
+   "title": "Mi familia",
+   "picture": {
+    "scene": "casa",
+    "items": [
+     {
+      "p": {
+       "icon": "family",
+       "color": "#F4511E"
+      },
+      "x": 0.5,
+      "y": 0.6,
+      "s": 0.5
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "¿Con quién vives en tu casa?",
+     "options": [
+      {
+       "text": "Con mamá y papá.",
+       "picture": {
+        "icon": "family",
+        "color": "#F4511E"
+       },
+       "reply": "¡Qué bonita familia!",
+       "next": "p2"
+      },
+      {
+       "text": "Con mi abuela.",
+       "picture": {
+        "icon": "elderly_woman",
+        "color": "#8E24AA"
+       },
+       "reply": "¡Las abuelas cuentan historias maravillosas!",
+       "next": "p2"
+      },
+      {
+       "text": "Con mis hermanos.",
+       "picture": {
+        "icon": "friends",
+        "color": "#00ACC1"
+       },
+       "reply": "¡Con hermanos siempre hay alguien para jugar!",
+       "next": "p2"
+      }
+     ]
+    },
+    "p2": {
+     "lolo": "¿Qué te gusta hacer con tu familia?",
+     "options": [
+      {
+       "text": "Jugar juntos.",
+       "picture": {
+        "icon": "play",
+        "color": "#FB8C00"
+       },
+       "reply": "¡Jugar en familia es muy divertido!",
+       "next": "p3"
+      },
+      {
+       "text": "Comer juntos.",
+       "picture": {
+        "icon": "eat",
+        "color": "#F4511E"
+       },
+       "reply": "¡Comer juntos es un momento especial!",
+       "next": "p3"
+      },
+      {
+       "text": "Pasear.",
+       "picture": {
+        "icon": "walk",
+        "color": "#00897B"
+       },
+       "reply": "¡Pasear juntos es genial!",
+       "next": "p3"
+      }
+     ]
+    },
+    "p3": {
+     "lolo": "¿Cómo le dices a tu familia que la quieres?",
+     "options": [
+      {
+       "text": "Con un abrazo.",
+       "picture": {
+        "icon": "help",
+        "color": "#E91E63"
+       },
+       "reply": "¡Los abrazos dicen mucho!"
+      },
+      {
+       "text": "Diciendo «te quiero».",
+       "picture": {
+        "icon": "love",
+        "color": "#E91E63"
+       },
+       "reply": "¡«Te quiero» son palabras mágicas!"
+      },
+      {
+       "text": "Con un dibujo.",
+       "picture": {
+        "icon": "paint",
+        "color": "#E91E63"
+       },
+       "reply": "¡Un dibujo hecho por ti es un regalo precioso!"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Saluda a tu familia de mi parte!"
+  },
+  {
+   "id": "familia_ayudo",
+   "category": "familia",
+   "title": "Ayudo en casa",
+   "picture": {
+    "scene": "cocina",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "feliz",
+        "girl": true,
+        "shirt": "#F48FB1",
+        "arms_up": true
+       }
+      },
+      "x": 0.5,
+      "y": 0.58,
+      "s": 0.5
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "¿Cómo ayudas en casa?",
+     "options": [
+      {
+       "text": "Guardo mis juguetes.",
+       "picture": {
+        "icon": "toys",
+        "color": "#FB8C00"
+       },
+       "reply": "¡Muy bien! Así todo queda ordenado.",
+       "next": "p2"
+      },
+      {
+       "text": "Pongo la mesa.",
+       "picture": {
+        "icon": "table",
+        "color": "#795548"
+       },
+       "reply": "¡Qué gran ayuda!",
+       "next": "p2"
+      },
+      {
+       "text": "Riego las plantas.",
+       "picture": {
+        "icon": "flower",
+        "color": "#43A047"
+       },
+       "reply": "¡Las plantas te lo agradecen!",
+       "next": "p2"
+      }
+     ]
+    },
+    "p2": {
+     "lolo": "¿Qué dices cuando alguien te ayuda?",
+     "options": [
+      {
+       "text": "Gracias.",
+       "picture": {
+        "icon": "love",
+        "color": "#E91E63"
+       },
+       "reply": "¡Exacto! «Gracias» es muy importante.",
+       "next": "p3"
+      },
+      {
+       "text": "Muchas gracias.",
+       "picture": {
+        "icon": "thumb_up",
+        "color": "#5C6BC0"
+       },
+       "reply": "¡Muy amable!",
+       "next": "p3"
+      },
+      {
+       "text": "Eres muy amable.",
+       "picture": {
+        "icon": "help",
+        "color": "#26A69A"
+       },
+       "reply": "¡Qué bonito decir eso!",
+       "next": "p3"
+      }
+     ]
+    },
+    "p3": {
+     "lolo": "¿Cómo te sientes cuando ayudas?",
+     "options": [
+      {
+       "text": "Contento.",
+       "picture": {
+        "kid": {
+         "emotion": "feliz",
+         "girl": false,
+         "arms_up": true
+        }
+       },
+       "reply": "¡Ayudar hace sentir bien!"
+      },
+      {
+       "text": "Orgulloso.",
+       "picture": {
+        "kid": {
+         "emotion": "emocionado",
+         "girl": false,
+         "shirt": "#64B5F6"
+        }
+       },
+       "reply": "¡Puedes estar orgulloso!"
+      },
+      {
+       "text": "Cansado.",
+       "picture": {
+        "kid": {
+         "emotion": "cansado",
+         "girl": false
+        }
+       },
+       "reply": "A veces ayudar cansa. ¡Luego toca descansar!"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Eres una gran ayuda en casa!"
+  },
+  {
+   "id": "familia_abuelos",
+   "category": "familia",
+   "title": "Mis abuelos",
+   "picture": {
+    "scene": "casa",
+    "items": [
+     {
+      "p": {
+       "icon": "elderly",
+       "color": "#6D4C41"
+      },
+      "x": 0.35,
+      "y": 0.6,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "elderly_woman",
+       "color": "#8E24AA"
+      },
+      "x": 0.68,
+      "y": 0.6,
+      "s": 0.4
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "¿Qué haces con tus abuelos?",
+     "options": [
+      {
+       "text": "Escucho sus cuentos.",
+       "picture": {
+        "icon": "read",
+        "color": "#8E24AA"
+       },
+       "reply": "¡Los abuelos saben muchas historias!",
+       "next": "p2"
+      },
+      {
+       "text": "Cocinamos juntos.",
+       "picture": {
+        "icon": "cake",
+        "color": "#AB47BC"
+       },
+       "reply": "¡Qué rico!",
+       "next": "p2"
+      },
+      {
+       "text": "Paseamos por el parque.",
+       "picture": {
+        "icon": "tree",
+        "color": "#2E7D32"
+       },
+       "reply": "¡Qué bonito paseo!",
+       "next": "p2"
+      }
+     ]
+    },
+    "p2": {
+     "lolo": "¿Qué comida te preparan?",
+     "options": [
+      {
+       "text": "Sopa.",
+       "picture": {
+        "icon": "soup",
+        "color": "#FB8C00"
+       },
+       "reply": "¡Una sopa calentita!",
+       "next": "p3"
+      },
+      {
+       "text": "Pastel.",
+       "picture": {
+        "icon": "cake",
+        "color": "#AB47BC"
+       },
+       "reply": "¡Mmm, qué rico!",
+       "next": "p3"
+      },
+      {
+       "text": "Fruta.",
+       "picture": {
+        "drawing": "fruta_manzana",
+        "colors": {
+         "manzana": "#E53935",
+         "hoja": "#43A047",
+         "tallo": "#8D5524",
+         "brillo": "#FFFFFF"
+        }
+       },
+       "reply": "¡La fruta está muy rica!",
+       "next": "p3"
+      }
+     ]
+    },
+    "p3": {
+     "lolo": "¿Qué les dices cuando te visitan?",
+     "options": [
+      {
+       "text": "¡Qué bien que vinieron!",
+       "picture": {
+        "icon": "love",
+        "color": "#E91E63"
+       },
+       "reply": "¡Seguro que se ponen muy contentos!"
+      },
+      {
+       "text": "¡Los extrañaba!",
+       "picture": {
+        "kid": {
+         "emotion": "feliz",
+         "girl": true,
+         "shirt": "#F48FB1"
+        }
+       },
+       "reply": "¡Qué bonito decirlo!"
+      },
+      {
+       "text": "¿Quieren jugar?",
+       "picture": {
+        "icon": "play",
+        "color": "#FB8C00"
+       },
+       "reply": "¡A jugar todos juntos!"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Un saludo a tus abuelos!"
+  },
+  {
+   "id": "emocion_hoy",
+   "category": "emociones",
+   "title": "¿Cómo me siento?",
+   "picture": {
+    "scene": "jardin",
+    "items": [
+     {
+      "p": {
+       "lolo": true
+      },
+      "x": 0.3,
+      "y": 0.6,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "kid": {
+        "emotion": "tranquilo",
+        "girl": true,
+        "shirt": "#F48FB1"
+       }
+      },
+      "x": 0.7,
+      "y": 0.6,
+      "s": 0.45
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "¿Cómo te sientes ahora?",
+     "options": [
+      {
+       "text": "Feliz.",
+       "picture": {
+        "kid": {
+         "emotion": "feliz",
+         "girl": false,
+         "arms_up": true
+        }
+       },
+       "reply": "¡Qué bien! ¿Quieres contarme qué te hace feliz?",
+       "next": "feliz"
+      },
+      {
+       "text": "Triste.",
+       "picture": {
+        "kid": {
+         "emotion": "triste",
+         "girl": false
+        }
+       },
+       "reply": "Está bien sentirse triste a veces. Gracias por contármelo.",
+       "next": "triste"
+      },
+      {
+       "text": "Enojado.",
+       "picture": {
+        "kid": {
+         "emotion": "enojado",
+         "girl": false
+        }
+       },
+       "reply": "Todos nos enojamos a veces. Gracias por decírmelo.",
+       "next": "enojado"
+      }
+     ]
+    },
+    "feliz": {
+     "lolo": "¿Qué te hace feliz?",
+     "options": [
+      {
+       "text": "Jugar con mis amigos.",
+       "picture": {
+        "icon": "friends",
+        "color": "#00ACC1"
+       },
+       "reply": "¡Jugar con amigos es genial!"
+      },
+      {
+       "text": "Estar con mi familia.",
+       "picture": {
+        "icon": "family",
+        "color": "#F4511E"
+       },
+       "reply": "¡La familia nos hace sentir bien!"
+      },
+      {
+       "text": "Pintar.",
+       "picture": {
+        "icon": "paint",
+        "color": "#E91E63"
+       },
+       "reply": "¡A mí también me encanta pintar!"
+      }
+     ]
+    },
+    "triste": {
+     "lolo": "¿Qué te puede ayudar a sentirte mejor?",
+     "options": [
+      {
+       "text": "Un abrazo.",
+       "picture": {
+        "icon": "help",
+        "color": "#E91E63"
+       },
+       "reply": "¡Un abrazo grande de Lolo!"
+      },
+      {
+       "text": "Hablar con alguien.",
+       "picture": {
+        "icon": "talk",
+        "color": "#26A69A"
+       },
+       "reply": "Hablar con alguien que te quiere ayuda mucho."
+      },
+      {
+       "text": "Descansar.",
+       "picture": {
+        "icon": "rest",
+        "color": "#5C6BC0"
+       },
+       "reply": "Descansar un ratito también ayuda."
+      }
+     ]
+    },
+    "enojado": {
+     "lolo": "¿Qué podemos hacer cuando estamos enojados?",
+     "options": [
+      {
+       "text": "Respirar despacio.",
+       "picture": {
+        "kid": {
+         "emotion": "tranquilo",
+         "girl": false
+        }
+       },
+       "reply": "Muy bien: tomamos aire y lo soltamos despacio."
+      },
+      {
+       "text": "Contar hasta diez.",
+       "picture": {
+        "icon": "clock",
+        "color": "#00897B"
+       },
+       "reply": "¡Uno, dos, tres…! Contar ayuda a calmarse."
+      },
+      {
+       "text": "Decir lo que siento.",
+       "picture": {
+        "icon": "talk",
+        "color": "#26A69A"
+       },
+       "reply": "Decir lo que sentimos con palabras ayuda mucho."
+      }
+     ]
+    }
+   },
+   "goodbye": "Gracias por contarme cómo te sientes. ¡Todas las emociones son importantes!"
+  },
+  {
+   "id": "emocion_miedo",
+   "category": "emociones",
+   "title": "Cuando tengo miedo",
+   "picture": {
+    "scene": "noche",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "asustado",
+        "girl": false,
+        "shirt": "#64B5F6"
+       }
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "A veces sentimos miedo. ¿Cuándo sientes miedo tú?",
+     "options": [
+      {
+       "text": "Cuando está oscuro.",
+       "picture": {
+        "icon": "moon",
+        "color": "#5C6BC0"
+       },
+       "reply": "La oscuridad puede dar miedo. Una lucecita ayuda.",
+       "next": "p2"
+      },
+      {
+       "text": "Cuando hay truenos.",
+       "picture": {
+        "icon": "cloud",
+        "color": "#78909C"
+       },
+       "reply": "Los truenos suenan fuerte, pero estás a salvo.",
+       "next": "p2"
+      },
+      {
+       "text": "Cuando me pierdo.",
+       "picture": {
+        "icon": "search",
+        "color": "#8D6E63"
+       },
+       "reply": "Si te pierdes, busca a un adulto de confianza.",
+       "next": "p2"
+      }
+     ]
+    },
+    "p2": {
+     "lolo": "¿Qué te ayuda cuando tienes miedo?",
+     "options": [
+      {
+       "text": "Abrazar a mamá o papá.",
+       "picture": {
+        "icon": "family",
+        "color": "#F4511E"
+       },
+       "reply": "¡Un abrazo hace que el miedo se haga pequeñito!",
+       "next": "p3"
+      },
+      {
+       "text": "Mi peluche.",
+       "picture": {
+        "drawing": "animal_oso"
+       },
+       "reply": "¡Los peluches son grandes compañeros!",
+       "next": "p3"
+      },
+      {
+       "text": "Una luz encendida.",
+       "picture": {
+        "icon": "lamp",
+        "color": "#FBC02D"
+       },
+       "reply": "¡Una lucecita ayuda mucho!",
+       "next": "p3"
+      }
+     ]
+    },
+    "p3": {
+     "lolo": "¿Qué le dices a un amigo que tiene miedo?",
+     "options": [
+      {
+       "text": "No estás solo.",
+       "picture": {
+        "icon": "friends",
+        "color": "#00ACC1"
+       },
+       "reply": "¡Qué bonito! Así tu amigo se siente acompañado."
+      },
+      {
+       "text": "Yo te ayudo.",
+       "picture": {
+        "icon": "help",
+        "color": "#26A69A"
+       },
+       "reply": "¡Eres un gran amigo!"
+      },
+      {
+       "text": "Vamos con un adulto.",
+       "picture": {
+        "icon": "woman",
+        "color": "#AB47BC"
+       },
+       "reply": "¡Muy buena idea!"
+      }
+     ]
+    }
+   },
+   "goodbye": "Sentir miedo es normal. ¡Siempre puedes pedir ayuda!"
+  },
+  {
+   "id": "emocion_sorpresa",
+   "category": "emociones",
+   "title": "¡Qué sorpresa!",
+   "picture": {
+    "scene": "casa",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "sorprendido",
+        "girl": true,
+        "shirt": "#F48FB1"
+       }
+      },
+      "x": 0.4,
+      "y": 0.6,
+      "s": 0.45
+     },
+     {
+      "p": {
+       "icon": "gift",
+       "color": "#E53935"
+      },
+      "x": 0.75,
+      "y": 0.7,
+      "s": 0.25
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "¡Mira, un regalo! ¿Cómo te sientes?",
+     "options": [
+      {
+       "text": "Sorprendido.",
+       "picture": {
+        "kid": {
+         "emotion": "sorprendido",
+         "girl": false
+        }
+       },
+       "reply": "¡Qué sorpresa tan grande!",
+       "next": "p2"
+      },
+      {
+       "text": "Emocionado.",
+       "picture": {
+        "kid": {
+         "emotion": "emocionado",
+         "girl": true,
+         "shirt": "#F48FB1"
+        }
+       },
+       "reply": "¡Uy, qué emoción!",
+       "next": "p2"
+      },
+      {
+       "text": "Curioso.",
+       "picture": {
+        "icon": "search",
+        "color": "#8D6E63"
+       },
+       "reply": "¿Qué habrá dentro?",
+       "next": "p2"
+      }
+     ]
+    },
+    "p2": {
+     "lolo": "¿Qué dices cuando te dan un regalo?",
+     "options": [
+      {
+       "text": "¡Gracias!",
+       "picture": {
+        "icon": "love",
+        "color": "#E91E63"
+       },
+       "reply": "¡Muy bien dicho!",
+       "next": "p3"
+      },
+      {
+       "text": "¡Qué bonito!",
+       "picture": {
+        "icon": "star",
+        "color": "#FBC02D"
+       },
+       "reply": "¡Seguro que a quien te lo dio le encanta oírlo!",
+       "next": "p3"
+      },
+      {
+       "text": "¡Me encanta!",
+       "picture": {
+        "kid": {
+         "emotion": "feliz",
+         "girl": false,
+         "arms_up": true
+        }
+       },
+       "reply": "¡Qué alegría!",
+       "next": "p3"
+      }
+     ]
+    },
+    "p3": {
+     "lolo": "¿A quién le darías tú un regalo?",
+     "options": [
+      {
+       "text": "A mi mamá.",
+       "picture": {
+        "icon": "woman",
+        "color": "#AB47BC"
+       },
+       "reply": "¡Qué detalle tan bonito!"
+      },
+      {
+       "text": "A mi amigo.",
+       "picture": {
+        "icon": "friends",
+        "color": "#00ACC1"
+       },
+       "reply": "¡Tu amigo se pondrá muy contento!"
+      },
+      {
+       "text": "A Lolo.",
+       "picture": {
+        "lolo": true
+       },
+       "reply": "¿A mí? ¡Gracias, qué ilusión!"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Las sorpresas son muy divertidas!"
+  },
+  {
+   "id": "juguete_favorito",
+   "category": "juguetes",
+   "title": "Mi juguete favorito",
+   "picture": {
+    "scene": "casa",
+    "items": [
+     {
+      "p": {
+       "icon": "toys",
+       "color": "#FB8C00"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.45
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "¿Cuál es tu juguete favorito?",
+     "options": [
+      {
+       "text": "La pelota.",
+       "picture": {
+        "icon": "ball",
+        "color": "#E53935"
+       },
+       "reply": "¡La pelota es muy divertida!",
+       "next": "p2"
+      },
+      {
+       "text": "Mi osito.",
+       "picture": {
+        "drawing": "animal_oso"
+       },
+       "reply": "¡Los ositos son muy suaves!",
+       "next": "p2"
+      },
+      {
+       "text": "El tren.",
+       "picture": {
+        "drawing": "vehiculo_tren"
+       },
+       "reply": "¡Chu, chu! ¡Qué bonito tren!",
+       "next": "p2"
+      }
+     ]
+    },
+    "p2": {
+     "lolo": "¿Dónde juegas con tus juguetes?",
+     "options": [
+      {
+       "text": "En mi cuarto.",
+       "picture": {
+        "icon": "bed",
+        "color": "#5C6BC0"
+       },
+       "reply": "¡Tu cuarto es un lugar genial para jugar!",
+       "next": "p3"
+      },
+      {
+       "text": "En el parque.",
+       "picture": {
+        "icon": "tree",
+        "color": "#2E7D32"
+       },
+       "reply": "¡En el parque hay mucho espacio!",
+       "next": "p3"
+      },
+      {
+       "text": "En el jardín.",
+       "picture": {
+        "icon": "flower",
+        "color": "#EC407A"
+       },
+       "reply": "¡Al aire libre es muy divertido!",
+       "next": "p3"
+      }
+     ]
+    },
+    "p3": {
+     "lolo": "¿Compartes tus juguetes con tus amigos?",
+     "options": [
+      {
+       "text": "Sí, me gusta compartir.",
+       "picture": {
+        "icon": "friends",
+        "color": "#00ACC1"
+       },
+       "reply": "¡Compartir es muy bonito!"
+      },
+      {
+       "text": "A veces.",
+       "picture": {
+        "icon": "thumb_up",
+        "color": "#5C6BC0"
+       },
+       "reply": "Está bien. ¡Poco a poco!"
+      },
+      {
+       "text": "Jugamos por turnos.",
+       "picture": {
+        "icon": "clock",
+        "color": "#00897B"
+       },
+       "reply": "¡Los turnos son una gran idea!"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Qué bien juegas! Hasta pronto."
+  },
+  {
+   "id": "juguete_ordenar",
+   "category": "juguetes",
+   "title": "Recogemos los juguetes",
+   "picture": {
+    "scene": "dormitorio",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "feliz",
+        "girl": false,
+        "shirt": "#64B5F6"
+       }
+      },
+      "x": 0.6,
+      "y": 0.62,
+      "s": 0.45
+     },
+     {
+      "p": {
+       "icon": "toys",
+       "color": "#FB8C00"
+      },
+      "x": 0.25,
+      "y": 0.78,
+      "s": 0.22
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "¡Terminamos de jugar! ¿Qué hacemos con los juguetes?",
+     "options": [
+      {
+       "text": "Los guardamos.",
+       "picture": {
+        "icon": "toys",
+        "color": "#FB8C00"
+       },
+       "reply": "¡Muy bien! Cada juguete a su lugar.",
+       "next": "p2"
+      },
+      {
+       "text": "Los ordenamos juntos.",
+       "picture": {
+        "icon": "friends",
+        "color": "#00ACC1"
+       },
+       "reply": "¡Juntos es más rápido!",
+       "next": "p2"
+      },
+      {
+       "text": "Pido ayuda.",
+       "picture": {
+        "icon": "help",
+        "color": "#26A69A"
+       },
+       "reply": "¡Pedir ayuda está muy bien!",
+       "next": "p2"
+      }
+     ]
+    },
+    "p2": {
+     "lolo": "¿Dónde guardas la pelota?",
+     "options": [
+      {
+       "text": "En la caja.",
+       "picture": {
+        "icon": "gift",
+        "color": "#8D6E63"
+       },
+       "reply": "¡Perfecto!",
+       "next": "p3"
+      },
+      {
+       "text": "En el armario.",
+       "picture": {
+        "icon": "door",
+        "color": "#6D4C41"
+       },
+       "reply": "¡Bien guardada!",
+       "next": "p3"
+      },
+      {
+       "text": "Debajo de la cama.",
+       "picture": {
+        "icon": "bed",
+        "color": "#5C6BC0"
+       },
+       "reply": "¡Ahí también está ordenada!",
+       "next": "p3"
+      }
+     ]
+    },
+    "p3": {
+     "lolo": "¿Cómo queda tu cuarto ahora?",
+     "options": [
+      {
+       "text": "Muy ordenado.",
+       "picture": {
+        "icon": "star",
+        "color": "#FBC02D"
+       },
+       "reply": "¡Qué bien lo hiciste!"
+      },
+      {
+       "text": "Bonito.",
+       "picture": {
+        "kid": {
+         "emotion": "feliz",
+         "girl": false,
+         "arms_up": true
+        }
+       },
+       "reply": "¡Da gusto verlo así!"
+      },
+      {
+       "text": "Limpio.",
+       "picture": {
+        "icon": "wash",
+        "color": "#29B6F6"
+       },
+       "reply": "¡Brilla de limpio!"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Qué ordenado! Eres un gran ayudante."
+  },
+  {
+   "id": "juguete_inventar",
+   "category": "juguetes",
+   "title": "Inventamos un juego",
+   "picture": {
+    "scene": "parque",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "emocionado",
+        "girl": true,
+        "shirt": "#F48FB1"
+       }
+      },
+      "x": 0.35,
+      "y": 0.6,
+      "s": 0.45
+     },
+     {
+      "p": {
+       "kid": {
+        "emotion": "feliz",
+        "girl": false,
+        "shirt": "#64B5F6",
+        "arms_up": true
+       }
+      },
+      "x": 0.7,
+      "y": 0.6,
+      "s": 0.45
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "¡Vamos a inventar un juego! ¿Con qué jugamos?",
+     "options": [
+      {
+       "text": "Con una pelota.",
+       "picture": {
+        "icon": "ball",
+        "color": "#E53935"
+       },
+       "reply": "¡Podemos lanzarla y atraparla!",
+       "next": "p2"
+      },
+      {
+       "text": "Con bloques.",
+       "picture": {
+        "icon": "blocks",
+        "color": "#43A047"
+       },
+       "reply": "¡Construiremos una torre altísima!",
+       "next": "p2"
+      },
+      {
+       "text": "Con pinturas.",
+       "picture": {
+        "icon": "paint",
+        "color": "#E91E63"
+       },
+       "reply": "¡Haremos un dibujo gigante!",
+       "next": "p2"
+      }
+     ]
+    },
+    "p2": {
+     "lolo": "¿Con quién jugamos?",
+     "options": [
+      {
+       "text": "Con mis amigos.",
+       "picture": {
+        "icon": "friends",
+        "color": "#00ACC1"
+       },
+       "reply": "¡Cuantos más, mejor!",
+       "next": "p3"
+      },
+      {
+       "text": "Con mi hermano.",
+       "picture": {
+        "icon": "boy",
+        "color": "#1E88E5"
+       },
+       "reply": "¡Qué divertido!",
+       "next": "p3"
+      },
+      {
+       "text": "Contigo, Lolo.",
+       "picture": {
+        "lolo": true
+       },
+       "reply": "¡Yupi! ¡Me encanta!",
+       "next": "p3"
+      }
+     ]
+    },
+    "p3": {
+     "lolo": "¿Cómo se llama nuestro juego?",
+     "options": [
+      {
+       "text": "El gran juego.",
+       "picture": {
+        "icon": "star",
+        "color": "#FBC02D"
+       },
+       "reply": "¡Qué buen nombre!"
+      },
+      {
+       "text": "La aventura.",
+       "picture": {
+        "icon": "mountain",
+        "color": "#6D4C41"
+       },
+       "reply": "¡Una aventura increíble!"
+      },
+      {
+       "text": "El juego de Lolo.",
+       "picture": {
+        "lolo": true
+       },
+       "reply": "¡Qué honor!"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Qué juego tan divertido inventamos!"
+  },
+  {
+   "id": "comida_favorita",
+   "category": "alimentos",
+   "title": "Mi comida favorita",
+   "picture": {
+    "scene": "cocina",
+    "items": [
+     {
+      "p": {
+       "drawing": "fruta_manzana",
+       "colors": {
+        "manzana": "#E53935",
+        "hoja": "#43A047",
+        "tallo": "#8D5524",
+        "brillo": "#FFFFFF"
+       }
+      },
+      "x": 0.3,
+      "y": 0.64,
+      "s": 0.25
+     },
+     {
+      "p": {
+       "drawing": "fruta_platano",
+       "colors": {
+        "platano": "#FFD600",
+        "tallo": "#8D6E63",
+        "punta": "#6D4C41"
+       }
+      },
+      "x": 0.52,
+      "y": 0.66,
+      "s": 0.25
+     },
+     {
+      "p": {
+       "drawing": "fruta_fresa",
+       "colors": {
+        "fresa": "#E53935",
+        "hojas": "#43A047",
+        "tallo": "#2E7D32"
+       }
+      },
+      "x": 0.74,
+      "y": 0.64,
+      "s": 0.22
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "¿Cuál es tu fruta favorita?",
+     "options": [
+      {
+       "text": "La manzana.",
+       "picture": {
+        "drawing": "fruta_manzana",
+        "colors": {
+         "manzana": "#E53935",
+         "hoja": "#43A047",
+         "tallo": "#8D5524",
+         "brillo": "#FFFFFF"
+        }
+       },
+       "reply": "¡Las manzanas son crujientes!",
+       "next": "p2"
+      },
+      {
+       "text": "El plátano.",
+       "picture": {
+        "drawing": "fruta_platano",
+        "colors": {
+         "platano": "#FFD600",
+         "tallo": "#8D6E63",
+         "punta": "#6D4C41"
+        }
+       },
+       "reply": "¡El plátano es dulce y suave!",
+       "next": "p2"
+      },
+      {
+       "text": "La fresa.",
+       "picture": {
+        "drawing": "fruta_fresa",
+        "colors": {
+         "fresa": "#E53935",
+         "hojas": "#43A047",
+         "tallo": "#2E7D32"
+        }
+       },
+       "reply": "¡Las fresas son deliciosas!",
+       "next": "p2"
+      }
+     ]
+    },
+    "p2": {
+     "lolo": "¿Qué te gusta desayunar?",
+     "options": [
+      {
+       "text": "Pan.",
+       "picture": {
+        "icon": "bread",
+        "color": "#C77C2E"
+       },
+       "reply": "¡Un pan calentito!",
+       "next": "p3"
+      },
+      {
+       "text": "Leche.",
+       "picture": {
+        "icon": "glass",
+        "color": "#90A4AE"
+       },
+       "reply": "¡La leche es muy nutritiva!",
+       "next": "p3"
+      },
+      {
+       "text": "Fruta.",
+       "picture": {
+        "drawing": "fruta_manzana",
+        "colors": {
+         "manzana": "#E53935",
+         "hoja": "#43A047",
+         "tallo": "#8D5524",
+         "brillo": "#FFFFFF"
+        }
+       },
+       "reply": "¡Un desayuno muy sano!",
+       "next": "p3"
+      }
+     ]
+    },
+    "p3": {
+     "lolo": "¿Qué dices cuando la comida está rica?",
+     "options": [
+      {
+       "text": "¡Qué rico!",
+       "picture": {
+        "kid": {
+         "emotion": "feliz",
+         "girl": false,
+         "arms_up": true
+        }
+       },
+       "reply": "¡Muy bien dicho!"
+      },
+      {
+       "text": "¡Me gusta mucho!",
+       "picture": {
+        "icon": "thumb_up",
+        "color": "#5C6BC0"
+       },
+       "reply": "¡Qué bueno que te guste!"
+      },
+      {
+       "text": "Gracias por la comida.",
+       "picture": {
+        "icon": "love",
+        "color": "#E91E63"
+       },
+       "reply": "¡Qué amable!"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Que disfrutes tu comida!"
+  },
+  {
+   "id": "comida_hambre",
+   "category": "alimentos",
+   "title": "Tengo hambre",
+   "picture": {
+    "scene": "cocina",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "feliz",
+        "girl": true,
+        "shirt": "#F48FB1"
+       }
+      },
+      "x": 0.5,
+      "y": 0.6,
+      "s": 0.5
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "¿Cómo pides comida cuando tienes hambre?",
+     "options": [
+      {
+       "text": "Tengo hambre, por favor.",
+       "picture": {
+        "icon": "eat",
+        "color": "#F4511E"
+       },
+       "reply": "¡Perfecto! Con «por favor» suena muy bien.",
+       "next": "p2"
+      },
+      {
+       "text": "¿Me das algo de comer?",
+       "picture": {
+        "icon": "talk",
+        "color": "#26A69A"
+       },
+       "reply": "¡Muy bien pedido!",
+       "next": "p2"
+      },
+      {
+       "text": "Quiero comer.",
+       "picture": {
+        "icon": "eat",
+        "color": "#F4511E"
+       },
+       "reply": "¡Claro! Así lo entienden todos.",
+       "next": "p2"
+      }
+     ]
+    },
+    "p2": {
+     "lolo": "¿Qué hacemos antes de comer?",
+     "options": [
+      {
+       "text": "Lavarnos las manos.",
+       "picture": {
+        "icon": "wash",
+        "color": "#29B6F6"
+       },
+       "reply": "¡Muy importante! Manos limpias.",
+       "next": "p3"
+      },
+      {
+       "text": "Sentarnos a la mesa.",
+       "picture": {
+        "icon": "chair",
+        "color": "#8D6E63"
+       },
+       "reply": "¡Muy bien!",
+       "next": "p3"
+      },
+      {
+       "text": "Ayudar a poner la mesa.",
+       "picture": {
+        "icon": "table",
+        "color": "#795548"
+       },
+       "reply": "¡Qué gran ayuda!",
+       "next": "p3"
+      }
+     ]
+    },
+    "p3": {
+     "lolo": "Si no te gusta una comida, ¿qué puedes decir?",
+     "options": [
+      {
+       "text": "No me gusta, gracias.",
+       "picture": {
+        "icon": "thumb_up",
+        "color": "#5C6BC0"
+       },
+       "reply": "¡Muy amable! Así se dice con respeto."
+      },
+      {
+       "text": "¿Puedo probar un poquito?",
+       "picture": {
+        "icon": "eat",
+        "color": "#F4511E"
+       },
+       "reply": "¡Qué valiente! Probar es buena idea."
+      },
+      {
+       "text": "Prefiero otra cosa.",
+       "picture": {
+        "icon": "talk",
+        "color": "#26A69A"
+       },
+       "reply": "¡Bien dicho!"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Buen provecho!"
+  },
+  {
+   "id": "comida_cocinar",
+   "category": "alimentos",
+   "title": "Cocinamos juntos",
+   "picture": {
+    "scene": "cocina",
+    "items": [
+     {
+      "p": {
+       "icon": "cake",
+       "color": "#AB47BC"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "¡Vamos a cocinar! ¿Qué preparamos?",
+     "options": [
+      {
+       "text": "Un pastel.",
+       "picture": {
+        "icon": "cake",
+        "color": "#AB47BC"
+       },
+       "reply": "¡Mmm, un pastel de cumpleaños!",
+       "next": "p2"
+      },
+      {
+       "text": "Una pizza.",
+       "picture": {
+        "icon": "pizza",
+        "color": "#F4511E"
+       },
+       "reply": "¡Una pizza con muchos colores!",
+       "next": "p2"
+      },
+      {
+       "text": "Una ensalada.",
+       "picture": {
+        "icon": "salad",
+        "color": "#43A047"
+       },
+       "reply": "¡Una ensalada fresquita!",
+       "next": "p2"
+      }
+     ]
+    },
+    "p2": {
+     "lolo": "¿Quién nos ayuda en la cocina?",
+     "options": [
+      {
+       "text": "Mamá.",
+       "picture": {
+        "icon": "woman",
+        "color": "#AB47BC"
+       },
+       "reply": "¡Gracias, mamá!",
+       "next": "p3"
+      },
+      {
+       "text": "Papá.",
+       "picture": {
+        "icon": "man",
+        "color": "#3949AB"
+       },
+       "reply": "¡Gracias, papá!",
+       "next": "p3"
+      },
+      {
+       "text": "La abuela.",
+       "picture": {
+        "icon": "elderly_woman",
+        "color": "#8E24AA"
+       },
+       "reply": "¡La abuela cocina delicioso!",
+       "next": "p3"
+      }
+     ]
+    },
+    "p3": {
+     "lolo": "¿Cómo quedó la comida?",
+     "options": [
+      {
+       "text": "¡Muy rica!",
+       "picture": {
+        "kid": {
+         "emotion": "feliz",
+         "girl": false,
+         "arms_up": true
+        }
+       },
+       "reply": "¡Somos grandes cocineros!"
+      },
+      {
+       "text": "¡Deliciosa!",
+       "picture": {
+        "icon": "star",
+        "color": "#FBC02D"
+       },
+       "reply": "¡Qué bien nos quedó!"
+      },
+      {
+       "text": "¡Para chuparse los dedos!",
+       "picture": {
+        "kid": {
+         "emotion": "emocionado",
+         "girl": true,
+         "shirt": "#F48FB1"
+        }
+       },
+       "reply": "¡Ja, ja, ja! ¡Qué rica!"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Qué bien cocinamos juntos!"
+  },
+  {
+   "id": "animal_favorito",
+   "category": "animales",
+   "title": "Mi animal favorito",
+   "picture": {
+    "scene": "jardin",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_perro"
+      },
+      "x": 0.32,
+      "y": 0.64,
+      "s": 0.38
+     },
+     {
+      "p": {
+       "drawing": "animal_gato"
+      },
+      "x": 0.7,
+      "y": 0.64,
+      "s": 0.36
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "¿Cuál es tu animal favorito?",
+     "options": [
+      {
+       "text": "El perro.",
+       "picture": {
+        "drawing": "animal_perro"
+       },
+       "reply": "¡Los perros son muy leales!",
+       "next": "p2"
+      },
+      {
+       "text": "El gato.",
+       "picture": {
+        "drawing": "animal_gato"
+       },
+       "reply": "¡Los gatos son muy suaves!",
+       "next": "p2"
+      },
+      {
+       "text": "El elefante.",
+       "picture": {
+        "drawing": "animal_elefante"
+       },
+       "reply": "¡Los elefantes son enormes!",
+       "next": "p2"
+      }
+     ]
+    },
+    "p2": {
+     "lolo": "¿Qué sonido hace el perro?",
+     "options": [
+      {
+       "text": "¡Guau, guau!",
+       "picture": {
+        "drawing": "animal_perro"
+       },
+       "reply": "¡Muy bien! El perro dice «guau».",
+       "next": "p3"
+      },
+      {
+       "text": "¡Miau!",
+       "picture": {
+        "drawing": "animal_gato"
+       },
+       "reply": "Ese es el gato. El perro dice «guau, guau».",
+       "next": "p3"
+      },
+      {
+       "text": "¡Muuu!",
+       "picture": {
+        "drawing": "granja_vaca"
+       },
+       "reply": "Esa es la vaca. El perro dice «guau, guau».",
+       "next": "p3"
+      }
+     ]
+    },
+    "p3": {
+     "lolo": "¿Tienes una mascota?",
+     "options": [
+      {
+       "text": "Sí, tengo una.",
+       "picture": {
+        "icon": "pets",
+        "color": "#FB8C00"
+       },
+       "reply": "¡Qué bien! Las mascotas nos acompañan."
+      },
+      {
+       "text": "No, pero me gustaría.",
+       "picture": {
+        "icon": "love",
+        "color": "#E91E63"
+       },
+       "reply": "¡Quizás algún día!"
+      },
+      {
+       "text": "Mi mascota eres tú, Lolo.",
+       "picture": {
+        "lolo": true
+       },
+       "reply": "¡Ja, ja! ¡Qué divertido!"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Me encantan los animales!"
+  },
+  {
+   "id": "animal_granja",
+   "category": "animales",
+   "title": "En la granja",
+   "picture": {
+    "scene": "parque",
+    "items": [
+     {
+      "p": {
+       "drawing": "granja_vaca"
+      },
+      "x": 0.3,
+      "y": 0.62,
+      "s": 0.38
+     },
+     {
+      "p": {
+       "drawing": "granja_gallina"
+      },
+      "x": 0.7,
+      "y": 0.66,
+      "s": 0.3
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "¡Estamos en la granja! ¿Qué animal ves?",
+     "options": [
+      {
+       "text": "Una vaca.",
+       "picture": {
+        "drawing": "granja_vaca"
+       },
+       "reply": "¡Muuu! La vaca nos da leche.",
+       "next": "p2"
+      },
+      {
+       "text": "Una gallina.",
+       "picture": {
+        "drawing": "granja_gallina"
+       },
+       "reply": "¡Cocoroco! La gallina pone huevos.",
+       "next": "p2"
+      },
+      {
+       "text": "Un cerdito.",
+       "picture": {
+        "drawing": "granja_cerdito"
+       },
+       "reply": "¡Oinc, oinc! ¡Qué gracioso!",
+       "next": "p2"
+      }
+     ]
+    },
+    "p2": {
+     "lolo": "¿Qué le damos de comer a los animales?",
+     "options": [
+      {
+       "text": "Hierba.",
+       "picture": {
+        "icon": "tree",
+        "color": "#43A047"
+       },
+       "reply": "¡A la vaca le encanta la hierba!",
+       "next": "p3"
+      },
+      {
+       "text": "Maíz.",
+       "picture": {
+        "icon": "food",
+        "color": "#FBC02D"
+       },
+       "reply": "¡A las gallinas les gusta el maíz!",
+       "next": "p3"
+      },
+      {
+       "text": "Zanahorias.",
+       "picture": {
+        "icon": "salad",
+        "color": "#FB8C00"
+       },
+       "reply": "¡A los conejos les encantan!",
+       "next": "p3"
+      }
+     ]
+    },
+    "p3": {
+     "lolo": "¿Cómo tratamos a los animales?",
+     "options": [
+      {
+       "text": "Con cariño.",
+       "picture": {
+        "icon": "love",
+        "color": "#E91E63"
+       },
+       "reply": "¡Exacto! Con mucho cariño."
+      },
+      {
+       "text": "Con cuidado.",
+       "picture": {
+        "icon": "help",
+        "color": "#26A69A"
+       },
+       "reply": "¡Muy bien!"
+      },
+      {
+       "text": "Les hablamos suave.",
+       "picture": {
+        "icon": "talk",
+        "color": "#26A69A"
+       },
+       "reply": "¡Así no se asustan!"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Qué bonita es la granja!"
+  },
+  {
+   "id": "animal_mar",
+   "category": "animales",
+   "title": "Los animales del mar",
+   "picture": {
+    "scene": "playa",
+    "items": [
+     {
+      "p": {
+       "drawing": "mar_delfin"
+      },
+      "x": 0.3,
+      "y": 0.55,
+      "s": 0.35
+     },
+     {
+      "p": {
+       "drawing": "mar_pulpo"
+      },
+      "x": 0.72,
+      "y": 0.62,
+      "s": 0.32
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "¿Qué animal vive en el mar?",
+     "options": [
+      {
+       "text": "El delfín.",
+       "picture": {
+        "drawing": "mar_delfin"
+       },
+       "reply": "¡Los delfines saltan muy alto!",
+       "next": "p2"
+      },
+      {
+       "text": "El pulpo.",
+       "picture": {
+        "drawing": "mar_pulpo"
+       },
+       "reply": "¡El pulpo tiene ocho brazos!",
+       "next": "p2"
+      },
+      {
+       "text": "La ballena.",
+       "picture": {
+        "drawing": "mar_ballena"
+       },
+       "reply": "¡La ballena es enorme!",
+       "next": "p2"
+      }
+     ]
+    },
+    "p2": {
+     "lolo": "¿Qué hace el cangrejo?",
+     "options": [
+      {
+       "text": "Camina de lado.",
+       "picture": {
+        "drawing": "mar_cangrejo"
+       },
+       "reply": "¡Sí! El cangrejo camina de lado.",
+       "next": "p3"
+      },
+      {
+       "text": "Vuela.",
+       "picture": {
+        "icon": "cloud",
+        "color": "#64B5F6"
+       },
+       "reply": "¡No! El cangrejo camina de lado por la arena.",
+       "next": "p3"
+      },
+      {
+       "text": "Ladra.",
+       "picture": {
+        "drawing": "animal_perro"
+       },
+       "reply": "¡Ja, ja! Ese es el perro. El cangrejo camina de lado.",
+       "next": "p3"
+      }
+     ]
+    },
+    "p3": {
+     "lolo": "¿Te gustaría nadar con los peces?",
+     "options": [
+      {
+       "text": "¡Sí, me encantaría!",
+       "picture": {
+        "icon": "swim",
+        "color": "#0288D1"
+       },
+       "reply": "¡Sería una aventura increíble!"
+      },
+      {
+       "text": "Me da un poco de miedo.",
+       "picture": {
+        "kid": {
+         "emotion": "asustado",
+         "girl": false
+        }
+       },
+       "reply": "Está bien. Podemos mirarlos desde la orilla."
+      },
+      {
+       "text": "Prefiero mirarlos.",
+       "picture": {
+        "icon": "look",
+        "color": "#3949AB"
+       },
+       "reply": "¡Mirarlos también es muy bonito!"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Glu, glu! ¡Hasta pronto!"
+  },
+  {
+   "id": "dia_manana",
+   "category": "dia",
+   "title": "Por la mañana",
+   "picture": {
+    "scene": "dormitorio",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "cansado",
+        "girl": true,
+        "shirt": "#F48FB1"
+       }
+      },
+      "x": 0.5,
+      "y": 0.6,
+      "s": 0.5
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "¡Buenos días! ¿Qué haces cuando te despiertas?",
+     "options": [
+      {
+       "text": "Me estiro.",
+       "picture": {
+        "kid": {
+         "emotion": "feliz",
+         "girl": false,
+         "shirt": "#64B5F6",
+         "arms_up": true
+        }
+       },
+       "reply": "¡Qué bien! Estirarse despierta el cuerpo.",
+       "next": "p2"
+      },
+      {
+       "text": "Me lavo la cara.",
+       "picture": {
+        "icon": "wash",
+        "color": "#29B6F6"
+       },
+       "reply": "¡Agua fresquita!",
+       "next": "p2"
+      },
+      {
+       "text": "Saludo a mi familia.",
+       "picture": {
+        "icon": "family",
+        "color": "#F4511E"
+       },
+       "reply": "¡Un saludo para empezar el día!",
+       "next": "p2"
+      }
+     ]
+    },
+    "p2": {
+     "lolo": "¿Qué ropa te pones?",
+     "options": [
+      {
+       "text": "Una camiseta.",
+       "picture": {
+        "icon": "shirt",
+        "color": "#64B5F6"
+       },
+       "reply": "¡Muy bien!",
+       "next": "p3"
+      },
+      {
+       "text": "Un vestido.",
+       "picture": {
+        "icon": "dress",
+        "color": "#F48FB1"
+       },
+       "reply": "¡Qué bonito!",
+       "next": "p3"
+      },
+      {
+       "text": "Mis zapatos.",
+       "picture": {
+        "icon": "shoes",
+        "color": "#8D6E63"
+       },
+       "reply": "¡A caminar!",
+       "next": "p3"
+      }
+     ]
+    },
+    "p3": {
+     "lolo": "¿Qué desayunas hoy?",
+     "options": [
+      {
+       "text": "Leche y pan.",
+       "picture": {
+        "icon": "bread",
+        "color": "#C77C2E"
+       },
+       "reply": "¡Un buen desayuno!"
+      },
+      {
+       "text": "Fruta.",
+       "picture": {
+        "drawing": "fruta_platano",
+        "colors": {
+         "platano": "#FFD600",
+         "tallo": "#8D6E63",
+         "punta": "#6D4C41"
+        }
+       },
+       "reply": "¡Qué sano!"
+      },
+      {
+       "text": "Huevo.",
+       "picture": {
+        "icon": "egg",
+        "color": "#F9A825"
+       },
+       "reply": "¡Muy rico!"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Que tengas un día muy bonito!"
+  },
+  {
+   "id": "dia_bano",
+   "category": "dia",
+   "title": "La hora del baño",
+   "picture": {
+    "scene": "casa",
+    "items": [
+     {
+      "p": {
+       "icon": "bath",
+       "color": "#29B6F6"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.45
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "¡Es la hora del baño! ¿Qué usamos?",
+     "options": [
+      {
+       "text": "Jabón.",
+       "picture": {
+        "icon": "wash",
+        "color": "#29B6F6"
+       },
+       "reply": "¡Con jabón quedamos limpios!",
+       "next": "p2"
+      },
+      {
+       "text": "Agua tibia.",
+       "picture": {
+        "icon": "water",
+        "color": "#039BE5"
+       },
+       "reply": "¡Ni muy fría ni muy caliente!",
+       "next": "p2"
+      },
+      {
+       "text": "Una toalla.",
+       "picture": {
+        "icon": "towel",
+        "color": "#F48FB1"
+       },
+       "reply": "¡Para secarnos!",
+       "next": "p2"
+      }
+     ]
+    },
+    "p2": {
+     "lolo": "¿Qué juguete llevas al baño?",
+     "options": [
+      {
+       "text": "Un patito.",
+       "picture": {
+        "drawing": "granja_patito"
+       },
+       "reply": "¡Cua, cua! ¡Qué divertido!",
+       "next": "p3"
+      },
+      {
+       "text": "Un barco.",
+       "picture": {
+        "drawing": "vehiculo_barco"
+       },
+       "reply": "¡El barco navega en el agua!",
+       "next": "p3"
+      },
+      {
+       "text": "Ninguno.",
+       "picture": {
+        "icon": "thumb_up",
+        "color": "#5C6BC0"
+       },
+       "reply": "¡Está bien!",
+       "next": "p3"
+      }
+     ]
+    },
+    "p3": {
+     "lolo": "¿Cómo te sientes después del baño?",
+     "options": [
+      {
+       "text": "Limpio.",
+       "picture": {
+        "icon": "star",
+        "color": "#FBC02D"
+       },
+       "reply": "¡Brillas de limpio!"
+      },
+      {
+       "text": "Fresco.",
+       "picture": {
+        "kid": {
+         "emotion": "tranquilo",
+         "girl": false
+        }
+       },
+       "reply": "¡Qué agradable!"
+      },
+      {
+       "text": "Con sueño.",
+       "picture": {
+        "kid": {
+         "emotion": "cansado",
+         "girl": false
+        }
+       },
+       "reply": "¡Es hora de descansar!"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Qué limpio quedaste!"
+  },
+  {
+   "id": "dia_tarde",
+   "category": "dia",
+   "title": "Por la tarde",
+   "picture": {
+    "scene": "parque",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "feliz",
+        "girl": false,
+        "shirt": "#64B5F6",
+        "arms_up": true
+       }
+      },
+      "x": 0.5,
+      "y": 0.6,
+      "s": 0.5
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "¿Qué te gusta hacer por la tarde?",
+     "options": [
+      {
+       "text": "Ir al parque.",
+       "picture": {
+        "icon": "tree",
+        "color": "#2E7D32"
+       },
+       "reply": "¡En el parque hay columpios!",
+       "next": "p2"
+      },
+      {
+       "text": "Dibujar.",
+       "picture": {
+        "icon": "paint",
+        "color": "#E91E63"
+       },
+       "reply": "¡Pintar es muy divertido!",
+       "next": "p2"
+      },
+      {
+       "text": "Leer un cuento.",
+       "picture": {
+        "icon": "read",
+        "color": "#8E24AA"
+       },
+       "reply": "¡Los cuentos nos llevan a otros mundos!",
+       "next": "p2"
+      }
+     ]
+    },
+    "p2": {
+     "lolo": "¿Con quién pasas la tarde?",
+     "options": [
+      {
+       "text": "Con mi familia.",
+       "picture": {
+        "icon": "family",
+        "color": "#F4511E"
+       },
+       "reply": "¡Qué bien!",
+       "next": "p3"
+      },
+      {
+       "text": "Con mis amigos.",
+       "picture": {
+        "icon": "friends",
+        "color": "#00ACC1"
+       },
+       "reply": "¡Qué divertido!",
+       "next": "p3"
+      },
+      {
+       "text": "Con mi mascota.",
+       "picture": {
+        "drawing": "animal_perro"
+       },
+       "reply": "¡Seguro que te sigue a todas partes!",
+       "next": "p3"
+      }
+     ]
+    },
+    "p3": {
+     "lolo": "¿Qué haces cuando se pone el sol?",
+     "options": [
+      {
+       "text": "Vuelvo a casa.",
+       "picture": {
+        "icon": "home",
+        "color": "#F4511E"
+       },
+       "reply": "¡Muy bien!"
+      },
+      {
+       "text": "Ceno.",
+       "picture": {
+        "icon": "eat",
+        "color": "#F4511E"
+       },
+       "reply": "¡Buen provecho!"
+      },
+      {
+       "text": "Me preparo para dormir.",
+       "picture": {
+        "icon": "sleep",
+        "color": "#5C6BC0"
+       },
+       "reply": "¡A descansar!"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Qué tarde tan bonita!"
+  },
+  {
+   "id": "escuela_clase",
+   "category": "escuela",
+   "title": "En mi clase",
+   "picture": {
+    "scene": "escuela",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "feliz",
+        "girl": true,
+        "shirt": "#F48FB1"
+       }
+      },
+      "x": 0.3,
+      "y": 0.68,
+      "s": 0.38
+     },
+     {
+      "p": {
+       "icon": "teacher",
+       "color": "#3949AB"
+      },
+      "x": 0.72,
+      "y": 0.66,
+      "s": 0.32
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "¿Qué haces en la escuela?",
+     "options": [
+      {
+       "text": "Aprendo cosas nuevas.",
+       "picture": {
+        "icon": "idea",
+        "color": "#FBC02D"
+       },
+       "reply": "¡Aprender es una aventura!",
+       "next": "p2"
+      },
+      {
+       "text": "Juego con mis amigos.",
+       "picture": {
+        "icon": "friends",
+        "color": "#00ACC1"
+       },
+       "reply": "¡En el recreo es muy divertido!",
+       "next": "p2"
+      },
+      {
+       "text": "Pinto y dibujo.",
+       "picture": {
+        "icon": "paint",
+        "color": "#E91E63"
+       },
+       "reply": "¡Qué artista!",
+       "next": "p2"
+      }
+     ]
+    },
+    "p2": {
+     "lolo": "¿Qué llevas en tu mochila?",
+     "options": [
+      {
+       "text": "Mis lápices.",
+       "picture": {
+        "icon": "pencil",
+        "color": "#FB8C00"
+       },
+       "reply": "¡Para escribir y dibujar!",
+       "next": "p3"
+      },
+      {
+       "text": "Un cuaderno.",
+       "picture": {
+        "icon": "book",
+        "color": "#E53935"
+       },
+       "reply": "¡Para aprender muchas cosas!",
+       "next": "p3"
+      },
+      {
+       "text": "Mi merienda.",
+       "picture": {
+        "drawing": "fruta_manzana",
+        "colors": {
+         "manzana": "#E53935",
+         "hoja": "#43A047",
+         "tallo": "#8D5524",
+         "brillo": "#FFFFFF"
+        }
+       },
+       "reply": "¡Para tener energía!",
+       "next": "p3"
+      }
+     ]
+    },
+    "p3": {
+     "lolo": "¿Qué dices si no entiendes algo?",
+     "options": [
+      {
+       "text": "¿Me lo explicas otra vez?",
+       "picture": {
+        "icon": "talk",
+        "color": "#26A69A"
+       },
+       "reply": "¡Muy bien! Preguntar es muy inteligente."
+      },
+      {
+       "text": "Levanto la mano.",
+       "picture": {
+        "icon": "wave",
+        "color": "#FFB300"
+       },
+       "reply": "¡Así la maestra sabe que quieres hablar!"
+      },
+      {
+       "text": "Pido ayuda.",
+       "picture": {
+        "icon": "help",
+        "color": "#26A69A"
+       },
+       "reply": "¡Siempre se puede pedir ayuda!"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Qué bien lo pasas en la escuela!"
+  },
+  {
+   "id": "escuela_recreo",
+   "category": "escuela",
+   "title": "En el recreo",
+   "picture": {
+    "scene": "parque",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "emocionado",
+        "girl": true,
+        "shirt": "#F48FB1"
+       }
+      },
+      "x": 0.3,
+      "y": 0.6,
+      "s": 0.42
+     },
+     {
+      "p": {
+       "kid": {
+        "emotion": "feliz",
+        "girl": false,
+        "shirt": "#64B5F6",
+        "arms_up": true
+       }
+      },
+      "x": 0.7,
+      "y": 0.6,
+      "s": 0.42
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "¡Es la hora del recreo! ¿A qué juegas?",
+     "options": [
+      {
+       "text": "A la pelota.",
+       "picture": {
+        "icon": "ball",
+        "color": "#E53935"
+       },
+       "reply": "¡Gol!",
+       "next": "p2"
+      },
+      {
+       "text": "A correr.",
+       "picture": {
+        "icon": "run",
+        "color": "#43A047"
+       },
+       "reply": "¡Qué rápido corres!",
+       "next": "p2"
+      },
+      {
+       "text": "A saltar.",
+       "picture": {
+        "icon": "jump",
+        "color": "#00ACC1"
+       },
+       "reply": "¡Muy alto!",
+       "next": "p2"
+      }
+     ]
+    },
+    "p2": {
+     "lolo": "Un niño está solo. ¿Qué le dices?",
+     "options": [
+      {
+       "text": "¿Quieres jugar conmigo?",
+       "picture": {
+        "icon": "friends",
+        "color": "#00ACC1"
+       },
+       "reply": "¡Qué bonito gesto!",
+       "next": "p3"
+      },
+      {
+       "text": "Hola, ¿cómo te llamas?",
+       "picture": {
+        "icon": "wave",
+        "color": "#FFB300"
+       },
+       "reply": "¡Así empiezan las amistades!",
+       "next": "p3"
+      },
+      {
+       "text": "Ven con nosotros.",
+       "picture": {
+        "icon": "help",
+        "color": "#26A69A"
+       },
+       "reply": "¡Muy amable!",
+       "next": "p3"
+      }
+     ]
+    },
+    "p3": {
+     "lolo": "¿Qué hacemos cuando suena el timbre?",
+     "options": [
+      {
+       "text": "Volvemos a clase.",
+       "picture": {
+        "icon": "school",
+        "color": "#3949AB"
+       },
+       "reply": "¡Muy bien!"
+      },
+      {
+       "text": "Hacemos una fila.",
+       "picture": {
+        "icon": "friends",
+        "color": "#00ACC1"
+       },
+       "reply": "¡En orden!"
+      },
+      {
+       "text": "Guardamos la pelota.",
+       "picture": {
+        "icon": "ball",
+        "color": "#E53935"
+       },
+       "reply": "¡Muy ordenado!"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Qué recreo tan divertido!"
+  },
+  {
+   "id": "escuela_maestra",
+   "category": "escuela",
+   "title": "Mi maestra",
+   "picture": {
+    "scene": "escuela",
+    "items": [
+     {
+      "p": {
+       "icon": "teacher",
+       "color": "#3949AB"
+      },
+      "x": 0.5,
+      "y": 0.66,
+      "s": 0.4
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "¿Cómo saludas a tu maestra por la mañana?",
+     "options": [
+      {
+       "text": "¡Buenos días, maestra!",
+       "picture": {
+        "icon": "sun",
+        "color": "#FFB300"
+       },
+       "reply": "¡Qué saludo tan bonito!",
+       "next": "p2"
+      },
+      {
+       "text": "¡Hola, maestra!",
+       "picture": {
+        "icon": "wave",
+        "color": "#FFB300"
+       },
+       "reply": "¡Muy bien!",
+       "next": "p2"
+      },
+      {
+       "text": "Con una sonrisa.",
+       "picture": {
+        "kid": {
+         "emotion": "feliz",
+         "girl": false,
+         "arms_up": true
+        }
+       },
+       "reply": "¡Una sonrisa alegra a todos!",
+       "next": "p2"
+      }
+     ]
+    },
+    "p2": {
+     "lolo": "¿Qué te enseña tu maestra?",
+     "options": [
+      {
+       "text": "Las letras.",
+       "picture": {
+        "icon": "abc",
+        "color": "#E53935"
+       },
+       "reply": "¡A, B, C!",
+       "next": "p3"
+      },
+      {
+       "text": "Los números.",
+       "picture": {
+        "icon": "numbers",
+        "color": "#1E88E5"
+       },
+       "reply": "¡Uno, dos, tres!",
+       "next": "p3"
+      },
+      {
+       "text": "Canciones.",
+       "picture": {
+        "icon": "sing",
+        "color": "#EC407A"
+       },
+       "reply": "¡La la la!",
+       "next": "p3"
+      }
+     ]
+    },
+    "p3": {
+     "lolo": "¿Qué le dices al irte a casa?",
+     "options": [
+      {
+       "text": "¡Hasta mañana!",
+       "picture": {
+        "icon": "wave",
+        "color": "#FFB300"
+       },
+       "reply": "¡Muy bien!"
+      },
+      {
+       "text": "¡Gracias, maestra!",
+       "picture": {
+        "icon": "love",
+        "color": "#E91E63"
+       },
+       "reply": "¡Qué agradecido!"
+      },
+      {
+       "text": "¡Adiós!",
+       "picture": {
+        "icon": "wave",
+        "color": "#FFB300"
+       },
+       "reply": "¡Adiós!"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Tu maestra estará muy contenta contigo!"
+  },
+  {
+   "id": "amigo_mejor",
+   "category": "amigos",
+   "title": "Mi mejor amigo",
+   "picture": {
+    "scene": "parque",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "feliz",
+        "girl": false,
+        "shirt": "#64B5F6"
+       }
+      },
+      "x": 0.32,
+      "y": 0.6,
+      "s": 0.42
+     },
+     {
+      "p": {
+       "kid": {
+        "emotion": "feliz",
+        "girl": true,
+        "shirt": "#F48FB1"
+       }
+      },
+      "x": 0.7,
+      "y": 0.6,
+      "s": 0.42
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "¿Qué te gusta hacer con tus amigos?",
+     "options": [
+      {
+       "text": "Jugar.",
+       "picture": {
+        "icon": "play",
+        "color": "#FB8C00"
+       },
+       "reply": "¡Jugar juntos es genial!",
+       "next": "p2"
+      },
+      {
+       "text": "Reír.",
+       "picture": {
+        "kid": {
+         "emotion": "feliz",
+         "girl": false,
+         "arms_up": true
+        }
+       },
+       "reply": "¡Reír es lo mejor!",
+       "next": "p2"
+      },
+      {
+       "text": "Compartir.",
+       "picture": {
+        "icon": "friends",
+        "color": "#00ACC1"
+       },
+       "reply": "¡Compartir es muy bonito!",
+       "next": "p2"
+      }
+     ]
+    },
+    "p2": {
+     "lolo": "¿Cómo es un buen amigo?",
+     "options": [
+      {
+       "text": "Amable.",
+       "picture": {
+        "icon": "love",
+        "color": "#E91E63"
+       },
+       "reply": "¡Muy bien!",
+       "next": "p3"
+      },
+      {
+       "text": "Me ayuda.",
+       "picture": {
+        "icon": "help",
+        "color": "#26A69A"
+       },
+       "reply": "¡Los amigos se ayudan!",
+       "next": "p3"
+      },
+      {
+       "text": "Me escucha.",
+       "picture": {
+        "icon": "look",
+        "color": "#3949AB"
+       },
+       "reply": "¡Escuchar es muy importante!",
+       "next": "p3"
+      }
+     ]
+    },
+    "p3": {
+     "lolo": "Si tu amigo se cae, ¿qué haces?",
+     "options": [
+      {
+       "text": "Lo ayudo a levantarse.",
+       "picture": {
+        "icon": "help",
+        "color": "#26A69A"
+       },
+       "reply": "¡Eres un gran amigo!"
+      },
+      {
+       "text": "Le pregunto si está bien.",
+       "picture": {
+        "icon": "talk",
+        "color": "#26A69A"
+       },
+       "reply": "¡Qué atento!"
+      },
+      {
+       "text": "Llamo a un adulto.",
+       "picture": {
+        "icon": "woman",
+        "color": "#AB47BC"
+       },
+       "reply": "¡Muy buena idea!"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Qué suerte tienen tus amigos!"
+  },
+  {
+   "id": "amigo_compartir",
+   "category": "amigos",
+   "title": "Compartimos",
+   "picture": {
+    "scene": "casa",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "feliz",
+        "girl": true,
+        "shirt": "#F48FB1"
+       }
+      },
+      "x": 0.3,
+      "y": 0.6,
+      "s": 0.42
+     },
+     {
+      "p": {
+       "icon": "ball",
+       "color": "#E53935"
+      },
+      "x": 0.5,
+      "y": 0.82,
+      "s": 0.14
+     },
+     {
+      "p": {
+       "kid": {
+        "emotion": "feliz",
+        "girl": false,
+        "shirt": "#64B5F6"
+       }
+      },
+      "x": 0.7,
+      "y": 0.6,
+      "s": 0.42
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "Tu amigo quiere tu juguete. ¿Qué le dices?",
+     "options": [
+      {
+       "text": "Toma, juguemos juntos.",
+       "picture": {
+        "icon": "friends",
+        "color": "#00ACC1"
+       },
+       "reply": "¡Qué bonito compartir!",
+       "next": "p2"
+      },
+      {
+       "text": "Primero yo y luego tú.",
+       "picture": {
+        "icon": "clock",
+        "color": "#00897B"
+       },
+       "reply": "¡Los turnos son justos!",
+       "next": "p2"
+      },
+      {
+       "text": "Lo usamos un ratito cada uno.",
+       "picture": {
+        "icon": "thumb_up",
+        "color": "#5C6BC0"
+       },
+       "reply": "¡Gran idea!",
+       "next": "p2"
+      }
+     ]
+    },
+    "p2": {
+     "lolo": "¿Qué dice tu amigo cuando le prestas algo?",
+     "options": [
+      {
+       "text": "Gracias.",
+       "picture": {
+        "icon": "love",
+        "color": "#E91E63"
+       },
+       "reply": "¡Muy bien!",
+       "next": "p3"
+      },
+      {
+       "text": "Eres muy bueno.",
+       "picture": {
+        "kid": {
+         "emotion": "feliz",
+         "girl": false,
+         "arms_up": true
+        }
+       },
+       "reply": "¡Qué bonito!",
+       "next": "p3"
+      },
+      {
+       "text": "Luego te lo devuelvo.",
+       "picture": {
+        "icon": "thumb_up",
+        "color": "#5C6BC0"
+       },
+       "reply": "¡Muy responsable!",
+       "next": "p3"
+      }
+     ]
+    },
+    "p3": {
+     "lolo": "¿Cómo te sientes al compartir?",
+     "options": [
+      {
+       "text": "Contento.",
+       "picture": {
+        "kid": {
+         "emotion": "feliz",
+         "girl": false,
+         "arms_up": true
+        }
+       },
+       "reply": "¡Compartir nos hace sentir bien!"
+      },
+      {
+       "text": "Orgulloso.",
+       "picture": {
+        "kid": {
+         "emotion": "emocionado",
+         "girl": false,
+         "shirt": "#64B5F6"
+        }
+       },
+       "reply": "¡Puedes estarlo!"
+      },
+      {
+       "text": "Un poco raro.",
+       "picture": {
+        "kid": {
+         "emotion": "sorprendido",
+         "girl": false
+        }
+       },
+       "reply": "Está bien. ¡Poco a poco se aprende!"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Compartir es de grandes amigos!"
+  },
+  {
+   "id": "amigo_perdon",
+   "category": "amigos",
+   "title": "Pedir perdón",
+   "picture": {
+    "scene": "parque",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "triste",
+        "girl": false,
+        "shirt": "#64B5F6"
+       }
+      },
+      "x": 0.32,
+      "y": 0.6,
+      "s": 0.42
+     },
+     {
+      "p": {
+       "kid": {
+        "emotion": "tranquilo",
+        "girl": true,
+        "shirt": "#F48FB1"
+       }
+      },
+      "x": 0.7,
+      "y": 0.6,
+      "s": 0.42
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "Sin querer empujaste a un amigo. ¿Qué le dices?",
+     "options": [
+      {
+       "text": "Perdón, fue sin querer.",
+       "picture": {
+        "icon": "help",
+        "color": "#26A69A"
+       },
+       "reply": "¡Muy bien! Pedir perdón es de valientes.",
+       "next": "p2"
+      },
+      {
+       "text": "¿Estás bien?",
+       "picture": {
+        "icon": "talk",
+        "color": "#26A69A"
+       },
+       "reply": "¡Qué atento!",
+       "next": "p2"
+      },
+      {
+       "text": "Lo siento mucho.",
+       "picture": {
+        "icon": "love",
+        "color": "#E91E63"
+       },
+       "reply": "¡Muy bonito!",
+       "next": "p2"
+      }
+     ]
+    },
+    "p2": {
+     "lolo": "¿Qué puede responder tu amigo?",
+     "options": [
+      {
+       "text": "No pasa nada.",
+       "picture": {
+        "icon": "thumb_up",
+        "color": "#5C6BC0"
+       },
+       "reply": "¡Qué bien!",
+       "next": "p3"
+      },
+      {
+       "text": "Te perdono.",
+       "picture": {
+        "icon": "love",
+        "color": "#E91E63"
+       },
+       "reply": "¡Qué bonito perdonar!",
+       "next": "p3"
+      },
+      {
+       "text": "Sigamos jugando.",
+       "picture": {
+        "icon": "play",
+        "color": "#FB8C00"
+       },
+       "reply": "¡A jugar!",
+       "next": "p3"
+      }
+     ]
+    },
+    "p3": {
+     "lolo": "¿Cómo se sienten ahora?",
+     "options": [
+      {
+       "text": "Felices.",
+       "picture": {
+        "kid": {
+         "emotion": "feliz",
+         "girl": false,
+         "arms_up": true
+        }
+       },
+       "reply": "¡Amigos otra vez!"
+      },
+      {
+       "text": "Tranquilos.",
+       "picture": {
+        "kid": {
+         "emotion": "tranquilo",
+         "girl": false
+        }
+       },
+       "reply": "¡Qué bien!"
+      },
+      {
+       "text": "Más amigos que antes.",
+       "picture": {
+        "icon": "friends",
+        "color": "#00ACC1"
+       },
+       "reply": "¡Así es la amistad!"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Pedir perdón y perdonar es muy importante!"
+  },
+  {
+   "id": "ayuda_no_puedo",
+   "category": "ayuda",
+   "title": "No puedo solo",
+   "picture": {
+    "scene": "casa",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "triste",
+        "girl": true,
+        "shirt": "#F48FB1"
+       }
+      },
+      "x": 0.5,
+      "y": 0.6,
+      "s": 0.5
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "¿Qué dices cuando algo es difícil?",
+     "options": [
+      {
+       "text": "¿Me ayudas, por favor?",
+       "picture": {
+        "icon": "help",
+        "color": "#26A69A"
+       },
+       "reply": "¡Perfecto! Así se pide ayuda.",
+       "next": "p2"
+      },
+      {
+       "text": "Necesito ayuda.",
+       "picture": {
+        "icon": "help",
+        "color": "#26A69A"
+       },
+       "reply": "¡Muy bien dicho!",
+       "next": "p2"
+      },
+      {
+       "text": "No puedo solo.",
+       "picture": {
+        "icon": "talk",
+        "color": "#26A69A"
+       },
+       "reply": "¡Está bien! Para eso estamos.",
+       "next": "p2"
+      }
+     ]
+    },
+    "p2": {
+     "lolo": "¿A quién le pides ayuda?",
+     "options": [
+      {
+       "text": "A mamá o papá.",
+       "picture": {
+        "icon": "family",
+        "color": "#F4511E"
+       },
+       "reply": "¡Siempre te ayudarán!",
+       "next": "p3"
+      },
+      {
+       "text": "A la maestra.",
+       "picture": {
+        "icon": "teacher",
+        "color": "#3949AB"
+       },
+       "reply": "¡Ella sabe mucho!",
+       "next": "p3"
+      },
+      {
+       "text": "A un adulto de confianza.",
+       "picture": {
+        "icon": "woman",
+        "color": "#AB47BC"
+       },
+       "reply": "¡Muy bien!",
+       "next": "p3"
+      }
+     ]
+    },
+    "p3": {
+     "lolo": "¿Qué dices después de que te ayudan?",
+     "options": [
+      {
+       "text": "¡Gracias!",
+       "picture": {
+        "icon": "love",
+        "color": "#E91E63"
+       },
+       "reply": "¡Muy bien!"
+      },
+      {
+       "text": "¡Muchas gracias!",
+       "picture": {
+        "icon": "thumb_up",
+        "color": "#5C6BC0"
+       },
+       "reply": "¡Muy amable!"
+      },
+      {
+       "text": "¡Ahora sí puedo!",
+       "picture": {
+        "kid": {
+         "emotion": "feliz",
+         "girl": false,
+         "arms_up": true
+        }
+       },
+       "reply": "¡Qué bien!"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Pedir ayuda es muy inteligente!"
+  },
+  {
+   "id": "ayuda_perdido",
+   "category": "ayuda",
+   "title": "Si me pierdo",
+   "picture": {
+    "scene": "parque",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "asustado",
+        "girl": false,
+        "shirt": "#64B5F6"
+       }
+      },
+      "x": 0.5,
+      "y": 0.6,
+      "s": 0.5
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "Si te pierdes en el parque, ¿qué haces?",
+     "options": [
+      {
+       "text": "Me quedo quieto.",
+       "picture": {
+        "icon": "thumb_up",
+        "color": "#5C6BC0"
+       },
+       "reply": "¡Muy bien! Así es más fácil encontrarte.",
+       "next": "p2"
+      },
+      {
+       "text": "Busco a un policía.",
+       "picture": {
+        "icon": "help",
+        "color": "#1E88E5"
+       },
+       "reply": "¡Muy buena idea!",
+       "next": "p2"
+      },
+      {
+       "text": "Pido ayuda a un adulto.",
+       "picture": {
+        "icon": "woman",
+        "color": "#AB47BC"
+       },
+       "reply": "¡Muy bien!",
+       "next": "p2"
+      }
+     ]
+    },
+    "p2": {
+     "lolo": "¿Qué le dices al adulto?",
+     "options": [
+      {
+       "text": "Me perdí.",
+       "picture": {
+        "icon": "search",
+        "color": "#8D6E63"
+       },
+       "reply": "¡Muy claro!",
+       "next": "p3"
+      },
+      {
+       "text": "Busco a mi mamá.",
+       "picture": {
+        "icon": "woman",
+        "color": "#AB47BC"
+       },
+       "reply": "¡Muy bien!",
+       "next": "p3"
+      },
+      {
+       "text": "¿Me ayuda, por favor?",
+       "picture": {
+        "icon": "help",
+        "color": "#26A69A"
+       },
+       "reply": "¡Perfecto!",
+       "next": "p3"
+      }
+     ]
+    },
+    "p3": {
+     "lolo": "¡Ya encontraste a tu familia! ¿Cómo te sientes?",
+     "options": [
+      {
+       "text": "Tranquilo.",
+       "picture": {
+        "kid": {
+         "emotion": "tranquilo",
+         "girl": false
+        }
+       },
+       "reply": "¡Qué alivio!"
+      },
+      {
+       "text": "Feliz.",
+       "picture": {
+        "kid": {
+         "emotion": "feliz",
+         "girl": false,
+         "arms_up": true
+        }
+       },
+       "reply": "¡Qué alegría!"
+      },
+      {
+       "text": "Con ganas de un abrazo.",
+       "picture": {
+        "icon": "help",
+        "color": "#E91E63"
+       },
+       "reply": "¡Un abrazo grande!"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Qué bien sabes qué hacer!"
+  },
+  {
+   "id": "ayuda_duele",
+   "category": "ayuda",
+   "title": "Me duele",
+   "picture": {
+    "scene": "casa",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "triste",
+        "girl": false,
+        "shirt": "#64B5F6"
+       }
+      },
+      "x": 0.5,
+      "y": 0.6,
+      "s": 0.5
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "Si te duele algo, ¿qué haces?",
+     "options": [
+      {
+       "text": "Se lo digo a un adulto.",
+       "picture": {
+        "icon": "woman",
+        "color": "#AB47BC"
+       },
+       "reply": "¡Muy bien! Es lo más importante.",
+       "next": "p2"
+      },
+      {
+       "text": "Señalo dónde me duele.",
+       "picture": {
+        "icon": "hurt",
+        "color": "#E53935"
+       },
+       "reply": "¡Así te pueden ayudar mejor!",
+       "next": "p2"
+      },
+      {
+       "text": "Digo: me duele aquí.",
+       "picture": {
+        "icon": "talk",
+        "color": "#26A69A"
+       },
+       "reply": "¡Perfecto!",
+       "next": "p2"
+      }
+     ]
+    },
+    "p2": {
+     "lolo": "¿Dónde te duele?",
+     "options": [
+      {
+       "text": "La cabeza.",
+       "picture": {
+        "body": "cabeza"
+       },
+       "reply": "Gracias por decirlo. Un adulto te cuidará.",
+       "next": "p3"
+      },
+      {
+       "text": "La barriga.",
+       "picture": {
+        "icon": "hurt",
+        "color": "#E53935"
+       },
+       "reply": "Gracias por decirlo. Un adulto te cuidará.",
+       "next": "p3"
+      },
+      {
+       "text": "La rodilla.",
+       "picture": {
+        "body": "piernas"
+       },
+       "reply": "Gracias por decirlo. Una curita puede ayudar.",
+       "next": "p3"
+      }
+     ]
+    },
+    "p3": {
+     "lolo": "¿Qué te ayuda a sentirte mejor?",
+     "options": [
+      {
+       "text": "Descansar.",
+       "picture": {
+        "icon": "rest",
+        "color": "#5C6BC0"
+       },
+       "reply": "¡Descansar es muy bueno!"
+      },
+      {
+       "text": "Un abrazo.",
+       "picture": {
+        "icon": "help",
+        "color": "#E91E63"
+       },
+       "reply": "¡Un abrazo de Lolo!"
+      },
+      {
+       "text": "Beber agua.",
+       "picture": {
+        "icon": "water",
+        "color": "#039BE5"
+       },
+       "reply": "¡Muy bien!"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Que te mejores pronto!"
+  },
+  {
+   "id": "necesito_sed",
+   "category": "necesidades",
+   "title": "Tengo sed",
+   "picture": {
+    "scene": "cocina",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "cansado",
+        "girl": true,
+        "shirt": "#F48FB1"
+       }
+      },
+      "x": 0.4,
+      "y": 0.6,
+      "s": 0.45
+     },
+     {
+      "p": {
+       "icon": "water",
+       "color": "#039BE5"
+      },
+      "x": 0.78,
+      "y": 0.64,
+      "s": 0.22
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "¿Cómo pides agua?",
+     "options": [
+      {
+       "text": "Quiero agua, por favor.",
+       "picture": {
+        "icon": "water",
+        "color": "#039BE5"
+       },
+       "reply": "¡Perfecto! Muy bien pedido.",
+       "next": "p2"
+      },
+      {
+       "text": "Tengo sed.",
+       "picture": {
+        "icon": "glass",
+        "color": "#039BE5"
+       },
+       "reply": "¡Muy bien! Así te entienden.",
+       "next": "p2"
+      },
+      {
+       "text": "¿Me das un vaso de agua?",
+       "picture": {
+        "icon": "glass",
+        "color": "#039BE5"
+       },
+       "reply": "¡Qué bien lo preguntas!",
+       "next": "p2"
+      }
+     ]
+    },
+    "p2": {
+     "lolo": "¿Qué más puedes pedir cuando lo necesitas?",
+     "options": [
+      {
+       "text": "Ir al baño.",
+       "picture": {
+        "icon": "toilet",
+        "color": "#5C6BC0"
+       },
+       "reply": "¡Muy importante decirlo a tiempo!",
+       "next": "p3"
+      },
+      {
+       "text": "Descansar.",
+       "picture": {
+        "icon": "rest",
+        "color": "#5C6BC0"
+       },
+       "reply": "¡Todos necesitamos descansar!",
+       "next": "p3"
+      },
+      {
+       "text": "Comer algo.",
+       "picture": {
+        "icon": "eat",
+        "color": "#F4511E"
+       },
+       "reply": "¡Claro que sí!",
+       "next": "p3"
+      }
+     ]
+    },
+    "p3": {
+     "lolo": "¿Y qué dices al final?",
+     "options": [
+      {
+       "text": "Gracias.",
+       "picture": {
+        "icon": "love",
+        "color": "#E91E63"
+       },
+       "reply": "¡Muy bien!"
+      },
+      {
+       "text": "Por favor y gracias.",
+       "picture": {
+        "icon": "thumb_up",
+        "color": "#5C6BC0"
+       },
+       "reply": "¡Palabras mágicas!"
+      },
+      {
+       "text": "Eres muy amable.",
+       "picture": {
+        "kid": {
+         "emotion": "feliz",
+         "girl": false,
+         "arms_up": true
+        }
+       },
+       "reply": "¡Qué bonito!"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Qué bien sabes pedir lo que necesitas!"
+  },
+  {
+   "id": "necesito_frio",
+   "category": "necesidades",
+   "title": "Tengo frío",
+   "picture": {
+    "scene": "lluvia",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "triste",
+        "girl": false,
+        "shirt": "#64B5F6"
+       }
+      },
+      "x": 0.5,
+      "y": 0.6,
+      "s": 0.5
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "¡Brrr! Hace frío. ¿Qué dices?",
+     "options": [
+      {
+       "text": "Tengo frío.",
+       "picture": {
+        "icon": "snow",
+        "color": "#4FC3F7"
+       },
+       "reply": "¡Muy bien dicho!",
+       "next": "p2"
+      },
+      {
+       "text": "¿Me das mi abrigo?",
+       "picture": {
+        "icon": "jacket",
+        "color": "#E53935"
+       },
+       "reply": "¡Muy buena idea!",
+       "next": "p2"
+      },
+      {
+       "text": "Quiero una manta.",
+       "picture": {
+        "icon": "bed",
+        "color": "#5C6BC0"
+       },
+       "reply": "¡Una manta calentita!",
+       "next": "p2"
+      }
+     ]
+    },
+    "p2": {
+     "lolo": "¿Y si tienes calor?",
+     "options": [
+      {
+       "text": "Tengo calor.",
+       "picture": {
+        "icon": "hot",
+        "color": "#F4511E"
+       },
+       "reply": "¡Muy bien!",
+       "next": "p3"
+      },
+      {
+       "text": "Quiero agua fresca.",
+       "picture": {
+        "icon": "water",
+        "color": "#039BE5"
+       },
+       "reply": "¡Muy bien!",
+       "next": "p3"
+      },
+      {
+       "text": "Me quito el abrigo.",
+       "picture": {
+        "icon": "jacket",
+        "color": "#E53935"
+       },
+       "reply": "¡Buena idea!",
+       "next": "p3"
+      }
+     ]
+    },
+    "p3": {
+     "lolo": "¿Cómo te sientes ahora?",
+     "options": [
+      {
+       "text": "Calentito.",
+       "picture": {
+        "kid": {
+         "emotion": "tranquilo",
+         "girl": false
+        }
+       },
+       "reply": "¡Qué agradable!"
+      },
+      {
+       "text": "Bien.",
+       "picture": {
+        "kid": {
+         "emotion": "feliz",
+         "girl": false,
+         "arms_up": true
+        }
+       },
+       "reply": "¡Me alegro!"
+      },
+      {
+       "text": "Cómodo.",
+       "picture": {
+        "icon": "rest",
+        "color": "#5C6BC0"
+       },
+       "reply": "¡Qué bien!"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Decir cómo te sientes ayuda a que te cuiden!"
+  },
+  {
+   "id": "necesito_descansar",
+   "category": "necesidades",
+   "title": "Necesito descansar",
+   "picture": {
+    "scene": "dormitorio",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "cansado",
+        "girl": true,
+        "shirt": "#F48FB1"
+       }
+      },
+      "x": 0.5,
+      "y": 0.6,
+      "s": 0.5
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "Jugamos mucho. ¿Cómo está tu cuerpo?",
+     "options": [
+      {
+       "text": "Cansado.",
+       "picture": {
+        "kid": {
+         "emotion": "cansado",
+         "girl": false
+        }
+       },
+       "reply": "Gracias por decírmelo.",
+       "next": "p2"
+      },
+      {
+       "text": "Con mucha energía.",
+       "picture": {
+        "kid": {
+         "emotion": "emocionado",
+         "girl": false,
+         "shirt": "#64B5F6"
+        }
+       },
+       "reply": "¡Qué energía!",
+       "next": "p2"
+      },
+      {
+       "text": "Con sueño.",
+       "picture": {
+        "icon": "sleep",
+        "color": "#5C6BC0"
+       },
+       "reply": "¡A descansar!",
+       "next": "p2"
+      }
+     ]
+    },
+    "p2": {
+     "lolo": "¿Qué puedes decir cuando estás cansado?",
+     "options": [
+      {
+       "text": "Necesito descansar.",
+       "picture": {
+        "icon": "rest",
+        "color": "#5C6BC0"
+       },
+       "reply": "¡Muy bien dicho!",
+       "next": "p3"
+      },
+      {
+       "text": "Quiero dormir un ratito.",
+       "picture": {
+        "icon": "sleep",
+        "color": "#5C6BC0"
+       },
+       "reply": "¡Una siesta!",
+       "next": "p3"
+      },
+      {
+       "text": "Quiero jugar tranquilo.",
+       "picture": {
+        "icon": "read",
+        "color": "#8E24AA"
+       },
+       "reply": "¡Muy buena idea!",
+       "next": "p3"
+      }
+     ]
+    },
+    "p3": {
+     "lolo": "¿Qué hacemos para descansar?",
+     "options": [
+      {
+       "text": "Nos acostamos.",
+       "picture": {
+        "icon": "bed",
+        "color": "#5C6BC0"
+       },
+       "reply": "¡Muy bien!"
+      },
+      {
+       "text": "Escuchamos música suave.",
+       "picture": {
+        "icon": "dance",
+        "color": "#AB47BC"
+       },
+       "reply": "¡Qué relajante!"
+      },
+      {
+       "text": "Leemos un cuento.",
+       "picture": {
+        "icon": "read",
+        "color": "#8E24AA"
+       },
+       "reply": "¡Qué bonito!"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Que descanses!"
+  },
+  {
+   "id": "describir_pelota",
+   "category": "describir",
+   "title": "¿Cómo es la pelota?",
+   "picture": {
+    "scene": "jardin",
+    "items": [
+     {
+      "p": {
+       "icon": "ball",
+       "color": "#E53935"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "Mira esta pelota. ¿De qué color es?",
+     "options": [
+      {
+       "text": "Roja.",
+       "picture": {
+        "swatch": "#E53935"
+       },
+       "reply": "¡Sí! Es roja.",
+       "next": "p2"
+      },
+      {
+       "text": "Azul.",
+       "picture": {
+        "swatch": "#1E57C8"
+       },
+       "reply": "Esa es azul. ¡Esta pelota es roja!",
+       "next": "p2"
+      },
+      {
+       "text": "Verde.",
+       "picture": {
+        "swatch": "#2E7D32"
+       },
+       "reply": "Ese es verde. ¡Esta pelota es roja!",
+       "next": "p2"
+      }
+     ]
+    },
+    "p2": {
+     "lolo": "¿Qué forma tiene?",
+     "options": [
+      {
+       "text": "Es redonda.",
+       "picture": {
+        "icon": "circle",
+        "color": "#E53935"
+       },
+       "reply": "¡Muy bien! Es redonda.",
+       "next": "p3"
+      },
+      {
+       "text": "Es cuadrada.",
+       "picture": {
+        "icon": "square",
+        "color": "#1E57C8"
+       },
+       "reply": "¡Esa es cuadrada! La pelota es redonda.",
+       "next": "p3"
+      },
+      {
+       "text": "Es una estrella.",
+       "picture": {
+        "icon": "star",
+        "color": "#FBC02D"
+       },
+       "reply": "¡Esa es una estrella! La pelota es redonda.",
+       "next": "p3"
+      }
+     ]
+    },
+    "p3": {
+     "lolo": "¿Qué hacemos con una pelota?",
+     "options": [
+      {
+       "text": "La lanzamos.",
+       "picture": {
+        "icon": "ball",
+        "color": "#E53935"
+       },
+       "reply": "¡Muy bien!"
+      },
+      {
+       "text": "La pateamos.",
+       "picture": {
+        "icon": "run",
+        "color": "#43A047"
+       },
+       "reply": "¡Gol!"
+      },
+      {
+       "text": "La hacemos rebotar.",
+       "picture": {
+        "icon": "jump",
+        "color": "#00ACC1"
+       },
+       "reply": "¡Bote, bote!"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Qué bien describes las cosas!"
+  },
+  {
+   "id": "describir_grande",
+   "category": "describir",
+   "title": "Grande y pequeño",
+   "picture": {
+    "scene": "parque",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_elefante"
+      },
+      "x": 0.35,
+      "y": 0.58,
+      "s": 0.5
+     },
+     {
+      "p": {
+       "drawing": "animal_mariposa"
+      },
+      "x": 0.78,
+      "y": 0.45,
+      "s": 0.18
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "¿Qué animal es grande?",
+     "options": [
+      {
+       "text": "El elefante.",
+       "picture": {
+        "drawing": "animal_elefante"
+       },
+       "reply": "¡Sí! El elefante es muy grande.",
+       "next": "p2"
+      },
+      {
+       "text": "La mariposa.",
+       "picture": {
+        "drawing": "animal_mariposa"
+       },
+       "reply": "La mariposa es pequeñita. ¡El elefante es grande!",
+       "next": "p2"
+      },
+      {
+       "text": "El patito.",
+       "picture": {
+        "drawing": "granja_patito"
+       },
+       "reply": "El patito es pequeño. ¡El elefante es grande!",
+       "next": "p2"
+      }
+     ]
+    },
+    "p2": {
+     "lolo": "¿Y cuál es pequeño?",
+     "options": [
+      {
+       "text": "La mariposa.",
+       "picture": {
+        "drawing": "animal_mariposa"
+       },
+       "reply": "¡Muy bien! La mariposa es pequeña.",
+       "next": "p3"
+      },
+      {
+       "text": "La ballena.",
+       "picture": {
+        "drawing": "mar_ballena"
+       },
+       "reply": "¡La ballena es enorme! La mariposa es pequeña.",
+       "next": "p3"
+      },
+      {
+       "text": "La jirafa.",
+       "picture": {
+        "drawing": "animal_jirafa"
+       },
+       "reply": "¡La jirafa es muy alta! La mariposa es pequeña.",
+       "next": "p3"
+      }
+     ]
+    },
+    "p3": {
+     "lolo": "¿Cómo es la jirafa?",
+     "options": [
+      {
+       "text": "Alta.",
+       "picture": {
+        "drawing": "animal_jirafa"
+       },
+       "reply": "¡Sí! Tiene el cuello muy largo."
+      },
+      {
+       "text": "Baja.",
+       "picture": {
+        "drawing": "granja_patito"
+       },
+       "reply": "¡No! La jirafa es muy alta."
+      },
+      {
+       "text": "Redonda.",
+       "picture": {
+        "icon": "circle",
+        "color": "#E53935"
+       },
+       "reply": "¡No! La jirafa es muy alta."
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Sabes mucho de tamaños!"
+  },
+  {
+   "id": "describir_osito",
+   "category": "describir",
+   "title": "Mi osito",
+   "picture": {
+    "scene": "dormitorio",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_oso"
+      },
+      "x": 0.5,
+      "y": 0.6,
+      "s": 0.45
+     }
+    ]
+   },
+   "start": "p1",
+   "nodes": {
+    "p1": {
+     "lolo": "Toca tu osito. ¿Cómo es?",
+     "options": [
+      {
+       "text": "Suave.",
+       "picture": {
+        "icon": "love",
+        "color": "#E91E63"
+       },
+       "reply": "¡Sí! Los ositos son muy suaves.",
+       "next": "p2"
+      },
+      {
+       "text": "Esponjoso.",
+       "picture": {
+        "drawing": "granja_oveja"
+       },
+       "reply": "¡Como una nube!",
+       "next": "p2"
+      },
+      {
+       "text": "Duro.",
+       "picture": {
+        "icon": "square",
+        "color": "#8D6E63"
+       },
+       "reply": "¡Mmm, los ositos suelen ser suaves!",
+       "next": "p2"
+      }
+     ]
+    },
+    "p2": {
+     "lolo": "¿De qué tamaño es?",
+     "options": [
+      {
+       "text": "Pequeño.",
+       "picture": {
+        "icon": "zoom_out",
+        "color": "#8D6E63"
+       },
+       "reply": "¡Cabe en tus brazos!",
+       "next": "p3"
+      },
+      {
+       "text": "Grande.",
+       "picture": {
+        "icon": "zoom_in",
+        "color": "#8D6E63"
+       },
+       "reply": "¡Un osito gigante!",
+       "next": "p3"
+      },
+      {
+       "text": "Mediano.",
+       "picture": {
+        "drawing": "animal_oso"
+       },
+       "reply": "¡Perfecto para abrazar!",
+       "next": "p3"
+      }
+     ]
+    },
+    "p3": {
+     "lolo": "¿Qué haces con tu osito?",
+     "options": [
+      {
+       "text": "Lo abrazo.",
+       "picture": {
+        "icon": "help",
+        "color": "#E91E63"
+       },
+       "reply": "¡Qué bonito!"
+      },
+      {
+       "text": "Duermo con él.",
+       "picture": {
+        "icon": "sleep",
+        "color": "#5C6BC0"
+       },
+       "reply": "¡Te acompaña toda la noche!"
+      },
+      {
+       "text": "Juego con él.",
+       "picture": {
+        "icon": "play",
+        "color": "#FB8C00"
+       },
+       "reply": "¡Qué divertido!"
+      }
+     ]
+    }
+   },
+   "goodbye": "¡Tu osito es especial!"
+  }
+ ]
+}

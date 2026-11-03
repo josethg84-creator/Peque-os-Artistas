@@ -17,25 +17,50 @@ const _phraseColor = Color(0xFFF06292);
 /// «Aprendo frases»: frases útiles para cada día, con su ilustración. Se
 /// escuchan enteras (normal o despacio) o palabra a palabra tocando cada una,
 /// y se pueden ordenar con tarjetas («¡Ordénala tú!»).
+///
+/// La misma pantalla sirve para «Necesito…» de «Yo puedo expresarme» con
+/// [PhrasesScreen.needs].
 class PhrasesScreen extends StatelessWidget {
-  const PhrasesScreen({super.key});
+  const PhrasesScreen({super.key}) : needs = false;
+
+  /// Las necesidades de «Yo puedo expresarme».
+  const PhrasesScreen.needs({super.key}) : needs = true;
+
+  final bool needs;
 
   @override
   Widget build(BuildContext context) {
+    final speech = AppServices.of(context).speech;
     return KidScaffold(
-      title: 'Aprendo frases',
-      titleIcon: Icons.chat_bubble_rounded,
+      title: needs ? 'Necesito…' : 'Aprendo frases',
+      titleIcon: needs ? Icons.back_hand_rounded : Icons.chat_bubble_rounded,
       accent: _phraseColor,
-      backLabel: 'Volver a Aprendo a Hablar',
-      body: SpeechContentBuilder(builder: (context, content) => _PhrasesPager(phrases: content.phrases)),
+      backLabel: needs ? 'Volver a Yo puedo expresarme' : 'Volver a Aprendo a Hablar',
+      body: SpeechContentBuilder(
+        builder: (context, content) => needs
+            ? _PhrasesPager(
+                phrases: content.expressions.needs,
+                onHeard: (id) => speech.markExpressionPracticed('necesidad:$id'),
+                onOrdered: (id) => speech.markExpressionPracticed('necesidad:$id'),
+              )
+            : _PhrasesPager(
+                phrases: content.phrases,
+                onHeard: speech.markPhraseHeard,
+                onOrdered: speech.markPhraseOrdered,
+              ),
+      ),
     );
   }
 }
 
 class _PhrasesPager extends StatefulWidget {
-  const _PhrasesPager({required this.phrases});
+  const _PhrasesPager({required this.phrases, required this.onHeard, required this.onOrdered});
 
   final List<SpeechPhrase> phrases;
+
+  /// Se ha escuchado la frase (id) / se ha ordenado.
+  final void Function(String id) onHeard;
+  final void Function(String id) onOrdered;
 
   @override
   State<_PhrasesPager> createState() => _PhrasesPagerState();
@@ -66,7 +91,7 @@ class _PhrasesPagerState extends State<_PhrasesPager> {
 
   void _say({bool slow = false}) {
     speak(context, _phrase.text, slow: slow);
-    AppServices.of(context).speech.markPhraseHeard(_phrase.id);
+    widget.onHeard(_phrase.id);
   }
 
   void _goTo(int i) {
@@ -93,7 +118,7 @@ class _PhrasesPagerState extends State<_PhrasesPager> {
       itemBuilder: (context, i) => _PhraseCard(
         phrase: widget.phrases[i],
         ordering: _ordering && i == _index,
-        onOrdered: () => AppServices.of(context).speech.markPhraseOrdered(widget.phrases[i].id),
+        onOrdered: () => widget.onOrdered(widget.phrases[i].id),
         onNext: last ? null : () => _goTo(i + 1),
       ),
     );

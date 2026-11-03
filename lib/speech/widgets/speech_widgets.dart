@@ -151,7 +151,72 @@ class SpeechPictureView extends StatelessWidget {
         EmotionPicture(:final emotion) => CustomPaint(painter: EmotionFacePainter(emotion)),
         BodyPicture(:final part) => CustomPaint(painter: BodyPartPainter(part)),
         SwatchPicture(:final color) => CustomPaint(painter: PaintSplashPainter(color)),
-        final IconPicture p => _IconTile(icon: p.icon, color: p.color ?? tint ?? AppColors.grape),
+        final IconPicture p => _IconTile(
+          icon: p.icon,
+          color: p.color ?? tint ?? AppColors.grape,
+          shoe: p.name == 'shoes',
+        ),
+        LoloPicture() => const CustomPaint(painter: LoloPainter()),
+        final KidPicture k => CustomPaint(
+          painter: KidPainter(
+            girl: k.girl,
+            shirt: k.shirt,
+            hair: k.hair,
+            emotion: k.emotion,
+            armsUp: k.armsUp,
+          ),
+        ),
+        final ScenePicture s => _Scene(scene: s, tint: tint),
+      },
+    );
+  }
+}
+
+/// Escena: el fondo y, encima, cada elemento en su sitio y a su tamaño.
+class _Scene extends StatelessWidget {
+  const _Scene({required this.scene, this.tint});
+
+  final ScenePicture scene;
+  final Color? tint;
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, box) {
+        final side = box.biggest.shortestSide;
+        return Center(
+          child: SizedBox.square(
+            dimension: side,
+            child: Stack(
+              children: [
+                Positioned.fill(child: CustomPaint(painter: SceneBackgroundPainter(scene.background))),
+                for (final item in scene.items)
+                  Positioned(
+                    left: side * (item.x - item.size / 2),
+                    top: side * (item.y - item.size / 2),
+                    width: side * item.size,
+                    height: side * item.size,
+                    child: switch (item.picture) {
+                      // En una escena, los pictogramas van sin baldosa, como parte del dibujo.
+                      final IconPicture p when p.name == 'shoes' => CustomPaint(
+                        painter: ShoePainter(p.color ?? tint ?? AppColors.grape),
+                      ),
+                      final IconPicture p => FittedBox(
+                        child: Icon(
+                          p.icon,
+                          color: p.color ?? tint ?? AppColors.grape,
+                          shadows: const [
+                            Shadow(color: Color(0x40000000), offset: Offset(0, 2), blurRadius: 3),
+                          ],
+                        ),
+                      ),
+                      final p => SpeechPictureView(picture: p, tint: tint),
+                    },
+                  ),
+              ],
+            ),
+          ),
+        );
       },
     );
   }
@@ -159,10 +224,13 @@ class SpeechPictureView extends StatelessWidget {
 
 /// Pictograma grande sobre una baldosa redondeada con relieve.
 class _IconTile extends StatelessWidget {
-  const _IconTile({required this.icon, required this.color});
+  const _IconTile({required this.icon, required this.color, this.shoe = false});
 
   final IconData icon;
   final Color color;
+
+  /// Se dibuja un zapato propio en lugar del icono.
+  final bool shoe;
 
   @override
   Widget build(BuildContext context) {
@@ -186,18 +254,23 @@ class _IconTile extends StatelessWidget {
                 const BoxShadow(color: Color(0x22000000), blurRadius: 10, offset: Offset(0, 6)),
               ],
             ),
-            child: Icon(
-              icon,
-              size: side * 0.56,
-              color: color,
-              shadows: [
-                Shadow(
-                  color: Color.lerp(color, Colors.black, 0.4)!.withValues(alpha: 0.35),
-                  offset: Offset(0, side * 0.02),
-                  blurRadius: side * 0.02,
-                ),
-              ],
-            ),
+            child: shoe
+                ? Padding(
+                    padding: EdgeInsets.all(side * 0.1),
+                    child: CustomPaint(painter: ShoePainter(color)),
+                  )
+                : Icon(
+                    icon,
+                    size: side * 0.56,
+                    color: color,
+                    shadows: [
+                      Shadow(
+                        color: Color.lerp(color, Colors.black, 0.4)!.withValues(alpha: 0.35),
+                        offset: Offset(0, side * 0.02),
+                        blurRadius: side * 0.02,
+                      ),
+                    ],
+                  ),
           ),
         );
       },
@@ -266,7 +339,9 @@ class _PictureColors extends AutoColors {
   final DrawingPicture picture;
 
   @override
-  Color? colorOf(String regionId) => picture.colorFor(regionId) ?? super.colorOf(regionId);
+  Color? colorOf(String regionId) => regionId == VectorDrawing.backgroundId
+      ? super.colorOf(regionId)
+      : picture.colorFor(regionId) ?? super.colorOf(regionId);
 }
 
 /// Botón grande y redondeado de las actividades (Escuchar, Despacio…).

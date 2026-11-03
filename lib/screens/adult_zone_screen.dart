@@ -6,7 +6,9 @@ import '../learning/learning_level.dart';
 import '../persistence/creation_store.dart';
 import '../services/app_services.dart';
 import '../services/catalog_service.dart';
+import '../speech/speech_content.dart';
 import '../speech/speech_progress.dart';
+import '../speech/speech_summary.dart';
 import '../theme/app_theme.dart';
 import '../widgets/catalog_builder.dart';
 
@@ -65,7 +67,7 @@ class AdultZoneScreen extends StatelessWidget {
                     'No se piden datos personales ni se crean cuentas.',
                     'Sin publicidad, sin compras, sin chat y sin enlaces externos.',
                     'La aplicación no usa Internet: todo se guarda solo en este dispositivo.',
-                    'El micrófono solo se usa en «Practicar» de «Aprendo a Hablar», cuando el niño '
+                    'El micrófono solo se usa en las prácticas de voz de «Aprendo a Hablar», cuando el niño '
                         'pulsa «Grabar»: la grabación no se guarda ni se envía y se borra al cerrar. '
                         'Se puede desactivar en la sección «Aprendo a Hablar».',
                     'Para borrar todos los datos: Ajustes de Android → Aplicaciones → '
@@ -230,11 +232,19 @@ class _SpeechSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return FutureBuilder<SpeechContent>(
+      future: speech.content(),
+      builder: (context, snapshot) => _card(context, snapshot.data),
+    );
+  }
+
+  Widget _card(BuildContext context, SpeechContent? content) {
     return ListenableBuilder(
       listenable: speech,
       builder: (context, _) {
         final p = speech.progress;
         int done(String kind) => p.activitiesDone[kind] ?? 0;
+        final phase3 = content == null ? null : SpeechPhase3Summary(p, content);
         return Card(
           margin: const EdgeInsets.only(bottom: 12),
           child: Padding(
@@ -259,6 +269,7 @@ class _SpeechSection extends StatelessWidget {
                       'escucho y comprendo ${done('comprension')}.',
                   'Práctica con su voz: ${p.recordings} vez/veces. Días de práctica en los últimos 7: '
                       '${speech.daysPracticedThisWeek()}.',
+                  ...?phase3?.adultLines,
                   'Solo cuenta actividades hechas en este dispositivo. No es una evaluación del habla ni '
                       'sustituye la opinión de un profesional.',
                 ])
@@ -268,8 +279,10 @@ class _SpeechSection extends StatelessWidget {
                   contentPadding: EdgeInsets.zero,
                   title: const Text('Practicar con el micrófono'),
                   subtitle: const Text(
-                    'Muestra el botón «Practicar»: el niño graba su voz y se escucha. '
-                    'Las grabaciones no se guardan ni se envían.',
+                    'Muestra los botones para practicar con la voz («Practicar», el micrófono de las '
+                    'conversaciones y «Grabar mi historia»): el niño graba su voz y se escucha. '
+                    'Las grabaciones no se guardan ni se envían, y la app no evalúa ni «entiende» '
+                    'lo que dice.',
                   ),
                   value: p.micAllowed,
                   onChanged: speech.setMicAllowed,

@@ -1,4 +1,4 @@
-# Aprendo a Hablar — entregas 1 y 2
+# Aprendo a Hablar — entregas 1, 2 y 3
 
 Módulo para niños desde los 4 años que enseña vocabulario y frases con voz en español,
 dentro de la misma app y con su mismo estilo. Lo acompaña **Lolo**, un lorito original.
@@ -106,10 +106,69 @@ Lolo felicita y se puede jugar otra vez.
 - No se ha añadido reconocimiento automático de voz: tendría que ser opcional, local y estar
   verificado antes, por la privacidad infantil.
 
+## Tercera entrega: conversaciones, cuentos y comunicación
+
+| Pedido (fase 3) | Estado |
+|---|---|
+| A · «Hablemos con Lolo»: 12 categorías, motor de diálogo con datos, sesiones de 3 a 5 intercambios, repetir, despacio y terminar | Hecho: 36 conversaciones (3 por categoría) con ramas según la respuesta |
+| Micrófono opcional en las conversaciones, sin fingir que se entiende | Hecho: el micrófono abre «Practicar» (grabarse y escucharse); la conversación avanza solo al tocar una respuesta |
+| B · «Lolo me cuenta un cuento»: 20 cuentos originales en 10 categorías, portada, personajes, escenas, preguntas con dibujos, ordenar 3 escenas, estrella | Hecho |
+| Controles: Escuchar, Pausar, Continuar, Repetir escena, Lentamente, Siguiente, Anterior, Volver | Hecho; se resalta la escena que se lee (no palabra a palabra) |
+| C · «Yo puedo expresarme»: necesidades, 7 emociones con ejemplos y sin juzgarlas, constructor QUIÉN + QUÉ SIENTE + POR QUÉ | Hecho: 10 necesidades, 7 emociones, 6 personas («Yo», «Mi amigo», «Mi amiga»…) con género y persona correctos |
+| D · «Ahora cuéntamelo tú»: mirar 3-4 dibujos, ordenarlos, preguntas de Lolo, elegir frases, oír la historia completa, grabarla (opcional) | Hecho: 8 historias de 4 dibujos |
+| E · «Escucho y respondo»: 50 o más ejercicios originales y graduales | Hecho: 56 ejercicios en 3 niveles (ver abajo) |
+| F · Progreso local, panel del niño, resumen para adultos, pruebas | Hecho |
+
+### Escucho y respondo
+
+Se oye una frase y se responde tocando un dibujo. Cada ejercicio se puede volver a oír, también
+despacio. Un error no castiga: Lolo anima y, al segundo, la respuesta correcta brilla.
+
+| Tipo | Ejemplo | Cuántos |
+|---|---|---|
+| ¿Quién? | «El conejo salta y la tortuga camina despacio. ¿Quién camina despacio?» | 9 |
+| ¿Dónde? | «Después de clase, Luna juega en el parque. ¿Dónde juega Luna?» | 7 |
+| ¿Para qué sirve? | «Lo miro para saber la hora. ¿Qué es?» | 8 |
+| Antes y después | «Primero me pongo la camiseta y después los zapatos. ¿Qué me pongo después?» | 8 |
+| Instrucción de dos pasos | «Toca primero el perro y después el gato.» (se tocan en orden) | 8 |
+| ¿Cómo se siente? | «¡Mateo abre la caja y encuentra un regalo!» | 7 |
+| Mira el dibujo | Una escena: «¿Quién tiene la pelota?» | 9 |
+
+- **Nivel 1** (18): una frase corta, una sola idea, tres respuestas.
+- **Nivel 2** (22): dos personajes, causas, antes y después; las primeras instrucciones.
+- **Nivel 3** (16): sobre todo instrucciones de dos pasos y escenas con más detalles.
+
+Cada ronda son 8 ejercicios del nivel al azar, sin dos seguidos del mismo tipo. El juego de la
+2.ª entrega («Escucha y señala») sigue en el mismo menú.
+
+### Estrellas y progreso
+
+Todo se guarda **solo en el dispositivo**, en la misma clave `speech.v1.state`:
+conversaciones terminadas, cuentos escuchados y con preguntas, historias contadas,
+necesidades, emociones y frases practicadas, ejercicios de escucha, respuestas acertadas y
+estrellas. Las estrellas se dan **una sola vez** por cada cosa terminada (para no inflarlas):
+conversación +1, cuento escuchado +1, preguntas del cuento +2, historia contada +2 y nivel de
+escucha +1.
+
+- **Mi progreso** muestra todo esto con barras.
+- **Perfil** (panel del niño) tiene una tarjeta «Aprendo a Hablar» con sus estrellas.
+- **Zona de adultos** resume lo hecho. No es una evaluación ni un diagnóstico.
+
+### Lo que no hace (a propósito)
+
+- No hay reconocimiento de voz ni servicios externos: la app **no «entiende»** lo que dice el
+  niño y nunca lo finge. Las respuestas se eligen tocando.
+- Las grabaciones (Practicar, el micrófono de las conversaciones y «Grabar mi historia»)
+  usan la misma ventana: no se guardan, no se envían y se borran al cerrar. Un adulto puede
+  ocultar el micrófono en la zona de adultos.
+- No hay puntuaciones de lenguaje.
+- **No se ha probado en un teléfono real.** Se ha probado con pruebas automáticas y en el
+  navegador.
+
 ## Lo que falta
 
-- **3.ª entrega:** conversaciones guiadas con Lolo, cuentos narrados, panel de progreso
-  ampliado (también en la zona de adultos), mejoras visuales y de accesibilidad.
+- Probarlo en un teléfono Android real (voz, micrófono y sin conexión).
+- Audios grabados por una persona (ahora la voz es la del dispositivo).
 
 ## Voz
 
@@ -128,7 +187,7 @@ Lolo felicita y se puede jugar otra vez.
 
 ## Privacidad
 
-- El micrófono solo se usa en «Practicar» (ver arriba): nada se envía ni se guarda.
+- El micrófono solo se usa en las prácticas de voz (ver arriba): nada se envía ni se guarda.
 - El progreso se guarda **solo en el dispositivo** (clave `speech.v1.state`, con suma de
   verificación y copia de seguridad). No hay cuentas, servidores, anuncios ni datos personales.
 
@@ -142,6 +201,9 @@ Lolo felicita y se puede jugar otra vez.
 | Mancha de pintura | Colores | Original, con código |
 | Pictogramas en baldosas 3D | Familia, alimentos, juguetes, hogar, acciones, naturaleza y frases | Iconos de Material (incluidos en Flutter, licencia Apache 2.0) |
 | Lolo | Mascota | Original, con código |
+| Niños (Luna y Mateo) con 8 emociones | Conversaciones, cuentos, historias y escucha | Originales, con código |
+| Fondos de escena (jardín, parque, bosque, playa, noche, lluvia, cielo, casa, cocina, dormitorio, escuela) | Escenas de cuentos e historias | Originales, con código |
+| Zapato | Pictograma | Original, con código (los iconos de Material solo tienen uno tachado) |
 
 Todo es vectorial: se ve nítido a cualquier tamaño y funciona sin conexión.
 
@@ -166,6 +228,12 @@ Tipos de `picture`:
 - `{"body": "ojos"}`
 - `{"swatch": "#E53935"}`
 - `{"image": "assets/..."}`
+- `{"lolo": true}`, `{"kid": {"emotion": "feliz", "girl": true, "shirt": "#F48FB1"}}`
+- `{"scene": "parque", "items": [{"p": <picture>, "x": 0.5, "y": 0.6, "s": 0.4}]}`
+
+El contenido de la 3.ª entrega se genera con los guiones de `tools/speech/`
+(`conversations.py`, `stories.py`, `expressions.py`, `tell.py`, `listening.py`): se edita
+el guion y se ejecuta `python3 tools/speech/<guion>.py` para rehacer el JSON.
 
 Lo que no se entienda (una ilustración desconocida, un id repetido, un grupo vacío) se
 descarta sin romper la pantalla.
@@ -189,7 +257,14 @@ lib/speech/
   voice_practice.dart             grabación de «Practicar» (interfaz, real y simulada)
   widgets/practice_sheet.dart     ventana de «Practicar»
   widgets/order_words.dart        ordenar palabras (frases y oraciones)
-assets/speech/words.json, phrases.json, verbs.json, sentences.json
+  widgets/order_pictures.dart     ordenar dibujos (escenas de cuentos e historias)
+  dialogue.dart                   motor de diálogo (nodos, opciones, ramas, sesión)
+  stories.dart, expressions.dart, tell.dart, listening.dart   modelos de la 3.ª entrega
+  speech_summary.dart             resumen de la 3.ª entrega (progreso, panel, adultos)
+  screens/conversation_screens.dart, story_screens.dart, express_screens.dart,
+  screens/tell_screens.dart, listening_screens.dart
+assets/speech/words.json, phrases.json, verbs.json, sentences.json,
+  conversations.json, stories.json, expressions.json, tell.json, listening.json
 ```
 
 - Contenido, lógica, almacenamiento y pantallas están separados.
@@ -204,7 +279,7 @@ assets/speech/words.json, phrases.json, verbs.json, sentences.json
   dibujos existentes, colores reales de las frutas, 12 frases y lectura tolerante del JSON.
 - `test/speech/speech_progress_test.dart`: guardar y recuperar, días de práctica, copia de
   seguridad ante datos dañados y uso sin almacenamiento.
-- `test/speech/speech_flow_test.dart`: inicio → menú (8 actividades y «Muy pronto»), palabras
+- `test/speech/speech_flow_test.dart`: inicio → menú (todas las actividades), palabras
   (escuchar, despacio, siguiente, deslizar, terminar el grupo, música callada), frases
   (palabra a palabra, ordenar con errores sin castigo y con ayuda) y «Mi progreso».
 - `test/speech/speech_activities_test.dart`: los 15 verbos bien conjugados, el contenido de
@@ -214,5 +289,11 @@ assets/speech/words.json, phrases.json, verbs.json, sentences.json
   quedó, completar con errores y ayuda hasta terminar, verbos (línea a línea y «Escuchar
   todo»), «Practicar» (el permiso solo al grabar, escucharse, repetir borrando la anterior,
   parada a los 6 s, borrado al cerrar, sin permiso) e interruptor de la zona de adultos.
-- `test/responsive_test.dart`: las 15 pantallas del módulo sin desbordamientos en 5 tamaños, con
-  texto normal y al 160 %.
+- 3.ª entrega: `dialogue_test.dart` (motor y 36 conversaciones), `stories_test.dart`,
+  `expressions_test.dart`, `tell_test.dart`, `listening_test.dart` (56 ejercicios, 7 tipos,
+  dificultad gradual, lectura tolerante) y `phase3_flow_test.dart` (cada etapa completa desde
+  el menú: charla con estrella, cuento con pausa y controles, emociones y constructor,
+  ordenar y contar una historia, una ronda de escucha con error y «despacio», e instrucción
+  de dos pasos en orden).
+- `test/responsive_test.dart`: las 31 pantallas del módulo sin desbordamientos en 5 tamaños,
+  con texto normal y al 160 %.

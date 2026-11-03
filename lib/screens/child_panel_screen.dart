@@ -8,6 +8,9 @@ import '../navigation/app_routes.dart';
 import '../persistence/creation.dart';
 import '../persistence/creation_store.dart';
 import '../services/app_services.dart';
+import '../speech/speech_content.dart';
+import '../speech/speech_progress.dart';
+import '../speech/speech_summary.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_dimens.dart';
 import '../widgets/catalog_builder.dart';
@@ -231,6 +234,7 @@ class _ChildPanelScreenState extends State<ChildPanelScreen> {
                   ),
                 ),
         ),
+        _SpeechPanel(speech: AppServices.of(context).speech),
         Container(
           padding: const EdgeInsets.all(14),
           decoration: BoxDecoration(
@@ -392,5 +396,75 @@ class _ProgressRow extends StatelessWidget {
         ],
       ),
     ),
+  );
+}
+
+/// «Aprendo a Hablar» en el panel: estrellas y lo hecho en conversaciones,
+/// cuentos, historias y juegos de escucha.
+class _SpeechPanel extends StatelessWidget {
+  const _SpeechPanel({required this.speech});
+
+  final SpeechController speech;
+
+  @override
+  Widget build(BuildContext context) => FutureBuilder<SpeechContent>(
+    future: speech.content(),
+    builder: (context, snapshot) {
+      final content = snapshot.data;
+      if (content == null) return const SizedBox.shrink();
+      return ListenableBuilder(
+        listenable: speech,
+        builder: (context, _) {
+          final f = SpeechPhase3Summary(speech.progress, content);
+          return _Section(
+            icon: Icons.record_voice_over_rounded,
+            title: 'Aprendo a Hablar',
+            action: TextButton(
+              onPressed: () => Navigator.of(context).pushNamed(AppRoutes.speechProgress),
+              child: const Text('Ver más'),
+            ),
+            child: Column(
+              children: [
+                _Stat(
+                  icon: Icons.star_rounded,
+                  color: AppColors.sun,
+                  value: f.stars,
+                  label: 'Estrellas de hablar',
+                ),
+                const SizedBox(height: 6),
+                _ProgressRow(
+                  icon: Icons.forum_rounded,
+                  color: const Color(0xFF9575CD),
+                  label: 'Conversaciones con Lolo',
+                  done: f.conversations,
+                  total: f.conversationsTotal,
+                ),
+                _ProgressRow(
+                  icon: Icons.auto_stories_rounded,
+                  color: const Color(0xFF26C6DA),
+                  label: 'Cuentos escuchados',
+                  done: f.storiesHeard,
+                  total: f.storiesTotal,
+                ),
+                _ProgressRow(
+                  icon: Icons.photo_library_rounded,
+                  color: const Color(0xFFFFA726),
+                  label: 'Historias que contaste',
+                  done: f.told,
+                  total: f.tellTotal,
+                ),
+                _ProgressRow(
+                  icon: Icons.hearing_rounded,
+                  color: const Color(0xFFFF8A65),
+                  label: 'Ejercicios de escucha',
+                  done: f.listening,
+                  total: f.listeningTotal,
+                ),
+              ],
+            ),
+          );
+        },
+      );
+    },
   );
 }

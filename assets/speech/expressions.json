@@ -1,0 +1,651 @@
+{
+ "format_version": 1,
+ "needs": [
+  {
+   "id": "tomar_agua",
+   "text": "Quiero tomar agua.",
+   "picture": {
+    "scene": "cocina",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "feliz",
+        "girl": true,
+        "shirt": "#F48FB1"
+       }
+      },
+      "x": 0.38,
+      "y": 0.62,
+      "s": 0.45
+     },
+     {
+      "p": {
+       "icon": "water",
+       "color": "#039BE5"
+      },
+      "x": 0.76,
+      "y": 0.62,
+      "s": 0.22
+     }
+    ]
+   }
+  },
+  {
+   "id": "hambre",
+   "text": "Tengo hambre.",
+   "picture": {
+    "scene": "cocina",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "triste",
+        "girl": false,
+        "shirt": "#64B5F6"
+       }
+      },
+      "x": 0.38,
+      "y": 0.62,
+      "s": 0.45
+     },
+     {
+      "p": {
+       "icon": "eat",
+       "color": "#F4511E"
+      },
+      "x": 0.76,
+      "y": 0.62,
+      "s": 0.22
+     }
+    ]
+   }
+  },
+  {
+   "id": "descansar",
+   "text": "Necesito descansar.",
+   "picture": {
+    "scene": "dormitorio",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "cansado",
+        "girl": true,
+        "shirt": "#F48FB1"
+       }
+      },
+      "x": 0.5,
+      "y": 0.6,
+      "s": 0.5
+     }
+    ]
+   }
+  },
+  {
+   "id": "jugar",
+   "text": "Quiero jugar.",
+   "picture": {
+    "scene": "parque",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "emocionado",
+        "girl": false,
+        "shirt": "#64B5F6"
+       }
+      },
+      "x": 0.4,
+      "y": 0.6,
+      "s": 0.45
+     },
+     {
+      "p": {
+       "icon": "ball",
+       "color": "#E53935"
+      },
+      "x": 0.76,
+      "y": 0.8,
+      "s": 0.16
+     }
+    ]
+   }
+  },
+  {
+   "id": "ayuda",
+   "text": "Necesito ayuda.",
+   "picture": {
+    "scene": "casa",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "triste",
+        "girl": true,
+        "shirt": "#F48FB1"
+       }
+      },
+      "x": 0.4,
+      "y": 0.62,
+      "s": 0.45
+     },
+     {
+      "p": {
+       "icon": "help",
+       "color": "#26A69A"
+      },
+      "x": 0.76,
+      "y": 0.5,
+      "s": 0.22
+     }
+    ]
+   }
+  },
+  {
+   "id": "bano",
+   "text": "Quiero ir al baño.",
+   "picture": {
+    "scene": "casa",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "sorprendido",
+        "girl": false,
+        "shirt": "#64B5F6"
+       }
+      },
+      "x": 0.4,
+      "y": 0.62,
+      "s": 0.45
+     },
+     {
+      "p": {
+       "icon": "toilet",
+       "color": "#5C6BC0"
+      },
+      "x": 0.76,
+      "y": 0.6,
+      "s": 0.22
+     }
+    ]
+   }
+  },
+  {
+   "id": "frio",
+   "text": "Tengo frío.",
+   "picture": {
+    "scene": "lluvia",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "triste",
+        "girl": true,
+        "shirt": "#F48FB1"
+       }
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.48
+     },
+     {
+      "p": {
+       "icon": "snow",
+       "color": "#4FC3F7"
+      },
+      "x": 0.8,
+      "y": 0.3,
+      "s": 0.16
+     }
+    ]
+   }
+  },
+  {
+   "id": "calor",
+   "text": "Tengo calor.",
+   "picture": {
+    "scene": "playa",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "cansado",
+        "girl": false,
+        "shirt": "#64B5F6"
+       }
+      },
+      "x": 0.45,
+      "y": 0.64,
+      "s": 0.48
+     },
+     {
+      "p": {
+       "icon": "hot",
+       "color": "#F4511E"
+      },
+      "x": 0.8,
+      "y": 0.3,
+      "s": 0.16
+     }
+    ]
+   }
+  },
+  {
+   "id": "duele",
+   "text": "Me duele aquí.",
+   "picture": {
+    "scene": "casa",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "triste",
+        "girl": false,
+        "shirt": "#64B5F6"
+       }
+      },
+      "x": 0.45,
+      "y": 0.62,
+      "s": 0.48
+     },
+     {
+      "p": {
+       "icon": "hurt",
+       "color": "#E53935"
+      },
+      "x": 0.78,
+      "y": 0.5,
+      "s": 0.18
+     }
+    ]
+   }
+  },
+  {
+   "id": "sueno",
+   "text": "Tengo sueño.",
+   "picture": {
+    "scene": "noche",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "cansado",
+        "girl": true,
+        "shirt": "#F48FB1"
+       }
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   }
+  }
+ ],
+ "emotions": [
+  {
+   "id": "alegria",
+   "name": "Alegría",
+   "face": "feliz",
+   "masculine": "contento",
+   "feminine": "contenta",
+   "examples": [
+    "Estoy contento porque voy a jugar.",
+    "Estoy feliz porque viene mi abuela."
+   ],
+   "reasons": [
+    {
+     "id": "perro",
+     "me": "porque juego con mi perro",
+     "other": "porque juega con su perro",
+     "picture": {
+      "icon": "pets",
+      "color": "#FB8C00"
+     }
+    },
+    {
+     "id": "cumple",
+     "me": "porque es mi cumpleaños",
+     "other": "porque es su cumpleaños",
+     "picture": {
+      "icon": "cake",
+      "color": "#AB47BC"
+     }
+    },
+    {
+     "id": "parque",
+     "me": "porque vamos al parque",
+     "other": "porque vamos al parque",
+     "picture": {
+      "icon": "tree",
+      "color": "#2E7D32"
+     }
+    }
+   ]
+  },
+  {
+   "id": "tristeza",
+   "name": "Tristeza",
+   "face": "triste",
+   "masculine": "triste",
+   "feminine": "triste",
+   "examples": [
+    "Estoy triste porque extraño a mi amigo.",
+    "Estoy triste porque se rompió mi juguete."
+   ],
+   "reasons": [
+    {
+     "id": "amigo",
+     "me": "porque extraño a mi amigo",
+     "other": "porque extraña a su amigo",
+     "picture": {
+      "icon": "friends",
+      "color": "#00ACC1"
+     }
+    },
+    {
+     "id": "juguete",
+     "me": "porque se rompió mi juguete",
+     "other": "porque se rompió su juguete",
+     "picture": {
+      "icon": "toys",
+      "color": "#FB8C00"
+     }
+    },
+    {
+     "id": "lluvia",
+     "me": "porque llueve y no puedo salir",
+     "other": "porque llueve y no puede salir",
+     "picture": {
+      "icon": "umbrella",
+      "color": "#5C6BC0"
+     }
+    }
+   ]
+  },
+  {
+   "id": "miedo",
+   "name": "Miedo",
+   "face": "asustado",
+   "masculine": "asustado",
+   "feminine": "asustada",
+   "examples": [
+    "Tengo miedo porque hay truenos.",
+    "Estoy asustada porque está muy oscuro."
+   ],
+   "reasons": [
+    {
+     "id": "truenos",
+     "me": "porque hay truenos",
+     "other": "porque hay truenos",
+     "picture": {
+      "icon": "rain",
+      "color": "#78909C"
+     }
+    },
+    {
+     "id": "oscuro",
+     "me": "porque está oscuro",
+     "other": "porque está oscuro",
+     "picture": {
+      "icon": "moon",
+      "color": "#5C6BC0"
+     }
+    },
+    {
+     "id": "ruido",
+     "me": "porque escuché un ruido fuerte",
+     "other": "porque escuchó un ruido fuerte",
+     "picture": {
+      "icon": "hearing",
+      "color": "#8D6E63"
+     }
+    }
+   ]
+  },
+  {
+   "id": "enojo",
+   "name": "Enojo",
+   "face": "enojado",
+   "masculine": "enojado",
+   "feminine": "enojada",
+   "examples": [
+    "Estoy enojado porque se cayó mi torre.",
+    "Estoy enojada porque no me tocó mi turno."
+   ],
+   "reasons": [
+    {
+     "id": "torre",
+     "me": "porque se cayó mi torre",
+     "other": "porque se cayó su torre",
+     "picture": {
+      "icon": "blocks",
+      "color": "#43A047"
+     }
+    },
+    {
+     "id": "turno",
+     "me": "porque no me tocó mi turno",
+     "other": "porque no le tocó su turno",
+     "picture": {
+      "icon": "clock",
+      "color": "#00897B"
+     }
+    },
+    {
+     "id": "lapiz",
+     "me": "porque perdí mi lápiz",
+     "other": "porque perdió su lápiz",
+     "picture": {
+      "icon": "pencil",
+      "color": "#FB8C00"
+     }
+    }
+   ]
+  },
+  {
+   "id": "sorpresa",
+   "name": "Sorpresa",
+   "face": "sorprendido",
+   "masculine": "sorprendido",
+   "feminine": "sorprendida",
+   "examples": [
+    "Estoy sorprendido porque recibí un regalo.",
+    "Estoy sorprendida porque vi un arcoíris."
+   ],
+   "reasons": [
+    {
+     "id": "regalo",
+     "me": "porque recibí un regalo",
+     "other": "porque recibió un regalo",
+     "picture": {
+      "icon": "gift",
+      "color": "#E53935"
+     }
+    },
+    {
+     "id": "arcoiris",
+     "me": "porque vi un arcoíris",
+     "other": "porque vio un arcoíris",
+     "picture": {
+      "icon": "rainbow",
+      "color": "#EC407A"
+     }
+    },
+    {
+     "id": "visita",
+     "me": "porque llegó la abuela de visita",
+     "other": "porque llegó la abuela de visita",
+     "picture": {
+      "icon": "elderly_woman",
+      "color": "#8E24AA"
+     }
+    }
+   ]
+  },
+  {
+   "id": "tranquilidad",
+   "name": "Tranquilidad",
+   "face": "tranquilo",
+   "masculine": "tranquilo",
+   "feminine": "tranquila",
+   "examples": [
+    "Estoy tranquilo porque escucho música suave.",
+    "Estoy tranquila porque respiro despacio."
+   ],
+   "reasons": [
+    {
+     "id": "cama",
+     "me": "porque estoy en mi cama",
+     "other": "porque está en su cama",
+     "picture": {
+      "icon": "bed",
+      "color": "#5C6BC0"
+     }
+    },
+    {
+     "id": "musica",
+     "me": "porque escucho música suave",
+     "other": "porque escucha música suave",
+     "picture": {
+      "icon": "music",
+      "color": "#AB47BC"
+     }
+    },
+    {
+     "id": "respiro",
+     "me": "porque respiro despacio",
+     "other": "porque respira despacio",
+     "picture": {
+      "kid": {
+       "emotion": "tranquilo",
+       "girl": false
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "cansancio",
+   "name": "Cansancio",
+   "face": "cansado",
+   "masculine": "cansado",
+   "feminine": "cansada",
+   "examples": [
+    "Estoy cansado porque corrí mucho.",
+    "Estoy cansada porque jugué toda la tarde."
+   ],
+   "reasons": [
+    {
+     "id": "correr",
+     "me": "porque corrí mucho",
+     "other": "porque corrió mucho",
+     "picture": {
+      "icon": "run",
+      "color": "#43A047"
+     }
+    },
+    {
+     "id": "jugar",
+     "me": "porque jugué toda la tarde",
+     "other": "porque jugó toda la tarde",
+     "picture": {
+      "icon": "play",
+      "color": "#FB8C00"
+     }
+    },
+    {
+     "id": "noche",
+     "me": "porque ya es de noche",
+     "other": "porque ya es de noche",
+     "picture": {
+      "icon": "moon",
+      "color": "#5C6BC0"
+     }
+    }
+   ]
+  }
+ ],
+ "who": [
+  {
+   "id": "yo_nino",
+   "text": "Yo",
+   "verb": "estoy",
+   "feminine": false,
+   "first_person": true,
+   "picture": {
+    "kid": {
+     "emotion": "feliz",
+     "girl": false,
+     "shirt": "#64B5F6"
+    }
+   }
+  },
+  {
+   "id": "yo_nina",
+   "text": "Yo",
+   "verb": "estoy",
+   "feminine": true,
+   "first_person": true,
+   "picture": {
+    "kid": {
+     "emotion": "feliz",
+     "girl": true,
+     "shirt": "#F48FB1"
+    }
+   }
+  },
+  {
+   "id": "amigo",
+   "text": "Mi amigo",
+   "verb": "está",
+   "feminine": false,
+   "first_person": false,
+   "picture": {
+    "kid": {
+     "emotion": "feliz",
+     "girl": false,
+     "shirt": "#81C784"
+    }
+   }
+  },
+  {
+   "id": "hermana",
+   "text": "Mi hermana",
+   "verb": "está",
+   "feminine": true,
+   "first_person": false,
+   "picture": {
+    "kid": {
+     "emotion": "feliz",
+     "girl": true,
+     "shirt": "#CE93D8"
+    }
+   }
+  },
+  {
+   "id": "mama",
+   "text": "Mamá",
+   "verb": "está",
+   "feminine": true,
+   "first_person": false,
+   "picture": {
+    "icon": "woman",
+    "color": "#AB47BC"
+   }
+  },
+  {
+   "id": "papa",
+   "text": "Papá",
+   "verb": "está",
+   "feminine": false,
+   "first_person": false,
+   "picture": {
+    "icon": "man",
+    "color": "#3949AB"
+   }
+  }
+ ]
+}

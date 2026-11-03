@@ -30,17 +30,16 @@ Future<SpeechController> openHub(WidgetTester tester, {SpeechController? speech}
 List<String> get spoken => lastNarrator!.spoken;
 
 void main() {
-  testWidgets('el inicio abre «Aprendo a Hablar» con sus 8 actividades y Lolo', (tester) async {
+  testWidgets('el inicio abre «Aprendo a Hablar» con todas sus actividades y Lolo', (tester) async {
     await openHub(tester);
     expect(find.bySemanticsLabel(RegExp('^Lolo dice: ¡Hola! Soy Lolo')), findsOneWidget);
     for (final a in SpeechHubScreen.activities) {
-      final label = a.available ? a.title : '${a.title}. Muy pronto';
-      expect(find.bySemanticsLabel(label), findsOneWidget, reason: label);
+      await tester.scrollUntilVisible(find.bySemanticsLabel(a.title), 200);
+      expect(find.bySemanticsLabel(a.title), findsOneWidget, reason: a.title);
     }
-    // Lo que aún no está disponible lo explica Lolo (no es un botón muerto).
-    await tapAndSettle(tester, find.bySemanticsLabel('Cuentos interactivos. Muy pronto'));
-    expect(spoken.last, SpeechHubScreen.comingSoon);
-    expect(find.text(SpeechHubScreen.comingSoon), findsOneWidget);
+    await tester.scrollUntilVisible(find.bySemanticsLabel(SpeechHubScreen.activities.first.title), -200);
+    // Ya no queda ninguna «Muy pronto».
+    expect(SpeechHubScreen.activities.every((a) => a.available), isTrue);
     // Tocar a Lolo repite su saludo.
     await tapAndSettle(tester, find.bySemanticsLabel(RegExp('^Lolo dice:')));
     expect(spoken.last, '¡Hola! Soy Lolo. ¿Aprendemos a hablar juntos?');
@@ -140,13 +139,15 @@ void main() {
     await tester.runAsync(() => Future<void>.delayed(const Duration(milliseconds: 10)));
 
     await openHub(tester, speech: SpeechController(SpeechStore(backend)));
+    await tester.scrollUntilVisible(find.bySemanticsLabel('Mi progreso'), 200);
     await tapAndSettle(tester, find.bySemanticsLabel('Mi progreso'));
     expect(find.bySemanticsLabel('Palabras escuchadas: 2 de 100'), findsOneWidget);
     expect(find.bySemanticsLabel('Frases escuchadas: 1 de 12'), findsOneWidget);
     expect(find.bySemanticsLabel('Frases ordenadas: 0 de 12'), findsOneWidget);
     expect(find.bySemanticsLabel('Días de práctica esta semana: 1 de 7'), findsOneWidget);
-    await tester.scrollUntilVisible(find.bySemanticsLabel('Familia: 1 de 10'), 300);
+    await tester.scrollUntilVisible(find.bySemanticsLabel('Familia: 1 de 10'), 150);
     expect(find.bySemanticsLabel('Familia: 1 de 10'), findsOneWidget);
+    await tester.scrollUntilVisible(find.bySemanticsLabel('Animales: 1 de 10'), 150);
     expect(find.bySemanticsLabel('Animales: 1 de 10'), findsOneWidget);
     await tester.scrollUntilVisible(find.textContaining('No es una evaluación del habla'), 300);
     expect(find.textContaining('No es una evaluación del habla'), findsOneWidget);

@@ -32,6 +32,58 @@ abstract final class AppRoutes {
   static const speechVerb = '/hablar/verbos/verbo';
   static const speechVerbGames = '/hablar/verbos/juegos';
   static const speechListen = '/hablar/escucho';
+  static const speechConversations = '/hablar/conversaciones';
+  static const speechConversationList = '/hablar/conversaciones/categoria';
+  static const speechConversation = '/hablar/conversaciones/conversacion';
+  static const speechStories = '/hablar/cuentos';
+  static const speechStory = '/hablar/cuentos/cuento';
+  static const speechStoryQuiz = '/hablar/cuentos/preguntas';
+  static const speechStoryOrder = '/hablar/cuentos/ordenar';
+  static const speechExpress = '/hablar/expresarme';
+  static const speechNeeds = '/hablar/expresarme/necesito';
+  static const speechEmotions = '/hablar/expresarme/emociones';
+  static const speechEmotion = '/hablar/expresarme/emocion';
+  static const speechExpressBuilder = '/hablar/expresarme/frase';
+  static const speechTellList = '/hablar/cuentamelo';
+  static const speechTell = '/hablar/cuentamelo/historia';
+  static const speechListening = '/hablar/responder';
+  static const speechListeningLevel = '/hablar/responder/nivel';
+}
+
+/// Argumento de [AppRoutes.speechListeningLevel].
+class SpeechListeningArgs {
+  const SpeechListeningArgs(this.level);
+  final int level;
+}
+
+/// Argumento de [AppRoutes.speechTell].
+class SpeechTellArgs {
+  const SpeechTellArgs(this.sequenceId);
+  final String sequenceId;
+}
+
+/// Argumento de [AppRoutes.speechEmotion].
+class SpeechEmotionArgs {
+  const SpeechEmotionArgs(this.emotionId);
+  final String emotionId;
+}
+
+/// Argumento de las pantallas de un cuento.
+class SpeechStoryArgs {
+  const SpeechStoryArgs(this.storyId);
+  final String storyId;
+}
+
+/// Argumento de una categoría de conversaciones.
+class SpeechCategoryArgs {
+  const SpeechCategoryArgs(this.categoryId);
+  final String categoryId;
+}
+
+/// Argumento de [AppRoutes.speechConversation].
+class SpeechConversationArgs {
+  const SpeechConversationArgs(this.conversationId);
+  final String conversationId;
 }
 
 /// Argumento de [AppRoutes.speechVerb]: el verbo.

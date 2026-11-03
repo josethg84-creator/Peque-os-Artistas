@@ -15,9 +15,14 @@ import '../screens/not_found_screen.dart';
 import '../screens/saved_drawings_screen.dart';
 import '../screens/search_screen.dart';
 import '../screens/sound_settings_screen.dart';
+import '../speech/screens/conversation_screens.dart';
+import '../speech/screens/express_screens.dart';
+import '../speech/screens/listening_screens.dart';
 import '../speech/screens/phrases_screen.dart';
 import '../speech/screens/sentences_screens.dart';
 import '../speech/screens/speech_quiz_screen.dart';
+import '../speech/screens/story_screens.dart';
+import '../speech/screens/tell_screens.dart';
 import '../speech/screens/verbs_screens.dart';
 import '../speech/speech_activities.dart';
 import '../speech/screens/speech_hub_screen.dart';
@@ -62,6 +67,26 @@ abstract final class AppRouter {
       AppRoutes.speechVerb when args is SpeechVerbArgs => VerbScreen(verbId: args.verbId),
       AppRoutes.speechVerbGames => const SpeechQuizScreen(quiz: SpeechQuizKind.verbs),
       AppRoutes.speechListen => const SpeechQuizScreen(quiz: SpeechQuizKind.comprehension),
+      AppRoutes.speechConversations => const ConversationsHubScreen(),
+      AppRoutes.speechConversationList when args is SpeechCategoryArgs => ConversationListScreen(
+        categoryId: args.categoryId,
+      ),
+      AppRoutes.speechConversation when args is SpeechConversationArgs => ConversationScreen(
+        conversationId: args.conversationId,
+      ),
+      AppRoutes.speechStories => const StoriesScreen(),
+      AppRoutes.speechStory when args is SpeechStoryArgs => StoryScreen(storyId: args.storyId),
+      AppRoutes.speechStoryQuiz when args is SpeechStoryArgs => StoryQuizScreen(storyId: args.storyId),
+      AppRoutes.speechStoryOrder when args is SpeechStoryArgs => StoryOrderScreen(storyId: args.storyId),
+      AppRoutes.speechExpress => const ExpressHubScreen(),
+      AppRoutes.speechNeeds => const PhrasesScreen.needs(),
+      AppRoutes.speechEmotions => const EmotionsScreen(),
+      AppRoutes.speechEmotion when args is SpeechEmotionArgs => EmotionScreen(emotionId: args.emotionId),
+      AppRoutes.speechExpressBuilder => const ExpressBuilderScreen(),
+      AppRoutes.speechTellList => const TellListScreen(),
+      AppRoutes.speechTell when args is SpeechTellArgs => TellScreen(sequenceId: args.sequenceId),
+      AppRoutes.speechListening => const ListeningHubScreen(),
+      AppRoutes.speechListeningLevel when args is SpeechListeningArgs => ListeningScreen(level: args.level),
       _ => const NotFoundScreen(),
     };
     return MaterialPageRoute<void>(
@@ -80,7 +105,15 @@ abstract final class AppRouter {
         page is SentenceBuilderScreen ||
         page is OrderSentencesScreen ||
         page is SpeechQuizScreen ||
-        page is VerbScreen) {
+        page is VerbScreen ||
+        page is ConversationScreen ||
+        page is StoryScreen ||
+        page is StoryQuizScreen ||
+        page is StoryOrderScreen ||
+        page is EmotionScreen ||
+        page is ExpressBuilderScreen ||
+        page is TellScreen ||
+        page is ListeningScreen) {
       return null;
     }
     if (page is ColoringScreen) return MusicTrack.coloring;

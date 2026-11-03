@@ -2,6 +2,18 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
+import 'dialogue.dart';
+import 'expressions.dart';
+import 'stories.dart';
+import 'listening.dart';
+import 'tell.dart';
+
+export 'dialogue.dart';
+export 'expressions.dart';
+export 'stories.dart';
+export 'listening.dart';
+export 'tell.dart';
+
 /// Contenido de «Aprendo a Hablar»: palabras por categorías y frases cortas.
 ///
 /// Vive en `assets/speech/*.json`, así que el catálogo se amplía editando esos
@@ -13,17 +25,44 @@ class SpeechContent {
     required this.phrases,
     this.verbs = const [],
     this.sentences = const SentenceContent(),
+    this.conversationCategories = const [],
+    this.conversations = const [],
+    this.stories = const [],
+    this.expressions = const ExpressionContent(),
+    this.tell = const [],
+    this.listening = const ListeningContent(),
   });
 
   static const wordsAsset = 'assets/speech/words.json';
   static const phrasesAsset = 'assets/speech/phrases.json';
   static const verbsAsset = 'assets/speech/verbs.json';
   static const sentencesAsset = 'assets/speech/sentences.json';
+  static const conversationsAsset = 'assets/speech/conversations.json';
+  static const storiesAsset = 'assets/speech/stories.json';
+  static const expressionsAsset = 'assets/speech/expressions.json';
+  static const tellAsset = 'assets/speech/tell.json';
+  static const listeningAsset = 'assets/speech/listening.json';
 
   final List<WordCategory> categories;
   final List<SpeechPhrase> phrases;
   final List<SpeechVerb> verbs;
   final SentenceContent sentences;
+
+  /// «Hablemos con Lolo».
+  final List<ConversationCategory> conversationCategories;
+  final List<Conversation> conversations;
+
+  /// «Lolo me cuenta un cuento».
+  final List<Story> stories;
+
+  /// «Yo puedo expresarme».
+  final ExpressionContent expressions;
+
+  /// «Ahora cuéntamelo tú».
+  final List<TellSequence> tell;
+
+  /// «Escucho y respondo».
+  final ListeningContent listening;
 
   List<SpeechWord> get words => [for (final c in categories) ...c.words];
 
@@ -45,6 +84,11 @@ class SpeechContent {
       await read(phrasesAsset),
       verbs: await read(verbsAsset),
       sentences: await read(sentencesAsset),
+      conversations: await read(conversationsAsset),
+      stories: await read(storiesAsset),
+      expressions: await read(expressionsAsset),
+      tell: await read(tellAsset),
+      listening: await read(listeningAsset),
     );
   }
 
@@ -53,7 +97,13 @@ class SpeechContent {
     Map<String, dynamic> phrases, {
     Map<String, dynamic>? verbs,
     Map<String, dynamic>? sentences,
+    Map<String, dynamic>? conversations,
+    Map<String, dynamic>? stories,
+    Map<String, dynamic>? expressions,
+    Map<String, dynamic>? tell,
+    Map<String, dynamic>? listening,
   }) {
+    final dialogue = parseConversations(conversations);
     final seen = <String>{};
     final categories = <WordCategory>[];
     for (final c in (words['categories'] as List? ?? const [])) {
@@ -82,6 +132,12 @@ class SpeechContent {
             if (SpeechVerb.fromJson(v) case final verb? when verbIds.add(verb.id)) verb,
       ],
       sentences: sentences == null ? const SentenceContent() : SentenceContent.fromJson(sentences),
+      conversationCategories: dialogue.categories,
+      conversations: dialogue.conversations,
+      stories: parseStories(stories),
+      expressions: ExpressionContent.fromJson(expressions),
+      tell: parseTell(tell),
+      listening: ListeningContent.fromJson(listening),
     );
   }
 }
@@ -343,6 +399,25 @@ sealed class SpeechPicture {
     if (json is! Map<String, dynamic>) return null;
     return switch (json) {
       {'image': final String path} => ImagePicture(path),
+      {'lolo': true} => const LoloPicture(),
+      {'kid': final Map<String, dynamic> k} => KidPicture(
+        girl: k['girl'] == true,
+        shirt: parseColor(k['shirt']) ?? const Color(0xFF64B5F6),
+        hair: parseColor(k['hair']) ?? const Color(0xFF7B4A2E),
+        emotion: k['emotion'] is String ? k['emotion'] as String : 'feliz',
+        armsUp: k['arms_up'] == true,
+      ),
+      {'scene': final String bg} => ScenePicture(bg, [
+        for (final item in (json['items'] as List? ?? const []))
+          if (item is Map<String, dynamic>)
+            if (SpeechPicture.fromJson(item['p']) case final p?)
+              SceneItem(
+                p,
+                x: (item['x'] as num?)?.toDouble() ?? 0.5,
+                y: (item['y'] as num?)?.toDouble() ?? 0.6,
+                size: (item['s'] as num?)?.toDouble() ?? 0.4,
+              ),
+      ]),
       {'drawing': final String id} => DrawingPicture(id, colors: _colorMap(json['colors'])),
       {'emotion': final String e} when FacePictogram.emotions.contains(e) => EmotionPicture(e),
       {'body': final String b} when FacePictogram.bodyParts.contains(b) => BodyPicture(b),
@@ -354,6 +429,45 @@ sealed class SpeechPicture {
       _ => null,
     };
   }
+}
+
+/// Lolo, la mascota.
+class LoloPicture extends SpeechPicture {
+  const LoloPicture();
+}
+
+/// Un niño o una niña con una emoción (personaje de cuentos y conversaciones).
+class KidPicture extends SpeechPicture {
+  const KidPicture({
+    this.girl = false,
+    this.shirt = const Color(0xFF64B5F6),
+    this.hair = const Color(0xFF7B4A2E),
+    this.emotion = 'feliz',
+    this.armsUp = false,
+  });
+  final bool girl;
+  final Color shirt;
+  final Color hair;
+  final String emotion;
+  final bool armsUp;
+}
+
+/// Un elemento colocado en una escena: [x] e [y] son el centro y [size] el
+/// ancho, en fracciones de la escena.
+class SceneItem {
+  const SceneItem(this.picture, {this.x = 0.5, this.y = 0.6, this.size = 0.4});
+  final SpeechPicture picture;
+  final double x;
+  final double y;
+  final double size;
+}
+
+/// Una escena ilustrada: un fondo (jardín, casa, noche…) y personajes u
+/// objetos encima. Cada escena es una ilustración independiente y vectorial.
+class ScenePicture extends SpeechPicture {
+  const ScenePicture(this.background, this.items);
+  final String background;
+  final List<SceneItem> items;
 }
 
 /// Imagen propia (PNG o similar) incluida en los recursos de la app.
@@ -425,6 +539,7 @@ abstract final class FacePictogram {
     'aburrido',
     'enfermo',
     'carinoso',
+    'emocionado',
   };
   static const bodyParts = {
     'cabeza',
@@ -513,6 +628,88 @@ abstract final class SpeechIcons {
     'talk': Icons.record_voice_over,
     'open': Icons.meeting_room,
     'close': Icons.door_front_door,
+    // Fase 3.
+    'thumb_up': Icons.thumb_up,
+    'school': Icons.school,
+    'blocks': Icons.widgets,
+    'soup': Icons.soup_kitchen,
+    'pizza': Icons.local_pizza,
+    'salad': Icons.eco,
+    'gift': Icons.card_giftcard,
+    'rest': Icons.weekend,
+    'wash': Icons.wash,
+    'bath': Icons.bathtub,
+    'towel': Icons.dry,
+    'toilet': Icons.wc,
+    'jacket': Icons.checkroom,
+    'hot': Icons.thermostat,
+    'shirt': Icons.checkroom,
+    'dress': Icons.checkroom,
+    'shoes': Icons.do_not_step,
+    'idea': Icons.lightbulb,
+    'pencil': Icons.edit,
+    'abc': Icons.abc,
+    'numbers': Icons.pin,
+    'search': Icons.search,
+    'circle': Icons.circle,
+    'square': Icons.square,
+    'zoom_in': Icons.zoom_in,
+    'zoom_out': Icons.zoom_out,
+    'seed': Icons.grain,
+    'plant': Icons.spa,
+    'sprout': Icons.grass,
+    'watering': Icons.water_drop,
+    'umbrella': Icons.umbrella,
+    'tooth': Icons.clean_hands,
+    'bus': Icons.directions_bus,
+    'shop': Icons.storefront,
+    'money': Icons.savings,
+    'phone': Icons.phone,
+    'heart': Icons.favorite,
+    'map': Icons.map,
+    'camera': Icons.photo_camera,
+    'bird': Icons.flutter_dash,
+    'bug': Icons.bug_report,
+    'music': Icons.music_note,
+    'home2': Icons.house,
+    'tent': Icons.cabin,
+    'boat': Icons.sailing,
+    'key': Icons.key,
+    'lock': Icons.lock,
+    'mail': Icons.mail,
+    'sleepz': Icons.snooze,
+    'clean': Icons.cleaning_services,
+    'trash': Icons.delete,
+    'recycle': Icons.recycling,
+    'hospital': Icons.local_hospital,
+    'doctor': Icons.medical_services,
+    'cookie': Icons.cookie,
+    'juice': Icons.local_bar,
+    'milk': Icons.water_drop,
+    'carrot': Icons.eco,
+    'fish': Icons.set_meal,
+    'apple': Icons.apple,
+    'sandwich': Icons.lunch_dining,
+    'spoon': Icons.restaurant,
+    'paint2': Icons.palette,
+    'glasses': Icons.visibility,
+    'light': Icons.light_mode,
+    'dark': Icons.dark_mode,
+    'rain': Icons.thunderstorm,
+    'wind': Icons.air,
+    'leaf': Icons.eco,
+    'sad': Icons.sentiment_dissatisfied,
+    'happy': Icons.sentiment_satisfied,
+    'arrow': Icons.arrow_forward,
+    'place': Icons.place,
+    'first': Icons.looks_one,
+    'second': Icons.looks_two,
+    'third': Icons.looks_3,
+    'fourth': Icons.looks_4,
+    'rainbow': Icons.looks,
+    'hearing': Icons.hearing,
+    'tv': Icons.tv,
+    'backpack': Icons.backpack,
     // Personas (yo, tú, él, ella, nosotros).
     'me': Icons.emoji_people,
     'you': Icons.person,

@@ -41,18 +41,22 @@ Future<void> push(WidgetTester tester, String route, [Object? args]) async {
 }
 
 void main() {
-  testWidgets('el menú ya tiene oraciones, verbos y comprensión; solo 2 actividades «Muy pronto»', (
-    tester,
-  ) async {
+  testWidgets('el menú tiene todas las actividades de las fases 2 y 3, sin «Muy pronto»', (tester) async {
     await openApp(tester);
     await tapAndSettle(tester, find.bySemanticsLabel('Aprendo a Hablar'));
-    for (final t in ['Construyo oraciones', 'Aprendo los verbos', 'Escucho y comprendo']) {
+    for (final t in [
+      'Construyo oraciones',
+      'Aprendo los verbos',
+      'Hablemos con Lolo',
+      'Escucho y respondo',
+      'Lolo me cuenta un cuento',
+      'Yo puedo expresarme',
+      'Ahora cuéntamelo tú',
+    ]) {
+      await tester.scrollUntilVisible(find.bySemanticsLabel(t), 200);
       expect(find.bySemanticsLabel(t), findsOneWidget, reason: t);
     }
-    expect(SpeechHubScreen.activities.where((a) => !a.available).map((a) => a.title), [
-      'Hablemos juntos',
-      'Cuentos interactivos',
-    ]);
+    expect(SpeechHubScreen.activities.where((a) => !a.available), isEmpty);
   });
 
   testWidgets('constructor: quién, qué hace y qué, y Lolo dice la oración', (tester) async {

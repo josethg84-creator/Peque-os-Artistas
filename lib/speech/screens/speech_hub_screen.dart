@@ -8,6 +8,7 @@ import '../../widgets/adaptive_grid.dart';
 import '../../widgets/kid_scaffold.dart';
 import '../../widgets/motion/delayed_loading.dart';
 import '../speech_content.dart';
+import '../speech_summary.dart';
 import '../widgets/speech_widgets.dart';
 
 /// Una actividad del menú. Las que llegarán en entregas posteriores se
@@ -58,15 +59,41 @@ class SpeechHubScreen extends StatelessWidget {
       Color(0xFFFFD27A),
       AppRoutes.speechVerbs,
     ),
-    SpeechActivity('Hablemos juntos', 'Muy pronto', Icons.forum_rounded, Color(0xFFC3A9F5), null),
     SpeechActivity(
-      'Escucho y comprendo',
-      '¡Escucha y señala!',
+      'Hablemos con Lolo',
+      '¡Conversa con Lolo!',
+      Icons.forum_rounded,
+      Color(0xFFC3A9F5),
+      AppRoutes.speechConversations,
+    ),
+    SpeechActivity(
+      'Escucho y respondo',
+      '¡56 juegos para escuchar!',
       Icons.hearing_rounded,
       Color(0xFFFFBE98),
-      AppRoutes.speechListen,
+      AppRoutes.speechListening,
     ),
-    SpeechActivity('Cuentos interactivos', 'Muy pronto', Icons.auto_stories_rounded, Color(0xFF86DCE0), null),
+    SpeechActivity(
+      'Lolo me cuenta un cuento',
+      '¡20 cuentos con voz!',
+      Icons.auto_stories_rounded,
+      Color(0xFF86DCE0),
+      AppRoutes.speechStories,
+    ),
+    SpeechActivity(
+      'Yo puedo expresarme',
+      '¡Necesito… y siento…!',
+      Icons.emoji_emotions_rounded,
+      Color(0xFFFFB3C7),
+      AppRoutes.speechExpress,
+    ),
+    SpeechActivity(
+      'Ahora cuéntamelo tú',
+      '¡Ordena y cuenta!',
+      Icons.photo_library_rounded,
+      Color(0xFFFFCC80),
+      AppRoutes.speechTellList,
+    ),
     SpeechActivity(
       'Mi progreso',
       '¡Mira lo que aprendiste!',
@@ -107,7 +134,7 @@ class SpeechHubScreen extends StatelessWidget {
                   title: a.title,
                   subtitle: a.subtitle,
                   color: a.color,
-                  art: _ActivityArt(icon: a.icon, color: a.color),
+                  art: SpeechActivityArt(icon: a.icon, color: a.color),
                   badge: a.available ? null : 'Muy pronto',
                   dimmed: !a.available,
                   opensRoute: a.available,
@@ -130,8 +157,8 @@ class SpeechHubScreen extends StatelessWidget {
 }
 
 /// Icono grande de una actividad, blanco con sombra (como en las tarjetas del inicio).
-class _ActivityArt extends StatelessWidget {
-  const _ActivityArt({required this.icon, required this.color});
+class SpeechActivityArt extends StatelessWidget {
+  const SpeechActivityArt({super.key, required this.icon, required this.color});
 
   final IconData icon;
   final Color color;
@@ -269,7 +296,7 @@ class SpeechProgressScreen extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: LoloBubble(
-                    text: words + phrases == 0
+                    text: words + phrases + p.stars + p.answers == 0
                         ? '¡Vamos a escuchar tus primeras palabras!'
                         : '¡Qué bien lo estás haciendo!',
                     size: 60,
@@ -336,6 +363,75 @@ class SpeechProgressScreen extends StatelessWidget {
                   label: 'Veces que practicaste con tu voz',
                   done: p.recordings,
                 ),
+                const SizedBox(height: 8),
+                Semantics(header: true, child: Text('Conversaciones y cuentos', style: text.titleLarge)),
+                const SizedBox(height: 4),
+                ...() {
+                  final f = SpeechPhase3Summary(p, content);
+                  return [
+                    _Counter(
+                      icon: Icons.star_rounded,
+                      color: const Color(0xFFFFC93C),
+                      label: 'Estrellas ganadas',
+                      done: f.stars,
+                    ),
+                    _Counter(
+                      icon: Icons.forum_rounded,
+                      color: const Color(0xFF9575CD),
+                      label: 'Conversaciones con Lolo',
+                      done: f.conversations,
+                      total: f.conversationsTotal,
+                    ),
+                    _Counter(
+                      icon: Icons.auto_stories_rounded,
+                      color: const Color(0xFF26C6DA),
+                      label: 'Cuentos escuchados',
+                      done: f.storiesHeard,
+                      total: f.storiesTotal,
+                    ),
+                    _Counter(
+                      icon: Icons.quiz_rounded,
+                      color: const Color(0xFF26A69A),
+                      label: 'Cuentos con preguntas respondidas',
+                      done: f.storiesQuizzed,
+                      total: f.storiesTotal,
+                    ),
+                    _Counter(
+                      icon: Icons.photo_library_rounded,
+                      color: const Color(0xFFFFA726),
+                      label: 'Historias que contaste',
+                      done: f.told,
+                      total: f.tellTotal,
+                    ),
+                    _Counter(
+                      icon: Icons.favorite_rounded,
+                      color: const Color(0xFFF06292),
+                      label: 'Emociones exploradas',
+                      done: f.emotions,
+                      total: f.emotionsTotal,
+                    ),
+                    _Counter(
+                      icon: Icons.back_hand_rounded,
+                      color: const Color(0xFF4FA8F0),
+                      label: 'Necesidades practicadas',
+                      done: f.needs,
+                      total: f.needsTotal,
+                    ),
+                    _Counter(
+                      icon: Icons.hearing_rounded,
+                      color: const Color(0xFFFF8A65),
+                      label: 'Ejercicios de escucha',
+                      done: f.listening,
+                      total: f.listeningTotal,
+                    ),
+                    _Counter(
+                      icon: Icons.check_circle_rounded,
+                      color: const Color(0xFF43A047),
+                      label: 'Respuestas acertadas',
+                      done: f.answers,
+                    ),
+                  ];
+                }(),
                 const SizedBox(height: 8),
                 Semantics(header: true, child: Text('Palabras por grupo', style: text.titleLarge)),
                 const SizedBox(height: 4),

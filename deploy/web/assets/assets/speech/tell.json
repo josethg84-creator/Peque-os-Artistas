@@ -1,0 +1,927 @@
+{
+ "format_version": 1,
+ "sequences": [
+  {
+   "id": "semilla",
+   "title": "La semilla mágica",
+   "steps": [
+    {
+     "picture": {
+      "scene": "jardin",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "sorprendido",
+          "girl": true,
+          "shirt": "#F48FB1"
+         }
+        },
+        "x": 0.45,
+        "y": 0.62,
+        "s": 0.45
+       },
+       {
+        "p": {
+         "icon": "seed",
+         "color": "#8D6E63"
+        },
+        "x": 0.78,
+        "y": 0.8,
+        "s": 0.12
+       }
+      ]
+     },
+     "phrase": "Una niña encuentra una semilla.",
+     "question": "¿Qué encuentra la niña?"
+    },
+    {
+     "picture": {
+      "scene": "jardin",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": true,
+          "shirt": "#F48FB1"
+         }
+        },
+        "x": 0.4,
+        "y": 0.62,
+        "s": 0.42
+       },
+       {
+        "p": {
+         "icon": "plant",
+         "color": "#8D6E63"
+        },
+        "x": 0.74,
+        "y": 0.78,
+        "s": 0.18
+       }
+      ]
+     },
+     "phrase": "La niña planta la semilla.",
+     "question": "¿Qué hace la niña con la semilla?"
+    },
+    {
+     "picture": {
+      "scene": "jardin",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": true,
+          "shirt": "#F48FB1"
+         }
+        },
+        "x": 0.4,
+        "y": 0.62,
+        "s": 0.42
+       },
+       {
+        "p": {
+         "icon": "water",
+         "color": "#039BE5"
+        },
+        "x": 0.74,
+        "y": 0.64,
+        "s": 0.16
+       }
+      ]
+     },
+     "phrase": "La niña riega la planta.",
+     "question": "¿Qué le da la niña a la planta?"
+    },
+    {
+     "picture": {
+      "scene": "jardin",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "emocionado",
+          "girl": true,
+          "shirt": "#F48FB1",
+          "arms_up": true
+         }
+        },
+        "x": 0.35,
+        "y": 0.62,
+        "s": 0.42
+       },
+       {
+        "p": {
+         "icon": "flower",
+         "color": "#EC407A"
+        },
+        "x": 0.72,
+        "y": 0.66,
+        "s": 0.28
+       }
+      ]
+     },
+     "phrase": "¡Aparece una flor!",
+     "question": "¿Qué pasó al final?"
+    }
+   ],
+   "ending": "La niña plantó una semilla, la regó y creció una flor."
+  },
+  {
+   "id": "pastel",
+   "title": "Hacemos un pastel",
+   "steps": [
+    {
+     "picture": {
+      "scene": "cocina",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": false,
+          "shirt": "#64B5F6"
+         }
+        },
+        "x": 0.4,
+        "y": 0.62,
+        "s": 0.42
+       },
+       {
+        "p": {
+         "icon": "egg",
+         "color": "#F9A825"
+        },
+        "x": 0.76,
+        "y": 0.76,
+        "s": 0.14
+       }
+      ]
+     },
+     "phrase": "Mateo mezcla los huevos y la harina.",
+     "question": "¿Qué hace Mateo primero?"
+    },
+    {
+     "picture": {
+      "scene": "cocina",
+      "items": [
+       {
+        "p": {
+         "icon": "hot",
+         "color": "#F4511E"
+        },
+        "x": 0.5,
+        "y": 0.55,
+        "s": 0.3
+       }
+      ]
+     },
+     "phrase": "El pastel se hornea.",
+     "question": "¿Dónde va el pastel?"
+    },
+    {
+     "picture": {
+      "scene": "cocina",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": false,
+          "shirt": "#64B5F6"
+         }
+        },
+        "x": 0.35,
+        "y": 0.62,
+        "s": 0.4
+       },
+       {
+        "p": {
+         "icon": "cake",
+         "color": "#AB47BC"
+        },
+        "x": 0.72,
+        "y": 0.7,
+        "s": 0.24
+       }
+      ]
+     },
+     "phrase": "Mateo decora el pastel.",
+     "question": "¿Qué hace Mateo ahora?"
+    },
+    {
+     "picture": {
+      "scene": "cocina",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "emocionado",
+          "girl": false,
+          "shirt": "#64B5F6",
+          "arms_up": true
+         }
+        },
+        "x": 0.35,
+        "y": 0.62,
+        "s": 0.42
+       },
+       {
+        "p": {
+         "icon": "cake",
+         "color": "#AB47BC"
+        },
+        "x": 0.72,
+        "y": 0.7,
+        "s": 0.24
+       },
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": true,
+          "shirt": "#F48FB1"
+         }
+        },
+        "x": 0.9,
+        "y": 0.62,
+        "s": 0.3
+       }
+      ]
+     },
+     "phrase": "Todos comen pastel.",
+     "question": "¿Qué pasó al final?"
+    }
+   ],
+   "ending": "Mateo mezcló, horneó y decoró un pastel, y todos lo comieron."
+  },
+  {
+   "id": "perro_bano",
+   "title": "El baño de Toby",
+   "steps": [
+    {
+     "picture": {
+      "scene": "jardin",
+      "items": [
+       {
+        "p": {
+         "drawing": "animal_perro"
+        },
+        "x": 0.5,
+        "y": 0.66,
+        "s": 0.45
+       },
+       {
+        "p": {
+         "icon": "trash",
+         "color": "#8D6E63"
+        },
+        "x": 0.8,
+        "y": 0.82,
+        "s": 0.14
+       }
+      ]
+     },
+     "phrase": "Toby juega en el barro.",
+     "question": "¿Qué hace Toby?"
+    },
+    {
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "drawing": "animal_perro"
+        },
+        "x": 0.45,
+        "y": 0.66,
+        "s": 0.42
+       },
+       {
+        "p": {
+         "icon": "bath",
+         "color": "#29B6F6"
+        },
+        "x": 0.78,
+        "y": 0.7,
+        "s": 0.22
+       }
+      ]
+     },
+     "phrase": "Toby se baña con agua y jabón.",
+     "question": "¿Qué hacen con Toby?"
+    },
+    {
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "drawing": "animal_perro"
+        },
+        "x": 0.45,
+        "y": 0.66,
+        "s": 0.42
+       },
+       {
+        "p": {
+         "icon": "towel",
+         "color": "#F48FB1"
+        },
+        "x": 0.78,
+        "y": 0.6,
+        "s": 0.2
+       }
+      ]
+     },
+     "phrase": "Lo secan con una toalla.",
+     "question": "¿Con qué lo secan?"
+    },
+    {
+     "picture": {
+      "scene": "jardin",
+      "items": [
+       {
+        "p": {
+         "drawing": "animal_perro"
+        },
+        "x": 0.45,
+        "y": 0.64,
+        "s": 0.45
+       },
+       {
+        "p": {
+         "icon": "star",
+         "color": "#FBC02D"
+        },
+        "x": 0.8,
+        "y": 0.35,
+        "s": 0.14
+       }
+      ]
+     },
+     "phrase": "¡Toby está limpio y feliz!",
+     "question": "¿Cómo está Toby al final?"
+    }
+   ],
+   "ending": "Toby se ensució, lo bañaron, lo secaron y quedó limpio y feliz."
+  },
+  {
+   "id": "lluvia",
+   "title": "Después de la lluvia",
+   "steps": [
+    {
+     "picture": {
+      "scene": "cielo",
+      "items": [
+       {
+        "p": {
+         "icon": "cloud",
+         "color": "#78909C"
+        },
+        "x": 0.5,
+        "y": 0.45,
+        "s": 0.4
+       }
+      ]
+     },
+     "phrase": "Llegan unas nubes grises.",
+     "question": "¿Qué hay en el cielo?"
+    },
+    {
+     "picture": {
+      "scene": "lluvia",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "sorprendido",
+          "girl": true,
+          "shirt": "#F48FB1"
+         }
+        },
+        "x": 0.5,
+        "y": 0.64,
+        "s": 0.45
+       }
+      ]
+     },
+     "phrase": "Empieza a llover.",
+     "question": "¿Qué pasa ahora?"
+    },
+    {
+     "picture": {
+      "scene": "jardin",
+      "items": [
+       {
+        "p": {
+         "icon": "sun",
+         "color": "#FFB300"
+        },
+        "x": 0.5,
+        "y": 0.35,
+        "s": 0.3
+       }
+      ]
+     },
+     "phrase": "Sale el sol.",
+     "question": "¿Qué sale después?"
+    },
+    {
+     "picture": {
+      "scene": "cielo",
+      "items": [
+       {
+        "p": {
+         "icon": "rainbow",
+         "color": "#EC407A"
+        },
+        "x": 0.5,
+        "y": 0.45,
+        "s": 0.55
+       },
+       {
+        "p": {
+         "kid": {
+          "emotion": "emocionado",
+          "girl": true,
+          "shirt": "#F48FB1",
+          "arms_up": true
+         }
+        },
+        "x": 0.3,
+        "y": 0.76,
+        "s": 0.32
+       }
+      ]
+     },
+     "phrase": "¡Aparece un arcoíris!",
+     "question": "¿Qué aparece al final?"
+    }
+   ],
+   "ending": "Llegaron las nubes, llovió, salió el sol y apareció un arcoíris."
+  },
+  {
+   "id": "dientes",
+   "title": "Dientes limpios",
+   "steps": [
+    {
+     "picture": {
+      "scene": "cocina",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": false,
+          "shirt": "#64B5F6"
+         }
+        },
+        "x": 0.4,
+        "y": 0.62,
+        "s": 0.42
+       },
+       {
+        "p": {
+         "drawing": "fruta_manzana",
+         "colors": {
+          "manzana": "#E53935",
+          "hoja": "#43A047",
+          "tallo": "#8D5524",
+          "brillo": "#FFFFFF"
+         }
+        },
+        "x": 0.76,
+        "y": 0.72,
+        "s": 0.18
+       }
+      ]
+     },
+     "phrase": "Mateo come una manzana.",
+     "question": "¿Qué come Mateo?"
+    },
+    {
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "icon": "clean",
+         "color": "#29B6F6"
+        },
+        "x": 0.5,
+        "y": 0.55,
+        "s": 0.3
+       }
+      ]
+     },
+     "phrase": "Toma su cepillo de dientes.",
+     "question": "¿Qué toma Mateo?"
+    },
+    {
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": false,
+          "shirt": "#64B5F6",
+          "arms_up": true
+         }
+        },
+        "x": 0.5,
+        "y": 0.62,
+        "s": 0.48
+       }
+      ]
+     },
+     "phrase": "Se cepilla los dientes.",
+     "question": "¿Qué hace con el cepillo?"
+    },
+    {
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "emocionado",
+          "girl": false,
+          "shirt": "#64B5F6",
+          "arms_up": true
+         }
+        },
+        "x": 0.45,
+        "y": 0.62,
+        "s": 0.45
+       },
+       {
+        "p": {
+         "icon": "star",
+         "color": "#FBC02D"
+        },
+        "x": 0.8,
+        "y": 0.35,
+        "s": 0.14
+       }
+      ]
+     },
+     "phrase": "¡Sonríe con los dientes limpios!",
+     "question": "¿Cómo termina?"
+    }
+   ],
+   "ending": "Mateo comió, tomó su cepillo, se lavó los dientes y sonrió."
+  },
+  {
+   "id": "dormir",
+   "title": "A dormir",
+   "steps": [
+    {
+     "picture": {
+      "scene": "dormitorio",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": true,
+          "shirt": "#F48FB1"
+         }
+        },
+        "x": 0.45,
+        "y": 0.62,
+        "s": 0.45
+       },
+       {
+        "p": {
+         "icon": "shirt",
+         "color": "#9FA8DA"
+        },
+        "x": 0.8,
+        "y": 0.7,
+        "s": 0.16
+       }
+      ]
+     },
+     "phrase": "Luna se pone el pijama.",
+     "question": "¿Qué se pone Luna?"
+    },
+    {
+     "picture": {
+      "scene": "dormitorio",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "tranquilo",
+          "girl": true,
+          "shirt": "#F48FB1"
+         }
+        },
+        "x": 0.45,
+        "y": 0.62,
+        "s": 0.45
+       },
+       {
+        "p": {
+         "icon": "read",
+         "color": "#8E24AA"
+        },
+        "x": 0.8,
+        "y": 0.62,
+        "s": 0.18
+       }
+      ]
+     },
+     "phrase": "Escucha un cuento.",
+     "question": "¿Qué escucha Luna?"
+    },
+    {
+     "picture": {
+      "scene": "dormitorio",
+      "items": [
+       {
+        "p": {
+         "icon": "lamp",
+         "color": "#FBC02D"
+        },
+        "x": 0.5,
+        "y": 0.45,
+        "s": 0.3
+       }
+      ]
+     },
+     "phrase": "Apagan la luz.",
+     "question": "¿Qué hacen con la luz?"
+    },
+    {
+     "picture": {
+      "scene": "noche",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "tranquilo",
+          "girl": true,
+          "shirt": "#F48FB1"
+         }
+        },
+        "x": 0.5,
+        "y": 0.62,
+        "s": 0.45
+       },
+       {
+        "p": {
+         "icon": "sleepz",
+         "color": "#5C6BC0"
+        },
+        "x": 0.8,
+        "y": 0.3,
+        "s": 0.16
+       }
+      ]
+     },
+     "phrase": "Luna se duerme.",
+     "question": "¿Qué pasa al final?"
+    }
+   ],
+   "ending": "Luna se puso el pijama, escuchó un cuento, apagaron la luz y se durmió."
+  },
+  {
+   "id": "pollito",
+   "title": "El pollito",
+   "steps": [
+    {
+     "picture": {
+      "scene": "parque",
+      "items": [
+       {
+        "p": {
+         "icon": "egg",
+         "color": "#F9A825"
+        },
+        "x": 0.5,
+        "y": 0.7,
+        "s": 0.25
+       }
+      ]
+     },
+     "phrase": "Hay un huevo en el nido.",
+     "question": "¿Qué hay en el nido?"
+    },
+    {
+     "picture": {
+      "scene": "parque",
+      "items": [
+       {
+        "p": {
+         "icon": "egg",
+         "color": "#F9A825"
+        },
+        "x": 0.5,
+        "y": 0.7,
+        "s": 0.25
+       },
+       {
+        "p": {
+         "icon": "sprout",
+         "color": "#8D6E63"
+        },
+        "x": 0.5,
+        "y": 0.5,
+        "s": 0.12
+       }
+      ]
+     },
+     "phrase": "El huevo se rompe.",
+     "question": "¿Qué le pasa al huevo?"
+    },
+    {
+     "picture": {
+      "scene": "parque",
+      "items": [
+       {
+        "p": {
+         "drawing": "granja_patito",
+         "colors": {
+          "*": "#FFD54F"
+         }
+        },
+        "x": 0.5,
+        "y": 0.66,
+        "s": 0.35
+       }
+      ]
+     },
+     "phrase": "Sale un pollito.",
+     "question": "¿Quién sale del huevo?"
+    },
+    {
+     "picture": {
+      "scene": "parque",
+      "items": [
+       {
+        "p": {
+         "drawing": "granja_gallina"
+        },
+        "x": 0.35,
+        "y": 0.62,
+        "s": 0.4
+       },
+       {
+        "p": {
+         "drawing": "granja_patito",
+         "colors": {
+          "*": "#FFD54F"
+         }
+        },
+        "x": 0.7,
+        "y": 0.72,
+        "s": 0.25
+       }
+      ]
+     },
+     "phrase": "El pollito camina con su mamá.",
+     "question": "¿Con quién camina?"
+    }
+   ],
+   "ending": "El huevo se rompió, salió un pollito y caminó con su mamá."
+  },
+  {
+   "id": "escuela",
+   "title": "Vamos a la escuela",
+   "steps": [
+    {
+     "picture": {
+      "scene": "dormitorio",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": false,
+          "shirt": "#64B5F6"
+         }
+        },
+        "x": 0.45,
+        "y": 0.62,
+        "s": 0.45
+       },
+       {
+        "p": {
+         "icon": "backpack",
+         "color": "#E53935"
+        },
+        "x": 0.8,
+        "y": 0.7,
+        "s": 0.16
+       }
+      ]
+     },
+     "phrase": "Mateo prepara su mochila.",
+     "question": "¿Qué prepara Mateo?"
+    },
+    {
+     "picture": {
+      "scene": "parque",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": false,
+          "shirt": "#64B5F6"
+         }
+        },
+        "x": 0.4,
+        "y": 0.62,
+        "s": 0.42
+       },
+       {
+        "p": {
+         "icon": "man",
+         "color": "#3949AB"
+        },
+        "x": 0.72,
+        "y": 0.6,
+        "s": 0.36
+       }
+      ]
+     },
+     "phrase": "Camina a la escuela con papá.",
+     "question": "¿Adónde va con papá?"
+    },
+    {
+     "picture": {
+      "scene": "escuela",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": false,
+          "shirt": "#64B5F6"
+         }
+        },
+        "x": 0.4,
+        "y": 0.64,
+        "s": 0.42
+       },
+       {
+        "p": {
+         "icon": "abc",
+         "color": "#E53935"
+        },
+        "x": 0.76,
+        "y": 0.4,
+        "s": 0.2
+       }
+      ]
+     },
+     "phrase": "Aprende las letras en clase.",
+     "question": "¿Qué aprende en clase?"
+    },
+    {
+     "picture": {
+      "scene": "parque",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "emocionado",
+          "girl": false,
+          "shirt": "#64B5F6",
+          "arms_up": true
+         }
+        },
+        "x": 0.32,
+        "y": 0.62,
+        "s": 0.4
+       },
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": true,
+          "shirt": "#F48FB1",
+          "arms_up": true
+         }
+        },
+        "x": 0.7,
+        "y": 0.62,
+        "s": 0.4
+       }
+      ]
+     },
+     "phrase": "Juega con sus amigos en el recreo.",
+     "question": "¿Qué hace en el recreo?"
+    }
+   ],
+   "ending": "Mateo preparó la mochila, fue a la escuela, aprendió las letras y jugó en el recreo."
+  }
+ ]
+}

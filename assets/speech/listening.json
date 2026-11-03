@@ -1,0 +1,2092 @@
+{
+ "format_version": 1,
+ "levels": [
+  {
+   "level": 1,
+   "title": "Nivel 1",
+   "subtitle": "Escucho una frase"
+  },
+  {
+   "level": 2,
+   "title": "Nivel 2",
+   "subtitle": "Escucho y pienso"
+  },
+  {
+   "level": 3,
+   "title": "Nivel 3",
+   "subtitle": "Escucho, recuerdo y hago"
+  }
+ ],
+ "exercises": [
+  {
+   "id": "quien_1",
+   "level": 1,
+   "type": "quien",
+   "say": "El gato duerme en la cama.",
+   "question": "¿Quién duerme?",
+   "options": [
+    {
+     "text": "El perro",
+     "picture": {
+      "drawing": "animal_perro"
+     }
+    },
+    {
+     "text": "El gato",
+     "picture": {
+      "drawing": "animal_gato"
+     }
+    },
+    {
+     "text": "El pato",
+     "picture": {
+      "drawing": "granja_patito",
+      "colors": {
+       "*": "#FFD54F"
+      }
+     }
+    }
+   ],
+   "answer": 1
+  },
+  {
+   "id": "quien_2",
+   "level": 1,
+   "type": "quien",
+   "say": "La niña baila con su abuela.",
+   "question": "¿Quién baila con la abuela?",
+   "options": [
+    {
+     "text": "El niño",
+     "picture": {
+      "kid": {
+       "emotion": "feliz",
+       "girl": false,
+       "shirt": "#64B5F6"
+      }
+     }
+    },
+    {
+     "text": "La niña",
+     "picture": {
+      "kid": {
+       "emotion": "feliz",
+       "girl": true,
+       "shirt": "#F48FB1"
+      }
+     }
+    },
+    {
+     "text": "El oso",
+     "picture": {
+      "drawing": "animal_oso"
+     }
+    }
+   ],
+   "answer": 1
+  },
+  {
+   "id": "quien_3",
+   "level": 1,
+   "type": "quien",
+   "say": "El pato nada en el lago.",
+   "question": "¿Quién nada?",
+   "options": [
+    {
+     "text": "El pato",
+     "picture": {
+      "drawing": "granja_patito",
+      "colors": {
+       "*": "#FFD54F"
+      }
+     }
+    },
+    {
+     "text": "La vaca",
+     "picture": {
+      "drawing": "granja_vaca"
+     }
+    },
+    {
+     "text": "El mono",
+     "picture": {
+      "drawing": "animal_mono"
+     }
+    }
+   ],
+   "answer": 0
+  },
+  {
+   "id": "quien_4",
+   "level": 1,
+   "type": "quien",
+   "say": "El mono come un plátano.",
+   "question": "¿Quién come un plátano?",
+   "options": [
+    {
+     "text": "El conejo",
+     "picture": {
+      "drawing": "animal_conejo"
+     }
+    },
+    {
+     "text": "El oso",
+     "picture": {
+      "drawing": "animal_oso"
+     }
+    },
+    {
+     "text": "El mono",
+     "picture": {
+      "drawing": "animal_mono"
+     }
+    }
+   ],
+   "answer": 2
+  },
+  {
+   "id": "donde_1",
+   "level": 1,
+   "type": "donde",
+   "say": "Mateo juega en la playa.",
+   "question": "¿Dónde juega Mateo?",
+   "options": [
+    {
+     "text": "En la playa",
+     "picture": {
+      "scene": "playa",
+      "items": []
+     }
+    },
+    {
+     "text": "En la cocina",
+     "picture": {
+      "scene": "cocina",
+      "items": []
+     }
+    },
+    {
+     "text": "En la escuela",
+     "picture": {
+      "scene": "escuela",
+      "items": []
+     }
+    }
+   ],
+   "answer": 0
+  },
+  {
+   "id": "donde_2",
+   "level": 1,
+   "type": "donde",
+   "say": "Papá prepara la sopa en la cocina.",
+   "question": "¿Dónde está papá?",
+   "options": [
+    {
+     "text": "En el dormitorio",
+     "picture": {
+      "scene": "dormitorio",
+      "items": []
+     }
+    },
+    {
+     "text": "En la cocina",
+     "picture": {
+      "scene": "cocina",
+      "items": []
+     }
+    },
+    {
+     "text": "En el parque",
+     "picture": {
+      "scene": "parque",
+      "items": []
+     }
+    }
+   ],
+   "answer": 1
+  },
+  {
+   "id": "donde_3",
+   "level": 1,
+   "type": "donde",
+   "say": "Luna duerme en su cama.",
+   "question": "¿Dónde duerme Luna?",
+   "options": [
+    {
+     "text": "En la mesa",
+     "picture": {
+      "icon": "table",
+      "color": "#8D6E63"
+     }
+    },
+    {
+     "text": "En la silla",
+     "picture": {
+      "icon": "chair",
+      "color": "#8D6E63"
+     }
+    },
+    {
+     "text": "En la cama",
+     "picture": {
+      "icon": "bed",
+      "color": "#5C6BC0"
+     }
+    }
+   ],
+   "answer": 2
+  },
+  {
+   "id": "donde_4",
+   "level": 1,
+   "type": "donde",
+   "say": "El pájaro canta en el árbol.",
+   "question": "¿Dónde canta el pájaro?",
+   "options": [
+    {
+     "text": "En el agua",
+     "picture": {
+      "icon": "sea",
+      "color": "#039BE5"
+     }
+    },
+    {
+     "text": "En el árbol",
+     "picture": {
+      "icon": "tree",
+      "color": "#43A047"
+     }
+    },
+    {
+     "text": "En la casa",
+     "picture": {
+      "icon": "home2",
+      "color": "#E57373"
+     }
+    }
+   ],
+   "answer": 1
+  },
+  {
+   "id": "objeto_1",
+   "level": 1,
+   "type": "objeto",
+   "say": "Con la cuchara tomo la sopa.",
+   "question": "¿Con qué tomo la sopa?",
+   "options": [
+    {
+     "text": "La cuchara",
+     "picture": {
+      "icon": "spoon",
+      "color": "#78909C"
+     }
+    },
+    {
+     "text": "El lápiz",
+     "picture": {
+      "icon": "pencil",
+      "color": "#FFB300"
+     }
+    },
+    {
+     "text": "La pelota",
+     "picture": {
+      "icon": "ball",
+      "color": "#E53935"
+     }
+    }
+   ],
+   "answer": 0
+  },
+  {
+   "id": "objeto_2",
+   "level": 1,
+   "type": "objeto",
+   "say": "Después del baño me seco con la toalla.",
+   "question": "¿Con qué me seco?",
+   "options": [
+    {
+     "text": "El libro",
+     "picture": {
+      "icon": "book",
+      "color": "#8E24AA"
+     }
+    },
+    {
+     "text": "La toalla",
+     "picture": {
+      "icon": "towel",
+      "color": "#F48FB1"
+     }
+    },
+    {
+     "text": "La bici",
+     "picture": {
+      "icon": "bike",
+      "color": "#1E88E5"
+     }
+    }
+   ],
+   "answer": 1
+  },
+  {
+   "id": "objeto_3",
+   "level": 1,
+   "type": "objeto",
+   "say": "Cuando llueve, uso el paraguas.",
+   "question": "¿Qué uso cuando llueve?",
+   "options": [
+    {
+     "text": "Las gafas",
+     "picture": {
+      "icon": "glasses",
+      "color": "#5D4037"
+     }
+    },
+    {
+     "text": "Los zapatos",
+     "picture": {
+      "icon": "shoes",
+      "color": "#6D4C41"
+     }
+    },
+    {
+     "text": "El paraguas",
+     "picture": {
+      "icon": "umbrella",
+      "color": "#7E57C2"
+     }
+    }
+   ],
+   "answer": 2
+  },
+  {
+   "id": "objeto_4",
+   "level": 1,
+   "type": "objeto",
+   "say": "Con el lápiz dibujo una casa.",
+   "question": "¿Con qué dibujo?",
+   "options": [
+    {
+     "text": "El lápiz",
+     "picture": {
+      "icon": "pencil",
+      "color": "#FFB300"
+     }
+    },
+    {
+     "text": "La cuchara",
+     "picture": {
+      "icon": "spoon",
+      "color": "#78909C"
+     }
+    },
+    {
+     "text": "La toalla",
+     "picture": {
+      "icon": "towel",
+      "color": "#F48FB1"
+     }
+    }
+   ],
+   "answer": 0
+  },
+  {
+   "id": "emocion_1",
+   "level": 1,
+   "type": "emocion",
+   "say": "Lolo encontró a su amigo y se ríe.",
+   "question": "¿Cómo está Lolo?",
+   "options": [
+    {
+     "text": "Feliz",
+     "picture": {
+      "emotion": "feliz"
+     }
+    },
+    {
+     "text": "Triste",
+     "picture": {
+      "emotion": "triste"
+     }
+    },
+    {
+     "text": "Enojado",
+     "picture": {
+      "emotion": "enojado"
+     }
+    }
+   ],
+   "answer": 0
+  },
+  {
+   "id": "emocion_2",
+   "level": 1,
+   "type": "emocion",
+   "say": "A la niña se le cayó el helado y llora.",
+   "question": "¿Cómo se siente la niña?",
+   "options": [
+    {
+     "text": "Sorprendida",
+     "picture": {
+      "emotion": "sorprendido"
+     }
+    },
+    {
+     "text": "Triste",
+     "picture": {
+      "emotion": "triste"
+     }
+    },
+    {
+     "text": "Feliz",
+     "picture": {
+      "emotion": "feliz"
+     }
+    }
+   ],
+   "answer": 1
+  },
+  {
+   "id": "emocion_3",
+   "level": 1,
+   "type": "emocion",
+   "say": "Mateo corrió mucho y ahora quiere dormir.",
+   "question": "¿Cómo está Mateo?",
+   "options": [
+    {
+     "text": "Enojado",
+     "picture": {
+      "emotion": "enojado"
+     }
+    },
+    {
+     "text": "Asustado",
+     "picture": {
+      "emotion": "asustado"
+     }
+    },
+    {
+     "text": "Cansado",
+     "picture": {
+      "emotion": "cansado"
+     }
+    }
+   ],
+   "answer": 2
+  },
+  {
+   "id": "escena_1",
+   "level": 1,
+   "type": "escena",
+   "say": "Mira el dibujo.",
+   "question": "¿Con qué juega la niña?",
+   "options": [
+    {
+     "text": "Con una pelota",
+     "picture": {
+      "icon": "ball",
+      "color": "#E53935"
+     }
+    },
+    {
+     "text": "Con un libro",
+     "picture": {
+      "icon": "book",
+      "color": "#8E24AA"
+     }
+    },
+    {
+     "text": "Con un pastel",
+     "picture": {
+      "icon": "cake",
+      "color": "#AB47BC"
+     }
+    }
+   ],
+   "scene": {
+    "scene": "parque",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "feliz",
+        "girl": true,
+        "shirt": "#F48FB1",
+        "arms_up": true
+       }
+      },
+      "x": 0.4,
+      "y": 0.62,
+      "s": 0.45
+     },
+     {
+      "p": {
+       "icon": "ball",
+       "color": "#E53935"
+      },
+      "x": 0.72,
+      "y": 0.8,
+      "s": 0.14
+     }
+    ]
+   },
+   "answer": 0
+  },
+  {
+   "id": "escena_2",
+   "level": 1,
+   "type": "escena",
+   "say": "Mira el dibujo.",
+   "question": "¿Qué animal está en la playa?",
+   "options": [
+    {
+     "text": "El gato",
+     "picture": {
+      "drawing": "animal_gato"
+     }
+    },
+    {
+     "text": "El perro",
+     "picture": {
+      "drawing": "animal_perro"
+     }
+    },
+    {
+     "text": "La vaca",
+     "picture": {
+      "drawing": "granja_vaca"
+     }
+    }
+   ],
+   "scene": {
+    "scene": "playa",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_perro"
+      },
+      "x": 0.45,
+      "y": 0.7,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "sun",
+       "color": "#FFB300"
+      },
+      "x": 0.82,
+      "y": 0.2,
+      "s": 0.2
+     }
+    ]
+   },
+   "answer": 1
+  },
+  {
+   "id": "escena_3",
+   "level": 1,
+   "type": "escena",
+   "say": "Mira el dibujo.",
+   "question": "¿Qué hay en el cielo?",
+   "options": [
+    {
+     "text": "El sol",
+     "picture": {
+      "icon": "sun",
+      "color": "#FFB300"
+     }
+    },
+    {
+     "text": "La luna",
+     "picture": {
+      "icon": "moon",
+      "color": "#FDD835"
+     }
+    },
+    {
+     "text": "Un arcoíris",
+     "picture": {
+      "icon": "rainbow",
+      "color": "#EC407A"
+     }
+    }
+   ],
+   "scene": {
+    "scene": "noche",
+    "items": [
+     {
+      "p": {
+       "icon": "moon",
+       "color": "#FDD835"
+      },
+      "x": 0.75,
+      "y": 0.22,
+      "s": 0.2
+     },
+     {
+      "p": {
+       "kid": {
+        "emotion": "tranquilo",
+        "girl": true,
+        "shirt": "#F48FB1"
+       }
+      },
+      "x": 0.4,
+      "y": 0.64,
+      "s": 0.42
+     }
+    ]
+   },
+   "answer": 1
+  },
+  {
+   "id": "quien_5",
+   "level": 2,
+   "type": "quien",
+   "say": "El conejo salta y la tortuga camina despacio.",
+   "question": "¿Quién camina despacio?",
+   "options": [
+    {
+     "text": "El conejo",
+     "picture": {
+      "drawing": "animal_conejo"
+     }
+    },
+    {
+     "text": "La tortuga",
+     "picture": {
+      "drawing": "animal_tortuga"
+     }
+    },
+    {
+     "text": "El perro",
+     "picture": {
+      "drawing": "animal_perro"
+     }
+    }
+   ],
+   "answer": 1
+  },
+  {
+   "id": "quien_6",
+   "level": 2,
+   "type": "quien",
+   "say": "Papá lee un cuento y Mateo escucha.",
+   "question": "¿Quién lee el cuento?",
+   "options": [
+    {
+     "text": "Papá",
+     "picture": {
+      "icon": "man",
+      "color": "#3949AB"
+     }
+    },
+    {
+     "text": "Mateo",
+     "picture": {
+      "kid": {
+       "emotion": "feliz",
+       "girl": false,
+       "shirt": "#64B5F6"
+      }
+     }
+    },
+    {
+     "text": "La abuela",
+     "picture": {
+      "icon": "elderly_woman",
+      "color": "#8E24AA"
+     }
+    }
+   ],
+   "answer": 0
+  },
+  {
+   "id": "quien_7",
+   "level": 2,
+   "type": "quien",
+   "say": "La vaca come hierba mientras la gallina busca semillas.",
+   "question": "¿Quién busca semillas?",
+   "options": [
+    {
+     "text": "La vaca",
+     "picture": {
+      "drawing": "granja_vaca"
+     }
+    },
+    {
+     "text": "La oveja",
+     "picture": {
+      "drawing": "granja_oveja"
+     }
+    },
+    {
+     "text": "La gallina",
+     "picture": {
+      "drawing": "granja_gallina"
+     }
+    }
+   ],
+   "answer": 2
+  },
+  {
+   "id": "donde_5",
+   "level": 2,
+   "type": "donde",
+   "say": "Después de clase, Luna juega en el parque.",
+   "question": "¿Dónde juega Luna después de clase?",
+   "options": [
+    {
+     "text": "En la escuela",
+     "picture": {
+      "scene": "escuela",
+      "items": []
+     }
+    },
+    {
+     "text": "En el parque",
+     "picture": {
+      "scene": "parque",
+      "items": []
+     }
+    },
+    {
+     "text": "En la playa",
+     "picture": {
+      "scene": "playa",
+      "items": []
+     }
+    }
+   ],
+   "answer": 1
+  },
+  {
+   "id": "donde_6",
+   "level": 2,
+   "type": "donde",
+   "say": "El gato salió de la casa y se subió al árbol.",
+   "question": "¿Dónde está el gato ahora?",
+   "options": [
+    {
+     "text": "En la casa",
+     "picture": {
+      "icon": "home2",
+      "color": "#E57373"
+     }
+    },
+    {
+     "text": "En el árbol",
+     "picture": {
+      "icon": "tree",
+      "color": "#43A047"
+     }
+    },
+    {
+     "text": "En el coche",
+     "picture": {
+      "drawing": "vehiculo_automovil"
+     }
+    }
+   ],
+   "answer": 1
+  },
+  {
+   "id": "donde_7",
+   "level": 2,
+   "type": "donde",
+   "say": "Los peces nadan en el mar y los pájaros vuelan en el cielo.",
+   "question": "¿Dónde nadan los peces?",
+   "options": [
+    {
+     "text": "En el cielo",
+     "picture": {
+      "icon": "cloud",
+      "color": "#78909C"
+     }
+    },
+    {
+     "text": "En el bosque",
+     "picture": {
+      "scene": "bosque",
+      "items": []
+     }
+    },
+    {
+     "text": "En el mar",
+     "picture": {
+      "icon": "sea",
+      "color": "#039BE5"
+     }
+    }
+   ],
+   "answer": 2
+  },
+  {
+   "id": "objeto_5",
+   "level": 2,
+   "type": "objeto",
+   "say": "Lo miro para saber la hora.",
+   "question": "¿Qué es?",
+   "options": [
+    {
+     "text": "El reloj",
+     "picture": {
+      "icon": "clock",
+      "color": "#5C6BC0"
+     }
+    },
+    {
+     "text": "La lámpara",
+     "picture": {
+      "icon": "lamp",
+      "color": "#FBC02D"
+     }
+    },
+    {
+     "text": "La puerta",
+     "picture": {
+      "icon": "door",
+      "color": "#8D6E63"
+     }
+    }
+   ],
+   "answer": 0
+  },
+  {
+   "id": "objeto_6",
+   "level": 2,
+   "type": "objeto",
+   "say": "Sirve para abrir la puerta de casa.",
+   "question": "¿Qué es?",
+   "options": [
+    {
+     "text": "La cuchara",
+     "picture": {
+      "icon": "spoon",
+      "color": "#78909C"
+     }
+    },
+    {
+     "text": "La llave",
+     "picture": {
+      "icon": "key",
+      "color": "#FFB300"
+     }
+    },
+    {
+     "text": "La pelota",
+     "picture": {
+      "icon": "ball",
+      "color": "#E53935"
+     }
+    }
+   ],
+   "answer": 1
+  },
+  {
+   "id": "objeto_7",
+   "level": 2,
+   "type": "objeto",
+   "say": "Lo abrimos para leer un cuento.",
+   "question": "¿Qué es?",
+   "options": [
+    {
+     "text": "La bici",
+     "picture": {
+      "icon": "bike",
+      "color": "#1E88E5"
+     }
+    },
+    {
+     "text": "La cama",
+     "picture": {
+      "icon": "bed",
+      "color": "#5C6BC0"
+     }
+    },
+    {
+     "text": "El libro",
+     "picture": {
+      "icon": "book",
+      "color": "#8E24AA"
+     }
+    }
+   ],
+   "answer": 2
+  },
+  {
+   "id": "objeto_8",
+   "level": 2,
+   "type": "objeto",
+   "say": "Lleva a muchos niños a la escuela por la calle.",
+   "question": "¿Qué es?",
+   "options": [
+    {
+     "text": "El autobús",
+     "picture": {
+      "icon": "bus",
+      "color": "#FBC02D"
+     }
+    },
+    {
+     "text": "El barco",
+     "picture": {
+      "drawing": "vehiculo_barco"
+     }
+    },
+    {
+     "text": "El avión",
+     "picture": {
+      "drawing": "vehiculo_avion"
+     }
+    }
+   ],
+   "answer": 0
+  },
+  {
+   "id": "emocion_4",
+   "level": 2,
+   "type": "emocion",
+   "say": "Hay un ruido muy fuerte en la noche y el perrito se esconde.",
+   "question": "¿Cómo se siente el perrito?",
+   "options": [
+    {
+     "text": "Asustado",
+     "picture": {
+      "emotion": "asustado"
+     }
+    },
+    {
+     "text": "Feliz",
+     "picture": {
+      "emotion": "feliz"
+     }
+    },
+    {
+     "text": "Cansado",
+     "picture": {
+      "emotion": "cansado"
+     }
+    }
+   ],
+   "answer": 0
+  },
+  {
+   "id": "emocion_5",
+   "level": 2,
+   "type": "emocion",
+   "say": "¡Mateo abre la caja y encuentra un regalo!",
+   "question": "¿Cómo se siente Mateo?",
+   "options": [
+    {
+     "text": "Triste",
+     "picture": {
+      "emotion": "triste"
+     }
+    },
+    {
+     "text": "Sorprendido",
+     "picture": {
+      "emotion": "sorprendido"
+     }
+    },
+    {
+     "text": "Cansado",
+     "picture": {
+      "emotion": "cansado"
+     }
+    }
+   ],
+   "answer": 1
+  },
+  {
+   "id": "emocion_6",
+   "level": 2,
+   "type": "emocion",
+   "say": "Su hermano rompió el dibujo de Luna. Luna aprieta los puños.",
+   "question": "¿Cómo se siente Luna?",
+   "options": [
+    {
+     "text": "Feliz",
+     "picture": {
+      "emotion": "feliz"
+     }
+    },
+    {
+     "text": "Tranquila",
+     "picture": {
+      "emotion": "tranquilo"
+     }
+    },
+    {
+     "text": "Enojada",
+     "picture": {
+      "emotion": "enojado"
+     }
+    }
+   ],
+   "answer": 2
+  },
+  {
+   "id": "secuencia_1",
+   "level": 2,
+   "type": "secuencia",
+   "say": "Primero me pongo la camiseta y después los zapatos.",
+   "question": "¿Qué me pongo después?",
+   "options": [
+    {
+     "text": "La camiseta",
+     "picture": {
+      "icon": "shirt",
+      "color": "#64B5F6"
+     }
+    },
+    {
+     "text": "Los zapatos",
+     "picture": {
+      "icon": "shoes",
+      "color": "#6D4C41"
+     }
+    },
+    {
+     "text": "Las gafas",
+     "picture": {
+      "icon": "glasses",
+      "color": "#5D4037"
+     }
+    }
+   ],
+   "answer": 1
+  },
+  {
+   "id": "secuencia_2",
+   "level": 2,
+   "type": "secuencia",
+   "say": "Luna se lava las manos y después come.",
+   "question": "¿Qué hace Luna primero?",
+   "options": [
+    {
+     "text": "Come",
+     "picture": {
+      "icon": "eat",
+      "color": "#FB8C00"
+     }
+    },
+    {
+     "text": "Se lava las manos",
+     "picture": {
+      "icon": "wash",
+      "color": "#29B6F6"
+     }
+    },
+    {
+     "text": "Duerme",
+     "picture": {
+      "icon": "sleep",
+      "color": "#5C6BC0"
+     }
+    }
+   ],
+   "answer": 1
+  },
+  {
+   "id": "secuencia_3",
+   "level": 2,
+   "type": "secuencia",
+   "say": "Planto la semilla, la riego y crece una flor.",
+   "question": "¿Qué pasa al final?",
+   "options": [
+    {
+     "text": "Planto la semilla",
+     "picture": {
+      "icon": "seed",
+      "color": "#8D6E63"
+     }
+    },
+    {
+     "text": "Riego",
+     "picture": {
+      "icon": "watering",
+      "color": "#039BE5"
+     }
+    },
+    {
+     "text": "Crece una flor",
+     "picture": {
+      "icon": "flower",
+      "color": "#EC407A"
+     }
+    }
+   ],
+   "answer": 2
+  },
+  {
+   "id": "secuencia_4",
+   "level": 2,
+   "type": "secuencia",
+   "say": "Por la mañana sale el sol y por la noche sale la luna.",
+   "question": "¿Qué sale por la noche?",
+   "options": [
+    {
+     "text": "El sol",
+     "picture": {
+      "icon": "sun",
+      "color": "#FFB300"
+     }
+    },
+    {
+     "text": "La luna",
+     "picture": {
+      "icon": "moon",
+      "color": "#FDD835"
+     }
+    },
+    {
+     "text": "Una nube",
+     "picture": {
+      "icon": "cloud",
+      "color": "#78909C"
+     }
+    }
+   ],
+   "answer": 1
+  },
+  {
+   "id": "escena_4",
+   "level": 2,
+   "type": "escena",
+   "say": "Mira el dibujo.",
+   "question": "¿Qué preparan los niños?",
+   "options": [
+    {
+     "text": "Una pizza",
+     "picture": {
+      "icon": "pizza",
+      "color": "#F4511E"
+     }
+    },
+    {
+     "text": "Un pastel",
+     "picture": {
+      "icon": "cake",
+      "color": "#AB47BC"
+     }
+    },
+    {
+     "text": "Una sopa",
+     "picture": {
+      "icon": "soup",
+      "color": "#FB8C00"
+     }
+    }
+   ],
+   "scene": {
+    "scene": "cocina",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "feliz",
+        "girl": false,
+        "shirt": "#64B5F6"
+       }
+      },
+      "x": 0.3,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "cake",
+       "color": "#AB47BC"
+      },
+      "x": 0.55,
+      "y": 0.7,
+      "s": 0.2
+     },
+     {
+      "p": {
+       "kid": {
+        "emotion": "emocionado",
+        "girl": true,
+        "shirt": "#F48FB1"
+       }
+      },
+      "x": 0.8,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "answer": 1
+  },
+  {
+   "id": "escena_5",
+   "level": 2,
+   "type": "escena",
+   "say": "Mira el dibujo.",
+   "question": "¿Qué tiempo hace?",
+   "options": [
+    {
+     "text": "Hace sol",
+     "picture": {
+      "icon": "sun",
+      "color": "#FFB300"
+     }
+    },
+    {
+     "text": "Llueve",
+     "picture": {
+      "icon": "rain",
+      "color": "#039BE5"
+     }
+    },
+    {
+     "text": "Nieva",
+     "picture": {
+      "icon": "snow",
+      "color": "#90CAF9"
+     }
+    }
+   ],
+   "scene": {
+    "scene": "lluvia",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "feliz",
+        "girl": true,
+        "shirt": "#F48FB1"
+       }
+      },
+      "x": 0.45,
+      "y": 0.64,
+      "s": 0.45
+     },
+     {
+      "p": {
+       "icon": "umbrella",
+       "color": "#7E57C2"
+      },
+      "x": 0.45,
+      "y": 0.3,
+      "s": 0.25
+     }
+    ]
+   },
+   "answer": 1
+  },
+  {
+   "id": "escena_6",
+   "level": 2,
+   "type": "escena",
+   "say": "Mira el dibujo.",
+   "question": "¿Qué animal vuela?",
+   "options": [
+    {
+     "text": "El oso",
+     "picture": {
+      "drawing": "animal_oso"
+     }
+    },
+    {
+     "text": "El conejo",
+     "picture": {
+      "drawing": "animal_conejo"
+     }
+    },
+    {
+     "text": "La mariposa",
+     "picture": {
+      "drawing": "animal_mariposa",
+      "colors": {
+       "*": "#AB47BC"
+      }
+     }
+    }
+   ],
+   "scene": {
+    "scene": "bosque",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_oso"
+      },
+      "x": 0.3,
+      "y": 0.66,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "drawing": "animal_conejo"
+      },
+      "x": 0.7,
+      "y": 0.74,
+      "s": 0.25
+     },
+     {
+      "p": {
+       "drawing": "animal_mariposa",
+       "colors": {
+        "*": "#AB47BC"
+       }
+      },
+      "x": 0.65,
+      "y": 0.3,
+      "s": 0.16
+     }
+    ]
+   },
+   "answer": 2
+  },
+  {
+   "id": "instruccion_1",
+   "level": 2,
+   "type": "instruccion",
+   "say": "Toca primero el perro y después el gato.",
+   "question": "Toca en orden.",
+   "options": [
+    {
+     "text": "El gato",
+     "picture": {
+      "drawing": "animal_gato"
+     }
+    },
+    {
+     "text": "El pato",
+     "picture": {
+      "drawing": "granja_patito",
+      "colors": {
+       "*": "#FFD54F"
+      }
+     }
+    },
+    {
+     "text": "El perro",
+     "picture": {
+      "drawing": "animal_perro"
+     }
+    },
+    {
+     "text": "El conejo",
+     "picture": {
+      "drawing": "animal_conejo"
+     }
+    }
+   ],
+   "steps": [
+    2,
+    0
+   ]
+  },
+  {
+   "id": "instruccion_2",
+   "level": 2,
+   "type": "instruccion",
+   "say": "Toca la manzana y luego el plátano.",
+   "question": "Toca en orden.",
+   "options": [
+    {
+     "text": "El plátano",
+     "picture": {
+      "drawing": "fruta_platano",
+      "colors": {
+       "platano": "#FFD600",
+       "tallo": "#8D6E63",
+       "punta": "#6D4C41"
+      }
+     }
+    },
+    {
+     "text": "Las uvas",
+     "picture": {
+      "drawing": "fruta_uvas",
+      "colors": {
+       "uva_*": "#8E44AD",
+       "hoja": "#43A047",
+       "tallo": "#8D5524"
+      }
+     }
+    },
+    {
+     "text": "La manzana",
+     "picture": {
+      "drawing": "fruta_manzana",
+      "colors": {
+       "manzana": "#E53935",
+       "hoja": "#43A047",
+       "tallo": "#8D5524",
+       "brillo": "#FFFFFF"
+      }
+     }
+    },
+    {
+     "text": "La fresa",
+     "picture": {
+      "drawing": "fruta_fresa",
+      "colors": {
+       "fresa": "#E53935",
+       "hojas": "#43A047",
+       "tallo": "#2E7D32"
+      }
+     }
+    }
+   ],
+   "steps": [
+    2,
+    0
+   ]
+  },
+  {
+   "id": "instruccion_3",
+   "level": 3,
+   "type": "instruccion",
+   "say": "Primero toca el sol y después la luna.",
+   "question": "Toca en orden.",
+   "options": [
+    {
+     "text": "La nube",
+     "picture": {
+      "icon": "cloud",
+      "color": "#78909C"
+     }
+    },
+    {
+     "text": "La luna",
+     "picture": {
+      "icon": "moon",
+      "color": "#FDD835"
+     }
+    },
+    {
+     "text": "La estrella",
+     "picture": {
+      "icon": "star",
+      "color": "#FBC02D"
+     }
+    },
+    {
+     "text": "El sol",
+     "picture": {
+      "icon": "sun",
+      "color": "#FFB300"
+     }
+    }
+   ],
+   "steps": [
+    3,
+    1
+   ]
+  },
+  {
+   "id": "instruccion_4",
+   "level": 3,
+   "type": "instruccion",
+   "say": "Toca la cuchara y después el vaso.",
+   "question": "Toca en orden.",
+   "options": [
+    {
+     "text": "El lápiz",
+     "picture": {
+      "icon": "pencil",
+      "color": "#FFB300"
+     }
+    },
+    {
+     "text": "El vaso",
+     "picture": {
+      "icon": "glass",
+      "color": "#29B6F6"
+     }
+    },
+    {
+     "text": "La toalla",
+     "picture": {
+      "icon": "towel",
+      "color": "#F48FB1"
+     }
+    },
+    {
+     "text": "La cuchara",
+     "picture": {
+      "icon": "spoon",
+      "color": "#78909C"
+     }
+    }
+   ],
+   "steps": [
+    3,
+    1
+   ]
+  },
+  {
+   "id": "instruccion_5",
+   "level": 3,
+   "type": "instruccion",
+   "say": "Toca lo que usas para dormir y después lo que usas para comer.",
+   "question": "Toca en orden.",
+   "options": [
+    {
+     "text": "La cama",
+     "picture": {
+      "icon": "bed",
+      "color": "#5C6BC0"
+     }
+    },
+    {
+     "text": "La pelota",
+     "picture": {
+      "icon": "ball",
+      "color": "#E53935"
+     }
+    },
+    {
+     "text": "La cuchara",
+     "picture": {
+      "icon": "spoon",
+      "color": "#78909C"
+     }
+    },
+    {
+     "text": "El libro",
+     "picture": {
+      "icon": "book",
+      "color": "#8E24AA"
+     }
+    }
+   ],
+   "steps": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "instruccion_6",
+   "level": 3,
+   "type": "instruccion",
+   "say": "Toca el animal que nada y después el que vuela.",
+   "question": "Toca en orden.",
+   "options": [
+    {
+     "text": "El pez",
+     "picture": {
+      "drawing": "animal_pez"
+     }
+    },
+    {
+     "text": "La mariposa",
+     "picture": {
+      "drawing": "animal_mariposa",
+      "colors": {
+       "*": "#AB47BC"
+      }
+     }
+    },
+    {
+     "text": "La vaca",
+     "picture": {
+      "drawing": "granja_vaca"
+     }
+    },
+    {
+     "text": "El oso",
+     "picture": {
+      "drawing": "animal_oso"
+     }
+    }
+   ],
+   "steps": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "instruccion_7",
+   "level": 3,
+   "type": "instruccion",
+   "say": "Primero toca a la niña y después al perro.",
+   "question": "Toca en orden.",
+   "options": [
+    {
+     "text": "El perro",
+     "picture": {
+      "drawing": "animal_perro"
+     }
+    },
+    {
+     "text": "El niño",
+     "picture": {
+      "kid": {
+       "emotion": "feliz",
+       "girl": false,
+       "shirt": "#64B5F6"
+      }
+     }
+    },
+    {
+     "text": "La niña",
+     "picture": {
+      "kid": {
+       "emotion": "feliz",
+       "girl": true,
+       "shirt": "#F48FB1"
+      }
+     }
+    },
+    {
+     "text": "El gato",
+     "picture": {
+      "drawing": "animal_gato"
+     }
+    }
+   ],
+   "steps": [
+    2,
+    0
+   ]
+  },
+  {
+   "id": "instruccion_8",
+   "level": 3,
+   "type": "instruccion",
+   "say": "Toca el autobús y después el barco.",
+   "question": "Toca en orden.",
+   "options": [
+    {
+     "text": "El avión",
+     "picture": {
+      "drawing": "vehiculo_avion"
+     }
+    },
+    {
+     "text": "El barco",
+     "picture": {
+      "drawing": "vehiculo_barco"
+     }
+    },
+    {
+     "text": "El autobús",
+     "picture": {
+      "icon": "bus",
+      "color": "#FBC02D"
+     }
+    },
+    {
+     "text": "El tren",
+     "picture": {
+      "drawing": "vehiculo_tren"
+     }
+    }
+   ],
+   "steps": [
+    2,
+    1
+   ]
+  },
+  {
+   "id": "secuencia_5",
+   "level": 3,
+   "type": "secuencia",
+   "say": "Mateo se despierta, desayuna y va a la escuela.",
+   "question": "¿Qué hace Mateo después de desayunar?",
+   "options": [
+    {
+     "text": "Duerme",
+     "picture": {
+      "icon": "sleep",
+      "color": "#5C6BC0"
+     }
+    },
+    {
+     "text": "Va a la escuela",
+     "picture": {
+      "icon": "school",
+      "color": "#E53935"
+     }
+    },
+    {
+     "text": "Se baña",
+     "picture": {
+      "icon": "bath",
+      "color": "#29B6F6"
+     }
+    }
+   ],
+   "answer": 1
+  },
+  {
+   "id": "secuencia_6",
+   "level": 3,
+   "type": "secuencia",
+   "say": "Primero llueve, después sale el sol y al final aparece el arcoíris.",
+   "question": "¿Qué aparece al final?",
+   "options": [
+    {
+     "text": "La lluvia",
+     "picture": {
+      "icon": "rain",
+      "color": "#039BE5"
+     }
+    },
+    {
+     "text": "El sol",
+     "picture": {
+      "icon": "sun",
+      "color": "#FFB300"
+     }
+    },
+    {
+     "text": "El arcoíris",
+     "picture": {
+      "icon": "rainbow",
+      "color": "#EC407A"
+     }
+    }
+   ],
+   "answer": 2
+  },
+  {
+   "id": "secuencia_7",
+   "level": 3,
+   "type": "secuencia",
+   "say": "Antes de dormir, Luna se baña y se pone el pijama.",
+   "question": "¿Qué hace Luna antes de ponerse el pijama?",
+   "options": [
+    {
+     "text": "Se baña",
+     "picture": {
+      "icon": "bath",
+      "color": "#29B6F6"
+     }
+    },
+    {
+     "text": "Come pizza",
+     "picture": {
+      "icon": "pizza",
+      "color": "#F4511E"
+     }
+    },
+    {
+     "text": "Juega a la pelota",
+     "picture": {
+      "icon": "ball",
+      "color": "#E53935"
+     }
+    }
+   ],
+   "answer": 0
+  },
+  {
+   "id": "secuencia_8",
+   "level": 3,
+   "type": "secuencia",
+   "say": "El pollito sale del huevo, come semillas y luego duerme con su mamá.",
+   "question": "¿Qué hace el pollito antes de dormir?",
+   "options": [
+    {
+     "text": "Nada en el lago",
+     "picture": {
+      "icon": "swim",
+      "color": "#039BE5"
+     }
+    },
+    {
+     "text": "Come semillas",
+     "picture": {
+      "icon": "seed",
+      "color": "#8D6E63"
+     }
+    },
+    {
+     "text": "Vuela al cielo",
+     "picture": {
+      "icon": "cloud",
+      "color": "#78909C"
+     }
+    }
+   ],
+   "answer": 1
+  },
+  {
+   "id": "escena_7",
+   "level": 3,
+   "type": "escena",
+   "say": "Mira el dibujo.",
+   "question": "¿Quién tiene la pelota?",
+   "options": [
+    {
+     "text": "Luna",
+     "picture": {
+      "kid": {
+       "emotion": "feliz",
+       "girl": true,
+       "shirt": "#F48FB1"
+      }
+     }
+    },
+    {
+     "text": "Mateo",
+     "picture": {
+      "kid": {
+       "emotion": "feliz",
+       "girl": false,
+       "shirt": "#64B5F6"
+      }
+     }
+    },
+    {
+     "text": "El perro",
+     "picture": {
+      "drawing": "animal_perro"
+     }
+    }
+   ],
+   "scene": {
+    "scene": "parque",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "feliz",
+        "girl": true,
+        "shirt": "#F48FB1"
+       }
+      },
+      "x": 0.2,
+      "y": 0.62,
+      "s": 0.36
+     },
+     {
+      "p": {
+       "kid": {
+        "emotion": "feliz",
+        "girl": false,
+        "shirt": "#64B5F6",
+        "arms_up": true
+       }
+      },
+      "x": 0.55,
+      "y": 0.62,
+      "s": 0.36
+     },
+     {
+      "p": {
+       "icon": "ball",
+       "color": "#E53935"
+      },
+      "x": 0.68,
+      "y": 0.8,
+      "s": 0.12
+     },
+     {
+      "p": {
+       "drawing": "animal_perro"
+      },
+      "x": 0.86,
+      "y": 0.72,
+      "s": 0.24
+     }
+    ]
+   },
+   "answer": 1
+  },
+  {
+   "id": "escena_8",
+   "level": 3,
+   "type": "escena",
+   "say": "Mira el dibujo.",
+   "question": "¿Qué hay en el mar?",
+   "options": [
+    {
+     "text": "Un barco",
+     "picture": {
+      "drawing": "vehiculo_barco"
+     }
+    },
+    {
+     "text": "Un coche",
+     "picture": {
+      "drawing": "vehiculo_automovil"
+     }
+    },
+    {
+     "text": "Un tren",
+     "picture": {
+      "drawing": "vehiculo_tren"
+     }
+    }
+   ],
+   "scene": {
+    "scene": "playa",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "tranquilo",
+        "girl": true,
+        "shirt": "#F48FB1"
+       }
+      },
+      "x": 0.25,
+      "y": 0.66,
+      "s": 0.38
+     },
+     {
+      "p": {
+       "drawing": "vehiculo_barco"
+      },
+      "x": 0.7,
+      "y": 0.45,
+      "s": 0.25
+     }
+    ]
+   },
+   "answer": 0
+  },
+  {
+   "id": "escena_9",
+   "level": 3,
+   "type": "escena",
+   "say": "Mira el dibujo.",
+   "question": "¿Qué animal NO está en el bosque?",
+   "options": [
+    {
+     "text": "El oso",
+     "picture": {
+      "drawing": "animal_oso"
+     }
+    },
+    {
+     "text": "El conejo",
+     "picture": {
+      "drawing": "animal_conejo"
+     }
+    },
+    {
+     "text": "La vaca",
+     "picture": {
+      "drawing": "granja_vaca"
+     }
+    }
+   ],
+   "scene": {
+    "scene": "bosque",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_oso"
+      },
+      "x": 0.3,
+      "y": 0.66,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "drawing": "animal_conejo"
+      },
+      "x": 0.72,
+      "y": 0.74,
+      "s": 0.25
+     }
+    ]
+   },
+   "answer": 2
+  },
+  {
+   "id": "quien_8",
+   "level": 3,
+   "type": "quien",
+   "say": "El oso le da miel al conejo, y el conejo le da una zanahoria al oso.",
+   "question": "¿Quién da la zanahoria?",
+   "options": [
+    {
+     "text": "El oso",
+     "picture": {
+      "drawing": "animal_oso"
+     }
+    },
+    {
+     "text": "El conejo",
+     "picture": {
+      "drawing": "animal_conejo"
+     }
+    },
+    {
+     "text": "El mono",
+     "picture": {
+      "drawing": "animal_mono"
+     }
+    }
+   ],
+   "answer": 1
+  },
+  {
+   "id": "quien_9",
+   "level": 3,
+   "type": "quien",
+   "say": "Luna le presta su lápiz a Mateo porque él no tiene.",
+   "question": "¿Quién no tiene lápiz?",
+   "options": [
+    {
+     "text": "Luna",
+     "picture": {
+      "kid": {
+       "emotion": "feliz",
+       "girl": true,
+       "shirt": "#F48FB1"
+      }
+     }
+    },
+    {
+     "text": "Mateo",
+     "picture": {
+      "kid": {
+       "emotion": "feliz",
+       "girl": false,
+       "shirt": "#64B5F6"
+      }
+     }
+    },
+    {
+     "text": "La maestra",
+     "picture": {
+      "icon": "teacher",
+      "color": "#00897B"
+     }
+    }
+   ],
+   "answer": 1
+  },
+  {
+   "id": "emocion_7",
+   "level": 3,
+   "type": "emocion",
+   "say": "El perro de Mateo se perdió, pero ahora vuelve corriendo a casa.",
+   "question": "¿Cómo se siente Mateo al final?",
+   "options": [
+    {
+     "text": "Triste",
+     "picture": {
+      "emotion": "triste"
+     }
+    },
+    {
+     "text": "Feliz",
+     "picture": {
+      "emotion": "feliz"
+     }
+    },
+    {
+     "text": "Asustado",
+     "picture": {
+      "emotion": "asustado"
+     }
+    }
+   ],
+   "answer": 1
+  }
+ ]
+}

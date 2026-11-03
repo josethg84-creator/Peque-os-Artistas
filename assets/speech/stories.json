@@ -1,0 +1,5382 @@
+{
+ "format_version": 1,
+ "categories": [
+  "Animales",
+  "Amistad",
+  "Familia",
+  "Naturaleza",
+  "Emociones",
+  "Hábitos saludables",
+  "Aventuras",
+  "Colores",
+  "Valores",
+  "Vida cotidiana"
+ ],
+ "stories": [
+  {
+   "id": "toby_pelota",
+   "title": "Toby y la pelota roja",
+   "category": "Animales",
+   "cover": {
+    "scene": "casa",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_perro"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "characters": [
+    {
+     "name": "Toby",
+     "picture": {
+      "drawing": "animal_perro"
+     }
+    },
+    {
+     "name": "Luna",
+     "picture": {
+      "kid": {
+       "emotion": "feliz",
+       "girl": true,
+       "shirt": "#F48FB1"
+      }
+     }
+    }
+   ],
+   "scenes": [
+    {
+     "text": "Toby es un perro pequeño y juguetón.",
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "drawing": "animal_perro"
+        },
+        "x": 0.5,
+        "y": 0.62,
+        "s": 0.5
+       }
+      ]
+     }
+    },
+    {
+     "text": "Una mañana, Toby encontró una pelota roja.",
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "drawing": "animal_perro"
+        },
+        "x": 0.4,
+        "y": 0.62,
+        "s": 0.45
+       },
+       {
+        "p": {
+         "icon": "ball",
+         "color": "#E53935"
+        },
+        "x": 0.75,
+        "y": 0.78,
+        "s": 0.16
+       }
+      ]
+     }
+    },
+    {
+     "text": "Toby llevó la pelota al jardín.",
+     "picture": {
+      "scene": "jardin",
+      "items": [
+       {
+        "p": {
+         "drawing": "animal_perro"
+        },
+        "x": 0.45,
+        "y": 0.64,
+        "s": 0.45
+       },
+       {
+        "p": {
+         "icon": "ball",
+         "color": "#E53935"
+        },
+        "x": 0.7,
+        "y": 0.82,
+        "s": 0.14
+       }
+      ]
+     }
+    },
+    {
+     "text": "Su amiga Luna llegó para jugar con él.",
+     "picture": {
+      "scene": "jardin",
+      "items": [
+       {
+        "p": {
+         "drawing": "animal_perro"
+        },
+        "x": 0.32,
+        "y": 0.66,
+        "s": 0.4
+       },
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": true,
+          "shirt": "#F48FB1",
+          "arms_up": true
+         }
+        },
+        "x": 0.7,
+        "y": 0.6,
+        "s": 0.45
+       }
+      ]
+     }
+    },
+    {
+     "text": "Los dos jugaron felices toda la tarde.",
+     "picture": {
+      "scene": "jardin",
+      "items": [
+       {
+        "p": {
+         "drawing": "animal_perro"
+        },
+        "x": 0.3,
+        "y": 0.66,
+        "s": 0.4
+       },
+       {
+        "p": {
+         "icon": "ball",
+         "color": "#E53935"
+        },
+        "x": 0.52,
+        "y": 0.5,
+        "s": 0.14
+       },
+       {
+        "p": {
+         "kid": {
+          "emotion": "emocionado",
+          "girl": true,
+          "shirt": "#F48FB1",
+          "arms_up": true
+         }
+        },
+        "x": 0.74,
+        "y": 0.6,
+        "s": 0.45
+       }
+      ]
+     }
+    }
+   ],
+   "questions": [
+    {
+     "question": "¿Cómo se llamaba el perro?",
+     "options": [
+      {
+       "text": "Toby",
+       "picture": {
+        "drawing": "animal_perro"
+       }
+      },
+      {
+       "text": "Pipo",
+       "picture": {
+        "drawing": "granja_patito"
+       }
+      },
+      {
+       "text": "Bruno",
+       "picture": {
+        "drawing": "animal_oso"
+       }
+      }
+     ],
+     "answer": 0
+    },
+    {
+     "question": "¿De qué color era la pelota?",
+     "options": [
+      {
+       "text": "Azul",
+       "picture": {
+        "swatch": "#1E57C8"
+       }
+      },
+      {
+       "text": "Roja",
+       "picture": {
+        "swatch": "#E53935"
+       }
+      },
+      {
+       "text": "Verde",
+       "picture": {
+        "swatch": "#2E7D32"
+       }
+      }
+     ],
+     "answer": 1
+    },
+    {
+     "question": "¿Dónde jugaba Toby?",
+     "options": [
+      {
+       "text": "En la escuela",
+       "picture": {
+        "scene": "escuela",
+        "items": []
+       }
+      },
+      {
+       "text": "En la playa",
+       "picture": {
+        "scene": "playa",
+        "items": []
+       }
+      },
+      {
+       "text": "En el jardín",
+       "picture": {
+        "scene": "jardin",
+        "items": []
+       }
+      }
+     ],
+     "answer": 2
+    }
+   ],
+   "order": [
+    0,
+    2,
+    4
+   ]
+  },
+  {
+   "id": "pipo_nadar",
+   "title": "Pipo quiere nadar",
+   "category": "Animales",
+   "cover": {
+    "scene": "parque",
+    "items": [
+     {
+      "p": {
+       "drawing": "granja_patito",
+       "colors": {
+        "*": "#FFD54F"
+       }
+      },
+      "x": 0.5,
+      "y": 0.64,
+      "s": 0.45
+     }
+    ]
+   },
+   "characters": [
+    {
+     "name": "Pipo",
+     "picture": {
+      "drawing": "granja_patito",
+      "colors": {
+       "*": "#FFD54F"
+      }
+     }
+    },
+    {
+     "name": "Mamá pata",
+     "picture": {
+      "drawing": "granja_gallina"
+     }
+    }
+   ],
+   "scenes": [
+    {
+     "text": "Pipo es un patito amarillo que vive junto al lago.",
+     "picture": {
+      "scene": "parque",
+      "items": [
+       {
+        "p": {
+         "drawing": "granja_patito",
+         "colors": {
+          "*": "#FFD54F"
+         }
+        },
+        "x": 0.5,
+        "y": 0.64,
+        "s": 0.45
+       }
+      ]
+     }
+    },
+    {
+     "text": "Pipo quería nadar, pero el agua le daba un poco de miedo.",
+     "picture": {
+      "scene": "playa",
+      "items": [
+       {
+        "p": {
+         "drawing": "granja_patito",
+         "colors": {
+          "*": "#FFD54F"
+         }
+        },
+        "x": 0.5,
+        "y": 0.78,
+        "s": 0.35
+       }
+      ]
+     }
+    },
+    {
+     "text": "Su mamá le dijo: «Lo haremos juntos, despacito».",
+     "picture": {
+      "scene": "playa",
+      "items": [
+       {
+        "p": {
+         "drawing": "granja_gallina"
+        },
+        "x": 0.32,
+        "y": 0.74,
+        "s": 0.38
+       },
+       {
+        "p": {
+         "drawing": "granja_patito",
+         "colors": {
+          "*": "#FFD54F"
+         }
+        },
+        "x": 0.66,
+        "y": 0.8,
+        "s": 0.3
+       }
+      ]
+     }
+    },
+    {
+     "text": "Pipo metió una patita, luego la otra… ¡y empezó a flotar!",
+     "picture": {
+      "scene": "playa",
+      "items": [
+       {
+        "p": {
+         "drawing": "granja_patito",
+         "colors": {
+          "*": "#FFD54F"
+         }
+        },
+        "x": 0.5,
+        "y": 0.62,
+        "s": 0.35
+       }
+      ]
+     }
+    },
+    {
+     "text": "Desde ese día, Pipo nada feliz con su mamá.",
+     "picture": {
+      "scene": "playa",
+      "items": [
+       {
+        "p": {
+         "drawing": "granja_gallina"
+        },
+        "x": 0.35,
+        "y": 0.6,
+        "s": 0.32
+       },
+       {
+        "p": {
+         "drawing": "granja_patito",
+         "colors": {
+          "*": "#FFD54F"
+         }
+        },
+        "x": 0.65,
+        "y": 0.64,
+        "s": 0.28
+       }
+      ]
+     }
+    }
+   ],
+   "questions": [
+    {
+     "question": "¿Qué animal es Pipo?",
+     "options": [
+      {
+       "text": "Un patito",
+       "picture": {
+        "drawing": "granja_patito",
+        "colors": {
+         "*": "#FFD54F"
+        }
+       }
+      },
+      {
+       "text": "Un gato",
+       "picture": {
+        "drawing": "animal_gato"
+       }
+      },
+      {
+       "text": "Un mono",
+       "picture": {
+        "drawing": "animal_mono"
+       }
+      }
+     ],
+     "answer": 0
+    },
+    {
+     "question": "¿Qué quería hacer Pipo?",
+     "options": [
+      {
+       "text": "Volar",
+       "picture": {
+        "icon": "cloud",
+        "color": "#64B5F6"
+       }
+      },
+      {
+       "text": "Nadar",
+       "picture": {
+        "icon": "swim",
+        "color": "#0288D1"
+       }
+      },
+      {
+       "text": "Dormir",
+       "picture": {
+        "icon": "sleep",
+        "color": "#5C6BC0"
+       }
+      }
+     ],
+     "answer": 1
+    },
+    {
+     "question": "¿Quién lo ayudó?",
+     "options": [
+      {
+       "text": "Su mamá",
+       "picture": {
+        "drawing": "granja_gallina"
+       }
+      },
+      {
+       "text": "Un perro",
+       "picture": {
+        "drawing": "animal_perro"
+       }
+      },
+      {
+       "text": "Lolo",
+       "picture": {
+        "lolo": true
+       }
+      }
+     ],
+     "answer": 0
+    }
+   ],
+   "order": [
+    0,
+    2,
+    4
+   ]
+  },
+  {
+   "id": "rita_tito",
+   "title": "Rita y Tito comparten",
+   "category": "Amistad",
+   "cover": {
+    "scene": "jardin",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_conejo"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.45
+     },
+     {
+      "p": {
+       "icon": "salad",
+       "color": "#FB8C00"
+      },
+      "x": 0.8,
+      "y": 0.8,
+      "s": 0.16
+     }
+    ]
+   },
+   "characters": [
+    {
+     "name": "Rita",
+     "picture": {
+      "drawing": "animal_conejo"
+     }
+    },
+    {
+     "name": "Tito",
+     "picture": {
+      "drawing": "animal_mono"
+     }
+    }
+   ],
+   "scenes": [
+    {
+     "text": "Rita, la coneja, tenía tres zanahorias.",
+     "picture": {
+      "scene": "jardin",
+      "items": [
+       {
+        "p": {
+         "drawing": "animal_conejo"
+        },
+        "x": 0.5,
+        "y": 0.62,
+        "s": 0.45
+       },
+       {
+        "p": {
+         "icon": "salad",
+         "color": "#FB8C00"
+        },
+        "x": 0.8,
+        "y": 0.8,
+        "s": 0.16
+       }
+      ]
+     }
+    },
+    {
+     "text": "Tito, el mono, tenía muchos plátanos.",
+     "picture": {
+      "scene": "bosque",
+      "items": [
+       {
+        "p": {
+         "drawing": "animal_mono"
+        },
+        "x": 0.45,
+        "y": 0.62,
+        "s": 0.45
+       },
+       {
+        "p": {
+         "drawing": "fruta_platano",
+         "colors": {
+          "platano": "#FFD600",
+          "tallo": "#8D6E63",
+          "punta": "#6D4C41"
+         }
+        },
+        "x": 0.78,
+        "y": 0.8,
+        "s": 0.2
+       }
+      ]
+     }
+    },
+    {
+     "text": "Tito tenía hambre de zanahorias, y Rita de plátanos.",
+     "picture": {
+      "scene": "parque",
+      "items": [
+       {
+        "p": {
+         "drawing": "animal_conejo"
+        },
+        "x": 0.3,
+        "y": 0.64,
+        "s": 0.4
+       },
+       {
+        "p": {
+         "drawing": "animal_mono"
+        },
+        "x": 0.7,
+        "y": 0.64,
+        "s": 0.4
+       }
+      ]
+     }
+    },
+    {
+     "text": "Entonces decidieron compartir.",
+     "picture": {
+      "scene": "parque",
+      "items": [
+       {
+        "p": {
+         "drawing": "animal_conejo"
+        },
+        "x": 0.3,
+        "y": 0.64,
+        "s": 0.38
+       },
+       {
+        "p": {
+         "drawing": "fruta_platano",
+         "colors": {
+          "platano": "#FFD600",
+          "tallo": "#8D6E63",
+          "punta": "#6D4C41"
+         }
+        },
+        "x": 0.5,
+        "y": 0.82,
+        "s": 0.16
+       },
+       {
+        "p": {
+         "drawing": "animal_mono"
+        },
+        "x": 0.72,
+        "y": 0.64,
+        "s": 0.38
+       }
+      ]
+     }
+    },
+    {
+     "text": "¡Compartir hizo la merienda más divertida!",
+     "picture": {
+      "scene": "parque",
+      "items": [
+       {
+        "p": {
+         "drawing": "animal_conejo"
+        },
+        "x": 0.32,
+        "y": 0.62,
+        "s": 0.4
+       },
+       {
+        "p": {
+         "drawing": "animal_mono"
+        },
+        "x": 0.68,
+        "y": 0.62,
+        "s": 0.4
+       },
+       {
+        "p": {
+         "icon": "love",
+         "color": "#E91E63"
+        },
+        "x": 0.5,
+        "y": 0.3,
+        "s": 0.16
+       }
+      ]
+     }
+    }
+   ],
+   "questions": [
+    {
+     "question": "¿Qué tenía Rita?",
+     "options": [
+      {
+       "text": "Zanahorias",
+       "picture": {
+        "icon": "salad",
+        "color": "#FB8C00"
+       }
+      },
+      {
+       "text": "Pelotas",
+       "picture": {
+        "icon": "ball",
+        "color": "#E53935"
+       }
+      },
+      {
+       "text": "Libros",
+       "picture": {
+        "icon": "book",
+        "color": "#E53935"
+       }
+      }
+     ],
+     "answer": 0
+    },
+    {
+     "question": "¿Qué comía Tito?",
+     "options": [
+      {
+       "text": "Fresas",
+       "picture": {
+        "drawing": "fruta_fresa",
+        "colors": {
+         "fresa": "#E53935",
+         "hojas": "#43A047",
+         "tallo": "#2E7D32"
+        }
+       }
+      },
+      {
+       "text": "Pan",
+       "picture": {
+        "icon": "bread",
+        "color": "#C77C2E"
+       }
+      },
+      {
+       "text": "Plátanos",
+       "picture": {
+        "drawing": "fruta_platano",
+        "colors": {
+         "platano": "#FFD600",
+         "tallo": "#8D6E63",
+         "punta": "#6D4C41"
+        }
+       }
+      }
+     ],
+     "answer": 2
+    },
+    {
+     "question": "¿Qué hicieron los amigos?",
+     "options": [
+      {
+       "text": "Compartir",
+       "picture": {
+        "icon": "friends",
+        "color": "#00ACC1"
+       }
+      },
+      {
+       "text": "Pelear",
+       "picture": {
+        "icon": "sad",
+        "color": "#E53935"
+       }
+      },
+      {
+       "text": "Dormir",
+       "picture": {
+        "icon": "sleep",
+        "color": "#5C6BC0"
+       }
+      }
+     ],
+     "answer": 0
+    }
+   ],
+   "order": [
+    0,
+    2,
+    4
+   ]
+  },
+  {
+   "id": "mateo_amigo",
+   "title": "El nuevo amigo de Mateo",
+   "category": "Amistad",
+   "cover": {
+    "scene": "escuela",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "asustado",
+        "girl": false,
+        "shirt": "#64B5F6"
+       }
+      },
+      "x": 0.5,
+      "y": 0.64,
+      "s": 0.48
+     }
+    ]
+   },
+   "characters": [
+    {
+     "name": "Mateo",
+     "picture": {
+      "kid": {
+       "emotion": "feliz",
+       "girl": false,
+       "shirt": "#64B5F6"
+      }
+     }
+    },
+    {
+     "name": "Sol",
+     "picture": {
+      "kid": {
+       "emotion": "feliz",
+       "girl": true,
+       "shirt": "#FFD54F",
+       "hair": "#3E2723"
+      }
+     }
+    }
+   ],
+   "scenes": [
+    {
+     "text": "Mateo llegó a una escuela nueva.",
+     "picture": {
+      "scene": "escuela",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "asustado",
+          "girl": false,
+          "shirt": "#64B5F6"
+         }
+        },
+        "x": 0.5,
+        "y": 0.64,
+        "s": 0.48
+       }
+      ]
+     }
+    },
+    {
+     "text": "No conocía a nadie y estaba un poco triste.",
+     "picture": {
+      "scene": "escuela",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "triste",
+          "girl": false,
+          "shirt": "#64B5F6"
+         }
+        },
+        "x": 0.5,
+        "y": 0.64,
+        "s": 0.48
+       }
+      ]
+     }
+    },
+    {
+     "text": "Una niña llamada Sol se acercó y le dijo: «¡Hola!».",
+     "picture": {
+      "scene": "escuela",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "sorprendido",
+          "girl": false,
+          "shirt": "#64B5F6"
+         }
+        },
+        "x": 0.32,
+        "y": 0.64,
+        "s": 0.42
+       },
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": true,
+          "shirt": "#FFD54F",
+          "hair": "#3E2723",
+          "arms_up": true
+         }
+        },
+        "x": 0.7,
+        "y": 0.64,
+        "s": 0.42
+       }
+      ]
+     }
+    },
+    {
+     "text": "Sol lo invitó a jugar con los bloques.",
+     "picture": {
+      "scene": "escuela",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": false,
+          "shirt": "#64B5F6"
+         }
+        },
+        "x": 0.3,
+        "y": 0.64,
+        "s": 0.4
+       },
+       {
+        "p": {
+         "icon": "blocks",
+         "color": "#43A047"
+        },
+        "x": 0.5,
+        "y": 0.82,
+        "s": 0.16
+       },
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": true,
+          "shirt": "#FFD54F",
+          "hair": "#3E2723"
+         }
+        },
+        "x": 0.72,
+        "y": 0.64,
+        "s": 0.4
+       }
+      ]
+     }
+    },
+    {
+     "text": "Desde ese día, Mateo y Sol son buenos amigos.",
+     "picture": {
+      "scene": "parque",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": false,
+          "shirt": "#64B5F6",
+          "arms_up": true
+         }
+        },
+        "x": 0.32,
+        "y": 0.62,
+        "s": 0.42
+       },
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": true,
+          "shirt": "#FFD54F",
+          "hair": "#3E2723",
+          "arms_up": true
+         }
+        },
+        "x": 0.7,
+        "y": 0.62,
+        "s": 0.42
+       }
+      ]
+     }
+    }
+   ],
+   "questions": [
+    {
+     "question": "¿Cómo se sentía Mateo al principio?",
+     "options": [
+      {
+       "text": "Triste",
+       "picture": {
+        "kid": {
+         "emotion": "triste",
+         "girl": false
+        }
+       }
+      },
+      {
+       "text": "Enojado",
+       "picture": {
+        "kid": {
+         "emotion": "enojado",
+         "girl": false
+        }
+       }
+      },
+      {
+       "text": "Con sueño",
+       "picture": {
+        "kid": {
+         "emotion": "cansado",
+         "girl": false
+        }
+       }
+      }
+     ],
+     "answer": 0
+    },
+    {
+     "question": "¿Quién saludó a Mateo?",
+     "options": [
+      {
+       "text": "Lolo",
+       "picture": {
+        "lolo": true
+       }
+      },
+      {
+       "text": "Sol",
+       "picture": {
+        "kid": {
+         "emotion": "feliz",
+         "girl": true,
+         "shirt": "#FFD54F",
+         "hair": "#3E2723"
+        }
+       }
+      },
+      {
+       "text": "Un perro",
+       "picture": {
+        "drawing": "animal_perro"
+       }
+      }
+     ],
+     "answer": 1
+    },
+    {
+     "question": "¿Con qué jugaron?",
+     "options": [
+      {
+       "text": "Con bloques",
+       "picture": {
+        "icon": "blocks",
+        "color": "#43A047"
+       }
+      },
+      {
+       "text": "Con agua",
+       "picture": {
+        "icon": "water",
+        "color": "#039BE5"
+       }
+      },
+      {
+       "text": "Con un tren",
+       "picture": {
+        "drawing": "vehiculo_tren"
+       }
+      }
+     ],
+     "answer": 0
+    }
+   ],
+   "order": [
+    0,
+    2,
+    4
+   ]
+  },
+  {
+   "id": "abuela_pastel",
+   "title": "Cocinamos con la abuela",
+   "category": "Familia",
+   "cover": {
+    "scene": "casa",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "feliz",
+        "girl": true,
+        "shirt": "#F48FB1",
+        "arms_up": true
+       }
+      },
+      "x": 0.35,
+      "y": 0.64,
+      "s": 0.42
+     },
+     {
+      "p": {
+       "icon": "elderly_woman",
+       "color": "#8E24AA"
+      },
+      "x": 0.7,
+      "y": 0.64,
+      "s": 0.38
+     }
+    ]
+   },
+   "characters": [
+    {
+     "name": "Luna",
+     "picture": {
+      "kid": {
+       "emotion": "feliz",
+       "girl": true,
+       "shirt": "#F48FB1"
+      }
+     }
+    },
+    {
+     "name": "La abuela",
+     "picture": {
+      "icon": "elderly_woman",
+      "color": "#8E24AA"
+     }
+    }
+   ],
+   "scenes": [
+    {
+     "text": "Luna fue a visitar a su abuela.",
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": true,
+          "shirt": "#F48FB1",
+          "arms_up": true
+         }
+        },
+        "x": 0.35,
+        "y": 0.64,
+        "s": 0.42
+       },
+       {
+        "p": {
+         "icon": "elderly_woman",
+         "color": "#8E24AA"
+        },
+        "x": 0.7,
+        "y": 0.64,
+        "s": 0.38
+       }
+      ]
+     }
+    },
+    {
+     "text": "La abuela dijo: «¡Hagamos un pastel!».",
+     "picture": {
+      "scene": "cocina",
+      "items": [
+       {
+        "p": {
+         "icon": "elderly_woman",
+         "color": "#8E24AA"
+        },
+        "x": 0.4,
+        "y": 0.6,
+        "s": 0.4
+       },
+       {
+        "p": {
+         "icon": "cake",
+         "color": "#AB47BC"
+        },
+        "x": 0.74,
+        "y": 0.72,
+        "s": 0.2
+       }
+      ]
+     }
+    },
+    {
+     "text": "Luna puso la harina y la abuela, los huevos.",
+     "picture": {
+      "scene": "cocina",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": true,
+          "shirt": "#F48FB1"
+         }
+        },
+        "x": 0.35,
+        "y": 0.64,
+        "s": 0.4
+       },
+       {
+        "p": {
+         "icon": "egg",
+         "color": "#F9A825"
+        },
+        "x": 0.66,
+        "y": 0.76,
+        "s": 0.14
+       }
+      ]
+     }
+    },
+    {
+     "text": "Esperaron juntas mientras el pastel se horneaba.",
+     "picture": {
+      "scene": "cocina",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "tranquilo",
+          "girl": true,
+          "shirt": "#F48FB1"
+         }
+        },
+        "x": 0.35,
+        "y": 0.64,
+        "s": 0.4
+       },
+       {
+        "p": {
+         "icon": "clock",
+         "color": "#00897B"
+        },
+        "x": 0.7,
+        "y": 0.4,
+        "s": 0.18
+       }
+      ]
+     }
+    },
+    {
+     "text": "¡El pastel quedó delicioso y lo compartieron!",
+     "picture": {
+      "scene": "cocina",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "emocionado",
+          "girl": true,
+          "shirt": "#F48FB1",
+          "arms_up": true
+         }
+        },
+        "x": 0.32,
+        "y": 0.62,
+        "s": 0.4
+       },
+       {
+        "p": {
+         "icon": "cake",
+         "color": "#AB47BC"
+        },
+        "x": 0.68,
+        "y": 0.72,
+        "s": 0.22
+       }
+      ]
+     }
+    }
+   ],
+   "questions": [
+    {
+     "question": "¿A quién visitó Luna?",
+     "options": [
+      {
+       "text": "A su abuela",
+       "picture": {
+        "icon": "elderly_woman",
+        "color": "#8E24AA"
+       }
+      },
+      {
+       "text": "A su maestra",
+       "picture": {
+        "icon": "teacher",
+        "color": "#3949AB"
+       }
+      },
+      {
+       "text": "A Toby",
+       "picture": {
+        "drawing": "animal_perro"
+       }
+      }
+     ],
+     "answer": 0
+    },
+    {
+     "question": "¿Qué cocinaron?",
+     "options": [
+      {
+       "text": "Una sopa",
+       "picture": {
+        "icon": "soup",
+        "color": "#FB8C00"
+       }
+      },
+      {
+       "text": "Un pastel",
+       "picture": {
+        "icon": "cake",
+        "color": "#AB47BC"
+       }
+      },
+      {
+       "text": "Una pizza",
+       "picture": {
+        "icon": "pizza",
+        "color": "#F4511E"
+       }
+      }
+     ],
+     "answer": 1
+    },
+    {
+     "question": "¿Cómo quedó el pastel?",
+     "options": [
+      {
+       "text": "Delicioso",
+       "picture": {
+        "kid": {
+         "emotion": "feliz",
+         "girl": false
+        }
+       }
+      },
+      {
+       "text": "Quemado",
+       "picture": {
+        "icon": "fire",
+        "color": "#F4511E"
+       }
+      },
+      {
+       "text": "Frío",
+       "picture": {
+        "icon": "snow",
+        "color": "#4FC3F7"
+       }
+      }
+     ],
+     "answer": 0
+    }
+   ],
+   "order": [
+    0,
+    2,
+    4
+   ]
+  },
+  {
+   "id": "cumple_papa",
+   "title": "El cumpleaños de papá",
+   "category": "Familia",
+   "cover": {
+    "scene": "casa",
+    "items": [
+     {
+      "p": {
+       "icon": "man",
+       "color": "#3949AB"
+      },
+      "x": 0.5,
+      "y": 0.6,
+      "s": 0.45
+     }
+    ]
+   },
+   "characters": [
+    {
+     "name": "Mateo",
+     "picture": {
+      "kid": {
+       "emotion": "feliz",
+       "girl": false,
+       "shirt": "#64B5F6"
+      }
+     }
+    },
+    {
+     "name": "Papá",
+     "picture": {
+      "icon": "man",
+      "color": "#3949AB"
+     }
+    }
+   ],
+   "scenes": [
+    {
+     "text": "Hoy es el cumpleaños de papá.",
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "icon": "man",
+         "color": "#3949AB"
+        },
+        "x": 0.5,
+        "y": 0.6,
+        "s": 0.45
+       }
+      ]
+     }
+    },
+    {
+     "text": "Mateo quería darle una sorpresa.",
+     "picture": {
+      "scene": "dormitorio",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "emocionado",
+          "girl": false,
+          "shirt": "#64B5F6",
+          "arms_up": true
+         }
+        },
+        "x": 0.5,
+        "y": 0.64,
+        "s": 0.48
+       }
+      ]
+     }
+    },
+    {
+     "text": "Mateo pintó un dibujo con muchos colores.",
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": false,
+          "shirt": "#64B5F6"
+         }
+        },
+        "x": 0.4,
+        "y": 0.64,
+        "s": 0.42
+       },
+       {
+        "p": {
+         "icon": "paint",
+         "color": "#E91E63"
+        },
+        "x": 0.75,
+        "y": 0.7,
+        "s": 0.2
+       }
+      ]
+     }
+    },
+    {
+     "text": "Le dio el dibujo a papá con un abrazo.",
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": false,
+          "shirt": "#64B5F6",
+          "arms_up": true
+         }
+        },
+        "x": 0.35,
+        "y": 0.64,
+        "s": 0.4
+       },
+       {
+        "p": {
+         "icon": "gift",
+         "color": "#E53935"
+        },
+        "x": 0.5,
+        "y": 0.76,
+        "s": 0.14
+       },
+       {
+        "p": {
+         "icon": "man",
+         "color": "#3949AB"
+        },
+        "x": 0.72,
+        "y": 0.62,
+        "s": 0.38
+       }
+      ]
+     }
+    },
+    {
+     "text": "Papá dijo: «¡Es el mejor regalo del mundo!».",
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "icon": "man",
+         "color": "#3949AB"
+        },
+        "x": 0.4,
+        "y": 0.6,
+        "s": 0.42
+       },
+       {
+        "p": {
+         "icon": "love",
+         "color": "#E91E63"
+        },
+        "x": 0.72,
+        "y": 0.4,
+        "s": 0.2
+       }
+      ]
+     }
+    }
+   ],
+   "questions": [
+    {
+     "question": "¿De quién era el cumpleaños?",
+     "options": [
+      {
+       "text": "De papá",
+       "picture": {
+        "icon": "man",
+        "color": "#3949AB"
+       }
+      },
+      {
+       "text": "De Lolo",
+       "picture": {
+        "lolo": true
+       }
+      },
+      {
+       "text": "De la abuela",
+       "picture": {
+        "icon": "elderly_woman",
+        "color": "#8E24AA"
+       }
+      }
+     ],
+     "answer": 0
+    },
+    {
+     "question": "¿Qué regaló Mateo?",
+     "options": [
+      {
+       "text": "Una pelota",
+       "picture": {
+        "icon": "ball",
+        "color": "#E53935"
+       }
+      },
+      {
+       "text": "Un dibujo",
+       "picture": {
+        "icon": "paint",
+        "color": "#E91E63"
+       }
+      },
+      {
+       "text": "Un pastel",
+       "picture": {
+        "icon": "cake",
+        "color": "#AB47BC"
+       }
+      }
+     ],
+     "answer": 1
+    },
+    {
+     "question": "¿Cómo se sintió papá?",
+     "options": [
+      {
+       "text": "Feliz",
+       "picture": {
+        "kid": {
+         "emotion": "feliz",
+         "girl": false
+        }
+       }
+      },
+      {
+       "text": "Triste",
+       "picture": {
+        "kid": {
+         "emotion": "triste",
+         "girl": false
+        }
+       }
+      },
+      {
+       "text": "Enojado",
+       "picture": {
+        "kid": {
+         "emotion": "enojado",
+         "girl": false
+        }
+       }
+      }
+     ],
+     "answer": 0
+    }
+   ],
+   "order": [
+    0,
+    2,
+    4
+   ]
+  },
+  {
+   "id": "semilla_luna",
+   "title": "La semilla de Luna",
+   "category": "Naturaleza",
+   "cover": {
+    "scene": "jardin",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "sorprendido",
+        "girl": true,
+        "shirt": "#F48FB1"
+       }
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.45
+     },
+     {
+      "p": {
+       "icon": "seed",
+       "color": "#8D6E63"
+      },
+      "x": 0.78,
+      "y": 0.78,
+      "s": 0.12
+     }
+    ]
+   },
+   "characters": [
+    {
+     "name": "Luna",
+     "picture": {
+      "kid": {
+       "emotion": "feliz",
+       "girl": true,
+       "shirt": "#F48FB1"
+      }
+     }
+    }
+   ],
+   "scenes": [
+    {
+     "text": "Luna encontró una semilla pequeñita.",
+     "picture": {
+      "scene": "jardin",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "sorprendido",
+          "girl": true,
+          "shirt": "#F48FB1"
+         }
+        },
+        "x": 0.5,
+        "y": 0.62,
+        "s": 0.45
+       },
+       {
+        "p": {
+         "icon": "seed",
+         "color": "#8D6E63"
+        },
+        "x": 0.78,
+        "y": 0.78,
+        "s": 0.12
+       }
+      ]
+     }
+    },
+    {
+     "text": "La plantó en una maceta con tierra.",
+     "picture": {
+      "scene": "jardin",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": true,
+          "shirt": "#F48FB1"
+         }
+        },
+        "x": 0.4,
+        "y": 0.62,
+        "s": 0.42
+       },
+       {
+        "p": {
+         "icon": "plant",
+         "color": "#8D6E63"
+        },
+        "x": 0.74,
+        "y": 0.76,
+        "s": 0.18
+       }
+      ]
+     }
+    },
+    {
+     "text": "Cada día la regaba con un poco de agua.",
+     "picture": {
+      "scene": "jardin",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": true,
+          "shirt": "#F48FB1"
+         }
+        },
+        "x": 0.4,
+        "y": 0.62,
+        "s": 0.42
+       },
+       {
+        "p": {
+         "icon": "water",
+         "color": "#039BE5"
+        },
+        "x": 0.74,
+        "y": 0.66,
+        "s": 0.16
+       }
+      ]
+     }
+    },
+    {
+     "text": "Un día salió una plantita verde.",
+     "picture": {
+      "scene": "jardin",
+      "items": [
+       {
+        "p": {
+         "icon": "sprout",
+         "color": "#43A047"
+        },
+        "x": 0.5,
+        "y": 0.72,
+        "s": 0.3
+       }
+      ]
+     }
+    },
+    {
+     "text": "¡Y al final creció una flor muy bonita!",
+     "picture": {
+      "scene": "jardin",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "emocionado",
+          "girl": true,
+          "shirt": "#F48FB1",
+          "arms_up": true
+         }
+        },
+        "x": 0.35,
+        "y": 0.62,
+        "s": 0.42
+       },
+       {
+        "p": {
+         "icon": "flower",
+         "color": "#EC407A"
+        },
+        "x": 0.72,
+        "y": 0.66,
+        "s": 0.3
+       }
+      ]
+     }
+    }
+   ],
+   "questions": [
+    {
+     "question": "¿Qué encontró Luna?",
+     "options": [
+      {
+       "text": "Una semilla",
+       "picture": {
+        "icon": "seed",
+        "color": "#8D6E63"
+       }
+      },
+      {
+       "text": "Una piedra",
+       "picture": {
+        "icon": "circle",
+        "color": "#9E9E9E"
+       }
+      },
+      {
+       "text": "Un juguete",
+       "picture": {
+        "icon": "toys",
+        "color": "#FB8C00"
+       }
+      }
+     ],
+     "answer": 0
+    },
+    {
+     "question": "¿Qué le daba Luna a la planta?",
+     "options": [
+      {
+       "text": "Leche",
+       "picture": {
+        "icon": "glass",
+        "color": "#90A4AE"
+       }
+      },
+      {
+       "text": "Agua",
+       "picture": {
+        "icon": "water",
+        "color": "#039BE5"
+       }
+      },
+      {
+       "text": "Pan",
+       "picture": {
+        "icon": "bread",
+        "color": "#C77C2E"
+       }
+      }
+     ],
+     "answer": 1
+    },
+    {
+     "question": "¿Qué creció al final?",
+     "options": [
+      {
+       "text": "Una flor",
+       "picture": {
+        "icon": "flower",
+        "color": "#EC407A"
+       }
+      },
+      {
+       "text": "Un árbol de manzanas",
+       "picture": {
+        "drawing": "fruta_manzana",
+        "colors": {
+         "manzana": "#E53935",
+         "hoja": "#43A047",
+         "tallo": "#8D5524",
+         "brillo": "#FFFFFF"
+        }
+       }
+      },
+      {
+       "text": "Una nube",
+       "picture": {
+        "icon": "cloud",
+        "color": "#64B5F6"
+       }
+      }
+     ],
+     "answer": 0
+    }
+   ],
+   "order": [
+    0,
+    2,
+    4
+   ]
+  },
+  {
+   "id": "lluvia_arcoiris",
+   "title": "La lluvia y el arcoíris",
+   "category": "Naturaleza",
+   "cover": {
+    "scene": "casa",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "feliz",
+        "girl": false,
+        "shirt": "#64B5F6"
+       }
+      },
+      "x": 0.35,
+      "y": 0.64,
+      "s": 0.42
+     },
+     {
+      "p": {
+       "drawing": "animal_perro"
+      },
+      "x": 0.7,
+      "y": 0.68,
+      "s": 0.35
+     }
+    ]
+   },
+   "characters": [
+    {
+     "name": "Mateo",
+     "picture": {
+      "kid": {
+       "emotion": "feliz",
+       "girl": false,
+       "shirt": "#64B5F6"
+      }
+     }
+    },
+    {
+     "name": "Toby",
+     "picture": {
+      "drawing": "animal_perro"
+     }
+    }
+   ],
+   "scenes": [
+    {
+     "text": "Mateo quería salir a jugar con Toby.",
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": false,
+          "shirt": "#64B5F6"
+         }
+        },
+        "x": 0.35,
+        "y": 0.64,
+        "s": 0.42
+       },
+       {
+        "p": {
+         "drawing": "animal_perro"
+        },
+        "x": 0.7,
+        "y": 0.68,
+        "s": 0.35
+       }
+      ]
+     }
+    },
+    {
+     "text": "Pero empezó a llover mucho.",
+     "picture": {
+      "scene": "lluvia",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "triste",
+          "girl": false,
+          "shirt": "#64B5F6"
+         }
+        },
+        "x": 0.5,
+        "y": 0.64,
+        "s": 0.45
+       }
+      ]
+     }
+    },
+    {
+     "text": "Mateo esperó mirando por la ventana.",
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "tranquilo",
+          "girl": false,
+          "shirt": "#64B5F6"
+         }
+        },
+        "x": 0.4,
+        "y": 0.64,
+        "s": 0.45
+       }
+      ]
+     }
+    },
+    {
+     "text": "Cuando paró la lluvia, salió el sol.",
+     "picture": {
+      "scene": "jardin",
+      "items": [
+       {
+        "p": {
+         "icon": "sun",
+         "color": "#FFB300"
+        },
+        "x": 0.5,
+        "y": 0.35,
+        "s": 0.3
+       }
+      ]
+     }
+    },
+    {
+     "text": "¡Y en el cielo apareció un arcoíris de colores!",
+     "picture": {
+      "scene": "cielo",
+      "items": [
+       {
+        "p": {
+         "icon": "rainbow",
+         "color": "#EC407A"
+        },
+        "x": 0.5,
+        "y": 0.45,
+        "s": 0.55
+       },
+       {
+        "p": {
+         "kid": {
+          "emotion": "emocionado",
+          "girl": false,
+          "shirt": "#64B5F6",
+          "arms_up": true
+         }
+        },
+        "x": 0.3,
+        "y": 0.75,
+        "s": 0.35
+       },
+       {
+        "p": {
+         "drawing": "animal_perro"
+        },
+        "x": 0.72,
+        "y": 0.8,
+        "s": 0.28
+       }
+      ]
+     }
+    }
+   ],
+   "questions": [
+    {
+     "question": "¿Qué pasó cuando Mateo quería jugar?",
+     "options": [
+      {
+       "text": "Empezó a llover",
+       "picture": {
+        "icon": "umbrella",
+        "color": "#5C6BC0"
+       }
+      },
+      {
+       "text": "Se hizo de noche",
+       "picture": {
+        "icon": "moon",
+        "color": "#5C6BC0"
+       }
+      },
+      {
+       "text": "Nevó",
+       "picture": {
+        "icon": "snow",
+        "color": "#4FC3F7"
+       }
+      }
+     ],
+     "answer": 0
+    },
+    {
+     "question": "¿Qué salió cuando paró la lluvia?",
+     "options": [
+      {
+       "text": "La luna",
+       "picture": {
+        "icon": "moon",
+        "color": "#5C6BC0"
+       }
+      },
+      {
+       "text": "El sol",
+       "picture": {
+        "icon": "sun",
+        "color": "#FFB300"
+       }
+      },
+      {
+       "text": "Las estrellas",
+       "picture": {
+        "icon": "star",
+        "color": "#FBC02D"
+       }
+      }
+     ],
+     "answer": 1
+    },
+    {
+     "question": "¿Qué apareció en el cielo?",
+     "options": [
+      {
+       "text": "Un arcoíris",
+       "picture": {
+        "icon": "rainbow",
+        "color": "#EC407A"
+       }
+      },
+      {
+       "text": "Un avión",
+       "picture": {
+        "drawing": "vehiculo_avion"
+       }
+      },
+      {
+       "text": "Un barco",
+       "picture": {
+        "drawing": "vehiculo_barco"
+       }
+      }
+     ],
+     "answer": 0
+    }
+   ],
+   "order": [
+    1,
+    3,
+    4
+   ]
+  },
+  {
+   "id": "bruno_noche",
+   "title": "Bruno y la noche",
+   "category": "Emociones",
+   "cover": {
+    "scene": "bosque",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_oso"
+      },
+      "x": 0.5,
+      "y": 0.64,
+      "s": 0.45
+     }
+    ]
+   },
+   "characters": [
+    {
+     "name": "Bruno",
+     "picture": {
+      "drawing": "animal_oso"
+     }
+    },
+    {
+     "name": "Mamá osa",
+     "picture": {
+      "drawing": "animal_oso"
+     }
+    }
+   ],
+   "scenes": [
+    {
+     "text": "Bruno es un osito que vive en el bosque.",
+     "picture": {
+      "scene": "bosque",
+      "items": [
+       {
+        "p": {
+         "drawing": "animal_oso"
+        },
+        "x": 0.5,
+        "y": 0.64,
+        "s": 0.45
+       }
+      ]
+     }
+    },
+    {
+     "text": "Cuando llegó la noche, Bruno sintió miedo.",
+     "picture": {
+      "scene": "noche",
+      "items": [
+       {
+        "p": {
+         "drawing": "animal_oso"
+        },
+        "x": 0.5,
+        "y": 0.66,
+        "s": 0.42
+       }
+      ]
+     }
+    },
+    {
+     "text": "Bruno le dijo a su mamá: «Tengo miedo».",
+     "picture": {
+      "scene": "noche",
+      "items": [
+       {
+        "p": {
+         "drawing": "animal_oso"
+        },
+        "x": 0.32,
+        "y": 0.66,
+        "s": 0.36
+       },
+       {
+        "p": {
+         "drawing": "animal_oso"
+        },
+        "x": 0.7,
+        "y": 0.62,
+        "s": 0.45
+       }
+      ]
+     }
+    },
+    {
+     "text": "Mamá encendió una lucecita y le dio un abrazo.",
+     "picture": {
+      "scene": "dormitorio",
+      "items": [
+       {
+        "p": {
+         "icon": "lamp",
+         "color": "#FBC02D"
+        },
+        "x": 0.78,
+        "y": 0.4,
+        "s": 0.18
+       },
+       {
+        "p": {
+         "drawing": "animal_oso"
+        },
+        "x": 0.4,
+        "y": 0.64,
+        "s": 0.42
+       }
+      ]
+     }
+    },
+    {
+     "text": "Bruno se sintió tranquilo y se durmió.",
+     "picture": {
+      "scene": "dormitorio",
+      "items": [
+       {
+        "p": {
+         "drawing": "animal_oso"
+        },
+        "x": 0.4,
+        "y": 0.64,
+        "s": 0.4
+       },
+       {
+        "p": {
+         "icon": "sleepz",
+         "color": "#5C6BC0"
+        },
+        "x": 0.72,
+        "y": 0.4,
+        "s": 0.18
+       }
+      ]
+     }
+    }
+   ],
+   "questions": [
+    {
+     "question": "¿Qué animal es Bruno?",
+     "options": [
+      {
+       "text": "Un osito",
+       "picture": {
+        "drawing": "animal_oso"
+       }
+      },
+      {
+       "text": "Un gato",
+       "picture": {
+        "drawing": "animal_gato"
+       }
+      },
+      {
+       "text": "Un conejo",
+       "picture": {
+        "drawing": "animal_conejo"
+       }
+      }
+     ],
+     "answer": 0
+    },
+    {
+     "question": "¿Cómo se sintió Bruno de noche?",
+     "options": [
+      {
+       "text": "Feliz",
+       "picture": {
+        "kid": {
+         "emotion": "feliz",
+         "girl": false
+        }
+       }
+      },
+      {
+       "text": "Con miedo",
+       "picture": {
+        "kid": {
+         "emotion": "asustado",
+         "girl": false
+        }
+       }
+      },
+      {
+       "text": "Enojado",
+       "picture": {
+        "kid": {
+         "emotion": "enojado",
+         "girl": false
+        }
+       }
+      }
+     ],
+     "answer": 1
+    },
+    {
+     "question": "¿Qué lo ayudó?",
+     "options": [
+      {
+       "text": "Una luz y un abrazo",
+       "picture": {
+        "icon": "lamp",
+        "color": "#FBC02D"
+       }
+      },
+      {
+       "text": "Un helado",
+       "picture": {
+        "icon": "icecream",
+        "color": "#EC407A"
+       }
+      },
+      {
+       "text": "Una pelota",
+       "picture": {
+        "icon": "ball",
+        "color": "#E53935"
+       }
+      }
+     ],
+     "answer": 0
+    }
+   ],
+   "order": [
+    0,
+    2,
+    4
+   ]
+  },
+  {
+   "id": "mateo_enojo",
+   "title": "Cuando Mateo se enojó",
+   "category": "Emociones",
+   "cover": {
+    "scene": "casa",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "feliz",
+        "girl": false,
+        "shirt": "#64B5F6"
+       }
+      },
+      "x": 0.4,
+      "y": 0.64,
+      "s": 0.42
+     },
+     {
+      "p": {
+       "icon": "blocks",
+       "color": "#43A047"
+      },
+      "x": 0.74,
+      "y": 0.68,
+      "s": 0.24
+     }
+    ]
+   },
+   "characters": [
+    {
+     "name": "Mateo",
+     "picture": {
+      "kid": {
+       "emotion": "feliz",
+       "girl": false,
+       "shirt": "#64B5F6"
+      }
+     }
+    },
+    {
+     "name": "Sol",
+     "picture": {
+      "kid": {
+       "emotion": "feliz",
+       "girl": true,
+       "shirt": "#FFD54F",
+       "hair": "#3E2723"
+      }
+     }
+    }
+   ],
+   "scenes": [
+    {
+     "text": "Mateo hizo una torre muy alta con bloques.",
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": false,
+          "shirt": "#64B5F6"
+         }
+        },
+        "x": 0.4,
+        "y": 0.64,
+        "s": 0.42
+       },
+       {
+        "p": {
+         "icon": "blocks",
+         "color": "#43A047"
+        },
+        "x": 0.74,
+        "y": 0.68,
+        "s": 0.24
+       }
+      ]
+     }
+    },
+    {
+     "text": "Sin querer, Sol tocó la torre y se cayó.",
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "sorprendido",
+          "girl": true,
+          "shirt": "#FFD54F",
+          "hair": "#3E2723"
+         }
+        },
+        "x": 0.66,
+        "y": 0.64,
+        "s": 0.42
+       },
+       {
+        "p": {
+         "icon": "blocks",
+         "color": "#43A047"
+        },
+        "x": 0.35,
+        "y": 0.82,
+        "s": 0.18
+       }
+      ]
+     }
+    },
+    {
+     "text": "Mateo se enojó mucho.",
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "enojado",
+          "girl": false,
+          "shirt": "#64B5F6"
+         }
+        },
+        "x": 0.5,
+        "y": 0.64,
+        "s": 0.48
+       }
+      ]
+     }
+    },
+    {
+     "text": "Respiró despacio y dijo: «Estoy enojado porque se cayó mi torre».",
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "tranquilo",
+          "girl": false,
+          "shirt": "#64B5F6"
+         }
+        },
+        "x": 0.5,
+        "y": 0.64,
+        "s": 0.48
+       }
+      ]
+     }
+    },
+    {
+     "text": "Sol le pidió perdón y construyeron una torre juntos.",
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": false,
+          "shirt": "#64B5F6"
+         }
+        },
+        "x": 0.3,
+        "y": 0.64,
+        "s": 0.4
+       },
+       {
+        "p": {
+         "icon": "blocks",
+         "color": "#43A047"
+        },
+        "x": 0.5,
+        "y": 0.7,
+        "s": 0.2
+       },
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": true,
+          "shirt": "#FFD54F",
+          "hair": "#3E2723"
+         }
+        },
+        "x": 0.72,
+        "y": 0.64,
+        "s": 0.4
+       }
+      ]
+     }
+    }
+   ],
+   "questions": [
+    {
+     "question": "¿Qué construyó Mateo?",
+     "options": [
+      {
+       "text": "Una torre",
+       "picture": {
+        "icon": "blocks",
+        "color": "#43A047"
+       }
+      },
+      {
+       "text": "Un barco",
+       "picture": {
+        "drawing": "vehiculo_barco"
+       }
+      },
+      {
+       "text": "Una casa",
+       "picture": {
+        "icon": "home",
+        "color": "#F4511E"
+       }
+      }
+     ],
+     "answer": 0
+    },
+    {
+     "question": "¿Cómo se sintió Mateo cuando se cayó la torre?",
+     "options": [
+      {
+       "text": "Feliz",
+       "picture": {
+        "kid": {
+         "emotion": "feliz",
+         "girl": false
+        }
+       }
+      },
+      {
+       "text": "Enojado",
+       "picture": {
+        "kid": {
+         "emotion": "enojado",
+         "girl": false
+        }
+       }
+      },
+      {
+       "text": "Con sueño",
+       "picture": {
+        "kid": {
+         "emotion": "cansado",
+         "girl": false
+        }
+       }
+      }
+     ],
+     "answer": 1
+    },
+    {
+     "question": "¿Qué hizo Mateo para calmarse?",
+     "options": [
+      {
+       "text": "Respirar despacio",
+       "picture": {
+        "kid": {
+         "emotion": "tranquilo",
+         "girl": false
+        }
+       }
+      },
+      {
+       "text": "Gritar",
+       "picture": {
+        "icon": "sad",
+        "color": "#E53935"
+       }
+      },
+      {
+       "text": "Correr",
+       "picture": {
+        "icon": "run",
+        "color": "#43A047"
+       }
+      }
+     ],
+     "answer": 0
+    }
+   ],
+   "order": [
+    0,
+    2,
+    4
+   ]
+  },
+  {
+   "id": "sol_dientes",
+   "title": "Los dientes brillantes de Sol",
+   "category": "Hábitos saludables",
+   "cover": {
+    "scene": "cocina",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "feliz",
+        "girl": true,
+        "shirt": "#FFD54F",
+        "hair": "#3E2723"
+       }
+      },
+      "x": 0.4,
+      "y": 0.64,
+      "s": 0.42
+     },
+     {
+      "p": {
+       "drawing": "fruta_manzana",
+       "colors": {
+        "manzana": "#E53935",
+        "hoja": "#43A047",
+        "tallo": "#8D5524",
+        "brillo": "#FFFFFF"
+       }
+      },
+      "x": 0.76,
+      "y": 0.72,
+      "s": 0.18
+     }
+    ]
+   },
+   "characters": [
+    {
+     "name": "Sol",
+     "picture": {
+      "kid": {
+       "emotion": "feliz",
+       "girl": true,
+       "shirt": "#FFD54F",
+       "hair": "#3E2723"
+      }
+     }
+    }
+   ],
+   "scenes": [
+    {
+     "text": "Sol comió una merienda muy rica.",
+     "picture": {
+      "scene": "cocina",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": true,
+          "shirt": "#FFD54F",
+          "hair": "#3E2723"
+         }
+        },
+        "x": 0.4,
+        "y": 0.64,
+        "s": 0.42
+       },
+       {
+        "p": {
+         "drawing": "fruta_manzana",
+         "colors": {
+          "manzana": "#E53935",
+          "hoja": "#43A047",
+          "tallo": "#8D5524",
+          "brillo": "#FFFFFF"
+         }
+        },
+        "x": 0.76,
+        "y": 0.72,
+        "s": 0.18
+       }
+      ]
+     }
+    },
+    {
+     "text": "Después fue al baño a lavarse los dientes.",
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": true,
+          "shirt": "#FFD54F",
+          "hair": "#3E2723"
+         }
+        },
+        "x": 0.4,
+        "y": 0.64,
+        "s": 0.42
+       },
+       {
+        "p": {
+         "icon": "wash",
+         "color": "#29B6F6"
+        },
+        "x": 0.74,
+        "y": 0.62,
+        "s": 0.2
+       }
+      ]
+     }
+    },
+    {
+     "text": "Puso un poquito de pasta en el cepillo.",
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "icon": "clean",
+         "color": "#29B6F6"
+        },
+        "x": 0.5,
+        "y": 0.6,
+        "s": 0.3
+       }
+      ]
+     }
+    },
+    {
+     "text": "Cepilló arriba, abajo y por todos lados.",
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": true,
+          "shirt": "#FFD54F",
+          "hair": "#3E2723",
+          "arms_up": true
+         }
+        },
+        "x": 0.5,
+        "y": 0.64,
+        "s": 0.48
+       }
+      ]
+     }
+    },
+    {
+     "text": "¡Sus dientes quedaron limpios y brillantes!",
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "emocionado",
+          "girl": true,
+          "shirt": "#FFD54F",
+          "hair": "#3E2723",
+          "arms_up": true
+         }
+        },
+        "x": 0.45,
+        "y": 0.64,
+        "s": 0.45
+       },
+       {
+        "p": {
+         "icon": "star",
+         "color": "#FBC02D"
+        },
+        "x": 0.78,
+        "y": 0.34,
+        "s": 0.16
+       }
+      ]
+     }
+    }
+   ],
+   "questions": [
+    {
+     "question": "¿Qué hizo Sol después de comer?",
+     "options": [
+      {
+       "text": "Se lavó los dientes",
+       "picture": {
+        "icon": "wash",
+        "color": "#29B6F6"
+       }
+      },
+      {
+       "text": "Se durmió",
+       "picture": {
+        "icon": "sleep",
+        "color": "#5C6BC0"
+       }
+      },
+      {
+       "text": "Pintó",
+       "picture": {
+        "icon": "paint",
+        "color": "#E91E63"
+       }
+      }
+     ],
+     "answer": 0
+    },
+    {
+     "question": "¿Qué usó para lavarse los dientes?",
+     "options": [
+      {
+       "text": "Una cuchara",
+       "picture": {
+        "icon": "spoon",
+        "color": "#8D6E63"
+       }
+      },
+      {
+       "text": "Un cepillo",
+       "picture": {
+        "icon": "clean",
+        "color": "#29B6F6"
+       }
+      },
+      {
+       "text": "Un libro",
+       "picture": {
+        "icon": "book",
+        "color": "#E53935"
+       }
+      }
+     ],
+     "answer": 1
+    },
+    {
+     "question": "¿Cómo quedaron sus dientes?",
+     "options": [
+      {
+       "text": "Brillantes",
+       "picture": {
+        "icon": "star",
+        "color": "#FBC02D"
+       }
+      },
+      {
+       "text": "Sucios",
+       "picture": {
+        "icon": "trash",
+        "color": "#8D6E63"
+       }
+      },
+      {
+       "text": "Azules",
+       "picture": {
+        "swatch": "#1E57C8"
+       }
+      }
+     ],
+     "answer": 0
+    }
+   ],
+   "order": [
+    0,
+    2,
+    4
+   ]
+  },
+  {
+   "id": "lola_frutas",
+   "title": "Lola come frutas",
+   "category": "Hábitos saludables",
+   "cover": {
+    "scene": "parque",
+    "items": [
+     {
+      "p": {
+       "drawing": "granja_vaca"
+      },
+      "x": 0.5,
+      "y": 0.64,
+      "s": 0.45
+     }
+    ]
+   },
+   "characters": [
+    {
+     "name": "Lola",
+     "picture": {
+      "drawing": "granja_vaca"
+     }
+    },
+    {
+     "name": "Lolo",
+     "picture": {
+      "lolo": true
+     }
+    }
+   ],
+   "scenes": [
+    {
+     "text": "Lola, la vaca, siempre tenía poca energía.",
+     "picture": {
+      "scene": "parque",
+      "items": [
+       {
+        "p": {
+         "drawing": "granja_vaca"
+        },
+        "x": 0.5,
+        "y": 0.64,
+        "s": 0.45
+       }
+      ]
+     }
+    },
+    {
+     "text": "Lolo le dijo: «¡Prueba las frutas!».",
+     "picture": {
+      "scene": "parque",
+      "items": [
+       {
+        "p": {
+         "drawing": "granja_vaca"
+        },
+        "x": 0.35,
+        "y": 0.64,
+        "s": 0.4
+       },
+       {
+        "p": {
+         "lolo": true
+        },
+        "x": 0.72,
+        "y": 0.58,
+        "s": 0.35
+       }
+      ]
+     }
+    },
+    {
+     "text": "Lola probó una manzana, un plátano y unas uvas.",
+     "picture": {
+      "scene": "cocina",
+      "items": [
+       {
+        "p": {
+         "drawing": "fruta_manzana",
+         "colors": {
+          "manzana": "#E53935",
+          "hoja": "#43A047",
+          "tallo": "#8D5524",
+          "brillo": "#FFFFFF"
+         }
+        },
+        "x": 0.28,
+        "y": 0.7,
+        "s": 0.2
+       },
+       {
+        "p": {
+         "drawing": "fruta_platano",
+         "colors": {
+          "platano": "#FFD600",
+          "tallo": "#8D6E63",
+          "punta": "#6D4C41"
+         }
+        },
+        "x": 0.5,
+        "y": 0.72,
+        "s": 0.2
+       },
+       {
+        "p": {
+         "drawing": "fruta_uvas",
+         "colors": {
+          "uva_*": "#8E44AD",
+          "hoja": "#43A047",
+          "tallo": "#8D5524"
+         }
+        },
+        "x": 0.72,
+        "y": 0.7,
+        "s": 0.2
+       }
+      ]
+     }
+    },
+    {
+     "text": "También bebió mucha agua fresca.",
+     "picture": {
+      "scene": "parque",
+      "items": [
+       {
+        "p": {
+         "drawing": "granja_vaca"
+        },
+        "x": 0.45,
+        "y": 0.64,
+        "s": 0.42
+       },
+       {
+        "p": {
+         "icon": "water",
+         "color": "#039BE5"
+        },
+        "x": 0.78,
+        "y": 0.62,
+        "s": 0.18
+       }
+      ]
+     }
+    },
+    {
+     "text": "¡Ahora Lola corre y salta con mucha energía!",
+     "picture": {
+      "scene": "parque",
+      "items": [
+       {
+        "p": {
+         "drawing": "granja_vaca"
+        },
+        "x": 0.45,
+        "y": 0.6,
+        "s": 0.45
+       },
+       {
+        "p": {
+         "icon": "star",
+         "color": "#FBC02D"
+        },
+        "x": 0.8,
+        "y": 0.3,
+        "s": 0.14
+       }
+      ]
+     }
+    }
+   ],
+   "questions": [
+    {
+     "question": "¿Qué animal es Lola?",
+     "options": [
+      {
+       "text": "Una vaca",
+       "picture": {
+        "drawing": "granja_vaca"
+       }
+      },
+      {
+       "text": "Una gallina",
+       "picture": {
+        "drawing": "granja_gallina"
+       }
+      },
+      {
+       "text": "Un pez",
+       "picture": {
+        "drawing": "animal_pez"
+       }
+      }
+     ],
+     "answer": 0
+    },
+    {
+     "question": "¿Quién le dio un consejo?",
+     "options": [
+      {
+       "text": "Toby",
+       "picture": {
+        "drawing": "animal_perro"
+       }
+      },
+      {
+       "text": "Lolo",
+       "picture": {
+        "lolo": true
+       }
+      },
+      {
+       "text": "Bruno",
+       "picture": {
+        "drawing": "animal_oso"
+       }
+      }
+     ],
+     "answer": 1
+    },
+    {
+     "question": "¿Qué comió Lola?",
+     "options": [
+      {
+       "text": "Frutas",
+       "picture": {
+        "drawing": "fruta_manzana",
+        "colors": {
+         "manzana": "#E53935",
+         "hoja": "#43A047",
+         "tallo": "#8D5524",
+         "brillo": "#FFFFFF"
+        }
+       }
+      },
+      {
+       "text": "Caramelos",
+       "picture": {
+        "icon": "cookie",
+        "color": "#8D6E63"
+       }
+      },
+      {
+       "text": "Nada",
+       "picture": {
+        "icon": "circle",
+        "color": "#9E9E9E"
+       }
+      }
+     ],
+     "answer": 0
+    }
+   ],
+   "order": [
+    0,
+    2,
+    4
+   ]
+  },
+  {
+   "id": "barco_papel",
+   "title": "El barco de papel",
+   "category": "Aventuras",
+   "cover": {
+    "scene": "casa",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "feliz",
+        "girl": false,
+        "shirt": "#64B5F6"
+       }
+      },
+      "x": 0.3,
+      "y": 0.64,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "drawing": "vehiculo_barco"
+      },
+      "x": 0.5,
+      "y": 0.78,
+      "s": 0.2
+     },
+     {
+      "p": {
+       "kid": {
+        "emotion": "feliz",
+        "girl": true,
+        "shirt": "#F48FB1"
+       }
+      },
+      "x": 0.72,
+      "y": 0.64,
+      "s": 0.4
+     }
+    ]
+   },
+   "characters": [
+    {
+     "name": "Mateo",
+     "picture": {
+      "kid": {
+       "emotion": "feliz",
+       "girl": false,
+       "shirt": "#64B5F6"
+      }
+     }
+    },
+    {
+     "name": "Luna",
+     "picture": {
+      "kid": {
+       "emotion": "feliz",
+       "girl": true,
+       "shirt": "#F48FB1"
+      }
+     }
+    }
+   ],
+   "scenes": [
+    {
+     "text": "Mateo y Luna hicieron un barco de papel.",
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": false,
+          "shirt": "#64B5F6"
+         }
+        },
+        "x": 0.3,
+        "y": 0.64,
+        "s": 0.4
+       },
+       {
+        "p": {
+         "drawing": "vehiculo_barco"
+        },
+        "x": 0.5,
+        "y": 0.78,
+        "s": 0.2
+       },
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": true,
+          "shirt": "#F48FB1"
+         }
+        },
+        "x": 0.72,
+        "y": 0.64,
+        "s": 0.4
+       }
+      ]
+     }
+    },
+    {
+     "text": "Lo llevaron al charco del parque.",
+     "picture": {
+      "scene": "parque",
+      "items": [
+       {
+        "p": {
+         "drawing": "vehiculo_barco"
+        },
+        "x": 0.5,
+        "y": 0.8,
+        "s": 0.22
+       }
+      ]
+     }
+    },
+    {
+     "text": "El viento empujó el barco… ¡fush!",
+     "picture": {
+      "scene": "parque",
+      "items": [
+       {
+        "p": {
+         "drawing": "vehiculo_barco"
+        },
+        "x": 0.62,
+        "y": 0.78,
+        "s": 0.22
+       },
+       {
+        "p": {
+         "icon": "wind",
+         "color": "#90CAF9"
+        },
+        "x": 0.32,
+        "y": 0.5,
+        "s": 0.2
+       }
+      ]
+     }
+    },
+    {
+     "text": "El barquito navegó hasta el otro lado.",
+     "picture": {
+      "scene": "parque",
+      "items": [
+       {
+        "p": {
+         "drawing": "vehiculo_barco"
+        },
+        "x": 0.8,
+        "y": 0.78,
+        "s": 0.2
+       },
+       {
+        "p": {
+         "kid": {
+          "emotion": "emocionado",
+          "girl": false,
+          "shirt": "#64B5F6",
+          "arms_up": true
+         }
+        },
+        "x": 0.3,
+        "y": 0.62,
+        "s": 0.38
+       }
+      ]
+     }
+    },
+    {
+     "text": "Los dos aplaudieron: «¡Qué gran aventura!».",
+     "picture": {
+      "scene": "parque",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": false,
+          "shirt": "#64B5F6",
+          "arms_up": true
+         }
+        },
+        "x": 0.3,
+        "y": 0.62,
+        "s": 0.4
+       },
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": true,
+          "shirt": "#F48FB1",
+          "arms_up": true
+         }
+        },
+        "x": 0.7,
+        "y": 0.62,
+        "s": 0.4
+       }
+      ]
+     }
+    }
+   ],
+   "questions": [
+    {
+     "question": "¿Qué hicieron Mateo y Luna?",
+     "options": [
+      {
+       "text": "Un barco de papel",
+       "picture": {
+        "drawing": "vehiculo_barco"
+       }
+      },
+      {
+       "text": "Un avión",
+       "picture": {
+        "drawing": "vehiculo_avion"
+       }
+      },
+      {
+       "text": "Un tren",
+       "picture": {
+        "drawing": "vehiculo_tren"
+       }
+      }
+     ],
+     "answer": 0
+    },
+    {
+     "question": "¿Dónde navegó el barco?",
+     "options": [
+      {
+       "text": "En el charco del parque",
+       "picture": {
+        "scene": "parque",
+        "items": []
+       }
+      },
+      {
+       "text": "En la cocina",
+       "picture": {
+        "scene": "cocina",
+        "items": []
+       }
+      },
+      {
+       "text": "En la escuela",
+       "picture": {
+        "scene": "escuela",
+        "items": []
+       }
+      }
+     ],
+     "answer": 0
+    },
+    {
+     "question": "¿Qué empujó el barco?",
+     "options": [
+      {
+       "text": "El viento",
+       "picture": {
+        "icon": "wind",
+        "color": "#90CAF9"
+       }
+      },
+      {
+       "text": "Un perro",
+       "picture": {
+        "drawing": "animal_perro"
+       }
+      },
+      {
+       "text": "La lluvia",
+       "picture": {
+        "icon": "umbrella",
+        "color": "#5C6BC0"
+       }
+      }
+     ],
+     "answer": 0
+    }
+   ],
+   "order": [
+    0,
+    2,
+    4
+   ]
+  },
+  {
+   "id": "tesoro_parque",
+   "title": "El tesoro del parque",
+   "category": "Aventuras",
+   "cover": {
+    "scene": "casa",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "sorprendido",
+        "girl": true,
+        "shirt": "#FFD54F",
+        "hair": "#3E2723"
+       }
+      },
+      "x": 0.4,
+      "y": 0.64,
+      "s": 0.42
+     },
+     {
+      "p": {
+       "icon": "map",
+       "color": "#8D6E63"
+      },
+      "x": 0.76,
+      "y": 0.66,
+      "s": 0.2
+     }
+    ]
+   },
+   "characters": [
+    {
+     "name": "Sol",
+     "picture": {
+      "kid": {
+       "emotion": "feliz",
+       "girl": true,
+       "shirt": "#FFD54F",
+       "hair": "#3E2723"
+      }
+     }
+    },
+    {
+     "name": "Toby",
+     "picture": {
+      "drawing": "animal_perro"
+     }
+    }
+   ],
+   "scenes": [
+    {
+     "text": "Sol encontró un mapa del tesoro.",
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "sorprendido",
+          "girl": true,
+          "shirt": "#FFD54F",
+          "hair": "#3E2723"
+         }
+        },
+        "x": 0.4,
+        "y": 0.64,
+        "s": 0.42
+       },
+       {
+        "p": {
+         "icon": "map",
+         "color": "#8D6E63"
+        },
+        "x": 0.76,
+        "y": 0.66,
+        "s": 0.2
+       }
+      ]
+     }
+    },
+    {
+     "text": "Con Toby, siguió el camino hasta el árbol grande.",
+     "picture": {
+      "scene": "parque",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": true,
+          "shirt": "#FFD54F",
+          "hair": "#3E2723"
+         }
+        },
+        "x": 0.3,
+        "y": 0.64,
+        "s": 0.4
+       },
+       {
+        "p": {
+         "drawing": "animal_perro"
+        },
+        "x": 0.58,
+        "y": 0.7,
+        "s": 0.3
+       }
+      ]
+     }
+    },
+    {
+     "text": "Toby olfateó y empezó a escarbar.",
+     "picture": {
+      "scene": "parque",
+      "items": [
+       {
+        "p": {
+         "drawing": "animal_perro"
+        },
+        "x": 0.5,
+        "y": 0.7,
+        "s": 0.4
+       }
+      ]
+     }
+    },
+    {
+     "text": "¡Encontraron una caja llena de pinturas!",
+     "picture": {
+      "scene": "parque",
+      "items": [
+       {
+        "p": {
+         "icon": "gift",
+         "color": "#E53935"
+        },
+        "x": 0.5,
+        "y": 0.74,
+        "s": 0.24
+       },
+       {
+        "p": {
+         "icon": "paint2",
+         "color": "#E91E63"
+        },
+        "x": 0.5,
+        "y": 0.44,
+        "s": 0.2
+       }
+      ]
+     }
+    },
+    {
+     "text": "Ese día pintaron el dibujo más bonito del mundo.",
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "emocionado",
+          "girl": true,
+          "shirt": "#FFD54F",
+          "hair": "#3E2723",
+          "arms_up": true
+         }
+        },
+        "x": 0.4,
+        "y": 0.62,
+        "s": 0.42
+       },
+       {
+        "p": {
+         "icon": "paint2",
+         "color": "#E91E63"
+        },
+        "x": 0.76,
+        "y": 0.68,
+        "s": 0.2
+       }
+      ]
+     }
+    }
+   ],
+   "questions": [
+    {
+     "question": "¿Qué encontró Sol al principio?",
+     "options": [
+      {
+       "text": "Un mapa",
+       "picture": {
+        "icon": "map",
+        "color": "#8D6E63"
+       }
+      },
+      {
+       "text": "Una flor",
+       "picture": {
+        "icon": "flower",
+        "color": "#EC407A"
+       }
+      },
+      {
+       "text": "Un libro",
+       "picture": {
+        "icon": "book",
+        "color": "#E53935"
+       }
+      }
+     ],
+     "answer": 0
+    },
+    {
+     "question": "¿Quién escarbó?",
+     "options": [
+      {
+       "text": "Lolo",
+       "picture": {
+        "lolo": true
+       }
+      },
+      {
+       "text": "Toby",
+       "picture": {
+        "drawing": "animal_perro"
+       }
+      },
+      {
+       "text": "Un gato",
+       "picture": {
+        "drawing": "animal_gato"
+       }
+      }
+     ],
+     "answer": 1
+    },
+    {
+     "question": "¿Qué había en la caja?",
+     "options": [
+      {
+       "text": "Pinturas",
+       "picture": {
+        "icon": "paint2",
+        "color": "#E91E63"
+       }
+      },
+      {
+       "text": "Comida",
+       "picture": {
+        "icon": "eat",
+        "color": "#F4511E"
+       }
+      },
+      {
+       "text": "Zapatos",
+       "picture": {
+        "icon": "shoes",
+        "color": "#8D6E63"
+       }
+      }
+     ],
+     "answer": 0
+    }
+   ],
+   "order": [
+    0,
+    2,
+    4
+   ]
+  },
+  {
+   "id": "mariposa_colores",
+   "title": "La mariposa de colores",
+   "category": "Colores",
+   "cover": {
+    "scene": "jardin",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_mariposa",
+       "colors": {
+        "*": "#FFFFFF"
+       }
+      },
+      "x": 0.5,
+      "y": 0.5,
+      "s": 0.4
+     }
+    ]
+   },
+   "characters": [
+    {
+     "name": "Mariposa",
+     "picture": {
+      "drawing": "animal_mariposa"
+     }
+    },
+    {
+     "name": "Luna",
+     "picture": {
+      "kid": {
+       "emotion": "feliz",
+       "girl": true,
+       "shirt": "#F48FB1"
+      }
+     }
+    }
+   ],
+   "scenes": [
+    {
+     "text": "En el jardín vivía una mariposa blanca.",
+     "picture": {
+      "scene": "jardin",
+      "items": [
+       {
+        "p": {
+         "drawing": "animal_mariposa",
+         "colors": {
+          "*": "#FFFFFF"
+         }
+        },
+        "x": 0.5,
+        "y": 0.5,
+        "s": 0.4
+       }
+      ]
+     }
+    },
+    {
+     "text": "Se posó en una flor roja y sus alas se pusieron rojas.",
+     "picture": {
+      "scene": "jardin",
+      "items": [
+       {
+        "p": {
+         "drawing": "animal_mariposa",
+         "colors": {
+          "*": "#E53935"
+         }
+        },
+        "x": 0.5,
+        "y": 0.45,
+        "s": 0.32
+       },
+       {
+        "p": {
+         "icon": "flower",
+         "color": "#E53935"
+        },
+        "x": 0.5,
+        "y": 0.75,
+        "s": 0.2
+       }
+      ]
+     }
+    },
+    {
+     "text": "Luego voló a una flor amarilla… ¡y se volvió amarilla!",
+     "picture": {
+      "scene": "jardin",
+      "items": [
+       {
+        "p": {
+         "drawing": "animal_mariposa",
+         "colors": {
+          "*": "#FFD600"
+         }
+        },
+        "x": 0.5,
+        "y": 0.45,
+        "s": 0.32
+       },
+       {
+        "p": {
+         "icon": "flower",
+         "color": "#FFD600"
+        },
+        "x": 0.5,
+        "y": 0.75,
+        "s": 0.2
+       }
+      ]
+     }
+    },
+    {
+     "text": "Después visitó una flor azul y otra morada.",
+     "picture": {
+      "scene": "jardin",
+      "items": [
+       {
+        "p": {
+         "icon": "flower",
+         "color": "#1E57C8"
+        },
+        "x": 0.35,
+        "y": 0.75,
+        "s": 0.2
+       },
+       {
+        "p": {
+         "icon": "flower",
+         "color": "#8E44AD"
+        },
+        "x": 0.65,
+        "y": 0.75,
+        "s": 0.2
+       }
+      ]
+     }
+    },
+    {
+     "text": "Luna dijo: «¡Es la mariposa más colorida del jardín!».",
+     "picture": {
+      "scene": "jardin",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "emocionado",
+          "girl": true,
+          "shirt": "#F48FB1",
+          "arms_up": true
+         }
+        },
+        "x": 0.35,
+        "y": 0.62,
+        "s": 0.42
+       },
+       {
+        "p": {
+         "drawing": "animal_mariposa"
+        },
+        "x": 0.72,
+        "y": 0.4,
+        "s": 0.3
+       }
+      ]
+     }
+    }
+   ],
+   "questions": [
+    {
+     "question": "¿De qué color era la mariposa al principio?",
+     "options": [
+      {
+       "text": "Blanca",
+       "picture": {
+        "swatch": "#FFFFFF"
+       }
+      },
+      {
+       "text": "Negra",
+       "picture": {
+        "swatch": "#212121"
+       }
+      },
+      {
+       "text": "Verde",
+       "picture": {
+        "swatch": "#2E7D32"
+       }
+      }
+     ],
+     "answer": 0
+    },
+    {
+     "question": "¿Dónde se posaba la mariposa?",
+     "options": [
+      {
+       "text": "En las flores",
+       "picture": {
+        "icon": "flower",
+        "color": "#EC407A"
+       }
+      },
+      {
+       "text": "En los autos",
+       "picture": {
+        "drawing": "vehiculo_automovil"
+       }
+      },
+      {
+       "text": "En la mesa",
+       "picture": {
+        "icon": "table",
+        "color": "#795548"
+       }
+      }
+     ],
+     "answer": 0
+    },
+    {
+     "question": "¿De qué color se volvió con la flor amarilla?",
+     "options": [
+      {
+       "text": "Roja",
+       "picture": {
+        "swatch": "#E53935"
+       }
+      },
+      {
+       "text": "Amarilla",
+       "picture": {
+        "swatch": "#FFD600"
+       }
+      },
+      {
+       "text": "Azul",
+       "picture": {
+        "swatch": "#1E57C8"
+       }
+      }
+     ],
+     "answer": 1
+    }
+   ],
+   "order": [
+    0,
+    2,
+    4
+   ]
+  },
+  {
+   "id": "pintor_arcoiris",
+   "title": "El pintor del arcoíris",
+   "category": "Colores",
+   "cover": {
+    "scene": "casa",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "feliz",
+        "girl": false,
+        "shirt": "#64B5F6"
+       }
+      },
+      "x": 0.45,
+      "y": 0.64,
+      "s": 0.45
+     },
+     {
+      "p": {
+       "icon": "paint2",
+       "color": "#E91E63"
+      },
+      "x": 0.78,
+      "y": 0.68,
+      "s": 0.18
+     }
+    ]
+   },
+   "characters": [
+    {
+     "name": "Mateo",
+     "picture": {
+      "kid": {
+       "emotion": "feliz",
+       "girl": false,
+       "shirt": "#64B5F6"
+      }
+     }
+    },
+    {
+     "name": "Lolo",
+     "picture": {
+      "lolo": true
+     }
+    }
+   ],
+   "scenes": [
+    {
+     "text": "Mateo quería pintar un arcoíris.",
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": false,
+          "shirt": "#64B5F6"
+         }
+        },
+        "x": 0.45,
+        "y": 0.64,
+        "s": 0.45
+       },
+       {
+        "p": {
+         "icon": "paint2",
+         "color": "#E91E63"
+        },
+        "x": 0.78,
+        "y": 0.68,
+        "s": 0.18
+       }
+      ]
+     }
+    },
+    {
+     "text": "Primero pintó el rojo, como una manzana.",
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "drawing": "fruta_manzana",
+         "colors": {
+          "manzana": "#E53935",
+          "hoja": "#43A047",
+          "tallo": "#8D5524",
+          "brillo": "#FFFFFF"
+         }
+        },
+        "x": 0.35,
+        "y": 0.62,
+        "s": 0.25
+       },
+       {
+        "p": {
+         "swatch": "#E53935"
+        },
+        "x": 0.68,
+        "y": 0.62,
+        "s": 0.25
+       }
+      ]
+     }
+    },
+    {
+     "text": "Después el amarillo, como el sol.",
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "icon": "sun",
+         "color": "#FFB300"
+        },
+        "x": 0.35,
+        "y": 0.6,
+        "s": 0.25
+       },
+       {
+        "p": {
+         "swatch": "#FFD600"
+        },
+        "x": 0.68,
+        "y": 0.62,
+        "s": 0.25
+       }
+      ]
+     }
+    },
+    {
+     "text": "Luego el verde, como el pasto, y el azul, como el mar.",
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "swatch": "#2E7D32"
+        },
+        "x": 0.35,
+        "y": 0.62,
+        "s": 0.25
+       },
+       {
+        "p": {
+         "swatch": "#1E57C8"
+        },
+        "x": 0.68,
+        "y": 0.62,
+        "s": 0.25
+       }
+      ]
+     }
+    },
+    {
+     "text": "Lolo dijo: «¡Qué arcoíris tan bonito!».",
+     "picture": {
+      "scene": "cielo",
+      "items": [
+       {
+        "p": {
+         "icon": "rainbow",
+         "color": "#EC407A"
+        },
+        "x": 0.5,
+        "y": 0.45,
+        "s": 0.55
+       },
+       {
+        "p": {
+         "lolo": true
+        },
+        "x": 0.8,
+        "y": 0.75,
+        "s": 0.25
+       }
+      ]
+     }
+    }
+   ],
+   "questions": [
+    {
+     "question": "¿Qué quería pintar Mateo?",
+     "options": [
+      {
+       "text": "Un arcoíris",
+       "picture": {
+        "icon": "rainbow",
+        "color": "#EC407A"
+       }
+      },
+      {
+       "text": "Un perro",
+       "picture": {
+        "drawing": "animal_perro"
+       }
+      },
+      {
+       "text": "Una casa",
+       "picture": {
+        "icon": "home",
+        "color": "#F4511E"
+       }
+      }
+     ],
+     "answer": 0
+    },
+    {
+     "question": "¿Qué color es como el sol?",
+     "options": [
+      {
+       "text": "Azul",
+       "picture": {
+        "swatch": "#1E57C8"
+       }
+      },
+      {
+       "text": "Amarillo",
+       "picture": {
+        "swatch": "#FFD600"
+       }
+      },
+      {
+       "text": "Verde",
+       "picture": {
+        "swatch": "#2E7D32"
+       }
+      }
+     ],
+     "answer": 1
+    },
+    {
+     "question": "¿Qué color es como el mar?",
+     "options": [
+      {
+       "text": "Azul",
+       "picture": {
+        "swatch": "#1E57C8"
+       }
+      },
+      {
+       "text": "Rojo",
+       "picture": {
+        "swatch": "#E53935"
+       }
+      },
+      {
+       "text": "Marrón",
+       "picture": {
+        "swatch": "#8D5524"
+       }
+      }
+     ],
+     "answer": 0
+    }
+   ],
+   "order": [
+    0,
+    2,
+    4
+   ]
+  },
+  {
+   "id": "nina_paciencia",
+   "title": "La paciencia de Nina",
+   "category": "Valores",
+   "cover": {
+    "scene": "bosque",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_tortuga"
+      },
+      "x": 0.5,
+      "y": 0.7,
+      "s": 0.45
+     }
+    ]
+   },
+   "characters": [
+    {
+     "name": "Nina",
+     "picture": {
+      "drawing": "animal_tortuga"
+     }
+    },
+    {
+     "name": "Rita",
+     "picture": {
+      "drawing": "animal_conejo"
+     }
+    }
+   ],
+   "scenes": [
+    {
+     "text": "Nina es una tortuga que camina despacito.",
+     "picture": {
+      "scene": "bosque",
+      "items": [
+       {
+        "p": {
+         "drawing": "animal_tortuga"
+        },
+        "x": 0.5,
+        "y": 0.7,
+        "s": 0.45
+       }
+      ]
+     }
+    },
+    {
+     "text": "Rita, la coneja, siempre iba muy rápido.",
+     "picture": {
+      "scene": "bosque",
+      "items": [
+       {
+        "p": {
+         "drawing": "animal_conejo"
+        },
+        "x": 0.5,
+        "y": 0.64,
+        "s": 0.42
+       }
+      ]
+     }
+    },
+    {
+     "text": "Un día, Rita se torció la pata y no podía saltar.",
+     "picture": {
+      "scene": "bosque",
+      "items": [
+       {
+        "p": {
+         "drawing": "animal_conejo"
+        },
+        "x": 0.5,
+        "y": 0.66,
+        "s": 0.42
+       },
+       {
+        "p": {
+         "icon": "hurt",
+         "color": "#E53935"
+        },
+        "x": 0.76,
+        "y": 0.4,
+        "s": 0.16
+       }
+      ]
+     }
+    },
+    {
+     "text": "Nina la esperó y caminó a su lado, sin prisa.",
+     "picture": {
+      "scene": "bosque",
+      "items": [
+       {
+        "p": {
+         "drawing": "animal_tortuga"
+        },
+        "x": 0.32,
+        "y": 0.72,
+        "s": 0.36
+       },
+       {
+        "p": {
+         "drawing": "animal_conejo"
+        },
+        "x": 0.68,
+        "y": 0.66,
+        "s": 0.36
+       }
+      ]
+     }
+    },
+    {
+     "text": "Rita le dijo: «Gracias por esperarme, amiga».",
+     "picture": {
+      "scene": "jardin",
+      "items": [
+       {
+        "p": {
+         "drawing": "animal_tortuga"
+        },
+        "x": 0.32,
+        "y": 0.72,
+        "s": 0.36
+       },
+       {
+        "p": {
+         "drawing": "animal_conejo"
+        },
+        "x": 0.66,
+        "y": 0.64,
+        "s": 0.38
+       },
+       {
+        "p": {
+         "icon": "love",
+         "color": "#E91E63"
+        },
+        "x": 0.5,
+        "y": 0.3,
+        "s": 0.14
+       }
+      ]
+     }
+    }
+   ],
+   "questions": [
+    {
+     "question": "¿Cómo camina Nina?",
+     "options": [
+      {
+       "text": "Despacito",
+       "picture": {
+        "drawing": "animal_tortuga"
+       }
+      },
+      {
+       "text": "Muy rápido",
+       "picture": {
+        "icon": "run",
+        "color": "#43A047"
+       }
+      },
+      {
+       "text": "Volando",
+       "picture": {
+        "drawing": "animal_mariposa"
+       }
+      }
+     ],
+     "answer": 0
+    },
+    {
+     "question": "¿Qué le pasó a Rita?",
+     "options": [
+      {
+       "text": "Se torció la pata",
+       "picture": {
+        "icon": "hurt",
+        "color": "#E53935"
+       }
+      },
+      {
+       "text": "Se durmió",
+       "picture": {
+        "icon": "sleep",
+        "color": "#5C6BC0"
+       }
+      },
+      {
+       "text": "Comió mucho",
+       "picture": {
+        "icon": "eat",
+        "color": "#F4511E"
+       }
+      }
+     ],
+     "answer": 0
+    },
+    {
+     "question": "¿Qué dijo Rita al final?",
+     "options": [
+      {
+       "text": "¡Vete!",
+       "picture": {
+        "icon": "sad",
+        "color": "#E53935"
+       }
+      },
+      {
+       "text": "Gracias, amiga",
+       "picture": {
+        "icon": "love",
+        "color": "#E91E63"
+       }
+      },
+      {
+       "text": "Nada",
+       "picture": {
+        "icon": "circle",
+        "color": "#9E9E9E"
+       }
+      }
+     ],
+     "answer": 1
+    }
+   ],
+   "order": [
+    0,
+    2,
+    4
+   ]
+  },
+  {
+   "id": "tito_verdad",
+   "title": "Tito dice la verdad",
+   "category": "Valores",
+   "cover": {
+    "scene": "casa",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_mono"
+      },
+      "x": 0.45,
+      "y": 0.64,
+      "s": 0.42
+     },
+     {
+      "p": {
+       "icon": "ball",
+       "color": "#E53935"
+      },
+      "x": 0.78,
+      "y": 0.78,
+      "s": 0.14
+     }
+    ]
+   },
+   "characters": [
+    {
+     "name": "Tito",
+     "picture": {
+      "drawing": "animal_mono"
+     }
+    },
+    {
+     "name": "Mamá",
+     "picture": {
+      "icon": "woman",
+      "color": "#AB47BC"
+     }
+    }
+   ],
+   "scenes": [
+    {
+     "text": "Tito jugaba con la pelota dentro de casa.",
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "drawing": "animal_mono"
+        },
+        "x": 0.45,
+        "y": 0.64,
+        "s": 0.42
+       },
+       {
+        "p": {
+         "icon": "ball",
+         "color": "#E53935"
+        },
+        "x": 0.78,
+        "y": 0.78,
+        "s": 0.14
+       }
+      ]
+     }
+    },
+    {
+     "text": "¡Pum! La pelota rompió un vaso.",
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "icon": "glass",
+         "color": "#90A4AE"
+        },
+        "x": 0.5,
+        "y": 0.72,
+        "s": 0.2
+       },
+       {
+        "p": {
+         "icon": "ball",
+         "color": "#E53935"
+        },
+        "x": 0.72,
+        "y": 0.8,
+        "s": 0.14
+       }
+      ]
+     }
+    },
+    {
+     "text": "Tito tenía miedo, pero decidió decir la verdad.",
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "drawing": "animal_mono"
+        },
+        "x": 0.5,
+        "y": 0.64,
+        "s": 0.45
+       }
+      ]
+     }
+    },
+    {
+     "text": "Le dijo a mamá: «Fui yo. Lo siento».",
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "drawing": "animal_mono"
+        },
+        "x": 0.35,
+        "y": 0.66,
+        "s": 0.38
+       },
+       {
+        "p": {
+         "icon": "woman",
+         "color": "#AB47BC"
+        },
+        "x": 0.7,
+        "y": 0.62,
+        "s": 0.4
+       }
+      ]
+     }
+    },
+    {
+     "text": "Mamá le dio un abrazo: «Gracias por decir la verdad».",
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "drawing": "animal_mono"
+        },
+        "x": 0.38,
+        "y": 0.66,
+        "s": 0.36
+       },
+       {
+        "p": {
+         "icon": "woman",
+         "color": "#AB47BC"
+        },
+        "x": 0.65,
+        "y": 0.62,
+        "s": 0.4
+       },
+       {
+        "p": {
+         "icon": "love",
+         "color": "#E91E63"
+        },
+        "x": 0.5,
+        "y": 0.3,
+        "s": 0.14
+       }
+      ]
+     }
+    }
+   ],
+   "questions": [
+    {
+     "question": "¿Con qué jugaba Tito?",
+     "options": [
+      {
+       "text": "Con una pelota",
+       "picture": {
+        "icon": "ball",
+        "color": "#E53935"
+       }
+      },
+      {
+       "text": "Con un tren",
+       "picture": {
+        "drawing": "vehiculo_tren"
+       }
+      },
+      {
+       "text": "Con pinturas",
+       "picture": {
+        "icon": "paint",
+        "color": "#E91E63"
+       }
+      }
+     ],
+     "answer": 0
+    },
+    {
+     "question": "¿Qué se rompió?",
+     "options": [
+      {
+       "text": "Un vaso",
+       "picture": {
+        "icon": "glass",
+        "color": "#90A4AE"
+       }
+      },
+      {
+       "text": "Una silla",
+       "picture": {
+        "icon": "chair",
+        "color": "#8D6E63"
+       }
+      },
+      {
+       "text": "Una ventana",
+       "picture": {
+        "icon": "window",
+        "color": "#29B6F6"
+       }
+      }
+     ],
+     "answer": 0
+    },
+    {
+     "question": "¿Qué hizo Tito?",
+     "options": [
+      {
+       "text": "Se escondió",
+       "picture": {
+        "icon": "search",
+        "color": "#8D6E63"
+       }
+      },
+      {
+       "text": "Dijo la verdad",
+       "picture": {
+        "icon": "talk",
+        "color": "#26A69A"
+       }
+      },
+      {
+       "text": "Lloró",
+       "picture": {
+        "kid": {
+         "emotion": "triste",
+         "girl": false
+        }
+       }
+      }
+     ],
+     "answer": 1
+    }
+   ],
+   "order": [
+    0,
+    2,
+    4
+   ]
+  },
+  {
+   "id": "dia_escuela",
+   "title": "Un día en la escuela",
+   "category": "Vida cotidiana",
+   "cover": {
+    "scene": "parque",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "feliz",
+        "girl": true,
+        "shirt": "#F48FB1"
+       }
+      },
+      "x": 0.45,
+      "y": 0.64,
+      "s": 0.45
+     },
+     {
+      "p": {
+       "icon": "backpack",
+       "color": "#E53935"
+      },
+      "x": 0.78,
+      "y": 0.7,
+      "s": 0.16
+     }
+    ]
+   },
+   "characters": [
+    {
+     "name": "Luna",
+     "picture": {
+      "kid": {
+       "emotion": "feliz",
+       "girl": true,
+       "shirt": "#F48FB1"
+      }
+     }
+    },
+    {
+     "name": "La maestra",
+     "picture": {
+      "icon": "teacher",
+      "color": "#3949AB"
+     }
+    }
+   ],
+   "scenes": [
+    {
+     "text": "Luna se puso su mochila y fue a la escuela.",
+     "picture": {
+      "scene": "parque",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": true,
+          "shirt": "#F48FB1"
+         }
+        },
+        "x": 0.45,
+        "y": 0.64,
+        "s": 0.45
+       },
+       {
+        "p": {
+         "icon": "backpack",
+         "color": "#E53935"
+        },
+        "x": 0.78,
+        "y": 0.7,
+        "s": 0.16
+       }
+      ]
+     }
+    },
+    {
+     "text": "Saludó a la maestra: «¡Buenos días!».",
+     "picture": {
+      "scene": "escuela",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": true,
+          "shirt": "#F48FB1",
+          "arms_up": true
+         }
+        },
+        "x": 0.32,
+        "y": 0.64,
+        "s": 0.4
+       },
+       {
+        "p": {
+         "icon": "teacher",
+         "color": "#3949AB"
+        },
+        "x": 0.7,
+        "y": 0.64,
+        "s": 0.36
+       }
+      ]
+     }
+    },
+    {
+     "text": "En clase aprendieron las letras.",
+     "picture": {
+      "scene": "escuela",
+      "items": [
+       {
+        "p": {
+         "icon": "abc",
+         "color": "#E53935"
+        },
+        "x": 0.5,
+        "y": 0.75,
+        "s": 0.25
+       }
+      ]
+     }
+    },
+    {
+     "text": "En el recreo jugó con sus amigos.",
+     "picture": {
+      "scene": "parque",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "emocionado",
+          "girl": true,
+          "shirt": "#F48FB1",
+          "arms_up": true
+         }
+        },
+        "x": 0.32,
+        "y": 0.62,
+        "s": 0.4
+       },
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": false,
+          "shirt": "#64B5F6",
+          "arms_up": true
+         }
+        },
+        "x": 0.7,
+        "y": 0.62,
+        "s": 0.4
+       }
+      ]
+     }
+    },
+    {
+     "text": "Al volver a casa, le contó todo a su mamá.",
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": true,
+          "shirt": "#F48FB1"
+         }
+        },
+        "x": 0.35,
+        "y": 0.64,
+        "s": 0.4
+       },
+       {
+        "p": {
+         "icon": "woman",
+         "color": "#AB47BC"
+        },
+        "x": 0.7,
+        "y": 0.62,
+        "s": 0.38
+       }
+      ]
+     }
+    }
+   ],
+   "questions": [
+    {
+     "question": "¿Adónde fue Luna?",
+     "options": [
+      {
+       "text": "A la escuela",
+       "picture": {
+        "scene": "escuela",
+        "items": []
+       }
+      },
+      {
+       "text": "A la playa",
+       "picture": {
+        "scene": "playa",
+        "items": []
+       }
+      },
+      {
+       "text": "Al bosque",
+       "picture": {
+        "scene": "bosque",
+        "items": []
+       }
+      }
+     ],
+     "answer": 0
+    },
+    {
+     "question": "¿Qué aprendieron en clase?",
+     "options": [
+      {
+       "text": "Las letras",
+       "picture": {
+        "icon": "abc",
+        "color": "#E53935"
+       }
+      },
+      {
+       "text": "A nadar",
+       "picture": {
+        "icon": "swim",
+        "color": "#0288D1"
+       }
+      },
+      {
+       "text": "A cocinar",
+       "picture": {
+        "icon": "cake",
+        "color": "#AB47BC"
+       }
+      }
+     ],
+     "answer": 0
+    },
+    {
+     "question": "¿A quién le contó todo al volver?",
+     "options": [
+      {
+       "text": "A Lolo",
+       "picture": {
+        "lolo": true
+       }
+      },
+      {
+       "text": "A su mamá",
+       "picture": {
+        "icon": "woman",
+        "color": "#AB47BC"
+       }
+      },
+      {
+       "text": "A Toby",
+       "picture": {
+        "drawing": "animal_perro"
+       }
+      }
+     ],
+     "answer": 1
+    }
+   ],
+   "order": [
+    0,
+    2,
+    4
+   ]
+  },
+  {
+   "id": "mercado",
+   "title": "Vamos al mercado",
+   "category": "Vida cotidiana",
+   "cover": {
+    "scene": "parque",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "emotion": "feliz",
+        "girl": false,
+        "shirt": "#64B5F6"
+       }
+      },
+      "x": 0.3,
+      "y": 0.64,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "man",
+       "color": "#3949AB"
+      },
+      "x": 0.7,
+      "y": 0.62,
+      "s": 0.38
+     }
+    ]
+   },
+   "characters": [
+    {
+     "name": "Mateo",
+     "picture": {
+      "kid": {
+       "emotion": "feliz",
+       "girl": false,
+       "shirt": "#64B5F6"
+      }
+     }
+    },
+    {
+     "name": "Papá",
+     "picture": {
+      "icon": "man",
+      "color": "#3949AB"
+     }
+    }
+   ],
+   "scenes": [
+    {
+     "text": "Mateo y papá fueron al mercado.",
+     "picture": {
+      "scene": "parque",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": false,
+          "shirt": "#64B5F6"
+         }
+        },
+        "x": 0.3,
+        "y": 0.64,
+        "s": 0.4
+       },
+       {
+        "p": {
+         "icon": "man",
+         "color": "#3949AB"
+        },
+        "x": 0.7,
+        "y": 0.62,
+        "s": 0.38
+       }
+      ]
+     }
+    },
+    {
+     "text": "Compraron manzanas rojas y plátanos amarillos.",
+     "picture": {
+      "scene": "casa",
+      "items": [
+       {
+        "p": {
+         "drawing": "fruta_manzana",
+         "colors": {
+          "manzana": "#E53935",
+          "hoja": "#43A047",
+          "tallo": "#8D5524",
+          "brillo": "#FFFFFF"
+         }
+        },
+        "x": 0.35,
+        "y": 0.66,
+        "s": 0.24
+       },
+       {
+        "p": {
+         "drawing": "fruta_platano",
+         "colors": {
+          "platano": "#FFD600",
+          "tallo": "#8D6E63",
+          "punta": "#6D4C41"
+         }
+        },
+        "x": 0.66,
+        "y": 0.68,
+        "s": 0.24
+       }
+      ]
+     }
+    },
+    {
+     "text": "Mateo ayudó a llevar la bolsa.",
+     "picture": {
+      "scene": "parque",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "feliz",
+          "girl": false,
+          "shirt": "#64B5F6"
+         }
+        },
+        "x": 0.45,
+        "y": 0.64,
+        "s": 0.45
+       },
+       {
+        "p": {
+         "icon": "shop",
+         "color": "#FB8C00"
+        },
+        "x": 0.78,
+        "y": 0.7,
+        "s": 0.18
+       }
+      ]
+     }
+    },
+    {
+     "text": "En casa lavaron las frutas.",
+     "picture": {
+      "scene": "cocina",
+      "items": [
+       {
+        "p": {
+         "icon": "water",
+         "color": "#039BE5"
+        },
+        "x": 0.4,
+        "y": 0.6,
+        "s": 0.18
+       },
+       {
+        "p": {
+         "drawing": "fruta_manzana",
+         "colors": {
+          "manzana": "#E53935",
+          "hoja": "#43A047",
+          "tallo": "#8D5524",
+          "brillo": "#FFFFFF"
+         }
+        },
+        "x": 0.64,
+        "y": 0.72,
+        "s": 0.2
+       }
+      ]
+     }
+    },
+    {
+     "text": "¡Y prepararon una ensalada de frutas deliciosa!",
+     "picture": {
+      "scene": "cocina",
+      "items": [
+       {
+        "p": {
+         "kid": {
+          "emotion": "emocionado",
+          "girl": false,
+          "shirt": "#64B5F6",
+          "arms_up": true
+         }
+        },
+        "x": 0.35,
+        "y": 0.62,
+        "s": 0.42
+       },
+       {
+        "p": {
+         "drawing": "fruta_uvas",
+         "colors": {
+          "uva_*": "#8E44AD",
+          "hoja": "#43A047",
+          "tallo": "#8D5524"
+         }
+        },
+        "x": 0.72,
+        "y": 0.7,
+        "s": 0.22
+       }
+      ]
+     }
+    }
+   ],
+   "questions": [
+    {
+     "question": "¿Adónde fueron Mateo y papá?",
+     "options": [
+      {
+       "text": "Al mercado",
+       "picture": {
+        "icon": "shop",
+        "color": "#FB8C00"
+       }
+      },
+      {
+       "text": "Al cine",
+       "picture": {
+        "icon": "tv",
+        "color": "#5C6BC0"
+       }
+      },
+      {
+       "text": "Al hospital",
+       "picture": {
+        "icon": "hospital",
+        "color": "#E53935"
+       }
+      }
+     ],
+     "answer": 0
+    },
+    {
+     "question": "¿Qué compraron?",
+     "options": [
+      {
+       "text": "Frutas",
+       "picture": {
+        "drawing": "fruta_manzana",
+        "colors": {
+         "manzana": "#E53935",
+         "hoja": "#43A047",
+         "tallo": "#8D5524",
+         "brillo": "#FFFFFF"
+        }
+       }
+      },
+      {
+       "text": "Juguetes",
+       "picture": {
+        "icon": "toys",
+        "color": "#FB8C00"
+       }
+      },
+      {
+       "text": "Zapatos",
+       "picture": {
+        "icon": "shoes",
+        "color": "#8D6E63"
+       }
+      }
+     ],
+     "answer": 0
+    },
+    {
+     "question": "¿Qué prepararon al final?",
+     "options": [
+      {
+       "text": "Una sopa",
+       "picture": {
+        "icon": "soup",
+        "color": "#FB8C00"
+       }
+      },
+      {
+       "text": "Una ensalada de frutas",
+       "picture": {
+        "drawing": "fruta_uvas",
+        "colors": {
+         "uva_*": "#8E44AD",
+         "hoja": "#43A047",
+         "tallo": "#8D5524"
+        }
+       }
+      },
+      {
+       "text": "Un pastel",
+       "picture": {
+        "icon": "cake",
+        "color": "#AB47BC"
+       }
+      }
+     ],
+     "answer": 1
+    }
+   ],
+   "order": [
+    0,
+    2,
+    4
+   ]
+  }
+ ]
+}
