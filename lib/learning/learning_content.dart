@@ -121,6 +121,22 @@ const learnAnimals = <LearnAnimal>[
   LearnAnimal('animal_mariposa', 'Mariposa', 'la', 'La mariposa tiene alas de muchos colores.'),
   LearnAnimal('animal_pez', 'Pez', 'el', 'El pez vive en el agua y nada con sus aletas.'),
   LearnAnimal('animal_tortuga', 'Tortuga', 'la', 'La tortuga lleva su casa en la espalda.'),
+  LearnAnimal('animal_cebra', 'Cebra', 'la', 'La cebra tiene rayas blancas y negras.'),
+  LearnAnimal('animal_mono', 'Mono', 'el', 'Al mono le encanta trepar a los árboles.'),
+  // Granja.
+  LearnAnimal('granja_cerdito', 'Cerdito', 'el', 'El cerdito tiene la nariz redonda y la cola rizada.'),
+  LearnAnimal('granja_gallina', 'Gallina', 'la', 'La gallina pone huevos.'),
+  LearnAnimal('granja_gallo', 'Gallo', 'el', 'El gallo canta «quiquiriquí» por la mañana.'),
+  LearnAnimal('granja_oveja', 'Oveja', 'la', 'La oveja tiene la lana suave y calentita.'),
+  LearnAnimal('granja_patito', 'Patito', 'el', 'El patito nada en el agua y dice «cua, cua».'),
+  LearnAnimal('granja_vaca', 'Vaca', 'la', 'La vaca dice «muu» y nos da leche.'),
+  LearnAnimal('granja_poni', 'Poni', 'el', 'El poni es un caballo pequeñito.'),
+  // Mar.
+  LearnAnimal('mar_ballena', 'Ballena', 'la', 'La ballena es enorme y echa agua por la cabeza.'),
+  LearnAnimal('mar_cangrejo', 'Cangrejo', 'el', 'El cangrejo camina de lado y tiene pinzas.'),
+  LearnAnimal('mar_delfin', 'Delfín', 'el', 'El delfín es muy listo y salta en el agua.'),
+  LearnAnimal('mar_estrella', 'Estrella de mar', 'la', 'La estrella de mar tiene cinco brazos.'),
+  LearnAnimal('mar_pulpo', 'Pulpo', 'el', 'El pulpo tiene ocho brazos llamados tentáculos.'),
 ];
 
 /// Configuración de cada nivel: opciones por pregunta y preguntas por partida.

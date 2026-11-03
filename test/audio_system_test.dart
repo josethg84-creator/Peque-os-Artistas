@@ -331,7 +331,7 @@ void main() {
       final d = platano();
       await tapAndSettle(tester, find.bySemanticsLabel('Amarillo'));
       expect(lastSounds!.played.last, SoundCue.color);
-      expect(lastSounds!.variants.last, 2, reason: 'Amarillo es el tercer color');
+      expect(lastSounds!.variants.last, 5, reason: 'Amarillo es el sexto color');
       for (final r in ['platano', 'tallo']) {
         await tester.tapAt(screenPointOf(tester, d, interiorPoint(d, r)));
         await tester.pumpAndSettle();

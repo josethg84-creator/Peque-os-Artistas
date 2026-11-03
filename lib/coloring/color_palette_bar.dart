@@ -8,7 +8,9 @@ import '../widgets/motion/pressable.dart';
 import 'coloring_controller.dart';
 import 'palette.dart';
 
-/// Barra de colores desplazable, horizontal o vertical.
+/// Barra de colores desplazable, horizontal o vertical, en dos líneas para que
+/// se vean muchos de los 24 colores a la vez (la primera mitad del arcoíris en
+/// una y la segunda en la otra).
 /// El color elegido se marca con un anillo y una palomita, no solo con color.
 class ColorPaletteBar extends StatelessWidget {
   const ColorPaletteBar({super.key, required this.controller, this.axis = Axis.horizontal});
@@ -16,7 +18,10 @@ class ColorPaletteBar extends StatelessWidget {
   final ColoringController controller;
   final Axis axis;
 
-  static const swatchSize = 60.0;
+  static const swatchSize = 54.0;
+
+  /// Líneas de colores (filas en horizontal, columnas en vertical).
+  static const lines = 2;
 
   @override
   Widget build(BuildContext context) {
@@ -27,18 +32,33 @@ class ColorPaletteBar extends StatelessWidget {
         scrollDirection: axis,
         padding: const EdgeInsets.all(8),
         child: Flex(
-          direction: axis,
+          direction: flipAxis(axis),
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: [
-            for (final (i, c) in kidPalette.indexed)
-              Padding(
-                padding: const EdgeInsets.all(5),
-                child: _Swatch(
-                  color: c,
-                  selected: controller.tool == ColoringTool.paint && controller.color == c,
-                  // Cada color tiene su nota (escala pentatónica): elegir colores
-                  // suena como una pequeña melodía.
-                  onTap: withSound(context, SoundCue.color, () => controller.selectColor(c), variant: i)!,
-                ),
+            for (var line = 0; line < lines; line++)
+              Flex(
+                direction: axis,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  for (final (i, c) in kidPalette.indexed)
+                    if (i * lines ~/ kidPalette.length == line)
+                      Padding(
+                        padding: const EdgeInsets.all(4),
+                        child: _Swatch(
+                          color: c,
+                          selected: controller.tool == ColoringTool.paint && controller.color == c,
+                          // Cada color tiene su nota (escala pentatónica): elegir colores
+                          // suena como una pequeña melodía.
+                          onTap: withSound(
+                            context,
+                            SoundCue.color,
+                            () => controller.selectColor(c),
+                            variant: i,
+                          )!,
+                        ),
+                      ),
+                ],
               ),
           ],
         ),
@@ -87,7 +107,7 @@ class _Swatch extends StatelessWidget {
                   boxShadow: const [BoxShadow(color: Color(0x33000000), blurRadius: 4, offset: Offset(0, 2))],
                 ),
                 child: selected
-                    ? Icon(Icons.check_rounded, size: 34, color: light ? AppColors.ink : Colors.white)
+                    ? Icon(Icons.check_rounded, size: 30, color: light ? AppColors.ink : Colors.white)
                     : null,
               ),
             ),

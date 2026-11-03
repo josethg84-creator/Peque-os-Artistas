@@ -12,6 +12,8 @@ import '../theme/app_motion.dart';
 import '../widgets/mascot.dart';
 import '../widgets/motion/celebration.dart';
 import '../widgets/motion/delayed_loading.dart';
+import '../widgets/motion/pressable.dart';
+import '../audio/ui_sounds.dart';
 import 'coloring_controller.dart';
 import 'engine/drawing_painter.dart';
 
@@ -32,6 +34,12 @@ class ColoringCanvas extends StatelessWidget {
 
   /// Margen de acierto alrededor de las figuras, en píxeles lógicos.
   static const touchTolerance = 12.0;
+
+  /// Ampliación máxima del dibujo (para pintar las zonas pequeñas).
+  static const maxZoom = 5.0;
+
+  /// Cuánto amplía o aleja cada toque de los botones + y −.
+  static const zoomStep = 1.6;
 
   /// Duración de la animación de relleno (solo visual).
   static const fillDuration = Duration(milliseconds: 260);
@@ -96,12 +104,73 @@ class _InteractiveDrawingState extends State<_InteractiveDrawing> with TickerPro
   /// El ánimo de «vas por la mitad» se dice una vez por dibujo abierto.
   bool _encouraged = false;
 
+  /// Ampliación y desplazamiento del dibujo (pellizcar o botones + y −).
+  final _zoom = TransformationController();
+  late final AnimationController _zoomAnimation = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 280),
+  );
+  Animation<Matrix4>? _zoomTween;
+  Size _viewport = Size.zero;
+
+  double get _zoomLevel => _zoom.value.getMaxScaleOnAxis();
+
   @override
   void initState() {
     super.initState();
     _seenFill = widget.controller.lastFill?.serial ?? 0;
     _encouraged = widget.controller.coloredFraction >= 0.5;
     widget.controller.addListener(_onChange);
+    _zoom.addListener(_onZoom);
+    _zoomAnimation.addListener(() {
+      if (_zoomTween != null) _zoom.value = _zoomTween!.value;
+    });
+  }
+
+  /// Estado de los botones (ampliado / al máximo) que se está mostrando.
+  (bool, bool) _shownZoom = (false, false);
+
+  /// Los botones − y «ver entero» solo aparecen con el dibujo ampliado, y el +
+  /// se apaga al llegar al máximo.
+  void _onZoom() {
+    final state = (_zoomLevel > 1.01, _zoomLevel >= ColoringCanvas.maxZoom - 0.01);
+    if (state != _shownZoom) setState(() => _shownZoom = state);
+  }
+
+  /// Amplía o aleja con un factor, manteniendo el centro de lo que se ve.
+  void _zoomBy(double factor) {
+    final current = _zoomLevel;
+    final target = (current * factor).clamp(1.0, ColoringCanvas.maxZoom);
+    if ((target - current).abs() < 0.001) return;
+    final center = _zoom.toScene(_viewport.center(Offset.zero));
+    final end = Matrix4.identity()
+      ..translateByDouble(_viewport.width / 2, _viewport.height / 2, 0, 1)
+      ..scaleByDouble(target, target, 1, 1)
+      ..translateByDouble(-center.dx, -center.dy, 0, 1);
+    _animateTo(_clamped(end, target));
+  }
+
+  /// Mantiene el dibujo dentro del marco (sin huecos al ampliar).
+  Matrix4 _clamped(Matrix4 m, double zoom) {
+    final w = _viewport.width, h = _viewport.height;
+    final t = m.getTranslation();
+    final x = t.x.clamp(w - w * zoom, 0.0);
+    final y = t.y.clamp(h - h * zoom, 0.0);
+    return Matrix4.identity()
+      ..translateByDouble(x, y, 0, 1)
+      ..scaleByDouble(zoom, zoom, 1, 1);
+  }
+
+  void _animateTo(Matrix4 end) {
+    if (AppMotion.reduced(context)) {
+      _zoom.value = end;
+      return;
+    }
+    _zoomTween = Matrix4Tween(
+      begin: _zoom.value,
+      end: end,
+    ).animate(CurvedAnimation(parent: _zoomAnimation, curve: Curves.easeOutCubic));
+    _zoomAnimation.forward(from: 0);
   }
 
   @override
@@ -142,6 +211,8 @@ class _InteractiveDrawingState extends State<_InteractiveDrawing> with TickerPro
   @override
   void dispose() {
     widget.controller.removeListener(_onChange);
+    _zoomAnimation.dispose();
+    _zoom.dispose();
     _reveal.dispose();
     super.dispose();
   }
@@ -150,30 +221,74 @@ class _InteractiveDrawingState extends State<_InteractiveDrawing> with TickerPro
   Widget build(BuildContext context) {
     final vector = widget.controller.drawing!;
     // El pintor se crea una vez por dibujo; los toques solo lo repintan.
+    if (_painter != null && _painter!.drawing != vector) {
+      // Otro dibujo: se vuelve a ver entero.
+      _zoomAnimation.stop();
+      _zoom.value = Matrix4.identity();
+    }
     final painter = _painter?.drawing == vector
         ? _painter!
         : _painter = DrawingPainter(drawing: vector, colors: widget.controller, fill: _reveal);
+    final zoomed = _zoomLevel > 1.01;
     return LayoutBuilder(
       builder: (context, constraints) {
         final size = constraints.biggest;
+        _viewport = size;
         return Stack(
           children: [
             Semantics(
               label: 'Dibujo para colorear: ${widget.name}',
-              hint: 'Toca una zona para pintarla',
+              hint: 'Toca una zona para pintarla. Pellizca o usa el botón de ampliar para ver las zonas pequeñas',
               image: true,
-              child: GestureDetector(
-                behavior: HitTestBehavior.opaque,
-                onTapUp: (details) {
-                  final scale = DrawingPainter.fit(vector.viewBox, size).scale;
-                  widget.controller.tapAt(
-                    DrawingPainter.toViewBox(details.localPosition, vector.viewBox, size),
-                    tolerance: ColoringCanvas.touchTolerance / scale,
-                  );
-                },
-                child: RepaintBoundary(
-                  child: CustomPaint(size: size, painter: painter),
+              child: InteractiveViewer(
+                transformationController: _zoom,
+                minScale: 1,
+                maxScale: ColoringCanvas.maxZoom,
+                onInteractionStart: (_) => _zoomAnimation.stop(),
+                child: GestureDetector(
+                  behavior: HitTestBehavior.opaque,
+                  onTapUp: (details) {
+                    // La posición llega ya en coordenadas del dibujo sin ampliar;
+                    // el margen de acierto se mantiene en píxeles de la pantalla.
+                    final scale = DrawingPainter.fit(vector.viewBox, size).scale * _zoomLevel;
+                    widget.controller.tapAt(
+                      DrawingPainter.toViewBox(details.localPosition, vector.viewBox, size),
+                      tolerance: ColoringCanvas.touchTolerance / scale,
+                    );
+                  },
+                  child: RepaintBoundary(
+                    child: CustomPaint(size: size, painter: painter),
+                  ),
                 ),
+              ),
+            ),
+            Positioned(
+              right: 4,
+              bottom: 4,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (zoomed) ...[
+                    _ZoomButton(
+                      icon: Icons.fit_screen_rounded,
+                      label: 'Ver el dibujo entero',
+                      onPressed: () => _animateTo(Matrix4.identity()),
+                    ),
+                    const SizedBox(height: 6),
+                    _ZoomButton(
+                      icon: Icons.zoom_out_rounded,
+                      label: 'Alejar',
+                      onPressed: () => _zoomBy(1 / ColoringCanvas.zoomStep),
+                    ),
+                    const SizedBox(height: 6),
+                  ],
+                  _ZoomButton(
+                    icon: Icons.zoom_in_rounded,
+                    label: 'Ampliar',
+                    enabled: _zoomLevel < ColoringCanvas.maxZoom - 0.01,
+                    onPressed: () => _zoomBy(ColoringCanvas.zoomStep),
+                  ),
+                ],
               ),
             ),
             if (_celebrations > 0)
@@ -186,6 +301,52 @@ class _InteractiveDrawingState extends State<_InteractiveDrawing> with TickerPro
           ],
         );
       },
+    );
+  }
+}
+
+/// Botón redondo de ampliar, alejar o ver entero, en la esquina del lienzo.
+class _ZoomButton extends StatelessWidget {
+  const _ZoomButton({required this.icon, required this.label, required this.onPressed, this.enabled = true});
+
+  final IconData icon;
+  final String label;
+  final VoidCallback onPressed;
+  final bool enabled;
+
+  @override
+  Widget build(BuildContext context) {
+    final action = enabled ? withSound(context, SoundCue.tap, onPressed) : null;
+    return Semantics(
+      button: true,
+      enabled: enabled,
+      label: label,
+      excludeSemantics: true,
+      onTap: action,
+      child: Tooltip(
+        message: label,
+        child: Pressable(
+          enabled: enabled,
+          child: GestureDetector(
+            onTap: action,
+            child: AnimatedOpacity(
+              duration: const Duration(milliseconds: 150),
+              opacity: enabled ? 1 : 0.4,
+              child: Container(
+                width: 48,
+                height: 48,
+                decoration: BoxDecoration(
+                  color: Colors.white.withValues(alpha: 0.92),
+                  shape: BoxShape.circle,
+                  border: Border.all(color: AppColors.inkSoft.withValues(alpha: 0.35), width: 2),
+                  boxShadow: const [BoxShadow(color: Color(0x33000000), blurRadius: 6, offset: Offset(0, 2))],
+                ),
+                child: Icon(icon, color: AppColors.ink, size: 28),
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

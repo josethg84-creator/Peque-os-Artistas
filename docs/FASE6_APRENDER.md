@@ -42,7 +42,7 @@ Capturas reales de la app compilada para web (solo para verificar) en Chromium
 |---|---|---|---|---|
 | **Aprende los colores** | «Encuentra el color rojo»; círculos de color **con su nombre escrito** (no depende solo del color) | 6 colores básicos, 3 opciones, 4 preguntas | 11 colores, 4 opciones, 5 preguntas | 11 colores, 4 opciones con colores parecidos (rojo/rosa, azul/celeste…), 6 preguntas |
 | **Descubre las formas** | «¿Dónde está el triángulo?»; formas dibujadas con vectores en colores variados; al acertar, una explicación («El triángulo tiene 3 lados y 3 puntas») | círculo, cuadrado, triángulo, estrella y corazón; contorno de la forma como modelo | las 7 formas; con modelo | las 7, sin modelo y con formas parecidas (cuadrado/rectángulo, círculo/óvalo) |
-| **Encuentra a los animales** | «¿Dónde está el gato?» con las miniaturas del catálogo (sin duplicar imágenes); al acertar, una frase sobre el animal | 10 animales, 3 opciones | 4 opciones | 4 opciones **en silueta**, generadas con el propio dibujo vectorial (verificadas visualmente: se reconocen) |
+| **Encuentra a los animales** | «¿Dónde está el gato?» con las miniaturas del catálogo (sin duplicar imágenes); al acertar, una frase sobre el animal | 24 animales (también los de la granja y el mar), 3 opciones | 4 opciones | 4 opciones **en silueta**, generadas con el propio dibujo vectorial (verificadas visualmente: se reconocen) |
 | **Une las parejas** | Cartas con dibujos del catálogo; las parejas quedan descubiertas con ✓; si no coinciden se ocultan tras 1,2 s con «¡Casi! Inténtalo otra vez» | 2 parejas | 4 parejas | 6 parejas |
 
 En todos: un error **nunca** resta nada, se puede volver a intentar hasta acertar,

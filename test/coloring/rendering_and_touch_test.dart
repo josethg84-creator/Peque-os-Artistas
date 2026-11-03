@@ -179,6 +179,146 @@ void main() {
       await tester.pump(const Duration(seconds: 1));
     });
 
+    // Con el dibujo ampliado, tocar cada zona pequeña visible pinta esa zona.
+    Future<void> expectPreciseTaps(WidgetTester tester, ColoringController c, {required double zoom}) async {
+      final d = c.drawing!;
+      final view = tester.getRect(find.byType(InteractiveViewer)).deflate(30);
+      // Los botones de zoom tapan una esquina del dibujo: esas zonas se alcanzan arrastrando.
+      final buttons = [
+        for (final label in ['Ampliar', 'Alejar', 'Ver el dibujo entero'])
+          for (final e in find.bySemanticsLabel(label).evaluate())
+            tester.getRect(find.byWidget(e.widget)).inflate(12),
+      ];
+      final small = d.regions.where((r) => r.id != VectorDrawing.backgroundId).toList()
+        ..sort((a, b) => (a.bounds.width * a.bounds.height).compareTo(b.bounds.width * b.bounds.height));
+      var tapped = 0;
+      // Las zonas pequeñas que se ven enteras…
+      for (final r in small) {
+        final p = screenPointOf(tester, d, interiorPoint(d, r.id, step: 4, margin: 8));
+        if (!view.contains(p) || buttons.any((b) => b.contains(p))) continue;
+        await tester.tapAt(p);
+        await tester.pump();
+        expect(c.selectedRegion, r.id, reason: '${r.id} con zoom ×${zoom.toStringAsFixed(1)}');
+        if (++tapped == 6) break;
+      }
+      // …y una cuadrícula de puntos: cada toque pinta la zona dibujada debajo.
+      final canvas = tester.getRect(drawingCanvasFinder);
+      for (var gy = 0; gy < 5; gy++) {
+        for (var gx = 0; gx < 5; gx++) {
+          final p = Offset(view.left + view.width * (gx + .5) / 5, view.top + view.height * (gy + .5) / 5);
+          if (buttons.any((b) => b.contains(p))) continue;
+          // Misma regla que la app: sobre una línea gana la zona más cercana
+          // (el margen de acierto es de 12 px en la pantalla, con o sin zoom).
+          final scale = DrawingPainter.fit(d.viewBox, canvas.size).scale;
+          final expected = d.hitTest(
+            DrawingPainter.toViewBox(p - canvas.topLeft, d.viewBox, canvas.size),
+            tolerance: ColoringCanvas.touchTolerance / scale,
+          );
+          if (expected == null) continue;
+          await tester.tapAt(p);
+          await tester.pump();
+          expect(c.selectedRegion, expected, reason: '$p con zoom ×${zoom.toStringAsFixed(1)}');
+          tapped++;
+        }
+      }
+      expect(tapped, greaterThan(0));
+      await tester.pump(const Duration(seconds: 1));
+    }
+
+    double zoomOf(WidgetTester tester) => tester
+        .widget<InteractiveViewer>(find.byType(InteractiveViewer))
+        .transformationController!
+        .value
+        .getMaxScaleOnAxis();
+
+    testWidgets('los botones amplían, alejan y vuelven a mostrar el dibujo entero', (tester) async {
+      setScreenSize(tester, const Size(1300, 1000));
+      final c = await pumpCanvas(
+        tester,
+        const Size(500, 500),
+        file: 'assets/drawings/animals/animal_gato.svg',
+      );
+      // Al principio solo está «Ampliar».
+      expect(find.bySemanticsLabel('Ampliar'), findsOneWidget);
+      expect(find.bySemanticsLabel('Alejar'), findsNothing);
+      expect(find.bySemanticsLabel('Ver el dibujo entero'), findsNothing);
+      final before = tester.getRect(drawingCanvasFinder);
+
+      await tester.tap(find.bySemanticsLabel('Ampliar'));
+      await tester.pumpAndSettle();
+      expect(zoomOf(tester), closeTo(ColoringCanvas.zoomStep, 0.01));
+      expect(tester.getRect(drawingCanvasFinder).width, closeTo(before.width * ColoringCanvas.zoomStep, 1));
+      expect(find.bySemanticsLabel('Alejar'), findsOneWidget);
+      await expectPreciseTaps(tester, c, zoom: zoomOf(tester));
+
+      // Hasta el máximo: el botón de ampliar se apaga.
+      for (var i = 0; i < 5; i++) {
+        await tester.tap(find.bySemanticsLabel('Ampliar'));
+        await tester.pumpAndSettle();
+      }
+      expect(zoomOf(tester), closeTo(ColoringCanvas.maxZoom, 0.01));
+      expect(
+        tester.getSemantics(find.bySemanticsLabel('Ampliar')),
+        isSemantics(isEnabled: false, isButton: true, hasEnabledState: true),
+      );
+      await expectPreciseTaps(tester, c, zoom: zoomOf(tester));
+
+      await tester.tap(find.bySemanticsLabel('Alejar'));
+      await tester.pumpAndSettle();
+      expect(zoomOf(tester), closeTo(ColoringCanvas.maxZoom / ColoringCanvas.zoomStep, 0.01));
+
+      await tester.tap(find.bySemanticsLabel('Ver el dibujo entero'));
+      await tester.pumpAndSettle();
+      expect(zoomOf(tester), closeTo(1, 0.001));
+      expect(tester.getRect(drawingCanvasFinder), before);
+      expect(find.bySemanticsLabel('Alejar'), findsNothing);
+    });
+
+    testWidgets('pellizcar amplía el dibujo y los toques siguen siendo precisos', (tester) async {
+      setScreenSize(tester, const Size(1300, 1000));
+      final c = await pumpCanvas(
+        tester,
+        const Size(500, 500),
+        file: 'assets/drawings/fantasy/fantasia_robot.svg',
+      );
+      final center = tester.getRect(drawingCanvasFinder).center;
+      final a = await tester.startGesture(center - const Offset(30, 0), pointer: 1);
+      final b = await tester.startGesture(center + const Offset(30, 0), pointer: 2);
+      for (var i = 1; i <= 10; i++) {
+        await a.moveTo(center - Offset(30 + 9.0 * i, 0));
+        await b.moveTo(center + Offset(30 + 9.0 * i, 0));
+        await tester.pump(const Duration(milliseconds: 16));
+      }
+      await a.up();
+      await b.up();
+      await tester.pumpAndSettle();
+      expect(zoomOf(tester), greaterThan(2));
+      expect(c.regionColors, isEmpty, reason: 'pellizcar no pinta');
+      await expectPreciseTaps(tester, c, zoom: zoomOf(tester));
+    });
+
+    testWidgets('arrastrar con el dibujo ampliado lo mueve sin pintar', (tester) async {
+      setScreenSize(tester, const Size(1300, 1000));
+      final c = await pumpCanvas(
+        tester,
+        const Size(500, 500),
+        file: 'assets/drawings/animals/animal_gato.svg',
+      );
+      await tester.tap(find.bySemanticsLabel('Ampliar'));
+      await tester.pumpAndSettle();
+      final before = tester.getRect(drawingCanvasFinder);
+      await tester.drag(find.byType(InteractiveViewer), const Offset(120, 80));
+      await tester.pumpAndSettle();
+      final after = tester.getRect(drawingCanvasFinder);
+      expect(after.topLeft, isNot(before.topLeft));
+      expect(c.regionColors, isEmpty);
+      // El dibujo no se sale del marco: no quedan huecos.
+      final view = tester.getRect(find.byType(InteractiveViewer));
+      expect(after.left, lessThanOrEqualTo(view.left + 0.5));
+      expect(after.top, lessThanOrEqualTo(view.top + 0.5));
+      await expectPreciseTaps(tester, c, zoom: zoomOf(tester));
+    });
+
     testWidgets('dibujo real a dos tamaños: el mismo punto del dibujo pinta la misma región', (tester) async {
       setScreenSize(tester, const Size(1300, 1000));
       const file = 'assets/drawings/fantasy/fantasia_extraterrestre.svg';

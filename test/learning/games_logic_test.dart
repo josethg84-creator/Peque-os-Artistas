@@ -1,3 +1,5 @@
+import 'dart:convert';
+import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter_test/flutter_test.dart';
@@ -146,7 +148,7 @@ void main() {
       expect(shapesFor(LearningLevel.initial), hasLength(5));
     });
 
-    test('animales: los 10 del catálogo, con una frase cada uno', () {
+    test('animales: los 24 del catálogo (granja y mar incluidos), con una frase cada uno', () {
       expect(learnAnimals.map((a) => a.name), [
         'Gato',
         'Perro',
@@ -158,8 +160,32 @@ void main() {
         'Mariposa',
         'Pez',
         'Tortuga',
+        'Cebra',
+        'Mono',
+        'Cerdito',
+        'Gallina',
+        'Gallo',
+        'Oveja',
+        'Patito',
+        'Vaca',
+        'Poni',
+        'Ballena',
+        'Cangrejo',
+        'Delfín',
+        'Estrella de mar',
+        'Pulpo',
       ]);
-      expect(learnAnimals.every((a) => a.fact.isNotEmpty && a.drawingId.startsWith('animal_')), isTrue);
+      expect(learnAnimals.every((a) => a.fact.isNotEmpty), isTrue);
+      expect(learnAnimals.every((a) => RegExp(r'^(animal|granja|mar)_').hasMatch(a.drawingId)), isTrue);
+      // Todos existen en el catálogo real.
+      final ids = {
+        for (final d
+            in (jsonDecode(File('assets/catalog/catalog.json').readAsStringSync())
+                    as Map<String, dynamic>)['drawings']
+                as List)
+          (d as Map<String, dynamic>)['id'],
+      };
+      expect(learnAnimals.map((a) => a.drawingId).where((id) => !ids.contains(id)), isEmpty);
     });
 
     test('tamaño por nivel: más opciones, preguntas y parejas al subir', () {

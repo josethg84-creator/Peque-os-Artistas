@@ -58,7 +58,7 @@ lib/coloring/
   coloring_history.dart      ColorEdit (antes/después por región) + pila con límite (100)
   coloring_controller.dart   estado de UNA sesión de coloreado (sin widgets)
   coloring_canvas.dart       lienzo: toque → coordenadas del dibujo → controlador
-  color_palette_bar.dart     paleta (13 colores) con indicador del activo
+  color_palette_bar.dart     paleta (24 colores en dos líneas) con indicador del activo
   coloring_toolbar.dart      borrador, deshacer, rehacer, limpiar
   palette.dart
 lib/services/
@@ -181,7 +181,15 @@ Chromium en teléfono (380×800) y tableta (1280×800). Ver capturas arriba.
 - **Lectores de pantalla**: el lienzo se anuncia como «Dibujo para colorear»,
   pero la acción de toque de accesibilidad pulsa su centro; no hay todavía una
   forma accesible de elegir cada zona por nombre.
-- No hay zoom ni desplazamiento en el lienzo (útil para las zonas más pequeñas).
+- ~~No hay zoom ni desplazamiento en el lienzo.~~ **Hecho:** se amplía pellizcando o con los
+  botones «Ampliar» (+), «Alejar» (−) y «Ver el dibujo entero» de la esquina del lienzo, hasta
+  ×5; con el dibujo ampliado se arrastra para moverlo. Los toques siguen pintando la zona exacta
+  y el margen de acierto se mantiene en 12 px de pantalla. Se vuelve a ver entero al abrir otro
+  dibujo.
+- **Paleta de 24 colores** en orden de arcoíris (rojo, granate, coral, naranja, melocotón,
+  amarillo, amarillo claro, lima, verde claro, verde, menta, turquesa, celeste, azul, azul
+  marino, lila, morado, rosa, rosa claro, beige, marrón, gris, negro y blanco). Los 13 colores
+  de la paleta anterior conservan su valor exacto, así que los dibujos guardados se ven igual.
 - El historial de deshacer se pierde al salir del dibujo (los colores no).
 - No hay herramienta de pincel libre: el coloreado es por zonas.
 - Solo se admite el formato SVG controlado de la Fase 1 (es intencionado).
