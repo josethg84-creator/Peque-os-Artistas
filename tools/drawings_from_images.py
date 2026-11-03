@@ -41,16 +41,40 @@ INK_LEVEL = 150      # gris por debajo del cual es tinta
 MIN_REGION = 700     # px² (en 1024): por debajo, la zona no es coloreable
 BLEED = 3            # px que la región se mete por debajo de la línea
 
-# id del dibujo -> (archivo de origen, carpeta)
+# id del dibujo -> (archivo de origen, carpeta). Si el archivo de origen ya no
+# está en «Catalogo Imagenes/», se conserva el SVG que hay en assets/.
 IMAGES = {
+    # Primera tanda.
     "animal_gato": ("Gato kawaii para colorear.png", "animals"),
     "animal_perro": ("Perrito tierno para colorear.png", "animals"),
-    "animal_conejo": ("Conejito adorable para colorear_edited.png", "animals"),
     "animal_leon": ("Leoncito tierno para colorear_edited.png", "animals"),
     "animal_elefante": ("Elefante Kawaii para Colorear.png", "animals"),
     "animal_jirafa": ("Jirafa kawaii para colorear_edited.png", "animals"),
-    "animal_tortuga": ("Tortuga tierna para colorear.png", "animals"),
     "animal_cebra": ("Cebra adorable para colorear.png", "animals"),
+    # Segunda tanda (sustituyen a dibujos anteriores o son nuevos).
+    "animal_conejo": ("Conejito adorable en blanco y negro.png", "animals"),
+    "animal_tortuga": ("Tortuga sonriente para colorear.png", "animals"),
+    "granja_cerdito": ("Cerdito tierno de líneas gruesas.png", "farm"),
+    "granja_gallina": ("Gallina sonriente para colorear.png", "farm"),
+    "granja_gallo": ("Gallo caricaturesco con plumas curvas.png", "farm"),
+    "granja_oveja": ("Oveja Chibi Sonriente con Lana Esponjosa.png", "farm"),
+    "granja_patito": ("Patito sonriente para colorear.png", "farm"),
+    "mar_ballena": ("Ballena feliz saltando entre olas.png", "sea"),
+    "mar_cangrejo": ("Cangrejo sonriente para colorear.png", "sea"),
+    "mar_delfin": ("Delfín sonriente saltando entre olas.png", "sea"),
+    "mar_estrella": ("Estrella de mar sonriente para colorear.png", "sea"),
+    "mar_pulpo": ("Pulpo kawaii con tentáculos ondulantes.png", "sea"),
+    "dinosaurio_01": ("T-Rex sonriente entre hierbas y rocas.png", "dinosaurs"),
+    "dinosaurio_02": ("Triceratops sonriente entre rocas y hierba.png", "dinosaurs"),
+    "dinosaurio_03": ("Estegosaurio sonriente entre rocas y hierba.png", "dinosaurs"),
+    "dinosaurio_04": ("Brontosaurio feliz en la naturaleza.png", "dinosaurs"),
+    "dinosaurio_06": ("Espinosaurio junto al volcán.png", "dinosaurs"),
+    "dinosaurio_07": ("Pteranodonte sonriente sobre paisaje volcánico.png", "dinosaurs"),
+    "dinosaurio_08": ("Velociraptor sonriente en paisaje prehistórico.png", "dinosaurs"),
+    "fantasia_dragon": ("Dragón sonriente con alas extendidas.png", "fantasy"),
+    "fantasia_unicornio": ("Unicornio alegre para colorear.png", "fantasy"),
+    "fantasia_grifo": ("Grifo amistoso con alas extendidas.png", "fantasy"),
+    "fantasia_zorro_alado": ("Zorro alado con estrellas.png", "fantasy"),
 }
 
 # Algunos dibujos tienen pequeñas aberturas en la línea por las que una zona
@@ -79,10 +103,6 @@ NAMES: dict[str, dict[int, str]] = {
         7: "mancha_ojo", 8: "cola", 9: "pata_derecha", 10: "pata_izquierda", 11: "muslo_derecho",
         12: "muslo_izquierdo", 13: "mejilla", 14: "collar_derecho", 15: "collar_izquierdo", 16: "placa",
     },
-    "animal_conejo": {
-        1: "cabeza", 2: "cuerpo", 3: "oreja_izquierda", 4: "oreja_derecha", 5: "pata_derecha",
-        6: "pata_izquierda", 7: "oreja_derecha_interior", 8: "oreja_izquierda_interior", 9: "cola",
-    },
     "animal_leon": {
         1: "cabeza", 2: "melena", 3: "melena_arriba", 4: "hocico", 5: "pecho", 6: "muslo_derecho",
         7: "muslo_izquierdo", 8: "pata_derecha", 9: "pata_izquierda", 10: "mechon_cola",
@@ -100,12 +120,6 @@ NAMES: dict[str, dict[int, str]] = {
         11: "mechon_cola", 12: "mancha_4", 13: "mancha_5", 14: "pezuna_1", 15: "pezuna_2",
         16: "mancha_6", 17: "pezuna_3", 18: "pezuna_4", 19: "cuerno_derecho", 20: "cuerno_izquierdo",
         21: "mancha_7",
-    },
-    "animal_tortuga": {
-        1: "cabeza", 2: "borde_caparazon", 3: "placa_centro", 4: "pata_trasera", 5: "pata_delantera",
-        6: "placa_1", 7: "placa_2", 8: "placa_3", 9: "pata_delantera_2", 10: "placa_4", 11: "placa_5",
-        12: "barriga", 13: "placa_6", 14: "placa_7", 15: "placa_8", 16: "cola", 17: "pata_trasera_2",
-        18: "dedo_1", 19: "dedo_2", 20: "dedo_3", 21: "dedo_4", 22: "dedo_5", 23: "dedo_6",
     },
     "animal_cebra": {
         1: "cuerpo", 2: "cabeza", 3: "hocico", 4: "cuello", 5: "pata_trasera_derecha", 6: "oreja_derecha",
@@ -243,6 +257,7 @@ def build(did, source, folder):
     lines.append("  </g>")
     lines.append("</svg>")
     out = ROOT / "assets" / "drawings" / folder / f"{did}.svg"
+    out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(f"{did:18s} {len(regions):3d} regiones  {len(small):3d} huecos blancos  {out.stat().st_size // 1024} KB")
     return gray, labels, regions
@@ -251,8 +266,14 @@ def build(did, source, folder):
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--annotate", action="store_true")
+    ap.add_argument("ids", nargs="*", help="solo estos dibujos (por defecto, todos)")
     args = ap.parse_args()
     for did, (source, folder) in IMAGES.items():
+        if args.ids and did not in args.ids:
+            continue
+        if not (SOURCE / source).exists():
+            print(f"{did:18s} sin imagen de origen: se conserva el SVG actual")
+            continue
         if args.annotate:
             gray = load(SOURCE / source)
             _, labels, regions, _ = segment(gray, did)

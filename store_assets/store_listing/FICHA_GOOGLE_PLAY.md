@@ -58,7 +58,7 @@ El **nombre comercial** (ficha) y el **identificador del paquete** son cosas dis
 
 ## 2. Descripción breve (78/80)
 
-> Colorea 31 dibujos y aprende colores, formas y animales jugando. Sin conexión.
+> Colorea 46 dibujos y aprende colores, formas y animales jugando. Sin conexión.
 
 ## 3. Descripción completa
 
@@ -67,7 +67,7 @@ contrastado con el código:
 
 | Afirmación | Dónde se comprueba |
 |---|---|
-| 31 dibujos en 5 categorías y 3 dificultades | `assets/catalog/catalog.json`, `test/catalog_integrity_test.dart` |
+| 46 dibujos en 7 categorías y 3 dificultades | `assets/catalog/catalog.json`, `test/catalog_integrity_test.dart` |
 | Toque para pintar, borrador, deshacer, rehacer, limpiar | `lib/coloring/`, `test/coloring/` |
 | Búsqueda y filtros por categoría y dificultad | `lib/screens/search_screen.dart` |
 | Guardado automático y «Mis dibujos» (continuar, otra versión, borrar) | `lib/persistence/`, `lib/screens/saved_drawings_screen.dart` |

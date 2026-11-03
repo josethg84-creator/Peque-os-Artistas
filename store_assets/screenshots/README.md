@@ -24,7 +24,7 @@ transparencia y de 120 a 280 KB. Las dimensiones y el formato se han comprobado 
 | Archivo | Muestra |
 |---|---|
 | `01_inicio.png` | Pantalla de inicio con la ilustración original (niños, perrito y las 4 tarjetas) |
-| `02_categorias.png` | «Colorear»: «¡Vamos a pintar!» y las 5 categorías |
+| `02_categorias.png` | «Colorear»: «¡Vamos a pintar!» y las categorías |
 | `03_colorear.png` | Editor con un dinosaurio coloreado, herramientas y paleta |
 | `04_mis_dibujos.png` | «Mis dibujos» con 3 creaciones (una terminada) |
 | `05_aprende_colores.png` | «Aprende los colores» |

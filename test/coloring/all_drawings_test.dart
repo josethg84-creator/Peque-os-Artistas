@@ -11,13 +11,13 @@ import 'package:pequenos_artistas/persistence/creation_store.dart';
 
 import '../test_helpers.dart';
 
-/// Comprueba los 31 dibujos reales de la Fase 1 con el motor de coloreado.
+/// Comprueba los 46 dibujos reales de la Fase 1 con el motor de coloreado.
 void main() {
   final catalog = (jsonDecode(File('assets/catalog/catalog.json').readAsStringSync())['drawings'] as List)
       .cast<Map<String, dynamic>>();
   final report = StringBuffer();
 
-  test('el catálogo tiene 31 dibujos', () => expect(catalog, hasLength(31)));
+  test('el catálogo tiene 46 dibujos', () => expect(catalog, hasLength(46)));
 
   for (final entry in catalog) {
     final id = entry['id'] as String;

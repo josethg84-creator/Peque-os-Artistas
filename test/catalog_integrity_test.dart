@@ -33,12 +33,34 @@ void main() {
       'Tortuga',
       'Cebra',
     ],
+    'granja': ['Cerdito', 'Gallina', 'Gallo', 'Oveja', 'Patito'],
+    'mar': ['Ballena', 'Cangrejo', 'Delfín', 'Estrella de mar', 'Pulpo'],
     'vehiculos': ['Automóvil', 'Autobús', 'Avión', 'Tren', 'Barco'],
+    'dinosaurios': [
+      'T-Rex',
+      'Triceratops',
+      'Estegosaurio',
+      'Brontosaurio',
+      'Bebé dinosaurio',
+      'Espinosaurio',
+      'Pteranodonte',
+      'Velociraptor',
+    ],
     'frutas': ['Manzana', 'Plátano', 'Fresa', 'Naranja', 'Uvas'],
-    'fantasia': ['Hada', 'Robot amigable', 'Dragón sonriente', 'Unicornio', 'Pequeño extraterrestre'],
+    'fantasia': [
+      'Hada',
+      'Robot amigable',
+      'Dragón',
+      'Unicornio',
+      'Grifo',
+      'Zorro alado',
+      'Pequeño extraterrestre',
+    ],
   };
   const folders = {
     'animales': 'animals',
+    'granja': 'farm',
+    'mar': 'sea',
     'vehiculos': 'vehicles',
     'dinosaurios': 'dinosaurs',
     'frutas': 'fruits',
@@ -50,22 +72,30 @@ void main() {
       if (d['category'] == category) d['name'] as String,
   ];
 
-  test('hay exactamente 31 entradas', () => expect(drawings, hasLength(31)));
+  test('hay exactamente 46 entradas', () => expect(drawings, hasLength(46)));
 
-  test('las cinco categorías tienen 11, 5, 5, 5 y 5 dibujos', () {
+  test('las siete categorías tienen 11, 5, 5, 5, 8, 5 y 7 dibujos', () {
     final counts = <String, int>{};
     for (final d in drawings) {
       counts[d['category'] as String] = (counts[d['category']] ?? 0) + 1;
     }
-    expect(counts, {'animales': 11, 'vehiculos': 5, 'dinosaurios': 5, 'frutas': 5, 'fantasia': 5});
+    expect(counts, {
+      'animales': 11,
+      'granja': 5,
+      'mar': 5,
+      'vehiculos': 5,
+      'dinosaurios': 8,
+      'frutas': 5,
+      'fantasia': 7,
+    });
   });
 
   test('cada categoría contiene exactamente los dibujos pedidos', () {
     expected.forEach(
       (category, names) => expect(namesOf(category), unorderedEquals(names), reason: category),
     );
-    // Cinco dinosaurios distintos.
-    expect(namesOf('dinosaurios').toSet(), hasLength(5));
+    // Ocho dinosaurios distintos.
+    expect(namesOf('dinosaurios').toSet(), hasLength(8));
   });
 
   test('no hay campos obligatorios vacíos', () {

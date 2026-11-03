@@ -16,7 +16,7 @@ para integrarse después en una aplicación Flutter para Android.
 |---|---|---|
 | 30 SVG con regiones cerradas e identificadas | ✅ Terminado | `assets/drawings/<categoría>/` |
 | 30 PNG 1024×1024 (fondo blanco) | ✅ Terminado | `assets/previews/` |
-| Catálogo JSON (31 entradas) | ✅ Terminado | `assets/catalog/catalog.json` |
+| Catálogo JSON (46 entradas) | ✅ Terminado | `assets/catalog/catalog.json` |
 | Scripts de generación, render y control de calidad | ✅ Terminado | `tools/` |
 | Revisión por un ilustrador / prueba con niños | ⏳ Pendiente | — |
 | Variante PNG con fondo transparente | ⏳ Pendiente (no se necesita aún) | — |
@@ -27,25 +27,38 @@ para integrarse después en una aplicación Flutter para Android.
 |---|---|---|---:|---|---|---|
 | `animal_gato` | Gato | animales | 12 | facil | 4-5 | `assets/drawings/animals/animal_gato.svg` |
 | `animal_perro` | Perro | animales | 16 | media | 5-6 | `assets/drawings/animals/animal_perro.svg` |
-| `animal_conejo` | Conejo | animales | 9 | facil | 4-5 | `assets/drawings/animals/animal_conejo.svg` |
+| `animal_conejo` | Conejo | animales | 8 | facil | 4-5 | `assets/drawings/animals/animal_conejo.svg` |
 | `animal_leon` | León | animales | 15 | media | 5-6 | `assets/drawings/animals/animal_leon.svg` |
 | `animal_elefante` | Elefante | animales | 14 | media | 5-6 | `assets/drawings/animals/animal_elefante.svg` |
 | `animal_jirafa` | Jirafa | animales | 21 | dificil | 6-7 | `assets/drawings/animals/animal_jirafa.svg` |
 | `animal_oso` | Oso | animales | 15 | media | 5-6 | `assets/drawings/animals/animal_oso.svg` |
 | `animal_mariposa` | Mariposa | animales | 12 | facil | 4-5 | `assets/drawings/animals/animal_mariposa.svg` |
 | `animal_pez` | Pez | animales | 10 | facil | 4-5 | `assets/drawings/animals/animal_pez.svg` |
-| `animal_tortuga` | Tortuga | animales | 23 | dificil | 6-7 | `assets/drawings/animals/animal_tortuga.svg` |
+| `animal_tortuga` | Tortuga | animales | 27 | dificil | 6-7 | `assets/drawings/animals/animal_tortuga.svg` |
 | `animal_cebra` | Cebra | animales | 30 | dificil | 6-7 | `assets/drawings/animals/animal_cebra.svg` |
+| `granja_cerdito` | Cerdito | granja | 13 | media | 5-6 | `assets/drawings/farm/granja_cerdito.svg` |
+| `granja_gallina` | Gallina | granja | 12 | facil | 4-5 | `assets/drawings/farm/granja_gallina.svg` |
+| `granja_gallo` | Gallo | granja | 16 | media | 5-6 | `assets/drawings/farm/granja_gallo.svg` |
+| `granja_oveja` | Oveja | granja | 16 | media | 5-6 | `assets/drawings/farm/granja_oveja.svg` |
+| `granja_patito` | Patito | granja | 7 | facil | 4-5 | `assets/drawings/farm/granja_patito.svg` |
+| `mar_ballena` | Ballena | mar | 13 | media | 5-6 | `assets/drawings/sea/mar_ballena.svg` |
+| `mar_cangrejo` | Cangrejo | mar | 22 | dificil | 6-7 | `assets/drawings/sea/mar_cangrejo.svg` |
+| `mar_delfin` | Delfín | mar | 10 | facil | 4-5 | `assets/drawings/sea/mar_delfin.svg` |
+| `mar_estrella` | Estrella de mar | mar | 19 | media | 5-6 | `assets/drawings/sea/mar_estrella.svg` |
+| `mar_pulpo` | Pulpo | mar | 14 | media | 5-6 | `assets/drawings/sea/mar_pulpo.svg` |
 | `vehiculo_automovil` | Automóvil | vehiculos | 11 | facil | 4-5 | `assets/drawings/vehicles/vehiculo_automovil.svg` |
 | `vehiculo_autobus` | Autobús | vehiculos | 13 | media | 5-6 | `assets/drawings/vehicles/vehiculo_autobus.svg` |
 | `vehiculo_avion` | Avión | vehiculos | 12 | facil | 4-5 | `assets/drawings/vehicles/vehiculo_avion.svg` |
 | `vehiculo_tren` | Tren | vehiculos | 17 | media | 5-6 | `assets/drawings/vehicles/vehiculo_tren.svg` |
 | `vehiculo_barco` | Barco | vehiculos | 8 | facil | 4-5 | `assets/drawings/vehicles/vehiculo_barco.svg` |
-| `dinosaurio_01` | Rex sonriente | dinosaurios | 12 | facil | 4-5 | `assets/drawings/dinosaurs/dinosaurio_01.svg` |
-| `dinosaurio_02` | Triceratops | dinosaurios | 14 | media | 5-6 | `assets/drawings/dinosaurs/dinosaurio_02.svg` |
-| `dinosaurio_03` | Estegosaurio | dinosaurios | 17 | media | 5-6 | `assets/drawings/dinosaurs/dinosaurio_03.svg` |
-| `dinosaurio_04` | Braquiosaurio | dinosaurios | 12 | facil | 4-5 | `assets/drawings/dinosaurs/dinosaurio_04.svg` |
+| `dinosaurio_01` | T-Rex | dinosaurios | 31 | dificil | 6-7 | `assets/drawings/dinosaurs/dinosaurio_01.svg` |
+| `dinosaurio_02` | Triceratops | dinosaurios | 24 | dificil | 6-7 | `assets/drawings/dinosaurs/dinosaurio_02.svg` |
+| `dinosaurio_03` | Estegosaurio | dinosaurios | 24 | dificil | 6-7 | `assets/drawings/dinosaurs/dinosaurio_03.svg` |
+| `dinosaurio_04` | Brontosaurio | dinosaurios | 26 | dificil | 6-7 | `assets/drawings/dinosaurs/dinosaurio_04.svg` |
 | `dinosaurio_05` | Bebé dinosaurio | dinosaurios | 9 | facil | 4-5 | `assets/drawings/dinosaurs/dinosaurio_05.svg` |
+| `dinosaurio_06` | Espinosaurio | dinosaurios | 30 | dificil | 6-7 | `assets/drawings/dinosaurs/dinosaurio_06.svg` |
+| `dinosaurio_07` | Pteranodonte | dinosaurios | 21 | dificil | 6-7 | `assets/drawings/dinosaurs/dinosaurio_07.svg` |
+| `dinosaurio_08` | Velociraptor | dinosaurios | 22 | dificil | 6-7 | `assets/drawings/dinosaurs/dinosaurio_08.svg` |
 | `fruta_manzana` | Manzana | frutas | 4 | facil | 4-5 | `assets/drawings/fruits/fruta_manzana.svg` |
 | `fruta_platano` | Plátano | frutas | 3 | facil | 4-5 | `assets/drawings/fruits/fruta_platano.svg` |
 | `fruta_fresa` | Fresa | frutas | 3 | facil | 4-5 | `assets/drawings/fruits/fruta_fresa.svg` |
@@ -53,8 +66,10 @@ para integrarse después en una aplicación Flutter para Android.
 | `fruta_uvas` | Uvas | frutas | 12 | facil | 4-5 | `assets/drawings/fruits/fruta_uvas.svg` |
 | `fantasia_hada` | Hada | fantasia | 20 | media | 5-6 | `assets/drawings/fantasy/fantasia_hada.svg` |
 | `fantasia_robot` | Robot amigable | fantasia | 22 | dificil | 6-7 | `assets/drawings/fantasy/fantasia_robot.svg` |
-| `fantasia_dragon` | Dragón sonriente | fantasia | 14 | media | 5-6 | `assets/drawings/fantasy/fantasia_dragon.svg` |
-| `fantasia_unicornio` | Unicornio | fantasia | 16 | media | 5-6 | `assets/drawings/fantasy/fantasia_unicornio.svg` |
+| `fantasia_dragon` | Dragón | fantasia | 32 | dificil | 6-7 | `assets/drawings/fantasy/fantasia_dragon.svg` |
+| `fantasia_unicornio` | Unicornio | fantasia | 30 | dificil | 6-7 | `assets/drawings/fantasy/fantasia_unicornio.svg` |
+| `fantasia_grifo` | Grifo | fantasia | 13 | media | 5-6 | `assets/drawings/fantasy/fantasia_grifo.svg` |
+| `fantasia_zorro_alado` | Zorro alado | fantasia | 16 | media | 5-6 | `assets/drawings/fantasy/fantasia_zorro_alado.svg` |
 | `fantasia_extraterrestre` | Pequeño extraterrestre | fantasia | 19 | media | 5-6 | `assets/drawings/fantasy/fantasia_extraterrestre.svg` |
 
 - **Zonas** = regiones coloreables sin contar el fondo (que también se puede colorear).
@@ -68,8 +83,20 @@ para integrarse después en una aplicación Flutter para Android.
 
 ## Dibujos convertidos de imágenes («Catalogo Imagenes/»)
 
-Siete animales (gato, perro, conejo, león, elefante, jirafa y tortuga) se han sustituido, y
-la **cebra** se ha añadido como dibujo 31, a partir de los dibujos de línea que subió el propietario a `Catalogo Imagenes/`. La app colorea por
+**Primera tanda:** siete animales (gato, perro, conejo, león, elefante, jirafa y tortuga) se
+sustituyeron y la **cebra** se añadió como dibujo 31.
+
+**Segunda tanda (23 imágenes):** sustituyen al conejo, la tortuga, el dragón, el unicornio y
+cuatro dinosaurios (T-Rex, Triceratops, Estegosaurio y Brontosaurio, que ocupa el lugar del
+Braquiosaurio), y añaden 15 dibujos: tres dinosaurios (Espinosaurio, Pteranodonte,
+Velociraptor), el grifo y el zorro alado en Fantasía, y dos categorías nuevas, **Granja**
+(cerdito, gallina, gallo, oveja, patito) y **Mar** (ballena, cangrejo, delfín, estrella de mar,
+pulpo). En total, 46 dibujos en 7 categorías. Los dinosaurios de esta tanda traen paisaje
+(rocas, hierba, volcanes): las partes cerradas del paisaje también se pueden colorear y las
+abiertas forman parte del fondo. Sus zonas se llaman `zona_NN` (los nombres de las zonas son
+internos; la app no los muestra).
+
+Todas proceden de los dibujos de línea que subió el propietario a `Catalogo Imagenes/`. La app colorea por
 regiones vectoriales, así que cada PNG se convierte en SVG con
 `tools/drawings_from_images.py`.
 
@@ -176,11 +203,12 @@ Reglas que cumple cada archivo (verificadas por `tools/validate_assets.py`):
 
 ## Control de calidad
 
-Resultado de `python3 tools/validate_assets.py`: **31 dibujos, 0 errores** (tras añadir la cebra).
+Resultado de `python3 tools/validate_assets.py`: **46 dibujos, 0 errores** (tras la segunda tanda de imágenes).
 
 Se comprueba:
 
-- Exactamente 31 entradas, reparto 11/5/5/5/5 por categoría (era 30 y 10/5/5/5/5 antes de la cebra).
+- Exactamente 46 entradas, reparto 11/5/5/5/8/5/7 (animales, granja, mar, vehículos,
+  dinosaurios, frutas, fantasía).
 - Sin `id`, nombres ni rutas duplicados; todos los campos obligatorios presentes.
 - Cada archivo del catálogo existe, la ruta es relativa y el nombre coincide con
   el `id` (solo `a-z`, `0-9`, `_`).

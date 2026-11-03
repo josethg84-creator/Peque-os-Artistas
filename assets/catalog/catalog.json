@@ -36,8 +36,8 @@
       "thumbnail": "assets/thumbnails/animal_conejo.png",
       "difficulty": "facil",
       "recommended_age": "4-5",
-      "regions": 9,
-      "description": "Conejito de orejas largas con dientes, bigotes, patitas y cola redonda."
+      "regions": 8,
+      "description": "Conejito sentado de perfil con orejas largas, bigotes, dientes y cola esponjosa."
     },
     {
       "id": "animal_leon",
@@ -113,8 +113,8 @@
       "thumbnail": "assets/thumbnails/animal_tortuga.png",
       "difficulty": "dificil",
       "recommended_age": "6-7",
-      "regions": 23,
-      "description": "Tortuga sonriente con caparazón de placas, patitas y cola."
+      "regions": 27,
+      "description": "Tortuga sonriente con caparazón de placas hexagonales y patitas."
     },
     {
       "id": "animal_cebra",
@@ -126,6 +126,116 @@
       "recommended_age": "6-7",
       "regions": 30,
       "description": "Cebra tierna de pie con rayas, crin, orejas y cola con mechón."
+    },
+    {
+      "id": "granja_cerdito",
+      "name": "Cerdito",
+      "category": "granja",
+      "file": "assets/drawings/farm/granja_cerdito.svg",
+      "thumbnail": "assets/thumbnails/granja_cerdito.png",
+      "difficulty": "media",
+      "recommended_age": "5-6",
+      "regions": 13,
+      "description": "Cerdito sonriente de pie con orejas caídas, hocico grande y cola rizada."
+    },
+    {
+      "id": "granja_gallina",
+      "name": "Gallina",
+      "category": "granja",
+      "file": "assets/drawings/farm/granja_gallina.svg",
+      "thumbnail": "assets/thumbnails/granja_gallina.png",
+      "difficulty": "facil",
+      "recommended_age": "4-5",
+      "regions": 12,
+      "description": "Gallina sonriente con cresta, ala grande y cola de plumas."
+    },
+    {
+      "id": "granja_gallo",
+      "name": "Gallo",
+      "category": "granja",
+      "file": "assets/drawings/farm/granja_gallo.svg",
+      "thumbnail": "assets/thumbnails/granja_gallo.png",
+      "difficulty": "media",
+      "recommended_age": "5-6",
+      "regions": 16,
+      "description": "Gallo con cresta, barbilla, ala y una cola de plumas largas y curvas."
+    },
+    {
+      "id": "granja_oveja",
+      "name": "Oveja",
+      "category": "granja",
+      "file": "assets/drawings/farm/granja_oveja.svg",
+      "thumbnail": "assets/thumbnails/granja_oveja.png",
+      "difficulty": "media",
+      "recommended_age": "5-6",
+      "regions": 16,
+      "description": "Ovejita de lana esponjosa con cara redonda, orejas caídas y patitas."
+    },
+    {
+      "id": "granja_patito",
+      "name": "Patito",
+      "category": "granja",
+      "file": "assets/drawings/farm/granja_patito.svg",
+      "thumbnail": "assets/thumbnails/granja_patito.png",
+      "difficulty": "facil",
+      "recommended_age": "4-5",
+      "regions": 7,
+      "description": "Patito sonriente con pico grande, ala y patas palmeadas."
+    },
+    {
+      "id": "mar_ballena",
+      "name": "Ballena",
+      "category": "mar",
+      "file": "assets/drawings/sea/mar_ballena.svg",
+      "thumbnail": "assets/thumbnails/mar_ballena.png",
+      "difficulty": "media",
+      "recommended_age": "5-6",
+      "regions": 13,
+      "description": "Ballena feliz con chorro de agua, cola levantada y olas."
+    },
+    {
+      "id": "mar_cangrejo",
+      "name": "Cangrejo",
+      "category": "mar",
+      "file": "assets/drawings/sea/mar_cangrejo.svg",
+      "thumbnail": "assets/thumbnails/mar_cangrejo.png",
+      "difficulty": "dificil",
+      "recommended_age": "6-7",
+      "regions": 22,
+      "description": "Cangrejo sonriente con dos pinzas grandes y ocho patitas."
+    },
+    {
+      "id": "mar_delfin",
+      "name": "Delfín",
+      "category": "mar",
+      "file": "assets/drawings/sea/mar_delfin.svg",
+      "thumbnail": "assets/thumbnails/mar_delfin.png",
+      "difficulty": "facil",
+      "recommended_age": "4-5",
+      "regions": 10,
+      "description": "Delfín sonriente saltando del agua entre salpicaduras."
+    },
+    {
+      "id": "mar_estrella",
+      "name": "Estrella de mar",
+      "category": "mar",
+      "file": "assets/drawings/sea/mar_estrella.svg",
+      "thumbnail": "assets/thumbnails/mar_estrella.png",
+      "difficulty": "media",
+      "recommended_age": "5-6",
+      "regions": 19,
+      "description": "Estrella de mar sonriente con cinco brazos llenos de puntitos."
+    },
+    {
+      "id": "mar_pulpo",
+      "name": "Pulpo",
+      "category": "mar",
+      "file": "assets/drawings/sea/mar_pulpo.svg",
+      "thumbnail": "assets/thumbnails/mar_pulpo.png",
+      "difficulty": "media",
+      "recommended_age": "5-6",
+      "regions": 14,
+      "description": "Pulpo kawaii con ocho tentáculos ondulados y ventosas."
     },
     {
       "id": "vehiculo_automovil",
@@ -184,14 +294,14 @@
     },
     {
       "id": "dinosaurio_01",
-      "name": "Rex sonriente",
+      "name": "T-Rex",
       "category": "dinosaurios",
       "file": "assets/drawings/dinosaurs/dinosaurio_01.svg",
       "thumbnail": "assets/thumbnails/dinosaurio_01.png",
-      "difficulty": "facil",
-      "recommended_age": "4-5",
-      "regions": 12,
-      "description": "Pequeño tiranosaurio amigable de perfil con brazitos cortos y manchas."
+      "difficulty": "dificil",
+      "recommended_age": "6-7",
+      "regions": 31,
+      "description": "Tiranosaurio sonriente con rayas, entre hierbas y rocas."
     },
     {
       "id": "dinosaurio_02",
@@ -199,10 +309,10 @@
       "category": "dinosaurios",
       "file": "assets/drawings/dinosaurs/dinosaurio_02.svg",
       "thumbnail": "assets/thumbnails/dinosaurio_02.png",
-      "difficulty": "media",
-      "recommended_age": "5-6",
-      "regions": 14,
-      "description": "Triceratops sonriente con gola ondulada y tres cuernos redondeados."
+      "difficulty": "dificil",
+      "recommended_age": "6-7",
+      "regions": 24,
+      "description": "Triceratops sonriente con gola, tres cuernos y manchas."
     },
     {
       "id": "dinosaurio_03",
@@ -210,21 +320,21 @@
       "category": "dinosaurios",
       "file": "assets/drawings/dinosaurs/dinosaurio_03.svg",
       "thumbnail": "assets/thumbnails/dinosaurio_03.png",
-      "difficulty": "media",
-      "recommended_age": "5-6",
-      "regions": 17,
-      "description": "Estegosaurio con cinco placas en el lomo y cola con púas suaves."
+      "difficulty": "dificil",
+      "recommended_age": "6-7",
+      "regions": 24,
+      "description": "Estegosaurio sonriente con placas en el lomo, entre rocas y hierba."
     },
     {
       "id": "dinosaurio_04",
-      "name": "Braquiosaurio",
+      "name": "Brontosaurio",
       "category": "dinosaurios",
       "file": "assets/drawings/dinosaurs/dinosaurio_04.svg",
       "thumbnail": "assets/thumbnails/dinosaurio_04.png",
-      "difficulty": "facil",
-      "recommended_age": "4-5",
-      "regions": 12,
-      "description": "Dinosaurio de cuello muy largo con manchas redondas."
+      "difficulty": "dificil",
+      "recommended_age": "6-7",
+      "regions": 26,
+      "description": "Brontosaurio de cuello largo con montañas, nubes y una palmera."
     },
     {
       "id": "dinosaurio_05",
@@ -236,6 +346,39 @@
       "recommended_age": "4-5",
       "regions": 9,
       "description": "Bebé dinosaurio saliendo del huevo con la cáscara en la cabeza."
+    },
+    {
+      "id": "dinosaurio_06",
+      "name": "Espinosaurio",
+      "category": "dinosaurios",
+      "file": "assets/drawings/dinosaurs/dinosaurio_06.svg",
+      "thumbnail": "assets/thumbnails/dinosaurio_06.png",
+      "difficulty": "dificil",
+      "recommended_age": "6-7",
+      "regions": 30,
+      "description": "Espinosaurio con vela en el lomo junto a un volcán."
+    },
+    {
+      "id": "dinosaurio_07",
+      "name": "Pteranodonte",
+      "category": "dinosaurios",
+      "file": "assets/drawings/dinosaurs/dinosaurio_07.svg",
+      "thumbnail": "assets/thumbnails/dinosaurio_07.png",
+      "difficulty": "dificil",
+      "recommended_age": "6-7",
+      "regions": 21,
+      "description": "Pteranodonte volando sobre un paisaje con volcanes y nubes."
+    },
+    {
+      "id": "dinosaurio_08",
+      "name": "Velociraptor",
+      "category": "dinosaurios",
+      "file": "assets/drawings/dinosaurs/dinosaurio_08.svg",
+      "thumbnail": "assets/thumbnails/dinosaurio_08.png",
+      "difficulty": "dificil",
+      "recommended_age": "6-7",
+      "regions": 22,
+      "description": "Velociraptor sonriente corriendo en un paisaje prehistórico."
     },
     {
       "id": "fruta_manzana",
@@ -316,14 +459,14 @@
     },
     {
       "id": "fantasia_dragon",
-      "name": "Dragón sonriente",
+      "name": "Dragón",
       "category": "fantasia",
       "file": "assets/drawings/fantasy/fantasia_dragon.svg",
       "thumbnail": "assets/thumbnails/fantasia_dragon.png",
-      "difficulty": "media",
-      "recommended_age": "5-6",
-      "regions": 14,
-      "description": "Dragoncito sentado con alas, cuernitos y cola terminada en corazón."
+      "difficulty": "dificil",
+      "recommended_age": "6-7",
+      "regions": 32,
+      "description": "Dragoncito sentado con alas extendidas, cuernitos y cola en punta."
     },
     {
       "id": "fantasia_unicornio",
@@ -331,10 +474,32 @@
       "category": "fantasia",
       "file": "assets/drawings/fantasy/fantasia_unicornio.svg",
       "thumbnail": "assets/thumbnails/fantasia_unicornio.png",
+      "difficulty": "dificil",
+      "recommended_age": "6-7",
+      "regions": 30,
+      "description": "Unicornio alegre con cuerno, melena y cola ondulada y un corazón."
+    },
+    {
+      "id": "fantasia_grifo",
+      "name": "Grifo",
+      "category": "fantasia",
+      "file": "assets/drawings/fantasy/fantasia_grifo.svg",
+      "thumbnail": "assets/thumbnails/fantasia_grifo.png",
+      "difficulty": "media",
+      "recommended_age": "5-6",
+      "regions": 13,
+      "description": "Grifo amistoso, mitad águila y mitad león, con alas extendidas."
+    },
+    {
+      "id": "fantasia_zorro_alado",
+      "name": "Zorro alado",
+      "category": "fantasia",
+      "file": "assets/drawings/fantasy/fantasia_zorro_alado.svg",
+      "thumbnail": "assets/thumbnails/fantasia_zorro_alado.png",
       "difficulty": "media",
       "recommended_age": "5-6",
       "regions": 16,
-      "description": "Unicornio de perfil con cuerno, melena, cola ondulada y ojo feliz."
+      "description": "Zorrito con alas, cola esponjosa y estrellas."
     },
     {
       "id": "fantasia_extraterrestre",

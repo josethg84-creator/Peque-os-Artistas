@@ -12,7 +12,7 @@ void main() {
 
   List<String> ids(DrawingFilter f) => f.apply(catalog.drawings).map((d) => d.id).toList();
 
-  test('sin filtros devuelve los 31 en el orden del catálogo', () {
+  test('sin filtros devuelve los 46 en el orden del catálogo', () {
     expect(ids(const DrawingFilter()), catalog.drawings.map((d) => d.id).toList());
     expect(const DrawingFilter().isActive, isFalse);
   });
@@ -26,17 +26,20 @@ void main() {
   });
 
   test('la búsqueda también encuentra por categoría', () {
-    expect(ids(const DrawingFilter(query: 'dinosaurio')), hasLength(5));
+    expect(ids(const DrawingFilter(query: 'dinosaurio')), hasLength(8));
+    expect(ids(const DrawingFilter(query: 'granja')), hasLength(5));
     expect(ids(const DrawingFilter(query: 'fruta')), hasLength(5));
   });
 
   test('filtro por categoría', () {
     for (final (c, n) in [
       (DrawingCategory.animals, 11),
+      (DrawingCategory.farm, 5),
+      (DrawingCategory.sea, 5),
       (DrawingCategory.vehicles, 5),
-      (DrawingCategory.dinosaurs, 5),
+      (DrawingCategory.dinosaurs, 8),
       (DrawingCategory.fruits, 5),
-      (DrawingCategory.fantasy, 5),
+      (DrawingCategory.fantasy, 7),
     ]) {
       final result = DrawingFilter(category: c).apply(catalog.drawings);
       expect(result, hasLength(n), reason: c.label);
@@ -53,7 +56,17 @@ void main() {
       'animal_jirafa',
       'animal_tortuga',
       'animal_cebra',
+      'mar_cangrejo',
+      'dinosaurio_01',
+      'dinosaurio_02',
+      'dinosaurio_03',
+      'dinosaurio_04',
+      'dinosaurio_06',
+      'dinosaurio_07',
+      'dinosaurio_08',
       'fantasia_robot',
+      'fantasia_dragon',
+      'fantasia_unicornio',
     ]);
   });
 

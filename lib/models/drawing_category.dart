@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 
 import '../theme/app_colors.dart';
 
-/// Las cinco categorías de la colección. [id] coincide con el campo
+/// Las siete categorías de la colección. [id] coincide con el campo
 /// `category` del catálogo JSON de la Fase 1.
 enum DrawingCategory {
   animals('animales', 'Animales', Icons.pets_rounded, AppColors.coral, 'animal_gato'),
+  farm('granja', 'Granja', Icons.agriculture_rounded, AppColors.sun, 'granja_cerdito'),
+  sea('mar', 'Mar', Icons.waves_rounded, AppColors.ocean, 'mar_ballena'),
   vehicles('vehiculos', 'Vehículos', Icons.directions_car_rounded, AppColors.sky, 'vehiculo_autobus'),
   dinosaurs('dinosaurios', 'Dinosaurios', Icons.park_rounded, AppColors.leaf, 'dinosaurio_01'),
   fruits('frutas', 'Frutas', Icons.local_florist_rounded, AppColors.berry, 'fruta_manzana'),

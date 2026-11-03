@@ -75,6 +75,8 @@ flutter:
     - assets/audio/effects/
     - assets/audio/music/
     - assets/drawings/animals/
+    - assets/drawings/farm/
+    - assets/drawings/sea/
     - assets/drawings/vehicles/
     - assets/drawings/dinosaurs/
     - assets/drawings/fruits/

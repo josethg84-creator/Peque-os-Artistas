@@ -24,10 +24,10 @@ Map<String, Object?> entry(String id, {String category = 'animales', String? thu
 
 void main() {
   group('Catálogo real de la Fase 1', () {
-    test('tiene 31 dibujos válidos, sin incidencias y con todos sus archivos', () async {
+    test('tiene 46 dibujos válidos, sin incidencias y con todos sus archivos', () async {
       final catalog = await realCatalogService().load();
       expect(catalog.issues, isEmpty);
-      expect(catalog.drawings, hasLength(31));
+      expect(catalog.drawings, hasLength(46));
       expect(catalog.drawings.every((d) => d.thumbnailAvailable), isTrue);
       final assets = diskAssets();
       for (final d in catalog.drawings) {
@@ -36,17 +36,19 @@ void main() {
       }
     });
 
-    test('reparte 10/5/5/5/5 entre las cinco categorías', () async {
+    test('reparte 11/5/5/5/8/5/7 entre las siete categorías', () async {
       final catalog = await realCatalogService().load();
-      expect(catalog.byCategory(DrawingCategory.animals), hasLength(11));
-      for (final c in [
-        DrawingCategory.vehicles,
-        DrawingCategory.dinosaurs,
-        DrawingCategory.fruits,
-        DrawingCategory.fantasy,
-      ]) {
-        expect(catalog.byCategory(c), hasLength(5), reason: c.label);
-      }
+      const expected = {
+        DrawingCategory.animals: 11,
+        DrawingCategory.farm: 5,
+        DrawingCategory.sea: 5,
+        DrawingCategory.vehicles: 5,
+        DrawingCategory.dinosaurs: 8,
+        DrawingCategory.fruits: 5,
+        DrawingCategory.fantasy: 7,
+      };
+      expect(expected.keys, DrawingCategory.values);
+      expected.forEach((c, n) => expect(catalog.byCategory(c), hasLength(n), reason: c.label));
     });
 
     test('las portadas de las categorías existen en el catálogo', () async {

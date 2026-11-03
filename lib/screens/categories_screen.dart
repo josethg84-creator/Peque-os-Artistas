@@ -12,7 +12,7 @@ import '../widgets/big_action_button.dart';
 import '../widgets/kid_icon_button.dart';
 import '../widgets/kid_scaffold.dart';
 
-/// Las cinco categorías de dibujos, con el atajo «¡Vamos a pintar!» arriba.
+/// Las categorías de dibujos, con el atajo «¡Vamos a pintar!» arriba.
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({super.key});
 

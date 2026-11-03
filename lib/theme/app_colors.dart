@@ -13,6 +13,7 @@ abstract final class AppColors {
   static const leaf = Color(0xFF5CC689);
   static const grape = Color(0xFF9B7BEA);
   static const berry = Color(0xFFFF6B8B);
+  static const ocean = Color(0xFF26B5C7);
 
   /// Colores sobrios de la zona para adultos (distinta del área infantil).
   static const adultBackground = Color(0xFFF2F3F5);

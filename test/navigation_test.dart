@@ -124,7 +124,7 @@ void main() {
     expect(find.text('Conejo'), findsOneWidget);
   });
 
-  testWidgets('las cinco categorías abren su galería con el número correcto de dibujos', (tester) async {
+  testWidgets('las siete categorías abren su galería con el número correcto de dibujos', (tester) async {
     setScreenSize(tester, const Size(800, 1280));
     await pumpApp(tester);
     await tapAndSettle(tester, find.bySemanticsLabel('Colorear'));
@@ -132,10 +132,12 @@ void main() {
 
     const expected = {
       DrawingCategory.animals: 11,
+      DrawingCategory.farm: 5,
+      DrawingCategory.sea: 5,
       DrawingCategory.vehicles: 5,
-      DrawingCategory.dinosaurs: 5,
+      DrawingCategory.dinosaurs: 8,
       DrawingCategory.fruits: 5,
-      DrawingCategory.fantasy: 5,
+      DrawingCategory.fantasy: 7,
     };
     for (final MapEntry(key: category, value: count) in expected.entries) {
       final card = find.bySemanticsLabel('${category.label}, $count dibujos');
@@ -258,7 +260,7 @@ void main() {
     (a, b) = _question(tester);
     await tapAndSettle(tester, find.widgetWithText(OutlinedButton, '${a * b}'));
     expect(find.text('Zona para adultos'), findsOneWidget);
-    expect(find.textContaining('31 dibujos disponibles'), findsOneWidget);
+    expect(find.textContaining('46 dibujos disponibles'), findsOneWidget);
     await tapAndSettle(tester, find.byTooltip('Salir al inicio'));
     expect(find.byType(HomeScreen), findsOneWidget);
   });
