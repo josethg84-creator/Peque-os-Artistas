@@ -12,7 +12,7 @@ void main() {
 
   List<String> ids(DrawingFilter f) => f.apply(catalog.drawings).map((d) => d.id).toList();
 
-  test('sin filtros devuelve los 46 en el orden del catálogo', () {
+  test('sin filtros devuelve los 51 en el orden del catálogo', () {
     expect(ids(const DrawingFilter()), catalog.drawings.map((d) => d.id).toList());
     expect(const DrawingFilter().isActive, isFalse);
   });
@@ -27,19 +27,19 @@ void main() {
 
   test('la búsqueda también encuentra por categoría', () {
     expect(ids(const DrawingFilter(query: 'dinosaurio')), hasLength(8));
-    expect(ids(const DrawingFilter(query: 'granja')), hasLength(5));
+    expect(ids(const DrawingFilter(query: 'granja')), hasLength(7));
     expect(ids(const DrawingFilter(query: 'fruta')), hasLength(5));
   });
 
   test('filtro por categoría', () {
     for (final (c, n) in [
-      (DrawingCategory.animals, 11),
-      (DrawingCategory.farm, 5),
+      (DrawingCategory.animals, 12),
+      (DrawingCategory.farm, 7),
       (DrawingCategory.sea, 5),
       (DrawingCategory.vehicles, 5),
       (DrawingCategory.dinosaurs, 8),
       (DrawingCategory.fruits, 5),
-      (DrawingCategory.fantasy, 7),
+      (DrawingCategory.fantasy, 9),
     ]) {
       final result = DrawingFilter(category: c).apply(catalog.drawings);
       expect(result, hasLength(n), reason: c.label);
@@ -53,9 +53,11 @@ void main() {
       expect(ids(DrawingFilter(difficulty: level)), expected, reason: level.label);
     }
     expect(ids(const DrawingFilter(difficulty: Difficulty.hard)), [
+      'animal_elefante',
       'animal_jirafa',
       'animal_tortuga',
       'animal_cebra',
+      'granja_vaca',
       'mar_cangrejo',
       'dinosaurio_01',
       'dinosaurio_02',
@@ -64,7 +66,10 @@ void main() {
       'dinosaurio_06',
       'dinosaurio_07',
       'dinosaurio_08',
+      'fantasia_hada',
+      'fantasia_hada_hongo',
       'fantasia_robot',
+      'fantasia_robot_heroe',
       'fantasia_dragon',
       'fantasia_unicornio',
     ]);
@@ -82,9 +87,9 @@ void main() {
 
   test('filtros combinados y copyWith', () {
     var f = const DrawingFilter(category: DrawingCategory.animals, difficulty: Difficulty.easy);
-    expect(ids(f), ['animal_gato', 'animal_conejo', 'animal_mariposa', 'animal_pez']);
+    expect(ids(f), ['animal_perro', 'animal_mariposa', 'animal_pez']);
     f = f.copyWith(sort: DrawingSort.alphabetical);
-    expect(ids(f), ['animal_conejo', 'animal_gato', 'animal_mariposa', 'animal_pez']);
+    expect(ids(f), ['animal_mariposa', 'animal_perro', 'animal_pez']);
     f = f.copyWith(category: () => null, query: 'o');
     expect(f.category, isNull);
     expect(f.apply(catalog.drawings).every((d) => d.difficulty == Difficulty.easy), isTrue);

@@ -32,8 +32,9 @@ void main() {
       'Pez',
       'Tortuga',
       'Cebra',
+      'Mono',
     ],
-    'granja': ['Cerdito', 'Gallina', 'Gallo', 'Oveja', 'Patito'],
+    'granja': ['Cerdito', 'Gallina', 'Gallo', 'Oveja', 'Patito', 'Vaca', 'Poni'],
     'mar': ['Ballena', 'Cangrejo', 'Delfín', 'Estrella de mar', 'Pulpo'],
     'vehiculos': ['Automóvil', 'Autobús', 'Avión', 'Tren', 'Barco'],
     'dinosaurios': [
@@ -49,7 +50,9 @@ void main() {
     'frutas': ['Manzana', 'Plátano', 'Fresa', 'Naranja', 'Uvas'],
     'fantasia': [
       'Hada',
+      'Hada del hongo',
       'Robot amigable',
+      'Robot héroe',
       'Dragón',
       'Unicornio',
       'Grifo',
@@ -72,21 +75,21 @@ void main() {
       if (d['category'] == category) d['name'] as String,
   ];
 
-  test('hay exactamente 46 entradas', () => expect(drawings, hasLength(46)));
+  test('hay exactamente 51 entradas', () => expect(drawings, hasLength(51)));
 
-  test('las siete categorías tienen 11, 5, 5, 5, 8, 5 y 7 dibujos', () {
+  test('las siete categorías tienen 12, 7, 5, 5, 8, 5 y 9 dibujos', () {
     final counts = <String, int>{};
     for (final d in drawings) {
       counts[d['category'] as String] = (counts[d['category']] ?? 0) + 1;
     }
     expect(counts, {
-      'animales': 11,
-      'granja': 5,
+      'animales': 12,
+      'granja': 7,
       'mar': 5,
       'vehiculos': 5,
       'dinosaurios': 8,
       'frutas': 5,
-      'fantasia': 7,
+      'fantasia': 9,
     });
   });
 

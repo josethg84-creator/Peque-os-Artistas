@@ -33,7 +33,7 @@ List<String> cardIds(WidgetTester tester) =>
     tester.widgetList<DrawingCard>(find.byType(DrawingCard)).map((c) => c.drawing.id).toList();
 
 void main() {
-  testWidgets('cada una de las 46 tarjetas abre su propio dibujo con sus regiones', (tester) async {
+  testWidgets('cada una de las 51 tarjetas abre su propio dibujo con sus regiones', (tester) async {
     setScreenSize(tester, const Size(1000, 1400));
     await pumpApp(tester);
     await tapAndSettle(tester, find.bySemanticsLabel('Colorear'));
@@ -62,7 +62,7 @@ void main() {
       }
       await tapAndSettle(tester, find.bySemanticsLabel('Volver a categorías'));
     }
-    expect(opened, 46);
+    expect(opened, 51);
   });
 
   testWidgets('las tarjetas marcan los dibujos pintados y los colores no se mezclan', (tester) async {
@@ -70,7 +70,7 @@ void main() {
     final store = InMemoryCreationStore();
     await pumpApp(tester, store: store);
     await tapAndSettle(tester, find.bySemanticsLabel('Colorear'));
-    await tapAndSettle(tester, find.bySemanticsLabel('Animales, 11 dibujos'));
+    await tapAndSettle(tester, find.bySemanticsLabel('Animales, 12 dibujos'));
     expect(find.bySemanticsLabel(RegExp(DrawingCard.paintedLabel)), findsNothing);
 
     Future<void> paintHead(String label, String file, String color) async {
@@ -82,12 +82,12 @@ void main() {
       await tapAndSettle(tester, find.bySemanticsLabel('Volver a la galería'));
     }
 
-    await paintHead('Gato. Dificultad fácil', 'assets/drawings/animals/animal_gato.svg', 'Rojo');
-    await paintHead('Perro. Dificultad media', 'assets/drawings/animals/animal_perro.svg', 'Azul');
+    await paintHead('Gato. Dificultad media', 'assets/drawings/animals/animal_gato.svg', 'Rojo');
+    await paintHead('Perro. Dificultad fácil', 'assets/drawings/animals/animal_perro.svg', 'Azul');
 
-    expect(find.bySemanticsLabel('Gato. Dificultad fácil. ${DrawingCard.paintedLabel}'), findsOneWidget);
-    expect(find.bySemanticsLabel('Perro. Dificultad media. ${DrawingCard.paintedLabel}'), findsOneWidget);
-    expect(find.bySemanticsLabel('Conejo. Dificultad fácil'), findsOneWidget); // sin insignia
+    expect(find.bySemanticsLabel('Gato. Dificultad media. ${DrawingCard.paintedLabel}'), findsOneWidget);
+    expect(find.bySemanticsLabel('Perro. Dificultad fácil. ${DrawingCard.paintedLabel}'), findsOneWidget);
+    expect(find.bySemanticsLabel('Conejo. Dificultad media'), findsOneWidget); // sin insignia
 
     final gato = (await store.latestFor('animal_gato'))!;
     final perro = (await store.latestFor('animal_perro'))!;
@@ -117,9 +117,9 @@ void main() {
       return seen;
     }
 
-    testWidgets('muestra los 46 y busca por nombre sin tildes', (tester) async {
+    testWidgets('muestra los 51 y busca por nombre sin tildes', (tester) async {
       await openSearch(tester);
-      expect(find.text('46 dibujos'), findsOneWidget);
+      expect(find.text('51 dibujos'), findsOneWidget);
       await tester.enterText(find.byType(TextField), 'leon');
       await tester.pumpAndSettle();
       expect(find.text('1 dibujo'), findsOneWidget);
@@ -159,22 +159,27 @@ void main() {
 
       await tapAndSettle(tester, find.bySemanticsLabel('Todos'));
       await tapAndSettle(tester, find.bySemanticsLabel('Difícil'));
-      expect(find.text('14 dibujos'), findsOneWidget);
+      expect(find.text('19 dibujos'), findsOneWidget);
       // Orden de la A a la Z.
       expect(await allResultIds(tester), [
         'dinosaurio_04', // Brontosaurio
         'mar_cangrejo',
         'animal_cebra',
         'fantasia_dragon',
+        'animal_elefante',
         'dinosaurio_06', // Espinosaurio
         'dinosaurio_03', // Estegosaurio
+        'fantasia_hada',
+        'fantasia_hada_hongo',
         'animal_jirafa',
         'dinosaurio_07', // Pteranodonte
         'fantasia_robot',
+        'fantasia_robot_heroe',
         'dinosaurio_01', // T-Rex
         'animal_tortuga',
         'dinosaurio_02', // Triceratops
         'fantasia_unicornio',
+        'granja_vaca',
         'dinosaurio_08', // Velociraptor
       ]);
 
@@ -190,7 +195,7 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.text('No encontramos dibujos'), findsOneWidget);
       await tapAndSettle(tester, find.text('Quitar filtros'));
-      expect(find.text('46 dibujos'), findsOneWidget);
+      expect(find.text('51 dibujos'), findsOneWidget);
       expect(tester.widget<TextField>(find.byType(TextField)).controller!.text, isEmpty);
     });
   });

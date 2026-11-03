@@ -45,14 +45,9 @@ BLEED = 3            # px que la región se mete por debajo de la línea
 # está en «Catalogo Imagenes/», se conserva el SVG que hay en assets/.
 IMAGES = {
     # Primera tanda.
-    "animal_gato": ("Gato kawaii para colorear.png", "animals"),
-    "animal_perro": ("Perrito tierno para colorear.png", "animals"),
-    "animal_leon": ("Leoncito tierno para colorear_edited.png", "animals"),
-    "animal_elefante": ("Elefante Kawaii para Colorear.png", "animals"),
     "animal_jirafa": ("Jirafa kawaii para colorear_edited.png", "animals"),
     "animal_cebra": ("Cebra adorable para colorear.png", "animals"),
     # Segunda tanda (sustituyen a dibujos anteriores o son nuevos).
-    "animal_conejo": ("Conejito adorable en blanco y negro.png", "animals"),
     "animal_tortuga": ("Tortuga sonriente para colorear.png", "animals"),
     "granja_cerdito": ("Cerdito tierno de líneas gruesas.png", "farm"),
     "granja_gallina": ("Gallina sonriente para colorear.png", "farm"),
@@ -75,12 +70,26 @@ IMAGES = {
     "fantasia_unicornio": ("Unicornio alegre para colorear.png", "fantasy"),
     "fantasia_grifo": ("Grifo amistoso con alas extendidas.png", "fantasy"),
     "fantasia_zorro_alado": ("Zorro alado con estrellas.png", "fantasy"),
+    # Tercera tanda.
+    "animal_gato": ("Gato kawaii para colorear.png", "animals"),
+    "animal_perro": ("Perrito tierno con collar y lengua fuera.png", "animals"),
+    "animal_conejo": ("Conejo tierno para colorear.png", "animals"),
+    "animal_leon": ("León Adorable para Colorear.png", "animals"),
+    "animal_elefante": ("Elefante bebé sonriente para colorear.png", "animals"),
+    "animal_oso": ("Oso de peluche para colorear.png", "animals"),
+    "animal_mono": ("Mono feliz con cola rizada.png", "animals"),
+    "granja_vaca": ("Vaca chibi para colorear.png", "farm"),
+    "granja_poni": ("Poni sonriente con crines onduladas.png", "farm"),
+    "fantasia_hada": ("Hada Mariposa con Varita Estrellada.png", "fantasy"),
+    "fantasia_hada_hongo": ("Hada risueña sobre un hongo mágico.png", "fantasy"),
+    "fantasia_robot": ("Robot sonriente con cohete y engranajes.png", "fantasy"),
+    "fantasia_robot_heroe": ("Robot héroe entre estrellas y planetas.png", "fantasy"),
 }
 
 # Algunos dibujos tienen pequeñas aberturas en la línea por las que una zona
 # «se escapa» al fondo: se cierran con este radio (px a 1024), y la línea
 # dibujada también queda cerrada.
-CLOSE = {"animal_elefante": 5}
+CLOSE: dict[str, int] = {}
 
 # Aberturas demasiado anchas para cerrarlas sin estropear otras líneas: se
 # sellan con un trazo corto (coordenadas a 1024 y grosor en px), que pasa a
@@ -94,25 +103,15 @@ SEALS = {
 # nombre). Las que no aparecen se llaman zona_NN.
 NAMES: dict[str, dict[int, str]] = {
     "animal_gato": {
-        1: "cabeza", 2: "cuerpo", 3: "barriga", 4: "cola", 5: "hocico", 6: "pata_izquierda",
-        7: "pata_derecha", 8: "oreja_derecha", 9: "oreja_izquierda", 10: "oreja_derecha_interior",
-        11: "oreja_izquierda_interior", 12: "nariz",
+        1: "cabeza", 2: "cuerpo", 3: "pata_trasera", 4: "cola", 5: "raya_frente_2",
+        6: "oreja_izquierda_interior", 7: "oreja_derecha_interior", 8: "raya_cola_4", 9: "raya_cola_1",
+        10: "raya_cola_2", 11: "raya_cola_3", 12: "raya_frente_3", 13: "raya_frente_1",
+        14: "raya_lomo_2", 15: "raya_lomo_1",
     },
     "animal_perro": {
-        1: "cuerpo", 2: "cabeza", 3: "oreja_derecha", 4: "oreja_izquierda", 5: "hocico", 6: "barriga",
-        7: "mancha_ojo", 8: "cola", 9: "pata_derecha", 10: "pata_izquierda", 11: "muslo_derecho",
-        12: "muslo_izquierdo", 13: "mejilla", 14: "collar_derecho", 15: "collar_izquierdo", 16: "placa",
-    },
-    "animal_leon": {
-        1: "cabeza", 2: "melena", 3: "melena_arriba", 4: "hocico", 5: "pecho", 6: "muslo_derecho",
-        7: "muslo_izquierdo", 8: "pata_derecha", 9: "pata_izquierda", 10: "mechon_cola",
-        11: "oreja_derecha", 12: "oreja_izquierda", 13: "cola", 14: "oreja_derecha_interior",
-        15: "oreja_izquierda_interior",
-    },
-    "animal_elefante": {
-        1: "cabeza", 2: "cuerpo", 3: "oreja_derecha_interior", 4: "oreja_izquierda_interior",
-        5: "oreja_derecha", 6: "trompa", 7: "oreja_izquierda", 8: "pata_trasera_izquierda",
-        9: "pata_trasera_derecha", 10: "pecho", 11: "dedo_1", 12: "dedo_2", 13: "dedo_3", 14: "dedo_4",
+        1: "cabeza", 2: "cuerpo", 3: "pata_trasera_derecha", 4: "pata_trasera_izquierda", 5: "cola",
+        6: "lengua", 7: "placa", 8: "collar_derecho", 9: "collar_izquierdo", 10: "brillo_ojo_derecho",
+        11: "brillo_ojo_izquierdo",
     },
     "animal_jirafa": {
         1: "cuerpo", 2: "cabeza", 3: "hocico", 4: "pata_trasera_izquierda", 5: "pata_trasera_derecha",

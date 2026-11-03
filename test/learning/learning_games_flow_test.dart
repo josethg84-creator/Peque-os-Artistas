@@ -312,14 +312,13 @@ void main() {
     final backend = MemoryBackend(); // mismo almacenamiento para todo, como en la app
     final creations = KeyValueCreationStore(backend);
     await pumpApp(tester, store: creations, learningBackend: backend);
-    await startPainting(tester);
+    await openCat(tester);
     final gato = svgOf('animals', 'animal_gato');
     await tapAndSettle(tester, find.bySemanticsLabel('Rojo'));
     await tester.tapAt(screenPointOf(tester, gato, interiorPoint(gato, 'cabeza')));
     await tester.pump();
     await tapAndSettle(tester, find.bySemanticsLabel('Volver a la galería'));
     final before = Map.of((await creations.latestFor('animal_gato'))!.regionColors);
-    await tapAndSettle(tester, find.bySemanticsLabel('Volver al inicio'));
 
     await openHub(tester, 'Mini Juegos');
     await openGame(tester, 'Une las parejas');

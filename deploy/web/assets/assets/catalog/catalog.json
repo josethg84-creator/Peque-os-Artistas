@@ -12,10 +12,10 @@
       "category": "animales",
       "file": "assets/drawings/animals/animal_gato.svg",
       "thumbnail": "assets/thumbnails/animal_gato.png",
-      "difficulty": "facil",
-      "recommended_age": "4-5",
-      "regions": 12,
-      "description": "Gatito kawaii sentado con orejas puntiagudas, bigotes, barriga y cola curvada."
+      "difficulty": "media",
+      "recommended_age": "5-6",
+      "regions": 15,
+      "description": "Gatito kawaii sentado con rayas en la frente, el lomo y la cola, y bigotes."
     },
     {
       "id": "animal_perro",
@@ -23,10 +23,10 @@
       "category": "animales",
       "file": "assets/drawings/animals/animal_perro.svg",
       "thumbnail": "assets/thumbnails/animal_perro.png",
-      "difficulty": "media",
-      "recommended_age": "5-6",
-      "regions": 16,
-      "description": "Perrito sonriente con orejas caídas, mancha en el ojo, collar con placa y cola."
+      "difficulty": "facil",
+      "recommended_age": "4-5",
+      "regions": 11,
+      "description": "Perrito sentado con orejas caídas, lengua fuera, collar con placa y cola."
     },
     {
       "id": "animal_conejo",
@@ -34,10 +34,10 @@
       "category": "animales",
       "file": "assets/drawings/animals/animal_conejo.svg",
       "thumbnail": "assets/thumbnails/animal_conejo.png",
-      "difficulty": "facil",
-      "recommended_age": "4-5",
-      "regions": 8,
-      "description": "Conejito sentado de perfil con orejas largas, bigotes, dientes y cola esponjosa."
+      "difficulty": "media",
+      "recommended_age": "5-6",
+      "regions": 13,
+      "description": "Conejito sentado de frente con orejas largas, dientes, bigotes y patitas con almohadillas."
     },
     {
       "id": "animal_leon",
@@ -47,8 +47,8 @@
       "thumbnail": "assets/thumbnails/animal_leon.png",
       "difficulty": "media",
       "recommended_age": "5-6",
-      "regions": 15,
-      "description": "Leoncito tierno con melena ondulada, orejas redondas y cola con mechón."
+      "regions": 16,
+      "description": "Leoncito sonriente con melena grande, orejas redondas y cola con mechón."
     },
     {
       "id": "animal_elefante",
@@ -56,10 +56,10 @@
       "category": "animales",
       "file": "assets/drawings/animals/animal_elefante.svg",
       "thumbnail": "assets/thumbnails/animal_elefante.png",
-      "difficulty": "media",
-      "recommended_age": "5-6",
-      "regions": 14,
-      "description": "Elefante kawaii sentado con orejas grandes y trompa curvada."
+      "difficulty": "dificil",
+      "recommended_age": "6-7",
+      "regions": 21,
+      "description": "Elefante bebé sentado con orejas grandes, trompa levantada y uñitas."
     },
     {
       "id": "animal_jirafa",
@@ -80,8 +80,8 @@
       "thumbnail": "assets/thumbnails/animal_oso.png",
       "difficulty": "media",
       "recommended_age": "5-6",
-      "regions": 15,
-      "description": "Osito sentado con orejas redondas, barriga y plantas de las patas."
+      "regions": 19,
+      "description": "Osito de peluche sentado con hocico, barriga redonda y almohadillas en las patas."
     },
     {
       "id": "animal_mariposa",
@@ -126,6 +126,17 @@
       "recommended_age": "6-7",
       "regions": 30,
       "description": "Cebra tierna de pie con rayas, crin, orejas y cola con mechón."
+    },
+    {
+      "id": "animal_mono",
+      "name": "Mono",
+      "category": "animales",
+      "file": "assets/drawings/animals/animal_mono.svg",
+      "thumbnail": "assets/thumbnails/animal_mono.png",
+      "difficulty": "media",
+      "recommended_age": "5-6",
+      "regions": 17,
+      "description": "Monito sentado con orejas redondas, cara sonriente y cola rizada."
     },
     {
       "id": "granja_cerdito",
@@ -181,6 +192,28 @@
       "recommended_age": "4-5",
       "regions": 7,
       "description": "Patito sonriente con pico grande, ala y patas palmeadas."
+    },
+    {
+      "id": "granja_vaca",
+      "name": "Vaca",
+      "category": "granja",
+      "file": "assets/drawings/farm/granja_vaca.svg",
+      "thumbnail": "assets/thumbnails/granja_vaca.png",
+      "difficulty": "dificil",
+      "recommended_age": "6-7",
+      "regions": 21,
+      "description": "Vaca chibi con cuernitos, manchas, ubre y cola con mechón."
+    },
+    {
+      "id": "granja_poni",
+      "name": "Poni",
+      "category": "granja",
+      "file": "assets/drawings/farm/granja_poni.svg",
+      "thumbnail": "assets/thumbnails/granja_poni.png",
+      "difficulty": "media",
+      "recommended_age": "5-6",
+      "regions": 16,
+      "description": "Poni sonriente de pie con crin y cola onduladas."
     },
     {
       "id": "mar_ballena",
@@ -441,10 +474,21 @@
       "category": "fantasia",
       "file": "assets/drawings/fantasy/fantasia_hada.svg",
       "thumbnail": "assets/thumbnails/fantasia_hada.png",
-      "difficulty": "media",
-      "recommended_age": "5-6",
-      "regions": 20,
-      "description": "Hada pequeña con cuatro alas, vestido acampanado y varita de estrella."
+      "difficulty": "dificil",
+      "recommended_age": "6-7",
+      "regions": 38,
+      "description": "Hada con alas de mariposa y varita de estrella entre flores."
+    },
+    {
+      "id": "fantasia_hada_hongo",
+      "name": "Hada del hongo",
+      "category": "fantasia",
+      "file": "assets/drawings/fantasy/fantasia_hada_hongo.svg",
+      "thumbnail": "assets/thumbnails/fantasia_hada_hongo.png",
+      "difficulty": "dificil",
+      "recommended_age": "6-7",
+      "regions": 42,
+      "description": "Hada risueña sentada sobre un hongo mágico con estrellas y flores."
     },
     {
       "id": "fantasia_robot",
@@ -454,8 +498,19 @@
       "thumbnail": "assets/thumbnails/fantasia_robot.png",
       "difficulty": "dificil",
       "recommended_age": "6-7",
-      "regions": 22,
-      "description": "Robot que saluda, con antena, panel con corazón y pies grandes."
+      "regions": 45,
+      "description": "Robot sonriente con el pulgar arriba, engranaje, cohete y nubes."
+    },
+    {
+      "id": "fantasia_robot_heroe",
+      "name": "Robot héroe",
+      "category": "fantasia",
+      "file": "assets/drawings/fantasy/fantasia_robot_heroe.svg",
+      "thumbnail": "assets/thumbnails/fantasia_robot_heroe.png",
+      "difficulty": "dificil",
+      "recommended_age": "6-7",
+      "regions": 40,
+      "description": "Robot héroe con un rayo en el pecho entre estrellas, planetas y nubes."
     },
     {
       "id": "fantasia_dragon",

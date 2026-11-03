@@ -56,7 +56,7 @@ Corresponde al «Panel para niños» de la segunda imagen. Solo lee lo que la ap
 en el dispositivo; no pide nombre ni foto ni ningún dato personal:
 
 - Estrellas, pegatinas conseguidas y número de dibujos.
-- «Tu progreso»: dibujos terminados (de todos los del catálogo, hoy 46), mini juegos probados (de 3) y actividades
+- «Tu progreso»: dibujos terminados (de todos los del catálogo, hoy 51), mini juegos probados (de 3) y actividades
   probadas (de 4).
 - «Tus logros»: las pegatinas conseguidas, con «Ver todos».
 - «Tus dibujos recientes»: miniaturas de los últimos dibujos; al tocar uno se sigue

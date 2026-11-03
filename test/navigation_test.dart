@@ -115,13 +115,13 @@ void main() {
     await pumpApp(tester);
     await startPainting(tester);
     expect(find.byType(ColoringScreen), findsOneWidget);
-    expect(find.text('Gato'), findsOneWidget);
-    expect(find.bySemanticsLabel('Dibujo para colorear: Gato'), findsOneWidget);
+    expect(find.text('Perro'), findsOneWidget);
+    expect(find.bySemanticsLabel('Dibujo para colorear: Perro'), findsOneWidget);
     await tapAndSettle(tester, find.bySemanticsLabel('Volver a la galería'));
     expect(find.byType(CategoriesScreen), findsOneWidget);
     // La siguiente pulsación propone otro dibujo fácil.
     await startPainting(tester);
-    expect(find.text('Conejo'), findsOneWidget);
+    expect(find.text('Mariposa'), findsOneWidget);
   });
 
   testWidgets('las siete categorías abren su galería con el número correcto de dibujos', (tester) async {
@@ -131,13 +131,13 @@ void main() {
     expect(find.byType(CategoriesScreen), findsOneWidget);
 
     const expected = {
-      DrawingCategory.animals: 11,
-      DrawingCategory.farm: 5,
+      DrawingCategory.animals: 12,
+      DrawingCategory.farm: 7,
       DrawingCategory.sea: 5,
       DrawingCategory.vehicles: 5,
       DrawingCategory.dinosaurs: 8,
       DrawingCategory.fruits: 5,
-      DrawingCategory.fantasy: 7,
+      DrawingCategory.fantasy: 9,
     };
     for (final MapEntry(key: category, value: count) in expected.entries) {
       final card = find.bySemanticsLabel('${category.label}, $count dibujos');
@@ -215,13 +215,12 @@ void main() {
     await tapAndSettle(tester, find.bySemanticsLabel('Volver al inicio'));
 
     // Se pinta una zona del gato y el panel lo refleja.
-    await startPainting(tester);
+    await openCat(tester);
     final gato = svgOf('animals', 'animal_gato');
     await tapAndSettle(tester, find.bySemanticsLabel('Rojo'));
     await tester.tapAt(screenPointOf(tester, gato, interiorPoint(gato, 'cabeza')));
     await tester.pump();
     await tapAndSettle(tester, find.bySemanticsLabel('Volver a la galería'));
-    await tapAndSettle(tester, find.bySemanticsLabel('Volver al inicio'));
     await tapAndSettle(tester, find.bySemanticsLabel('Perfil'));
     expect(find.bySemanticsLabel('Dibujos: 1'), findsOneWidget);
     expect(find.bySemanticsLabel(RegExp(r'^Mini juegos probados: 0 de 3')), findsOneWidget);
@@ -260,7 +259,7 @@ void main() {
     (a, b) = _question(tester);
     await tapAndSettle(tester, find.widgetWithText(OutlinedButton, '${a * b}'));
     expect(find.text('Zona para adultos'), findsOneWidget);
-    expect(find.textContaining('46 dibujos disponibles'), findsOneWidget);
+    expect(find.textContaining('51 dibujos disponibles'), findsOneWidget);
     await tapAndSettle(tester, find.byTooltip('Salir al inicio'));
     expect(find.byType(HomeScreen), findsOneWidget);
   });

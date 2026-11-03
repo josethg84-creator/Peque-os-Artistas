@@ -57,10 +57,10 @@ void main() {
 
     test('1b. tocar por coordenadas pinta la región que se ve en ese punto', () async {
       final c = await openDrawing('animal_gato', gatoFile);
-      final p = interiorPoint(c.drawing!, 'barriga');
+      final p = interiorPoint(c.drawing!, 'pata_trasera');
       c.selectColor(blue);
-      expect(c.tapAt(p), 'barriga');
-      expect(c.colorOf('barriga'), blue.color);
+      expect(c.tapAt(p), 'pata_trasera');
+      expect(c.colorOf('pata_trasera'), blue.color);
       // La barriga está encima del cuerpo: el cuerpo no cambia.
       expect(c.colorOf('cuerpo'), isNull);
     });
@@ -220,7 +220,7 @@ void main() {
       final json = jsonDecode(raw) as Map<String, dynamic>;
       expect(json['format_version'], Creation.formatVersion);
       expect(json['drawing_id'], 'animal_gato');
-      expect(json['total_regions'], 12);
+      expect(json['total_regions'], 15);
       expect(json['painted_regions'], 1); // el fondo no cuenta
       expect(json['status'], 'en_progreso');
       expect(json['checksum'], isA<String>());

@@ -8,6 +8,7 @@ import 'package:pequenos_artistas/app.dart';
 import 'package:pequenos_artistas/learning/audio/learning_audio.dart';
 import 'package:pequenos_artistas/learning/learning_controller.dart';
 import 'package:pequenos_artistas/learning/learning_store.dart';
+import 'package:pequenos_artistas/navigation/app_routes.dart';
 import 'package:pequenos_artistas/persistence/key_value_backend.dart';
 import 'package:pequenos_artistas/coloring/engine/drawing_painter.dart';
 import 'package:pequenos_artistas/coloring/engine/svg_drawing_parser.dart';
@@ -167,5 +168,15 @@ Future<void> openMyGallery(WidgetTester tester) async {
     await tester.pumpAndSettle();
   }
   await tester.tap(find.bySemanticsLabel('Galería'));
+  await tester.pumpAndSettle();
+}
+
+/// Abre el gato para colorear (el dibujo que usan las pruebas de coloreado y
+/// guardado), igual que al elegirlo en su galería. Al volver se regresa a la
+/// pantalla desde la que se abrió.
+Future<void> openCat(WidgetTester tester) async {
+  tester
+      .state<NavigatorState>(find.byType(Navigator).first)
+      .pushNamed(AppRoutes.coloring, arguments: const ColoringArgs('animal_gato'));
   await tester.pumpAndSettle();
 }

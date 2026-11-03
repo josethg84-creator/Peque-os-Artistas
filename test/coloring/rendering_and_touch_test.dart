@@ -181,11 +181,11 @@ void main() {
 
     testWidgets('dibujo real a dos tamaños: el mismo punto del dibujo pinta la misma región', (tester) async {
       setScreenSize(tester, const Size(1300, 1000));
-      const file = 'assets/drawings/fantasy/fantasia_robot.svg';
+      const file = 'assets/drawings/fantasy/fantasia_extraterrestre.svg';
       for (final size in const [Size(320, 320), Size(900, 600)]) {
         final c = await pumpCanvas(tester, size, file: file);
         final d = c.drawing!;
-        for (final id in ['boton_1', 'corazon', 'antena_bola', 'pie_derecho']) {
+        for (final id in ['ojo_izquierdo', 'barriga', 'antena_derecha_bola', 'pie_derecho']) {
           await tester.tapAt(screenPointOf(tester, d, interiorPoint(d, id, step: 4, margin: 4)));
           expect(c.selectedRegion, id, reason: '$id a ${size.width}×${size.height}');
         }
