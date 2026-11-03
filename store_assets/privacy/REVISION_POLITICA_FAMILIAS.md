@@ -17,7 +17,7 @@
 | Enlaces externos y salida de la app protegidos | No hay enlaces externos; la zona de adultos no enlaza fuera | Cumple |
 | Sin chat anónimo ni funciones sociales para niños | No hay chat ni funciones sociales | Cumple |
 | Declarar bien el público objetivo | Tramos «5 años o menos» y «6 a 8 años» | **PENDIENTE** (lo declara el propietario) |
-| No usar permisos o API restringidas para niños (ubicación precisa, etc.) | Ningún permiso peligroso | Cumple |
+| No usar permisos o API restringidas para niños (ubicación precisa, etc.) | Solo el micrófono, opcional, para que el niño se escuche en «Practicar»: no se envía ni se guarda, y un adulto puede desactivarlo | Cumple; **REVISAR** que la ficha y la política lo expliquen (ya están en el borrador) |
 | Ficha (icono, imágenes, textos) adecuada para niños | Recursos originales y sin afirmaciones engañosas | Cumple; lo revisará Google |
 | Cumplir las leyes de privacidad infantil (COPPA, RGPD, Ley 29733 en Perú…) | La app no recoge datos; el texto legal lo debe revisar el propietario | **PENDIENTE** (revisión legal) |
 

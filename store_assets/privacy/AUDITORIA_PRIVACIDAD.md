@@ -23,9 +23,9 @@ para el formulario «Seguridad de los datos» de Play Console.
 | ¿Recopila datos personales? | **No** | No hay formularios, cuentas ni campos de texto libres que se guarden. El campo de búsqueda filtra en memoria y no se guarda. |
 | ¿Qué guarda en el dispositivo? | Dibujos (id del dibujo, colores por zona, fechas); progreso de juegos (partidas, estrellas, pegatinas, fechas); preferencias (nivel, silencio, música, efectos y voz con sus volúmenes) | `shared_preferences`, claves `creation.v2.*` y `learning.v1.*` |
 | ¿Transmite información? | **No** | Sin permiso INTERNET; ningún código de red en `lib/` |
-| ¿SDK de terceros que recojan datos? | **No** | Directas: `audioplayers` 6.8.1, `flutter_tts` 4.2.5, `shared_preferences` 2.5.6. Ninguna es SDK de anuncios, analítica ni errores. |
+| ¿SDK de terceros que recojan datos? | **No** | Directas: `audioplayers` 6.8.1, `flutter_tts` 4.2.5, `shared_preferences` 2.5.6, `record` 7.1.2, `path_provider` 2.1.6 y `web` (solo navegador). Ninguna es SDK de anuncios, analítica ni errores; `record` graba en el dispositivo y no envía nada. |
 | ¿Analítica, anuncios, ID de publicidad (AAID)? | **No** | No hay `play-services-ads`, `firebase_*` ni `com.google.android.gms.permission.AD_ID` en el manifiesto final |
-| ¿Permisos del dispositivo? | **Ninguno peligroso** | El único permiso es `…DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`: interno de AndroidX, propio de la app y sin diálogo para el usuario |
+| ¿Permisos del dispositivo? | **Micrófono (opcional)** | `RECORD_AUDIO`, solo para «Practicar» de «Aprendo a Hablar»: se pide la primera vez que el niño pulsa «Grabar». La grabación no sale del dispositivo, no se analiza y se borra al cerrar (`lib/speech/voice_practice.dart`, `test/speech/speech_flow2_test.dart`). Se puede desactivar en la zona para adultos. Además, el permiso interno de AndroidX `…DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`, sin diálogo |
 | ¿Internet en uso normal? | **No** | La app funciona totalmente sin conexión |
 | ¿Datos de uso? | **No se envían.** Las estadísticas de juego solo se guardan en el propio dispositivo. | Ver arriba |
 | ¿Se pueden borrar las creaciones? | **Sí**, una a una en «Mis dibujos» (con confirmación). Todo, borrando datos o desinstalando. | `saved_drawings_screen.dart`; prueba de borrado (Fase 5) |

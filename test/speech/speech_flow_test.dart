@@ -4,6 +4,7 @@ import 'package:pequenos_artistas/audio/app_audio.dart';
 import 'package:pequenos_artistas/persistence/key_value_backend.dart';
 import 'package:pequenos_artistas/speech/screens/speech_hub_screen.dart';
 import 'package:pequenos_artistas/speech/speech_progress.dart';
+import 'package:pequenos_artistas/speech/voice_practice.dart';
 
 import '../test_helpers.dart';
 
@@ -16,7 +17,9 @@ Future<void> tapAndSettle(WidgetTester tester, Finder finder) async {
 
 Future<SpeechController> openHub(WidgetTester tester, {SpeechController? speech}) async {
   setScreenSize(tester, const Size(420, 900));
-  final controller = speech ?? SpeechController(SpeechStore(MemoryBackend()));
+  final controller =
+      speech ??
+      SpeechController(SpeechStore(MemoryBackend()), recorder: () => lastRecorder = FakeVoiceRecorder());
   await controller.load();
   await pumpApp(tester, speech: controller);
   await tapAndSettle(tester, find.bySemanticsLabel('Aprendo a Hablar'));
@@ -142,6 +145,7 @@ void main() {
     expect(find.bySemanticsLabel('Frases escuchadas: 1 de 12'), findsOneWidget);
     expect(find.bySemanticsLabel('Frases ordenadas: 0 de 12'), findsOneWidget);
     expect(find.bySemanticsLabel('Días de práctica esta semana: 1 de 7'), findsOneWidget);
+    await tester.scrollUntilVisible(find.bySemanticsLabel('Familia: 1 de 10'), 300);
     expect(find.bySemanticsLabel('Familia: 1 de 10'), findsOneWidget);
     expect(find.bySemanticsLabel('Animales: 1 de 10'), findsOneWidget);
     await tester.scrollUntilVisible(find.textContaining('No es una evaluación del habla'), 300);

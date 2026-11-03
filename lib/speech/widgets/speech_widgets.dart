@@ -12,6 +12,9 @@ import '../../theme/app_motion.dart';
 import '../speech_content.dart';
 import 'speech_art.dart';
 
+/// Color de la sección «Aprendo a Hablar» (el verde de Lolo).
+const speechAccent = LoloPainter.green;
+
 /// Lolo, el lorito guía. Saluda con el ala unas pocas veces al aparecer y
 /// mueve el pico mientras [talking] (sin animaciones infinitas).
 class Lolo extends StatefulWidget {

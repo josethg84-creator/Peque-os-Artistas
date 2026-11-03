@@ -18,6 +18,7 @@ import 'package:pequenos_artistas/services/drawing_loader.dart';
 import 'package:pequenos_artistas/persistence/creation.dart';
 import 'package:pequenos_artistas/persistence/creation_store.dart';
 import 'package:pequenos_artistas/speech/speech_progress.dart';
+import 'package:pequenos_artistas/speech/voice_practice.dart';
 
 /// Bundle que sirve los textos de [files] y, si [fromDisk], los archivos
 /// reales del proyecto. Lee de forma síncrona para funcionar dentro de las
@@ -71,6 +72,9 @@ RecordingSoundEffects? lastSounds;
 RecordingNarrator? lastNarrator;
 RecordingMusic? lastMusic;
 
+/// La última grabadora simulada que abrió «Practicar».
+FakeVoiceRecorder? lastRecorder;
+
 Future<void> pumpApp(
   WidgetTester tester, {
   CatalogService? service,
@@ -91,7 +95,10 @@ Future<void> pumpApp(
       drawingLoader: loader ?? diskDrawingLoader(),
       creationStore: store ?? InMemoryCreationStore(),
       learningController: controller,
-      speechController: speech ?? (SpeechController(SpeechStore(MemoryBackend()))..load()),
+      speechController:
+          speech ??
+          (SpeechController(SpeechStore(MemoryBackend()), recorder: () => lastRecorder = FakeVoiceRecorder())
+            ..load()),
       learningAudio: LearningAudio(
         effects: sounds,
         narrator: narrator,

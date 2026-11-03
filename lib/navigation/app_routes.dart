@@ -23,6 +23,21 @@ abstract final class AppRoutes {
   static const speechWords = '/hablar/palabras/grupo';
   static const speechPhrases = '/hablar/frases';
   static const speechProgress = '/hablar/progreso';
+  static const speechSentences = '/hablar/oraciones';
+  static const speechBuilder = '/hablar/oraciones/construir';
+  static const speechOrder = '/hablar/oraciones/ordenar';
+  static const speechComplete = '/hablar/oraciones/completar';
+  static const speechQuestion = '/hablar/oraciones/pregunta';
+  static const speechVerbs = '/hablar/verbos';
+  static const speechVerb = '/hablar/verbos/verbo';
+  static const speechVerbGames = '/hablar/verbos/juegos';
+  static const speechListen = '/hablar/escucho';
+}
+
+/// Argumento de [AppRoutes.speechVerb]: el verbo.
+class SpeechVerbArgs {
+  const SpeechVerbArgs(this.verbId);
+  final String verbId;
 }
 
 /// Argumento de [AppRoutes.speechWords]: el grupo de palabras.

@@ -6,6 +6,7 @@ import '../../theme/app_colors.dart';
 import '../../theme/app_dimens.dart';
 import '../../widgets/kid_scaffold.dart';
 import '../speech_content.dart';
+import '../widgets/practice_sheet.dart';
 import '../widgets/speech_widgets.dart';
 import 'speech_hub_screen.dart';
 
@@ -157,6 +158,13 @@ class _WordsPagerState extends State<_WordsPager> {
         color: const Color(0xFFAB47BC),
         onPressed: () => _say(slow: true),
       ),
+      if (practiceAllowed(context))
+        SpeechActionButton(
+          icon: Icons.mic_rounded,
+          label: 'Practicar',
+          color: const Color(0xFFE53950),
+          onPressed: () => showPracticeSheet(context, _words[_index].text),
+        ),
       SpeechActionButton(
         icon: Icons.arrow_forward_rounded,
         label: 'Siguiente',

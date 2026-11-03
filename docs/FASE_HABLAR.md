@@ -1,4 +1,4 @@
-# Aprendo a Hablar — primera entrega
+# Aprendo a Hablar — entregas 1 y 2
 
 Módulo para niños desde los 4 años que enseña vocabulario y frases con voz en español,
 dentro de la misma app y con su mismo estilo. Lo acompaña **Lolo**, un lorito original.
@@ -33,12 +33,81 @@ dentro de la misma app y con su mismo estilo. Lo acompaña **Lolo**, un lorito o
   para los adultos de que no es una evaluación.
 - En estas actividades la música de fondo se calla para oír bien la voz.
 
-### Lo que falta (entregas siguientes)
+## Segunda entrega
 
-- **2.ª entrega:** construcción de oraciones, conjugación de verbos, actividades de
-  comprensión y **grabación local opcional** (botón «Practicar»). No se ha añadido ningún
-  permiso de micrófono todavía: se hará cuando se compruebe un paquete compatible con Android
-  y web, con grabación solo local, sin subir nada y borrada por defecto.
+| Pedido | Estado |
+|---|---|
+| Construcción de oraciones | ✅ «Construyo oraciones», con 4 actividades (abajo) |
+| Conjugación de verbos | ✅ «Aprendo los verbos»: los 15 verbos pedidos en presente, y «Juegos de verbos» |
+| Actividades de comprensión | ✅ «Escucho y comprendo» |
+| Grabación local opcional | ✅ Botón **«Practicar»** en palabras, frases, oraciones y verbos |
+
+En el menú solo quedan como «Muy pronto» **Hablemos juntos** y **Cuentos interactivos**
+(3.ª entrega).
+
+### Construyo oraciones
+
+- **Construye una oración:** se elige con dibujos **¿Quién?** (el niño, la niña, mamá…),
+  **¿Qué hace?** (come, bebe, lee, pinta, juega con, mira, abre) y **¿Qué?** (una manzana, la
+  pelota…). Lolo dice la oración completa («El niño come una manzana.»), que también se puede
+  oír despacio o practicar.
+- **Ordena la oración:** 12 oraciones en 3 niveles (3 palabras, 4 y 5 o más). Se empieza por
+  la primera que aún no se ha ordenado, así se avanza de nivel con la práctica. Errores sin
+  castigo, con ayuda a la segunda.
+- **Completa la oración:** «El niño come una ___»: se elige la palabra entre tres dibujos.
+- **¿Pregunta o afirmación?:** se oye la oración con su entonación («¿El perro come pan?» o
+  «El perro come pan.») y se elige. La mitad son preguntas.
+
+### Aprendo los verbos
+
+- Los 15 verbos (comer, beber, jugar, correr, dormir, saltar, caminar, pintar, leer, cantar,
+  bailar, mirar, hablar, abrir y cerrar), cada uno con su pictograma.
+- Cada verbo muestra el presente en oraciones: «Yo **como** una manzana», «Tú **comes**…»,
+  «Él **come**…», «Ella **come**…», «Nosotros **comemos**…». Cada línea se escucha al tocarla y
+  «Escuchar todo» las dice seguidas, resaltando la que suena. Los irregulares están bien
+  (duermo, juego, cierro).
+- **Juegos de verbos** (mezclados): completa la oración con la forma correcta, elige la acción,
+  **¿Quién está comiendo?** (personas con la acción en un dibujito) y **escucha y señala** (sin
+  el nombre escrito).
+- Pasado y futuro quedan para niveles posteriores, como se pidió: el contenido ya está
+  separado por tiempos para añadirlos.
+
+### Escucho y comprendo
+
+Se oye una palabra («¿Dónde está el perro?», «¿Dónde están las uvas?», «Señala: correr») o una
+frase («Escucha: Tengo sueño») y se toca su dibujo. El nombre no aparece escrito: hay que
+escuchar. «Escuchar» repite la pregunta.
+
+En todas las actividades con preguntas: un error suena suave y Lolo anima («¡Casi! Prueba otra
+vez»); a la segunda, la respuesta correcta brilla. Nunca se bloquea el avance. Al terminar,
+Lolo felicita y se puede jugar otra vez.
+
+### Practicar con la voz (opcional)
+
+1. Lolo dice la palabra u oración («Escucha y repite: perro»).
+2. El niño pulsa **Grabar** (la primera vez, el sistema pide el permiso del micrófono).
+3. Habla; la grabación para con **Parar** o sola a los 6 segundos.
+4. Lolo dice «**¡Muy bien por intentarlo!**» y aparecen **Escuchar mi voz** y **Escuchar a
+   Lolo**, para comparar.
+5. **Grabar otra vez** borra la anterior y graba de nuevo.
+
+- **No se evalúa ni se puntúa la pronunciación** y no hay mensajes negativos. Lolo no dice que
+  lo ha entendido, porque no hay reconocimiento de voz.
+- **Privacidad:** la grabación está en memoria (navegador) o en la carpeta temporal de la app
+  (teléfono), **no se envía a ningún sitio y se borra al cerrar** la ventana de práctica.
+  Solo se cuenta cuántas veces se practicó.
+- Si no se da permiso, Lolo lo explica con amabilidad y el resto de la app sigue igual.
+- **Zona para adultos → Aprendo a Hablar:** resumen del progreso e interruptor **«Practicar con
+  el micrófono»** para quitar el botón.
+- Paquete: `record` 7.1.2 (Android, web y otros), comprobado: el APK compila e incluye el
+  permiso `RECORD_AUDIO`, y en Chromium (con micrófono simulado) se grabó un clip real de
+  unos 360 KB que se liberó al cerrar.
+- **No se ha probado todavía en un teléfono real** con micrófono de verdad.
+- No se ha añadido reconocimiento automático de voz: tendría que ser opcional, local y estar
+  verificado antes, por la privacidad infantil.
+
+## Lo que falta
+
 - **3.ª entrega:** conversaciones guiadas con Lolo, cuentos narrados, panel de progreso
   ampliado (también en la zona de adultos), mejoras visuales y de accesibilidad.
 
@@ -59,7 +128,7 @@ dentro de la misma app y con su mismo estilo. Lo acompaña **Lolo**, un lorito o
 
 ## Privacidad
 
-- No se usa el micrófono ni se graba nada en esta entrega.
+- El micrófono solo se usa en «Practicar» (ver arriba): nada se envía ni se guarda.
 - El progreso se guarda **solo en el dispositivo** (clave `speech.v1.state`, con suma de
   verificación y copia de seguridad). No hay cuentas, servidores, anuncios ni datos personales.
 
@@ -112,7 +181,15 @@ lib/speech/
   screens/speech_hub_screen.dart  menú, grupos de palabras y «Mi progreso»
   screens/words_screen.dart       palabras una a una
   screens/phrases_screen.dart     frases y «¡Ordénala tú!»
-assets/speech/words.json, phrases.json
+  screens/sentences_screens.dart  construir, ordenar (por niveles) y menú de oraciones
+  screens/verbs_screens.dart      verbos y conjugación
+  screens/speech_quiz_screen.dart actividades con preguntas (completar, pregunta o afirmación,
+                                  juegos de verbos, escucho y comprendo)
+  speech_activities.dart          preguntas de cada actividad (funciones puras, comprobables)
+  voice_practice.dart             grabación de «Practicar» (interfaz, real y simulada)
+  widgets/practice_sheet.dart     ventana de «Practicar»
+  widgets/order_words.dart        ordenar palabras (frases y oraciones)
+assets/speech/words.json, phrases.json, verbs.json, sentences.json
 ```
 
 - Contenido, lógica, almacenamiento y pantallas están separados.
@@ -130,5 +207,12 @@ assets/speech/words.json, phrases.json
 - `test/speech/speech_flow_test.dart`: inicio → menú (8 actividades y «Muy pronto»), palabras
   (escuchar, despacio, siguiente, deslizar, terminar el grupo, música callada), frases
   (palabra a palabra, ordenar con errores sin castigo y con ayuda) y «Mi progreso».
-- `test/responsive_test.dart`: las 6 pantallas nuevas sin desbordamientos en 5 tamaños, con
+- `test/speech/speech_activities_test.dart`: los 15 verbos bien conjugados, el contenido de
+  oraciones y las preguntas de cada actividad (válidas, repetibles con la misma semilla, con
+  la respuesta correcta).
+- `test/speech/speech_flow2_test.dart`: constructor, ordenar por niveles y continuar donde se
+  quedó, completar con errores y ayuda hasta terminar, verbos (línea a línea y «Escuchar
+  todo»), «Practicar» (el permiso solo al grabar, escucharse, repetir borrando la anterior,
+  parada a los 6 s, borrado al cerrar, sin permiso) e interruptor de la zona de adultos.
+- `test/responsive_test.dart`: las 15 pantallas del módulo sin desbordamientos en 5 tamaños, con
   texto normal y al 160 %.

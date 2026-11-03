@@ -16,6 +16,10 @@ import '../screens/saved_drawings_screen.dart';
 import '../screens/search_screen.dart';
 import '../screens/sound_settings_screen.dart';
 import '../speech/screens/phrases_screen.dart';
+import '../speech/screens/sentences_screens.dart';
+import '../speech/screens/speech_quiz_screen.dart';
+import '../speech/screens/verbs_screens.dart';
+import '../speech/speech_activities.dart';
 import '../speech/screens/speech_hub_screen.dart';
 import '../speech/screens/words_screen.dart';
 import 'app_routes.dart';
@@ -49,6 +53,15 @@ abstract final class AppRouter {
       AppRoutes.speechWords when args is SpeechWordsArgs => WordsScreen(categoryId: args.categoryId),
       AppRoutes.speechPhrases => const PhrasesScreen(),
       AppRoutes.speechProgress => const SpeechProgressScreen(),
+      AppRoutes.speechSentences => const SentencesHubScreen(),
+      AppRoutes.speechBuilder => const SentenceBuilderScreen(),
+      AppRoutes.speechOrder => const OrderSentencesScreen(),
+      AppRoutes.speechComplete => const SpeechQuizScreen(quiz: SpeechQuizKind.complete),
+      AppRoutes.speechQuestion => const SpeechQuizScreen(quiz: SpeechQuizKind.questionOrStatement),
+      AppRoutes.speechVerbs => const VerbsScreen(),
+      AppRoutes.speechVerb when args is SpeechVerbArgs => VerbScreen(verbId: args.verbId),
+      AppRoutes.speechVerbGames => const SpeechQuizScreen(quiz: SpeechQuizKind.verbs),
+      AppRoutes.speechListen => const SpeechQuizScreen(quiz: SpeechQuizKind.comprehension),
       _ => const NotFoundScreen(),
     };
     return MaterialPageRoute<void>(
@@ -61,7 +74,15 @@ abstract final class AppRouter {
   /// innecesarios), una más suave al colorear y silencio en los juegos y al
   /// aprender palabras y frases, para oír bien la voz.
   static MusicTrack? musicFor(String? route, Widget page) {
-    if (page is LearningGameScreen || page is WordsScreen || page is PhrasesScreen) return null;
+    if (page is LearningGameScreen ||
+        page is WordsScreen ||
+        page is PhrasesScreen ||
+        page is SentenceBuilderScreen ||
+        page is OrderSentencesScreen ||
+        page is SpeechQuizScreen ||
+        page is VerbScreen) {
+      return null;
+    }
     if (page is ColoringScreen) return MusicTrack.coloring;
     return MusicTrack.main;
   }

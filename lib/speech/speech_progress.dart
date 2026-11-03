@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import '../persistence/creation.dart';
 import '../persistence/key_value_backend.dart';
 import 'speech_content.dart';
+import 'voice_practice.dart';
 
 /// Lo que el niño ha hecho de verdad en «Aprendo a Hablar». No es una
 /// evaluación del lenguaje: solo cuenta actividades realizadas.
@@ -16,10 +17,20 @@ class SpeechProgress {
     Set<String>? phrasesHeard,
     Set<String>? phrasesOrdered,
     Set<String>? practiceDays,
+    Set<String>? verbsHeard,
+    Set<String>? sentencesBuilt,
+    Set<String>? sentencesOrdered,
+    Map<String, int>? activitiesDone,
+    this.recordings = 0,
+    this.micAllowed = true,
   }) : wordsHeard = wordsHeard ?? {},
        phrasesHeard = phrasesHeard ?? {},
        phrasesOrdered = phrasesOrdered ?? {},
-       practiceDays = practiceDays ?? {};
+       practiceDays = practiceDays ?? {},
+       verbsHeard = verbsHeard ?? {},
+       sentencesBuilt = sentencesBuilt ?? {},
+       sentencesOrdered = sentencesOrdered ?? {},
+       activitiesDone = activitiesDone ?? {};
 
   static const formatVersion = 1;
 
@@ -35,12 +46,39 @@ class SpeechProgress {
   /// Días en que practicó (AAAA-MM-DD, hora local).
   final Set<String> practiceDays;
 
+  /// Verbos cuya conjugación ha escuchado (ids).
+  final Set<String> verbsHeard;
+
+  /// Oraciones distintas que ha construido él mismo (el texto).
+  final Set<String> sentencesBuilt;
+
+  /// Oraciones de «Ordena la oración» que ha ordenado (el texto).
+  final Set<String> sentencesOrdered;
+
+  /// Veces que ha terminado cada actividad (ordenar, completar, verbos…).
+  final Map<String, int> activitiesDone;
+
+  /// Veces que ha practicado con su voz. Solo el número: las grabaciones no
+  /// se guardan.
+  int recordings;
+
+  /// Un adulto puede desactivar la práctica con el micrófono.
+  bool micAllowed;
+
   Map<String, dynamic> toJson() => {
     'format_version': formatVersion,
     'words_heard': wordsHeard.toList()..sort(),
     'phrases_heard': phrasesHeard.toList()..sort(),
     'phrases_ordered': phrasesOrdered.toList()..sort(),
     'practice_days': practiceDays.toList()..sort(),
+    'verbs_heard': verbsHeard.toList()..sort(),
+    'sentences_built': sentencesBuilt.toList()..sort(),
+    'sentences_ordered': sentencesOrdered.toList()..sort(),
+    'activities_done': Map.fromEntries(
+      activitiesDone.entries.toList()..sort((a, b) => a.key.compareTo(b.key)),
+    ),
+    'recordings': recordings,
+    'mic_allowed': micAllowed,
   };
 
   static SpeechProgress fromJson(Map<String, dynamic> json) {
@@ -50,6 +88,16 @@ class SpeechProgress {
       phrasesHeard: set('phrases_heard'),
       phrasesOrdered: set('phrases_ordered'),
       practiceDays: set('practice_days'),
+      verbsHeard: set('verbs_heard'),
+      sentencesBuilt: set('sentences_built'),
+      sentencesOrdered: set('sentences_ordered'),
+      activitiesDone: {
+        if (json['activities_done'] case final Map<String, dynamic> m)
+          for (final MapEntry(:key, :value) in m.entries)
+            if (value is int) key: value,
+      },
+      recordings: json['recordings'] is int ? json['recordings'] as int : 0,
+      micAllowed: json['mic_allowed'] is bool ? json['mic_allowed'] as bool : true,
     );
   }
 }
@@ -99,9 +147,17 @@ class SpeechStore {
 
 /// Contenido y progreso de «Aprendo a Hablar».
 class SpeechController extends ChangeNotifier {
-  SpeechController(this._store, {AssetBundle? bundle, DateTime Function()? clock})
-    : _bundle = bundle ?? rootBundle,
-      _clock = clock ?? DateTime.now;
+  SpeechController(
+    this._store, {
+    AssetBundle? bundle,
+    DateTime Function()? clock,
+    VoiceRecorder Function()? recorder,
+  }) : _bundle = bundle ?? rootBundle,
+       _clock = clock ?? DateTime.now,
+       newRecorder = recorder ?? DeviceVoiceRecorder.new;
+
+  /// Crea la grabadora de «Practicar» (una por ventana, que se libera al cerrarla).
+  final VoiceRecorder Function() newRecorder;
 
   final SpeechStore _store;
   final AssetBundle _bundle;
@@ -128,6 +184,26 @@ class SpeechController extends ChangeNotifier {
   }();
 
   void markWordHeard(String id) => _record(() => _progress.wordsHeard.add(id));
+  void markVerbHeard(String id) => _record(() => _progress.verbsHeard.add(id));
+  void markSentenceBuilt(String text) => _record(() => _progress.sentencesBuilt.add(text));
+  void markSentenceOrdered(String text) => _record(() => _progress.sentencesOrdered.add(text));
+  void markActivityDone(String kind) => _record(() {
+    _progress.activitiesDone[kind] = (_progress.activitiesDone[kind] ?? 0) + 1;
+    return true;
+  });
+  void markRecording() => _record(() {
+    _progress.recordings++;
+    return true;
+  });
+
+  /// Activa o desactiva la práctica con el micrófono (zona de adultos).
+  void setMicAllowed(bool allowed) {
+    if (_progress.micAllowed == allowed) return;
+    _progress.micAllowed = allowed;
+    notifyListeners();
+    unawaited(_save());
+  }
+
   void markPhraseHeard(String id) => _record(() => _progress.phrasesHeard.add(id));
   void markPhraseOrdered(String id) => _record(() => _progress.phrasesOrdered.add(id));
 

@@ -8,13 +8,22 @@ import 'package:flutter/material.dart';
 /// archivos, sin tocar el código. Lo que no se reconoce (una categoría sin
 /// palabras, un dibujo desconocido…) se descarta sin romper la pantalla.
 class SpeechContent {
-  const SpeechContent({required this.categories, required this.phrases});
+  const SpeechContent({
+    required this.categories,
+    required this.phrases,
+    this.verbs = const [],
+    this.sentences = const SentenceContent(),
+  });
 
   static const wordsAsset = 'assets/speech/words.json';
   static const phrasesAsset = 'assets/speech/phrases.json';
+  static const verbsAsset = 'assets/speech/verbs.json';
+  static const sentencesAsset = 'assets/speech/sentences.json';
 
   final List<WordCategory> categories;
   final List<SpeechPhrase> phrases;
+  final List<SpeechVerb> verbs;
+  final SentenceContent sentences;
 
   List<SpeechWord> get words => [for (final c in categories) ...c.words];
 
@@ -31,10 +40,20 @@ class SpeechContent {
     // Se decodifica aquí (no con loadString) para no depender de un isolate.
     Future<Map<String, dynamic>> read(String key) async =>
         jsonDecode(utf8.decode((await bundle.load(key)).buffer.asUint8List())) as Map<String, dynamic>;
-    return parse(await read(wordsAsset), await read(phrasesAsset));
+    return parse(
+      await read(wordsAsset),
+      await read(phrasesAsset),
+      verbs: await read(verbsAsset),
+      sentences: await read(sentencesAsset),
+    );
   }
 
-  static SpeechContent parse(Map<String, dynamic> words, Map<String, dynamic> phrases) {
+  static SpeechContent parse(
+    Map<String, dynamic> words,
+    Map<String, dynamic> phrases, {
+    Map<String, dynamic>? verbs,
+    Map<String, dynamic>? sentences,
+  }) {
     final seen = <String>{};
     final categories = <WordCategory>[];
     for (final c in (words['categories'] as List? ?? const [])) {
@@ -53,7 +72,186 @@ class SpeechContent {
       final phrase = p is Map<String, dynamic> ? SpeechPhrase.fromJson(p) : null;
       if (phrase != null && phraseIds.add(phrase.id)) phraseList.add(phrase);
     }
-    return SpeechContent(categories: categories, phrases: phraseList);
+    final verbIds = <String>{};
+    return SpeechContent(
+      categories: categories,
+      phrases: phraseList,
+      verbs: [
+        for (final v in (verbs?['verbs'] as List? ?? const []))
+          if (v is Map<String, dynamic>)
+            if (SpeechVerb.fromJson(v) case final verb? when verbIds.add(verb.id)) verb,
+      ],
+      sentences: sentences == null ? const SentenceContent() : SentenceContent.fromJson(sentences),
+    );
+  }
+}
+
+/// Las personas de la conjugación, en orden.
+enum VerbPerson {
+  yo('Yo', 'me'),
+  tu('Tú', 'you'),
+  el('Él', 'he'),
+  ella('Ella', 'she'),
+  nosotros('Nosotros', 'we');
+
+  const VerbPerson(this.label, this.icon);
+  final String label;
+
+  /// Pictograma de [SpeechIcons].
+  final String icon;
+}
+
+/// Un verbo con su presente (yo, tú, él/ella, nosotros) y un complemento para
+/// formar oraciones de ejemplo («Yo como una manzana»).
+class SpeechVerb {
+  const SpeechVerb({
+    required this.id,
+    required this.infinitive,
+    required this.picture,
+    required this.present,
+    required this.gerund,
+    required this.complement,
+  });
+
+  final String id;
+  final String infinitive;
+  final SpeechPicture picture;
+
+  /// Formas del presente: `yo`, `tu`, `el` (también para «ella») y `nosotros`.
+  final Map<String, String> present;
+
+  /// «comiendo» (para «¿Quién está comiendo?»).
+  final String gerund;
+  final String complement;
+
+  String form(VerbPerson p) =>
+      present[switch (p) {
+        VerbPerson.yo => 'yo',
+        VerbPerson.tu => 'tu',
+        VerbPerson.el || VerbPerson.ella => 'el',
+        VerbPerson.nosotros => 'nosotros',
+      }]!;
+
+  /// «Yo como una manzana.»
+  String sentence(VerbPerson p) => '${p.label} ${form(p)} $complement.';
+
+  static SpeechVerb? fromJson(Map<String, dynamic> json) {
+    final id = json['id'], inf = json['infinitive'], ger = json['gerund'];
+    final picture = SpeechPicture.fromJson(json['picture']);
+    final present = json['present'];
+    if (id is! String || inf is! String || ger is! String || picture == null || present is! Map) return null;
+    final forms = {
+      for (final k in const ['yo', 'tu', 'el', 'nosotros'])
+        if (present[k] case final String f) k: f,
+    };
+    if (forms.length != 4) return null;
+    return SpeechVerb(
+      id: id,
+      infinitive: inf,
+      picture: picture,
+      present: forms,
+      gerund: ger,
+      complement: json['complement'] is String ? json['complement'] as String : '',
+    );
+  }
+}
+
+/// Un trozo de oración con su ilustración (un sujeto o un complemento).
+class SentencePiece {
+  const SentencePiece({required this.id, required this.text, required this.picture});
+  final String id;
+  final String text;
+  final SpeechPicture picture;
+
+  static SentencePiece? fromJson(Object? json) {
+    if (json is! Map<String, dynamic>) return null;
+    final id = json['id'] ?? json['text'], text = json['text'];
+    final picture = SpeechPicture.fromJson(json['picture']);
+    if (id is! String || text is! String || picture == null) return null;
+    return SentencePiece(id: id, text: text, picture: picture);
+  }
+}
+
+/// Una acción del constructor: el verbo conjugado («come») y sus complementos.
+class SentenceAction {
+  const SentenceAction({required this.verbId, required this.text, required this.complements});
+  final String verbId;
+  final String text;
+  final List<SentencePiece> complements;
+}
+
+/// Una oración para ordenar, con su ilustración.
+class OrderSentence {
+  const OrderSentence({required this.text, required this.picture});
+  final String text;
+  final SpeechPicture picture;
+
+  List<String> get words => SpeechPhrase(id: text, text: text, picture: picture).words;
+}
+
+/// «El niño come una ___»: la palabra que falta y las opciones con dibujo.
+class CompleteItem {
+  const CompleteItem({
+    required this.before,
+    required this.answer,
+    required this.after,
+    required this.options,
+  });
+  final String before;
+  final String answer;
+  final String after;
+  final List<SentencePiece> options;
+
+  String get full => '$before $answer$after';
+}
+
+/// Contenido de «Construyo oraciones».
+class SentenceContent {
+  const SentenceContent({
+    this.subjects = const [],
+    this.actions = const [],
+    this.order = const [],
+    this.complete = const [],
+  });
+
+  final List<SentencePiece> subjects;
+  final List<SentenceAction> actions;
+  final List<OrderSentence> order;
+  final List<CompleteItem> complete;
+
+  static SentenceContent fromJson(Map<String, dynamic> json) {
+    List<Map<String, dynamic>> list(Object? v) => [
+      ...(v as List? ?? const []).whereType<Map<String, dynamic>>(),
+    ];
+    return SentenceContent(
+      subjects: [for (final s in list(json['subjects'])) ?SentencePiece.fromJson(s)],
+      actions: [
+        for (final a in list(json['actions']))
+          if (a['verb'] case final String verb)
+            if (a['text'] case final String text)
+              SentenceAction(
+                verbId: verb,
+                text: text,
+                complements: [for (final c in list(a['complements'])) ?SentencePiece.fromJson(c)],
+              ),
+      ],
+      order: [
+        for (final o in list(json['order']))
+          if (o['text'] case final String text)
+            if (SpeechPicture.fromJson(o['picture']) case final picture?)
+              OrderSentence(text: text, picture: picture),
+      ],
+      complete: [
+        for (final c in list(json['complete']))
+          if ((c['before'], c['answer']) case (final String before, final String answer))
+            CompleteItem(
+              before: before,
+              answer: answer,
+              after: c['after'] is String ? c['after'] as String : '',
+              options: [for (final o in list(c['options'])) ?SentencePiece.fromJson(o)],
+            ),
+      ],
+    );
   }
 }
 
@@ -308,6 +506,19 @@ abstract final class SpeechIcons {
     'hurt': Icons.healing,
     'love': Icons.favorite,
     'wave': Icons.waving_hand,
+    // Verbos.
+    'jump': Icons.sports_gymnastics,
+    'dance': Icons.music_note,
+    'look': Icons.visibility,
+    'talk': Icons.record_voice_over,
+    'open': Icons.meeting_room,
+    'close': Icons.door_front_door,
+    // Personas (yo, tú, él, ella, nosotros).
+    'me': Icons.emoji_people,
+    'you': Icons.person,
+    'he': Icons.boy,
+    'she': Icons.girl,
+    'we': Icons.groups,
   };
 }
 

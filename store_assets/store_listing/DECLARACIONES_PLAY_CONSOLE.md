@@ -74,6 +74,7 @@ Datos verificados (detalle en [`../privacy/AUDITORIA_PRIVACIDAD.md`](../privacy/
 | Pregunta del formulario | Situación verificada |
 |---|---|
 | ¿La app recoge o comparte alguno de los tipos de datos de usuario obligatorios? | Ningún dato sale del dispositivo: no hay permiso INTERNET, SDK de terceros ni código de red. Google define «recoger» como transmitir fuera del dispositivo. Respuesta coherente: **No**. |
+| Audio (grabaciones de voz) | En «Practicar», el niño se graba para escucharse. La grabación **no sale del dispositivo**, no se guarda (se borra al cerrar) y no se analiza: según la definición de Google no es «recogida». **CONFIRMAR** al leer la ayuda del formulario. |
 | Datos guardados solo en el dispositivo | Dibujos, progreso y preferencias, en `shared_preferences`. Según la definición de Google, los datos que no salen del dispositivo no cuentan como «recogidos». **CONFIRMAR** al leer la ayuda del formulario. |
 | Cifrado en tránsito | No aplica: no hay transmisión. |
 | ¿Los usuarios pueden pedir que se borren sus datos? | No hay datos en servidores. En el dispositivo se borran desde «Mis dibujos», borrando los datos de la app o desinstalándola. |
@@ -90,8 +91,11 @@ esta declaración antes de publicar.
 
 ## 9. Permisos
 
-- La app solo declara un permiso interno de AndroidX
-  (`…DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`), que no se muestra al usuario.
+- `android.permission.RECORD_AUDIO` (micrófono), opcional: solo para «Practicar» en «Aprendo a
+  Hablar». Se pide la primera vez que el niño pulsa «Grabar»; la grabación no se envía ni se
+  guarda. Explicarlo en la política de privacidad (ya está en el borrador).
+- Un permiso interno de AndroidX (`…DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`), que no se
+  muestra al usuario.
 - No hay permisos que pidan declaraciones especiales: ni ubicación, ni SMS o llamadas, ni
   acceso a todos los archivos, ni servicios de accesibilidad, ni alarmas exactas, ni
   `QUERY_ALL_PACKAGES`.

@@ -1,4 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Solo para «Practicar» de «Aprendo a Hablar»: se pide la primera vez que el niño
+         pulsa «Grabar». Las grabaciones no se guardan ni se envían. -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <application
         android:label="Pequeños Artistas"
         android:allowBackup="false"

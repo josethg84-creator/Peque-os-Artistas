@@ -1,0 +1,245 @@
+{
+ "format_version": 1,
+ "verbs": [
+  {
+   "id": "comer",
+   "infinitive": "comer",
+   "picture": {
+    "icon": "eat",
+    "color": "#F4511E"
+   },
+   "present": {
+    "yo": "como",
+    "tu": "comes",
+    "el": "come",
+    "nosotros": "comemos"
+   },
+   "gerund": "comiendo",
+   "complement": "una manzana"
+  },
+  {
+   "id": "beber",
+   "infinitive": "beber",
+   "picture": {
+    "icon": "drink",
+    "color": "#039BE5"
+   },
+   "present": {
+    "yo": "bebo",
+    "tu": "bebes",
+    "el": "bebe",
+    "nosotros": "bebemos"
+   },
+   "gerund": "bebiendo",
+   "complement": "agua"
+  },
+  {
+   "id": "jugar",
+   "infinitive": "jugar",
+   "picture": {
+    "icon": "play",
+    "color": "#FB8C00"
+   },
+   "present": {
+    "yo": "juego",
+    "tu": "juegas",
+    "el": "juega",
+    "nosotros": "jugamos"
+   },
+   "gerund": "jugando",
+   "complement": "con la pelota"
+  },
+  {
+   "id": "correr",
+   "infinitive": "correr",
+   "picture": {
+    "icon": "run",
+    "color": "#43A047"
+   },
+   "present": {
+    "yo": "corro",
+    "tu": "corres",
+    "el": "corre",
+    "nosotros": "corremos"
+   },
+   "gerund": "corriendo",
+   "complement": "en el parque"
+  },
+  {
+   "id": "dormir",
+   "infinitive": "dormir",
+   "picture": {
+    "icon": "sleep",
+    "color": "#5C6BC0"
+   },
+   "present": {
+    "yo": "duermo",
+    "tu": "duermes",
+    "el": "duerme",
+    "nosotros": "dormimos"
+   },
+   "gerund": "durmiendo",
+   "complement": "en la cama"
+  },
+  {
+   "id": "saltar",
+   "infinitive": "saltar",
+   "picture": {
+    "icon": "jump",
+    "color": "#00ACC1"
+   },
+   "present": {
+    "yo": "salto",
+    "tu": "saltas",
+    "el": "salta",
+    "nosotros": "saltamos"
+   },
+   "gerund": "saltando",
+   "complement": "muy alto"
+  },
+  {
+   "id": "caminar",
+   "infinitive": "caminar",
+   "picture": {
+    "icon": "walk",
+    "color": "#00897B"
+   },
+   "present": {
+    "yo": "camino",
+    "tu": "caminas",
+    "el": "camina",
+    "nosotros": "caminamos"
+   },
+   "gerund": "caminando",
+   "complement": "por la calle"
+  },
+  {
+   "id": "pintar",
+   "infinitive": "pintar",
+   "picture": {
+    "icon": "paint",
+    "color": "#E91E63"
+   },
+   "present": {
+    "yo": "pinto",
+    "tu": "pintas",
+    "el": "pinta",
+    "nosotros": "pintamos"
+   },
+   "gerund": "pintando",
+   "complement": "un dibujo"
+  },
+  {
+   "id": "leer",
+   "infinitive": "leer",
+   "picture": {
+    "icon": "read",
+    "color": "#8E24AA"
+   },
+   "present": {
+    "yo": "leo",
+    "tu": "lees",
+    "el": "lee",
+    "nosotros": "leemos"
+   },
+   "gerund": "leyendo",
+   "complement": "un cuento"
+  },
+  {
+   "id": "cantar",
+   "infinitive": "cantar",
+   "picture": {
+    "icon": "sing",
+    "color": "#EC407A"
+   },
+   "present": {
+    "yo": "canto",
+    "tu": "cantas",
+    "el": "canta",
+    "nosotros": "cantamos"
+   },
+   "gerund": "cantando",
+   "complement": "una canción"
+  },
+  {
+   "id": "bailar",
+   "infinitive": "bailar",
+   "picture": {
+    "icon": "dance",
+    "color": "#AB47BC"
+   },
+   "present": {
+    "yo": "bailo",
+    "tu": "bailas",
+    "el": "baila",
+    "nosotros": "bailamos"
+   },
+   "gerund": "bailando",
+   "complement": "con mamá"
+  },
+  {
+   "id": "mirar",
+   "infinitive": "mirar",
+   "picture": {
+    "icon": "look",
+    "color": "#3949AB"
+   },
+   "present": {
+    "yo": "miro",
+    "tu": "miras",
+    "el": "mira",
+    "nosotros": "miramos"
+   },
+   "gerund": "mirando",
+   "complement": "las estrellas"
+  },
+  {
+   "id": "hablar",
+   "infinitive": "hablar",
+   "picture": {
+    "icon": "talk",
+    "color": "#26A69A"
+   },
+   "present": {
+    "yo": "hablo",
+    "tu": "hablas",
+    "el": "habla",
+    "nosotros": "hablamos"
+   },
+   "gerund": "hablando",
+   "complement": "con Lolo"
+  },
+  {
+   "id": "abrir",
+   "infinitive": "abrir",
+   "picture": {
+    "icon": "open",
+    "color": "#6D4C41"
+   },
+   "present": {
+    "yo": "abro",
+    "tu": "abres",
+    "el": "abre",
+    "nosotros": "abrimos"
+   },
+   "gerund": "abriendo",
+   "complement": "la puerta"
+  },
+  {
+   "id": "cerrar",
+   "infinitive": "cerrar",
+   "picture": {
+    "icon": "close",
+    "color": "#795548"
+   },
+   "present": {
+    "yo": "cierro",
+    "tu": "cierras",
+    "el": "cierra",
+    "nosotros": "cerramos"
+   },
+   "gerund": "cerrando",
+   "complement": "la ventana"
+  }
+ ]
+}

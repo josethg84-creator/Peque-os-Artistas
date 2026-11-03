@@ -6,6 +6,7 @@ import '../learning/learning_level.dart';
 import '../persistence/creation_store.dart';
 import '../services/app_services.dart';
 import '../services/catalog_service.dart';
+import '../speech/speech_progress.dart';
 import '../theme/app_theme.dart';
 import '../widgets/catalog_builder.dart';
 
@@ -56,6 +57,7 @@ class AdultZoneScreen extends StatelessWidget {
                 ),
                 _StoredDataSection(catalogIds: {for (final d in catalog.drawings) d.id}),
                 _LearningSection(learning: AppServices.of(context).learning),
+                _SpeechSection(speech: AppServices.of(context).speech),
                 const _Section(
                   icon: Icons.shield_outlined,
                   title: 'Privacidad y seguridad',
@@ -63,6 +65,9 @@ class AdultZoneScreen extends StatelessWidget {
                     'No se piden datos personales ni se crean cuentas.',
                     'Sin publicidad, sin compras, sin chat y sin enlaces externos.',
                     'La aplicación no usa Internet: todo se guarda solo en este dispositivo.',
+                    'El micrófono solo se usa en «Practicar» de «Aprendo a Hablar», cuando el niño '
+                        'pulsa «Grabar»: la grabación no se guarda ni se envía y se borra al cerrar. '
+                        'Se puede desactivar en la sección «Aprendo a Hablar».',
                     'Para borrar todos los datos: Ajustes de Android → Aplicaciones → '
                         'Pequeños Artistas → Almacenamiento → Borrar datos (o desinstalar la app).',
                   ],
@@ -211,6 +216,67 @@ class _StoredDataSectionState extends State<_StoredDataSection> {
                 ),
               ),
           ],
+        );
+      },
+    );
+  }
+}
+
+/// Resumen de «Aprendo a Hablar» y permiso para practicar con el micrófono.
+class _SpeechSection extends StatelessWidget {
+  const _SpeechSection({required this.speech});
+
+  final SpeechController speech;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListenableBuilder(
+      listenable: speech,
+      builder: (context, _) {
+        final p = speech.progress;
+        int done(String kind) => p.activitiesDone[kind] ?? 0;
+        return Card(
+          margin: const EdgeInsets.only(bottom: 12),
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    const Icon(Icons.record_voice_over_outlined),
+                    const SizedBox(width: 8),
+                    Expanded(child: Text('Aprendo a Hablar', style: Theme.of(context).textTheme.titleMedium)),
+                  ],
+                ),
+                const SizedBox(height: 8),
+                for (final line in [
+                  '${p.wordsHeard.length} palabra(s) y ${p.phrasesHeard.length} frase(s) escuchadas; '
+                      '${p.phrasesOrdered.length} frase(s) ordenadas.',
+                  '${p.verbsHeard.length} verbo(s) trabajados y ${p.sentencesBuilt.length} oración(es) construidas.',
+                  'Actividades terminadas: ordenar oraciones ${done('ordenar')}, completar ${done('completar')}, '
+                      'pregunta o afirmación ${done('pregunta')}, juegos de verbos ${done('verbos')}, '
+                      'escucho y comprendo ${done('comprension')}.',
+                  'Práctica con su voz: ${p.recordings} vez/veces. Días de práctica en los últimos 7: '
+                      '${speech.daysPracticedThisWeek()}.',
+                  'Solo cuenta actividades hechas en este dispositivo. No es una evaluación del habla ni '
+                      'sustituye la opinión de un profesional.',
+                ])
+                  Padding(padding: const EdgeInsets.only(top: 4), child: Text(line)),
+                const SizedBox(height: 8),
+                SwitchListTile(
+                  contentPadding: EdgeInsets.zero,
+                  title: const Text('Practicar con el micrófono'),
+                  subtitle: const Text(
+                    'Muestra el botón «Practicar»: el niño graba su voz y se escucha. '
+                    'Las grabaciones no se guardan ni se envían.',
+                  ),
+                  value: p.micAllowed,
+                  onChanged: speech.setMicAllowed,
+                ),
+              ],
+            ),
+          ),
         );
       },
     );

@@ -1,0 +1,562 @@
+{
+ "format_version": 1,
+ "subjects": [
+  {
+   "id": "nino",
+   "text": "El niño",
+   "picture": {
+    "icon": "boy",
+    "color": "#1E88E5"
+   }
+  },
+  {
+   "id": "nina",
+   "text": "La niña",
+   "picture": {
+    "icon": "girl",
+    "color": "#E91E63"
+   }
+  },
+  {
+   "id": "mama",
+   "text": "Mamá",
+   "picture": {
+    "icon": "woman",
+    "color": "#AB47BC"
+   }
+  },
+  {
+   "id": "papa",
+   "text": "Papá",
+   "picture": {
+    "icon": "man",
+    "color": "#3949AB"
+   }
+  },
+  {
+   "id": "abuelo",
+   "text": "El abuelo",
+   "picture": {
+    "icon": "elderly",
+    "color": "#6D4C41"
+   }
+  },
+  {
+   "id": "perro",
+   "text": "El perro",
+   "picture": {
+    "drawing": "animal_perro"
+   }
+  }
+ ],
+ "actions": [
+  {
+   "verb": "comer",
+   "text": "come",
+   "complements": [
+    {
+     "id": "manzana",
+     "text": "una manzana",
+     "picture": {
+      "drawing": "fruta_manzana",
+      "colors": {
+       "manzana": "#E53935",
+       "hoja": "#43A047",
+       "tallo": "#8D5524",
+       "brillo": "#FFFFFF"
+      }
+     }
+    },
+    {
+     "id": "helado",
+     "text": "un helado",
+     "picture": {
+      "icon": "icecream",
+      "color": "#EC407A"
+     }
+    },
+    {
+     "id": "pan",
+     "text": "pan",
+     "picture": {
+      "icon": "bread",
+      "color": "#C77C2E"
+     }
+    }
+   ]
+  },
+  {
+   "verb": "beber",
+   "text": "bebe",
+   "complements": [
+    {
+     "id": "agua",
+     "text": "agua",
+     "picture": {
+      "icon": "water",
+      "color": "#039BE5"
+     }
+    },
+    {
+     "id": "leche",
+     "text": "leche",
+     "picture": {
+      "icon": "glass",
+      "color": "#90A4AE"
+     }
+    }
+   ]
+  },
+  {
+   "verb": "leer",
+   "text": "lee",
+   "complements": [
+    {
+     "id": "libro",
+     "text": "un libro",
+     "picture": {
+      "icon": "book",
+      "color": "#E53935"
+     }
+    },
+    {
+     "id": "cuento",
+     "text": "un cuento",
+     "picture": {
+      "icon": "read",
+      "color": "#8E24AA"
+     }
+    }
+   ]
+  },
+  {
+   "verb": "pintar",
+   "text": "pinta",
+   "complements": [
+    {
+     "id": "casa",
+     "text": "una casa",
+     "picture": {
+      "icon": "home",
+      "color": "#F4511E"
+     }
+    },
+    {
+     "id": "sol",
+     "text": "un sol",
+     "picture": {
+      "icon": "sun",
+      "color": "#FFB300"
+     }
+    },
+    {
+     "id": "flor",
+     "text": "una flor",
+     "picture": {
+      "icon": "flower",
+      "color": "#EC407A"
+     }
+    }
+   ]
+  },
+  {
+   "verb": "jugar",
+   "text": "juega con",
+   "complements": [
+    {
+     "id": "pelota",
+     "text": "la pelota",
+     "picture": {
+      "icon": "ball",
+      "color": "#E53935"
+     }
+    },
+    {
+     "id": "tren",
+     "text": "el tren",
+     "picture": {
+      "drawing": "vehiculo_tren"
+     }
+    },
+    {
+     "id": "robot",
+     "text": "el robot",
+     "picture": {
+      "icon": "robot",
+      "color": "#546E7A"
+     }
+    }
+   ]
+  },
+  {
+   "verb": "mirar",
+   "text": "mira",
+   "complements": [
+    {
+     "id": "luna",
+     "text": "la luna",
+     "picture": {
+      "icon": "moon",
+      "color": "#5C6BC0"
+     }
+    },
+    {
+     "id": "estrellas",
+     "text": "las estrellas",
+     "picture": {
+      "icon": "star",
+      "color": "#FBC02D"
+     }
+    },
+    {
+     "id": "mar",
+     "text": "el mar",
+     "picture": {
+      "icon": "sea",
+      "color": "#0288D1"
+     }
+    }
+   ]
+  },
+  {
+   "verb": "abrir",
+   "text": "abre",
+   "complements": [
+    {
+     "id": "puerta",
+     "text": "la puerta",
+     "picture": {
+      "icon": "door",
+      "color": "#6D4C41"
+     }
+    },
+    {
+     "id": "ventana",
+     "text": "la ventana",
+     "picture": {
+      "icon": "window",
+      "color": "#29B6F6"
+     }
+    }
+   ]
+  }
+ ],
+ "order": [
+  {
+   "text": "El perro corre.",
+   "picture": {
+    "drawing": "animal_perro"
+   }
+  },
+  {
+   "text": "La niña salta.",
+   "picture": {
+    "icon": "jump",
+    "color": "#00ACC1"
+   }
+  },
+  {
+   "text": "Yo bebo agua.",
+   "picture": {
+    "icon": "water",
+    "color": "#039BE5"
+   }
+  },
+  {
+   "text": "Papá lee mucho.",
+   "picture": {
+    "icon": "book",
+    "color": "#E53935"
+   }
+  },
+  {
+   "text": "El niño come pan.",
+   "picture": {
+    "icon": "bread",
+    "color": "#C77C2E"
+   }
+  },
+  {
+   "text": "Mamá abre la puerta.",
+   "picture": {
+    "icon": "open",
+    "color": "#6D4C41"
+   }
+  },
+  {
+   "text": "Nosotros cantamos una canción.",
+   "picture": {
+    "icon": "sing",
+    "color": "#EC407A"
+   }
+  },
+  {
+   "text": "El gato duerme mucho.",
+   "picture": {
+    "drawing": "animal_gato"
+   }
+  },
+  {
+   "text": "La niña pinta una flor roja.",
+   "picture": {
+    "icon": "flower",
+    "color": "#E53935"
+   }
+  },
+  {
+   "text": "El abuelo mira las estrellas.",
+   "picture": {
+    "icon": "star",
+    "color": "#FBC02D"
+   }
+  },
+  {
+   "text": "Yo juego con la pelota.",
+   "picture": {
+    "icon": "ball",
+    "color": "#E53935"
+   }
+  },
+  {
+   "text": "El perro bebe agua fresca.",
+   "picture": {
+    "drawing": "animal_perro"
+   }
+  }
+ ],
+ "complete": [
+  {
+   "before": "El niño come una",
+   "answer": "manzana",
+   "after": ".",
+   "options": [
+    {
+     "text": "manzana",
+     "picture": {
+      "drawing": "fruta_manzana",
+      "colors": {
+       "manzana": "#E53935",
+       "hoja": "#43A047",
+       "tallo": "#8D5524",
+       "brillo": "#FFFFFF"
+      }
+     }
+    },
+    {
+     "text": "cama",
+     "picture": {
+      "icon": "bed",
+      "color": "#5C6BC0"
+     }
+    },
+    {
+     "text": "puerta",
+     "picture": {
+      "icon": "door",
+      "color": "#6D4C41"
+     }
+    }
+   ]
+  },
+  {
+   "before": "La niña bebe",
+   "answer": "agua",
+   "after": ".",
+   "options": [
+    {
+     "text": "agua",
+     "picture": {
+      "icon": "water",
+      "color": "#039BE5"
+     }
+    },
+    {
+     "text": "silla",
+     "picture": {
+      "icon": "chair",
+      "color": "#8D6E63"
+     }
+    },
+    {
+     "text": "sol",
+     "picture": {
+      "icon": "sun",
+      "color": "#FFB300"
+     }
+    }
+   ]
+  },
+  {
+   "before": "Papá lee un",
+   "answer": "libro",
+   "after": ".",
+   "options": [
+    {
+     "text": "libro",
+     "picture": {
+      "icon": "book",
+      "color": "#E53935"
+     }
+    },
+    {
+     "text": "helado",
+     "picture": {
+      "icon": "icecream",
+      "color": "#EC407A"
+     }
+    },
+    {
+     "text": "perro",
+     "picture": {
+      "drawing": "animal_perro"
+     }
+    }
+   ]
+  },
+  {
+   "before": "Yo duermo en la",
+   "answer": "cama",
+   "after": ".",
+   "options": [
+    {
+     "text": "cama",
+     "picture": {
+      "icon": "bed",
+      "color": "#5C6BC0"
+     }
+    },
+    {
+     "text": "pelota",
+     "picture": {
+      "icon": "ball",
+      "color": "#E53935"
+     }
+    },
+    {
+     "text": "luna",
+     "picture": {
+      "icon": "moon",
+      "color": "#5C6BC0"
+     }
+    }
+   ]
+  },
+  {
+   "before": "El perro juega con la",
+   "answer": "pelota",
+   "after": ".",
+   "options": [
+    {
+     "text": "pelota",
+     "picture": {
+      "icon": "ball",
+      "color": "#E53935"
+     }
+    },
+    {
+     "text": "ventana",
+     "picture": {
+      "icon": "window",
+      "color": "#29B6F6"
+     }
+    },
+    {
+     "text": "leche",
+     "picture": {
+      "icon": "glass",
+      "color": "#90A4AE"
+     }
+    }
+   ]
+  },
+  {
+   "before": "Mamá abre la",
+   "answer": "ventana",
+   "after": ".",
+   "options": [
+    {
+     "text": "ventana",
+     "picture": {
+      "icon": "window",
+      "color": "#29B6F6"
+     }
+    },
+    {
+     "text": "manzana",
+     "picture": {
+      "drawing": "fruta_manzana",
+      "colors": {
+       "manzana": "#E53935",
+       "hoja": "#43A047",
+       "tallo": "#8D5524",
+       "brillo": "#FFFFFF"
+      }
+     }
+    },
+    {
+     "text": "estrella",
+     "picture": {
+      "icon": "star",
+      "color": "#FBC02D"
+     }
+    }
+   ]
+  },
+  {
+   "before": "De noche miro la",
+   "answer": "luna",
+   "after": ".",
+   "options": [
+    {
+     "text": "luna",
+     "picture": {
+      "icon": "moon",
+      "color": "#5C6BC0"
+     }
+    },
+    {
+     "text": "silla",
+     "picture": {
+      "icon": "chair",
+      "color": "#8D6E63"
+     }
+    },
+    {
+     "text": "pan",
+     "picture": {
+      "icon": "bread",
+      "color": "#C77C2E"
+     }
+    }
+   ]
+  },
+  {
+   "before": "Con el pincel pinto una",
+   "answer": "flor",
+   "after": ".",
+   "options": [
+    {
+     "text": "flor",
+     "picture": {
+      "icon": "flower",
+      "color": "#EC407A"
+     }
+    },
+    {
+     "text": "cama",
+     "picture": {
+      "icon": "bed",
+      "color": "#5C6BC0"
+     }
+    },
+    {
+     "text": "agua",
+     "picture": {
+      "icon": "water",
+      "color": "#039BE5"
+     }
+    }
+   ]
+  }
+ ]
+}

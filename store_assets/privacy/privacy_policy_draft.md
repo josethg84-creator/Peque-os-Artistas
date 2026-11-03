@@ -35,8 +35,12 @@ los adultos. En concreto:
 - No pide nombre, edad, correo electrónico, teléfono, fotos ni ningún otro dato personal.
 - No tiene cuentas de usuario, registro ni inicio de sesión.
 - No tiene chat ni ninguna forma de comunicarse con otras personas.
-- No usa la cámara, el micrófono, la ubicación, los contactos ni otros permisos sensibles
-  del dispositivo.
+- No usa la cámara, la ubicación, los contactos ni otros permisos sensibles del dispositivo.
+- **Micrófono (opcional):** solo en «Practicar», dentro de «Aprendo a Hablar», cuando el niño
+  pulsa «Grabar» para escuchar su propia voz. El sistema pide permiso la primera vez. La
+  grabación se queda en el dispositivo (en memoria o en una carpeta temporal de la app), no se
+  envía a ningún sitio, no se analiza ni se puntúa y **se borra al cerrar la ventana de
+  práctica**. Un adulto puede desactivar esta opción en la zona para adultos.
 - No muestra publicidad y no tiene compras dentro de la aplicación.
 - No incluye herramientas de analítica, estadísticas de uso, publicidad, seguimiento ni
   informes de errores de terceros.

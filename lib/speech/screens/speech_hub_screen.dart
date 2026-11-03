@@ -8,11 +8,7 @@ import '../../widgets/adaptive_grid.dart';
 import '../../widgets/kid_scaffold.dart';
 import '../../widgets/motion/delayed_loading.dart';
 import '../speech_content.dart';
-import '../widgets/speech_art.dart';
 import '../widgets/speech_widgets.dart';
-
-/// Color de la sección «Aprendo a Hablar» (el verde de Lolo).
-const speechAccent = LoloPainter.green;
 
 /// Una actividad del menú. Las que llegarán en entregas posteriores se
 /// muestran como «Muy pronto»: al tocarlas, Lolo lo explica.
@@ -48,10 +44,28 @@ class SpeechHubScreen extends StatelessWidget {
       Color(0xFFFFA8C8),
       AppRoutes.speechPhrases,
     ),
-    SpeechActivity('Construyo oraciones', 'Muy pronto', Icons.view_week_rounded, Color(0xFF8EDDB8), null),
-    SpeechActivity('Aprendo los verbos', 'Muy pronto', Icons.directions_run_rounded, Color(0xFFFFD27A), null),
+    SpeechActivity(
+      'Construyo oraciones',
+      '¡Junta palabras!',
+      Icons.view_week_rounded,
+      Color(0xFF8EDDB8),
+      AppRoutes.speechSentences,
+    ),
+    SpeechActivity(
+      'Aprendo los verbos',
+      '¡Como, comes, come!',
+      Icons.directions_run_rounded,
+      Color(0xFFFFD27A),
+      AppRoutes.speechVerbs,
+    ),
     SpeechActivity('Hablemos juntos', 'Muy pronto', Icons.forum_rounded, Color(0xFFC3A9F5), null),
-    SpeechActivity('Escucho y comprendo', 'Muy pronto', Icons.hearing_rounded, Color(0xFFFFBE98), null),
+    SpeechActivity(
+      'Escucho y comprendo',
+      '¡Escucha y señala!',
+      Icons.hearing_rounded,
+      Color(0xFFFFBE98),
+      AppRoutes.speechListen,
+    ),
     SpeechActivity('Cuentos interactivos', 'Muy pronto', Icons.auto_stories_rounded, Color(0xFF86DCE0), null),
     SpeechActivity(
       'Mi progreso',
@@ -62,7 +76,7 @@ class SpeechHubScreen extends StatelessWidget {
     ),
   ];
 
-  static const comingSoon = '¡Esta actividad llegará muy pronto! Mientras, aprendamos palabras y frases.';
+  static const comingSoon = '¡Esta actividad llegará muy pronto! Mientras, juguemos con las demás.';
 
   @override
   Widget build(BuildContext context) {
@@ -290,6 +304,38 @@ class SpeechProgressScreen extends StatelessWidget {
                   done: days,
                   total: 7,
                 ),
+                _Counter(
+                  icon: Icons.sort_rounded,
+                  color: const Color(0xFF26A69A),
+                  label: 'Oraciones ordenadas',
+                  done: content.sentences.order.where((o) => p.sentencesOrdered.contains(o.text)).length,
+                  total: content.sentences.order.length,
+                ),
+                _Counter(
+                  icon: Icons.directions_run_rounded,
+                  color: const Color(0xFFFFA726),
+                  label: 'Verbos trabajados',
+                  done: content.verbs.where((v) => p.verbsHeard.contains(v.id)).length,
+                  total: content.verbs.length,
+                ),
+                _Counter(
+                  icon: Icons.view_week_rounded,
+                  color: const Color(0xFF8EDDB8),
+                  label: 'Oraciones construidas',
+                  done: p.sentencesBuilt.length,
+                ),
+                _Counter(
+                  icon: Icons.emoji_events_rounded,
+                  color: const Color(0xFFFFC93C),
+                  label: 'Actividades terminadas',
+                  done: p.activitiesDone.values.fold(0, (a, b) => a + b),
+                ),
+                _Counter(
+                  icon: Icons.mic_rounded,
+                  color: const Color(0xFFE53950),
+                  label: 'Veces que practicaste con tu voz',
+                  done: p.recordings,
+                ),
                 const SizedBox(height: 8),
                 Semantics(header: true, child: Text('Palabras por grupo', style: text.titleLarge)),
                 const SizedBox(height: 4),
@@ -322,7 +368,7 @@ class _Counter extends StatelessWidget {
     required this.color,
     required this.label,
     required this.done,
-    required this.total,
+    this.total,
     this.compact = false,
   });
 
@@ -330,7 +376,9 @@ class _Counter extends StatelessWidget {
   final Color color;
   final String label;
   final int done;
-  final int total;
+
+  /// Sin total, solo se muestra el número (oraciones construidas…).
+  final int? total;
   final bool compact;
 
   @override
@@ -338,7 +386,7 @@ class _Counter extends StatelessWidget {
     final text = Theme.of(context).textTheme;
     return Semantics(
       container: true,
-      label: '$label: $done de $total',
+      label: total == null ? '$label: $done' : '$label: $done de $total',
       excludeSemantics: true,
       child: Container(
         margin: EdgeInsets.only(bottom: compact ? 6 : 10),
@@ -356,21 +404,23 @@ class _Counter extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(label, style: compact ? text.titleSmall : text.titleMedium),
-                  const SizedBox(height: 4),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: LinearProgressIndicator(
-                      value: total == 0 ? 0 : done / total,
-                      minHeight: compact ? 8 : 12,
-                      color: color,
-                      backgroundColor: color.withValues(alpha: 0.18),
+                  if (total case final total?) ...[
+                    const SizedBox(height: 4),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: LinearProgressIndicator(
+                        value: total == 0 ? 0 : done / total,
+                        minHeight: compact ? 8 : 12,
+                        color: color,
+                        backgroundColor: color.withValues(alpha: 0.18),
+                      ),
                     ),
-                  ),
+                  ],
                 ],
               ),
             ),
             const SizedBox(width: 10),
-            Text('$done/$total', style: text.titleMedium),
+            Text(total == null ? '$done' : '$done/$total', style: text.titleMedium),
           ],
         ),
       ),
