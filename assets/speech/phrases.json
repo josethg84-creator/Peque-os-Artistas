@@ -1,0 +1,100 @@
+{
+ "format_version": 1,
+ "phrases": [
+  {
+   "id": "quiero_agua",
+   "text": "Quiero agua.",
+   "picture": {
+    "icon": "water",
+    "color": "#039BE5"
+   }
+  },
+  {
+   "id": "tengo_hambre",
+   "text": "Tengo hambre.",
+   "picture": {
+    "icon": "eat",
+    "color": "#F4511E"
+   }
+  },
+  {
+   "id": "tengo_sueno",
+   "text": "Tengo sueño.",
+   "picture": {
+    "icon": "sleep",
+    "color": "#5C6BC0"
+   }
+  },
+  {
+   "id": "quiero_jugar",
+   "text": "Quiero jugar.",
+   "picture": {
+    "icon": "play",
+    "color": "#FB8C00"
+   }
+  },
+  {
+   "id": "dame_la_pelota",
+   "text": "Dame la pelota.",
+   "picture": {
+    "icon": "ball",
+    "color": "#E53935"
+   }
+  },
+  {
+   "id": "necesito_ayuda",
+   "text": "Necesito ayuda.",
+   "picture": {
+    "icon": "help",
+    "color": "#00897B"
+   }
+  },
+  {
+   "id": "estoy_feliz",
+   "text": "Estoy feliz.",
+   "picture": {
+    "emotion": "feliz"
+   }
+  },
+  {
+   "id": "me_duele_aqui",
+   "text": "Me duele aquí.",
+   "picture": {
+    "icon": "hurt",
+    "color": "#E53935"
+   }
+  },
+  {
+   "id": "vamos_a_casa",
+   "text": "Vamos a casa.",
+   "picture": {
+    "icon": "home",
+    "color": "#F4511E"
+   }
+  },
+  {
+   "id": "gracias_mama",
+   "text": "Gracias, mamá.",
+   "picture": {
+    "icon": "love",
+    "color": "#E91E63"
+   }
+  },
+  {
+   "id": "hola_como_estas",
+   "text": "Hola, ¿cómo estás?",
+   "picture": {
+    "icon": "wave",
+    "color": "#FFB300"
+   }
+  },
+  {
+   "id": "buenas_noches",
+   "text": "Buenas noches.",
+   "picture": {
+    "icon": "moon",
+    "color": "#5C6BC0"
+   }
+  }
+ ]
+}

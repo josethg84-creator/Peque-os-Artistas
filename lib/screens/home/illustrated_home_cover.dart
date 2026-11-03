@@ -9,6 +9,7 @@ import '../../audio/ui_sounds.dart';
 import '../../navigation/app_routes.dart';
 import '../../services/app_services.dart';
 import '../../theme/app_motion.dart';
+import '../../speech/widgets/speech_widgets.dart';
 import '../../widgets/motion/pressable.dart';
 
 /// Inicio con la ilustración original completa (`assets/ui/`). Lo que se ve es
@@ -213,6 +214,15 @@ class _IllustratedHomeCoverState extends State<IllustratedHomeCover> {
                                 route: true,
                                 onTap: () => open(AppRoutes.soundSettings),
                               ),
+                              // «Aprendo a Hablar»: Lolo en el cielo, junto al arcoíris
+                              // (una sección nueva que no está en la ilustración).
+                              Positioned(
+                                left: width * .8,
+                                top: height * .14,
+                                width: width * .195,
+                                height: height * .125,
+                                child: _SpeechBadge(onTap: () => open(AppRoutes.speech)),
+                              ),
                             ],
                           ),
                         ),
@@ -229,6 +239,90 @@ class _IllustratedHomeCoverState extends State<IllustratedHomeCover> {
   }
 
   static Widget _empty(BuildContext context, Object error, StackTrace? stack) => const SizedBox();
+}
+
+/// Acceso a «Aprendo a Hablar»: Lolo dentro de un círculo con relieve y la
+/// etiqueta «¡A hablar!». Se escala con la ilustración.
+class _SpeechBadge extends StatelessWidget {
+  const _SpeechBadge({required this.onTap});
+
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final action = guardRoute(context, withSound(context, SoundCue.tap, onTap));
+    return Semantics(
+      button: true,
+      label: 'Aprendo a Hablar',
+      hint: 'Palabras y frases con Lolo',
+      excludeSemantics: true,
+      onTap: action,
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: Pressable(
+          scale: 0.9,
+          child: GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: action,
+            child: LayoutBuilder(
+              builder: (context, box) {
+                final d = min(box.maxWidth, box.maxHeight * 0.78);
+                return Column(
+                  children: [
+                    Container(
+                      width: d,
+                      height: d,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        gradient: const LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [Color(0xFFE9FFF0), Color(0xFFB5F0C8)],
+                        ),
+                        border: Border.all(color: Colors.white, width: max(2, d * 0.05)),
+                        boxShadow: [
+                          const BoxShadow(color: Color(0xFF7BCB95), offset: Offset(0, 3)),
+                          BoxShadow(
+                            color: const Color(0x33000000),
+                            blurRadius: d * 0.15,
+                            offset: Offset(0, d * 0.08),
+                          ),
+                        ],
+                      ),
+                      padding: EdgeInsets.all(d * 0.06),
+                      child: const Lolo(waves: 3),
+                    ),
+                    Expanded(
+                      child: FittedBox(
+                        child: Container(
+                          margin: const EdgeInsets.only(top: 2),
+                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(color: const Color(0xFF43C46A), width: 2),
+                          ),
+                          child: const Text(
+                            '¡A hablar!',
+                            style: TextStyle(
+                              fontFamily: 'Fredoka',
+                              fontWeight: FontWeight.w700,
+                              fontVariations: [FontVariation('wght', 700)],
+                              color: Color(0xFF2E7D4F),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                );
+              },
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 }
 
 /// Aparición suave de la ilustración al abrir la app.

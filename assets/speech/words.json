@@ -1,0 +1,942 @@
+{
+ "format_version": 1,
+ "categories": [
+  {
+   "id": "familia",
+   "name": "Familia",
+   "color": "#FF8FAB",
+   "icon": "family",
+   "words": [
+    {
+     "id": "mama",
+     "text": "mamá",
+     "article": "la",
+     "picture": {
+      "icon": "woman",
+      "color": "#E91E63"
+     }
+    },
+    {
+     "id": "papa",
+     "text": "papá",
+     "article": "el",
+     "picture": {
+      "icon": "man",
+      "color": "#1E88E5"
+     }
+    },
+    {
+     "id": "bebe",
+     "text": "bebé",
+     "article": "el",
+     "picture": {
+      "icon": "child_care",
+      "color": "#FFB300"
+     }
+    },
+    {
+     "id": "hermano",
+     "text": "hermano",
+     "article": "el",
+     "picture": {
+      "icon": "boy",
+      "color": "#43A047"
+     }
+    },
+    {
+     "id": "hermana",
+     "text": "hermana",
+     "article": "la",
+     "picture": {
+      "icon": "girl",
+      "color": "#AB47BC"
+     }
+    },
+    {
+     "id": "abuelo",
+     "text": "abuelo",
+     "article": "el",
+     "picture": {
+      "icon": "elderly",
+      "color": "#6D4C41"
+     }
+    },
+    {
+     "id": "abuela",
+     "text": "abuela",
+     "article": "la",
+     "picture": {
+      "icon": "elderly_woman",
+      "color": "#8E24AA"
+     }
+    },
+    {
+     "id": "familia",
+     "text": "familia",
+     "article": "la",
+     "picture": {
+      "icon": "family",
+      "color": "#F4511E"
+     }
+    },
+    {
+     "id": "amigos",
+     "text": "amigos",
+     "article": "los",
+     "picture": {
+      "icon": "friends",
+      "color": "#00ACC1"
+     }
+    },
+    {
+     "id": "maestra",
+     "text": "maestra",
+     "article": "la",
+     "picture": {
+      "icon": "teacher",
+      "color": "#3949AB"
+     }
+    }
+   ]
+  },
+  {
+   "id": "animales",
+   "name": "Animales",
+   "color": "#FFB86B",
+   "icon": "pets",
+   "words": [
+    {
+     "id": "perro",
+     "text": "perro",
+     "article": "el",
+     "picture": {
+      "drawing": "animal_perro"
+     }
+    },
+    {
+     "id": "gato",
+     "text": "gato",
+     "article": "el",
+     "picture": {
+      "drawing": "animal_gato"
+     }
+    },
+    {
+     "id": "conejo",
+     "text": "conejo",
+     "article": "el",
+     "picture": {
+      "drawing": "animal_conejo"
+     }
+    },
+    {
+     "id": "leon",
+     "text": "león",
+     "article": "el",
+     "picture": {
+      "drawing": "animal_leon"
+     }
+    },
+    {
+     "id": "elefante",
+     "text": "elefante",
+     "article": "el",
+     "picture": {
+      "drawing": "animal_elefante"
+     }
+    },
+    {
+     "id": "vaca",
+     "text": "vaca",
+     "article": "la",
+     "picture": {
+      "drawing": "granja_vaca"
+     }
+    },
+    {
+     "id": "pato",
+     "text": "pato",
+     "article": "el",
+     "picture": {
+      "drawing": "granja_patito"
+     }
+    },
+    {
+     "id": "pez",
+     "text": "pez",
+     "article": "el",
+     "picture": {
+      "drawing": "animal_pez"
+     }
+    },
+    {
+     "id": "mariposa",
+     "text": "mariposa",
+     "article": "la",
+     "picture": {
+      "drawing": "animal_mariposa"
+     }
+    },
+    {
+     "id": "mono",
+     "text": "mono",
+     "article": "el",
+     "picture": {
+      "drawing": "animal_mono"
+     }
+    }
+   ]
+  },
+  {
+   "id": "alimentos",
+   "name": "Alimentos",
+   "color": "#FF7A6B",
+   "icon": "food",
+   "words": [
+    {
+     "id": "manzana",
+     "text": "manzana",
+     "article": "la",
+     "picture": {
+      "drawing": "fruta_manzana",
+      "colors": {
+       "manzana": "#E53935",
+       "hoja": "#43A047",
+       "tallo": "#8D5524",
+       "brillo": "#FFFFFF"
+      }
+     }
+    },
+    {
+     "id": "platano",
+     "text": "plátano",
+     "article": "el",
+     "picture": {
+      "drawing": "fruta_platano",
+      "colors": {
+       "platano": "#FFD600",
+       "tallo": "#8D6E63",
+       "punta": "#6D4C41"
+      }
+     }
+    },
+    {
+     "id": "fresa",
+     "text": "fresa",
+     "article": "la",
+     "picture": {
+      "drawing": "fruta_fresa",
+      "colors": {
+       "fresa": "#E53935",
+       "hojas": "#43A047",
+       "tallo": "#2E7D32"
+      }
+     }
+    },
+    {
+     "id": "naranja",
+     "text": "naranja",
+     "article": "la",
+     "picture": {
+      "drawing": "fruta_naranja",
+      "colors": {
+       "naranja": "#FF8F00",
+       "hoja": "#43A047",
+       "tallo": "#8D5524",
+       "brillo": "#FFFFFF"
+      }
+     }
+    },
+    {
+     "id": "uvas",
+     "text": "uvas",
+     "article": "las",
+     "picture": {
+      "drawing": "fruta_uvas",
+      "colors": {
+       "uva_*": "#8E44AD",
+       "hoja": "#43A047",
+       "tallo": "#8D5524"
+      }
+     }
+    },
+    {
+     "id": "pan",
+     "text": "pan",
+     "article": "el",
+     "picture": {
+      "icon": "bread",
+      "color": "#C77C2E"
+     }
+    },
+    {
+     "id": "huevo",
+     "text": "huevo",
+     "article": "el",
+     "picture": {
+      "icon": "egg",
+      "color": "#F9A825"
+     }
+    },
+    {
+     "id": "helado",
+     "text": "helado",
+     "article": "el",
+     "picture": {
+      "icon": "icecream",
+      "color": "#EC407A"
+     }
+    },
+    {
+     "id": "pastel",
+     "text": "pastel",
+     "article": "el",
+     "picture": {
+      "icon": "cake",
+      "color": "#AB47BC"
+     }
+    },
+    {
+     "id": "agua",
+     "text": "agua",
+     "article": "el",
+     "picture": {
+      "icon": "water",
+      "color": "#039BE5"
+     }
+    }
+   ]
+  },
+  {
+   "id": "juguetes",
+   "name": "Juguetes",
+   "color": "#9B7BEA",
+   "icon": "toys",
+   "words": [
+    {
+     "id": "pelota",
+     "text": "pelota",
+     "article": "la",
+     "picture": {
+      "icon": "ball",
+      "color": "#E53935"
+     }
+    },
+    {
+     "id": "osito",
+     "text": "osito",
+     "article": "el",
+     "picture": {
+      "drawing": "animal_oso"
+     }
+    },
+    {
+     "id": "coche",
+     "text": "coche",
+     "article": "el",
+     "picture": {
+      "drawing": "vehiculo_automovil"
+     }
+    },
+    {
+     "id": "tren",
+     "text": "tren",
+     "article": "el",
+     "picture": {
+      "drawing": "vehiculo_tren"
+     }
+    },
+    {
+     "id": "avion",
+     "text": "avión",
+     "article": "el",
+     "picture": {
+      "drawing": "vehiculo_avion"
+     }
+    },
+    {
+     "id": "barco",
+     "text": "barco",
+     "article": "el",
+     "picture": {
+      "drawing": "vehiculo_barco"
+     }
+    },
+    {
+     "id": "robot",
+     "text": "robot",
+     "article": "el",
+     "picture": {
+      "icon": "robot",
+      "color": "#546E7A"
+     }
+    },
+    {
+     "id": "rompecabezas",
+     "text": "rompecabezas",
+     "article": "el",
+     "picture": {
+      "icon": "puzzle",
+      "color": "#FB8C00"
+     }
+    },
+    {
+     "id": "bicicleta",
+     "text": "bicicleta",
+     "article": "la",
+     "picture": {
+      "icon": "bike",
+      "color": "#43A047"
+     }
+    },
+    {
+     "id": "patineta",
+     "text": "patineta",
+     "article": "la",
+     "picture": {
+      "icon": "skateboard",
+      "color": "#8E24AA"
+     }
+    }
+   ]
+  },
+  {
+   "id": "cuerpo",
+   "name": "Partes del cuerpo",
+   "color": "#FFB3C7",
+   "icon": "body",
+   "words": [
+    {
+     "id": "cabeza",
+     "text": "cabeza",
+     "article": "la",
+     "picture": {
+      "body": "cabeza"
+     }
+    },
+    {
+     "id": "pelo",
+     "text": "pelo",
+     "article": "el",
+     "picture": {
+      "body": "pelo"
+     }
+    },
+    {
+     "id": "ojos",
+     "text": "ojos",
+     "article": "los",
+     "picture": {
+      "body": "ojos"
+     }
+    },
+    {
+     "id": "nariz",
+     "text": "nariz",
+     "article": "la",
+     "picture": {
+      "body": "nariz"
+     }
+    },
+    {
+     "id": "boca",
+     "text": "boca",
+     "article": "la",
+     "picture": {
+      "body": "boca"
+     }
+    },
+    {
+     "id": "orejas",
+     "text": "orejas",
+     "article": "las",
+     "picture": {
+      "body": "orejas"
+     }
+    },
+    {
+     "id": "brazos",
+     "text": "brazos",
+     "article": "los",
+     "picture": {
+      "body": "brazos"
+     }
+    },
+    {
+     "id": "manos",
+     "text": "manos",
+     "article": "las",
+     "picture": {
+      "body": "manos"
+     }
+    },
+    {
+     "id": "piernas",
+     "text": "piernas",
+     "article": "las",
+     "picture": {
+      "body": "piernas"
+     }
+    },
+    {
+     "id": "pies",
+     "text": "pies",
+     "article": "los",
+     "picture": {
+      "body": "pies"
+     }
+    }
+   ]
+  },
+  {
+   "id": "colores",
+   "name": "Colores",
+   "color": "#4FB3FF",
+   "icon": "palette",
+   "words": [
+    {
+     "id": "rojo",
+     "text": "rojo",
+     "article": "el",
+     "picture": {
+      "swatch": "#E53935"
+     }
+    },
+    {
+     "id": "azul",
+     "text": "azul",
+     "article": "el",
+     "picture": {
+      "swatch": "#1E57C8"
+     }
+    },
+    {
+     "id": "amarillo",
+     "text": "amarillo",
+     "article": "el",
+     "picture": {
+      "swatch": "#FFD600"
+     }
+    },
+    {
+     "id": "verde",
+     "text": "verde",
+     "article": "el",
+     "picture": {
+      "swatch": "#2E7D32"
+     }
+    },
+    {
+     "id": "naranja_color",
+     "text": "naranja",
+     "article": "el",
+     "picture": {
+      "swatch": "#FF8F00"
+     }
+    },
+    {
+     "id": "morado",
+     "text": "morado",
+     "article": "el",
+     "picture": {
+      "swatch": "#8E44AD"
+     }
+    },
+    {
+     "id": "rosa",
+     "text": "rosa",
+     "article": "el",
+     "picture": {
+      "swatch": "#F06292"
+     }
+    },
+    {
+     "id": "blanco",
+     "text": "blanco",
+     "article": "el",
+     "picture": {
+      "swatch": "#FFFFFF"
+     }
+    },
+    {
+     "id": "negro",
+     "text": "negro",
+     "article": "el",
+     "picture": {
+      "swatch": "#212121"
+     }
+    },
+    {
+     "id": "marron",
+     "text": "marrón",
+     "article": "el",
+     "picture": {
+      "swatch": "#8D5524"
+     }
+    }
+   ]
+  },
+  {
+   "id": "hogar",
+   "name": "Objetos del hogar",
+   "color": "#5CC689",
+   "icon": "home",
+   "words": [
+    {
+     "id": "casa",
+     "text": "casa",
+     "article": "la",
+     "picture": {
+      "icon": "home",
+      "color": "#F4511E"
+     }
+    },
+    {
+     "id": "cama",
+     "text": "cama",
+     "article": "la",
+     "picture": {
+      "icon": "bed",
+      "color": "#5C6BC0"
+     }
+    },
+    {
+     "id": "silla",
+     "text": "silla",
+     "article": "la",
+     "picture": {
+      "icon": "chair",
+      "color": "#8D6E63"
+     }
+    },
+    {
+     "id": "mesa",
+     "text": "mesa",
+     "article": "la",
+     "picture": {
+      "icon": "table",
+      "color": "#795548"
+     }
+    },
+    {
+     "id": "puerta",
+     "text": "puerta",
+     "article": "la",
+     "picture": {
+      "icon": "door",
+      "color": "#6D4C41"
+     }
+    },
+    {
+     "id": "ventana",
+     "text": "ventana",
+     "article": "la",
+     "picture": {
+      "icon": "window",
+      "color": "#29B6F6"
+     }
+    },
+    {
+     "id": "lampara",
+     "text": "lámpara",
+     "article": "la",
+     "picture": {
+      "icon": "lamp",
+      "color": "#FBC02D"
+     }
+    },
+    {
+     "id": "libro",
+     "text": "libro",
+     "article": "el",
+     "picture": {
+      "icon": "book",
+      "color": "#E53935"
+     }
+    },
+    {
+     "id": "reloj",
+     "text": "reloj",
+     "article": "el",
+     "picture": {
+      "icon": "clock",
+      "color": "#00897B"
+     }
+    },
+    {
+     "id": "vaso",
+     "text": "vaso",
+     "article": "el",
+     "picture": {
+      "icon": "glass",
+      "color": "#039BE5"
+     }
+    }
+   ]
+  },
+  {
+   "id": "acciones",
+   "name": "Acciones",
+   "color": "#FFC93C",
+   "icon": "actions",
+   "words": [
+    {
+     "id": "comer",
+     "text": "comer",
+     "picture": {
+      "icon": "eat",
+      "color": "#F4511E"
+     }
+    },
+    {
+     "id": "beber",
+     "text": "beber",
+     "picture": {
+      "icon": "drink",
+      "color": "#039BE5"
+     }
+    },
+    {
+     "id": "dormir",
+     "text": "dormir",
+     "picture": {
+      "icon": "sleep",
+      "color": "#5C6BC0"
+     }
+    },
+    {
+     "id": "correr",
+     "text": "correr",
+     "picture": {
+      "icon": "run",
+      "color": "#43A047"
+     }
+    },
+    {
+     "id": "caminar",
+     "text": "caminar",
+     "picture": {
+      "icon": "walk",
+      "color": "#00897B"
+     }
+    },
+    {
+     "id": "nadar",
+     "text": "nadar",
+     "picture": {
+      "icon": "swim",
+      "color": "#0288D1"
+     }
+    },
+    {
+     "id": "jugar",
+     "text": "jugar",
+     "picture": {
+      "icon": "play",
+      "color": "#FB8C00"
+     }
+    },
+    {
+     "id": "pintar",
+     "text": "pintar",
+     "picture": {
+      "icon": "paint",
+      "color": "#E91E63"
+     }
+    },
+    {
+     "id": "leer",
+     "text": "leer",
+     "picture": {
+      "icon": "read",
+      "color": "#8E24AA"
+     }
+    },
+    {
+     "id": "cantar",
+     "text": "cantar",
+     "picture": {
+      "icon": "sing",
+      "color": "#EC407A"
+     }
+    }
+   ]
+  },
+  {
+   "id": "emociones",
+   "name": "Emociones",
+   "color": "#FF6B9E",
+   "icon": "emotions",
+   "words": [
+    {
+     "id": "feliz",
+     "text": "feliz",
+     "picture": {
+      "emotion": "feliz"
+     }
+    },
+    {
+     "id": "triste",
+     "text": "triste",
+     "picture": {
+      "emotion": "triste"
+     }
+    },
+    {
+     "id": "enojado",
+     "text": "enojado",
+     "picture": {
+      "emotion": "enojado"
+     }
+    },
+    {
+     "id": "asustado",
+     "text": "asustado",
+     "picture": {
+      "emotion": "asustado"
+     }
+    },
+    {
+     "id": "sorprendido",
+     "text": "sorprendido",
+     "picture": {
+      "emotion": "sorprendido"
+     }
+    },
+    {
+     "id": "cansado",
+     "text": "cansado",
+     "picture": {
+      "emotion": "cansado"
+     }
+    },
+    {
+     "id": "tranquilo",
+     "text": "tranquilo",
+     "picture": {
+      "emotion": "tranquilo"
+     }
+    },
+    {
+     "id": "aburrido",
+     "text": "aburrido",
+     "picture": {
+      "emotion": "aburrido"
+     }
+    },
+    {
+     "id": "enfermo",
+     "text": "enfermo",
+     "picture": {
+      "emotion": "enfermo"
+     }
+    },
+    {
+     "id": "carinoso",
+     "text": "cariñoso",
+     "picture": {
+      "emotion": "carinoso"
+     }
+    }
+   ]
+  },
+  {
+   "id": "naturaleza",
+   "name": "Naturaleza",
+   "color": "#26B5C7",
+   "icon": "nature",
+   "words": [
+    {
+     "id": "sol",
+     "text": "sol",
+     "article": "el",
+     "picture": {
+      "icon": "sun",
+      "color": "#FFB300"
+     }
+    },
+    {
+     "id": "luna",
+     "text": "luna",
+     "article": "la",
+     "picture": {
+      "icon": "moon",
+      "color": "#5C6BC0"
+     }
+    },
+    {
+     "id": "estrella",
+     "text": "estrella",
+     "article": "la",
+     "picture": {
+      "icon": "star",
+      "color": "#FBC02D"
+     }
+    },
+    {
+     "id": "nube",
+     "text": "nube",
+     "article": "la",
+     "picture": {
+      "icon": "cloud",
+      "color": "#64B5F6"
+     }
+    },
+    {
+     "id": "flor",
+     "text": "flor",
+     "article": "la",
+     "picture": {
+      "icon": "flower",
+      "color": "#EC407A"
+     }
+    },
+    {
+     "id": "arbol",
+     "text": "árbol",
+     "article": "el",
+     "picture": {
+      "icon": "tree",
+      "color": "#2E7D32"
+     }
+    },
+    {
+     "id": "montana",
+     "text": "montaña",
+     "article": "la",
+     "picture": {
+      "icon": "mountain",
+      "color": "#6D4C41"
+     }
+    },
+    {
+     "id": "mar",
+     "text": "mar",
+     "article": "el",
+     "picture": {
+      "icon": "sea",
+      "color": "#0288D1"
+     }
+    },
+    {
+     "id": "nieve",
+     "text": "nieve",
+     "article": "la",
+     "picture": {
+      "icon": "snow",
+      "color": "#4FC3F7"
+     }
+    },
+    {
+     "id": "fuego",
+     "text": "fuego",
+     "article": "el",
+     "picture": {
+      "icon": "fire",
+      "color": "#F4511E"
+     }
+    }
+   ]
+  }
+ ]
+}

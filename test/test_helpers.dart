@@ -17,6 +17,7 @@ import 'package:pequenos_artistas/services/catalog_service.dart';
 import 'package:pequenos_artistas/services/drawing_loader.dart';
 import 'package:pequenos_artistas/persistence/creation.dart';
 import 'package:pequenos_artistas/persistence/creation_store.dart';
+import 'package:pequenos_artistas/speech/speech_progress.dart';
 
 /// Bundle que sirve los textos de [files] y, si [fromDisk], los archivos
 /// reales del proyecto. Lee de forma síncrona para funcionar dentro de las
@@ -77,6 +78,7 @@ Future<void> pumpApp(
   CreationStore? store,
   LearningController? learning,
   KeyValueBackend? learningBackend,
+  SpeechController? speech,
 }) async {
   final controller = learning ?? LearningController(LearningStore(learningBackend ?? MemoryBackend()));
   await controller.load();
@@ -89,6 +91,7 @@ Future<void> pumpApp(
       drawingLoader: loader ?? diskDrawingLoader(),
       creationStore: store ?? InMemoryCreationStore(),
       learningController: controller,
+      speechController: speech ?? (SpeechController(SpeechStore(MemoryBackend()))..load()),
       learningAudio: LearningAudio(
         effects: sounds,
         narrator: narrator,

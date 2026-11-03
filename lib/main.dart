@@ -8,6 +8,7 @@ import 'persistence/creation_store.dart';
 import 'persistence/key_value_backend.dart';
 import 'services/catalog_service.dart';
 import 'services/drawing_loader.dart';
+import 'speech/speech_progress.dart';
 
 void main() {
   // Necesario antes de usar plugins (almacenamiento) fuera de runApp.
@@ -21,6 +22,7 @@ void main() {
       drawingLoader: DrawingLoader(),
       creationStore: KeyValueCreationStore(storage),
       learningController: learning,
+      speechController: SpeechController(SpeechStore(storage))..load(),
       learningAudio: LearningAudio(
         effects: AudioPlayersSoundEffects(),
         narrator: DeviceTtsNarrator(),

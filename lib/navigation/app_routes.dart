@@ -16,6 +16,19 @@ abstract final class AppRoutes {
   static const soundSettings = '/sonido';
   static const miniGames = '/minijuegos';
   static const profile = '/perfil';
+
+  // «Aprendo a Hablar».
+  static const speech = '/hablar';
+  static const speechWordGroups = '/hablar/palabras';
+  static const speechWords = '/hablar/palabras/grupo';
+  static const speechPhrases = '/hablar/frases';
+  static const speechProgress = '/hablar/progreso';
+}
+
+/// Argumento de [AppRoutes.speechWords]: el grupo de palabras.
+class SpeechWordsArgs {
+  const SpeechWordsArgs(this.categoryId);
+  final String categoryId;
 }
 
 /// Argumento de [AppRoutes.gallery].

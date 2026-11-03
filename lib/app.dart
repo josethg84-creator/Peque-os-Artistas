@@ -10,6 +10,7 @@ import 'services/app_services.dart';
 import 'services/catalog_service.dart';
 import 'services/drawing_loader.dart';
 import 'persistence/creation_store.dart';
+import 'speech/speech_progress.dart';
 import 'theme/app_theme.dart';
 
 class PequenosArtistasApp extends StatelessWidget {
@@ -20,6 +21,7 @@ class PequenosArtistasApp extends StatelessWidget {
     required this.creationStore,
     required this.learningController,
     required this.learningAudio,
+    required this.speechController,
   });
 
   final CatalogService catalogService;
@@ -27,6 +29,7 @@ class PequenosArtistasApp extends StatelessWidget {
   final CreationStore creationStore;
   final LearningController learningController;
   final LearningAudio learningAudio;
+  final SpeechController speechController;
 
   /// Se respeta el tamaño de texto del sistema, con un tope para que las
   /// pantallas sigan siendo usables.
@@ -40,6 +43,7 @@ class PequenosArtistasApp extends StatelessWidget {
       creations: creationStore,
       learning: learningController,
       audio: learningAudio,
+      speech: speechController,
       child: _AudioBinding(
         audio: learningAudio,
         settings: learningController,

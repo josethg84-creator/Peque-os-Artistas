@@ -100,9 +100,10 @@ class VoiceInfo {
   final String description;
 }
 
-/// Lee textos en voz alta. [speak] termina cuando acaba la frase.
+/// Lee textos en voz alta. [speak] termina cuando acaba la frase. Con [slow],
+/// la frase se dice más despacio (para aprender a pronunciar una palabra).
 abstract interface class Narrator {
-  Future<void> speak(String text);
+  Future<void> speak(String text, {bool slow = false});
   Future<void> stop();
   Future<void> setVolume(double volume);
   Future<VoiceInfo> voice();
@@ -429,10 +430,20 @@ class DeviceTtsNarrator implements Narrator {
   bool _talking = false;
   int _turn = 0;
 
+  /// Velocidad lenta, relativa a la normal (las sílabas se oyen separadas sin
+  /// que la voz se deforme).
+  static const slowFactor = 0.62;
+  bool _slowNow = false;
+
   @override
-  Future<void> speak(String text) async {
+  Future<void> speak(String text, {bool slow = false}) async {
     if (!(await voice()).available) return;
     if (_talking) await _tts.stop();
+    if (slow != _slowNow) {
+      final p = prosody(web: kIsWeb, platform: defaultTargetPlatform);
+      await _tts.setSpeechRate(slow ? p.rate * slowFactor : p.rate);
+      _slowNow = slow;
+    }
     final turn = ++_turn;
     _talking = true;
     try {
@@ -574,7 +585,7 @@ class LearningAudio {
   bool get isSpeaking => _speaking;
 
   /// Dice [text] si la voz está activada (ver [VoiceMode]).
-  Future<void> say(String text, {VoiceMode mode = VoiceMode.interrupt}) async {
+  Future<void> say(String text, {VoiceMode mode = VoiceMode.interrupt, bool slow = false}) async {
     if (voiceVolume <= 0) return;
     final now = _clock();
     if (mode != VoiceMode.interrupt) {
@@ -590,7 +601,7 @@ class LearningAudio {
       _queued = text;
       return;
     }
-    await _speak(text);
+    await _speak(text, slow: slow);
   }
 
   /// Dice una de las [options], sin repetir la última que se dijo de la lista.
@@ -602,7 +613,7 @@ class LearningAudio {
     return say(options[i], mode: mode);
   }
 
-  Future<void> _speak(String text) async {
+  Future<void> _speak(String text, {bool slow = false}) async {
     final id = ++_utterance;
     _lastText = text;
     _lastTextAt = _clock();
@@ -611,7 +622,7 @@ class LearningAudio {
     _applyMusic();
     try {
       await narrator.setVolume(voiceVolume);
-      await narrator.speak(text).timeout(maxUtterance);
+      await narrator.speak(text, slow: slow).timeout(maxUtterance);
     } catch (_) {}
     if (id != _utterance) return; // otra frase la sustituyó
     _speaking = false;
@@ -747,6 +758,9 @@ class RecordingNarrator implements Narrator {
 
   final VoiceInfo info;
   final spoken = <String>[];
+
+  /// Frases dichas despacio (además de estar en [spoken]).
+  final slow = <String>[];
   final volumes = <double>[];
   int stops = 0;
 
@@ -754,8 +768,9 @@ class RecordingNarrator implements Narrator {
   Completer<void>? pending;
 
   @override
-  Future<void> speak(String text) async {
+  Future<void> speak(String text, {bool slow = false}) async {
     spoken.add(text);
+    if (slow) this.slow.add(text);
     final p = pending;
     if (p != null) await p.future;
   }

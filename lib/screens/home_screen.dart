@@ -76,6 +76,13 @@ class _HomeScreenState extends State<HomeScreen> {
           colors: const [Color(0xFF7CC8FF), Color(0xFF3D8FE0)],
           onPressed: () => _go(AppRoutes.soundSettings),
         ),
+        const SizedBox(width: 10),
+        CornerButton(
+          icon: Icons.record_voice_over_rounded,
+          label: 'Aprendo a Hablar',
+          colors: const [Color(0xFF8EE3A8), Color(0xFF2E9E57)],
+          onPressed: () => _go(AppRoutes.speech),
+        ),
         const Spacer(),
         _AdultAccessButton(onConfirmed: _openAdultZone),
         const SizedBox(width: 10),

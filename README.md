@@ -28,6 +28,9 @@ Aplicación móvil de colorear para niños de 4 a 7 años (Flutter / Android).
 - **Nuevo inicio (terminado):** pantalla de inicio rediseñada (logo multicolor, niños con
   pinceles y perrito, tarjetas Colorear, Mini Juegos, Actividades y Galería, barra con
   Perfil, Logros y Configuración) y panel del niño. Ver [docs/FASE_INICIO.md](docs/FASE_INICIO.md).
+- **Aprendo a Hablar (1.ª entrega):** módulo de lenguaje con Lolo el lorito: 100 palabras en
+  10 grupos y 12 frases con voz en español (normal y despacio), «¡Ordénala tú!» y progreso
+  local. Ver [docs/FASE_HABLAR.md](docs/FASE_HABLAR.md).
 - **Fase 9 (preparación, sin publicar):** recursos y documentación para Google Play en
   [`store_assets/`](store_assets/RELEASE_READINESS.md): icono, imagen destacada, capturas,
   textos de la ficha, borrador de política de privacidad, auditoría de privacidad,

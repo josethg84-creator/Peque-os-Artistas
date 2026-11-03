@@ -4,9 +4,9 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import '../../audio/phrases.dart';
+import '../../coloring/auto_colors.dart';
 import '../../coloring/engine/drawing_painter.dart';
 import '../../coloring/engine/vector_drawing.dart';
-import '../../coloring/palette.dart';
 import '../../models/drawing.dart';
 import '../../models/drawing_catalog.dart';
 import '../../services/app_services.dart';
@@ -167,7 +167,7 @@ class _PuzzleGameScreenState extends State<PuzzleGameScreen> {
 
   Widget _board(VectorDrawing vector) {
     final painter = _CroppedPainter(
-      DrawingPainter(drawing: vector, colors: _AutoColors(vector, _drawing.id)),
+      DrawingPainter(drawing: vector, colors: AutoColors(vector, _drawing.id)),
       vector,
     );
     final ghost = switch (_level) {
@@ -296,26 +296,6 @@ class _CroppedPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(_CroppedPainter old) => old.inner != inner;
-}
-
-/// Colores alegres y fijos para cada dibujo (el niño aún no lo ha pintado).
-class _AutoColors extends ChangeNotifier implements RegionColors {
-  _AutoColors(VectorDrawing drawing, String seed) {
-    final palette = kidPalette
-        .where((c) => !c.restoresOriginal && !{'Negro', 'Gris'}.contains(c.name))
-        .toList();
-    final offset = seed.codeUnits.fold<int>(0, (a, b) => a + b);
-    for (final (i, r) in drawing.regions.indexed) {
-      _map[r.id] = r.id == VectorDrawing.backgroundId
-          ? const Color(0xFFFFF3D6)
-          : palette[(i + offset) % palette.length].color;
-    }
-  }
-
-  final _map = <String, Color>{};
-
-  @override
-  Color? colorOf(String regionId) => _map[regionId];
 }
 
 /// Recorte de la pieza [piece] de la imagen completa.

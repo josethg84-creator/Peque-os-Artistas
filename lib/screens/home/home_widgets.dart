@@ -160,14 +160,30 @@ class HomeMenuCard extends StatelessWidget {
     super.key,
     required this.title,
     required this.subtitle,
-    required this.icon,
+    this.icon,
+    this.art,
     required this.color,
     required this.onTap,
-  });
+    this.badge,
+    this.dimmed = false,
+    this.opensRoute = true,
+  }) : assert(icon != null || art != null);
 
   final String title;
   final String subtitle;
-  final HomeIcon icon;
+
+  /// Ilustración del inicio, o [art] (cualquier dibujo) en otras pantallas.
+  final HomeIcon? icon;
+  final Widget? art;
+
+  /// Etiqueta en la esquina («Muy pronto»).
+  final String? badge;
+
+  /// Tarjeta más apagada (lo que aún no está disponible).
+  final bool dimmed;
+
+  /// Si abre una pantalla, se evita abrir dos con un doble toque.
+  final bool opensRoute;
 
   /// Color pastel principal de la tarjeta.
   final Color color;
@@ -175,14 +191,15 @@ class HomeMenuCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final action = guardRoute(context, withSound(context, SoundCue.tap, onTap));
+    final sounded = withSound(context, SoundCue.tap, onTap);
+    final action = opensRoute ? guardRoute(context, sounded) : sounded;
     final dark = Color.lerp(color, Colors.black, 0.18)!;
     final textColor = Color.lerp(color, const Color(0xFF2A2350), 0.78)!;
     return Pressable(
       scale: 0.95,
       child: Semantics(
         button: true,
-        label: title,
+        label: badge == null ? title : '$title. $badge',
         hint: subtitle,
         excludeSemantics: true,
         onTap: action,
@@ -191,7 +208,7 @@ class HomeMenuCard extends StatelessWidget {
           child: LayoutBuilder(
             builder: (context, box) {
               final h = box.maxHeight.isFinite ? box.maxHeight : 160.0;
-              return Container(
+              final card = Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(28),
                   boxShadow: [
@@ -213,7 +230,7 @@ class HomeMenuCard extends StatelessWidget {
                   child: Column(
                     children: [
                       Expanded(
-                        child: CustomPaint(size: Size.infinite, painter: HomeIconPainter(icon)),
+                        child: art ?? CustomPaint(size: Size.infinite, painter: HomeIconPainter(icon!)),
                       ),
                       const SizedBox(height: 4),
                       FittedBox(
@@ -235,6 +252,30 @@ class HomeMenuCard extends StatelessWidget {
                     ],
                   ),
                 ),
+              );
+              final label = badge;
+              return Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  Positioned.fill(child: dimmed ? Opacity(opacity: 0.6, child: card) : card),
+                  if (label != null)
+                    Positioned(
+                      top: -6,
+                      right: -4,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(14),
+                          border: Border.all(color: dark, width: 2),
+                          boxShadow: const [
+                            BoxShadow(color: Color(0x22000000), blurRadius: 4, offset: Offset(0, 2)),
+                          ],
+                        ),
+                        child: Text(label, style: fredoka(13, color: textColor)),
+                      ),
+                    ),
+                ],
               );
             },
           ),

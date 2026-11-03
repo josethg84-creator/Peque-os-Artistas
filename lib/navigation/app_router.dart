@@ -15,6 +15,9 @@ import '../screens/not_found_screen.dart';
 import '../screens/saved_drawings_screen.dart';
 import '../screens/search_screen.dart';
 import '../screens/sound_settings_screen.dart';
+import '../speech/screens/phrases_screen.dart';
+import '../speech/screens/speech_hub_screen.dart';
+import '../speech/screens/words_screen.dart';
 import 'app_routes.dart';
 
 /// Construye cada ruta validando sus argumentos. Una ruta desconocida o con
@@ -41,6 +44,11 @@ abstract final class AppRouter {
       AppRoutes.search => const SearchScreen(),
       AppRoutes.adultZone when args is AdultZoneArgs => const AdultZoneScreen(),
       AppRoutes.soundSettings => const SoundSettingsScreen(),
+      AppRoutes.speech => const SpeechHubScreen(),
+      AppRoutes.speechWordGroups => const WordGroupsScreen(),
+      AppRoutes.speechWords when args is SpeechWordsArgs => WordsScreen(categoryId: args.categoryId),
+      AppRoutes.speechPhrases => const PhrasesScreen(),
+      AppRoutes.speechProgress => const SpeechProgressScreen(),
       _ => const NotFoundScreen(),
     };
     return MaterialPageRoute<void>(
@@ -50,10 +58,10 @@ abstract final class AppRouter {
   }
 
   /// Música de cada pantalla: la misma en todos los menús (sin cambios
-  /// innecesarios), una más suave al colorear y silencio en los juegos, que
-  /// piden concentración y tienen instrucciones habladas.
+  /// innecesarios), una más suave al colorear y silencio en los juegos y al
+  /// aprender palabras y frases, para oír bien la voz.
   static MusicTrack? musicFor(String? route, Widget page) {
-    if (page is LearningGameScreen) return null;
+    if (page is LearningGameScreen || page is WordsScreen || page is PhrasesScreen) return null;
     if (page is ColoringScreen) return MusicTrack.coloring;
     return MusicTrack.main;
   }
