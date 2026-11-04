@@ -4,33 +4,44 @@
 
 | Carpeta | Contenido |
 |---|---|
-| `phone/` | **8 capturas propuestas** para «Capturas de pantalla del teléfono», en el orden en que se subirían. |
-| `phone_extra/` | 3 capturas alternativas (galería de animales, paleta, «Encuentra a los animales»). |
-| `android_emulator/` | 4 capturas de verificación en un **emulador Android 16** con el APK de lanzamiento (no son para la ficha; ver su README). |
+| `phone/` | 8 capturas de colorear y minijuegos (Fase 9). `01_inicio.png` se **rehízo en la Fase 7** con el inicio actual (accesos «Aprendo a Hablar» y «Necesito decir algo»). |
+| `phone_v2/` | **Fase 7:** 7 capturas de «Aprendo a Hablar» y «Quiero decir». |
+| `phone_extra/` | Capturas alternativas (galería, paleta, juegos). |
+| `tablet/` | **Fase 7:** 4 capturas de tableta de 10" en vertical (1600 × 2560). |
+| `android_emulator/` | Verificación en un emulador Android 16; no son para la ficha (ver su README). |
+| `../promo/` | Imágenes promocionales hechas con capturas reales enmarcadas, más la imagen destacada v2. |
 
-Todas las capturas son PNG de **1080 × 2160** (proporción 1:2), RGB de 24 bits sin
-transparencia y de 120 a 280 KB. Las dimensiones y el formato se han comprobado con Pillow.
+Teléfono: PNG de **1080 × 2160** (360 × 720 dp con densidad 3). Tableta: **1600 × 2560**
+(800 × 1280 dp con densidad 2). Todas son RGB de 24 bits sin transparencia, comprobado con
+Pillow. Requisitos de Play (consultados con búsqueda web; compruébalos en Play Console): de 2 a 8
+capturas por tipo, PNG o JPEG sin transparencia, lados de 320 a 3840 px y el lado largo como
+máximo el doble del corto.
 
-**Requisitos de Google Play para teléfonos** (consultados con búsqueda web, porque
-`support.google.com` está bloqueado en este entorno; compruébalos en Play Console):
+### Selección propuesta (8 capturas de teléfono)
 
-- De **2 a 8** capturas.
-- JPEG o PNG de 24 bits sin transparencia.
-- Lado mínimo de 320 px y máximo de 3840 px.
-- El lado largo no puede medir más del doble que el corto.
+1. `phone/01_inicio.png`: inicio.
+2. `phone/03_colorear.png`: colorear.
+3. `phone_v2/02_aprendo_a_hablar.png`: menú «Aprendo a Hablar».
+4. `phone_v2/03_hablemos_con_lolo.png`: conversación con Lolo.
+5. `phone_v2/04_cuento.png`: «Toby y la pelota roja».
+6. `phone_v2/06_tablero_pictogramas.png`: frase «Yo quiero jugar» con pictogramas.
+7. `phone/06_rompecabezas.png`: minijuego.
+8. `phone/08_mis_premios.png`: estrellas y pegatinas.
 
-1080 × 2160 cumple todo esto, justo en el límite de 2:1.
+En lugar de 3, 4 y 6, se pueden usar las tres imágenes de `../promo/`, que llevan título.
 
-| Archivo | Muestra |
-|---|---|
-| `01_inicio.png` | Pantalla de inicio con la ilustración original (niños, perrito y las 4 tarjetas) |
-| `02_categorias.png` | «Colorear»: «¡Vamos a pintar!» y las categorías |
-| `03_colorear.png` | Editor con un dinosaurio coloreado, herramientas y paleta |
-| `04_mis_dibujos.png` | «Mis dibujos» con 3 creaciones (una terminada) |
-| `05_aprende_colores.png` | «Aprende los colores» |
-| `06_descubre_formas.png` | «Descubre las formas» tras un acierto |
-| `07_une_parejas.png` | «Une las parejas» durante un intento |
-| `08_mis_premios.png` | Estrellas y pegatinas conseguidas |
+### Aviso sobre «La voz no está disponible»
+
+En `phone_v2/05`, `07`, `08` y en las de tableta aparece el aviso «La voz no está disponible en
+este dispositivo». Es real: el Chromium sin voces de este entorno no tiene texto a voz en
+español. En un móvil con la voz instalada no sale. **No se ha borrado de las imágenes.** Para la
+ficha conviene repetirlas en un móvil real o usar las que no lo muestran (selección de arriba).
+
+### Tableta: limitación detectada
+
+En una tableta en vertical, varias pantallas de «Aprendo a Hablar» (conversaciones, cuentos)
+dejan mucho espacio vacío y las tarjetas se ven pequeñas. Por eso solo se proponen el inicio y
+«Quiero decir». Ver [KNOWN_ISSUES.md](../KNOWN_ISSUES.md).
 
 ## Cómo se obtuvieron (importante)
 
@@ -50,6 +61,12 @@ web le parecen fieles, también puede usarlas tal cual.
 
 ## Errores encontrados gracias a las capturas (ya corregidos)
 
+**Fase 7:** en el inicio, a 360 dp, los botones partían «Aprend|o a Hablar» y «Necesit|o
+decir algo». Ahora, si el botón es estrecho, el dibujo va encima del texto
+(`AacShortcut.narrowWidth`). Lo comprueba `test/narrow_phone_test.dart` midiendo con Fredoka.
+
+Fase 9:
+
 En teléfonos de 360 dp de ancho, muy comunes:
 
 1. Los títulos se cortaban o partían palabras («Descubr / e las fo…», «Encuentr / a a los …»).
@@ -66,3 +83,6 @@ Roboto.
 1. `bash tools/build_web.sh`
 2. Servir `deploy/web` y ejecutar el guion de Playwright descrito en la Fase 9. Es un
    recorrido por la galería, colorear, «Mis dibujos» y los minijuegos.
+3. Fase 7: el recorrido de `phone_v2/` y `tablet/` usa rutas directas (`/#/hablar/cuentos`,
+   `/#/quiero-decir`…) y toca las tarjetas como lo haría un niño.
+4. Promocionales: `python3 tools/store_promo.py <carpeta de capturas de teléfono>`.
