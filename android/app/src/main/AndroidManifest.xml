@@ -1,11 +1,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Solo para «Practicar» de «Aprendo a Hablar»: se pide la primera vez que el niño
-         pulsa «Grabar». Las grabaciones no se guardan ni se envían. -->
+         pulsa «Grabar». Las grabaciones no se guardan ni se envían. No hay permiso
+         INTERNET: la app funciona sin conexión. -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- El micrófono es opcional: sin esto, Google Play ocultaría la app en dispositivos
+         sin micrófono (algunas tabletas), aunque todo lo demás funciona sin él. -->
+    <uses-feature android:name="android.hardware.microphone" android:required="false" />
     <application
         android:label="Pequeños Artistas"
         android:allowBackup="false"
         android:fullBackupContent="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

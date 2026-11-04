@@ -251,7 +251,13 @@ class _IllustratedHomeCoverState extends State<IllustratedHomeCover> {
   /// Accesos grandes a «Aprendo a Hablar» y «Necesito decir algo» en el espacio
   /// que sobra alrededor de la ilustración (sin tocar la imagen). Si no sobra
   /// espacio, queda la insignia de Lolo sobre la ilustración.
-  static bool _below(BoxConstraints box, double height) => box.maxHeight - height >= 96;
+  static bool _below(BoxConstraints box, double height) =>
+      box.maxHeight - height >= (_narrowBelow(box) ? 150 : 96);
+
+  /// Debajo de la ilustración caben dos botones; si son estrechos, el dibujo
+  /// va encima del texto y necesitan más alto.
+  static bool _narrowBelow(BoxConstraints box) =>
+      (box.maxWidth - 2 * 12 - 10) / 2 - 2 * 14 - 2 * 3 < AacShortcut.narrowWidth;
   static bool _beside(BoxConstraints box, double width) => box.maxWidth - width >= 2 * 200;
   static bool _hasQuickAccess(BoxConstraints box, double width, double height) =>
       _below(box, height) || _beside(box, width);

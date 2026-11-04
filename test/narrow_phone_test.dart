@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:pequenos_artistas/aac/widgets/aac_widgets.dart';
 import 'package:pequenos_artistas/learning/learning_level.dart';
 import 'package:pequenos_artistas/navigation/app_routes.dart';
 import 'package:pequenos_artistas/widgets/fitted_title.dart';
@@ -22,6 +23,10 @@ Future<void> loadRoboto() async {
     loader.addFont(Future.value(ByteData.sublistView(File('test/fonts/Roboto-$w.ttf').readAsBytesSync())));
   }
   await loader.load();
+  // La fuente real de los botones del inicio.
+  await (FontLoader(
+    'Fredoka',
+  )..addFont(Future.value(ByteData.sublistView(File('assets/fonts/Fredoka.ttf').readAsBytesSync())))).load();
 }
 
 void main() {
@@ -68,6 +73,26 @@ void main() {
         reason: '$label: $rect',
       );
       expect(rect.width, greaterThanOrEqualTo(48), reason: 'objetivo táctil de $label');
+    }
+  });
+
+  testWidgets('360 dp: los accesos grandes del inicio no parten las palabras (Fase 7)', (tester) async {
+    setScreenSize(tester, const Size(360, 720));
+    await pumpApp(tester);
+    for (final label in ['Aprendo a Hablar', 'Necesito decir algo']) {
+      final button = find.widgetWithText(AacShortcut, label);
+      expect(button, findsOneWidget, reason: label);
+      final text = tester.renderObject<RenderParagraph>(
+        find.descendant(of: button, matching: find.text(label)),
+      );
+      for (final word in label.split(' ')) {
+        final painter = TextPainter(
+          text: TextSpan(text: word, style: text.text.style),
+          textDirection: TextDirection.ltr,
+          textScaler: text.textScaler,
+        )..layout();
+        expect(painter.width, lessThanOrEqualTo(text.size.width), reason: '«$word» de «$label» cabe entera');
+      }
     }
   });
 }

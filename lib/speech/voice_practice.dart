@@ -64,8 +64,14 @@ class DeviceVoiceRecorder implements VoiceRecorder {
     _startedAt = DateTime.now();
   }
 
+  bool _swept = false;
+
   Future<String> _tempPath(String ext) async {
     final dir = await getTemporaryDirectory();
+    if (!_swept) {
+      _swept = true;
+      await sweepStaleClips(dir.path);
+    }
     return '${dir.path}/practica_${DateTime.now().millisecondsSinceEpoch}.$ext';
   }
 
