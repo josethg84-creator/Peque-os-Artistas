@@ -43,6 +43,18 @@ Aplicación móvil de colorear para niños de 4 a 7 años (Flutter / Android).
   animaciones, resumen de todo el progreso y auditorías de audio, accesibilidad y privacidad.
   Ver [docs/FASE6_INTEGRACION.md](docs/FASE6_INTEGRACION.md) y la
   [guía de pruebas con familias](docs/GUIA_PRUEBAS_FAMILIAS.md).
+- **Fase 7 de «Aprendo a Hablar» (lanzamiento, sin publicar):** versión candidata para prueba
+  interna o cerrada en Google Play. Incluye:
+  - auditoría final y correcciones (inicio en teléfonos de 360 dp, micrófono opcional en Play,
+    sin transferencia de datos entre teléfonos, barrido de grabaciones olvidadas);
+  - capturas nuevas y de tableta, imágenes promocionales y ficha actualizada;
+  - privacidad revisada y pruebas de los recorridos A–L.
+
+  Ver [RELEASE_READINESS.md](store_assets/RELEASE_READINESS.md),
+  [KNOWN_ISSUES.md](store_assets/KNOWN_ISSUES.md),
+  [TESTING_CHECKLIST.md](store_assets/TESTING_CHECKLIST.md),
+  [ANDROID_BUILD.md](store_assets/ANDROID_BUILD.md) y la
+  [guía para adultos](docs/GUIA_ADULTOS.md).
 - **Fase 9 (preparación, sin publicar):** recursos y documentación para Google Play en
   [`store_assets/`](store_assets/RELEASE_READINESS.md): icono, imagen destacada, capturas,
   textos de la ficha, borrador de política de privacidad, auditoría de privacidad,
@@ -61,7 +73,7 @@ assets/
   catalog/    catalog.json (59 entradas)
 web/          index.html, manifest e iconos de la versión web
 deploy/web/   versión web ya compilada (la que publica Vercel, ver vercel.json)
-store_assets/ recursos y documentos para Google Play (Fase 9)
+store_assets/ recursos y documentos para Google Play (Fase 9, actualizados en la Fase 7)
 docs/         DIBUJOS.md (Fase 1), FASE2_INTERFAZ.md, FASE3_MOTOR.md, FASE4_COLECCION.md, FASE5_GUARDADO.md, FASE6_APRENDER.md, FASE7_ANIMACIONES.md y capturas
 tools/        generación, render y control de calidad de los dibujos
 ```

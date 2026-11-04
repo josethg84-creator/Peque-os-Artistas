@@ -73,6 +73,7 @@ flutter:
   # Recursos de la Fase 1 (ver docs/DIBUJOS.md).
   assets:
     - assets/ui/
+    - assets/images/aprendo_hablar/
     - assets/speech/
     - assets/aac/
     - assets/catalog/catalog.json

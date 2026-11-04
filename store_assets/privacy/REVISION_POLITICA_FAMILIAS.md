@@ -5,14 +5,17 @@
 > de la documentación de developer.android.com. **El propietario debe leer la versión vigente
 > antes de enviar la app:**
 > https://support.google.com/googleplay/android-developer/answer/9893335
+>
+> Actualizada el 04/11/2026 (Fase 7). La política de Familias trata los datos del micrófono de
+> niños como información sensible: ver [`../PRIVACY_AUDIT.md`](../PRIVACY_AUDIT.md).
 
 | Requisito (resumen) | Situación en Pequeños Artistas | Estado |
 |---|---|---|
-| Contenido adecuado para niños: sin violencia, miedo, contenido sexual, etc. | 51 dibujos amables, sonidos suaves, mensajes positivos y sin castigos | Cumple; lo verificará Google |
+| Contenido adecuado para niños: sin violencia, miedo, contenido sexual, etc. | 59 dibujos amables, cuentos y conversaciones cotidianas, sonidos suaves, mensajes positivos y sin castigos | Cumple; lo verificará Google |
 | Política de privacidad que refleje las prácticas reales | Borrador hecho y aún no publicado | **PENDIENTE** |
 | No transmitir identificadores del dispositivo, AAID ni ubicación de niños | No se transmite nada; sin permiso INTERNET ni SDK | Cumple (verificado en el código) |
 | Solo SDK de anuncios autocertificados para Familias y sin anuncios personalizados | No hay anuncios ni SDK de anuncios | No aplica |
-| SDK de terceros aptos para niños | Solo `audioplayers`, `flutter_tts` y `shared_preferences`, que funcionan dentro del dispositivo y no recogen datos | Cumple. **CONFIRMAR** con la lista de Google si la exige para otros SDK. |
+| SDK de terceros aptos para niños | Solo `audioplayers`, `flutter_tts`, `shared_preferences`, `record` y `path_provider`, que funcionan dentro del dispositivo y no recogen datos | Cumple. **CONFIRMAR** con la lista de Google si la exige para otros SDK. |
 | Compras y monetización claras, sin presionar a los niños | No hay compras ni monetización | No aplica |
 | Enlaces externos y salida de la app protegidos | No hay enlaces externos; la zona de adultos no enlaza fuera | Cumple |
 | Sin chat anónimo ni funciones sociales para niños | No hay chat ni funciones sociales | Cumple |
@@ -25,4 +28,5 @@
 
 - Añadir analítica (Firebase Analytics, etc.), informes de errores o anuncios.
 - Añadir el permiso INTERNET, enlaces externos, compras, cuentas, chat o compartir dibujos.
-- Usar cámara, micrófono o ubicación.
+- Usar la cámara o la ubicación, o dar otro uso al micrófono (enviar, guardar o analizar la voz).
+- Contar o guardar más datos de «Quiero decir» (por ejemplo, las frases que se dicen).

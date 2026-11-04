@@ -327,6 +327,18 @@ void main() {
     expect(manifest, isNot(contains('android.permission.INTERNET')));
     // Sin copia automática en la nube: las creaciones no salen del dispositivo.
     expect(manifest, contains('android:allowBackup="false"'));
+    // El micrófono es opcional: la app no se oculta en dispositivos sin él.
+    expect(
+      manifest,
+      contains('<uses-feature android:name="android.hardware.microphone" android:required="false" />'),
+    );
+    // Ni copia en la nube ni paso a otro teléfono (Android 12+).
+    expect(manifest, contains('android:dataExtractionRules="@xml/data_extraction_rules"'));
+    final rules = File('android/app/src/main/res/xml/data_extraction_rules.xml').readAsStringSync();
+    for (final part in ['<cloud-backup>', '<device-transfer>']) {
+      final section = rules.substring(rules.indexOf(part));
+      expect(section.substring(0, section.indexOf('</')), contains('domain="sharedpref"'), reason: part);
+    }
     final pubspec = File('pubspec.yaml').readAsStringSync();
     final deps = RegExp(r'^dependencies:\n((?:  .*\n|\n)*?)\S', multiLine: true).firstMatch(pubspec)![1]!;
     for (final pkg in ['http:', 'dio:', 'firebase', 'analytics', 'cloud_']) {

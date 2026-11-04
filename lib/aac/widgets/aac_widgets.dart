@@ -428,6 +428,9 @@ class AacShortcut extends StatelessWidget {
   final Color color;
   final VoidCallback onTap;
 
+  /// Por debajo de este ancho (sin el relleno), el dibujo va encima del texto.
+  static const narrowWidth = 200.0;
+
   @override
   Widget build(BuildContext context) {
     return Semantics(
@@ -451,14 +454,31 @@ class AacShortcut extends StatelessWidget {
                 BoxShadow(color: Color.lerp(color, Colors.black, 0.25)!, offset: const Offset(0, 4)),
               ],
             ),
-            child: Row(
-              children: [
-                Icon(icon, color: Colors.white, size: 40),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: Text(title, style: fredoka(21, color: Colors.white)),
-                ),
-              ],
+            // En botones estrechos (dos en un teléfono pequeño) el dibujo va
+            // encima del texto, para no partir las palabras por la mitad.
+            child: LayoutBuilder(
+              builder: (context, box) => box.maxWidth < narrowWidth
+                  ? Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(icon, color: Colors.white, size: 34),
+                        const SizedBox(height: 4),
+                        Text(
+                          title,
+                          textAlign: TextAlign.center,
+                          style: fredoka(19, color: Colors.white),
+                        ),
+                      ],
+                    )
+                  : Row(
+                      children: [
+                        Icon(icon, color: Colors.white, size: 40),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: Text(title, style: fredoka(21, color: Colors.white)),
+                        ),
+                      ],
+                    ),
             ),
           ),
         ),
