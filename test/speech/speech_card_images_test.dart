@@ -15,10 +15,15 @@ const expected = {
   'Mi historia': 'mi_historia.webp',
   'Yo puedo expresarme': 'yo_puedo_expresarme.webp',
   'Aprendo los verbos': 'aprendo_los_verbos.webp',
+  'Hablemos con Lolo': 'hablemos_con_lolo.webp',
+  'Lolo me cuenta un cuento': 'lolo_me_cuenta_un_cuento.webp',
+  'Ahora cuéntamelo tú': 'ahora_cuentamelo_tu.webp',
+  'Sílabas y sonidos': 'silabas_y_sonidos.webp',
+  'Escucho y respondo': 'escucho_y_respondo.webp',
 };
 
 void main() {
-  test('las siete tarjetas apuntan a su WEBP y las demás conservan su icono', () {
+  test('las tarjetas con ilustración apuntan a su WEBP y las demás conservan su icono', () {
     for (final a in SpeechHubScreen.activities) {
       final file = expected[a.title];
       expect(a.image, file == null ? isNull : '${SpeechActivity.imageFolder}$file', reason: a.title);

@@ -30,6 +30,9 @@ Ilustraciones 3D de las tarjetas del menú «Aprendo a Hablar». Deben ser **Web
 
 ## Ilustraciones 3D adicionales pendientes de cargar
 
+Estas cinco tarjetas ya están preparadas en el código: muestran su icono hasta que se suba su
+archivo con el nombre exacto.
+
 - `hablemos_con_lolo.webp`
 - `lolo_me_cuenta_un_cuento.webp`
 - `ahora_cuentamelo_tu.webp`

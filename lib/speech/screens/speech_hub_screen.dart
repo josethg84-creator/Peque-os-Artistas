@@ -81,6 +81,7 @@ class SpeechHubScreen extends StatefulWidget {
       Icons.forum_rounded,
       Color(0xFFC3A9F5),
       AppRoutes.speechConversations,
+      image: '${SpeechActivity.imageFolder}hablemos_con_lolo.webp',
     ),
     SpeechActivity(
       'Escucho y respondo',
@@ -88,6 +89,7 @@ class SpeechHubScreen extends StatefulWidget {
       Icons.hearing_rounded,
       Color(0xFFFFBE98),
       AppRoutes.speechListening,
+      image: '${SpeechActivity.imageFolder}escucho_y_respondo.webp',
     ),
     SpeechActivity(
       'Lolo me cuenta un cuento',
@@ -95,6 +97,7 @@ class SpeechHubScreen extends StatefulWidget {
       Icons.auto_stories_rounded,
       Color(0xFF86DCE0),
       AppRoutes.speechStories,
+      image: '${SpeechActivity.imageFolder}lolo_me_cuenta_un_cuento.webp',
     ),
     SpeechActivity(
       'Yo puedo expresarme',
@@ -110,6 +113,7 @@ class SpeechHubScreen extends StatefulWidget {
       Icons.photo_library_rounded,
       Color(0xFFFFCC80),
       AppRoutes.speechTellList,
+      image: '${SpeechActivity.imageFolder}ahora_cuentamelo_tu.webp',
     ),
     SpeechActivity(
       'Sílabas y sonidos',
@@ -117,6 +121,7 @@ class SpeechHubScreen extends StatefulWidget {
       Icons.music_note_rounded,
       Color(0xFFB0E57C),
       AppRoutes.speechSounds,
+      image: '${SpeechActivity.imageFolder}silabas_y_sonidos.webp',
     ),
     SpeechActivity(
       'Juegos de palabras',
