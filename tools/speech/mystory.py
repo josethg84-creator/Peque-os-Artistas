@@ -15,7 +15,7 @@ CHARACTERS = [
     ("tortuga", "tortuga", True, D("animal_tortuga")),
     ("dragon", "dragón", False, D("fantasia_dragon")),
     ("gallina", "gallina", True, D("granja_gallina")),
-    ("mariposa", "mariposa", True, D("animal_mariposa", **{"*": "#AB47BC"})),
+    ("mariposa", "mariposa", True, D("animal_mariposa", **{"ala_*": "#AB47BC"})),
 ]
 
 # (id, nombre, femenino, fondo de escena)

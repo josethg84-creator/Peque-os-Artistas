@@ -42,7 +42,7 @@ int count(SoundCue cue) => lastSounds!.played.where((c) => c == cue).length;
 
 Future<void> openPlatano(WidgetTester tester) async {
   await tapAndSettle(tester, find.bySemanticsLabel('Colorear'));
-  await tapAndSettle(tester, find.bySemanticsLabel('Frutas, 5 dibujos'));
+  await tapAndSettle(tester, find.bySemanticsLabel('Frutas, 8 dibujos'));
   await tapAndSettle(tester, find.bySemanticsLabel('Plátano. Dificultad fácil'));
 }
 

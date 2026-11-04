@@ -15,7 +15,8 @@ DOG, CAT, DUCK, BEAR, RABBIT, MONKEY, COW, TURTLE = (D("animal_perro"), D("anima
 BUTTERFLY, FISH, HEN = D("animal_mariposa"), D("animal_pez"), D("granja_gallina")
 # Cuando el color importa en el cuento, el dibujo lleva ese color en todas sus zonas.
 def tinted(drawing, color):
-    return D(drawing, **{"*": color})
+    # La mariposa trae jardín y sol: solo se tiñen sus alas.
+    return D(drawing, **{("ala_*" if drawing == "animal_mariposa" else "*"): color})
 
 
 YELLOW_DUCK = tinted("granja_patito", "#FFD54F")

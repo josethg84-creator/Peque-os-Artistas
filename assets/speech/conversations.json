@@ -849,7 +849,13 @@
          "manzana": "#E53935",
          "hoja": "#43A047",
          "tallo": "#8D5524",
-         "brillo": "#FFFFFF"
+         "brillo": "#FFFFFF",
+         "sol": "#FFD54F",
+         "nube_*": "#E3F2FD",
+         "arbusto_*": "#81C784",
+         "hoja_*": "#66BB6A",
+         "boca": "#E57373",
+         "ojo_*": "#FFFFFF"
         }
        },
        "reply": "¡La fruta está muy rica!",
@@ -1696,7 +1702,13 @@
         "manzana": "#E53935",
         "hoja": "#43A047",
         "tallo": "#8D5524",
-        "brillo": "#FFFFFF"
+        "brillo": "#FFFFFF",
+        "sol": "#FFD54F",
+        "nube_*": "#E3F2FD",
+        "arbusto_*": "#81C784",
+        "hoja_*": "#66BB6A",
+        "boca": "#E57373",
+        "ojo_*": "#FFFFFF"
        }
       },
       "x": 0.3,
@@ -1709,7 +1721,14 @@
        "colors": {
         "platano": "#FFD600",
         "tallo": "#8D6E63",
-        "punta": "#6D4C41"
+        "punta": "#6D4C41",
+        "tallo_corte": "#A1887F",
+        "sol": "#FFD54F",
+        "nube_*": "#E3F2FD",
+        "arbusto_*": "#81C784",
+        "hoja_*": "#66BB6A",
+        "boca": "#E57373",
+        "ojo_*": "#FFFFFF"
        }
       },
       "x": 0.52,
@@ -1722,7 +1741,19 @@
        "colors": {
         "fresa": "#E53935",
         "hojas": "#43A047",
-        "tallo": "#2E7D32"
+        "tallo": "#2E7D32",
+        "fresa_cortada": "#EF5350",
+        "fresa_cortada_borde": "#FFCDD2",
+        "hojas_cortada": "#43A047",
+        "hoja_detras": "#388E3C",
+        "flor_*": "#F48FB1",
+        "flor_centro": "#FFD54F",
+        "sol": "#FFD54F",
+        "nube_*": "#E3F2FD",
+        "arbusto_*": "#81C784",
+        "hoja_*": "#66BB6A",
+        "boca": "#E57373",
+        "ojo_*": "#FFFFFF"
        }
       },
       "x": 0.74,
@@ -1744,7 +1775,13 @@
          "manzana": "#E53935",
          "hoja": "#43A047",
          "tallo": "#8D5524",
-         "brillo": "#FFFFFF"
+         "brillo": "#FFFFFF",
+         "sol": "#FFD54F",
+         "nube_*": "#E3F2FD",
+         "arbusto_*": "#81C784",
+         "hoja_*": "#66BB6A",
+         "boca": "#E57373",
+         "ojo_*": "#FFFFFF"
         }
        },
        "reply": "¡Las manzanas son crujientes!",
@@ -1757,7 +1794,14 @@
         "colors": {
          "platano": "#FFD600",
          "tallo": "#8D6E63",
-         "punta": "#6D4C41"
+         "punta": "#6D4C41",
+         "tallo_corte": "#A1887F",
+         "sol": "#FFD54F",
+         "nube_*": "#E3F2FD",
+         "arbusto_*": "#81C784",
+         "hoja_*": "#66BB6A",
+         "boca": "#E57373",
+         "ojo_*": "#FFFFFF"
         }
        },
        "reply": "¡El plátano es dulce y suave!",
@@ -1770,7 +1814,19 @@
         "colors": {
          "fresa": "#E53935",
          "hojas": "#43A047",
-         "tallo": "#2E7D32"
+         "tallo": "#2E7D32",
+         "fresa_cortada": "#EF5350",
+         "fresa_cortada_borde": "#FFCDD2",
+         "hojas_cortada": "#43A047",
+         "hoja_detras": "#388E3C",
+         "flor_*": "#F48FB1",
+         "flor_centro": "#FFD54F",
+         "sol": "#FFD54F",
+         "nube_*": "#E3F2FD",
+         "arbusto_*": "#81C784",
+         "hoja_*": "#66BB6A",
+         "boca": "#E57373",
+         "ojo_*": "#FFFFFF"
         }
        },
        "reply": "¡Las fresas son deliciosas!",
@@ -1807,7 +1863,13 @@
          "manzana": "#E53935",
          "hoja": "#43A047",
          "tallo": "#8D5524",
-         "brillo": "#FFFFFF"
+         "brillo": "#FFFFFF",
+         "sol": "#FFD54F",
+         "nube_*": "#E3F2FD",
+         "arbusto_*": "#81C784",
+         "hoja_*": "#66BB6A",
+         "boca": "#E57373",
+         "ojo_*": "#FFFFFF"
         }
        },
        "reply": "¡Un desayuno muy sano!",
@@ -2556,7 +2618,14 @@
         "colors": {
          "platano": "#FFD600",
          "tallo": "#8D6E63",
-         "punta": "#6D4C41"
+         "punta": "#6D4C41",
+         "tallo_corte": "#A1887F",
+         "sol": "#FFD54F",
+         "nube_*": "#E3F2FD",
+         "arbusto_*": "#81C784",
+         "hoja_*": "#66BB6A",
+         "boca": "#E57373",
+         "ojo_*": "#FFFFFF"
         }
        },
        "reply": "¡Qué sano!"
@@ -2904,7 +2973,13 @@
          "manzana": "#E53935",
          "hoja": "#43A047",
          "tallo": "#8D5524",
-         "brillo": "#FFFFFF"
+         "brillo": "#FFFFFF",
+         "sol": "#FFD54F",
+         "nube_*": "#E3F2FD",
+         "arbusto_*": "#81C784",
+         "hoja_*": "#66BB6A",
+         "boca": "#E57373",
+         "ojo_*": "#FFFFFF"
         }
        },
        "reply": "¡Para tener energía!",
@@ -5076,7 +5151,13 @@
         "manzana": "#E53935",
         "hoja": "#43A047",
         "tallo": "#8D5524",
-        "brillo": "#FFFFFF"
+        "brillo": "#FFFFFF",
+        "sol": "#FFD54F",
+        "nube_*": "#E3F2FD",
+        "arbusto_*": "#81C784",
+        "hoja_*": "#66BB6A",
+        "boca": "#E57373",
+        "ojo_*": "#FFFFFF"
        }
       },
       "x": 0.7,
@@ -5116,7 +5197,13 @@
          "manzana": "#E53935",
          "hoja": "#43A047",
          "tallo": "#8D5524",
-         "brillo": "#FFFFFF"
+         "brillo": "#FFFFFF",
+         "sol": "#FFD54F",
+         "nube_*": "#E3F2FD",
+         "arbusto_*": "#81C784",
+         "hoja_*": "#66BB6A",
+         "boca": "#E57373",
+         "ojo_*": "#FFFFFF"
         }
        },
        "reply": "¡La manzana! Es una fruta.",
@@ -5654,7 +5741,19 @@
         "colors": {
          "fresa": "#E53935",
          "hojas": "#43A047",
-         "tallo": "#2E7D32"
+         "tallo": "#2E7D32",
+         "fresa_cortada": "#EF5350",
+         "fresa_cortada_borde": "#FFCDD2",
+         "hojas_cortada": "#43A047",
+         "hoja_detras": "#388E3C",
+         "flor_*": "#F48FB1",
+         "flor_centro": "#FFD54F",
+         "sol": "#FFD54F",
+         "nube_*": "#E3F2FD",
+         "arbusto_*": "#81C784",
+         "hoja_*": "#66BB6A",
+         "boca": "#E57373",
+         "ojo_*": "#FFFFFF"
         }
        },
        "reply": "¡La fresa es roja!",
@@ -5668,7 +5767,13 @@
          "manzana": "#E53935",
          "hoja": "#43A047",
          "tallo": "#8D5524",
-         "brillo": "#FFFFFF"
+         "brillo": "#FFFFFF",
+         "sol": "#FFD54F",
+         "nube_*": "#E3F2FD",
+         "arbusto_*": "#81C784",
+         "hoja_*": "#66BB6A",
+         "boca": "#E57373",
+         "ojo_*": "#FFFFFF"
         }
        },
        "reply": "¡La manzana es roja!",
@@ -5797,7 +5902,14 @@
         "colors": {
          "platano": "#FFD600",
          "tallo": "#8D6E63",
-         "punta": "#6D4C41"
+         "punta": "#6D4C41",
+         "tallo_corte": "#A1887F",
+         "sol": "#FFD54F",
+         "nube_*": "#E3F2FD",
+         "arbusto_*": "#81C784",
+         "hoja_*": "#66BB6A",
+         "boca": "#E57373",
+         "ojo_*": "#FFFFFF"
         }
        },
        "reply": "¡El plátano es amarillo!",

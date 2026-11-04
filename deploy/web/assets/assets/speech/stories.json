@@ -587,7 +587,14 @@
          "colors": {
           "platano": "#FFD600",
           "tallo": "#8D6E63",
-          "punta": "#6D4C41"
+          "punta": "#6D4C41",
+          "tallo_corte": "#A1887F",
+          "sol": "#FFD54F",
+          "nube_*": "#E3F2FD",
+          "arbusto_*": "#81C784",
+          "hoja_*": "#66BB6A",
+          "boca": "#E57373",
+          "ojo_*": "#FFFFFF"
          }
         },
         "x": 0.78,
@@ -640,7 +647,14 @@
          "colors": {
           "platano": "#FFD600",
           "tallo": "#8D6E63",
-          "punta": "#6D4C41"
+          "punta": "#6D4C41",
+          "tallo_corte": "#A1887F",
+          "sol": "#FFD54F",
+          "nube_*": "#E3F2FD",
+          "arbusto_*": "#81C784",
+          "hoja_*": "#66BB6A",
+          "boca": "#E57373",
+          "ojo_*": "#FFFFFF"
          }
         },
         "x": 0.5,
@@ -730,7 +744,19 @@
         "colors": {
          "fresa": "#E53935",
          "hojas": "#43A047",
-         "tallo": "#2E7D32"
+         "tallo": "#2E7D32",
+         "fresa_cortada": "#EF5350",
+         "fresa_cortada_borde": "#FFCDD2",
+         "hojas_cortada": "#43A047",
+         "hoja_detras": "#388E3C",
+         "flor_*": "#F48FB1",
+         "flor_centro": "#FFD54F",
+         "sol": "#FFD54F",
+         "nube_*": "#E3F2FD",
+         "arbusto_*": "#81C784",
+         "hoja_*": "#66BB6A",
+         "boca": "#E57373",
+         "ojo_*": "#FFFFFF"
         }
        }
       },
@@ -748,7 +774,14 @@
         "colors": {
          "platano": "#FFD600",
          "tallo": "#8D6E63",
-         "punta": "#6D4C41"
+         "punta": "#6D4C41",
+         "tallo_corte": "#A1887F",
+         "sol": "#FFD54F",
+         "nube_*": "#E3F2FD",
+         "arbusto_*": "#81C784",
+         "hoja_*": "#66BB6A",
+         "boca": "#E57373",
+         "ojo_*": "#FFFFFF"
         }
        }
       }
@@ -1884,7 +1917,13 @@
          "manzana": "#E53935",
          "hoja": "#43A047",
          "tallo": "#8D5524",
-         "brillo": "#FFFFFF"
+         "brillo": "#FFFFFF",
+         "sol": "#FFD54F",
+         "nube_*": "#E3F2FD",
+         "arbusto_*": "#81C784",
+         "hoja_*": "#66BB6A",
+         "boca": "#E57373",
+         "ojo_*": "#FFFFFF"
         }
        }
       },
@@ -2714,7 +2753,13 @@
         "manzana": "#E53935",
         "hoja": "#43A047",
         "tallo": "#8D5524",
-        "brillo": "#FFFFFF"
+        "brillo": "#FFFFFF",
+        "sol": "#FFD54F",
+        "nube_*": "#E3F2FD",
+        "arbusto_*": "#81C784",
+        "hoja_*": "#66BB6A",
+        "boca": "#E57373",
+        "ojo_*": "#FFFFFF"
        }
       },
       "x": 0.76,
@@ -2762,7 +2807,13 @@
           "manzana": "#E53935",
           "hoja": "#43A047",
           "tallo": "#8D5524",
-          "brillo": "#FFFFFF"
+          "brillo": "#FFFFFF",
+          "sol": "#FFD54F",
+          "nube_*": "#E3F2FD",
+          "arbusto_*": "#81C784",
+          "hoja_*": "#66BB6A",
+          "boca": "#E57373",
+          "ojo_*": "#FFFFFF"
          }
         },
         "x": 0.76,
@@ -3045,7 +3096,13 @@
           "manzana": "#E53935",
           "hoja": "#43A047",
           "tallo": "#8D5524",
-          "brillo": "#FFFFFF"
+          "brillo": "#FFFFFF",
+          "sol": "#FFD54F",
+          "nube_*": "#E3F2FD",
+          "arbusto_*": "#81C784",
+          "hoja_*": "#66BB6A",
+          "boca": "#E57373",
+          "ojo_*": "#FFFFFF"
          }
         },
         "x": 0.28,
@@ -3058,7 +3115,14 @@
          "colors": {
           "platano": "#FFD600",
           "tallo": "#8D6E63",
-          "punta": "#6D4C41"
+          "punta": "#6D4C41",
+          "tallo_corte": "#A1887F",
+          "sol": "#FFD54F",
+          "nube_*": "#E3F2FD",
+          "arbusto_*": "#81C784",
+          "hoja_*": "#66BB6A",
+          "boca": "#E57373",
+          "ojo_*": "#FFFFFF"
          }
         },
         "x": 0.5,
@@ -3071,7 +3135,13 @@
          "colors": {
           "uva_*": "#8E44AD",
           "hoja": "#43A047",
-          "tallo": "#8D5524"
+          "tallo": "#8D5524",
+          "sol": "#FFD54F",
+          "nube_*": "#E3F2FD",
+          "arbusto_*": "#81C784",
+          "hoja_*": "#66BB6A",
+          "boca": "#E57373",
+          "ojo_*": "#FFFFFF"
          }
         },
         "x": 0.72,
@@ -3192,7 +3262,13 @@
          "manzana": "#E53935",
          "hoja": "#43A047",
          "tallo": "#8D5524",
-         "brillo": "#FFFFFF"
+         "brillo": "#FFFFFF",
+         "sol": "#FFD54F",
+         "nube_*": "#E3F2FD",
+         "arbusto_*": "#81C784",
+         "hoja_*": "#66BB6A",
+         "boca": "#E57373",
+         "ojo_*": "#FFFFFF"
         }
        }
       },
@@ -3795,7 +3871,7 @@
       "p": {
        "drawing": "animal_mariposa",
        "colors": {
-        "*": "#FFFFFF"
+        "ala_*": "#FFFFFF"
        }
       },
       "x": 0.5,
@@ -3832,7 +3908,7 @@
         "p": {
          "drawing": "animal_mariposa",
          "colors": {
-          "*": "#FFFFFF"
+          "ala_*": "#FFFFFF"
          }
         },
         "x": 0.5,
@@ -3851,7 +3927,7 @@
         "p": {
          "drawing": "animal_mariposa",
          "colors": {
-          "*": "#E53935"
+          "ala_*": "#E53935"
          }
         },
         "x": 0.5,
@@ -3879,7 +3955,7 @@
         "p": {
          "drawing": "animal_mariposa",
          "colors": {
-          "*": "#FFD600"
+          "ala_*": "#FFD600"
          }
         },
         "x": 0.5,
@@ -4126,7 +4202,13 @@
           "manzana": "#E53935",
           "hoja": "#43A047",
           "tallo": "#8D5524",
-          "brillo": "#FFFFFF"
+          "brillo": "#FFFFFF",
+          "sol": "#FFD54F",
+          "nube_*": "#E3F2FD",
+          "arbusto_*": "#81C784",
+          "hoja_*": "#66BB6A",
+          "boca": "#E57373",
+          "ojo_*": "#FFFFFF"
          }
         },
         "x": 0.35,
@@ -5162,7 +5244,13 @@
           "manzana": "#E53935",
           "hoja": "#43A047",
           "tallo": "#8D5524",
-          "brillo": "#FFFFFF"
+          "brillo": "#FFFFFF",
+          "sol": "#FFD54F",
+          "nube_*": "#E3F2FD",
+          "arbusto_*": "#81C784",
+          "hoja_*": "#66BB6A",
+          "boca": "#E57373",
+          "ojo_*": "#FFFFFF"
          }
         },
         "x": 0.35,
@@ -5175,7 +5263,14 @@
          "colors": {
           "platano": "#FFD600",
           "tallo": "#8D6E63",
-          "punta": "#6D4C41"
+          "punta": "#6D4C41",
+          "tallo_corte": "#A1887F",
+          "sol": "#FFD54F",
+          "nube_*": "#E3F2FD",
+          "arbusto_*": "#81C784",
+          "hoja_*": "#66BB6A",
+          "boca": "#E57373",
+          "ojo_*": "#FFFFFF"
          }
         },
         "x": 0.66,
@@ -5235,7 +5330,13 @@
           "manzana": "#E53935",
           "hoja": "#43A047",
           "tallo": "#8D5524",
-          "brillo": "#FFFFFF"
+          "brillo": "#FFFFFF",
+          "sol": "#FFD54F",
+          "nube_*": "#E3F2FD",
+          "arbusto_*": "#81C784",
+          "hoja_*": "#66BB6A",
+          "boca": "#E57373",
+          "ojo_*": "#FFFFFF"
          }
         },
         "x": 0.64,
@@ -5269,7 +5370,13 @@
          "colors": {
           "uva_*": "#8E44AD",
           "hoja": "#43A047",
-          "tallo": "#8D5524"
+          "tallo": "#8D5524",
+          "sol": "#FFD54F",
+          "nube_*": "#E3F2FD",
+          "arbusto_*": "#81C784",
+          "hoja_*": "#66BB6A",
+          "boca": "#E57373",
+          "ojo_*": "#FFFFFF"
          }
         },
         "x": 0.72,
@@ -5319,7 +5426,13 @@
          "manzana": "#E53935",
          "hoja": "#43A047",
          "tallo": "#8D5524",
-         "brillo": "#FFFFFF"
+         "brillo": "#FFFFFF",
+         "sol": "#FFD54F",
+         "nube_*": "#E3F2FD",
+         "arbusto_*": "#81C784",
+         "hoja_*": "#66BB6A",
+         "boca": "#E57373",
+         "ojo_*": "#FFFFFF"
         }
        }
       },
@@ -5357,7 +5470,13 @@
         "colors": {
          "uva_*": "#8E44AD",
          "hoja": "#43A047",
-         "tallo": "#8D5524"
+         "tallo": "#8D5524",
+         "sol": "#FFD54F",
+         "nube_*": "#E3F2FD",
+         "arbusto_*": "#81C784",
+         "hoja_*": "#66BB6A",
+         "boca": "#E57373",
+         "ojo_*": "#FFFFFF"
         }
        }
       },

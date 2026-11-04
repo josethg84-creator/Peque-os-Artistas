@@ -275,7 +275,7 @@ void main() {
       expect(lastNarrator!.spoken, isEmpty, reason: 'nada de voz automática al abrir');
       await tapAndSettle(tester, find.bySemanticsLabel('Colorear'));
       expect(lastSounds!.played.last, SoundCue.tap);
-      await tapAndSettle(tester, find.bySemanticsLabel('Frutas, 5 dibujos'));
+      await tapAndSettle(tester, find.bySemanticsLabel('Frutas, 8 dibujos'));
       expect(lastSounds!.played.last, SoundCue.category);
       expect(lastMusic!.events.where((e) => e.startsWith('play')), hasLength(1), reason: 'misma música');
       await tapAndSettle(tester, find.bySemanticsLabel('Plátano. Dificultad fácil'));
@@ -324,7 +324,7 @@ void main() {
       setScreenSize(tester, const Size(420, 900));
       await pumpApp(tester);
       await tapAndSettle(tester, find.bySemanticsLabel('Colorear'));
-      await tapAndSettle(tester, find.bySemanticsLabel('Frutas, 5 dibujos'));
+      await tapAndSettle(tester, find.bySemanticsLabel('Frutas, 8 dibujos'));
       await tapAndSettle(tester, find.bySemanticsLabel('Plátano. Dificultad fácil'));
       expect(lastNarrator!.spoken, ['¡Elige tu color favorito!']);
 
@@ -337,8 +337,20 @@ void main() {
         await tester.pumpAndSettle();
       }
       expect(lastNarrator!.spoken, hasLength(1), reason: 'el ánimo de ambiente no se repite enseguida');
-      await tester.tapAt(screenPointOf(tester, d, interiorPoint(d, 'punta')));
-      await tester.pumpAndSettle();
+      // El plátano nuevo trae sol, nubes y arbustos: se pinta todo hasta el final.
+      for (final r in [
+        'punta',
+        'tallo_corte',
+        'boca',
+        'sol',
+        'nube_1',
+        'nube_2',
+        'arbusto_derecho',
+        'arbusto_izquierdo',
+      ]) {
+        await tester.tapAt(screenPointOf(tester, d, interiorPoint(d, r)));
+        await tester.pumpAndSettle();
+      }
       expect(Phrases.drawingDone, contains(lastNarrator!.spoken.last));
     });
 

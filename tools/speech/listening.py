@@ -11,7 +11,7 @@ DOG, CAT, BEAR = D("animal_perro"), D("animal_gato"), D("animal_oso")
 RABBIT, MONKEY, TURTLE = D("animal_conejo"), D("animal_mono"), D("animal_tortuga")
 DUCK = D("granja_patito", **{"*": "#FFD54F"})
 COW, HEN, SHEEP = D("granja_vaca"), D("granja_gallina"), D("granja_oveja")
-FISH, BUTTERFLY = D("animal_pez"), D("animal_mariposa", **{"*": "#AB47BC"})
+FISH, BUTTERFLY = D("animal_pez"), D("animal_mariposa", **{"ala_*": "#AB47BC"})
 BOAT, PLANE, TRAIN, CAR = D("vehiculo_barco"), D("vehiculo_avion"), D("vehiculo_tren"), D("vehiculo_automovil")
 
 O = lambda text, picture: {"text": text, "picture": picture}

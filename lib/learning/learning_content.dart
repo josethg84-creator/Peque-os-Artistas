@@ -123,6 +123,8 @@ const learnAnimals = <LearnAnimal>[
   LearnAnimal('animal_tortuga', 'Tortuga', 'la', 'La tortuga lleva su casa en la espalda.'),
   LearnAnimal('animal_cebra', 'Cebra', 'la', 'La cebra tiene rayas blancas y negras.'),
   LearnAnimal('animal_mono', 'Mono', 'el', 'Al mono le encanta trepar a los árboles.'),
+  LearnAnimal('animal_abeja', 'Abeja', 'la', 'La abeja vuela de flor en flor y hace miel.'),
+  LearnAnimal('animal_oruga', 'Oruga', 'la', 'La oruga come hojas y un día se convierte en mariposa.'),
   // Granja.
   LearnAnimal('granja_cerdito', 'Cerdito', 'el', 'El cerdito tiene la nariz redonda y la cola rizada.'),
   LearnAnimal('granja_gallina', 'Gallina', 'la', 'La gallina pone huevos.'),
@@ -137,6 +139,13 @@ const learnAnimals = <LearnAnimal>[
   LearnAnimal('mar_delfin', 'Delfín', 'el', 'El delfín es muy listo y salta en el agua.'),
   LearnAnimal('mar_estrella', 'Estrella de mar', 'la', 'La estrella de mar tiene cinco brazos.'),
   LearnAnimal('mar_pulpo', 'Pulpo', 'el', 'El pulpo tiene ocho brazos llamados tentáculos.'),
+  LearnAnimal('mar_tortuga', 'Tortuga marina', 'la', 'La tortuga marina nada por el mar con sus aletas.'),
+  LearnAnimal(
+    'mar_caballito',
+    'Caballito de mar',
+    'el',
+    'El caballito de mar se agarra a las algas con su cola.',
+  ),
 ];
 
 /// Configuración de cada nivel: opciones por pregunta y preguntas por partida.

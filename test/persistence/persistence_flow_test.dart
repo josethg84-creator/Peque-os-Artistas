@@ -121,7 +121,7 @@ void main() {
     setScreenSize(tester, const Size(420, 900));
     await pumpApp(tester);
     await tapAndSettle(tester, find.bySemanticsLabel('Colorear'));
-    await tapAndSettle(tester, find.bySemanticsLabel('Frutas, 5 dibujos'));
+    await tapAndSettle(tester, find.bySemanticsLabel('Frutas, 8 dibujos'));
     await tapAndSettle(tester, find.bySemanticsLabel('Plátano. Dificultad fácil'));
     final platano = svgOf('fruta_platano', 'fruits');
     await paint(tester, platano, 'platano', 'Amarillo');
@@ -133,7 +133,19 @@ void main() {
     expect(find.text('¡Terminado!'), findsNothing);
 
     await tapAndSettle(tester, card('Plátano'));
-    await paint(tester, platano, 'punta', 'Marrón');
+    // El plátano nuevo trae sol, nubes y arbustos: hay que pintarlo todo.
+    for (final zone in [
+      'punta',
+      'tallo_corte',
+      'boca',
+      'sol',
+      'nube_1',
+      'nube_2',
+      'arbusto_derecho',
+      'arbusto_izquierdo',
+    ]) {
+      await paint(tester, platano, zone, 'Marrón');
+    }
     await tapAndSettle(tester, find.bySemanticsLabel('Volver a la galería'));
     expect(find.text('¡Terminado!'), findsOneWidget);
   });
@@ -184,7 +196,7 @@ void main() {
     // El perro sigue en la galería y se puede volver a pintar.
     await tapAndSettle(tester, find.bySemanticsLabel('Volver al inicio'));
     await tapAndSettle(tester, find.bySemanticsLabel('Colorear'));
-    await tapAndSettle(tester, find.bySemanticsLabel('Animales, 12 dibujos'));
+    await tapAndSettle(tester, find.bySemanticsLabel('Animales, 14 dibujos'));
     await tapAndSettle(tester, find.bySemanticsLabel('Perro. Dificultad fácil'));
     expect(canvasColor(tester, 'cabeza'), isNull);
     await tester.pump(const Duration(seconds: 1));
@@ -277,7 +289,7 @@ void main() {
     setScreenSize(tester, const Size(420, 900));
     await pumpApp(tester);
     await tapAndSettle(tester, find.bySemanticsLabel('Colorear'));
-    await tapAndSettle(tester, find.bySemanticsLabel('Animales, 12 dibujos'));
+    await tapAndSettle(tester, find.bySemanticsLabel('Animales, 14 dibujos'));
     await tapAndSettle(tester, find.bySemanticsLabel('Gato. Dificultad media'));
     await paint(tester, gato, 'cola', 'Rosa');
     await tapAndSettle(tester, find.bySemanticsLabel('Volver a la galería'));

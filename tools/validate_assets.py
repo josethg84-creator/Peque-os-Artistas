@@ -20,7 +20,7 @@ CATALOG = ROOT / "assets" / "catalog" / "catalog.json"
 AREAS = ROOT / "build" / "qa" / "region_areas.json"
 NS = "{http://www.w3.org/2000/svg}"
 
-EXPECTED = {"animales": 12, "granja": 7, "mar": 5, "vehiculos": 5, "dinosaurios": 8, "frutas": 5, "fantasia": 9}
+EXPECTED = {"animales": 14, "granja": 7, "mar": 7, "vehiculos": 6, "dinosaurios": 8, "frutas": 8, "fantasia": 9}
 REQUIRED = ["id", "name", "category", "file", "thumbnail", "difficulty", "recommended_age", "description"]
 DIFFICULTIES = {"facil", "media", "dificil"}
 THUMB_SIZE = (512, 512)

@@ -490,7 +490,13 @@
           "manzana": "#E53935",
           "hoja": "#43A047",
           "tallo": "#8D5524",
-          "brillo": "#FFFFFF"
+          "brillo": "#FFFFFF",
+          "sol": "#FFD54F",
+          "nube_*": "#E3F2FD",
+          "arbusto_*": "#81C784",
+          "hoja_*": "#66BB6A",
+          "boca": "#E57373",
+          "ojo_*": "#FFFFFF"
          }
         },
         "x": 0.76,

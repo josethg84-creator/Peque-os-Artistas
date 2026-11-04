@@ -24,10 +24,10 @@ Map<String, Object?> entry(String id, {String category = 'animales', String? thu
 
 void main() {
   group('Catálogo real de la Fase 1', () {
-    test('tiene 51 dibujos válidos, sin incidencias y con todos sus archivos', () async {
+    test('tiene 59 dibujos válidos, sin incidencias y con todos sus archivos', () async {
       final catalog = await realCatalogService().load();
       expect(catalog.issues, isEmpty);
-      expect(catalog.drawings, hasLength(51));
+      expect(catalog.drawings, hasLength(59));
       expect(catalog.drawings.every((d) => d.thumbnailAvailable), isTrue);
       final assets = diskAssets();
       for (final d in catalog.drawings) {
@@ -36,15 +36,15 @@ void main() {
       }
     });
 
-    test('reparte 12/7/5/5/8/5/9 entre las siete categorías', () async {
+    test('reparte 14/7/7/6/8/8/9 entre las siete categorías', () async {
       final catalog = await realCatalogService().load();
       const expected = {
-        DrawingCategory.animals: 12,
+        DrawingCategory.animals: 14,
         DrawingCategory.farm: 7,
-        DrawingCategory.sea: 5,
-        DrawingCategory.vehicles: 5,
+        DrawingCategory.sea: 7,
+        DrawingCategory.vehicles: 6,
         DrawingCategory.dinosaurs: 8,
-        DrawingCategory.fruits: 5,
+        DrawingCategory.fruits: 8,
         DrawingCategory.fantasy: 9,
       };
       expect(expected.keys, DrawingCategory.values);

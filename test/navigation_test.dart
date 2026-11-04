@@ -121,7 +121,7 @@ void main() {
     expect(find.byType(CategoriesScreen), findsOneWidget);
     // La siguiente pulsación propone otro dibujo fácil.
     await startPainting(tester);
-    expect(find.text('Mariposa'), findsOneWidget);
+    expect(find.text('Gallina'), findsOneWidget);
   });
 
   testWidgets('las siete categorías abren su galería con el número correcto de dibujos', (tester) async {
@@ -131,12 +131,12 @@ void main() {
     expect(find.byType(CategoriesScreen), findsOneWidget);
 
     const expected = {
-      DrawingCategory.animals: 12,
+      DrawingCategory.animals: 14,
       DrawingCategory.farm: 7,
-      DrawingCategory.sea: 5,
-      DrawingCategory.vehicles: 5,
+      DrawingCategory.sea: 7,
+      DrawingCategory.vehicles: 6,
       DrawingCategory.dinosaurs: 8,
-      DrawingCategory.fruits: 5,
+      DrawingCategory.fruits: 8,
       DrawingCategory.fantasy: 9,
     };
     for (final MapEntry(key: category, value: count) in expected.entries) {
@@ -163,10 +163,10 @@ void main() {
     setScreenSize(tester, const Size(400, 860));
     await pumpApp(tester);
     await tapAndSettle(tester, find.bySemanticsLabel('Colorear'));
-    await tapAndSettle(tester, find.bySemanticsLabel('Frutas, 5 dibujos'));
-    await tapAndSettle(tester, find.bySemanticsLabel('Fresa. Dificultad fácil'));
+    await tapAndSettle(tester, find.bySemanticsLabel('Frutas, 8 dibujos'));
+    await tapAndSettle(tester, find.bySemanticsLabel('Manzana. Dificultad fácil'));
     expect(find.byType(ColoringScreen), findsOneWidget);
-    expect(find.text('Fresa'), findsOneWidget);
+    expect(find.text('Manzana'), findsOneWidget);
     await tapAndSettle(tester, find.bySemanticsLabel('Volver a la galería'));
     expect(find.byType(GalleryScreen), findsOneWidget);
   });
@@ -259,7 +259,7 @@ void main() {
     (a, b) = _question(tester);
     await tapAndSettle(tester, find.widgetWithText(OutlinedButton, '${a * b}'));
     expect(find.text('Zona para adultos'), findsOneWidget);
-    expect(find.textContaining('51 dibujos disponibles'), findsOneWidget);
+    expect(find.textContaining('59 dibujos disponibles'), findsOneWidget);
     await tapAndSettle(tester, find.byTooltip('Salir al inicio'));
     expect(find.byType(HomeScreen), findsOneWidget);
   });

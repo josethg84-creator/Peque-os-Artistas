@@ -84,6 +84,29 @@ IMAGES = {
     "fantasia_hada_hongo": ("Hada risueña sobre un hongo mágico.png", "fantasy"),
     "fantasia_robot": ("Robot sonriente con cohete y engranajes.png", "fantasy"),
     "fantasia_robot_heroe": ("Robot héroe entre estrellas y planetas.png", "fantasy"),
+    # Cuarta tanda (Imágenes 3): sustituyen a los vehículos, al pez y a la
+    # mariposa, y añaden helicóptero, abeja, oruga, tortuga marina y caballito.
+    "vehiculo_barco": ("Barco sonriente entre olas y nubes.png", "vehicles"),
+    "vehiculo_tren": ("Trenecito feliz entre montañas.png", "vehicles"),
+    "vehiculo_automovil": ("Coche sonriente en la carretera.png", "vehicles"),
+    "vehiculo_autobus": ("Autobús sonriente en la carretera.png", "vehicles"),
+    "vehiculo_avion": ("Avión sonriente entre nubes y sol.png", "vehicles"),
+    "vehiculo_helicoptero": ("Helicóptero sonriente en el cielo.png", "vehicles"),
+    "animal_pez": ("Pez sonriente en el fondo marino.png", "animals"),
+    "animal_mariposa": ("Mariposa sonriente en jardín encantado.png", "animals"),
+    "animal_abeja": ("Abeja feliz entre flores y sol.png", "animals"),
+    "animal_oruga": ("Oruga sonriente sobre una hoja.png", "animals"),
+    "mar_tortuga": ("Tortuga marina sonriente entre algas.png", "sea"),
+    "mar_caballito": ("Caballito de mar kawaii bajo el mar.png", "sea"),
+    # Quinta tanda (Imágenes 4): frutas.
+    "fruta_manzana": ("Manzana kawaii en el jardín soleado.png", "fruits"),
+    "fruta_platano": ("Plátano feliz bajo el sol.png", "fruits"),
+    "fruta_fresa": ("Trío de fresas bajo el sol feliz.png", "fruits"),
+    "fruta_naranja": ("Naranjas sonrientes en un día soleado.png", "fruits"),
+    "fruta_uvas": ("Racimo de uvas kawaii bajo el sol.png", "fruits"),
+    "fruta_pina": ("Piña sonriente bajo el sol y las nubes.png", "fruits"),
+    "fruta_sandia": ("Sandía Kawaii bajo el sol.png", "fruits"),
+    "fruta_cerezas": ("Cerezas kawaii bajo el sol.png", "fruits"),
 }
 
 # Algunos dibujos tienen pequeñas aberturas en la línea por las que una zona
@@ -102,6 +125,42 @@ SEALS = {
 # Nombres de las regiones (número de la imagen anotada build/qa/anotado_*.png ->
 # nombre). Las que no aparecen se llaman zona_NN.
 NAMES: dict[str, dict[int, str]] = {
+    # Las alas se llaman ala_*: «La mariposa de colores» solo tiñe las alas.
+    "animal_mariposa": {
+        1: "cabeza", 2: "ala_1", 3: "ala_2", 4: "ala_3", 5: "ala_4", 6: "ala_5", 7: "nube", 8: "ala_6",
+        9: "ala_7", 10: "flor_derecha", 11: "ala_8", 12: "flor_izquierda", 13: "sol", 14: "ala_9",
+        15: "ala_10", 16: "cuerpo_2", 17: "cuerpo_1", 18: "hoja_1", 19: "hoja_2", 20: "cuerpo_3",
+        21: "hoja_3", 22: "ala_11", 23: "hoja_4", 24: "cuerpo_4", 25: "ala_12", 26: "flor_derecha_centro",
+        27: "tallo", 28: "hoja_5", 29: "flor_izquierda_centro", 30: "ala_13",
+    },
+    # Frutas: «Aprendo a Hablar» las pinta con sus colores reales por nombre.
+    "fruta_manzana": {
+        1: "manzana", 2: "hoja", 3: "nube_derecha", 4: "sol", 5: "nube_izquierda", 6: "tallo",
+        7: "boca", 8: "brillo", 9: "ojo_derecho_brillo", 10: "ojo_izquierdo_brillo",
+    },
+    "fruta_platano": {
+        1: "platano", 2: "sol", 3: "nube_1", 4: "arbusto_derecho", 5: "nube_2", 6: "arbusto_izquierdo",
+        7: "tallo", 8: "tallo_corte", 9: "boca", 10: "punta",
+    },
+    "fruta_fresa": {
+        1: "fresa", 2: "fresa_cortada", 3: "hoja_suelo_1", 4: "hojas", 5: "nube_izquierda", 6: "sol",
+        7: "hoja_detras", 8: "hoja_suelo_2", 9: "nube_derecha", 10: "flor_1", 11: "hoja_suelo_3",
+        12: "hoja_1", 13: "hoja_2", 14: "hoja_3", 15: "fresa_cortada_borde", 16: "flor_2",
+        17: "hojas_cortada", 18: "tallo", 19: "hoja_4", 20: "boca", 21: "flor_centro", 22: "flor_3",
+        23: "ojo_brillo",
+    },
+    "fruta_naranja": {
+        1: "naranja", 2: "naranja_centro", 3: "hoja", 4: "naranja_cortada", 5: "nube_izquierda",
+        6: "rodaja", 7: "sol", 8: "nube_derecha", 9: "hoja_suelo_1", 10: "gajo_1", 11: "gajo_2",
+        12: "gajo_3", 13: "gajo_4", 14: "gajo_5", 15: "rodaja_gajo_2", 16: "hoja_suelo_2", 17: "gajo_6",
+        18: "gajo_7", 19: "rodaja_gajo_1", 20: "rodaja_gajo_3", 21: "rodaja_gajo_4", 22: "gajo_8",
+        23: "rodaja_borde", 24: "tallo", 25: "boca",
+    },
+    "fruta_uvas": {
+        1: "hoja", 2: "uva_1", 3: "nube_derecha", 4: "arbusto_derecho", 5: "arbusto_izquierdo", 6: "sol",
+        7: "nube_izquierda", 8: "uva_2", 9: "uva_3", 10: "uva_4", 11: "uva_5", 12: "uva_6", 13: "uva_7",
+        14: "uva_8", 15: "uva_9", 16: "uva_10", 17: "tallo", 18: "boca",
+    },
     "animal_gato": {
         1: "cabeza", 2: "cuerpo", 3: "pata_trasera", 4: "cola", 5: "raya_frente_2",
         6: "oreja_izquierda_interior", 7: "oreja_derecha_interior", 8: "raya_cola_4", 9: "raya_cola_1",

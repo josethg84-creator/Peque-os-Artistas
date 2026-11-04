@@ -89,10 +89,10 @@
       "category": "animales",
       "file": "assets/drawings/animals/animal_mariposa.svg",
       "thumbnail": "assets/thumbnails/animal_mariposa.png",
-      "difficulty": "facil",
-      "recommended_age": "4-5",
-      "regions": 12,
-      "description": "Mariposa simétrica con cuatro alas, manchas redondas y antenas."
+      "difficulty": "dificil",
+      "recommended_age": "6-7",
+      "regions": 30,
+      "description": "Mariposa sonriente con alas de corazones y lunares en un jardín con flores."
     },
     {
       "id": "animal_pez",
@@ -100,10 +100,32 @@
       "category": "animales",
       "file": "assets/drawings/animals/animal_pez.svg",
       "thumbnail": "assets/thumbnails/animal_pez.png",
-      "difficulty": "facil",
-      "recommended_age": "4-5",
-      "regions": 10,
-      "description": "Pez de perfil con aletas, franjas, ojo grande y burbujas."
+      "difficulty": "dificil",
+      "recommended_age": "6-7",
+      "regions": 31,
+      "description": "Pez sonriente con rayas y aletas en el fondo marino, con algas, concha y estrella."
+    },
+    {
+      "id": "animal_abeja",
+      "name": "Abeja",
+      "category": "animales",
+      "file": "assets/drawings/animals/animal_abeja.svg",
+      "thumbnail": "assets/thumbnails/animal_abeja.png",
+      "difficulty": "dificil",
+      "recommended_age": "6-7",
+      "regions": 22,
+      "description": "Abeja feliz con alas y rayas volando entre flores, con nubes y sol."
+    },
+    {
+      "id": "animal_oruga",
+      "name": "Oruga",
+      "category": "animales",
+      "file": "assets/drawings/animals/animal_oruga.svg",
+      "thumbnail": "assets/thumbnails/animal_oruga.png",
+      "difficulty": "dificil",
+      "recommended_age": "6-7",
+      "regions": 32,
+      "description": "Oruga sonriente de muchos segmentos sobre una hoja, entre flores."
     },
     {
       "id": "animal_tortuga",
@@ -271,15 +293,37 @@
       "description": "Pulpo kawaii con ocho tentáculos ondulados y ventosas."
     },
     {
+      "id": "mar_tortuga",
+      "name": "Tortuga marina",
+      "category": "mar",
+      "file": "assets/drawings/sea/mar_tortuga.svg",
+      "thumbnail": "assets/thumbnails/mar_tortuga.png",
+      "difficulty": "dificil",
+      "recommended_age": "6-7",
+      "regions": 45,
+      "description": "Tortuga marina sonriente con caparazón de placas entre algas, conchas y burbujas."
+    },
+    {
+      "id": "mar_caballito",
+      "name": "Caballito de mar",
+      "category": "mar",
+      "file": "assets/drawings/sea/mar_caballito.svg",
+      "thumbnail": "assets/thumbnails/mar_caballito.png",
+      "difficulty": "dificil",
+      "recommended_age": "6-7",
+      "regions": 28,
+      "description": "Caballito de mar kawaii con cola enroscada entre algas, corales y una estrella."
+    },
+    {
       "id": "vehiculo_automovil",
       "name": "Automóvil",
       "category": "vehiculos",
       "file": "assets/drawings/vehicles/vehiculo_automovil.svg",
       "thumbnail": "assets/thumbnails/vehiculo_automovil.png",
-      "difficulty": "facil",
-      "recommended_age": "4-5",
-      "regions": 11,
-      "description": "Coche de perfil con dos ventanas, puerta, faro y ruedas grandes."
+      "difficulty": "dificil",
+      "recommended_age": "6-7",
+      "regions": 28,
+      "description": "Coche sonriente con ruedas grandes en la carretera, con árbol, nubes y sol."
     },
     {
       "id": "vehiculo_autobus",
@@ -287,10 +331,10 @@
       "category": "vehiculos",
       "file": "assets/drawings/vehicles/vehiculo_autobus.svg",
       "thumbnail": "assets/thumbnails/vehiculo_autobus.png",
-      "difficulty": "media",
-      "recommended_age": "5-6",
-      "regions": 13,
-      "description": "Autobús de perfil con cuatro ventanas, parabrisas y franja lateral."
+      "difficulty": "dificil",
+      "recommended_age": "6-7",
+      "regions": 29,
+      "description": "Autobús sonriente con muchas ventanas en la carretera, con árbol y sol."
     },
     {
       "id": "vehiculo_avion",
@@ -298,10 +342,10 @@
       "category": "vehiculos",
       "file": "assets/drawings/vehicles/vehiculo_avion.svg",
       "thumbnail": "assets/thumbnails/vehiculo_avion.png",
-      "difficulty": "facil",
-      "recommended_age": "4-5",
-      "regions": 12,
-      "description": "Avión sonriente con ventanillas redondas, alas y dos nubes."
+      "difficulty": "dificil",
+      "recommended_age": "6-7",
+      "regions": 24,
+      "description": "Avión sonriente con ventanillas redondas volando entre nubes y sol."
     },
     {
       "id": "vehiculo_tren",
@@ -309,10 +353,10 @@
       "category": "vehiculos",
       "file": "assets/drawings/vehicles/vehiculo_tren.svg",
       "thumbnail": "assets/thumbnails/vehiculo_tren.png",
-      "difficulty": "media",
-      "recommended_age": "5-6",
-      "regions": 17,
-      "description": "Locomotora de vapor con chimenea, humo, cabina y tres ruedas."
+      "difficulty": "dificil",
+      "recommended_age": "6-7",
+      "regions": 37,
+      "description": "Trenecito feliz con locomotora y vagón sobre las vías, entre montañas."
     },
     {
       "id": "vehiculo_barco",
@@ -320,10 +364,21 @@
       "category": "vehiculos",
       "file": "assets/drawings/vehicles/vehiculo_barco.svg",
       "thumbnail": "assets/thumbnails/vehiculo_barco.png",
-      "difficulty": "facil",
-      "recommended_age": "4-5",
-      "regions": 8,
-      "description": "Velero con dos velas, bandera, casco con franja, olas y sol."
+      "difficulty": "dificil",
+      "recommended_age": "6-7",
+      "regions": 34,
+      "description": "Barco sonriente con chimenea, ancla y salvavidas entre olas, nubes y sol."
+    },
+    {
+      "id": "vehiculo_helicoptero",
+      "name": "Helicóptero",
+      "category": "vehiculos",
+      "file": "assets/drawings/vehicles/vehiculo_helicoptero.svg",
+      "thumbnail": "assets/thumbnails/vehiculo_helicoptero.png",
+      "difficulty": "dificil",
+      "recommended_age": "6-7",
+      "regions": 29,
+      "description": "Helicóptero sonriente con hélice grande y patines, en el cielo con nubes."
     },
     {
       "id": "dinosaurio_01",
@@ -421,8 +476,8 @@
       "thumbnail": "assets/thumbnails/fruta_manzana.png",
       "difficulty": "facil",
       "recommended_age": "4-5",
-      "regions": 4,
-      "description": "Manzana sonriente con tallo, hoja y brillo."
+      "regions": 10,
+      "description": "Manzana kawaii con tallo, hoja y brillo en un jardín con sol y nubes."
     },
     {
       "id": "fruta_platano",
@@ -432,8 +487,8 @@
       "thumbnail": "assets/thumbnails/fruta_platano.png",
       "difficulty": "facil",
       "recommended_age": "4-5",
-      "regions": 3,
-      "description": "Plátano curvado y sonriente con tallo y punta."
+      "regions": 10,
+      "description": "Plátano feliz con tallo y punta entre arbustos, con sol y nubes."
     },
     {
       "id": "fruta_fresa",
@@ -441,10 +496,10 @@
       "category": "frutas",
       "file": "assets/drawings/fruits/fruta_fresa.svg",
       "thumbnail": "assets/thumbnails/fruta_fresa.png",
-      "difficulty": "facil",
-      "recommended_age": "4-5",
-      "regions": 3,
-      "description": "Fresa sonriente con corona de hojas, tallo y semillas."
+      "difficulty": "dificil",
+      "recommended_age": "6-7",
+      "regions": 23,
+      "description": "Trío de fresas: una sonriente con semillas, otra cortada, hojas y una flor bajo el sol."
     },
     {
       "id": "fruta_naranja",
@@ -452,10 +507,10 @@
       "category": "frutas",
       "file": "assets/drawings/fruits/fruta_naranja.svg",
       "thumbnail": "assets/thumbnails/fruta_naranja.png",
-      "difficulty": "facil",
-      "recommended_age": "4-5",
-      "regions": 4,
-      "description": "Naranja redonda y sonriente con tallo, hoja y brillo."
+      "difficulty": "dificil",
+      "recommended_age": "6-7",
+      "regions": 25,
+      "description": "Naranjas sonrientes: una entera con tallo y hoja, otra cortada y una rodaja con gajos."
     },
     {
       "id": "fruta_uvas",
@@ -463,10 +518,43 @@
       "category": "frutas",
       "file": "assets/drawings/fruits/fruta_uvas.svg",
       "thumbnail": "assets/thumbnails/fruta_uvas.png",
-      "difficulty": "facil",
-      "recommended_age": "4-5",
-      "regions": 12,
-      "description": "Racimo de diez uvas grandes con tallo y hoja."
+      "difficulty": "media",
+      "recommended_age": "5-6",
+      "regions": 18,
+      "description": "Racimo de uvas kawaii con hoja grande y zarcillo, entre arbustos y bajo el sol."
+    },
+    {
+      "id": "fruta_pina",
+      "name": "Piña",
+      "category": "frutas",
+      "file": "assets/drawings/fruits/fruta_pina.svg",
+      "thumbnail": "assets/thumbnails/fruta_pina.png",
+      "difficulty": "dificil",
+      "recommended_age": "6-7",
+      "regions": 31,
+      "description": "Piña sonriente con corona de hojas y piel a cuadros, bajo el sol y las nubes."
+    },
+    {
+      "id": "fruta_sandia",
+      "name": "Sandía",
+      "category": "frutas",
+      "file": "assets/drawings/fruits/fruta_sandia.svg",
+      "thumbnail": "assets/thumbnails/fruta_sandia.png",
+      "difficulty": "media",
+      "recommended_age": "5-6",
+      "regions": 18,
+      "description": "Sandía kawaii entera con rayas y una tajada con pepitas bajo el sol."
+    },
+    {
+      "id": "fruta_cerezas",
+      "name": "Cerezas",
+      "category": "frutas",
+      "file": "assets/drawings/fruits/fruta_cerezas.svg",
+      "thumbnail": "assets/thumbnails/fruta_cerezas.png",
+      "difficulty": "media",
+      "recommended_age": "5-6",
+      "regions": 18,
+      "description": "Dos cerezas kawaii unidas por el tallo, con hojas, una flor y el sol."
     },
     {
       "id": "fantasia_hada",

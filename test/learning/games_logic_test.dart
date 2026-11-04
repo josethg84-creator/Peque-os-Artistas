@@ -148,7 +148,7 @@ void main() {
       expect(shapesFor(LearningLevel.initial), hasLength(5));
     });
 
-    test('animales: los 24 del catálogo (granja y mar incluidos), con una frase cada uno', () {
+    test('animales: los 28 del catálogo (granja y mar incluidos), con una frase cada uno', () {
       expect(learnAnimals.map((a) => a.name), [
         'Gato',
         'Perro',
@@ -162,6 +162,8 @@ void main() {
         'Tortuga',
         'Cebra',
         'Mono',
+        'Abeja',
+        'Oruga',
         'Cerdito',
         'Gallina',
         'Gallo',
@@ -174,6 +176,8 @@ void main() {
         'Delfín',
         'Estrella de mar',
         'Pulpo',
+        'Tortuga marina',
+        'Caballito de mar',
       ]);
       expect(learnAnimals.every((a) => a.fact.isNotEmpty), isTrue);
       expect(learnAnimals.every((a) => RegExp(r'^(animal|granja|mar)_').hasMatch(a.drawingId)), isTrue);

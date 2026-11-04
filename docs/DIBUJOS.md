@@ -16,7 +16,7 @@ para integrarse después en una aplicación Flutter para Android.
 |---|---|---|
 | 30 SVG con regiones cerradas e identificadas | ✅ Terminado | `assets/drawings/<categoría>/` |
 | 30 PNG 1024×1024 (fondo blanco) | ✅ Terminado | `assets/previews/` |
-| Catálogo JSON (51 entradas) | ✅ Terminado | `assets/catalog/catalog.json` |
+| Catálogo JSON (59 entradas) | ✅ Terminado | `assets/catalog/catalog.json` |
 | Scripts de generación, render y control de calidad | ✅ Terminado | `tools/` |
 | Revisión por un ilustrador / prueba con niños | ⏳ Pendiente | — |
 | Variante PNG con fondo transparente | ⏳ Pendiente (no se necesita aún) | — |
@@ -106,6 +106,21 @@ el oso, el hada y el robot, y añaden el **mono** (Animales), la **vaca** y el *
 el **hada del hongo** y el **robot héroe** (Fantasía). En total, **51 dibujos en 7 categorías**.
 El gato nuevo tiene la cola y la frente con rayas (15 zonas), así que pasa a dificultad media;
 «¡Vamos a pintar!» empieza ahora por el perro, el primer dibujo fácil.
+
+**Cuarta tanda (Imágenes 3, 12 imágenes):** sustituyen al **barco**, el **tren**, el
+**automóvil**, el **autobús**, el **avión**, el **pez** y la **mariposa**, y añaden el
+**helicóptero** (Vehículos), la **abeja** y la **oruga** (Animales), la **tortuga marina** y el
+**caballito de mar** (Mar).
+
+**Quinta tanda (Imágenes 4, 8 imágenes):** sustituyen a la **manzana**, el **plátano**, la
+**fresa**, la **naranja** y las **uvas**, y añaden la **piña**, la **sandía** y las **cerezas**
+(Frutas). En total, **59 dibujos en 7 categorías** (14 animales, 7 de granja, 7 del mar,
+6 vehículos, 8 dinosaurios, 8 frutas y 9 de fantasía).
+
+Las imágenes nuevas traen paisaje (sol, nubes, olas, flores…), así que tienen más zonas y la
+mayoría queda en dificultad difícil. Las zonas de las frutas y de las alas de la mariposa tienen
+nombre (`manzana`, `hoja`, `tallo`, `uva_1`…, `ala_1`…) porque «Aprendo a Hablar» las pinta con
+sus colores reales y «La mariposa de colores» tiñe solo las alas; las demás se llaman `zona_NN`.
 
 Todas proceden de los dibujos de línea que subió el propietario a `Catalogo Imagenes/`. La app colorea por
 regiones vectoriales, así que cada PNG se convierte en SVG con
@@ -214,11 +229,11 @@ Reglas que cumple cada archivo (verificadas por `tools/validate_assets.py`):
 
 ## Control de calidad
 
-Resultado de `python3 tools/validate_assets.py`: **51 dibujos, 0 errores** (tras la tercera tanda de imágenes).
+Resultado de `python3 tools/validate_assets.py`: **59 dibujos, 0 errores** (tras la quinta tanda de imágenes).
 
 Se comprueba:
 
-- Exactamente 51 entradas, reparto 12/7/5/5/8/5/9 (animales, granja, mar, vehículos,
+- Exactamente 59 entradas, reparto 14/7/7/6/8/8/9 (animales, granja, mar, vehículos,
   dinosaurios, frutas, fantasía).
 - Sin `id`, nombres ni rutas duplicados; todos los campos obligatorios presentes.
 - Cada archivo del catálogo existe, la ruta es relativa y el nombre coincide con
