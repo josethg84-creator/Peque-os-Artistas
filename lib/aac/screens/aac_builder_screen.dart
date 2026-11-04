@@ -38,7 +38,7 @@ class _AacBuilderScreenState extends State<AacBuilderScreen> {
   void _add(Pictogram p) {
     final aac = AppServices.of(context).aac;
     if (!aac.acceptTap()) return;
-    aac.markUsed(p.id);
+    aac.markUsed(p);
     setState(() => _tokens.add(p));
     aacClick(context);
     // Se oye cada pieza al ponerla (si el adulto no lo desactivó).

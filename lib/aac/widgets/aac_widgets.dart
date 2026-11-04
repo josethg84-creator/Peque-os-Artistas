@@ -50,10 +50,10 @@ void aacSay(BuildContext context, String text, {bool slow = false}) {
 
 /// Tocar un pictograma: según los ajustes, lo dice al momento, espera a
 /// «Decirlo» o solo lo muestra.
-void aacTap(BuildContext context, String text, {String? id}) {
+void aacTap(BuildContext context, String text, {Pictogram? pictogram}) {
   final aac = AppServices.of(context).aac;
   if (!aac.acceptTap()) return;
-  if (id != null) aac.markUsed(id);
+  if (pictogram != null) aac.markUsed(pictogram);
   final p = aac.prefs;
   if (p.confirmBeforeSpeak) {
     aac
@@ -402,8 +402,9 @@ class PictogramGrid extends StatelessWidget {
             final p = list[i];
             return PictogramCard(
               pictogram: p,
-              onTap: () =>
-                  onTap != null ? onTap!(p) : aacTap(context, p.label(feminine: prefs.feminine), id: p.id),
+              onTap: () => onTap != null
+                  ? onTap!(p)
+                  : aacTap(context, p.label(feminine: prefs.feminine), pictogram: p),
             );
           },
         );
@@ -471,26 +472,11 @@ class QuickSayBanner extends StatelessWidget {
   const QuickSayBanner({super.key});
 
   @override
-  Widget build(BuildContext context) => Row(
-    children: [
-      Expanded(
-        child: AacShortcut(
-          title: 'Necesito decir algo',
-          icon: Icons.campaign_rounded,
-          color: const Color(0xFFEF6C57),
-          onTap: () => Navigator.of(context).pushNamed(AppRoutes.aacQuick),
-        ),
-      ),
-      const SizedBox(width: 10),
-      Expanded(
-        child: AacShortcut(
-          title: 'Quiero decir',
-          icon: Icons.grid_view_rounded,
-          color: aacColor,
-          onTap: () => Navigator.of(context).pushNamed(AppRoutes.aac),
-        ),
-      ),
-    ],
+  Widget build(BuildContext context) => AacShortcut(
+    title: 'Necesito decir algo',
+    icon: Icons.campaign_rounded,
+    color: const Color(0xFFEF6C57),
+    onTap: () => Navigator.of(context).pushNamed(AppRoutes.aacQuick),
   );
 }
 

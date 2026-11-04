@@ -39,6 +39,10 @@ Aplicación móvil de colorear para niños de 4 a 7 años (Flutter / Android).
   pictogramas y voz en español, tablero rápido «Necesito decir algo», constructor de frases,
   emociones, favoritas y ajustes para adultos. Funciona sin conexión, sin micrófono y sin
   estrellas. Ver [docs/FASE_CAA.md](docs/FASE_CAA.md).
+- **Fase 6 (integración y pruebas):** navegación unificada, voz que se calla al salir, reducir
+  animaciones, resumen de todo el progreso y auditorías de audio, accesibilidad y privacidad.
+  Ver [docs/FASE6_INTEGRACION.md](docs/FASE6_INTEGRACION.md) y la
+  [guía de pruebas con familias](docs/GUIA_PRUEBAS_FAMILIAS.md).
 - **Fase 9 (preparación, sin publicar):** recursos y documentación para Google Play en
   [`store_assets/`](store_assets/RELEASE_READINESS.md): icono, imagen destacada, capturas,
   textos de la ficha, borrador de política de privacidad, auditoría de privacidad,

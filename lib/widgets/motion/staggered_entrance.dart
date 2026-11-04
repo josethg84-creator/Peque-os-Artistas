@@ -67,6 +67,8 @@ class _StaggeredEntranceState extends State<StaggeredEntrance> with SingleTicker
       child: widget.child,
       builder: (context, child) => Opacity(
         opacity: _t.value,
+        // El lector de pantalla las anuncia aunque aún estén apareciendo.
+        alwaysIncludeSemantics: true,
         child: Transform.translate(offset: Offset(0, (1 - _t.value) * 18), child: child),
       ),
     );

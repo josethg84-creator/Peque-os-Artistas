@@ -68,6 +68,7 @@ class AdaptiveSliverGrid extends StatelessWidget {
     this.maxColumns = 5,
     this.childAspectRatio = 0.85,
     this.tileHeight,
+    this.indexOffset = 0,
   });
 
   final int itemCount;
@@ -78,6 +79,10 @@ class AdaptiveSliverGrid extends StatelessWidget {
 
   /// Altura fija (escalada con el texto); sustituye a [childAspectRatio].
   final double? tileHeight;
+
+  /// Posición de la primera tarjeta en la pantalla (varias rejillas seguidas
+  /// entran en orden, como una sola).
+  final int indexOffset;
 
   @override
   Widget build(BuildContext context) {
@@ -103,7 +108,7 @@ class AdaptiveSliverGrid extends StatelessWidget {
             mainAxisExtent: tileHeight == null ? null : tileHeight! * textScale,
           ),
           itemCount: itemCount,
-          itemBuilder: (context, i) => StaggeredEntrance.wrap(i, itemBuilder(context, i)),
+          itemBuilder: (context, i) => StaggeredEntrance.wrap(i + indexOffset, itemBuilder(context, i)),
         ),
       ),
     );

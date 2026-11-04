@@ -57,11 +57,37 @@ class PequenosArtistasApp extends StatelessWidget {
           theme: AppTheme.light(),
           initialRoute: AppRoutes.home,
           onGenerateRoute: AppRouter.onGenerateRoute,
-          builder: (context, child) =>
-              MediaQuery.withClampedTextScaling(maxScaleFactor: maxTextScale, child: child!),
+          // Al volver atrás, la voz de la pantalla que se cierra se calla.
+          navigatorObservers: [VoiceStopObserver(learningAudio)],
+          builder: (context, child) => ListenableBuilder(
+            listenable: learningController,
+            builder: (context, _) {
+              final mq = MediaQuery.of(context);
+              // «Reducir animaciones» (zona de adultos) se suma al ajuste del sistema.
+              final reduce = learningController.settings.reduceMotion || mq.disableAnimations;
+              return MediaQuery(
+                data: mq.copyWith(disableAnimations: reduce),
+                child: MediaQuery.withClampedTextScaling(maxScaleFactor: maxTextScale, child: child!),
+              );
+            },
+          ),
         ),
       ),
     );
+  }
+}
+
+/// Calla la voz cuando se cierra una pantalla (no al cerrar un diálogo o una
+/// ventana: esos gestionan su propio audio). Así un cuento o una frase no
+/// siguen sonando en la pantalla anterior.
+class VoiceStopObserver extends NavigatorObserver {
+  VoiceStopObserver(this.audio);
+
+  final LearningAudio audio;
+
+  @override
+  void didPop(Route<dynamic> route, Route<dynamic>? previousRoute) {
+    if (route is PageRoute) unawaited(audio.stopVoice());
   }
 }
 

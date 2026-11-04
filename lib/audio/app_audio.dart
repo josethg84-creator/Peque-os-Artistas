@@ -302,7 +302,7 @@ class DeviceTtsNarrator implements Narrator {
         description: kIsWeb
             ? 'Voz del navegador en español: ${voice['name']} ($locale). '
                   'Algunas voces del navegador necesitan conexión.'
-            : 'Voz del dispositivo en español ($locale), instalada: funciona sin conexión.',
+            : 'Voz del dispositivo en español ($locale), instalada: según el sistema, funciona sin conexión.',
       );
     } catch (_) {
       return const VoiceInfo(available: false, description: 'La voz del dispositivo no está disponible.');

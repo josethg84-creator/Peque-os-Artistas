@@ -37,9 +37,23 @@ void main() {
   testWidgets('el inicio abre «Aprendo a Hablar» con todas sus actividades y Lolo', (tester) async {
     await openHub(tester);
     expect(find.bySemanticsLabel(RegExp('^Lolo dice: ¡Hola! Soy Lolo')), findsOneWidget);
-    for (final a in SpeechHubScreen.activities) {
-      await tester.scrollUntilVisible(find.bySemanticsLabel(a.title), 200);
-      expect(find.bySemanticsLabel(a.title), findsOneWidget, reason: a.title);
+    // Las actividades están en áreas con título (en el orden de la pantalla).
+    final shown = [for (final (_, _, names) in SpeechHubScreen.sections) ...names];
+    expect(
+      shown.toSet(),
+      SpeechHubScreen.activities.map((a) => a.title).toSet(),
+      reason: 'ninguna se pierde',
+    );
+    for (final title in shown) {
+      await tester.scrollUntilVisible(find.bySemanticsLabel(title), 200);
+      expect(find.bySemanticsLabel(title), findsOneWidget, reason: title);
+    }
+    // Los títulos de las áreas, de arriba abajo.
+    await tester.scrollUntilVisible(find.bySemanticsLabel(RegExp('^Lolo dice: ¡Hola! Soy Lolo')), -300);
+    for (final (area, _, names) in SpeechHubScreen.sections) {
+      if (names.length == 1 && names.first == area) continue;
+      await tester.scrollUntilVisible(find.text(area), 150);
+      expect(find.text(area), findsOneWidget, reason: area);
     }
     await tester.scrollUntilVisible(find.bySemanticsLabel(RegExp('^Lolo dice: ¡Hola! Soy Lolo')), -200);
     // Ya no queda ninguna «Muy pronto».
