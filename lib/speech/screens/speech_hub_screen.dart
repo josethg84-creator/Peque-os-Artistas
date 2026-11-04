@@ -401,17 +401,22 @@ class SpeechActivityArt extends StatelessWidget {
         if (asset == null || !side.isFinite || side <= 0) return fallback;
         // Se decodifica al tamaño en pantalla (no al del archivo) para ahorrar memoria.
         final pixels = (side * MediaQuery.devicePixelRatioOf(context)).ceil();
+        // Las ilustraciones son cuadradas y con fondo: esquinas redondeadas,
+        // como las tarjetas, para que encajen en ellas.
         return Center(
-          child: SizedBox.square(
-            dimension: side,
-            child: Image.asset(
-              asset,
-              fit: BoxFit.contain,
-              cacheWidth: pixels,
-              filterQuality: FilterQuality.medium,
-              excludeFromSemantics: true, // la tarjeta ya dice su título
-              gaplessPlayback: true,
-              errorBuilder: (context, error, stack) => fallback,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(side * 0.18),
+            child: SizedBox.square(
+              dimension: side,
+              child: Image.asset(
+                asset,
+                fit: BoxFit.contain,
+                cacheWidth: pixels,
+                filterQuality: FilterQuality.medium,
+                excludeFromSemantics: true, // la tarjeta ya dice su título
+                gaplessPlayback: true,
+                errorBuilder: (context, error, stack) => fallback,
+              ),
             ),
           ),
         );
