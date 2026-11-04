@@ -19,11 +19,17 @@ import 'mission_screen.dart';
 /// Una actividad del menú. Las que llegarán en entregas posteriores se
 /// muestran como «Muy pronto»: al tocarlas, Lolo lo explica.
 class SpeechActivity {
-  const SpeechActivity(this.title, this.subtitle, this.icon, this.color, this.route);
+  const SpeechActivity(this.title, this.subtitle, this.icon, this.color, this.route, {this.image});
   final String title;
   final String subtitle;
   final IconData icon;
   final Color color;
+
+  /// Ilustración 3D de la tarjeta (WEBP en [imageFolder]). Mientras el archivo
+  /// no exista, la tarjeta muestra [icon].
+  final String? image;
+
+  static const imageFolder = 'assets/images/aprendo_hablar/';
 
   /// `null` mientras no esté disponible.
   final String? route;
@@ -43,6 +49,7 @@ class SpeechHubScreen extends StatefulWidget {
       Icons.abc_rounded,
       Color(0xFF8FCBFF),
       AppRoutes.speechWordGroups,
+      image: '${SpeechActivity.imageFolder}mis_primeras_palabras.webp',
     ),
     SpeechActivity(
       'Aprendo frases',
@@ -50,6 +57,7 @@ class SpeechHubScreen extends StatefulWidget {
       Icons.chat_bubble_rounded,
       Color(0xFFFFA8C8),
       AppRoutes.speechPhrases,
+      image: '${SpeechActivity.imageFolder}aprendo_frases.webp',
     ),
     SpeechActivity(
       'Construyo oraciones',
@@ -57,6 +65,7 @@ class SpeechHubScreen extends StatefulWidget {
       Icons.view_week_rounded,
       Color(0xFF8EDDB8),
       AppRoutes.speechSentences,
+      image: '${SpeechActivity.imageFolder}construyo_oraciones.webp',
     ),
     SpeechActivity(
       'Aprendo los verbos',
@@ -64,6 +73,7 @@ class SpeechHubScreen extends StatefulWidget {
       Icons.directions_run_rounded,
       Color(0xFFFFD27A),
       AppRoutes.speechVerbs,
+      image: '${SpeechActivity.imageFolder}aprendo_los_verbos.webp',
     ),
     SpeechActivity(
       'Hablemos con Lolo',
@@ -92,6 +102,7 @@ class SpeechHubScreen extends StatefulWidget {
       Icons.emoji_emotions_rounded,
       Color(0xFFFFB3C7),
       AppRoutes.speechExpress,
+      image: '${SpeechActivity.imageFolder}yo_puedo_expresarme.webp',
     ),
     SpeechActivity(
       'Ahora cuéntamelo tú',
@@ -113,6 +124,7 @@ class SpeechHubScreen extends StatefulWidget {
       Icons.extension_rounded,
       Color(0xFF9FC5F8),
       AppRoutes.speechWordGames,
+      image: '${SpeechActivity.imageFolder}juegos_de_palabras.webp',
     ),
     SpeechActivity(
       'Mi historia',
@@ -120,6 +132,7 @@ class SpeechHubScreen extends StatefulWidget {
       Icons.menu_book_rounded,
       Color(0xFFF7B2D9),
       AppRoutes.speechMyStory,
+      image: '${SpeechActivity.imageFolder}mi_historia.webp',
     ),
     SpeechActivity(
       'Quiero decir',
@@ -230,7 +243,7 @@ class _SpeechHubScreenState extends State<SpeechHubScreen> {
                   title: a.title,
                   subtitle: a.subtitle,
                   color: a.color,
-                  art: SpeechActivityArt(icon: a.icon, color: a.color),
+                  art: SpeechActivityArt(icon: a.icon, color: a.color, image: a.image),
                   badge: a.available ? null : 'Muy pronto',
                   dimmed: !a.available,
                   opensRoute: a.available,
@@ -355,19 +368,22 @@ class _Suggestion extends StatelessWidget {
   }
 }
 
-/// Icono grande de una actividad, blanco con sombra (como en las tarjetas del inicio).
+/// Dibujo de una actividad: su ilustración 3D si tiene una ([image]) o, si no
+/// (o mientras el archivo no esté), su icono blanco con sombra, como en las
+/// tarjetas del inicio. Se adapta al espacio de la tarjeta.
 class SpeechActivityArt extends StatelessWidget {
-  const SpeechActivityArt({super.key, required this.icon, required this.color});
+  const SpeechActivityArt({super.key, required this.icon, required this.color, this.image});
 
   final IconData icon;
   final Color color;
+  final String? image;
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, box) {
         final side = box.biggest.shortestSide;
-        return Center(
+        final fallback = Center(
           child: Icon(
             icon,
             size: side * 0.9,
@@ -379,6 +395,24 @@ class SpeechActivityArt extends StatelessWidget {
                 blurRadius: 2,
               ),
             ],
+          ),
+        );
+        final asset = image;
+        if (asset == null || !side.isFinite || side <= 0) return fallback;
+        // Se decodifica al tamaño en pantalla (no al del archivo) para ahorrar memoria.
+        final pixels = (side * MediaQuery.devicePixelRatioOf(context)).ceil();
+        return Center(
+          child: SizedBox.square(
+            dimension: side,
+            child: Image.asset(
+              asset,
+              fit: BoxFit.contain,
+              cacheWidth: pixels,
+              filterQuality: FilterQuality.medium,
+              excludeFromSemantics: true, // la tarjeta ya dice su título
+              gaplessPlayback: true,
+              errorBuilder: (context, error, stack) => fallback,
+            ),
           ),
         );
       },
