@@ -35,6 +35,10 @@ Aplicación móvil de colorear para niños de 4 a 7 años (Flutter / Android).
   8 historias para ordenar y contar, 56 ejercicios de «Escucho y respondo» y, en la 4.ª,
   sugerencias de Lolo según el progreso local, «Mi aventura de hoy», juegos de sílabas y rimas,
   313 palabras con sílabas y ejemplos, «Mi historia» y ajustes para adultos. Ver [docs/FASE_HABLAR.md](docs/FASE_HABLAR.md).
+- **Quiero decir (fase 5, comunicación aumentativa):** tablero de comunicación con 203
+  pictogramas y voz en español, tablero rápido «Necesito decir algo», constructor de frases,
+  emociones, favoritas y ajustes para adultos. Funciona sin conexión, sin micrófono y sin
+  estrellas. Ver [docs/FASE_CAA.md](docs/FASE_CAA.md).
 - **Fase 9 (preparación, sin publicar):** recursos y documentación para Google Play en
   [`store_assets/`](store_assets/RELEASE_READINESS.md): icono, imagen destacada, capturas,
   textos de la ficha, borrador de política de privacidad, auditoría de privacidad,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'aac/aac_controller.dart';
 import 'app.dart';
 import 'learning/audio/learning_audio.dart';
 import 'learning/learning_controller.dart';
@@ -23,6 +24,7 @@ void main() {
       creationStore: KeyValueCreationStore(storage),
       learningController: learning,
       speechController: SpeechController(SpeechStore(storage))..load(),
+      aacController: AacController(AacStore(storage))..load(),
       learningAudio: LearningAudio(
         effects: AudioPlayersSoundEffects(),
         narrator: DeviceTtsNarrator(),

@@ -1,0 +1,3658 @@
+{
+ "format_version": 1,
+ "categories": [
+  {
+   "id": "necesidades",
+   "name": "Necesidades básicas",
+   "color": "#4FC3F7",
+   "icon": "pan_tool",
+   "order": 1
+  },
+  {
+   "id": "comida",
+   "name": "Comida y bebida",
+   "color": "#FFB74D",
+   "icon": "restaurant",
+   "order": 2
+  },
+  {
+   "id": "emociones",
+   "name": "Emociones",
+   "color": "#F06292",
+   "icon": "emoji_emotions",
+   "order": 3
+  },
+  {
+   "id": "personas",
+   "name": "Familia y personas",
+   "color": "#BA68C8",
+   "icon": "family_restroom",
+   "order": 4
+  },
+  {
+   "id": "juegos",
+   "name": "Juegos",
+   "color": "#81C784",
+   "icon": "toys",
+   "order": 5
+  },
+  {
+   "id": "actividades",
+   "name": "Actividades",
+   "color": "#4DB6AC",
+   "icon": "directions_run",
+   "order": 6
+  },
+  {
+   "id": "lugares",
+   "name": "Lugares",
+   "color": "#7986CB",
+   "icon": "place",
+   "order": 7
+  },
+  {
+   "id": "salud",
+   "name": "Salud y bienestar",
+   "color": "#E57373",
+   "icon": "healing",
+   "order": 8
+  },
+  {
+   "id": "preguntas",
+   "name": "Preguntas y respuestas",
+   "color": "#FFD54F",
+   "icon": "help_outline",
+   "order": 9
+  },
+  {
+   "id": "esenciales",
+   "name": "Palabras esenciales",
+   "color": "#90A4AE",
+   "icon": "star",
+   "order": 10
+  }
+ ],
+ "pictograms": [
+  {
+   "id": "quiero_agua",
+   "category": "necesidades",
+   "text": "Quiero agua.",
+   "speech": "Quiero agua.",
+   "picture": {
+    "icon": "water_drop",
+    "color": "#039BE5"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 1,
+   "active": true,
+   "color": "#4FC3F7"
+  },
+  {
+   "id": "tengo_hambre",
+   "category": "necesidades",
+   "text": "Tengo hambre.",
+   "speech": "Tengo hambre.",
+   "picture": {
+    "icon": "restaurant",
+    "color": "#FB8C00"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 2,
+   "active": true,
+   "color": "#4FC3F7"
+  },
+  {
+   "id": "tengo_sed",
+   "category": "necesidades",
+   "text": "Tengo sed.",
+   "speech": "Tengo sed.",
+   "picture": {
+    "icon": "local_drink",
+    "color": "#29B6F6"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 3,
+   "active": true,
+   "color": "#4FC3F7"
+  },
+  {
+   "id": "necesito_ayuda",
+   "category": "necesidades",
+   "text": "Necesito ayuda.",
+   "speech": "Necesito ayuda.",
+   "picture": {
+    "icon": "pan_tool",
+    "color": "#E53935"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 4,
+   "active": true,
+   "color": "#4FC3F7"
+  },
+  {
+   "id": "quiero_descansar",
+   "category": "necesidades",
+   "text": "Quiero descansar.",
+   "speech": "Quiero descansar.",
+   "picture": {
+    "icon": "weekend",
+    "color": "#7E57C2"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 5,
+   "active": true,
+   "color": "#4FC3F7"
+  },
+  {
+   "id": "tengo_sueno",
+   "category": "necesidades",
+   "text": "Tengo sueño.",
+   "speech": "Tengo sueño.",
+   "picture": {
+    "icon": "bedtime",
+    "color": "#3949AB"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 6,
+   "active": true,
+   "color": "#4FC3F7"
+  },
+  {
+   "id": "quiero_bano",
+   "category": "necesidades",
+   "text": "Quiero ir al baño.",
+   "speech": "Quiero ir al baño.",
+   "picture": {
+    "icon": "wc",
+    "color": "#0288D1"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 7,
+   "active": true,
+   "color": "#4FC3F7"
+  },
+  {
+   "id": "tengo_frio",
+   "category": "necesidades",
+   "text": "Tengo frío.",
+   "speech": "Tengo frío.",
+   "picture": {
+    "icon": "severe_cold",
+    "color": "#4FC3F7"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 8,
+   "active": true,
+   "color": "#4FC3F7"
+  },
+  {
+   "id": "tengo_calor",
+   "category": "necesidades",
+   "text": "Tengo calor.",
+   "speech": "Tengo calor.",
+   "picture": {
+    "icon": "wb_sunny",
+    "color": "#FB8C00"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 9,
+   "active": true,
+   "color": "#4FC3F7"
+  },
+  {
+   "id": "quiero_comer",
+   "category": "necesidades",
+   "text": "Quiero comer.",
+   "speech": "Quiero comer.",
+   "picture": {
+    "icon": "lunch_dining",
+    "color": "#FB8C00"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 10,
+   "active": true,
+   "color": "#4FC3F7"
+  },
+  {
+   "id": "quiero_mama",
+   "category": "necesidades",
+   "text": "Quiero a mamá.",
+   "speech": "Quiero a mamá.",
+   "picture": {
+    "icon": "woman",
+    "color": "#E91E63"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 11,
+   "active": true,
+   "color": "#4FC3F7"
+  },
+  {
+   "id": "quiero_casa",
+   "category": "necesidades",
+   "text": "Quiero ir a casa.",
+   "speech": "Quiero ir a casa.",
+   "picture": {
+    "icon": "house",
+    "color": "#E57373"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 12,
+   "active": true,
+   "color": "#4FC3F7"
+  },
+  {
+   "id": "necesito_abrazo",
+   "category": "necesidades",
+   "text": "Necesito un abrazo.",
+   "speech": "Necesito un abrazo.",
+   "picture": {
+    "icon": "volunteer_activism",
+    "color": "#F06292"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 13,
+   "active": true,
+   "color": "#4FC3F7"
+  },
+  {
+   "id": "quiero_lavarme",
+   "category": "necesidades",
+   "text": "Quiero lavarme las manos.",
+   "speech": "Quiero lavarme las manos.",
+   "picture": {
+    "icon": "wash",
+    "color": "#29B6F6"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 14,
+   "active": true,
+   "color": "#4FC3F7"
+  },
+  {
+   "id": "quiero_cambiarme",
+   "category": "necesidades",
+   "text": "Quiero cambiarme de ropa.",
+   "speech": "Quiero cambiarme de ropa.",
+   "picture": {
+    "icon": "checkroom",
+    "color": "#7E57C2"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 15,
+   "active": true,
+   "color": "#4FC3F7"
+  },
+  {
+   "id": "necesito_silencio",
+   "category": "necesidades",
+   "text": "Necesito silencio.",
+   "speech": "Necesito silencio.",
+   "picture": {
+    "icon": "volume_off",
+    "color": "#546E7A"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 16,
+   "active": true,
+   "color": "#4FC3F7"
+  },
+  {
+   "id": "quiero_salir",
+   "category": "necesidades",
+   "text": "Quiero salir.",
+   "speech": "Quiero salir.",
+   "picture": {
+    "icon": "door_front_door",
+    "color": "#8D6E63"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 17,
+   "active": true,
+   "color": "#4FC3F7"
+  },
+  {
+   "id": "espera",
+   "category": "necesidades",
+   "text": "Espera, por favor.",
+   "speech": "Espera, por favor.",
+   "picture": {
+    "icon": "hourglass_bottom",
+    "color": "#FFA000"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 18,
+   "active": true,
+   "color": "#4FC3F7"
+  },
+  {
+   "id": "quiero_estar_solo",
+   "category": "necesidades",
+   "text": "Quiero estar sol{o|a} un ratito.",
+   "speech": "Quiero estar sol{o|a} un ratito.",
+   "picture": {
+    "icon": "self_improvement",
+    "color": "#26A69A"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 19,
+   "active": true,
+   "color": "#4FC3F7"
+  },
+  {
+   "id": "agua",
+   "category": "comida",
+   "text": "agua",
+   "speech": "agua",
+   "picture": {
+    "icon": "water_drop",
+    "color": "#039BE5"
+   },
+   "kind": "sustantivo",
+   "article": null,
+   "related": [
+    "mas",
+    "terminado"
+   ],
+   "order": 20,
+   "active": true,
+   "color": "#FFB74D"
+  },
+  {
+   "id": "leche",
+   "category": "comida",
+   "text": "leche",
+   "speech": "leche",
+   "picture": {
+    "icon": "local_drink",
+    "color": "#90A4AE"
+   },
+   "kind": "sustantivo",
+   "article": null,
+   "related": [],
+   "order": 21,
+   "active": true,
+   "color": "#FFB74D"
+  },
+  {
+   "id": "jugo",
+   "category": "comida",
+   "text": "jugo",
+   "speech": "jugo",
+   "picture": {
+    "icon": "local_drink",
+    "color": "#FB8C00"
+   },
+   "kind": "sustantivo",
+   "article": null,
+   "related": [],
+   "order": 22,
+   "active": true,
+   "color": "#FFB74D"
+  },
+  {
+   "id": "pan",
+   "category": "comida",
+   "text": "pan",
+   "speech": "pan",
+   "picture": {
+    "icon": "bakery_dining",
+    "color": "#D7A86E"
+   },
+   "kind": "sustantivo",
+   "article": null,
+   "related": [],
+   "order": 23,
+   "active": true,
+   "color": "#FFB74D"
+  },
+  {
+   "id": "galleta",
+   "category": "comida",
+   "text": "galleta",
+   "speech": "galleta",
+   "picture": {
+    "icon": "cookie",
+    "color": "#8D6E63"
+   },
+   "kind": "sustantivo",
+   "article": "una",
+   "related": [],
+   "order": 24,
+   "active": true,
+   "color": "#FFB74D"
+  },
+  {
+   "id": "fruta",
+   "category": "comida",
+   "text": "fruta",
+   "speech": "fruta",
+   "picture": {
+    "drawing": "fruta_naranja",
+    "colors": {
+     "naranja": "#FF8F00",
+     "hoja": "#43A047",
+     "tallo": "#8D5524",
+     "brillo": "#FFFFFF",
+     "naranja_cortada": "#FB8C00",
+     "naranja_centro": "#FFE0B2",
+     "rodaja": "#FB8C00",
+     "rodaja_borde": "#FFE0B2",
+     "gajo_*": "#FFB74D",
+     "rodaja_gajo_*": "#FFB74D",
+     "sol": "#FFD54F",
+     "nube_*": "#E3F2FD",
+     "arbusto_*": "#81C784",
+     "hoja_*": "#66BB6A",
+     "boca": "#E57373",
+     "ojo_*": "#FFFFFF"
+    }
+   },
+   "kind": "sustantivo",
+   "article": null,
+   "related": [],
+   "order": 25,
+   "active": true,
+   "color": "#FFB74D"
+  },
+  {
+   "id": "manzana",
+   "category": "comida",
+   "text": "manzana",
+   "speech": "manzana",
+   "picture": {
+    "drawing": "fruta_manzana",
+    "colors": {
+     "manzana": "#E53935",
+     "hoja": "#43A047",
+     "tallo": "#8D5524",
+     "brillo": "#FFFFFF",
+     "sol": "#FFD54F",
+     "nube_*": "#E3F2FD",
+     "arbusto_*": "#81C784",
+     "hoja_*": "#66BB6A",
+     "boca": "#E57373",
+     "ojo_*": "#FFFFFF"
+    }
+   },
+   "kind": "sustantivo",
+   "article": "una",
+   "related": [],
+   "order": 26,
+   "active": true,
+   "color": "#FFB74D"
+  },
+  {
+   "id": "platano",
+   "category": "comida",
+   "text": "plátano",
+   "speech": "plátano",
+   "picture": {
+    "drawing": "fruta_platano",
+    "colors": {
+     "platano": "#FFD600",
+     "tallo": "#8D6E63",
+     "punta": "#6D4C41",
+     "tallo_corte": "#A1887F",
+     "sol": "#FFD54F",
+     "nube_*": "#E3F2FD",
+     "arbusto_*": "#81C784",
+     "hoja_*": "#66BB6A",
+     "boca": "#E57373",
+     "ojo_*": "#FFFFFF"
+    }
+   },
+   "kind": "sustantivo",
+   "article": "un",
+   "related": [],
+   "order": 27,
+   "active": true,
+   "color": "#FFB74D"
+  },
+  {
+   "id": "fresas",
+   "category": "comida",
+   "text": "fresas",
+   "speech": "fresas",
+   "picture": {
+    "drawing": "fruta_fresa",
+    "colors": {
+     "fresa": "#E53935",
+     "hojas": "#43A047",
+     "tallo": "#2E7D32",
+     "fresa_cortada": "#EF5350",
+     "fresa_cortada_borde": "#FFCDD2",
+     "hojas_cortada": "#43A047",
+     "hoja_detras": "#388E3C",
+     "flor_*": "#F48FB1",
+     "flor_centro": "#FFD54F",
+     "sol": "#FFD54F",
+     "nube_*": "#E3F2FD",
+     "arbusto_*": "#81C784",
+     "hoja_*": "#66BB6A",
+     "boca": "#E57373",
+     "ojo_*": "#FFFFFF"
+    }
+   },
+   "kind": "sustantivo",
+   "article": null,
+   "related": [],
+   "order": 28,
+   "active": true,
+   "color": "#FFB74D"
+  },
+  {
+   "id": "uvas",
+   "category": "comida",
+   "text": "uvas",
+   "speech": "uvas",
+   "picture": {
+    "drawing": "fruta_uvas",
+    "colors": {
+     "uva_*": "#8E44AD",
+     "hoja": "#43A047",
+     "tallo": "#8D5524",
+     "sol": "#FFD54F",
+     "nube_*": "#E3F2FD",
+     "arbusto_*": "#81C784",
+     "hoja_*": "#66BB6A",
+     "boca": "#E57373",
+     "ojo_*": "#FFFFFF"
+    }
+   },
+   "kind": "sustantivo",
+   "article": null,
+   "related": [],
+   "order": 29,
+   "active": true,
+   "color": "#FFB74D"
+  },
+  {
+   "id": "sopa",
+   "category": "comida",
+   "text": "sopa",
+   "speech": "sopa",
+   "picture": {
+    "icon": "soup_kitchen",
+    "color": "#FB8C00"
+   },
+   "kind": "sustantivo",
+   "article": null,
+   "related": [],
+   "order": 30,
+   "active": true,
+   "color": "#FFB74D"
+  },
+  {
+   "id": "arroz",
+   "category": "comida",
+   "text": "arroz",
+   "speech": "arroz",
+   "picture": {
+    "icon": "rice_bowl",
+    "color": "#8D6E63"
+   },
+   "kind": "sustantivo",
+   "article": null,
+   "related": [],
+   "order": 31,
+   "active": true,
+   "color": "#FFB74D"
+  },
+  {
+   "id": "pizza",
+   "category": "comida",
+   "text": "pizza",
+   "speech": "pizza",
+   "picture": {
+    "icon": "local_pizza",
+    "color": "#F4511E"
+   },
+   "kind": "sustantivo",
+   "article": null,
+   "related": [],
+   "order": 32,
+   "active": true,
+   "color": "#FFB74D"
+  },
+  {
+   "id": "fideos",
+   "category": "comida",
+   "text": "fideos",
+   "speech": "fideos",
+   "picture": {
+    "icon": "ramen_dining",
+    "color": "#FFB74D"
+   },
+   "kind": "sustantivo",
+   "article": null,
+   "related": [],
+   "order": 33,
+   "active": true,
+   "color": "#FFB74D"
+  },
+  {
+   "id": "pescado",
+   "category": "comida",
+   "text": "pescado",
+   "speech": "pescado",
+   "picture": {
+    "icon": "set_meal",
+    "color": "#0288D1"
+   },
+   "kind": "sustantivo",
+   "article": null,
+   "related": [],
+   "order": 34,
+   "active": true,
+   "color": "#FFB74D"
+  },
+  {
+   "id": "huevo",
+   "category": "comida",
+   "text": "huevo",
+   "speech": "huevo",
+   "picture": {
+    "icon": "egg",
+    "color": "#FBC02D"
+   },
+   "kind": "sustantivo",
+   "article": "un",
+   "related": [],
+   "order": 35,
+   "active": true,
+   "color": "#FFB74D"
+  },
+  {
+   "id": "helado",
+   "category": "comida",
+   "text": "helado",
+   "speech": "helado",
+   "picture": {
+    "icon": "icecream",
+    "color": "#F48FB1"
+   },
+   "kind": "sustantivo",
+   "article": "un",
+   "related": [],
+   "order": 36,
+   "active": true,
+   "color": "#FFB74D"
+  },
+  {
+   "id": "ensalada",
+   "category": "comida",
+   "text": "ensalada",
+   "speech": "ensalada",
+   "picture": {
+    "icon": "eco",
+    "color": "#43A047"
+   },
+   "kind": "sustantivo",
+   "article": null,
+   "related": [],
+   "order": 37,
+   "active": true,
+   "color": "#FFB74D"
+  },
+  {
+   "id": "pastel",
+   "category": "comida",
+   "text": "pastel",
+   "speech": "pastel",
+   "picture": {
+    "icon": "cake",
+    "color": "#AB47BC"
+   },
+   "kind": "sustantivo",
+   "article": null,
+   "related": [],
+   "order": 38,
+   "active": true,
+   "color": "#FFB74D"
+  },
+  {
+   "id": "desayuno",
+   "category": "comida",
+   "text": "desayuno",
+   "speech": "desayuno",
+   "picture": {
+    "icon": "free_breakfast",
+    "color": "#6D4C41"
+   },
+   "kind": "sustantivo",
+   "article": "el",
+   "related": [],
+   "order": 39,
+   "active": true,
+   "color": "#FFB74D"
+  },
+  {
+   "id": "cena",
+   "category": "comida",
+   "text": "cena",
+   "speech": "cena",
+   "picture": {
+    "icon": "restaurant_menu",
+    "color": "#5C6BC0"
+   },
+   "kind": "sustantivo",
+   "article": "la",
+   "related": [],
+   "order": 40,
+   "active": true,
+   "color": "#FFB74D"
+  },
+  {
+   "id": "estoy_feliz",
+   "category": "emociones",
+   "text": "Estoy feliz.",
+   "speech": "Estoy feliz.",
+   "picture": {
+    "emotion": "feliz"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 41,
+   "active": true,
+   "color": "#F06292"
+  },
+  {
+   "id": "estoy_contento",
+   "category": "emociones",
+   "text": "Estoy content{o|a}.",
+   "speech": "Estoy content{o|a}.",
+   "picture": {
+    "kid": {
+     "emotion": "feliz",
+     "girl": false,
+     "shirt": "#64B5F6",
+     "arms_up": true
+    }
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 42,
+   "active": true,
+   "color": "#F06292"
+  },
+  {
+   "id": "estoy_triste",
+   "category": "emociones",
+   "text": "Estoy triste.",
+   "speech": "Estoy triste.",
+   "picture": {
+    "emotion": "triste"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 43,
+   "active": true,
+   "color": "#F06292"
+  },
+  {
+   "id": "estoy_enojado",
+   "category": "emociones",
+   "text": "Estoy enojad{o|a}.",
+   "speech": "Estoy enojad{o|a}.",
+   "picture": {
+    "emotion": "enojado"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 44,
+   "active": true,
+   "color": "#F06292"
+  },
+  {
+   "id": "tengo_miedo",
+   "category": "emociones",
+   "text": "Tengo miedo.",
+   "speech": "Tengo miedo.",
+   "picture": {
+    "emotion": "asustado"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 45,
+   "active": true,
+   "color": "#F06292"
+  },
+  {
+   "id": "estoy_cansado",
+   "category": "emociones",
+   "text": "Estoy cansad{o|a}.",
+   "speech": "Estoy cansad{o|a}.",
+   "picture": {
+    "emotion": "cansado"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 46,
+   "active": true,
+   "color": "#F06292"
+  },
+  {
+   "id": "estoy_sorprendido",
+   "category": "emociones",
+   "text": "Estoy sorprendid{o|a}.",
+   "speech": "Estoy sorprendid{o|a}.",
+   "picture": {
+    "emotion": "sorprendido"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 47,
+   "active": true,
+   "color": "#F06292"
+  },
+  {
+   "id": "estoy_tranquilo",
+   "category": "emociones",
+   "text": "Estoy tranquil{o|a}.",
+   "speech": "Estoy tranquil{o|a}.",
+   "picture": {
+    "emotion": "tranquilo"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 48,
+   "active": true,
+   "color": "#F06292"
+  },
+  {
+   "id": "estoy_aburrido",
+   "category": "emociones",
+   "text": "Estoy aburrid{o|a}.",
+   "speech": "Estoy aburrid{o|a}.",
+   "picture": {
+    "emotion": "aburrido"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 49,
+   "active": true,
+   "color": "#F06292"
+  },
+  {
+   "id": "estoy_emocionado",
+   "category": "emociones",
+   "text": "Estoy emocionad{o|a}.",
+   "speech": "Estoy emocionad{o|a}.",
+   "picture": {
+    "emotion": "emocionado"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 50,
+   "active": true,
+   "color": "#F06292"
+  },
+  {
+   "id": "estoy_nervioso",
+   "category": "emociones",
+   "text": "Estoy nervios{o|a}.",
+   "speech": "Estoy nervios{o|a}.",
+   "picture": {
+    "icon": "sentiment_neutral",
+    "color": "#FFA726"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 51,
+   "active": true,
+   "color": "#F06292"
+  },
+  {
+   "id": "quiero_tranquilo",
+   "category": "emociones",
+   "text": "Quiero estar tranquil{o|a}.",
+   "speech": "Quiero estar tranquil{o|a}.",
+   "picture": {
+    "icon": "self_improvement",
+    "color": "#26A69A"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 52,
+   "active": true,
+   "color": "#F06292"
+  },
+  {
+   "id": "me_gusta_frase",
+   "category": "emociones",
+   "text": "Me gusta.",
+   "speech": "Me gusta.",
+   "picture": {
+    "icon": "thumb_up",
+    "color": "#43A047"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 53,
+   "active": true,
+   "color": "#F06292"
+  },
+  {
+   "id": "no_me_gusta_frase",
+   "category": "emociones",
+   "text": "No me gusta.",
+   "speech": "No me gusta.",
+   "picture": {
+    "icon": "thumb_down",
+    "color": "#E53935"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 54,
+   "active": true,
+   "color": "#F06292"
+  },
+  {
+   "id": "te_quiero",
+   "category": "emociones",
+   "text": "Te quiero.",
+   "speech": "Te quiero.",
+   "picture": {
+    "icon": "favorite",
+    "color": "#E91E63"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 55,
+   "active": true,
+   "color": "#F06292"
+  },
+  {
+   "id": "feliz",
+   "category": "emociones",
+   "text": "feliz",
+   "speech": "feliz",
+   "picture": {
+    "emotion": "feliz"
+   },
+   "kind": "adjetivo",
+   "article": null,
+   "related": [],
+   "order": 56,
+   "active": true,
+   "color": "#F06292"
+  },
+  {
+   "id": "triste",
+   "category": "emociones",
+   "text": "triste",
+   "speech": "triste",
+   "picture": {
+    "emotion": "triste"
+   },
+   "kind": "adjetivo",
+   "article": null,
+   "related": [],
+   "order": 57,
+   "active": true,
+   "color": "#F06292"
+  },
+  {
+   "id": "enojado",
+   "category": "emociones",
+   "text": "enojad{o|a}",
+   "speech": "enojad{o|a}",
+   "picture": {
+    "emotion": "enojado"
+   },
+   "kind": "adjetivo",
+   "article": null,
+   "related": [],
+   "order": 58,
+   "active": true,
+   "color": "#F06292"
+  },
+  {
+   "id": "cansado",
+   "category": "emociones",
+   "text": "cansad{o|a}",
+   "speech": "cansad{o|a}",
+   "picture": {
+    "emotion": "cansado"
+   },
+   "kind": "adjetivo",
+   "article": null,
+   "related": [],
+   "order": 59,
+   "active": true,
+   "color": "#F06292"
+  },
+  {
+   "id": "asustado",
+   "category": "emociones",
+   "text": "asustad{o|a}",
+   "speech": "asustad{o|a}",
+   "picture": {
+    "emotion": "asustado"
+   },
+   "kind": "adjetivo",
+   "article": null,
+   "related": [],
+   "order": 60,
+   "active": true,
+   "color": "#F06292"
+  },
+  {
+   "id": "tranquilo",
+   "category": "emociones",
+   "text": "tranquil{o|a}",
+   "speech": "tranquil{o|a}",
+   "picture": {
+    "emotion": "tranquilo"
+   },
+   "kind": "adjetivo",
+   "article": null,
+   "related": [],
+   "order": 61,
+   "active": true,
+   "color": "#F06292"
+  },
+  {
+   "id": "yo",
+   "category": "personas",
+   "text": "yo",
+   "speech": "yo",
+   "picture": {
+    "icon": "emoji_people",
+    "color": "#26A69A"
+   },
+   "kind": "pronombre",
+   "article": null,
+   "related": [
+    "quiero",
+    "estoy",
+    "tengo",
+    "necesito",
+    "me_gusta"
+   ],
+   "order": 62,
+   "active": true,
+   "color": "#BA68C8"
+  },
+  {
+   "id": "tu",
+   "category": "personas",
+   "text": "tú",
+   "speech": "tú",
+   "picture": {
+    "icon": "person",
+    "color": "#7E57C2"
+   },
+   "kind": "pronombre",
+   "article": null,
+   "related": [
+    "quieres",
+    "estas"
+   ],
+   "order": 63,
+   "active": true,
+   "color": "#BA68C8"
+  },
+  {
+   "id": "el_persona",
+   "category": "personas",
+   "text": "él",
+   "speech": "él",
+   "picture": {
+    "icon": "boy",
+    "color": "#1E88E5"
+   },
+   "kind": "pronombre",
+   "article": null,
+   "related": [],
+   "order": 64,
+   "active": true,
+   "color": "#BA68C8"
+  },
+  {
+   "id": "ella",
+   "category": "personas",
+   "text": "ella",
+   "speech": "ella",
+   "picture": {
+    "icon": "girl",
+    "color": "#EC407A"
+   },
+   "kind": "pronombre",
+   "article": null,
+   "related": [],
+   "order": 65,
+   "active": true,
+   "color": "#BA68C8"
+  },
+  {
+   "id": "nosotros",
+   "category": "personas",
+   "text": "nosotros",
+   "speech": "nosotros",
+   "picture": {
+    "icon": "groups",
+    "color": "#FB8C00"
+   },
+   "kind": "pronombre",
+   "article": null,
+   "related": [
+    "vamos",
+    "jugamos"
+   ],
+   "order": 66,
+   "active": true,
+   "color": "#BA68C8"
+  },
+  {
+   "id": "mama",
+   "category": "personas",
+   "text": "mamá",
+   "speech": "mamá",
+   "picture": {
+    "icon": "woman",
+    "color": "#E91E63"
+   },
+   "kind": "sustantivo",
+   "article": null,
+   "related": [],
+   "order": 67,
+   "active": true,
+   "color": "#BA68C8"
+  },
+  {
+   "id": "papa",
+   "category": "personas",
+   "text": "papá",
+   "speech": "papá",
+   "picture": {
+    "icon": "man",
+    "color": "#1E88E5"
+   },
+   "kind": "sustantivo",
+   "article": null,
+   "related": [],
+   "order": 68,
+   "active": true,
+   "color": "#BA68C8"
+  },
+  {
+   "id": "hermano",
+   "category": "personas",
+   "text": "hermano",
+   "speech": "hermano",
+   "picture": {
+    "kid": {
+     "emotion": "feliz",
+     "girl": false,
+     "shirt": "#81C784"
+    }
+   },
+   "kind": "sustantivo",
+   "article": null,
+   "related": [],
+   "order": 69,
+   "active": true,
+   "color": "#BA68C8"
+  },
+  {
+   "id": "hermana",
+   "category": "personas",
+   "text": "hermana",
+   "speech": "hermana",
+   "picture": {
+    "kid": {
+     "emotion": "feliz",
+     "girl": true,
+     "shirt": "#FFB74D"
+    }
+   },
+   "kind": "sustantivo",
+   "article": null,
+   "related": [],
+   "order": 70,
+   "active": true,
+   "color": "#BA68C8"
+  },
+  {
+   "id": "abuelo",
+   "category": "personas",
+   "text": "abuelo",
+   "speech": "abuelo",
+   "picture": {
+    "icon": "elderly",
+    "color": "#6D4C41"
+   },
+   "kind": "sustantivo",
+   "article": null,
+   "related": [],
+   "order": 71,
+   "active": true,
+   "color": "#BA68C8"
+  },
+  {
+   "id": "abuela",
+   "category": "personas",
+   "text": "abuela",
+   "speech": "abuela",
+   "picture": {
+    "icon": "elderly_woman",
+    "color": "#8E24AA"
+   },
+   "kind": "sustantivo",
+   "article": null,
+   "related": [],
+   "order": 72,
+   "active": true,
+   "color": "#BA68C8"
+  },
+  {
+   "id": "bebe",
+   "category": "personas",
+   "text": "bebé",
+   "speech": "bebé",
+   "picture": {
+    "icon": "child_care",
+    "color": "#F48FB1"
+   },
+   "kind": "sustantivo",
+   "article": "el",
+   "related": [],
+   "order": 73,
+   "active": true,
+   "color": "#BA68C8"
+  },
+  {
+   "id": "maestra",
+   "category": "personas",
+   "text": "maestra",
+   "speech": "maestra",
+   "picture": {
+    "icon": "cast_for_education",
+    "color": "#00897B"
+   },
+   "kind": "sustantivo",
+   "article": "la",
+   "related": [],
+   "order": 74,
+   "active": true,
+   "color": "#BA68C8"
+  },
+  {
+   "id": "amigo",
+   "category": "personas",
+   "text": "amigo",
+   "speech": "amigo",
+   "picture": {
+    "icon": "face",
+    "color": "#42A5F5"
+   },
+   "kind": "sustantivo",
+   "article": null,
+   "related": [],
+   "order": 75,
+   "active": true,
+   "color": "#BA68C8"
+  },
+  {
+   "id": "amiga",
+   "category": "personas",
+   "text": "amiga",
+   "speech": "amiga",
+   "picture": {
+    "icon": "face_3",
+    "color": "#EC407A"
+   },
+   "kind": "sustantivo",
+   "article": null,
+   "related": [],
+   "order": 76,
+   "active": true,
+   "color": "#BA68C8"
+  },
+  {
+   "id": "familia",
+   "category": "personas",
+   "text": "familia",
+   "speech": "familia",
+   "picture": {
+    "icon": "family_restroom",
+    "color": "#E91E63"
+   },
+   "kind": "sustantivo",
+   "article": "la",
+   "related": [],
+   "order": 77,
+   "active": true,
+   "color": "#BA68C8"
+  },
+  {
+   "id": "doctor",
+   "category": "personas",
+   "text": "doctor",
+   "speech": "doctor",
+   "picture": {
+    "icon": "medical_services",
+    "color": "#E53935"
+   },
+   "kind": "sustantivo",
+   "article": "el",
+   "related": [],
+   "order": 78,
+   "active": true,
+   "color": "#BA68C8"
+  },
+  {
+   "id": "perro",
+   "category": "personas",
+   "text": "perro",
+   "speech": "perro",
+   "picture": {
+    "drawing": "animal_perro"
+   },
+   "kind": "sustantivo",
+   "article": "el",
+   "related": [],
+   "order": 79,
+   "active": true,
+   "color": "#BA68C8"
+  },
+  {
+   "id": "gato",
+   "category": "personas",
+   "text": "gato",
+   "speech": "gato",
+   "picture": {
+    "drawing": "animal_gato"
+   },
+   "kind": "sustantivo",
+   "article": "el",
+   "related": [],
+   "order": 80,
+   "active": true,
+   "color": "#BA68C8"
+  },
+  {
+   "id": "jugar",
+   "category": "juegos",
+   "text": "jugar",
+   "speech": "jugar",
+   "picture": {
+    "icon": "toys",
+    "color": "#FB8C00"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [
+    "con",
+    "pelota",
+    "bloques",
+    "afuera"
+   ],
+   "order": 81,
+   "active": true,
+   "color": "#81C784"
+  },
+  {
+   "id": "jugamos",
+   "category": "juegos",
+   "text": "¿Jugamos?",
+   "speech": "¿Jugamos?",
+   "picture": {
+    "icon": "sports_handball",
+    "color": "#43A047"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 82,
+   "active": true,
+   "color": "#81C784"
+  },
+  {
+   "id": "mi_turno",
+   "category": "juegos",
+   "text": "Mi turno.",
+   "speech": "Mi turno.",
+   "picture": {
+    "icon": "front_hand",
+    "color": "#1E88E5"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 83,
+   "active": true,
+   "color": "#81C784"
+  },
+  {
+   "id": "tu_turno",
+   "category": "juegos",
+   "text": "Tu turno.",
+   "speech": "Tu turno.",
+   "picture": {
+    "icon": "back_hand",
+    "color": "#EC407A"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 84,
+   "active": true,
+   "color": "#81C784"
+  },
+  {
+   "id": "pelota",
+   "category": "juegos",
+   "text": "pelota",
+   "speech": "pelota",
+   "picture": {
+    "icon": "sports_soccer",
+    "color": "#E53935"
+   },
+   "kind": "sustantivo",
+   "article": "la",
+   "related": [],
+   "order": 85,
+   "active": true,
+   "color": "#81C784"
+  },
+  {
+   "id": "bloques",
+   "category": "juegos",
+   "text": "bloques",
+   "speech": "bloques",
+   "picture": {
+    "icon": "widgets",
+    "color": "#FFA000"
+   },
+   "kind": "sustantivo",
+   "article": "los",
+   "related": [],
+   "order": 86,
+   "active": true,
+   "color": "#81C784"
+  },
+  {
+   "id": "rompecabezas",
+   "category": "juegos",
+   "text": "rompecabezas",
+   "speech": "rompecabezas",
+   "picture": {
+    "icon": "extension",
+    "color": "#7E57C2"
+   },
+   "kind": "sustantivo",
+   "article": "el",
+   "related": [],
+   "order": 87,
+   "active": true,
+   "color": "#81C784"
+  },
+  {
+   "id": "coche",
+   "category": "juegos",
+   "text": "coche",
+   "speech": "coche",
+   "picture": {
+    "drawing": "vehiculo_automovil"
+   },
+   "kind": "sustantivo",
+   "article": "el",
+   "related": [],
+   "order": 88,
+   "active": true,
+   "color": "#81C784"
+  },
+  {
+   "id": "tren",
+   "category": "juegos",
+   "text": "tren",
+   "speech": "tren",
+   "picture": {
+    "drawing": "vehiculo_tren"
+   },
+   "kind": "sustantivo",
+   "article": "el",
+   "related": [],
+   "order": 89,
+   "active": true,
+   "color": "#81C784"
+  },
+  {
+   "id": "munecos",
+   "category": "juegos",
+   "text": "muñecos",
+   "speech": "muñecos",
+   "picture": {
+    "icon": "smart_toy",
+    "color": "#546E7A"
+   },
+   "kind": "sustantivo",
+   "article": "los",
+   "related": [],
+   "order": 90,
+   "active": true,
+   "color": "#81C784"
+  },
+  {
+   "id": "pintar",
+   "category": "juegos",
+   "text": "pintar",
+   "speech": "pintar",
+   "picture": {
+    "icon": "brush",
+    "color": "#AB47BC"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [],
+   "order": 91,
+   "active": true,
+   "color": "#81C784"
+  },
+  {
+   "id": "colorear",
+   "category": "juegos",
+   "text": "colorear",
+   "speech": "colorear",
+   "picture": {
+    "icon": "palette",
+    "color": "#EC407A"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [],
+   "order": 92,
+   "active": true,
+   "color": "#81C784"
+  },
+  {
+   "id": "escondite",
+   "category": "juegos",
+   "text": "escondite",
+   "speech": "escondite",
+   "picture": {
+    "icon": "visibility_off",
+    "color": "#5D4037"
+   },
+   "kind": "sustantivo",
+   "article": "el",
+   "related": [],
+   "order": 93,
+   "active": true,
+   "color": "#81C784"
+  },
+  {
+   "id": "musica",
+   "category": "juegos",
+   "text": "música",
+   "speech": "música",
+   "picture": {
+    "icon": "music_note",
+    "color": "#AB47BC"
+   },
+   "kind": "sustantivo",
+   "article": "la",
+   "related": [],
+   "order": 94,
+   "active": true,
+   "color": "#81C784"
+  },
+  {
+   "id": "bailar",
+   "category": "juegos",
+   "text": "bailar",
+   "speech": "bailar",
+   "picture": {
+    "icon": "nightlife",
+    "color": "#EC407A"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [],
+   "order": 95,
+   "active": true,
+   "color": "#81C784"
+  },
+  {
+   "id": "cantar",
+   "category": "juegos",
+   "text": "cantar",
+   "speech": "cantar",
+   "picture": {
+    "icon": "mic",
+    "color": "#F06292"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [],
+   "order": 96,
+   "active": true,
+   "color": "#81C784"
+  },
+  {
+   "id": "cuento",
+   "category": "juegos",
+   "text": "cuento",
+   "speech": "cuento",
+   "picture": {
+    "icon": "auto_stories",
+    "color": "#8E24AA"
+   },
+   "kind": "sustantivo",
+   "article": "un",
+   "related": [],
+   "order": 97,
+   "active": true,
+   "color": "#81C784"
+  },
+  {
+   "id": "columpio",
+   "category": "juegos",
+   "text": "columpio",
+   "speech": "columpio",
+   "picture": {
+    "icon": "attractions",
+    "color": "#26A69A"
+   },
+   "kind": "sustantivo",
+   "article": "el",
+   "related": [],
+   "order": 98,
+   "active": true,
+   "color": "#81C784"
+  },
+  {
+   "id": "burbujas",
+   "category": "juegos",
+   "text": "burbujas",
+   "speech": "burbujas",
+   "picture": {
+    "icon": "bubble_chart",
+    "color": "#4FC3F7"
+   },
+   "kind": "sustantivo",
+   "article": "las",
+   "related": [],
+   "order": 99,
+   "active": true,
+   "color": "#81C784"
+  },
+  {
+   "id": "comer",
+   "category": "actividades",
+   "text": "comer",
+   "speech": "comer",
+   "picture": {
+    "icon": "lunch_dining",
+    "color": "#FB8C00"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [],
+   "order": 100,
+   "active": true,
+   "color": "#4DB6AC"
+  },
+  {
+   "id": "beber",
+   "category": "actividades",
+   "text": "beber",
+   "speech": "beber",
+   "picture": {
+    "icon": "local_drink",
+    "color": "#29B6F6"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [
+    "agua",
+    "leche",
+    "jugo"
+   ],
+   "order": 101,
+   "active": true,
+   "color": "#4DB6AC"
+  },
+  {
+   "id": "dormir",
+   "category": "actividades",
+   "text": "dormir",
+   "speech": "dormir",
+   "picture": {
+    "icon": "bedtime",
+    "color": "#3949AB"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [],
+   "order": 102,
+   "active": true,
+   "color": "#4DB6AC"
+  },
+  {
+   "id": "banarme",
+   "category": "actividades",
+   "text": "bañarme",
+   "speech": "bañarme",
+   "picture": {
+    "icon": "bathtub",
+    "color": "#29B6F6"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [],
+   "order": 103,
+   "active": true,
+   "color": "#4DB6AC"
+  },
+  {
+   "id": "vestirme",
+   "category": "actividades",
+   "text": "vestirme",
+   "speech": "vestirme",
+   "picture": {
+    "icon": "checkroom",
+    "color": "#7E57C2"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [],
+   "order": 104,
+   "active": true,
+   "color": "#4DB6AC"
+  },
+  {
+   "id": "lavarme_dientes",
+   "category": "actividades",
+   "text": "lavarme los dientes",
+   "speech": "lavarme los dientes",
+   "picture": {
+    "icon": "clean_hands",
+    "color": "#26C6DA"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [],
+   "order": 105,
+   "active": true,
+   "color": "#4DB6AC"
+  },
+  {
+   "id": "leer",
+   "category": "actividades",
+   "text": "leer",
+   "speech": "leer",
+   "picture": {
+    "icon": "menu_book",
+    "color": "#8E24AA"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [
+    "cuento"
+   ],
+   "order": 106,
+   "active": true,
+   "color": "#4DB6AC"
+  },
+  {
+   "id": "ver",
+   "category": "actividades",
+   "text": "ver",
+   "speech": "ver",
+   "picture": {
+    "icon": "visibility",
+    "color": "#1E88E5"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [
+    "television",
+    "cuento"
+   ],
+   "order": 107,
+   "active": true,
+   "color": "#4DB6AC"
+  },
+  {
+   "id": "television",
+   "category": "actividades",
+   "text": "televisión",
+   "speech": "televisión",
+   "picture": {
+    "icon": "tv",
+    "color": "#455A64"
+   },
+   "kind": "sustantivo",
+   "article": "la",
+   "related": [],
+   "order": 108,
+   "active": true,
+   "color": "#4DB6AC"
+  },
+  {
+   "id": "ir",
+   "category": "actividades",
+   "text": "ir",
+   "speech": "ir",
+   "picture": {
+    "icon": "directions_walk",
+    "color": "#43A047"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [
+    "parque",
+    "casa",
+    "bano",
+    "escuela"
+   ],
+   "takes_a": true,
+   "order": 109,
+   "active": true,
+   "color": "#4DB6AC"
+  },
+  {
+   "id": "salir",
+   "category": "actividades",
+   "text": "salir",
+   "speech": "salir",
+   "picture": {
+    "icon": "door_front_door",
+    "color": "#8D6E63"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [],
+   "order": 110,
+   "active": true,
+   "color": "#4DB6AC"
+  },
+  {
+   "id": "pasear",
+   "category": "actividades",
+   "text": "pasear",
+   "speech": "pasear",
+   "picture": {
+    "icon": "directions_walk",
+    "color": "#7CB342"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [],
+   "order": 111,
+   "active": true,
+   "color": "#4DB6AC"
+  },
+  {
+   "id": "escuchar",
+   "category": "actividades",
+   "text": "escuchar",
+   "speech": "escuchar",
+   "picture": {
+    "icon": "hearing",
+    "color": "#7E57C2"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [
+    "musica",
+    "cuento"
+   ],
+   "order": 112,
+   "active": true,
+   "color": "#4DB6AC"
+  },
+  {
+   "id": "hablar",
+   "category": "actividades",
+   "text": "hablar",
+   "speech": "hablar",
+   "picture": {
+    "icon": "record_voice_over",
+    "color": "#26A69A"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [],
+   "order": 113,
+   "active": true,
+   "color": "#4DB6AC"
+  },
+  {
+   "id": "esperar",
+   "category": "actividades",
+   "text": "esperar",
+   "speech": "esperar",
+   "picture": {
+    "icon": "hourglass_bottom",
+    "color": "#FFA000"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [],
+   "order": 114,
+   "active": true,
+   "color": "#4DB6AC"
+  },
+  {
+   "id": "sentarme",
+   "category": "actividades",
+   "text": "sentarme",
+   "speech": "sentarme",
+   "picture": {
+    "icon": "chair",
+    "color": "#8D6E63"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [],
+   "order": 115,
+   "active": true,
+   "color": "#4DB6AC"
+  },
+  {
+   "id": "abrir",
+   "category": "actividades",
+   "text": "abrir",
+   "speech": "abrir",
+   "picture": {
+    "icon": "lock_open",
+    "color": "#43A047"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [],
+   "order": 116,
+   "active": true,
+   "color": "#4DB6AC"
+  },
+  {
+   "id": "cerrar",
+   "category": "actividades",
+   "text": "cerrar",
+   "speech": "cerrar",
+   "picture": {
+    "icon": "lock",
+    "color": "#E53935"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [],
+   "order": 117,
+   "active": true,
+   "color": "#4DB6AC"
+  },
+  {
+   "id": "ayudar",
+   "category": "actividades",
+   "text": "ayudar",
+   "speech": "ayudar",
+   "picture": {
+    "icon": "handshake",
+    "color": "#FB8C00"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [],
+   "order": 118,
+   "active": true,
+   "color": "#4DB6AC"
+  },
+  {
+   "id": "guardar",
+   "category": "actividades",
+   "text": "guardar",
+   "speech": "guardar",
+   "picture": {
+    "icon": "inventory_2",
+    "color": "#A1887F"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [],
+   "order": 119,
+   "active": true,
+   "color": "#4DB6AC"
+  },
+  {
+   "id": "abrazar",
+   "category": "actividades",
+   "text": "abrazar",
+   "speech": "abrazar",
+   "picture": {
+    "icon": "favorite",
+    "color": "#F06292"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [],
+   "order": 120,
+   "active": true,
+   "color": "#4DB6AC"
+  },
+  {
+   "id": "casa",
+   "category": "lugares",
+   "text": "casa",
+   "speech": "casa",
+   "picture": {
+    "icon": "house",
+    "color": "#E57373"
+   },
+   "kind": "sustantivo",
+   "article": null,
+   "related": [],
+   "place": true,
+   "order": 121,
+   "active": true,
+   "color": "#7986CB"
+  },
+  {
+   "id": "escuela",
+   "category": "lugares",
+   "text": "escuela",
+   "speech": "escuela",
+   "picture": {
+    "icon": "school",
+    "color": "#5C9DED"
+   },
+   "kind": "sustantivo",
+   "article": "la",
+   "related": [],
+   "place": true,
+   "order": 122,
+   "active": true,
+   "color": "#7986CB"
+  },
+  {
+   "id": "parque",
+   "category": "lugares",
+   "text": "parque",
+   "speech": "parque",
+   "picture": {
+    "icon": "park",
+    "color": "#43A047"
+   },
+   "kind": "sustantivo",
+   "article": "el",
+   "related": [],
+   "place": true,
+   "order": 123,
+   "active": true,
+   "color": "#7986CB"
+  },
+  {
+   "id": "bano",
+   "category": "lugares",
+   "text": "baño",
+   "speech": "baño",
+   "picture": {
+    "icon": "wc",
+    "color": "#0288D1"
+   },
+   "kind": "sustantivo",
+   "article": "el",
+   "related": [],
+   "place": true,
+   "order": 124,
+   "active": true,
+   "color": "#7986CB"
+  },
+  {
+   "id": "cocina",
+   "category": "lugares",
+   "text": "cocina",
+   "speech": "cocina",
+   "picture": {
+    "icon": "kitchen",
+    "color": "#78909C"
+   },
+   "kind": "sustantivo",
+   "article": "la",
+   "related": [],
+   "place": true,
+   "order": 125,
+   "active": true,
+   "color": "#7986CB"
+  },
+  {
+   "id": "cuarto",
+   "category": "lugares",
+   "text": "cuarto",
+   "speech": "cuarto",
+   "picture": {
+    "icon": "bed",
+    "color": "#5C6BC0"
+   },
+   "kind": "sustantivo",
+   "article": "el",
+   "related": [],
+   "place": true,
+   "order": 126,
+   "active": true,
+   "color": "#7986CB"
+  },
+  {
+   "id": "jardin",
+   "category": "lugares",
+   "text": "jardín",
+   "speech": "jardín",
+   "picture": {
+    "icon": "yard",
+    "color": "#43A047"
+   },
+   "kind": "sustantivo",
+   "article": "el",
+   "related": [],
+   "place": true,
+   "order": 127,
+   "active": true,
+   "color": "#7986CB"
+  },
+  {
+   "id": "playa",
+   "category": "lugares",
+   "text": "playa",
+   "speech": "playa",
+   "picture": {
+    "icon": "beach_access",
+    "color": "#FFB300"
+   },
+   "kind": "sustantivo",
+   "article": "la",
+   "related": [],
+   "place": true,
+   "order": 128,
+   "active": true,
+   "color": "#7986CB"
+  },
+  {
+   "id": "tienda",
+   "category": "lugares",
+   "text": "tienda",
+   "speech": "tienda",
+   "picture": {
+    "icon": "storefront",
+    "color": "#FB8C00"
+   },
+   "kind": "sustantivo",
+   "article": "la",
+   "related": [],
+   "place": true,
+   "order": 129,
+   "active": true,
+   "color": "#7986CB"
+  },
+  {
+   "id": "hospital",
+   "category": "lugares",
+   "text": "hospital",
+   "speech": "hospital",
+   "picture": {
+    "icon": "local_hospital",
+    "color": "#E53935"
+   },
+   "kind": "sustantivo",
+   "article": "el",
+   "related": [],
+   "place": true,
+   "order": 130,
+   "active": true,
+   "color": "#7986CB"
+  },
+  {
+   "id": "piscina",
+   "category": "lugares",
+   "text": "piscina",
+   "speech": "piscina",
+   "picture": {
+    "icon": "pool",
+    "color": "#039BE5"
+   },
+   "kind": "sustantivo",
+   "article": "la",
+   "related": [],
+   "place": true,
+   "order": 131,
+   "active": true,
+   "color": "#7986CB"
+  },
+  {
+   "id": "biblioteca",
+   "category": "lugares",
+   "text": "biblioteca",
+   "speech": "biblioteca",
+   "picture": {
+    "icon": "local_library",
+    "color": "#8E24AA"
+   },
+   "kind": "sustantivo",
+   "article": "la",
+   "related": [],
+   "place": true,
+   "order": 132,
+   "active": true,
+   "color": "#7986CB"
+  },
+  {
+   "id": "calle",
+   "category": "lugares",
+   "text": "calle",
+   "speech": "calle",
+   "picture": {
+    "icon": "signpost",
+    "color": "#78909C"
+   },
+   "kind": "sustantivo",
+   "article": "la",
+   "related": [],
+   "place": true,
+   "order": 133,
+   "active": true,
+   "color": "#7986CB"
+  },
+  {
+   "id": "afuera",
+   "category": "lugares",
+   "text": "afuera",
+   "speech": "afuera",
+   "picture": {
+    "icon": "forest",
+    "color": "#7CB342"
+   },
+   "kind": "palabra",
+   "article": null,
+   "related": [],
+   "order": 134,
+   "active": true,
+   "color": "#7986CB"
+  },
+  {
+   "id": "aqui",
+   "category": "lugares",
+   "text": "aquí",
+   "speech": "aquí",
+   "picture": {
+    "icon": "place",
+    "color": "#E53935"
+   },
+   "kind": "palabra",
+   "article": null,
+   "related": [],
+   "order": 135,
+   "active": true,
+   "color": "#7986CB"
+  },
+  {
+   "id": "me_duele_aqui",
+   "category": "salud",
+   "text": "Me duele aquí.",
+   "speech": "Me duele aquí.",
+   "picture": {
+    "icon": "healing",
+    "color": "#E53935"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 136,
+   "active": true,
+   "color": "#E57373"
+  },
+  {
+   "id": "me_duele",
+   "category": "salud",
+   "text": "me duele",
+   "speech": "me duele",
+   "picture": {
+    "icon": "healing",
+    "color": "#E53935"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [
+    "cabeza",
+    "barriga",
+    "boca",
+    "orejas",
+    "pierna",
+    "mano"
+   ],
+   "order": 137,
+   "active": true,
+   "color": "#E57373"
+  },
+  {
+   "id": "cabeza",
+   "category": "salud",
+   "text": "cabeza",
+   "speech": "cabeza",
+   "picture": {
+    "body": "cabeza"
+   },
+   "kind": "sustantivo",
+   "article": "la",
+   "related": [],
+   "order": 138,
+   "active": true,
+   "color": "#E57373"
+  },
+  {
+   "id": "barriga",
+   "category": "salud",
+   "text": "barriga",
+   "speech": "barriga",
+   "picture": {
+    "emotion": "enfermo"
+   },
+   "kind": "sustantivo",
+   "article": "la",
+   "related": [],
+   "order": 139,
+   "active": true,
+   "color": "#E57373"
+  },
+  {
+   "id": "boca",
+   "category": "salud",
+   "text": "boca",
+   "speech": "boca",
+   "picture": {
+    "body": "boca"
+   },
+   "kind": "sustantivo",
+   "article": "la",
+   "related": [],
+   "order": 140,
+   "active": true,
+   "color": "#E57373"
+  },
+  {
+   "id": "orejas",
+   "category": "salud",
+   "text": "orejas",
+   "speech": "orejas",
+   "picture": {
+    "body": "orejas"
+   },
+   "kind": "sustantivo",
+   "article": "las",
+   "related": [],
+   "order": 141,
+   "active": true,
+   "color": "#E57373"
+  },
+  {
+   "id": "ojos",
+   "category": "salud",
+   "text": "ojos",
+   "speech": "ojos",
+   "picture": {
+    "body": "ojos"
+   },
+   "kind": "sustantivo",
+   "article": "los",
+   "related": [],
+   "order": 142,
+   "active": true,
+   "color": "#E57373"
+  },
+  {
+   "id": "nariz",
+   "category": "salud",
+   "text": "nariz",
+   "speech": "nariz",
+   "picture": {
+    "body": "nariz"
+   },
+   "kind": "sustantivo",
+   "article": "la",
+   "related": [],
+   "order": 143,
+   "active": true,
+   "color": "#E57373"
+  },
+  {
+   "id": "pierna",
+   "category": "salud",
+   "text": "pierna",
+   "speech": "pierna",
+   "picture": {
+    "body": "piernas"
+   },
+   "kind": "sustantivo",
+   "article": "la",
+   "related": [],
+   "order": 144,
+   "active": true,
+   "color": "#E57373"
+  },
+  {
+   "id": "brazo",
+   "category": "salud",
+   "text": "brazo",
+   "speech": "brazo",
+   "picture": {
+    "body": "brazos"
+   },
+   "kind": "sustantivo",
+   "article": "el",
+   "related": [],
+   "order": 145,
+   "active": true,
+   "color": "#E57373"
+  },
+  {
+   "id": "mano",
+   "category": "salud",
+   "text": "mano",
+   "speech": "mano",
+   "picture": {
+    "body": "manos"
+   },
+   "kind": "sustantivo",
+   "article": "la",
+   "related": [],
+   "order": 146,
+   "active": true,
+   "color": "#E57373"
+  },
+  {
+   "id": "pie",
+   "category": "salud",
+   "text": "pie",
+   "speech": "pie",
+   "picture": {
+    "body": "pies"
+   },
+   "kind": "sustantivo",
+   "article": "el",
+   "related": [],
+   "order": 147,
+   "active": true,
+   "color": "#E57373"
+  },
+  {
+   "id": "me_siento_mal",
+   "category": "salud",
+   "text": "Me siento mal.",
+   "speech": "Me siento mal.",
+   "picture": {
+    "emotion": "enfermo"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 148,
+   "active": true,
+   "color": "#E57373"
+  },
+  {
+   "id": "estoy_enfermo",
+   "category": "salud",
+   "text": "Estoy enferm{o|a}.",
+   "speech": "Estoy enferm{o|a}.",
+   "picture": {
+    "emotion": "enfermo"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 149,
+   "active": true,
+   "color": "#E57373"
+  },
+  {
+   "id": "me_cai",
+   "category": "salud",
+   "text": "Me caí.",
+   "speech": "Me caí.",
+   "picture": {
+    "icon": "personal_injury",
+    "color": "#E53935"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 150,
+   "active": true,
+   "color": "#E57373"
+  },
+  {
+   "id": "quiero_curita",
+   "category": "salud",
+   "text": "Quiero una curita.",
+   "speech": "Quiero una curita.",
+   "picture": {
+    "icon": "healing",
+    "color": "#FFAB91"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 151,
+   "active": true,
+   "color": "#E57373"
+  },
+  {
+   "id": "me_pica",
+   "category": "salud",
+   "text": "Me pica.",
+   "speech": "Me pica.",
+   "picture": {
+    "icon": "pest_control",
+    "color": "#8D6E63"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 152,
+   "active": true,
+   "color": "#E57373"
+  },
+  {
+   "id": "necesito_descansar",
+   "category": "salud",
+   "text": "Necesito descansar.",
+   "speech": "Necesito descansar.",
+   "picture": {
+    "icon": "hotel",
+    "color": "#5C6BC0"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 153,
+   "active": true,
+   "color": "#E57373"
+  },
+  {
+   "id": "dolor",
+   "category": "salud",
+   "text": "dolor",
+   "speech": "dolor",
+   "picture": {
+    "icon": "sick",
+    "color": "#E53935"
+   },
+   "kind": "sustantivo",
+   "article": null,
+   "related": [],
+   "order": 154,
+   "active": true,
+   "color": "#E57373"
+  },
+  {
+   "id": "que",
+   "category": "preguntas",
+   "text": "¿Qué?",
+   "speech": "¿Qué?",
+   "picture": {
+    "icon": "help_outline",
+    "color": "#FFA000"
+   },
+   "kind": "pregunta",
+   "article": null,
+   "related": [],
+   "order": 155,
+   "active": true,
+   "color": "#FFD54F"
+  },
+  {
+   "id": "donde",
+   "category": "preguntas",
+   "text": "¿Dónde?",
+   "speech": "¿Dónde?",
+   "picture": {
+    "icon": "place",
+    "color": "#E53935"
+   },
+   "kind": "pregunta",
+   "article": null,
+   "related": [],
+   "order": 156,
+   "active": true,
+   "color": "#FFD54F"
+  },
+  {
+   "id": "quien",
+   "category": "preguntas",
+   "text": "¿Quién?",
+   "speech": "¿Quién?",
+   "picture": {
+    "icon": "person_search",
+    "color": "#7E57C2"
+   },
+   "kind": "pregunta",
+   "article": null,
+   "related": [],
+   "order": 157,
+   "active": true,
+   "color": "#FFD54F"
+  },
+  {
+   "id": "cuando",
+   "category": "preguntas",
+   "text": "¿Cuándo?",
+   "speech": "¿Cuándo?",
+   "picture": {
+    "icon": "schedule",
+    "color": "#1E88E5"
+   },
+   "kind": "pregunta",
+   "article": null,
+   "related": [],
+   "order": 158,
+   "active": true,
+   "color": "#FFD54F"
+  },
+  {
+   "id": "por_que",
+   "category": "preguntas",
+   "text": "¿Por qué?",
+   "speech": "¿Por qué?",
+   "picture": {
+    "icon": "psychology_alt",
+    "color": "#26A69A"
+   },
+   "kind": "pregunta",
+   "article": null,
+   "related": [],
+   "order": 159,
+   "active": true,
+   "color": "#FFD54F"
+  },
+  {
+   "id": "como",
+   "category": "preguntas",
+   "text": "¿Cómo?",
+   "speech": "¿Cómo?",
+   "picture": {
+    "icon": "lightbulb",
+    "color": "#FBC02D"
+   },
+   "kind": "pregunta",
+   "article": null,
+   "related": [],
+   "order": 160,
+   "active": true,
+   "color": "#FFD54F"
+  },
+  {
+   "id": "que_es_esto",
+   "category": "preguntas",
+   "text": "¿Qué es esto?",
+   "speech": "¿Qué es esto?",
+   "picture": {
+    "icon": "search",
+    "color": "#3949AB"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 161,
+   "active": true,
+   "color": "#FFD54F"
+  },
+  {
+   "id": "donde_mama",
+   "category": "preguntas",
+   "text": "¿Dónde está mamá?",
+   "speech": "¿Dónde está mamá?",
+   "picture": {
+    "icon": "woman",
+    "color": "#E91E63"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 162,
+   "active": true,
+   "color": "#FFD54F"
+  },
+  {
+   "id": "puedo_jugar",
+   "category": "preguntas",
+   "text": "¿Puedo jugar?",
+   "speech": "¿Puedo jugar?",
+   "picture": {
+    "icon": "toys",
+    "color": "#FB8C00"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 163,
+   "active": true,
+   "color": "#FFD54F"
+  },
+  {
+   "id": "me_ayudas",
+   "category": "preguntas",
+   "text": "¿Me ayudas?",
+   "speech": "¿Me ayudas?",
+   "picture": {
+    "icon": "pan_tool",
+    "color": "#E53935"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 164,
+   "active": true,
+   "color": "#FFD54F"
+  },
+  {
+   "id": "no_se",
+   "category": "preguntas",
+   "text": "No sé.",
+   "speech": "No sé.",
+   "picture": {
+    "icon": "question_mark",
+    "color": "#90A4AE"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 165,
+   "active": true,
+   "color": "#FFD54F"
+  },
+  {
+   "id": "no_entiendo",
+   "category": "preguntas",
+   "text": "No entiendo.",
+   "speech": "No entiendo.",
+   "picture": {
+    "icon": "psychology",
+    "color": "#5C6BC0"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 166,
+   "active": true,
+   "color": "#FFD54F"
+  },
+  {
+   "id": "otra_vez",
+   "category": "preguntas",
+   "text": "Otra vez.",
+   "speech": "Otra vez.",
+   "picture": {
+    "icon": "replay",
+    "color": "#26A69A"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 167,
+   "active": true,
+   "color": "#FFD54F"
+  },
+  {
+   "id": "si_por_favor",
+   "category": "preguntas",
+   "text": "Sí, por favor.",
+   "speech": "Sí, por favor.",
+   "picture": {
+    "icon": "thumb_up",
+    "color": "#43A047"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 168,
+   "active": true,
+   "color": "#FFD54F"
+  },
+  {
+   "id": "no_gracias",
+   "category": "preguntas",
+   "text": "No, gracias.",
+   "speech": "No, gracias.",
+   "picture": {
+    "icon": "do_not_disturb_on",
+    "color": "#E53935"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 169,
+   "active": true,
+   "color": "#FFD54F"
+  },
+  {
+   "id": "gracias",
+   "category": "preguntas",
+   "text": "Gracias.",
+   "speech": "Gracias.",
+   "picture": {
+    "icon": "favorite",
+    "color": "#E91E63"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 170,
+   "active": true,
+   "color": "#FFD54F"
+  },
+  {
+   "id": "por_favor",
+   "category": "preguntas",
+   "text": "Por favor.",
+   "speech": "Por favor.",
+   "picture": {
+    "icon": "emoji_people",
+    "color": "#26A69A"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 171,
+   "active": true,
+   "color": "#FFD54F"
+  },
+  {
+   "id": "hola",
+   "category": "preguntas",
+   "text": "Hola.",
+   "speech": "Hola.",
+   "picture": {
+    "icon": "waving_hand",
+    "color": "#FFB300"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 172,
+   "active": true,
+   "color": "#FFD54F"
+  },
+  {
+   "id": "adios",
+   "category": "preguntas",
+   "text": "Adiós.",
+   "speech": "Adiós.",
+   "picture": {
+    "icon": "waving_hand",
+    "color": "#7E57C2"
+   },
+   "kind": "frase",
+   "article": null,
+   "related": [],
+   "order": 173,
+   "active": true,
+   "color": "#FFD54F"
+  },
+  {
+   "id": "si",
+   "category": "esenciales",
+   "text": "sí",
+   "speech": "sí",
+   "picture": {
+    "icon": "check_circle",
+    "color": "#43A047"
+   },
+   "kind": "palabra",
+   "article": null,
+   "related": [],
+   "order": 174,
+   "active": true,
+   "color": "#90A4AE"
+  },
+  {
+   "id": "no",
+   "category": "esenciales",
+   "text": "no",
+   "speech": "no",
+   "picture": {
+    "icon": "cancel",
+    "color": "#E53935"
+   },
+   "kind": "palabra",
+   "article": null,
+   "related": [
+    "quiero",
+    "me_gusta"
+   ],
+   "order": 175,
+   "active": true,
+   "color": "#90A4AE"
+  },
+  {
+   "id": "mas",
+   "category": "esenciales",
+   "text": "más",
+   "speech": "más",
+   "picture": {
+    "icon": "add_circle",
+    "color": "#1E88E5"
+   },
+   "kind": "palabra",
+   "article": null,
+   "related": [
+    "agua",
+    "comer",
+    "jugar"
+   ],
+   "order": 176,
+   "active": true,
+   "color": "#90A4AE"
+  },
+  {
+   "id": "terminado",
+   "category": "esenciales",
+   "text": "terminé",
+   "speech": "terminé",
+   "picture": {
+    "icon": "done_all",
+    "color": "#43A047"
+   },
+   "kind": "palabra",
+   "article": null,
+   "related": [],
+   "order": 177,
+   "active": true,
+   "color": "#90A4AE"
+  },
+  {
+   "id": "para",
+   "category": "esenciales",
+   "text": "para",
+   "speech": "para",
+   "picture": {
+    "icon": "pan_tool",
+    "color": "#E53935"
+   },
+   "kind": "palabra",
+   "article": null,
+   "related": [],
+   "order": 178,
+   "active": true,
+   "color": "#90A4AE"
+  },
+  {
+   "id": "ayuda",
+   "category": "esenciales",
+   "text": "ayuda",
+   "speech": "ayuda",
+   "picture": {
+    "icon": "support",
+    "color": "#E53935"
+   },
+   "kind": "sustantivo",
+   "article": null,
+   "related": [],
+   "order": 179,
+   "active": true,
+   "color": "#90A4AE"
+  },
+  {
+   "id": "quiero",
+   "category": "esenciales",
+   "text": "quiero",
+   "speech": "quiero",
+   "picture": {
+    "icon": "front_hand",
+    "color": "#FB8C00"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [
+    "agua",
+    "comer",
+    "jugar",
+    "ir",
+    "descansar_v",
+    "mama"
+   ],
+   "order": 180,
+   "active": true,
+   "color": "#90A4AE"
+  },
+  {
+   "id": "no_quiero",
+   "category": "esenciales",
+   "text": "no quiero",
+   "speech": "no quiero",
+   "picture": {
+    "icon": "do_not_touch",
+    "color": "#E53935"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [
+    "comer",
+    "dormir",
+    "jugar"
+   ],
+   "order": 181,
+   "active": true,
+   "color": "#90A4AE"
+  },
+  {
+   "id": "quieres",
+   "category": "esenciales",
+   "text": "quieres",
+   "speech": "quieres",
+   "picture": {
+    "icon": "front_hand",
+    "color": "#7E57C2"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [
+    "jugar",
+    "comer"
+   ],
+   "order": 182,
+   "active": true,
+   "color": "#90A4AE"
+  },
+  {
+   "id": "necesito",
+   "category": "esenciales",
+   "text": "necesito",
+   "speech": "necesito",
+   "picture": {
+    "icon": "priority_high",
+    "color": "#E53935"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [
+    "ayuda",
+    "agua",
+    "descansar_v",
+    "bano"
+   ],
+   "order": 183,
+   "active": true,
+   "color": "#90A4AE"
+  },
+  {
+   "id": "tengo",
+   "category": "esenciales",
+   "text": "tengo",
+   "speech": "tengo",
+   "picture": {
+    "icon": "back_hand",
+    "color": "#26A69A"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [
+    "hambre",
+    "sed",
+    "sueno",
+    "frio",
+    "dolor"
+   ],
+   "order": 184,
+   "active": true,
+   "color": "#90A4AE"
+  },
+  {
+   "id": "estoy",
+   "category": "esenciales",
+   "text": "estoy",
+   "speech": "estoy",
+   "picture": {
+    "icon": "accessibility_new",
+    "color": "#26A69A"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [
+    "feliz",
+    "triste",
+    "cansado",
+    "enojado",
+    "tranquilo"
+   ],
+   "order": 185,
+   "active": true,
+   "color": "#90A4AE"
+  },
+  {
+   "id": "estas",
+   "category": "esenciales",
+   "text": "estás",
+   "speech": "estás",
+   "picture": {
+    "icon": "accessibility_new",
+    "color": "#7E57C2"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [
+    "feliz",
+    "triste",
+    "cansado"
+   ],
+   "order": 186,
+   "active": true,
+   "color": "#90A4AE"
+  },
+  {
+   "id": "me_gusta",
+   "category": "esenciales",
+   "text": "me gusta",
+   "speech": "me gusta",
+   "picture": {
+    "icon": "thumb_up",
+    "color": "#43A047"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [
+    "jugar",
+    "musica",
+    "pelota",
+    "pizza"
+   ],
+   "order": 187,
+   "active": true,
+   "color": "#90A4AE"
+  },
+  {
+   "id": "no_me_gusta",
+   "category": "esenciales",
+   "text": "no me gusta",
+   "speech": "no me gusta",
+   "picture": {
+    "icon": "thumb_down",
+    "color": "#E53935"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [],
+   "order": 188,
+   "active": true,
+   "color": "#90A4AE"
+  },
+  {
+   "id": "vamos",
+   "category": "esenciales",
+   "text": "vamos",
+   "speech": "vamos",
+   "picture": {
+    "icon": "directions_run",
+    "color": "#43A047"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [
+    "parque",
+    "casa",
+    "jugar"
+   ],
+   "takes_a": true,
+   "order": 189,
+   "active": true,
+   "color": "#90A4AE"
+  },
+  {
+   "id": "descansar_v",
+   "category": "esenciales",
+   "text": "descansar",
+   "speech": "descansar",
+   "picture": {
+    "icon": "weekend",
+    "color": "#7E57C2"
+   },
+   "kind": "verbo",
+   "article": null,
+   "related": [],
+   "order": 190,
+   "active": true,
+   "color": "#90A4AE"
+  },
+  {
+   "id": "hambre",
+   "category": "esenciales",
+   "text": "hambre",
+   "speech": "hambre",
+   "picture": {
+    "icon": "restaurant",
+    "color": "#FB8C00"
+   },
+   "kind": "sustantivo",
+   "article": null,
+   "related": [],
+   "order": 191,
+   "active": true,
+   "color": "#90A4AE"
+  },
+  {
+   "id": "sed",
+   "category": "esenciales",
+   "text": "sed",
+   "speech": "sed",
+   "picture": {
+    "icon": "local_drink",
+    "color": "#29B6F6"
+   },
+   "kind": "sustantivo",
+   "article": null,
+   "related": [],
+   "order": 192,
+   "active": true,
+   "color": "#90A4AE"
+  },
+  {
+   "id": "sueno",
+   "category": "esenciales",
+   "text": "sueño",
+   "speech": "sueño",
+   "picture": {
+    "icon": "bedtime",
+    "color": "#3949AB"
+   },
+   "kind": "sustantivo",
+   "article": null,
+   "related": [],
+   "order": 193,
+   "active": true,
+   "color": "#90A4AE"
+  },
+  {
+   "id": "frio",
+   "category": "esenciales",
+   "text": "frío",
+   "speech": "frío",
+   "picture": {
+    "icon": "severe_cold",
+    "color": "#4FC3F7"
+   },
+   "kind": "sustantivo",
+   "article": null,
+   "related": [],
+   "order": 194,
+   "active": true,
+   "color": "#90A4AE"
+  },
+  {
+   "id": "mi",
+   "category": "esenciales",
+   "text": "mi",
+   "speech": "mi",
+   "picture": {
+    "icon": "emoji_people",
+    "color": "#26A69A"
+   },
+   "kind": "determinante",
+   "article": null,
+   "related": [
+    "perro",
+    "gato",
+    "mama",
+    "papa",
+    "pelota"
+   ],
+   "order": 195,
+   "active": true,
+   "color": "#90A4AE"
+  },
+  {
+   "id": "tu_det",
+   "category": "esenciales",
+   "text": "tu",
+   "speech": "tu",
+   "picture": {
+    "icon": "person",
+    "color": "#7E57C2"
+   },
+   "kind": "determinante",
+   "article": null,
+   "related": [],
+   "order": 196,
+   "active": true,
+   "color": "#90A4AE"
+  },
+  {
+   "id": "con",
+   "category": "esenciales",
+   "text": "con",
+   "speech": "con",
+   "picture": {
+    "icon": "join_inner",
+    "color": "#5C6BC0"
+   },
+   "kind": "preposicion",
+   "article": null,
+   "related": [
+    "mi",
+    "mama",
+    "papa",
+    "amigo",
+    "pelota"
+   ],
+   "order": 197,
+   "active": true,
+   "color": "#90A4AE"
+  },
+  {
+   "id": "a",
+   "category": "esenciales",
+   "text": "a",
+   "speech": "a",
+   "picture": {
+    "icon": "arrow_forward",
+    "color": "#43A047"
+   },
+   "kind": "preposicion",
+   "article": null,
+   "related": [
+    "parque",
+    "casa",
+    "escuela"
+   ],
+   "order": 198,
+   "active": true,
+   "color": "#90A4AE"
+  },
+  {
+   "id": "en",
+   "category": "esenciales",
+   "text": "en",
+   "speech": "en",
+   "picture": {
+    "icon": "place",
+    "color": "#7986CB"
+   },
+   "kind": "preposicion",
+   "article": null,
+   "related": [],
+   "order": 199,
+   "active": true,
+   "color": "#90A4AE"
+  },
+  {
+   "id": "y",
+   "category": "esenciales",
+   "text": "y",
+   "speech": "y",
+   "picture": {
+    "icon": "add",
+    "color": "#90A4AE"
+   },
+   "kind": "conjuncion",
+   "article": null,
+   "related": [],
+   "order": 200,
+   "active": true,
+   "color": "#90A4AE"
+  },
+  {
+   "id": "ahora",
+   "category": "esenciales",
+   "text": "ahora",
+   "speech": "ahora",
+   "picture": {
+    "icon": "alarm",
+    "color": "#E53935"
+   },
+   "kind": "palabra",
+   "article": null,
+   "related": [],
+   "order": 201,
+   "active": true,
+   "color": "#90A4AE"
+  },
+  {
+   "id": "despues",
+   "category": "esenciales",
+   "text": "después",
+   "speech": "después",
+   "picture": {
+    "icon": "update",
+    "color": "#1E88E5"
+   },
+   "kind": "palabra",
+   "article": null,
+   "related": [],
+   "order": 202,
+   "active": true,
+   "color": "#90A4AE"
+  },
+  {
+   "id": "tambien",
+   "category": "esenciales",
+   "text": "también",
+   "speech": "también",
+   "picture": {
+    "icon": "library_add",
+    "color": "#26A69A"
+   },
+   "kind": "palabra",
+   "article": null,
+   "related": [],
+   "order": 203,
+   "active": true,
+   "color": "#90A4AE"
+  }
+ ],
+ "boards": {
+  "quick": [
+   "si",
+   "no",
+   "ayuda",
+   "agua",
+   "bano",
+   "comer",
+   "dolor",
+   "mas",
+   "terminado",
+   "para",
+   "quiero",
+   "no_quiero"
+  ],
+  "feelings": [
+   "estoy_feliz",
+   "estoy_contento",
+   "estoy_triste",
+   "tengo_miedo",
+   "estoy_enojado",
+   "estoy_cansado",
+   "estoy_tranquilo",
+   "estoy_nervioso",
+   "necesito_abrazo",
+   "quiero_tranquilo",
+   "necesito_descansar",
+   "me_duele_aqui",
+   "me_siento_mal",
+   "tengo_hambre",
+   "tengo_sed",
+   "quiero_bano",
+   "necesito_ayuda",
+   "quiero_estar_solo"
+  ],
+  "start": [
+   "yo",
+   "quiero",
+   "no_quiero",
+   "necesito",
+   "estoy",
+   "tengo",
+   "me_duele",
+   "me_gusta",
+   "vamos",
+   "mas",
+   "no"
+  ]
+ },
+ "learn": [
+  {
+   "question": "¿Cómo pedirías agua?",
+   "answer": "quiero_agua",
+   "others": [
+    "estoy_feliz",
+    "me_cai"
+   ]
+  },
+  {
+   "question": "¿Cómo puedes decir que necesitas ayuda?",
+   "answer": "necesito_ayuda",
+   "others": [
+    "te_quiero",
+    "tengo_frio"
+   ]
+  },
+  {
+   "question": "¿Cómo dices que quieres ir al baño?",
+   "answer": "quiero_bano",
+   "others": [
+    "quiero_comer",
+    "hola"
+   ]
+  },
+  {
+   "question": "¿Cómo dices que tienes hambre?",
+   "answer": "tengo_hambre",
+   "others": [
+    "tengo_sueno",
+    "otra_vez"
+   ]
+  },
+  {
+   "question": "¿Cómo dices que algo te duele?",
+   "answer": "me_duele_aqui",
+   "others": [
+    "me_gusta_frase",
+    "gracias"
+   ]
+  },
+  {
+   "question": "¿Cómo dices que estás triste?",
+   "answer": "estoy_triste",
+   "others": [
+    "estoy_feliz",
+    "tengo_calor"
+   ]
+  },
+  {
+   "question": "¿Cómo dices que quieres descansar?",
+   "answer": "quiero_descansar",
+   "others": [
+    "quiero_salir",
+    "jugamos"
+   ]
+  },
+  {
+   "question": "¿Cómo dices que no entiendes?",
+   "answer": "no_entiendo",
+   "others": [
+    "si_por_favor",
+    "adios"
+   ]
+  },
+  {
+   "question": "¿Cómo saludas?",
+   "answer": "hola",
+   "others": [
+    "adios",
+    "espera"
+   ]
+  },
+  {
+   "question": "¿Cómo das las gracias?",
+   "answer": "gracias",
+   "others": [
+    "no_se",
+    "me_pica"
+   ]
+  },
+  {
+   "question": "¿Cómo pides que pare?",
+   "answer": "para",
+   "others": [
+    "mas",
+    "si"
+   ]
+  },
+  {
+   "question": "¿Cómo dices que ya terminaste?",
+   "answer": "terminado",
+   "others": [
+    "ahora",
+    "mas"
+   ]
+  },
+  {
+   "question": "¿Cómo pides un abrazo?",
+   "answer": "necesito_abrazo",
+   "others": [
+    "necesito_silencio",
+    "tengo_frio"
+   ]
+  },
+  {
+   "question": "¿Cómo dices que tienes sueño?",
+   "answer": "tengo_sueno",
+   "others": [
+    "tengo_sed",
+    "estoy_feliz"
+   ]
+  }
+ ]
+}

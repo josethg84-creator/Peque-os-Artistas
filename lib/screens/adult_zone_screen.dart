@@ -6,6 +6,7 @@ import '../learning/learning_level.dart';
 import '../persistence/creation_store.dart';
 import '../services/app_services.dart';
 import '../services/catalog_service.dart';
+import '../aac/widgets/aac_settings_panel.dart';
 import '../speech/speech_content.dart';
 import '../speech/speech_progress.dart';
 import '../speech/recommendations.dart';
@@ -62,6 +63,7 @@ class AdultZoneScreen extends StatelessWidget {
                 _StoredDataSection(catalogIds: {for (final d in catalog.drawings) d.id}),
                 _LearningSection(learning: AppServices.of(context).learning),
                 _SpeechSection(speech: AppServices.of(context).speech),
+                const AacSettingsPanel(),
                 const _Section(
                   icon: Icons.shield_outlined,
                   title: 'Privacidad y seguridad',
@@ -69,6 +71,8 @@ class AdultZoneScreen extends StatelessWidget {
                     'No se piden datos personales ni se crean cuentas.',
                     'Sin publicidad, sin compras, sin chat y sin enlaces externos.',
                     'La aplicación no usa Internet: todo se guarda solo en este dispositivo.',
+                    '«Quiero decir» funciona sin conexión y sin micrófono; sus favoritos y ajustes se guardan '
+                        'solo en este dispositivo y se pueden borrar abajo.',
                     'El micrófono solo se usa en las prácticas de voz de «Aprendo a Hablar», cuando el niño '
                         'pulsa «Grabar»: la grabación no se guarda ni se envía y se borra al cerrar. '
                         'Se puede desactivar en la sección «Aprendo a Hablar».',

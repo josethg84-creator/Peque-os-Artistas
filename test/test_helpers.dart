@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:pequenos_artistas/aac/aac_controller.dart';
 import 'package:pequenos_artistas/app.dart';
 import 'package:pequenos_artistas/learning/audio/learning_audio.dart';
 import 'package:pequenos_artistas/learning/learning_controller.dart';
@@ -83,11 +84,13 @@ Future<void> pumpApp(
   LearningController? learning,
   KeyValueBackend? learningBackend,
   SpeechController? speech,
+  AacController? aac,
+  VoiceInfo? voice,
 }) async {
   final controller = learning ?? LearningController(LearningStore(learningBackend ?? MemoryBackend()));
   await controller.load();
   final sounds = lastSounds = RecordingSoundEffects();
-  final narrator = lastNarrator = RecordingNarrator();
+  final narrator = lastNarrator = voice == null ? RecordingNarrator() : RecordingNarrator(info: voice);
   final music = lastMusic = RecordingMusic();
   await tester.pumpWidget(
     PequenosArtistasApp(
@@ -99,6 +102,7 @@ Future<void> pumpApp(
           speech ??
           (SpeechController(SpeechStore(MemoryBackend()), recorder: () => lastRecorder = FakeVoiceRecorder())
             ..load()),
+      aacController: aac ?? (AacController(AacStore(MemoryBackend()))..load()),
       learningAudio: LearningAudio(
         effects: sounds,
         narrator: narrator,

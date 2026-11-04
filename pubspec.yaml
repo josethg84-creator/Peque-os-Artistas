@@ -74,6 +74,7 @@ flutter:
   assets:
     - assets/ui/
     - assets/speech/
+    - assets/aac/
     - assets/catalog/catalog.json
     - assets/thumbnails/
     - assets/audio/effects/

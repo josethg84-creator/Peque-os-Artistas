@@ -13,6 +13,7 @@ import '../speech_content.dart';
 import '../speech_progress.dart';
 import '../speech_summary.dart';
 import '../widgets/speech_widgets.dart';
+import '../../aac/widgets/aac_widgets.dart';
 import 'mission_screen.dart';
 
 /// Una actividad del menú. Las que llegarán en entregas posteriores se
@@ -161,6 +162,9 @@ class _SpeechHubScreenState extends State<SpeechHubScreen> {
                   child: LoloBubble(text: '¡Hola! Soy Lolo. ¿Aprendemos a hablar juntos?', size: 64),
                 ),
                 SizedBox(height: 8),
+                // Comunicar algo, siempre a un toque (fase 5).
+                QuickSayBanner(),
+                SizedBox(height: 10),
                 MissionBanner(),
                 SizedBox(height: 10),
                 LoloSuggestions(),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../aac/screens/aac_builder_screen.dart';
+import '../aac/screens/aac_screens.dart';
 import '../audio/app_audio.dart';
 import '../audio/music_zone.dart';
 import '../learning/screens/learning_game_screen.dart';
@@ -99,6 +101,13 @@ abstract final class AppRouter {
       AppRoutes.speechWordGame || AppRoutes.speechSoundGame
           when args is SpeechGameArgs && WordGame.byId(args.game) != null =>
         WordGameScreen(game: WordGame.byId(args.game)!, level: args.level, route: settings.name),
+      AppRoutes.aac => const AacHomeScreen(),
+      AppRoutes.aacCategory when args is AacCategoryArgs => AacCategoryScreen(categoryId: args.categoryId),
+      AppRoutes.aacQuick => const AacQuickScreen(),
+      AppRoutes.aacBuilder => const AacBuilderScreen(),
+      AppRoutes.aacFeelings => const AacFeelingsScreen(),
+      AppRoutes.aacFavorites => const AacFavoritesScreen(),
+      AppRoutes.aacLearn => const AacLearnScreen(),
       _ => const NotFoundScreen(),
     };
     return MaterialPageRoute<void>(
@@ -129,7 +138,14 @@ abstract final class AppRouter {
         page is WordGameScreen ||
         page is ClapsScreen ||
         page is MyStoryScreen ||
-        page is MissionScreen) {
+        page is MissionScreen ||
+        page is AacHomeScreen ||
+        page is AacCategoryScreen ||
+        page is AacQuickScreen ||
+        page is AacBuilderScreen ||
+        page is AacFeelingsScreen ||
+        page is AacFavoritesScreen ||
+        page is AacLearnScreen) {
       return null;
     }
     if (page is ColoringScreen) return MusicTrack.coloring;

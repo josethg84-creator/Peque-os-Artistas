@@ -57,6 +57,21 @@ abstract final class AppRoutes {
   static const speechWordGames = '/hablar/palabras/juegos';
   static const speechWordGame = '/hablar/palabras/juego';
   static const speechMyStory = '/hablar/mi-historia';
+
+  // Fase 5: «Quiero decir» (comunicación aumentativa).
+  static const aac = '/quiero-decir';
+  static const aacCategory = '/quiero-decir/categoria';
+  static const aacQuick = '/quiero-decir/rapido';
+  static const aacBuilder = '/quiero-decir/construir';
+  static const aacFeelings = '/quiero-decir/emociones';
+  static const aacFavorites = '/quiero-decir/favoritas';
+  static const aacLearn = '/quiero-decir/aprender';
+}
+
+/// Argumento de [AppRoutes.aacCategory].
+class AacCategoryArgs {
+  const AacCategoryArgs(this.categoryId);
+  final String categoryId;
 }
 
 /// Argumento de los juegos con nivel (sílabas, sonidos y palabras).

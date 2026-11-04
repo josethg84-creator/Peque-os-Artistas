@@ -8,6 +8,7 @@ import 'stories.dart';
 import 'listening.dart';
 import 'my_story.dart';
 import 'phonology.dart';
+import '../aac/aac_icons.dart';
 import 'speech_icons_extra.dart';
 import 'tell.dart';
 
@@ -677,7 +678,7 @@ abstract final class FacePictogram {
 abstract final class SpeechIcons {
   /// Un icono por su nombre corto o por su nombre de Material (los del banco
   /// de vocabulario, en [extraSpeechIcons]).
-  static IconData? lookup(String name) => byName[name] ?? extraSpeechIcons[name];
+  static IconData? lookup(String name) => byName[name] ?? extraSpeechIcons[name] ?? aacIcons[name];
 
   static const byName = <String, IconData>{
     'family': Icons.family_restroom,

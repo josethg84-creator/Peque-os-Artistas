@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import 'aac/aac_controller.dart';
 import 'learning/audio/learning_audio.dart';
 import 'learning/learning_controller.dart';
 import 'navigation/app_router.dart';
@@ -22,6 +23,7 @@ class PequenosArtistasApp extends StatelessWidget {
     required this.learningController,
     required this.learningAudio,
     required this.speechController,
+    required this.aacController,
   });
 
   final CatalogService catalogService;
@@ -30,6 +32,7 @@ class PequenosArtistasApp extends StatelessWidget {
   final LearningController learningController;
   final LearningAudio learningAudio;
   final SpeechController speechController;
+  final AacController aacController;
 
   /// Se respeta el tamaño de texto del sistema, con un tope para que las
   /// pantallas sigan siendo usables.
@@ -44,6 +47,7 @@ class PequenosArtistasApp extends StatelessWidget {
       learning: learningController,
       audio: learningAudio,
       speech: speechController,
+      aac: aacController,
       child: _AudioBinding(
         audio: learningAudio,
         settings: learningController,

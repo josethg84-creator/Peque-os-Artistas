@@ -5,6 +5,7 @@ import 'drawing_loader.dart';
 import '../learning/audio/learning_audio.dart';
 import '../learning/learning_controller.dart';
 import '../persistence/creation_store.dart';
+import '../aac/aac_controller.dart';
 import '../speech/speech_progress.dart';
 
 /// Pone los servicios compartidos al alcance de todas las pantallas.
@@ -17,6 +18,7 @@ class AppServices extends InheritedWidget {
     required this.learning,
     required this.audio,
     required this.speech,
+    required this.aac,
     required super.child,
   });
 
@@ -30,6 +32,9 @@ class AppServices extends InheritedWidget {
 
   /// Contenido y progreso de «Aprendo a Hablar».
   final SpeechController speech;
+
+  /// «Quiero decir»: tablero de comunicación (aparte de progreso y estrellas).
+  final AacController aac;
 
   /// Igual que [of], pero sin exigirlos (componentes que también se usan
   /// fuera de la app completa, p. ej. en pruebas).
@@ -49,5 +54,6 @@ class AppServices extends InheritedWidget {
       creations != oldWidget.creations ||
       learning != oldWidget.learning ||
       audio != oldWidget.audio ||
-      speech != oldWidget.speech;
+      speech != oldWidget.speech ||
+      aac != oldWidget.aac;
 }
