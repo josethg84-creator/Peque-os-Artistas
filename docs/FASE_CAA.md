@@ -84,7 +84,8 @@ personalización»**.
 
 - Todo se guarda **solo en el dispositivo**, en la clave `aac.v1.state`: ajustes, frases
   favoritas, palabras añadidas al tablero rápido y cuántas veces se usa cada tarjeta. Este
-  último dato solo sirve para ordenarlas.
+  último dato solo sirve para ordenarlas y **no se cuenta** en las categorías sensibles:
+  necesidades, salud y emociones (fase 6).
 - No se guarda información médica ni diagnóstica. No hay publicidad, chat, perfiles, envío de
   datos ni micrófono.
 - Un adulto puede borrarlo todo con «Borrar personalización».

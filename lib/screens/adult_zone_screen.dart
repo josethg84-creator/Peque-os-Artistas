@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import '../navigation/app_router.dart';
 import '../learning/learning_controller.dart';
 import '../learning/learning_level.dart';
+import '../persistence/creation.dart';
 import '../persistence/creation_store.dart';
 import '../services/app_services.dart';
 import '../services/catalog_service.dart';
+import '../services/progress_overview.dart';
 import '../aac/widgets/aac_settings_panel.dart';
 import '../speech/speech_content.dart';
 import '../speech/speech_progress.dart';
@@ -61,6 +63,7 @@ class AdultZoneScreen extends StatelessWidget {
                   ],
                 ),
                 _StoredDataSection(catalogIds: {for (final d in catalog.drawings) d.id}),
+                const _OverviewSection(),
                 _LearningSection(learning: AppServices.of(context).learning),
                 _SpeechSection(speech: AppServices.of(context).speech),
                 const AacSettingsPanel(),
@@ -71,7 +74,8 @@ class AdultZoneScreen extends StatelessWidget {
                     'No se piden datos personales ni se crean cuentas.',
                     'Sin publicidad, sin compras, sin chat y sin enlaces externos.',
                     'La aplicación no usa Internet: todo se guarda solo en este dispositivo.',
-                    '«Quiero decir» funciona sin conexión y sin micrófono; sus favoritos y ajustes se guardan '
+                    '«Quiero decir» no necesita conexión ni micrófono (la voz, sin conexión, solo si la voz en '
+                        'español está instalada en el dispositivo); sus favoritos y ajustes se guardan '
                         'solo en este dispositivo y se pueden borrar abajo.',
                     'El micrófono solo se usa en las prácticas de voz de «Aprendo a Hablar», cuando el niño '
                         'pulsa «Grabar»: la grabación no se guarda ni se envía y se borra al cerrar. '
@@ -80,6 +84,7 @@ class AdultZoneScreen extends StatelessWidget {
                         'Pequeños Artistas → Almacenamiento → Borrar datos (o desinstalar la app).',
                   ],
                 ),
+                const _MotionSection(),
                 const _Section(
                   icon: Icons.tune_rounded,
                   title: 'Ajustes',
@@ -328,6 +333,79 @@ class _LearningSection extends StatelessWidget {
           'El progreso guardado estaba dañado: se empezó de cero (los datos dañados se conservan).',
         if (learning.saveFailed) 'El último guardado del progreso falló; se reintentará.',
       ],
+    );
+  }
+}
+
+/// Accesibilidad: reducir animaciones en toda la app.
+class _MotionSection extends StatelessWidget {
+  const _MotionSection();
+
+  @override
+  Widget build(BuildContext context) {
+    final learning = AppServices.of(context).learning;
+    return ListenableBuilder(
+      listenable: learning,
+      builder: (context, _) => Card(
+        margin: const EdgeInsets.only(bottom: 12),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          child: SwitchListTile(
+            contentPadding: EdgeInsets.zero,
+            secondary: const Icon(Icons.motion_photos_off_outlined),
+            title: const Text('Reducir animaciones'),
+            subtitle: const Text(
+              'Quita los movimientos decorativos (entradas, rebotes, confeti). '
+              'También se activa solo si el dispositivo tiene «Quitar animaciones».',
+            ),
+            value: learning.settings.reduceMotion,
+            onChanged: (v) => learning.updateSettings(learning.settings.copyWith(reduceMotion: v)),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Resumen de todo lo hecho en la app (colorear, juegos, lenguaje y
+/// comunicación), leído de cada módulo sin migrar datos.
+class _OverviewSection extends StatefulWidget {
+  const _OverviewSection();
+
+  @override
+  State<_OverviewSection> createState() => _OverviewSectionState();
+}
+
+class _OverviewSectionState extends State<_OverviewSection> {
+  Future<CreationReport>? _report;
+
+  @override
+  Widget build(BuildContext context) {
+    final services = AppServices.of(context);
+    return FutureBuilder<CreationReport>(
+      // Se leen una vez al abrir la zona de adultos.
+      future: _report ??= services.creations.loadAll(),
+      builder: (context, snapshot) => ListenableBuilder(
+        listenable: Listenable.merge([services.learning, services.speech, services.aac]),
+        builder: (context, _) {
+          final creations = snapshot.data?.creations ?? const <Creation>[];
+          final overview = ProgressOverview.from(
+            drawingsSaved: creations.length,
+            drawingsFinished: creations.where((c) => c.status == CreationStatus.completed).length,
+            learning: services.learning.progress,
+            speech: services.speech.progress,
+            aac: services.aac.prefs,
+          );
+          return _Section(
+            icon: Icons.dashboard_outlined,
+            title: 'Resumen de todo lo hecho',
+            lines: [
+              ...overview.lines,
+              'Solo cuenta actividades hechas en este dispositivo; no es una evaluación.',
+            ],
+          );
+        },
+      ),
     );
   }
 }

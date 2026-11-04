@@ -1,6 +1,31 @@
+import 'dart:ui';
+
 import 'package:flutter_test/flutter_test.dart';
+import 'package:pequenos_artistas/aac/aac_catalog.dart';
+import 'package:pequenos_artistas/speech/speech_content.dart';
 import 'package:pequenos_artistas/aac/aac_controller.dart';
 import 'package:pequenos_artistas/persistence/key_value_backend.dart';
+
+const water = Pictogram(
+  id: 'agua',
+  category: 'comida',
+  text: 'agua',
+  speech: 'agua',
+  picture: IconPicture('water', null),
+  color: Color(0xFF000000),
+  order: 1,
+  kind: PictogramKind.sustantivo,
+);
+const help = Pictogram(
+  id: 'necesito_ayuda',
+  category: 'necesidades',
+  text: 'Necesito ayuda.',
+  speech: 'Necesito ayuda.',
+  picture: IconPicture('help', null),
+  color: Color(0xFF000000),
+  order: 2,
+  kind: PictogramKind.frase,
+);
 
 void main() {
   test('los ajustes y favoritas se guardan solo en el dispositivo y se recuperan', () async {
@@ -22,13 +47,14 @@ void main() {
         p.frequentCategories.add('comida');
       })
       ..addFavorite('Yo quiero agua.')
-      ..markUsed('agua');
+      ..markUsed(water)
+      ..markUsed(help);
     await Future<void>.delayed(Duration.zero);
     final b = AacController(AacStore(backend));
     await b.load();
     expect(b.prefs.toJson(), a.prefs.toJson());
     expect(b.prefs.favorites, ['Yo quiero agua.']);
-    expect(b.prefs.usage, {'agua': 1});
+    expect(b.prefs.usage, {'agua': 1}, reason: 'no se cuenta el uso de necesidades, salud ni emociones');
     expect(await backend.keys(), contains(AacStore.key));
   });
 

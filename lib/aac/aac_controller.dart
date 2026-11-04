@@ -234,7 +234,16 @@ class AacController extends ChangeNotifier {
     return true;
   }
 
-  void markUsed(String id) => update((p) => p.usage[id] = (p.usage[id] ?? 0) + 1);
+  /// Categorías cuyo uso no se cuenta: necesidades, salud y emociones son
+  /// información sensible y no hace falta para nada.
+  static const sensitiveCategories = {'necesidades', 'salud', 'emociones'};
+
+  /// Cuenta el uso de un pictograma (solo para ordenar «las más usadas»), salvo
+  /// los de categorías sensibles.
+  void markUsed(Pictogram p) {
+    if (sensitiveCategories.contains(p.category)) return;
+    update((x) => x.usage[p.id] = (x.usage[p.id] ?? 0) + 1);
+  }
 
   bool isFavorite(String phrase) => _prefs.favorites.contains(phrase);
   void addFavorite(String phrase) => update((p) {

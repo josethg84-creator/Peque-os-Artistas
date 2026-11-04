@@ -48,6 +48,7 @@ class LearningSettings {
     this.musicVolume = 0.5,
     this.effectsVolume = 0.8,
     this.voiceVolume = 1.0,
+    this.reduceMotion = false,
   });
 
   /// Efectos de sonido activados.
@@ -65,6 +66,9 @@ class LearningSettings {
   final double effectsVolume;
   final double voiceVolume;
 
+  /// Reducir animaciones en toda la app (además del ajuste del sistema).
+  final bool reduceMotion;
+
   LearningSettings copyWith({
     bool? soundOn,
     bool? voiceOn,
@@ -75,6 +79,7 @@ class LearningSettings {
     double? musicVolume,
     double? effectsVolume,
     double? voiceVolume,
+    bool? reduceMotion,
   }) => LearningSettings(
     soundOn: soundOn ?? this.soundOn,
     voiceOn: voiceOn ?? this.voiceOn,
@@ -85,6 +90,7 @@ class LearningSettings {
     musicVolume: musicVolume ?? this.musicVolume,
     effectsVolume: effectsVolume ?? this.effectsVolume,
     voiceVolume: voiceVolume ?? this.voiceVolume,
+    reduceMotion: reduceMotion ?? this.reduceMotion,
   );
 
   Map<String, Object> toJson() => {
@@ -97,6 +103,7 @@ class LearningSettings {
     'music_volume': musicVolume,
     'effects_volume': effectsVolume,
     'voice_volume': voiceVolume,
+    'reduce_motion': reduceMotion,
   };
 
   /// Acepta datos antiguos (sin los campos de sonido) o dañados: cada campo
@@ -120,6 +127,7 @@ class LearningSettings {
       musicVolume: volume('music_volume', d.musicVolume),
       effectsVolume: volume('effects_volume', d.effectsVolume),
       voiceVolume: volume('voice_volume', d.voiceVolume),
+      reduceMotion: flag('reduce_motion', d.reduceMotion),
     );
   }
 }
