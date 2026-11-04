@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import '../../audio/phrases.dart';
 import '../../audio/app_audio.dart';
 import '../../audio/ui_sounds.dart';
+import '../../aac/widgets/aac_widgets.dart';
 import '../../navigation/app_routes.dart';
 import '../../services/app_services.dart';
 import '../../theme/app_motion.dart';
@@ -84,146 +85,155 @@ class _IllustratedHomeCoverState extends State<IllustratedHomeCover> {
                   child: ConstrainedBox(
                     constraints: BoxConstraints(minHeight: box.maxHeight),
                     child: Center(
-                      child: _Entrance(
-                        child: SizedBox(
-                          width: width,
-                          height: height,
-                          child: Stack(
-                            children: [
-                              Positioned.fill(
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(width < box.maxWidth ? 28 : 0),
-                                  child: ExcludeSemantics(
-                                    // En teléfonos muy alargados sobra alto: los bordes de
-                                    // arriba y abajo se funden con el fondo, sin corte brusco.
-                                    child: width >= box.maxWidth && height < box.maxHeight - 24
-                                        ? ShaderMask(
-                                            blendMode: BlendMode.dstIn,
-                                            shaderCallback: (r) => const LinearGradient(
-                                              begin: Alignment.topCenter,
-                                              end: Alignment.bottomCenter,
-                                              colors: [
-                                                Colors.transparent,
-                                                Colors.white,
-                                                Colors.white,
-                                                Colors.transparent,
-                                              ],
-                                              stops: [0, 0.035, 0.975, 1],
-                                            ).createShader(r),
-                                            child: art,
-                                          )
-                                        : art,
+                      child: _withQuickAccess(
+                        box,
+                        width,
+                        height,
+                        _Entrance(
+                          child: SizedBox(
+                            width: width,
+                            height: height,
+                            child: Stack(
+                              children: [
+                                Positioned.fill(
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(width < box.maxWidth ? 28 : 0),
+                                    child: ExcludeSemantics(
+                                      // En teléfonos muy alargados sobra alto: los bordes de
+                                      // arriba y abajo se funden con el fondo, sin corte brusco.
+                                      child: width >= box.maxWidth && height < box.maxHeight - 24
+                                          ? ShaderMask(
+                                              blendMode: BlendMode.dstIn,
+                                              shaderCallback: (r) => const LinearGradient(
+                                                begin: Alignment.topCenter,
+                                                end: Alignment.bottomCenter,
+                                                colors: [
+                                                  Colors.transparent,
+                                                  Colors.white,
+                                                  Colors.white,
+                                                  Colors.transparent,
+                                                ],
+                                                stops: [0, 0.035, 0.975, 1],
+                                              ).createShader(r),
+                                              child: art,
+                                            )
+                                          : art,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              // Logo y subtítulo: ya están dibujados; solo se anuncian.
-                              _Zone.label(
-                                rect: const Rect.fromLTWH(.29, .03, .56, .15),
-                                label: 'Pequeños Artistas',
-                                header: true,
-                              ),
-                              _Zone.label(
-                                rect: const Rect.fromLTWH(.2, .19, .61, .04),
-                                label: 'Un mundo de colores, juegos y creatividad',
-                              ),
-                              // La estrella sonriente guarda la zona para adultos:
-                              // un toque no hace nada; hay que mantenerla pulsada.
-                              _Zone(
-                                rect: const Rect.fromLTWH(.15, .06, .145, .1),
-                                label: 'Zona para adultos',
-                                hint: 'Mantén pulsado para entrar',
-                                shape: _Shape.circle,
-                                onLongPress: widget.onAdultAccess,
-                              ),
-                              _Zone(
-                                rect: const Rect.fromLTWH(.25, .245, .5, .26),
-                                label: 'Un niño y una niña con pinceles y su perrito',
-                                hint: 'Toca para que te saluden',
-                                glow: false,
-                                onTap: () => AppServices.of(context).audio.sayOneOf(Phrases.welcome),
-                              ),
-                              _Zone(
-                                rect: const Rect.fromLTWH(.032, .016, .093, .062),
-                                label: 'Configuración',
-                                shape: _Shape.circle,
-                                route: true,
-                                onTap: () => open(AppRoutes.soundSettings),
-                              ),
-                              ListenableBuilder(
-                                listenable: learning,
-                                builder: (context, _) {
-                                  final s = learning.settings;
-                                  final on = s.musicOn && !s.muted;
-                                  return _Zone(
-                                    rect: const Rect.fromLTWH(.885, .016, .093, .062),
-                                    label: on ? 'Música activada' : 'Música desactivada',
-                                    hint: on ? 'Toca para apagar la música' : 'Toca para encender la música',
-                                    shape: _Shape.circle,
-                                    onTap: () => learning.updateSettings(
-                                      s.copyWith(musicOn: !on, muted: on ? s.muted : false),
-                                    ),
-                                  );
-                                },
-                              ),
-                              _Zone(
-                                rect: const Rect.fromLTWH(.062, .522, .436, .163),
-                                label: 'Colorear',
-                                hint: '¡Dibuja y da vida!',
-                                route: true,
-                                onTap: () => open(AppRoutes.categories),
-                              ),
-                              _Zone(
-                                rect: const Rect.fromLTWH(.516, .522, .424, .163),
-                                label: 'Mini Juegos',
-                                hint: '¡Aprende jugando!',
-                                route: true,
-                                onTap: () => open(AppRoutes.miniGames),
-                              ),
-                              _Zone(
-                                rect: const Rect.fromLTWH(.062, .695, .436, .161),
-                                label: 'Actividades',
-                                hint: '¡Descubre y aprende!',
-                                route: true,
-                                onTap: () => open(AppRoutes.activities),
-                              ),
-                              _Zone(
-                                rect: const Rect.fromLTWH(.516, .695, .424, .161),
-                                label: 'Galería',
-                                hint: '¡Tus obras de arte!',
-                                route: true,
-                                onTap: () => open(AppRoutes.savedDrawings),
-                              ),
-                              _Zone(
-                                rect: const Rect.fromLTWH(.062, .882, .282, .072),
-                                label: 'Perfil',
-                                shape: _Shape.pill,
-                                route: true,
-                                onTap: () => open(AppRoutes.profile),
-                              ),
-                              _Zone(
-                                rect: const Rect.fromLTWH(.368, .882, .265, .072),
-                                label: 'Logros',
-                                shape: _Shape.pill,
-                                route: true,
-                                onTap: () => open(AppRoutes.rewards),
-                              ),
-                              _Zone(
-                                rect: const Rect.fromLTWH(.656, .882, .3, .072),
-                                label: 'Configuración',
-                                shape: _Shape.pill,
-                                route: true,
-                                onTap: () => open(AppRoutes.soundSettings),
-                              ),
-                              // «Aprendo a Hablar»: Lolo en el cielo, junto al arcoíris
-                              // (una sección nueva que no está en la ilustración).
-                              Positioned(
-                                left: width * .8,
-                                top: height * .14,
-                                width: width * .195,
-                                height: height * .125,
-                                child: _SpeechBadge(onTap: () => open(AppRoutes.speech)),
-                              ),
-                            ],
+                                // Logo y subtítulo: ya están dibujados; solo se anuncian.
+                                _Zone.label(
+                                  rect: const Rect.fromLTWH(.29, .03, .56, .15),
+                                  label: 'Pequeños Artistas',
+                                  header: true,
+                                ),
+                                _Zone.label(
+                                  rect: const Rect.fromLTWH(.2, .19, .61, .04),
+                                  label: 'Un mundo de colores, juegos y creatividad',
+                                ),
+                                // La estrella sonriente guarda la zona para adultos:
+                                // un toque no hace nada; hay que mantenerla pulsada.
+                                _Zone(
+                                  rect: const Rect.fromLTWH(.15, .06, .145, .1),
+                                  label: 'Zona para adultos',
+                                  hint: 'Mantén pulsado para entrar',
+                                  shape: _Shape.circle,
+                                  onLongPress: widget.onAdultAccess,
+                                ),
+                                _Zone(
+                                  rect: const Rect.fromLTWH(.25, .245, .5, .26),
+                                  label: 'Un niño y una niña con pinceles y su perrito',
+                                  hint: 'Toca para que te saluden',
+                                  glow: false,
+                                  onTap: () => AppServices.of(context).audio.sayOneOf(Phrases.welcome),
+                                ),
+                                _Zone(
+                                  rect: const Rect.fromLTWH(.032, .016, .093, .062),
+                                  label: 'Configuración',
+                                  shape: _Shape.circle,
+                                  route: true,
+                                  onTap: () => open(AppRoutes.soundSettings),
+                                ),
+                                ListenableBuilder(
+                                  listenable: learning,
+                                  builder: (context, _) {
+                                    final s = learning.settings;
+                                    final on = s.musicOn && !s.muted;
+                                    return _Zone(
+                                      rect: const Rect.fromLTWH(.885, .016, .093, .062),
+                                      label: on ? 'Música activada' : 'Música desactivada',
+                                      hint: on
+                                          ? 'Toca para apagar la música'
+                                          : 'Toca para encender la música',
+                                      shape: _Shape.circle,
+                                      onTap: () => learning.updateSettings(
+                                        s.copyWith(musicOn: !on, muted: on ? s.muted : false),
+                                      ),
+                                    );
+                                  },
+                                ),
+                                _Zone(
+                                  rect: const Rect.fromLTWH(.062, .522, .436, .163),
+                                  label: 'Colorear',
+                                  hint: '¡Dibuja y da vida!',
+                                  route: true,
+                                  onTap: () => open(AppRoutes.categories),
+                                ),
+                                _Zone(
+                                  rect: const Rect.fromLTWH(.516, .522, .424, .163),
+                                  label: 'Mini Juegos',
+                                  hint: '¡Aprende jugando!',
+                                  route: true,
+                                  onTap: () => open(AppRoutes.miniGames),
+                                ),
+                                _Zone(
+                                  rect: const Rect.fromLTWH(.062, .695, .436, .161),
+                                  label: 'Actividades',
+                                  hint: '¡Descubre y aprende!',
+                                  route: true,
+                                  onTap: () => open(AppRoutes.activities),
+                                ),
+                                _Zone(
+                                  rect: const Rect.fromLTWH(.516, .695, .424, .161),
+                                  label: 'Galería',
+                                  hint: '¡Tus obras de arte!',
+                                  route: true,
+                                  onTap: () => open(AppRoutes.savedDrawings),
+                                ),
+                                _Zone(
+                                  rect: const Rect.fromLTWH(.062, .882, .282, .072),
+                                  label: 'Perfil',
+                                  shape: _Shape.pill,
+                                  route: true,
+                                  onTap: () => open(AppRoutes.profile),
+                                ),
+                                _Zone(
+                                  rect: const Rect.fromLTWH(.368, .882, .265, .072),
+                                  label: 'Logros',
+                                  shape: _Shape.pill,
+                                  route: true,
+                                  onTap: () => open(AppRoutes.rewards),
+                                ),
+                                _Zone(
+                                  rect: const Rect.fromLTWH(.656, .882, .3, .072),
+                                  label: 'Configuración',
+                                  shape: _Shape.pill,
+                                  route: true,
+                                  onTap: () => open(AppRoutes.soundSettings),
+                                ),
+                                // «Aprendo a Hablar»: Lolo en el cielo, junto al arcoíris
+                                // (una sección nueva que no está en la ilustración). Si
+                                // caben los accesos grandes junto a la imagen, van allí.
+                                if (!_hasQuickAccess(box, width, height))
+                                  Positioned(
+                                    left: width * .8,
+                                    top: height * .14,
+                                    width: width * .195,
+                                    height: height * .125,
+                                    child: _SpeechBadge(onTap: () => open(AppRoutes.speech)),
+                                  ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -236,6 +246,67 @@ class _IllustratedHomeCoverState extends State<IllustratedHomeCover> {
         ],
       ),
     );
+  }
+
+  /// Accesos grandes a «Aprendo a Hablar» y «Necesito decir algo» en el espacio
+  /// que sobra alrededor de la ilustración (sin tocar la imagen). Si no sobra
+  /// espacio, queda la insignia de Lolo sobre la ilustración.
+  static bool _below(BoxConstraints box, double height) => box.maxHeight - height >= 96;
+  static bool _beside(BoxConstraints box, double width) => box.maxWidth - width >= 2 * 200;
+  static bool _hasQuickAccess(BoxConstraints box, double width, double height) =>
+      _below(box, height) || _beside(box, width);
+
+  Widget _withQuickAccess(BoxConstraints box, double width, double height, Widget art) {
+    void open(String route) => Navigator.of(context).pushNamed(route);
+    Widget button(String title, IconData icon, Color color, String route) =>
+        AacShortcut(title: title, icon: icon, color: color, onTap: () => open(route));
+    final talk = button(
+      'Aprendo a Hablar',
+      Icons.record_voice_over_rounded,
+      const Color(0xFF2E9E57),
+      AppRoutes.speech,
+    );
+    final say = button(
+      'Necesito decir algo',
+      Icons.campaign_rounded,
+      const Color(0xFFEF6C57),
+      AppRoutes.aacQuick,
+    );
+    if (_below(box, height)) {
+      return Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          art,
+          Padding(
+            padding: const EdgeInsets.fromLTRB(12, 10, 12, 10),
+            child: SizedBox(
+              width: width,
+              child: Row(
+                children: [
+                  Expanded(child: talk),
+                  const SizedBox(width: 10),
+                  Expanded(child: say),
+                ],
+              ),
+            ),
+          ),
+        ],
+      );
+    }
+    if (_beside(box, width)) {
+      return Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          art,
+          const SizedBox(width: 16),
+          SizedBox(
+            width: 190,
+            child: Column(mainAxisSize: MainAxisSize.min, children: [talk, const SizedBox(height: 12), say]),
+          ),
+        ],
+      );
+    }
+    return art;
   }
 
   static Widget _empty(BuildContext context, Object error, StackTrace? stack) => const SizedBox();

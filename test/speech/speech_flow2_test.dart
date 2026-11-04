@@ -50,12 +50,12 @@ void main() {
     await tapAndSettle(tester, find.bySemanticsLabel('Aprendo a Hablar'));
     for (final t in [
       'Construyo oraciones',
+      'Yo puedo expresarme',
       'Aprendo los verbos',
       'Hablemos con Lolo',
-      'Escucho y respondo',
       'Lolo me cuenta un cuento',
-      'Yo puedo expresarme',
       'Ahora cuéntamelo tú',
+      'Escucho y respondo',
     ]) {
       await tester.scrollUntilVisible(find.bySemanticsLabel(t), 200);
       expect(find.bySemanticsLabel(t), findsOneWidget, reason: t);

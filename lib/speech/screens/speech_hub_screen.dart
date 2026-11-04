@@ -122,6 +122,13 @@ class SpeechHubScreen extends StatefulWidget {
       AppRoutes.speechMyStory,
     ),
     SpeechActivity(
+      'Quiero decir',
+      '¡Tablero con dibujos y voz!',
+      Icons.grid_view_rounded,
+      Color(0xFF80CBC4),
+      AppRoutes.aac,
+    ),
+    SpeechActivity(
       'Mis aventuras con Lolo',
       '¡Mira lo que aprendiste!',
       Icons.insights_rounded,
@@ -129,6 +136,37 @@ class SpeechHubScreen extends StatefulWidget {
       AppRoutes.speechProgress,
     ),
   ];
+
+  /// Las áreas del menú (en este orden) y sus actividades, por título. Son
+  /// secciones con título en la misma pantalla: no añaden menús.
+  static const sections = <(String, IconData, List<String>)>[
+    (
+      'Aprendo palabras',
+      Icons.abc_rounded,
+      ['Mis primeras palabras', 'Aprendo frases', 'Juegos de palabras'],
+    ),
+    (
+      'Formo oraciones',
+      Icons.view_week_rounded,
+      ['Construyo oraciones', 'Mi historia', 'Yo puedo expresarme'],
+    ),
+    ('Practico verbos', Icons.directions_run_rounded, ['Aprendo los verbos']),
+    ('Converso con Lolo', Icons.forum_rounded, ['Hablemos con Lolo']),
+    ('Escucho cuentos', Icons.auto_stories_rounded, ['Lolo me cuenta un cuento', 'Ahora cuéntamelo tú']),
+    ('Juegos de lenguaje', Icons.music_note_rounded, ['Sílabas y sonidos', 'Escucho y respondo']),
+    ('Quiero decir', Icons.grid_view_rounded, ['Quiero decir']),
+    ('Mis aventuras', Icons.insights_rounded, ['Mis aventuras con Lolo']),
+  ];
+
+  /// Cuántas tarjetas hay antes del área [title].
+  static int sectionOffset(String title) {
+    var n = 0;
+    for (final (t, _, names) in sections) {
+      if (t == title) return n;
+      n += names.length;
+    }
+    return n;
+  }
 
   static const comingSoon = '¡Esta actividad llegará muy pronto! Mientras, juguemos con las demás.';
 
@@ -171,30 +209,41 @@ class _SpeechHubScreenState extends State<SpeechHubScreen> {
               ]),
             ),
           ),
-          AdaptiveSliverGrid(
-            itemCount: SpeechHubScreen.activities.length,
-            minTileWidth: 170,
-            childAspectRatio: 1.05,
-            itemBuilder: (context, i) {
-              final a = SpeechHubScreen.activities[i];
-              final route = a.route;
-              return HomeMenuCard(
-                title: a.title,
-                subtitle: a.subtitle,
-                color: a.color,
-                art: SpeechActivityArt(icon: a.icon, color: a.color),
-                badge: a.available ? null : 'Muy pronto',
-                dimmed: !a.available,
-                opensRoute: a.available,
-                onTap: route != null
-                    ? () {
-                        speech.markVisit(route);
-                        Navigator.of(context).pushNamed(route);
-                      }
-                    : () => _soon(context),
-              );
-            },
-          ),
+          for (final (title, icon, names) in SpeechHubScreen.sections) ...[
+            // Si la única tarjeta se llama como el área, basta la tarjeta.
+            if (!(names.length == 1 && names.first == title))
+              SliverPadding(
+                padding: const EdgeInsets.fromLTRB(AppDimens.pagePadding, 14, AppDimens.pagePadding, 0),
+                sliver: SliverToBoxAdapter(
+                  child: _SectionTitle(title: title, icon: icon),
+                ),
+              ),
+            AdaptiveSliverGrid(
+              itemCount: names.length,
+              indexOffset: SpeechHubScreen.sectionOffset(title),
+              minTileWidth: 170,
+              childAspectRatio: 1.05,
+              itemBuilder: (context, i) {
+                final a = SpeechHubScreen.activities.firstWhere((x) => x.title == names[i]);
+                final route = a.route;
+                return HomeMenuCard(
+                  title: a.title,
+                  subtitle: a.subtitle,
+                  color: a.color,
+                  art: SpeechActivityArt(icon: a.icon, color: a.color),
+                  badge: a.available ? null : 'Muy pronto',
+                  dimmed: !a.available,
+                  opensRoute: a.available,
+                  onTap: route != null
+                      ? () {
+                          speech.markVisit(route);
+                          Navigator.of(context).pushNamed(route);
+                        }
+                      : () => _soon(context),
+                );
+              },
+            ),
+          ],
         ],
       ),
     );
@@ -823,4 +872,26 @@ class _Medal extends StatelessWidget {
       ),
     );
   }
+}
+
+/// Título de un área del menú («Aprendo palabras», «Quiero decir»…).
+class _SectionTitle extends StatelessWidget {
+  const _SectionTitle({required this.title, required this.icon});
+
+  final String title;
+  final IconData icon;
+
+  @override
+  Widget build(BuildContext context) => Semantics(
+    header: true,
+    child: Row(
+      children: [
+        Icon(icon, color: speechAccent, size: 30),
+        const SizedBox(width: 8),
+        Expanded(
+          child: Text(title, style: fredoka(24, color: const Color(0xFF2A2350))),
+        ),
+      ],
+    ),
+  );
 }

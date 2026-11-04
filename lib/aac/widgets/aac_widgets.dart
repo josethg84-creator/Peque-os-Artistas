@@ -471,26 +471,11 @@ class QuickSayBanner extends StatelessWidget {
   const QuickSayBanner({super.key});
 
   @override
-  Widget build(BuildContext context) => Row(
-    children: [
-      Expanded(
-        child: AacShortcut(
-          title: 'Necesito decir algo',
-          icon: Icons.campaign_rounded,
-          color: const Color(0xFFEF6C57),
-          onTap: () => Navigator.of(context).pushNamed(AppRoutes.aacQuick),
-        ),
-      ),
-      const SizedBox(width: 10),
-      Expanded(
-        child: AacShortcut(
-          title: 'Quiero decir',
-          icon: Icons.grid_view_rounded,
-          color: aacColor,
-          onTap: () => Navigator.of(context).pushNamed(AppRoutes.aac),
-        ),
-      ),
-    ],
+  Widget build(BuildContext context) => AacShortcut(
+    title: 'Necesito decir algo',
+    icon: Icons.campaign_rounded,
+    color: const Color(0xFFEF6C57),
+    onTap: () => Navigator.of(context).pushNamed(AppRoutes.aacQuick),
   );
 }
 
