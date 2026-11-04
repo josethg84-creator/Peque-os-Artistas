@@ -55,3 +55,5 @@ Si la clave de subida se pierde o se filtra, se puede pedir a Google que la rest
 - `android/app/build.gradle.kts` lee la clave de `android/key.properties` si existe.
 - `.gitignore` excluye `android/key.properties`, `*.jks` y `*.keystore`.
 - No se ha creado, subido ni sustituido ninguna clave.
+
+Compilación completa y comprobaciones del paquete: [ANDROID_BUILD.md](ANDROID_BUILD.md).

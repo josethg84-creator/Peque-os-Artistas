@@ -1,45 +1,42 @@
-Pequeños Artistas es una aplicación para colorear y aprender pensada para niños y niñas de 4 a 7 años. Con un toque, cada zona del dibujo se llena de color: sin salirse de la línea y sin frustraciones.
+Pequeños Artistas es una aplicación para colorear, jugar y practicar el lenguaje, pensada para niños y niñas de 4 a 7 años y para usarse con un adulto cerca. Funciona sin conexión, sin anuncios y sin cuentas.
 
-🎨 51 DIBUJOS PARA COLOREAR
-• 51 ilustraciones en 7 categorías: animales, granja, mar, vehículos, dinosaurios, frutas y fantasía.
-• Dibujos de dificultad fácil, media y difícil, con zonas grandes y contornos claros.
-• Búsqueda y filtros por categoría y dificultad.
+🎨 COLOREAR
+• 59 dibujos en 7 categorías: animales, granja, mar, vehículos, dinosaurios, frutas y fantasía.
+• Con un toque, cada zona se llena de color sin salirse de la línea.
+• Paleta de 24 colores, zoom, borrador, deshacer, rehacer y empezar de nuevo.
+• Los dibujos se guardan solos en la galería para seguir otro día.
 
-🖌️ COLOREAR ES FÁCIL
-• Toca una zona y se pinta al instante, con una pequeña animación.
-• Paleta de colores vivos, borrador, deshacer, rehacer y empezar de nuevo.
-• Al terminar un dibujo, una celebración con Pincelín, la mascota de la app.
+🧩 MINIJUEGOS
+• Colores, formas, animales, parejas, rompecabezas, laberintos y trazos de letras y números.
+• Tres niveles, sin límite de tiempo y sin castigos: equivocarse solo invita a intentarlo otra vez.
 
-💾 MIS DIBUJOS
-• Los dibujos se guardan solos mientras se pinta.
-• Galería personal con miniaturas para continuar un dibujo, empezar otra versión o borrarlo.
+🗣️ APRENDO A HABLAR, CON LOLO
+• Más de 300 palabras con dibujo para escuchar, también despacio.
+• Frases de cada día, oraciones para construir y verbos.
+• Hablemos con Lolo: conversaciones con tarjetas de respuesta.
+• 20 cuentos leídos en voz alta, con preguntas sencillas.
+• Escucho y respondo, sílabas y sonidos, rimas y juegos de palabras.
+• Mi aventura de hoy: unas pocas misiones cortas para cada día.
+• Practicar (opcional): el niño se graba para escucharse. La grabación no se guarda ni se envía y se borra al cerrar. Un adulto puede quitar esta opción.
 
-🧩 APRENDER JUGANDO
-Siete minijuegos con tres niveles de dificultad:
-• Aprende los colores.
-• Descubre las formas.
-• Encuentra a los animales.
-• Une las parejas.
-• Rompecabezas de 4, 9 o 16 piezas con los dibujos de la app.
-• Laberintos: lleva al conejo hasta su fresa, el coche hasta la meta, la mariposa hasta la flor o encuentra el tesoro. Con pistas y sin límite de tiempo.
-• Trazos y escritura: líneas, letras mayúsculas (con la Ñ), números del 1 al 10 y unir puntos, con una guía que se adapta al nivel.
-Con instrucciones cortas, voz opcional (usa la voz en español del propio dispositivo, si está instalada), sonidos suaves y sin límite de tiempo: equivocarse solo invita a intentarlo otra vez.
-
-🎵 MÚSICA Y SONIDOS
-• Música instrumental suave y original en los menús y al colorear; en los juegos se calla para ayudar a concentrarse.
-• Efectos alegres para cada acción: cada color suena con su propia nota.
-• Música, efectos y voz con interruptor y volumen independientes, y un botón para silenciarlo todo.
+💬 QUIERO DECIR: PICTOGRAMAS Y VOZ
+• Tablero con 203 pictogramas en 10 categorías para formar frases y escucharlas.
+• «Necesito decir algo»: tablero rápido con Sí, No, Ayuda, Agua y más, a un toque desde el inicio.
+• Cómo me siento, frases favoritas y un juego para aprender a usar el tablero.
+• Funciona sin estrellas ni premios: comunicarse nunca depende de jugar.
 
 ⭐ ESTRELLAS Y PEGATINAS
-• Estrellas por cada actividad completada.
-• 10 pegatinas para coleccionar en «Mis premios».
+• Estrellas y pegatinas por las actividades terminadas, para celebrar sin competir.
+
+🎵 SONIDO A MEDIDA
+• Música suave y original, efectos y voz, cada uno con su volumen y su interruptor.
+• La voz es la de texto a voz en español instalada en el propio dispositivo.
 
 👨‍👩‍👧 PENSADA PARA FAMILIAS
-• Sin anuncios y sin compras dentro de la aplicación.
-• Sin cuentas, sin registro y sin chat.
-• Funciona sin conexión a Internet: la app no solicita acceso a Internet.
-• Los dibujos y el progreso se guardan solo en el dispositivo.
-• Zona para adultos protegida con una pequeña verificación.
-• Botones grandes, textos claros y opción de reducir las animaciones según los ajustes de accesibilidad del dispositivo.
+• Sin anuncios, sin compras, sin cuentas, sin chat y sin enlaces externos.
+• No pide acceso a Internet: todo se guarda solo en el dispositivo.
+• Zona para adultos con una pequeña verificación: resumen de lo hecho, ajustes de voz, micrófono y animaciones, y borrado de datos.
+• Botones grandes, textos claros y opción de reducir animaciones.
 
-Pequeños Artistas está hecha para disfrutar del color y del juego en familia.
+IMPORTANTE
+Pequeños Artistas es una app educativa y de juego. No es una herramienta médica ni terapéutica: no evalúa, no diagnostica y no sustituye el acompañamiento de familias, docentes ni profesionales.

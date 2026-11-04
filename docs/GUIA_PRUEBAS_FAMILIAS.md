@@ -4,6 +4,9 @@ Esta guía sirve para preparar las pruebas de **Pequeños Artistas** con familia
 ha hecho ninguna prueba con niños ni familias**: cuando se hagan, la persona responsable anota
 aquí los resultados (sin datos personales).
 
+> Para la persona adulta que acompaña: [GUIA_ADULTOS.md](GUIA_ADULTOS.md). Lista de comprobación
+> técnica y prueba cerrada de Google Play: [../store_assets/TESTING_CHECKLIST.md](../store_assets/TESTING_CHECKLIST.md).
+>
 > La app es educativa y de juego. No evalúa ni diagnostica a los niños y no sustituye a
 > profesionales. Estas pruebas miden si **la app** es fácil y clara, no al niño.
 
