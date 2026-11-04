@@ -27,3 +27,13 @@ Ilustraciones 3D de las tarjetas del menú «Aprendo a Hablar». Deben ser **Web
   cada una.
 - La prueba `test/speech/speech_card_images_test.dart` comprueba que los archivos subidos son
   WebP válidos.
+
+## Ilustraciones 3D adicionales pendientes de cargar
+
+- `hablemos_con_lolo.webp`
+- `lolo_me_cuenta_un_cuento.webp`
+- `ahora_cuentamelo_tu.webp`
+- `silabas_y_sonidos.webp`
+- `escucho_y_respondo.webp`
+
+Los archivos WEBP deben subirse a esta misma carpeta. Mantener los títulos y enlaces de las tarjetas como widgets Flutter, no como áreas táctiles sobre la imagen.
