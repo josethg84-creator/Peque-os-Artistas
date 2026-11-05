@@ -30,8 +30,9 @@ Ilustraciones 3D de las tarjetas del menú «Aprendo a Hablar». Deben ser **Web
 
 ## Ilustraciones 3D adicionales pendientes de cargar
 
-Estas cinco tarjetas ya están preparadas en el código: muestran su icono hasta que se suba su
-archivo con el nombre exacto.
+**Ya están cargadas (05/11/2026).** Se recibieron como tarjetas completas, con marco, título y
+subtítulo dibujados. Para no repetir el título (que sigue siendo un widget de Flutter), se recortó
+solo la ilustración y se completó hasta 512 × 512 con su propio fondo desenfocado.
 
 - `hablemos_con_lolo.webp`
 - `lolo_me_cuenta_un_cuento.webp`

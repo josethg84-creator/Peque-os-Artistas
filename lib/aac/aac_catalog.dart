@@ -124,6 +124,7 @@ class AacCategory {
     required this.color,
     required this.icon,
     this.order = 0,
+    this.image,
   });
   final String id;
   final String name;
@@ -131,6 +132,9 @@ class AacCategory {
 
   /// Nombre de un icono (ver [SpeechIcons.lookup]).
   final String icon;
+
+  /// Ilustración 3D de la tarjeta (si la hay); si no se puede abrir, [icon].
+  final String? image;
   final int order;
 }
 
@@ -206,6 +210,7 @@ class AacCatalog {
             color: parseColor(c['color']) ?? const Color(0xFF90A4AE),
             icon: c['icon'] is String ? c['icon'] as String : 'star',
             order: c['order'] is int ? c['order'] as int : 0,
+            image: c['image'] is String ? c['image'] as String : null,
           ),
     ]..sort((a, b) => a.order.compareTo(b.order));
     final boards = json['boards'] is Map<String, dynamic> ? json['boards'] as Map<String, dynamic> : const {};

@@ -29,6 +29,19 @@ def M(name, color):
     return {"icon": name, "color": color}
 
 
+IMG = "assets/images/quiero_decir/"
+
+
+def I(name, icon, color):
+    """Ilustración 3D (con el icono de reserva si no se puede abrir)."""
+    return {"image": IMG + name + ".webp", "icon": icon, "color": color}
+
+
+# Ilustraciones 3D de las tarjetas de categoría.
+CATEGORY_IMAGES = {"comida": "comer", "personas": "nino", "juegos": "pelota",
+                   "actividades": "pintar", "lugares": "casa"}
+
+
 def B(part):
     return {"body": part}
 
@@ -138,7 +151,7 @@ add("emociones",
 PR = "pronombre"
 # ───────────────── Familia y personas
 add("personas",
-    ("yo", "yo", M("emoji_people", "#26A69A"), PR, None, ["quiero", "estoy", "tengo", "necesito", "me_gusta"]),
+    ("yo", "yo", I("nino", "emoji_people", "#26A69A"), PR, None, ["quiero", "estoy", "tengo", "necesito", "me_gusta"]),
     ("tu", "tú", M("person", "#7E57C2"), PR, None, ["quieres", "estas"]),
     ("el_persona", "él", M("boy", "#1E88E5"), PR, None),
     ("ella", "ella", M("girl", "#EC407A"), PR, None),
@@ -166,13 +179,13 @@ add("juegos",
     ("jugamos", "¿Jugamos?", M("sports_handball", "#43A047"), F),
     ("mi_turno", "Mi turno.", M("front_hand", "#1E88E5"), F),
     ("tu_turno", "Tu turno.", M("back_hand", "#EC407A"), F),
-    ("pelota", "pelota", M("sports_soccer", "#E53935"), N, "la"),
+    ("pelota", "pelota", I("pelota", "sports_soccer", "#E53935"), N, "la"),
     ("bloques", "bloques", M("widgets", "#FFA000"), N, "los"),
     ("rompecabezas", "rompecabezas", M("extension", "#7E57C2"), N, "el"),
     ("coche", "coche", D("vehiculo_automovil"), N, "el"),
     ("tren", "tren", D("vehiculo_tren"), N, "el"),
     ("munecos", "muñecos", M("smart_toy", "#546E7A"), N, "los"),
-    ("pintar", "pintar", M("brush", "#AB47BC"), V),
+    ("pintar", "pintar", I("pintar", "brush", "#AB47BC"), V),
     ("colorear", "colorear", M("palette", "#EC407A"), V),
     ("escondite", "escondite", M("visibility_off", "#5D4037"), N, "el"),
     ("musica", "música", M("music_note", "#AB47BC"), N, "la"),
@@ -185,7 +198,7 @@ add("juegos",
 
 # ───────────────── Actividades (verbos en infinitivo)
 add("actividades",
-    ("comer", "comer", M("lunch_dining", "#FB8C00"), V),
+    ("comer", "comer", I("comer", "lunch_dining", "#FB8C00"), V),
     ("beber", "beber", M("local_drink", "#29B6F6"), V, None, ["agua", "leche", "jugo"]),
     ("dormir", "dormir", M("bedtime", "#3949AB"), V),
     ("banarme", "bañarme", M("bathtub", "#29B6F6"), V),
@@ -211,7 +224,7 @@ add("actividades",
 # ───────────────── Lugares
 PL = {"place": True}
 add("lugares",
-    ("casa", "casa", M("house", "#E57373"), N, None, [], PL),
+    ("casa", "casa", I("casa", "house", "#E57373"), N, None, [], PL),
     ("escuela", "escuela", M("school", "#5C9DED"), N, "la", [], PL),
     ("parque", "parque", M("park", "#43A047"), N, "el", [], PL),
     ("bano", "baño", M("wc", "#0288D1"), N, "el", [], PL),
@@ -370,9 +383,15 @@ def main():
         if icon and icon not in known:
             assert icon in material, f"icono inexistente: {icon}"
             need.add(icon)
+        image = p["picture"].get("image")
+        if image:
+            assert (ROOT / image).is_file(), image
         drawing = p["picture"].get("drawing")
         if drawing:
             assert any((ROOT / "assets/drawings").rglob(f"{drawing}.svg")), drawing
+    for cat, name in CATEGORY_IMAGES.items():
+        assert any(c[0] == cat for c in CATEGORIES), cat
+        assert (ROOT / IMG / f"{name}.webp").is_file(), name
     for _, _, _, icon in CATEGORIES:
         if icon not in known:
             assert icon in material, icon
@@ -385,7 +404,8 @@ def main():
             assert i in idset, (q, i)
     data = {
         "format_version": 1,
-        "categories": [{"id": i, "name": n, "color": c, "icon": ic, "order": k}
+        "categories": [{"id": i, "name": n, "color": c, "icon": ic, "order": k,
+                        **({"image": IMG + CATEGORY_IMAGES[i] + ".webp"} if i in CATEGORY_IMAGES else {})}
                        for k, (i, n, c, ic) in enumerate(CATEGORIES, start=1)],
         "pictograms": [{**p, "color": next(c for i, _, c, _ in CATEGORIES if i == p["category"])} for p in P],
         "boards": BOARDS,

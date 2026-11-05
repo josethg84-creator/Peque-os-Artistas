@@ -165,14 +165,7 @@ class _CategoryCard extends StatelessWidget {
             ),
             child: Column(
               children: [
-                Expanded(
-                  child: FittedBox(
-                    child: Icon(
-                      SpeechIcons.lookup(c.icon) ?? Icons.star_rounded,
-                      color: Color.lerp(c.color, Colors.black, 0.25),
-                    ),
-                  ),
-                ),
+                Expanded(child: _CategoryArt(category: c)),
                 const SizedBox(height: 6),
                 FittedBox(
                   fit: BoxFit.scaleDown,
@@ -187,6 +180,47 @@ class _CategoryCard extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+/// Dibujo de una categoría: su ilustración 3D (con esquinas redondeadas) o,
+/// si no tiene o no se puede abrir, su icono.
+class _CategoryArt extends StatelessWidget {
+  const _CategoryArt({required this.category});
+
+  final AacCategory category;
+
+  @override
+  Widget build(BuildContext context) {
+    final icon = FittedBox(
+      child: Icon(
+        SpeechIcons.lookup(category.icon) ?? Icons.star_rounded,
+        color: Color.lerp(category.color, Colors.black, 0.25),
+      ),
+    );
+    final image = category.image;
+    if (image == null) return icon;
+    return LayoutBuilder(
+      builder: (context, box) {
+        final side = box.biggest.shortestSide;
+        if (!side.isFinite || side <= 0) return icon;
+        return Center(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(side * 0.18),
+            child: SizedBox.square(
+              dimension: side,
+              child: Image.asset(
+                image,
+                fit: BoxFit.contain,
+                cacheWidth: (side * MediaQuery.devicePixelRatioOf(context)).ceil(),
+                excludeFromSemantics: true,
+                errorBuilder: (_, _, _) => icon,
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 }

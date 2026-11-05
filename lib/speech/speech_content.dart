@@ -516,7 +516,12 @@ sealed class SpeechPicture {
   static SpeechPicture? fromJson(Object? json) {
     if (json is! Map<String, dynamic>) return null;
     return switch (json) {
-      {'image': final String path} => ImagePicture(path),
+      {'image': final String path} => ImagePicture(
+        path,
+        fallback: json['icon'] is String && SpeechIcons.lookup(json['icon'] as String) != null
+            ? IconPicture(json['icon'] as String, parseColor(json['color']))
+            : null,
+      ),
       {'lolo': true} => const LoloPicture(),
       {'kid': final Map<String, dynamic> k} => KidPicture(
         girl: k['girl'] == true,
@@ -588,10 +593,13 @@ class ScenePicture extends SpeechPicture {
   final List<SceneItem> items;
 }
 
-/// Imagen propia (PNG o similar) incluida en los recursos de la app.
+/// Imagen propia (WEBP, PNG…) incluida en los recursos de la app.
 class ImagePicture extends SpeechPicture {
-  const ImagePicture(this.path);
+  const ImagePicture(this.path, {this.fallback});
   final String path;
+
+  /// Lo que se muestra si la imagen no se puede abrir.
+  final IconPicture? fallback;
 }
 
 Map<String, Color> _colorMap(Object? json) => {

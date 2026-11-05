@@ -13,7 +13,8 @@
    "name": "Comida y bebida",
    "color": "#FFB74D",
    "icon": "restaurant",
-   "order": 2
+   "order": 2,
+   "image": "assets/images/quiero_decir/comer.webp"
   },
   {
    "id": "emociones",
@@ -27,28 +28,32 @@
    "name": "Familia y personas",
    "color": "#BA68C8",
    "icon": "family_restroom",
-   "order": 4
+   "order": 4,
+   "image": "assets/images/quiero_decir/nino.webp"
   },
   {
    "id": "juegos",
    "name": "Juegos",
    "color": "#81C784",
    "icon": "toys",
-   "order": 5
+   "order": 5,
+   "image": "assets/images/quiero_decir/pelota.webp"
   },
   {
    "id": "actividades",
    "name": "Actividades",
    "color": "#4DB6AC",
    "icon": "directions_run",
-   "order": 6
+   "order": 6,
+   "image": "assets/images/quiero_decir/pintar.webp"
   },
   {
    "id": "lugares",
    "name": "Lugares",
    "color": "#7986CB",
    "icon": "place",
-   "order": 7
+   "order": 7,
+   "image": "assets/images/quiero_decir/casa.webp"
   },
   {
    "id": "salud",
@@ -1112,6 +1117,7 @@
    "text": "yo",
    "speech": "yo",
    "picture": {
+    "image": "assets/images/quiero_decir/nino.webp",
     "icon": "emoji_people",
     "color": "#26A69A"
    },
@@ -1501,6 +1507,7 @@
    "text": "pelota",
    "speech": "pelota",
    "picture": {
+    "image": "assets/images/quiero_decir/pelota.webp",
     "icon": "sports_soccer",
     "color": "#E53935"
    },
@@ -1595,6 +1602,7 @@
    "text": "pintar",
    "speech": "pintar",
    "picture": {
+    "image": "assets/images/quiero_decir/pintar.webp",
     "icon": "brush",
     "color": "#AB47BC"
    },
@@ -1739,6 +1747,7 @@
    "text": "comer",
    "speech": "comer",
    "picture": {
+    "image": "assets/images/quiero_decir/comer.webp",
     "icon": "lunch_dining",
     "color": "#FB8C00"
    },
@@ -2093,6 +2102,7 @@
    "text": "casa",
    "speech": "casa",
    "picture": {
+    "image": "assets/images/quiero_decir/casa.webp",
     "icon": "house",
     "color": "#E57373"
    },

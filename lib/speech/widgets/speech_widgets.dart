@@ -142,11 +142,19 @@ class SpeechPictureView extends StatelessWidget {
     return AspectRatio(
       aspectRatio: 1,
       child: switch (picture) {
-        ImagePicture(:final path) => Image.asset(
-          path,
-          fit: BoxFit.contain,
-          errorBuilder: (_, _, _) =>
-              const _IconTile(icon: Icons.image_not_supported_rounded, color: AppColors.inkSoft),
+        ImagePicture(:final path, :final fallback) => LayoutBuilder(
+          builder: (context, box) => ClipRRect(
+            // Ilustraciones cuadradas con fondo: esquinas redondeadas, como las tarjetas.
+            borderRadius: BorderRadius.circular(box.biggest.shortestSide * 0.18),
+            child: Image.asset(
+              path,
+              fit: BoxFit.contain,
+              excludeFromSemantics: true,
+              errorBuilder: (_, _, _) => fallback == null
+                  ? const _IconTile(icon: Icons.image_not_supported_rounded, color: AppColors.inkSoft)
+                  : _IconTile(icon: fallback.icon, color: fallback.color ?? tint ?? AppColors.grape),
+            ),
+          ),
         ),
         final DrawingPicture p => _CatalogDrawing(picture: p),
         EmotionPicture(:final emotion) => CustomPaint(painter: EmotionFacePainter(emotion)),
