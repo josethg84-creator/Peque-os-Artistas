@@ -469,6 +469,16 @@ class _SpeechContentBuilderState extends State<SpeechContentBuilder> {
 class WordGroupsScreen extends StatelessWidget {
   const WordGroupsScreen({super.key});
 
+  /// Ilustraciones 3D de algunos grupos; los demás muestran el dibujo de su
+  /// primera palabra.
+  static const groupImages = {
+    'acciones': 'assets/images/palabras/acciones.webp',
+    'hogar': 'assets/images/palabras/hogar.webp',
+    'colores': 'assets/images/palabras/colores.webp',
+    'cuerpo': 'assets/images/palabras/cuerpo.webp',
+    'juguetes': 'assets/images/palabras/juguetes.webp',
+  };
+
   @override
   Widget build(BuildContext context) {
     final speech = AppServices.of(context).speech;
@@ -493,7 +503,7 @@ class WordGroupsScreen extends StatelessWidget {
                 color: Color.lerp(c.color, Colors.white, 0.25)!,
                 art: Padding(
                   padding: const EdgeInsets.all(4),
-                  child: SpeechPictureView(picture: c.words.first.picture, tint: c.color),
+                  child: _GroupArt(category: c),
                 ),
                 onTap: () =>
                     Navigator.of(context).pushNamed(AppRoutes.speechWords, arguments: SpeechWordsArgs(c.id)),
@@ -502,6 +512,39 @@ class WordGroupsScreen extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+/// Dibujo de un grupo de palabras: su ilustración (si la tiene, con esquinas
+/// redondeadas) o el dibujo de su primera palabra.
+class _GroupArt extends StatelessWidget {
+  const _GroupArt({required this.category});
+
+  final WordCategory category;
+
+  @override
+  Widget build(BuildContext context) {
+    final word = SpeechPictureView(picture: category.words.first.picture, tint: category.color);
+    final image = WordGroupsScreen.groupImages[category.id];
+    if (image == null) return word;
+    return LayoutBuilder(
+      builder: (context, box) {
+        final width = box.maxWidth;
+        if (!width.isFinite || width <= 0) return word;
+        return Center(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(box.biggest.shortestSide * 0.14),
+            child: Image.asset(
+              image,
+              fit: BoxFit.contain,
+              cacheWidth: (width * MediaQuery.devicePixelRatioOf(context)).ceil(),
+              excludeFromSemantics: true,
+              errorBuilder: (_, _, _) => word,
+            ),
+          ),
+        );
+      },
     );
   }
 }

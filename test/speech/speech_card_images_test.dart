@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:pequenos_artistas/navigation/app_routes.dart';
 import 'package:pequenos_artistas/speech/screens/speech_hub_screen.dart';
 
 import '../test_helpers.dart';
@@ -90,4 +91,38 @@ void main() {
     await tester.pump();
     expect(find.byIcon(Icons.abc_rounded), findsOneWidget);
   });
+
+  test('grupos de palabras: cinco ilustraciones que existen y son WEBP', () {
+    final words = File('assets/speech/words.json').readAsStringSync();
+    expect(File('pubspec.yaml').readAsStringSync(), contains('    - assets/images/palabras/\n'));
+    for (final MapEntry(key: id, value: path) in WordGroupsScreen.groupImages.entries) {
+      expect(words, contains('"id": "$id"'), reason: 'el grupo $id existe');
+      final bytes = File(path).readAsBytesSync();
+      expect(String.fromCharCodes(bytes.take(4)), 'RIFF', reason: path);
+      expect(String.fromCharCodes(bytes.skip(8).take(4)), 'WEBP', reason: path);
+    }
+    expect(WordGroupsScreen.groupImages.keys, {'acciones', 'hogar', 'colores', 'cuerpo', 'juguetes'});
+  });
+
+  for (final size in const [Size(360, 720), Size(1280, 800)]) {
+    testWidgets('grupos a ${size.width.toInt()}×${size.height.toInt()}: ilustración y contador real', (
+      tester,
+    ) async {
+      setScreenSize(tester, size);
+      await pumpApp(tester);
+      tester.state<NavigatorState>(find.byType(Navigator)).pushNamed(AppRoutes.speechWordGroups);
+      await tester.pumpAndSettle();
+      for (final name in ['Acciones', 'Objetos del hogar', 'Colores', 'Partes del cuerpo', 'Juguetes']) {
+        final card = find.bySemanticsLabel(RegExp('^${RegExp.escape(name)}'));
+        await tester.scrollUntilVisible(card, 250, scrollable: find.byType(Scrollable).first);
+        final image = find.descendant(of: card, matching: find.byType(Image));
+        expect(image, findsOneWidget, reason: name);
+        expect(tester.widget<Image>(image).fit, BoxFit.contain, reason: name);
+        expect(find.text(name), findsOneWidget, reason: 'el título sigue siendo texto');
+      }
+      // El contador es el de verdad (no el «0 de N» dibujado en la imagen original).
+      expect(find.textContaining(RegExp(r'^0 de \d+ escuchadas$')), findsWidgets);
+      expect(tester.takeException(), isNull);
+    });
+  }
 }
