@@ -18,6 +18,15 @@ CHARACTERS = [
     ("mariposa", "mariposa", True, D("animal_mariposa", **{"ala_*": "#AB47BC"})),
 ]
 
+# Ilustraciones 3D de las tarjetas para elegir personaje (en la escena se sigue
+# usando el dibujo de arriba, que encaja con el fondo).
+CARD_IMAGES = {i: f"assets/images/mi_historia/{i}.webp" for i in ["oso", "dragon", "mariposa", "conejo", "nina"]}
+
+
+def card(i):
+    return {"card": {"image": CARD_IMAGES[i]}} if i in CARD_IMAGES else {}
+
+
 # (id, nombre, femenino, fondo de escena)
 PLACES = [
     ("bosque", "bosque", False, "bosque"),
@@ -61,9 +70,13 @@ ENDINGS = [
 ]
 
 if __name__ == "__main__":
+    from pathlib import Path
+    root = Path(__file__).resolve().parents[2]
+    for path in CARD_IMAGES.values():
+        assert (root / path).is_file(), path
     data = {
         "format_version": 1,
-        "characters": [{"id": i, "noun": n, "feminine": f, "picture": p} for i, n, f, p in CHARACTERS],
+        "characters": [{"id": i, "noun": n, "feminine": f, "picture": p, **card(i)} for i, n, f, p in CHARACTERS],
         "places": [{"id": i, "noun": n, "feminine": f, "scene": b} for i, n, f, b in PLACES],
         "actions": [{"id": i, "verb": v, "prep": pr, "picture": p, "objects": o} for i, v, pr, p, o in ACTIONS],
         "objects": [{"id": i, "noun": n, "feminine": f, "kind": k, "picture": p} for i, n, f, k, p in OBJECTS],

@@ -138,7 +138,7 @@ class _MyStoryScreenState extends State<MyStoryScreen> {
       ...switch (_step) {
         0 => [
           for (final x in c.characters)
-            (x.indefinite, x.picture, () => _choose(() => _character = x, x.indefinite)),
+            (x.indefinite, x.cardPicture, () => _choose(() => _character = x, x.indefinite)),
         ],
         1 => [
           for (final x in c.places)

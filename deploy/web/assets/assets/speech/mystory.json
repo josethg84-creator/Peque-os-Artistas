@@ -7,6 +7,9 @@
    "feminine": false,
    "picture": {
     "drawing": "animal_conejo"
+   },
+   "card": {
+    "image": "assets/images/mi_historia/conejo.webp"
    }
   },
   {
@@ -19,6 +22,9 @@
      "girl": true,
      "shirt": "#F48FB1"
     }
+   },
+   "card": {
+    "image": "assets/images/mi_historia/nina.webp"
    }
   },
   {
@@ -39,6 +45,9 @@
    "feminine": false,
    "picture": {
     "drawing": "animal_oso"
+   },
+   "card": {
+    "image": "assets/images/mi_historia/oso.webp"
    }
   },
   {
@@ -55,6 +64,9 @@
    "feminine": false,
    "picture": {
     "drawing": "fantasia_dragon"
+   },
+   "card": {
+    "image": "assets/images/mi_historia/dragon.webp"
    }
   },
   {
@@ -74,6 +86,9 @@
     "colors": {
      "ala_*": "#AB47BC"
     }
+   },
+   "card": {
+    "image": "assets/images/mi_historia/mariposa.webp"
    }
   }
  ],

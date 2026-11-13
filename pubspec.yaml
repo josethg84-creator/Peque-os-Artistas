@@ -78,6 +78,7 @@ flutter:
     - assets/images/aprendo_hablar/
     - assets/images/quiero_decir/
     - assets/images/palabras/
+    - assets/images/mi_historia/
     - assets/speech/
     - assets/aac/
     - assets/catalog/catalog.json

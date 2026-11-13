@@ -12,12 +12,20 @@ class StoryNoun {
     required this.feminine,
     required this.picture,
     this.kind,
+    this.card,
   });
 
   final String id;
   final String noun;
   final bool feminine;
+
+  /// Dibujo que se coloca en la escena de la historia.
   final SpeechPicture picture;
+
+  /// Ilustración de la tarjeta para elegirlo (si la tiene); si no, [picture].
+  final SpeechPicture? card;
+
+  SpeechPicture get cardPicture => card ?? picture;
 
   /// En los objetos: «comida», «juguete», «planta», «cosa».
   final String? kind;
@@ -36,6 +44,7 @@ class StoryNoun {
       feminine: feminine,
       picture: picture,
       kind: json['kind'] is String ? json['kind'] as String : null,
+      card: SpeechPicture.fromJson(json['card']),
     );
   }
 }
