@@ -92,7 +92,7 @@ void main() {
     expect(find.byIcon(Icons.abc_rounded), findsOneWidget);
   });
 
-  test('grupos de palabras: cinco ilustraciones que existen y son WEBP', () {
+  test('grupos de palabras: ocho ilustraciones que existen y son WEBP', () {
     final words = File('assets/speech/words.json').readAsStringSync();
     expect(File('pubspec.yaml').readAsStringSync(), contains('    - assets/images/palabras/\n'));
     for (final MapEntry(key: id, value: path) in WordGroupsScreen.groupImages.entries) {
@@ -101,7 +101,16 @@ void main() {
       expect(String.fromCharCodes(bytes.take(4)), 'RIFF', reason: path);
       expect(String.fromCharCodes(bytes.skip(8).take(4)), 'WEBP', reason: path);
     }
-    expect(WordGroupsScreen.groupImages.keys, {'acciones', 'hogar', 'colores', 'cuerpo', 'juguetes'});
+    expect(WordGroupsScreen.groupImages.keys.toSet(), {
+      'acciones',
+      'hogar',
+      'colores',
+      'cuerpo',
+      'juguetes',
+      'alimentos',
+      'animales',
+      'familia',
+    });
   });
 
   for (final size in const [Size(360, 720), Size(1280, 800)]) {
@@ -112,7 +121,16 @@ void main() {
       await pumpApp(tester);
       tester.state<NavigatorState>(find.byType(Navigator)).pushNamed(AppRoutes.speechWordGroups);
       await tester.pumpAndSettle();
-      for (final name in ['Acciones', 'Objetos del hogar', 'Colores', 'Partes del cuerpo', 'Juguetes']) {
+      for (final name in [
+        'Familia',
+        'Animales',
+        'Alimentos',
+        'Juguetes',
+        'Partes del cuerpo',
+        'Colores',
+        'Objetos del hogar',
+        'Acciones',
+      ]) {
         final card = find.bySemanticsLabel(RegExp('^${RegExp.escape(name)}'));
         await tester.scrollUntilVisible(card, 250, scrollable: find.byType(Scrollable).first);
         final image = find.descendant(of: card, matching: find.byType(Image));

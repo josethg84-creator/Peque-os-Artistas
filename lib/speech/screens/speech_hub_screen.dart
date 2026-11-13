@@ -477,6 +477,9 @@ class WordGroupsScreen extends StatelessWidget {
     'colores': 'assets/images/palabras/colores.webp',
     'cuerpo': 'assets/images/palabras/cuerpo.webp',
     'juguetes': 'assets/images/palabras/juguetes.webp',
+    'alimentos': 'assets/images/palabras/alimentos.webp',
+    'animales': 'assets/images/palabras/animales.webp',
+    'familia': 'assets/images/palabras/familia.webp',
   };
 
   @override
