@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'aac/aac_controller.dart';
 import 'audio/web_speech.dart';
+import 'reading/reading_progress.dart';
 import 'app.dart';
 import 'learning/audio/learning_audio.dart';
 import 'learning/learning_controller.dart';
@@ -34,6 +35,7 @@ void main() {
       learningController: learning,
       speechController: SpeechController(SpeechStore(storage))..load(),
       aacController: AacController(AacStore(storage))..load(),
+      readingController: ReadingController(ReadingStore(storage))..load(),
       learningAudio: LearningAudio(
         effects: AudioPlayersSoundEffects(),
         narrator: _narrator(),

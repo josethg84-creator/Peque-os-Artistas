@@ -98,6 +98,7 @@ class ReadingWord {
     this.picture,
     this.imageReady = false,
     this.note,
+    this.category,
   });
 
   final String id;
@@ -115,6 +116,32 @@ class ReadingWord {
 
   /// Aclaración para el adulto (p. ej., diptongos).
   final String? note;
+
+  /// Categoría («animales», «comida»…), si la tiene.
+  final String? category;
+
+  static ReadingWord? fromJson(Map<String, dynamic> w) {
+    if ((w['id'], w['text'], w['image'], ReadingAudio.fromJson(w['audio'])) case (
+      final String id,
+      final String text,
+      final String image,
+      final ReadingAudio audio,
+    )) {
+      return ReadingWord(
+        id: id,
+        text: text,
+        syllables: [...(w['syllables'] as List? ?? const []).whereType<String>()],
+        level: w['level'] is int ? w['level'] as int : 2,
+        audio: audio,
+        image: image,
+        imageReady: w['image_ready'] == true,
+        picture: SpeechPicture.fromJson(w['picture']),
+        note: w['note'] is String ? w['note'] as String : null,
+        category: w['category'] is String ? w['category'] as String : null,
+      );
+    }
+    return null;
+  }
 
   /// Tiene una imagen que la representa: se puede usar en juegos de imagen.
   bool get hasPicture => imageReady || picture != null;
@@ -191,26 +218,7 @@ class ReadingContent {
               ],
             ),
       ],
-      words: [
-        for (final w in list('words'))
-          if ((w['id'], w['text'], w['image'], ReadingAudio.fromJson(w['audio'])) case (
-            final String id,
-            final String text,
-            final String image,
-            final ReadingAudio audio,
-          ))
-            ReadingWord(
-              id: id,
-              text: text,
-              syllables: [...(w['syllables'] as List? ?? const []).whereType<String>()],
-              level: w['level'] is int ? w['level'] as int : 2,
-              audio: audio,
-              image: image,
-              imageReady: w['image_ready'] == true,
-              picture: SpeechPicture.fromJson(w['picture']),
-              note: w['note'] is String ? w['note'] as String : null,
-            ),
-      ],
+      words: [for (final w in list('words')) ?ReadingWord.fromJson(w)],
     );
   }
 

@@ -1,20 +1,20 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 
+import '../../navigation/app_routes.dart';
+import '../../screens/home/home_widgets.dart';
 import '../../services/app_services.dart';
-import '../../speech/widgets/speech_widgets.dart';
 import '../../theme/app_colors.dart';
 import '../../theme/app_dimens.dart';
 import '../../widgets/big_action_button.dart';
 import '../../widgets/kid_scaffold.dart';
+import '../complete_words.dart';
 import '../reading_activities.dart';
-import '../reading_demo.dart';
+import '../reading_progress.dart';
 import '../widgets/reading_widgets.dart';
+import 'complete_words_game_screen.dart';
 
-/// Pantalla B · «Completo palabras»: la imagen, la palabra con un hueco y las
-/// sílabas para completarla. (Fase 2: datos de demostración; la evaluación
-/// definitiva y la dificultad progresiva llegan en la Fase D.)
+/// Pantalla B · «Completa las palabras»: elegir nivel y modo, con el progreso
+/// guardado. Los niveles se abren al completar ejercicios del anterior.
 class ReadingWordsScreen extends StatefulWidget {
   const ReadingWordsScreen({super.key});
 
@@ -22,156 +22,180 @@ class ReadingWordsScreen extends StatefulWidget {
   State<ReadingWordsScreen> createState() => _ReadingWordsScreenState();
 }
 
-enum _Check { none, right, notYet }
-
 class _ReadingWordsScreenState extends State<ReadingWordsScreen> {
-  static const color = Color(0xFFF59E3D);
-  int _index = 0;
-  String? _picked;
-  _Check _check = _Check.none;
+  int _level = 1;
 
-  DemoCompleteWord get item => ReadingDemo.words[_index];
-
-  void _say(String text) => unawaited(AppServices.of(context).audio.say(text));
-
-  void _pick(String option) {
-    setState(() {
-      _picked = option;
-      _check = _Check.none;
-    });
-    _say(option);
-  }
-
-  void _verify() {
-    final right = _picked == item.answer;
-    setState(() => _check = right ? _Check.right : _Check.notYet);
-    _say(right ? '¡Muy bien! ${item.word.text}.' : '¡Casi! Prueba con otra sílaba.');
-  }
-
-  void _next() {
-    setState(() {
-      _index = (_index + 1) % ReadingDemo.words.length;
-      _picked = null;
-      _check = _Check.none;
-    });
-  }
+  static const color = CompleteWordsGameScreen.color;
 
   @override
   Widget build(BuildContext context) {
+    final progress = AppServices.of(context).reading;
     return KidScaffold(
-      title: ReadingActivities.words.title,
-      titleIcon: Icons.extension_rounded,
+      title: CompleteWordsGameScreen.title,
+      titleIcon: ReadingActivities.words.icon,
       accent: color,
-      badge: const DemoBadge(),
       trailing: const ReadingHomeButton(),
-      body: LayoutBuilder(
-        builder: (context, box) {
-          final wide = box.maxWidth >= 760;
-          final picture = SizedBox(
-            height: wide ? 260 : 190,
-            child: Semantics(
-              label: 'Dibujo de la palabra',
-              excludeSemantics: true,
-              child: SpeechPictureView(picture: item.word.picture, tint: color),
-            ),
-          );
-          final play = Column(
-            mainAxisSize: MainAxisSize.min,
+      body: CompleteWordsBuilder(
+        builder: (context, content) => ListenableBuilder(
+          listenable: progress,
+          builder: (context, _) {
+            final playable = [
+              for (final e in content.exercises)
+                if (content.words[e.wordId]?.hasPicture ?? false) e,
+            ];
+            final done = playable.where((e) => progress.progress.completed[e.id]?.isNotEmpty ?? false).length;
+            return SingleChildScrollView(
+              padding: const EdgeInsets.fromLTRB(
+                AppDimens.pagePadding,
+                0,
+                AppDimens.pagePadding,
+                AppDimens.pagePadding,
+              ),
+              child: Center(
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 900),
+                  child: Column(
+                    children: [
+                      const ReadingLolo(text: CompleteWordsGameScreen.instruction),
+                      const SizedBox(height: 12),
+                      ReadingProgressBar(
+                        done: done,
+                        total: playable.length,
+                        label: 'Palabras completadas',
+                        color: color,
+                      ),
+                      const SizedBox(height: 18),
+                      Text('Elige un nivel', style: fredoka(22, color: AppColors.ink)),
+                      const SizedBox(height: 10),
+                      Wrap(
+                        alignment: WrapAlignment.center,
+                        spacing: 12,
+                        runSpacing: 12,
+                        children: [
+                          for (final level in CompleteWordsContent.levels)
+                            _LevelCard(
+                              level: level,
+                              selected: level == _level,
+                              unlocked: levelUnlocked(content, progress, level),
+                              done: completedInLevel(content, progress, level),
+                              total: playable.where((e) => e.level == level).length,
+                              onTap: () => setState(() => _level = level),
+                            ),
+                        ],
+                      ),
+                      const SizedBox(height: 22),
+                      Text('Elige cómo jugar', style: fredoka(22, color: AppColors.ink)),
+                      const SizedBox(height: 10),
+                      Wrap(
+                        alignment: WrapAlignment.center,
+                        spacing: 12,
+                        runSpacing: 12,
+                        children: [
+                          for (final (i, mode) in CompleteMode.values.indexed)
+                            SizedBox(
+                              width: 270,
+                              child: BigActionButton(
+                                label: mode.title,
+                                icon: const [
+                                  Icons.touch_app_rounded,
+                                  Icons.pan_tool_alt_rounded,
+                                  Icons.sort_rounded,
+                                ][i],
+                                color: const [AppColors.sky, AppColors.grape, AppColors.leaf][i],
+                                onPressed: levelUnlocked(content, progress, _level)
+                                    ? () => Navigator.of(context).pushNamed(
+                                        AppRoutes.readingWordsGame,
+                                        arguments: CompleteGameArgs(level: _level, mode: mode),
+                                      )
+                                    : null,
+                              ),
+                            ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class _LevelCard extends StatelessWidget {
+  const _LevelCard({
+    required this.level,
+    required this.selected,
+    required this.unlocked,
+    required this.done,
+    required this.total,
+    required this.onTap,
+  });
+
+  final int level;
+  final bool selected;
+  final bool unlocked;
+  final int done;
+  final int total;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final name = CompleteWordsContent.levelNames[level]!;
+    const color = CompleteWordsGameScreen.color;
+    final label = unlocked
+        ? 'Nivel $level: $name. $done de $total palabras.'
+        : 'Nivel $level: $name. Se abre al completar ${ReadingController.unlockAfter} palabras del nivel ${level - 1}.';
+    return Semantics(
+      button: true,
+      selected: selected,
+      enabled: unlocked,
+      label: label,
+      excludeSemantics: true,
+      onTap: unlocked ? onTap : null,
+      child: GestureDetector(
+        onTap: unlocked ? onTap : null,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          width: 250,
+          padding: const EdgeInsets.all(14),
+          decoration: BoxDecoration(
+            color: !unlocked
+                ? const Color(0xFFF1EEF8)
+                : selected
+                ? Color.lerp(color, Colors.white, 0.55)
+                : Colors.white,
+            borderRadius: BorderRadius.circular(24),
+            border: Border.all(color: unlocked ? color : const Color(0xFFD1C4E9), width: selected ? 4 : 2),
+          ),
+          child: Row(
             children: [
-              SyllableWord(
-                syllables: item.word.syllables,
-                missing: item.missing,
-                filled: _picked,
-                color: color,
-                size: wide ? 76 : 60,
+              Icon(
+                unlocked ? Icons.star_rounded : Icons.lock_rounded,
+                color: unlocked ? AppColors.sun : AppColors.inkSoft,
+                size: 34,
               ),
-              const SizedBox(height: 12),
-              ReadingAudioButtons(text: item.word.text, listenLabel: 'Palabra'),
-              const SizedBox(height: 16),
-              Text('¿Qué sílaba falta?', style: Theme.of(context).textTheme.titleLarge),
-              const SizedBox(height: 10),
-              Wrap(
-                alignment: WrapAlignment.center,
-                spacing: 12,
-                runSpacing: 12,
-                children: [
-                  for (final o in item.options)
-                    SyllableCard(
-                      text: o,
-                      color: color,
-                      selected: o == _picked,
-                      size: wide ? 96 : 78,
-                      onTap: _check == _Check.right ? null : () => _pick(o),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Nivel $level', style: fredoka(20, color: AppColors.ink)),
+                    Text(name, style: Theme.of(context).textTheme.bodyMedium),
+                    Text(
+                      unlocked
+                          ? '$done de $total'
+                          : 'Completa ${ReadingController.unlockAfter} del nivel ${level - 1}',
+                      style: Theme.of(context).textTheme.bodySmall,
                     ),
-                ],
-              ),
-              const SizedBox(height: 16),
-              if (_check == _Check.right)
-                ReadingCelebration(text: '¡Muy bien! ${item.word.text.toUpperCase()}')
-              else if (_check == _Check.notYet)
-                const ReadingTryAgain(text: '¡Casi! Prueba con otra sílaba.'),
-              const SizedBox(height: 16),
-              Wrap(
-                alignment: WrapAlignment.center,
-                spacing: 12,
-                runSpacing: 12,
-                children: [
-                  SizedBox(
-                    width: 260,
-                    child: BigActionButton(
-                      label: 'Comprobar',
-                      icon: Icons.check_rounded,
-                      color: AppColors.leaf,
-                      onPressed: _picked == null || _check == _Check.right ? null : _verify,
-                    ),
-                  ),
-                  SizedBox(
-                    width: 260,
-                    child: BigActionButton(
-                      label: 'Continuar',
-                      icon: Icons.arrow_forward_rounded,
-                      color: AppColors.sky,
-                      onPressed: _next,
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
-          );
-          return SingleChildScrollView(
-            padding: const EdgeInsets.fromLTRB(
-              AppDimens.pagePadding,
-              0,
-              AppDimens.pagePadding,
-              AppDimens.pagePadding,
-            ),
-            child: Column(
-              children: [
-                ReadingProgressBar(
-                  done: _index,
-                  total: ReadingDemo.words.length,
-                  label: 'Palabras',
-                  color: color,
-                ),
-                const SizedBox(height: 12),
-                if (wide)
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Expanded(child: picture),
-                      const SizedBox(width: 20),
-                      Expanded(child: play),
-                    ],
-                  )
-                else ...[
-                  picture,
-                  const SizedBox(height: 12),
-                  play,
-                ],
-              ],
-            ),
-          );
-        },
+          ),
+        ),
       ),
     );
   }

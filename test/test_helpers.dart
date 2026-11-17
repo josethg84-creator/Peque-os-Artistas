@@ -18,6 +18,7 @@ import 'package:pequenos_artistas/services/catalog_service.dart';
 import 'package:pequenos_artistas/services/drawing_loader.dart';
 import 'package:pequenos_artistas/persistence/creation.dart';
 import 'package:pequenos_artistas/persistence/creation_store.dart';
+import 'package:pequenos_artistas/reading/reading_progress.dart';
 import 'package:pequenos_artistas/speech/speech_progress.dart';
 import 'package:pequenos_artistas/speech/voice_practice.dart';
 
@@ -85,6 +86,7 @@ Future<void> pumpApp(
   KeyValueBackend? learningBackend,
   SpeechController? speech,
   AacController? aac,
+  ReadingController? reading,
   VoiceInfo? voice,
 }) async {
   final controller = learning ?? LearningController(LearningStore(learningBackend ?? MemoryBackend()));
@@ -103,6 +105,7 @@ Future<void> pumpApp(
           (SpeechController(SpeechStore(MemoryBackend()), recorder: () => lastRecorder = FakeVoiceRecorder())
             ..load()),
       aacController: aac ?? (AacController(AacStore(MemoryBackend()))..load()),
+      readingController: reading ?? (ReadingController(ReadingStore(MemoryBackend()))..load()),
       learningAudio: LearningAudio(
         effects: sounds,
         narrator: narrator,

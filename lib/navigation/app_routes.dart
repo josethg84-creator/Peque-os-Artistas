@@ -65,6 +65,7 @@ abstract final class AppRoutes {
   static const readingListenFind = '/leer/silabas/escucha';
   static const readingMatchWord = '/leer/silabas/une';
   static const readingWords = '/leer/completa';
+  static const readingWordsGame = '/leer/completa/juego';
   static const readingSentences = '/leer/oraciones';
   static const readingDictation = '/leer/dictado';
 
