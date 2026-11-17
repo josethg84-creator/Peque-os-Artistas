@@ -102,8 +102,15 @@ class VoiceInfo {
 
 /// Lee textos en voz alta. [speak] termina cuando acaba la frase. Con [slow],
 /// la frase se dice más despacio (para aprender a pronunciar una palabra).
+///
+/// [onBoundary] recibe la posición (en caracteres de [text]) de cada palabra
+/// en el momento en que la voz empieza a decirla, SOLO si el motor de voz lo
+/// avisa de verdad. Si el motor no lo avisa, no se llama nunca (no se simula
+/// con temporizadores).
+typedef WordBoundary = void Function(int charIndex);
+
 abstract interface class Narrator {
-  Future<void> speak(String text, {bool slow = false});
+  Future<void> speak(String text, {bool slow = false, WordBoundary? onBoundary});
   Future<void> stop();
   Future<void> setVolume(double volume);
   Future<VoiceInfo> voice();
@@ -435,10 +442,20 @@ class DeviceTtsNarrator implements Narrator {
   static const slowFactor = 0.62;
   bool _slowNow = false;
 
+  /// A quién se avisa de las palabras de la frase actual.
+  WordBoundary? _boundary;
+  bool _progressSet = false;
+
   @override
-  Future<void> speak(String text, {bool slow = false}) async {
+  Future<void> speak(String text, {bool slow = false, WordBoundary? onBoundary}) async {
     if (!(await voice()).available) return;
     if (_talking) await _tts.stop();
+    if (!_progressSet) {
+      _progressSet = true;
+      // Android (8.0+) e iOS avisan cuando la voz empieza cada palabra.
+      _tts.setProgressHandler((_, start, _, _) => _boundary?.call(start));
+    }
+    _boundary = onBoundary;
     if (slow != _slowNow) {
       final p = prosody(web: kIsWeb, platform: defaultTargetPlatform);
       await _tts.setSpeechRate(slow ? p.rate * slowFactor : p.rate);
@@ -450,7 +467,10 @@ class DeviceTtsNarrator implements Narrator {
       await _tts.speak(text);
     } finally {
       // Una frase cortada puede terminar tarde: no debe borrar el estado de la nueva.
-      if (turn == _turn) _talking = false;
+      if (turn == _turn) {
+        _talking = false;
+        _boundary = null;
+      }
     }
   }
 
@@ -585,7 +605,15 @@ class LearningAudio {
   bool get isSpeaking => _speaking;
 
   /// Dice [text] si la voz está activada (ver [VoiceMode]).
-  Future<void> say(String text, {VoiceMode mode = VoiceMode.interrupt, bool slow = false}) async {
+  ///
+  /// [onBoundary] se llama al empezar cada palabra, solo si la voz del
+  /// dispositivo lo avisa (ver [Narrator.speak]).
+  Future<void> say(
+    String text, {
+    VoiceMode mode = VoiceMode.interrupt,
+    bool slow = false,
+    WordBoundary? onBoundary,
+  }) async {
     if (voiceVolume <= 0) return;
     final now = _clock();
     if (mode != VoiceMode.interrupt) {
@@ -601,7 +629,7 @@ class LearningAudio {
       _queued = text;
       return;
     }
-    await _speak(text, slow: slow);
+    await _speak(text, slow: slow, onBoundary: onBoundary);
   }
 
   /// Dice una de las [options], sin repetir la última que se dijo de la lista.
@@ -613,7 +641,7 @@ class LearningAudio {
     return say(options[i], mode: mode);
   }
 
-  Future<void> _speak(String text, {bool slow = false}) async {
+  Future<void> _speak(String text, {bool slow = false, WordBoundary? onBoundary}) async {
     final id = ++_utterance;
     _lastText = text;
     _lastTextAt = _clock();
@@ -622,7 +650,17 @@ class LearningAudio {
     _applyMusic();
     try {
       await narrator.setVolume(voiceVolume);
-      await narrator.speak(text, slow: slow).timeout(maxUtterance);
+      await narrator
+          .speak(
+            text,
+            slow: slow,
+            onBoundary: onBoundary == null
+                ? null
+                : (i) {
+                    if (id == _utterance) onBoundary(i); // solo la frase actual
+                  },
+          )
+          .timeout(maxUtterance);
     } catch (_) {}
     if (id != _utterance) return; // otra frase la sustituyó
     _speaking = false;
@@ -767,10 +805,25 @@ class RecordingNarrator implements Narrator {
   /// Si no es `null`, [speak] espera a que se complete (para simular frases largas).
   Completer<void>? pending;
 
+  /// Simula un motor que avisa del inicio de cada palabra (como Android o
+  /// algunas voces del navegador). Si es `false`, no avisa nunca.
+  bool reportsWords = false;
+
+  /// Inicios de palabra avisados en la última frase.
+  final boundaries = <int>[];
+
   @override
-  Future<void> speak(String text, {bool slow = false}) async {
+  Future<void> speak(String text, {bool slow = false, WordBoundary? onBoundary}) async {
     spoken.add(text);
     if (slow) this.slow.add(text);
+    boundaries.clear();
+    if (reportsWords && onBoundary != null) {
+      for (final m in RegExp(r'\S+').allMatches(text)) {
+        boundaries.add(m.start);
+        onBoundary(m.start);
+        await Future<void>.delayed(Duration.zero);
+      }
+    }
     final p = pending;
     if (p != null) await p.future;
   }

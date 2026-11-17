@@ -2,6 +2,8 @@ import '../reading/screens/complete_words_game_screen.dart';
 import '../reading/screens/reading_dictation_screen.dart';
 import '../reading/screens/reading_hub_screen.dart';
 import '../reading/screens/reading_sentences_screen.dart';
+import '../reading/screens/sentence_games_screen.dart';
+import '../reading/screens/sentence_reader_screen.dart';
 import '../reading/screens/reading_syllable_games.dart';
 import '../reading/screens/reading_syllables_screen.dart';
 import '../reading/screens/reading_words_screen.dart';
@@ -81,6 +83,8 @@ abstract final class AppRouter {
       AppRoutes.readingWords => const ReadingWordsScreen(),
       AppRoutes.readingWordsGame when args is CompleteGameArgs => CompleteWordsGameScreen(args: args),
       AppRoutes.readingSentences => const ReadingSentencesScreen(),
+      AppRoutes.readingSentencesRead when args is SentenceReaderArgs => SentenceReaderScreen(args: args),
+      AppRoutes.readingSentencesGame when args is SentenceGameArgs => SentenceGameScreen(args: args),
       AppRoutes.readingDictation => const ReadingDictationScreen(),
       AppRoutes.speechWordGroups => const WordGroupsScreen(),
       AppRoutes.speechWords when args is SpeechWordsArgs => WordsScreen(categoryId: args.categoryId),

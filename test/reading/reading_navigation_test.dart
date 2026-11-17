@@ -106,10 +106,11 @@ void main() {
       for (final a in ReadingActivities.all) {
         await tapAndSettle(tester, find.bySemanticsLabel(RegExp('^${RegExp.escape(a.title)}')));
         expect(find.byType(screens[a.route]!), findsOneWidget, reason: a.title);
-        // «Aprendo las sílabas» ya usa el contenido real (Fase 3); las demás, demostración.
+        // Sílabas (Fase 3), palabras (Fase 4) y oraciones (Fase 5) usan contenido
+        // real; el dictado aún es demostración.
         expect(
           find.byType(DemoBadge),
-          a == ReadingActivities.syllables || a == ReadingActivities.words ? findsNothing : findsOneWidget,
+          a == ReadingActivities.dictation ? findsOneWidget : findsNothing,
           reason: '${a.title}: distintivo de demostración',
         );
         await tapAndSettle(tester, find.byTooltip('Volver'));
@@ -151,18 +152,18 @@ void main() {
       expect(lastNarrator!.slow.last, 'mi');
     });
 
-    testWidgets('oraciones: leer, despacio, tocar una palabra y pasar a la siguiente', (tester) async {
+    testWidgets('oraciones (contenido real): abrir el lector, escuchar y tocar una palabra', (tester) async {
       setScreenSize(tester, const Size(420, 900));
       await pumpApp(tester);
       await push(tester, AppRoutes.readingSentences);
-      await tapAndSettle(tester, find.bySemanticsLabel('Leer'));
+      await tapAndSettle(tester, find.bySemanticsLabel('Leer oraciones'));
+      await tapAndSettle(tester, find.bySemanticsLabel('Escuchar la oración'));
       expect(spoken.last, 'Mi mamá me ama.');
-      await tapAndSettle(tester, find.bySemanticsLabel('Despacio'));
-      expect(lastNarrator!.slow.last, 'Mi mamá me ama.');
-      await tapAndSettle(tester, find.bySemanticsLabel('ama'));
+      await tapAndSettle(tester, find.bySemanticsLabel('Palabra ama'));
       expect(spoken.last, 'ama');
       await tapAndSettle(tester, find.bySemanticsLabel('Siguiente oración'));
-      expect(spoken.last, 'La flor es roja.');
+      await tapAndSettle(tester, find.bySemanticsLabel('Escuchar la oración'));
+      expect(spoken.last, 'Papá toma sopa.');
     });
 
     testWidgets('dictado: escuchar, formar «mesa» con tarjetas, borrar y comprobar', (tester) async {

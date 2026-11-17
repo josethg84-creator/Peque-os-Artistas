@@ -1,0 +1,9586 @@
+{
+ "format_version": 1,
+ "levels": [
+  {
+   "id": 1,
+   "name": "Muy sencillas",
+   "description": "Solo con las sílabas que ya conoces."
+  },
+  {
+   "id": 2,
+   "name": "De todos los días",
+   "description": "Oraciones cortas de cosas que hacemos."
+  },
+  {
+   "id": 3,
+   "name": "Descriptivas",
+   "description": "Oraciones más largas que cuentan cómo son las cosas."
+  },
+  {
+   "id": 4,
+   "name": "Con grupos de letras",
+   "description": "Palabras con bl, tr, pr, fl…"
+  }
+ ],
+ "sentences": [
+  {
+   "id": "oracion_1_01",
+   "text": "Mi mamá me ama.",
+   "level": 1,
+   "families": [
+    "m"
+   ],
+   "words": [
+    {
+     "text": "Mi",
+     "clip": null
+    },
+    {
+     "text": "mamá",
+     "clip": null
+    },
+    {
+     "text": "me",
+     "clip": null
+    },
+    {
+     "text": "ama",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "casa",
+    "items": [
+     {
+      "p": {
+       "icon": "woman"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "kid": {
+        "girl": false,
+        "emotion": "feliz",
+        "shirt": "#42A5F5"
+       }
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_1_01.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Quién me ama?",
+    "options": [
+     {
+      "text": "mamá",
+      "picture": {
+       "icon": "woman"
+      }
+     },
+     {
+      "text": "papá",
+      "picture": {
+       "icon": "man"
+      }
+     },
+     {
+      "text": "bebé",
+      "picture": {
+       "icon": "child_care"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 1,
+    "explanation": "Mamá. La oración dice: «Mi mamá me ama.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_1_08",
+    "oracion_2_03"
+   ]
+  },
+  {
+   "id": "oracion_1_02",
+   "text": "Papá toma sopa.",
+   "level": 1,
+   "families": [
+    "p",
+    "m",
+    "s",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "Papá",
+     "clip": null
+    },
+    {
+     "text": "toma",
+     "clip": null
+    },
+    {
+     "text": "sopa",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "cocina",
+    "items": [
+     {
+      "p": {
+       "icon": "man"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "soup"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_1_02.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué toma papá?",
+    "options": [
+     {
+      "text": "sopa",
+      "picture": {
+       "icon": "soup"
+      }
+     },
+     {
+      "text": "helado",
+      "picture": {
+       "icon": "icecream"
+      }
+     },
+     {
+      "text": "pizza",
+      "picture": {
+       "icon": "pizza"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 2,
+    "explanation": "Sopa. La oración dice: «Papá toma sopa.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_1_09",
+    "oracion_1_16"
+   ]
+  },
+  {
+   "id": "oracion_1_03",
+   "text": "El pato nada.",
+   "level": 1,
+   "families": [
+    "d",
+    "n",
+    "p",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "El",
+     "clip": null
+    },
+    {
+     "text": "pato",
+     "clip": null
+    },
+    {
+     "text": "nada",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "playa",
+    "items": [
+     {
+      "p": {
+       "drawing": "granja_patito"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_1_03.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Quién nada?",
+    "options": [
+     {
+      "text": "pato",
+      "picture": {
+       "drawing": "granja_patito"
+      }
+     },
+     {
+      "text": "mono",
+      "picture": {
+       "drawing": "animal_mono"
+      }
+     },
+     {
+      "text": "oso",
+      "picture": {
+       "drawing": "animal_oso"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 1,
+    "explanation": "Pato. La oración dice: «El pato nada.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_1_10",
+    "oracion_1_24"
+   ]
+  },
+  {
+   "id": "oracion_1_04",
+   "text": "La mesa es de Ana.",
+   "level": 1,
+   "families": [
+    "d",
+    "l",
+    "m",
+    "n",
+    "s"
+   ],
+   "words": [
+    {
+     "text": "La",
+     "clip": null
+    },
+    {
+     "text": "mesa",
+     "clip": null
+    },
+    {
+     "text": "es",
+     "clip": null
+    },
+    {
+     "text": "de",
+     "clip": null
+    },
+    {
+     "text": "Ana",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "casa",
+    "items": [
+     {
+      "p": {
+       "icon": "table"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "kid": {
+        "girl": true,
+        "emotion": "feliz",
+        "shirt": "#EC407A"
+       }
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_1_04.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué es de Ana?",
+    "options": [
+     {
+      "text": "mesa",
+      "picture": {
+       "icon": "table"
+      }
+     },
+     {
+      "text": "cama",
+      "picture": {
+       "icon": "bed"
+      }
+     },
+     {
+      "text": "cuna",
+      "picture": {
+       "icon": "crib"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 1,
+    "explanation": "Mesa. La oración dice: «La mesa es de Ana.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_1_11",
+    "oracion_1_18"
+   ]
+  },
+  {
+   "id": "oracion_1_05",
+   "text": "El oso camina.",
+   "level": 1,
+   "families": [
+    "c",
+    "m",
+    "n",
+    "s"
+   ],
+   "words": [
+    {
+     "text": "El",
+     "clip": null
+    },
+    {
+     "text": "oso",
+     "clip": null
+    },
+    {
+     "text": "camina",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "bosque",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_oso"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_1_05.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Quién camina?",
+    "options": [
+     {
+      "text": "oso",
+      "picture": {
+       "drawing": "animal_oso"
+      }
+     },
+     {
+      "text": "pato",
+      "picture": {
+       "drawing": "granja_patito"
+      }
+     },
+     {
+      "text": "mono",
+      "picture": {
+       "drawing": "animal_mono"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 1,
+    "explanation": "Oso. La oración dice: «El oso camina.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_1_12",
+    "oracion_1_19"
+   ]
+  },
+  {
+   "id": "oracion_1_06",
+   "text": "La pelota es de Memo.",
+   "level": 1,
+   "families": [
+    "l",
+    "m",
+    "d",
+    "p",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "La",
+     "clip": null
+    },
+    {
+     "text": "pelota",
+     "clip": null
+    },
+    {
+     "text": "es",
+     "clip": null
+    },
+    {
+     "text": "de",
+     "clip": null
+    },
+    {
+     "text": "Memo",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "parque",
+    "items": [
+     {
+      "p": {
+       "icon": "ball"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "kid": {
+        "girl": false,
+        "emotion": "feliz",
+        "shirt": "#42A5F5"
+       }
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_1_06.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué es de Memo?",
+    "options": [
+     {
+      "text": "pelota",
+      "picture": {
+       "icon": "ball"
+      }
+     },
+     {
+      "text": "mapa",
+      "picture": {
+       "icon": "map"
+      }
+     },
+     {
+      "text": "foco",
+      "picture": {
+       "icon": "lamp"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 1,
+    "explanation": "Pelota. La oración dice: «La pelota es de Memo.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_1_13",
+    "oracion_2_01"
+   ]
+  },
+  {
+   "id": "oracion_1_07",
+   "text": "Sale la luna.",
+   "level": 1,
+   "families": [
+    "l",
+    "n",
+    "s"
+   ],
+   "words": [
+    {
+     "text": "Sale",
+     "clip": null
+    },
+    {
+     "text": "la",
+     "clip": null
+    },
+    {
+     "text": "luna",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "noche",
+    "items": [
+     {
+      "p": {
+       "icon": "moon"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_1_07.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué sale?",
+    "options": [
+     {
+      "text": "luna",
+      "picture": {
+       "icon": "moon"
+      }
+     },
+     {
+      "text": "sol",
+      "picture": {
+       "icon": "sun"
+      }
+     },
+     {
+      "text": "nube",
+      "picture": {
+       "icon": "cloud"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 2,
+    "explanation": "Luna. La oración dice: «Sale la luna.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_1_14",
+    "oracion_2_16"
+   ]
+  },
+  {
+   "id": "oracion_1_08",
+   "text": "El bebé come sopa.",
+   "level": 1,
+   "families": [
+    "b",
+    "c",
+    "m",
+    "p",
+    "s"
+   ],
+   "words": [
+    {
+     "text": "El",
+     "clip": null
+    },
+    {
+     "text": "bebé",
+     "clip": null
+    },
+    {
+     "text": "come",
+     "clip": null
+    },
+    {
+     "text": "sopa",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "cocina",
+    "items": [
+     {
+      "p": {
+       "icon": "child_care"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "soup"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_1_08.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Quién come sopa?",
+    "options": [
+     {
+      "text": "bebé",
+      "picture": {
+       "icon": "child_care"
+      }
+     },
+     {
+      "text": "papá",
+      "picture": {
+       "icon": "man"
+      }
+     },
+     {
+      "text": "abuela",
+      "picture": {
+       "icon": "elderly_woman"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 1,
+    "explanation": "Bebé. La oración dice: «El bebé come sopa.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_1_15",
+    "oracion_2_03"
+   ]
+  },
+  {
+   "id": "oracion_1_09",
+   "text": "Tito tapa la cuna.",
+   "level": 1,
+   "families": [
+    "t",
+    "c",
+    "l",
+    "n",
+    "p"
+   ],
+   "words": [
+    {
+     "text": "Tito",
+     "clip": null
+    },
+    {
+     "text": "tapa",
+     "clip": null
+    },
+    {
+     "text": "la",
+     "clip": null
+    },
+    {
+     "text": "cuna",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "dormitorio",
+    "items": [
+     {
+      "p": {
+       "icon": "crib"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "kid": {
+        "girl": false,
+        "emotion": "feliz",
+        "shirt": "#42A5F5"
+       }
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_1_09.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué tapa Tito?",
+    "options": [
+     {
+      "text": "cuna",
+      "picture": {
+       "icon": "crib"
+      }
+     },
+     {
+      "text": "mesa",
+      "picture": {
+       "icon": "table"
+      }
+     },
+     {
+      "text": "cama",
+      "picture": {
+       "icon": "bed"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 3,
+    "explanation": "Cuna. La oración dice: «Tito tapa la cuna.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_1_16",
+    "oracion_2_04"
+   ]
+  },
+  {
+   "id": "oracion_1_10",
+   "text": "Pepe usa el mapa.",
+   "level": 1,
+   "families": [
+    "p",
+    "m",
+    "s"
+   ],
+   "words": [
+    {
+     "text": "Pepe",
+     "clip": null
+    },
+    {
+     "text": "usa",
+     "clip": null
+    },
+    {
+     "text": "el",
+     "clip": null
+    },
+    {
+     "text": "mapa",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "escuela",
+    "items": [
+     {
+      "p": {
+       "icon": "map"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "kid": {
+        "girl": false,
+        "emotion": "feliz",
+        "shirt": "#42A5F5"
+       }
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_1_10.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué usa Pepe?",
+    "options": [
+     {
+      "text": "mapa",
+      "picture": {
+       "icon": "map"
+      }
+     },
+     {
+      "text": "pelota",
+      "picture": {
+       "icon": "ball"
+      }
+     },
+     {
+      "text": "foco",
+      "picture": {
+       "icon": "lamp"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 3,
+    "explanation": "Mapa. La oración dice: «Pepe usa el mapa.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_1_24",
+    "oracion_2_05"
+   ]
+  },
+  {
+   "id": "oracion_1_11",
+   "text": "La nube tapa la luna.",
+   "level": 1,
+   "families": [
+    "l",
+    "n",
+    "b",
+    "p",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "La",
+     "clip": null
+    },
+    {
+     "text": "nube",
+     "clip": null
+    },
+    {
+     "text": "tapa",
+     "clip": null
+    },
+    {
+     "text": "la",
+     "clip": null
+    },
+    {
+     "text": "luna",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "noche",
+    "items": [
+     {
+      "p": {
+       "icon": "cloud"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "moon"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_1_11.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué tapa la nube?",
+    "options": [
+     {
+      "text": "luna",
+      "picture": {
+       "icon": "moon"
+      }
+     },
+     {
+      "text": "sol",
+      "picture": {
+       "icon": "sun"
+      }
+     },
+     {
+      "text": "casa",
+      "picture": {
+       "icon": "home"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 4,
+    "explanation": "Luna. La oración dice: «La nube tapa la luna.»"
+   },
+   "order": false,
+   "listen": true,
+   "listen_options": [
+    "oracion_1_18",
+    "oracion_2_06"
+   ]
+  },
+  {
+   "id": "oracion_1_12",
+   "text": "Mi casa es bonita.",
+   "level": 1,
+   "families": [
+    "b",
+    "c",
+    "m",
+    "n",
+    "s",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "Mi",
+     "clip": null
+    },
+    {
+     "text": "casa",
+     "clip": null
+    },
+    {
+     "text": "es",
+     "clip": null
+    },
+    {
+     "text": "bonita",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "jardin",
+    "items": [
+     {
+      "p": {
+       "icon": "home"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_1_12.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué es bonita?",
+    "options": [
+     {
+      "text": "casa",
+      "picture": {
+       "icon": "home"
+      }
+     },
+     {
+      "text": "cama",
+      "picture": {
+       "icon": "bed"
+      }
+     },
+     {
+      "text": "mesa",
+      "picture": {
+       "icon": "table"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 1,
+    "explanation": "Casa. La oración dice: «Mi casa es bonita.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_1_19",
+    "oracion_1_26"
+   ]
+  },
+  {
+   "id": "oracion_1_13",
+   "text": "El mono come banana.",
+   "level": 1,
+   "families": [
+    "n",
+    "m",
+    "b",
+    "c"
+   ],
+   "words": [
+    {
+     "text": "El",
+     "clip": null
+    },
+    {
+     "text": "mono",
+     "clip": null
+    },
+    {
+     "text": "come",
+     "clip": null
+    },
+    {
+     "text": "banana",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "bosque",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_mono"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "drawing": "fruta_platano"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_1_13.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué come el mono?",
+    "options": [
+     {
+      "text": "banana",
+      "picture": {
+       "drawing": "fruta_platano"
+      }
+     },
+     {
+      "text": "sopa",
+      "picture": {
+       "icon": "soup"
+      }
+     },
+     {
+      "text": "pizza",
+      "picture": {
+       "icon": "pizza"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 3,
+    "explanation": "Banana. La oración dice: «El mono come banana.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_1_20",
+    "oracion_2_15"
+   ]
+  },
+  {
+   "id": "oracion_1_14",
+   "text": "Lola pasea al pato.",
+   "level": 1,
+   "families": [
+    "l",
+    "p",
+    "s",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "Lola",
+     "clip": null
+    },
+    {
+     "text": "pasea",
+     "clip": null
+    },
+    {
+     "text": "al",
+     "clip": null
+    },
+    {
+     "text": "pato",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "parque",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "girl": true,
+        "emotion": "feliz",
+        "shirt": "#EC407A"
+       }
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "drawing": "granja_patito"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_1_14.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿A quién pasea Lola?",
+    "options": [
+     {
+      "text": "pato",
+      "picture": {
+       "drawing": "granja_patito"
+      }
+     },
+     {
+      "text": "mono",
+      "picture": {
+       "drawing": "animal_mono"
+      }
+     },
+     {
+      "text": "oso",
+      "picture": {
+       "drawing": "animal_oso"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 3,
+    "explanation": "Pato. La oración dice: «Lola pasea al pato.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_2_16",
+    "oracion_2_23"
+   ]
+  },
+  {
+   "id": "oracion_1_15",
+   "text": "Mi papá me mima.",
+   "level": 1,
+   "families": [
+    "m",
+    "p"
+   ],
+   "words": [
+    {
+     "text": "Mi",
+     "clip": null
+    },
+    {
+     "text": "papá",
+     "clip": null
+    },
+    {
+     "text": "me",
+     "clip": null
+    },
+    {
+     "text": "mima",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "casa",
+    "items": [
+     {
+      "p": {
+       "icon": "man"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "kid": {
+        "girl": false,
+        "emotion": "feliz",
+        "shirt": "#42A5F5"
+       }
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_1_15.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Quién me mima?",
+    "options": [
+     {
+      "text": "papá",
+      "picture": {
+       "icon": "man"
+      }
+     },
+     {
+      "text": "mamá",
+      "picture": {
+       "icon": "woman"
+      }
+     },
+     {
+      "text": "bebé",
+      "picture": {
+       "icon": "child_care"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 1,
+    "explanation": "Papá. La oración dice: «Mi papá me mima.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_2_03",
+    "oracion_2_10"
+   ]
+  },
+  {
+   "id": "oracion_1_16",
+   "text": "Ana se toca la boca.",
+   "level": 1,
+   "families": [
+    "c",
+    "b",
+    "l",
+    "n",
+    "s",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "Ana",
+     "clip": null
+    },
+    {
+     "text": "se",
+     "clip": null
+    },
+    {
+     "text": "toca",
+     "clip": null
+    },
+    {
+     "text": "la",
+     "clip": null
+    },
+    {
+     "text": "boca",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "casa",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "girl": true,
+        "emotion": "feliz",
+        "shirt": "#EC407A"
+       }
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "body": "boca"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_1_16.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué se toca Ana?",
+    "options": [
+     {
+      "text": "boca",
+      "picture": {
+       "body": "boca"
+      }
+     },
+     {
+      "text": "pelo",
+      "picture": {
+       "body": "pelo"
+      }
+     },
+     {
+      "text": "nariz",
+      "picture": {
+       "body": "nariz"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 4,
+    "explanation": "Boca. La oración dice: «Ana se toca la boca.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_2_04",
+    "oracion_2_11"
+   ]
+  },
+  {
+   "id": "oracion_1_17",
+   "text": "Memo se toca el pelo.",
+   "level": 1,
+   "families": [
+    "m",
+    "c",
+    "l",
+    "p",
+    "s",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "Memo",
+     "clip": null
+    },
+    {
+     "text": "se",
+     "clip": null
+    },
+    {
+     "text": "toca",
+     "clip": null
+    },
+    {
+     "text": "el",
+     "clip": null
+    },
+    {
+     "text": "pelo",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "casa",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "girl": false,
+        "emotion": "feliz",
+        "shirt": "#42A5F5"
+       }
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "body": "pelo"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_1_17.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué se toca Memo?",
+    "options": [
+     {
+      "text": "pelo",
+      "picture": {
+       "body": "pelo"
+      }
+     },
+     {
+      "text": "boca",
+      "picture": {
+       "body": "boca"
+      }
+     },
+     {
+      "text": "pie",
+      "picture": {
+       "body": "pies"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 4,
+    "explanation": "Pelo. La oración dice: «Memo se toca el pelo.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_1_24",
+    "oracion_2_12"
+   ]
+  },
+  {
+   "id": "oracion_1_18",
+   "text": "El bebé se mete en la cuna.",
+   "level": 1,
+   "families": [
+    "b",
+    "c",
+    "l",
+    "m",
+    "n",
+    "s",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "El",
+     "clip": null
+    },
+    {
+     "text": "bebé",
+     "clip": null
+    },
+    {
+     "text": "se",
+     "clip": null
+    },
+    {
+     "text": "mete",
+     "clip": null
+    },
+    {
+     "text": "en",
+     "clip": null
+    },
+    {
+     "text": "la",
+     "clip": null
+    },
+    {
+     "text": "cuna",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "dormitorio",
+    "items": [
+     {
+      "p": {
+       "icon": "child_care"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "crib"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_1_18.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Dónde se mete el bebé?",
+    "options": [
+     {
+      "text": "cuna",
+      "picture": {
+       "icon": "crib"
+      }
+     },
+     {
+      "text": "mesa",
+      "picture": {
+       "icon": "table"
+      }
+     },
+     {
+      "text": "casa",
+      "picture": {
+       "icon": "home"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 6,
+    "explanation": "Cuna. La oración dice: «El bebé se mete en la cuna.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_2_06",
+    "oracion_2_13"
+   ]
+  },
+  {
+   "id": "oracion_1_19",
+   "text": "Papá saca el mapa.",
+   "level": 1,
+   "families": [
+    "p",
+    "c",
+    "m",
+    "s"
+   ],
+   "words": [
+    {
+     "text": "Papá",
+     "clip": null
+    },
+    {
+     "text": "saca",
+     "clip": null
+    },
+    {
+     "text": "el",
+     "clip": null
+    },
+    {
+     "text": "mapa",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "parque",
+    "items": [
+     {
+      "p": {
+       "icon": "man"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "map"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_1_19.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué saca papá?",
+    "options": [
+     {
+      "text": "mapa",
+      "picture": {
+       "icon": "map"
+      }
+     },
+     {
+      "text": "pelota",
+      "picture": {
+       "icon": "ball"
+      }
+     },
+     {
+      "text": "foco",
+      "picture": {
+       "icon": "lamp"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 3,
+    "explanation": "Mapa. La oración dice: «Papá saca el mapa.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_1_26",
+    "oracion_2_07"
+   ]
+  },
+  {
+   "id": "oracion_1_20",
+   "text": "Tito come en la mesa.",
+   "level": 1,
+   "families": [
+    "m",
+    "t",
+    "c",
+    "l",
+    "s"
+   ],
+   "words": [
+    {
+     "text": "Tito",
+     "clip": null
+    },
+    {
+     "text": "come",
+     "clip": null
+    },
+    {
+     "text": "en",
+     "clip": null
+    },
+    {
+     "text": "la",
+     "clip": null
+    },
+    {
+     "text": "mesa",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "cocina",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "girl": false,
+        "emotion": "feliz",
+        "shirt": "#42A5F5"
+       }
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "table"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_1_20.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Dónde come Tito?",
+    "options": [
+     {
+      "text": "mesa",
+      "picture": {
+       "icon": "table"
+      }
+     },
+     {
+      "text": "cama",
+      "picture": {
+       "icon": "bed"
+      }
+     },
+     {
+      "text": "cuna",
+      "picture": {
+       "icon": "crib"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 4,
+    "explanation": "Mesa. La oración dice: «Tito come en la mesa.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_2_15",
+    "oracion_2_22"
+   ]
+  },
+  {
+   "id": "oracion_1_21",
+   "text": "El pato es de Pepe.",
+   "level": 1,
+   "families": [
+    "p",
+    "d",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "El",
+     "clip": null
+    },
+    {
+     "text": "pato",
+     "clip": null
+    },
+    {
+     "text": "es",
+     "clip": null
+    },
+    {
+     "text": "de",
+     "clip": null
+    },
+    {
+     "text": "Pepe",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "jardin",
+    "items": [
+     {
+      "p": {
+       "drawing": "granja_patito"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "kid": {
+        "girl": false,
+        "emotion": "feliz",
+        "shirt": "#42A5F5"
+       }
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_1_21.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué es de Pepe?",
+    "options": [
+     {
+      "text": "pato",
+      "picture": {
+       "drawing": "granja_patito"
+      }
+     },
+     {
+      "text": "oso",
+      "picture": {
+       "drawing": "animal_oso"
+      }
+     },
+     {
+      "text": "mono",
+      "picture": {
+       "drawing": "animal_mono"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 1,
+    "explanation": "Pato. La oración dice: «El pato es de Pepe.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_2_02",
+    "oracion_2_09"
+   ]
+  },
+  {
+   "id": "oracion_1_22",
+   "text": "El mono se sube a la mesa.",
+   "level": 1,
+   "families": [
+    "s",
+    "m",
+    "b",
+    "l",
+    "n"
+   ],
+   "words": [
+    {
+     "text": "El",
+     "clip": null
+    },
+    {
+     "text": "mono",
+     "clip": null
+    },
+    {
+     "text": "se",
+     "clip": null
+    },
+    {
+     "text": "sube",
+     "clip": null
+    },
+    {
+     "text": "a",
+     "clip": null
+    },
+    {
+     "text": "la",
+     "clip": null
+    },
+    {
+     "text": "mesa",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "casa",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_mono"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "table"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_1_22.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿A dónde se sube el mono?",
+    "options": [
+     {
+      "text": "mesa",
+      "picture": {
+       "icon": "table"
+      }
+     },
+     {
+      "text": "cama",
+      "picture": {
+       "icon": "bed"
+      }
+     },
+     {
+      "text": "cuna",
+      "picture": {
+       "icon": "crib"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 6,
+    "explanation": "Mesa. La oración dice: «El mono se sube a la mesa.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_2_03",
+    "oracion_2_10"
+   ]
+  },
+  {
+   "id": "oracion_1_23",
+   "text": "Lola toma una foto.",
+   "level": 1,
+   "families": [
+    "l",
+    "t",
+    "f",
+    "m",
+    "n"
+   ],
+   "words": [
+    {
+     "text": "Lola",
+     "clip": null
+    },
+    {
+     "text": "toma",
+     "clip": null
+    },
+    {
+     "text": "una",
+     "clip": null
+    },
+    {
+     "text": "foto",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "parque",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "girl": true,
+        "emotion": "feliz",
+        "shirt": "#EC407A"
+       }
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "photo_camera"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_1_23.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué toma Lola?",
+    "options": [
+     {
+      "text": "foto",
+      "picture": {
+       "icon": "photo_camera"
+      }
+     },
+     {
+      "text": "luna",
+      "picture": {
+       "icon": "moon"
+      }
+     },
+     {
+      "text": "casa",
+      "picture": {
+       "icon": "home"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 3,
+    "explanation": "Foto. La oración dice: «Lola toma una foto.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_2_04",
+    "oracion_2_11"
+   ]
+  },
+  {
+   "id": "oracion_1_24",
+   "text": "Amo a mi oso.",
+   "level": 1,
+   "families": [
+    "m",
+    "s"
+   ],
+   "words": [
+    {
+     "text": "Amo",
+     "clip": null
+    },
+    {
+     "text": "a",
+     "clip": null
+    },
+    {
+     "text": "mi",
+     "clip": null
+    },
+    {
+     "text": "oso",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "dormitorio",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_oso"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_1_24.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿A quién amo?",
+    "options": [
+     {
+      "text": "oso",
+      "picture": {
+       "drawing": "animal_oso"
+      }
+     },
+     {
+      "text": "pato",
+      "picture": {
+       "drawing": "granja_patito"
+      }
+     },
+     {
+      "text": "mono",
+      "picture": {
+       "drawing": "animal_mono"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 3,
+    "explanation": "Oso. La oración dice: «Amo a mi oso.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_2_05",
+    "oracion_2_12"
+   ]
+  },
+  {
+   "id": "oracion_1_25",
+   "text": "La cama es de mamá.",
+   "level": 1,
+   "families": [
+    "m",
+    "c",
+    "d",
+    "l"
+   ],
+   "words": [
+    {
+     "text": "La",
+     "clip": null
+    },
+    {
+     "text": "cama",
+     "clip": null
+    },
+    {
+     "text": "es",
+     "clip": null
+    },
+    {
+     "text": "de",
+     "clip": null
+    },
+    {
+     "text": "mamá",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "dormitorio",
+    "items": [
+     {
+      "p": {
+       "icon": "bed"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "woman"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_1_25.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué es de mamá?",
+    "options": [
+     {
+      "text": "cama",
+      "picture": {
+       "icon": "bed"
+      }
+     },
+     {
+      "text": "mesa",
+      "picture": {
+       "icon": "table"
+      }
+     },
+     {
+      "text": "cuna",
+      "picture": {
+       "icon": "crib"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 1,
+    "explanation": "Cama. La oración dice: «La cama es de mamá.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_2_06",
+    "oracion_2_13"
+   ]
+  },
+  {
+   "id": "oracion_1_26",
+   "text": "Mamá besa al bebé.",
+   "level": 1,
+   "families": [
+    "b",
+    "m",
+    "s"
+   ],
+   "words": [
+    {
+     "text": "Mamá",
+     "clip": null
+    },
+    {
+     "text": "besa",
+     "clip": null
+    },
+    {
+     "text": "al",
+     "clip": null
+    },
+    {
+     "text": "bebé",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "casa",
+    "items": [
+     {
+      "p": {
+       "icon": "woman"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "child_care"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_1_26.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿A quién besa mamá?",
+    "options": [
+     {
+      "text": "bebé",
+      "picture": {
+       "icon": "child_care"
+      }
+     },
+     {
+      "text": "oso",
+      "picture": {
+       "drawing": "animal_oso"
+      }
+     },
+     {
+      "text": "pato",
+      "picture": {
+       "drawing": "granja_patito"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 3,
+    "explanation": "Bebé. La oración dice: «Mamá besa al bebé.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_2_07",
+    "oracion_3_01"
+   ]
+  },
+  {
+   "id": "oracion_2_01",
+   "text": "El gato toma leche.",
+   "level": 2,
+   "families": [
+    "t",
+    "c",
+    "l",
+    "m"
+   ],
+   "words": [
+    {
+     "text": "El",
+     "clip": null
+    },
+    {
+     "text": "gato",
+     "clip": null
+    },
+    {
+     "text": "toma",
+     "clip": null
+    },
+    {
+     "text": "leche",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "cocina",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_gato"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "milk"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_2_01.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué toma el gato?",
+    "options": [
+     {
+      "text": "leche",
+      "picture": {
+       "icon": "milk"
+      }
+     },
+     {
+      "text": "sopa",
+      "picture": {
+       "icon": "soup"
+      }
+     },
+     {
+      "text": "helado",
+      "picture": {
+       "icon": "icecream"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 3,
+    "explanation": "Leche. La oración dice: «El gato toma leche.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_2_08",
+    "oracion_2_15"
+   ]
+  },
+  {
+   "id": "oracion_2_02",
+   "text": "Ana lleva su mochila.",
+   "level": 2,
+   "families": [
+    "l",
+    "c",
+    "m",
+    "n",
+    "s"
+   ],
+   "words": [
+    {
+     "text": "Ana",
+     "clip": null
+    },
+    {
+     "text": "lleva",
+     "clip": null
+    },
+    {
+     "text": "su",
+     "clip": null
+    },
+    {
+     "text": "mochila",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "escuela",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "girl": true,
+        "emotion": "feliz",
+        "shirt": "#EC407A"
+       }
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "backpack"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_2_02.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué lleva Ana?",
+    "options": [
+     {
+      "text": "mochila",
+      "picture": {
+       "icon": "backpack"
+      }
+     },
+     {
+      "text": "pelota",
+      "picture": {
+       "icon": "ball"
+      }
+     },
+     {
+      "text": "paraguas",
+      "picture": {
+       "icon": "umbrella"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 3,
+    "explanation": "Mochila. La oración dice: «Ana lleva su mochila.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_2_09",
+    "oracion_2_16"
+   ]
+  },
+  {
+   "id": "oracion_2_03",
+   "text": "El perro corre.",
+   "level": 2,
+   "families": [
+    "c",
+    "p"
+   ],
+   "words": [
+    {
+     "text": "El",
+     "clip": null
+    },
+    {
+     "text": "perro",
+     "clip": null
+    },
+    {
+     "text": "corre",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "parque",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_perro"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_2_03.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Quién corre?",
+    "options": [
+     {
+      "text": "perro",
+      "picture": {
+       "drawing": "animal_perro"
+      }
+     },
+     {
+      "text": "gato",
+      "picture": {
+       "drawing": "animal_gato"
+      }
+     },
+     {
+      "text": "pato",
+      "picture": {
+       "drawing": "granja_patito"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 1,
+    "explanation": "Perro. La oración dice: «El perro corre.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_2_10",
+    "oracion_2_17"
+   ]
+  },
+  {
+   "id": "oracion_2_04",
+   "text": "Hoy hace sol.",
+   "level": 2,
+   "families": [
+    "c",
+    "s"
+   ],
+   "words": [
+    {
+     "text": "Hoy",
+     "clip": null
+    },
+    {
+     "text": "hace",
+     "clip": null
+    },
+    {
+     "text": "sol",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "cielo",
+    "items": [
+     {
+      "p": {
+       "icon": "sun"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_2_04.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué hace hoy?",
+    "options": [
+     {
+      "text": "sol",
+      "picture": {
+       "icon": "sun"
+      }
+     },
+     {
+      "text": "lluvia",
+      "picture": {
+       "icon": "rain"
+      }
+     },
+     {
+      "text": "nieve",
+      "picture": {
+       "icon": "snow"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 2,
+    "explanation": "Sol. La oración dice: «Hoy hace sol.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_2_11",
+    "oracion_2_18"
+   ]
+  },
+  {
+   "id": "oracion_2_05",
+   "text": "Me lavo las manos.",
+   "level": 2,
+   "families": [
+    "l",
+    "m",
+    "n"
+   ],
+   "words": [
+    {
+     "text": "Me",
+     "clip": null
+    },
+    {
+     "text": "lavo",
+     "clip": null
+    },
+    {
+     "text": "las",
+     "clip": null
+    },
+    {
+     "text": "manos",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "casa",
+    "items": [
+     {
+      "p": {
+       "body": "manos"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_2_05.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué me lavo?",
+    "options": [
+     {
+      "text": "manos",
+      "picture": {
+       "body": "manos"
+      }
+     },
+     {
+      "text": "pies",
+      "picture": {
+       "body": "pies"
+      }
+     },
+     {
+      "text": "pelo",
+      "picture": {
+       "body": "pelo"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 3,
+    "explanation": "Manos. La oración dice: «Me lavo las manos.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_2_12",
+    "oracion_2_19"
+   ]
+  },
+  {
+   "id": "oracion_2_06",
+   "text": "Mi abuela hace galletas.",
+   "level": 2,
+   "families": [
+    "l",
+    "b",
+    "c",
+    "m",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "Mi",
+     "clip": null
+    },
+    {
+     "text": "abuela",
+     "clip": null
+    },
+    {
+     "text": "hace",
+     "clip": null
+    },
+    {
+     "text": "galletas",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "cocina",
+    "items": [
+     {
+      "p": {
+       "icon": "elderly_woman"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "cookie"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_2_06.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué hace la abuela?",
+    "options": [
+     {
+      "text": "galletas",
+      "picture": {
+       "icon": "cookie"
+      }
+     },
+     {
+      "text": "pizza",
+      "picture": {
+       "icon": "pizza"
+      }
+     },
+     {
+      "text": "sopa",
+      "picture": {
+       "icon": "soup"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 3,
+    "explanation": "Galletas. La oración dice: «Mi abuela hace galletas.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_2_13",
+    "oracion_2_20"
+   ]
+  },
+  {
+   "id": "oracion_2_07",
+   "text": "Vamos a la escuela.",
+   "level": 2,
+   "families": [
+    "l",
+    "c",
+    "m"
+   ],
+   "words": [
+    {
+     "text": "Vamos",
+     "clip": null
+    },
+    {
+     "text": "a",
+     "clip": null
+    },
+    {
+     "text": "la",
+     "clip": null
+    },
+    {
+     "text": "escuela",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "escuela",
+    "items": [
+     {
+      "p": {
+       "icon": "backpack"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_2_07.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿A dónde vamos?",
+    "options": [
+     {
+      "text": "escuela",
+      "picture": {
+       "scene": "escuela"
+      }
+     },
+     {
+      "text": "playa",
+      "picture": {
+       "scene": "playa"
+      }
+     },
+     {
+      "text": "parque",
+      "picture": {
+       "scene": "parque"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 3,
+    "explanation": "Escuela. La oración dice: «Vamos a la escuela.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_2_14",
+    "oracion_2_21"
+   ]
+  },
+  {
+   "id": "oracion_2_08",
+   "text": "Luis juega con la pelota.",
+   "level": 2,
+   "families": [
+    "l",
+    "c",
+    "p",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "Luis",
+     "clip": null
+    },
+    {
+     "text": "juega",
+     "clip": null
+    },
+    {
+     "text": "con",
+     "clip": null
+    },
+    {
+     "text": "la",
+     "clip": null
+    },
+    {
+     "text": "pelota",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "parque",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "girl": false,
+        "emotion": "feliz",
+        "shirt": "#42A5F5"
+       }
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "ball"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_2_08.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Con qué juega Luis?",
+    "options": [
+     {
+      "text": "pelota",
+      "picture": {
+       "icon": "ball"
+      }
+     },
+     {
+      "text": "robot",
+      "picture": {
+       "drawing": "fantasia_robot"
+      }
+     },
+     {
+      "text": "mapa",
+      "picture": {
+       "icon": "map"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 4,
+    "explanation": "Pelota. La oración dice: «Luis juega con la pelota.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_2_15",
+    "oracion_2_22"
+   ]
+  },
+  {
+   "id": "oracion_2_09",
+   "text": "El niño come helado.",
+   "level": 2,
+   "families": [
+    "c",
+    "d",
+    "l",
+    "m",
+    "n"
+   ],
+   "words": [
+    {
+     "text": "El",
+     "clip": null
+    },
+    {
+     "text": "niño",
+     "clip": null
+    },
+    {
+     "text": "come",
+     "clip": null
+    },
+    {
+     "text": "helado",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "parque",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "girl": false,
+        "emotion": "feliz"
+       }
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "icecream"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_2_09.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué come el niño?",
+    "options": [
+     {
+      "text": "helado",
+      "picture": {
+       "icon": "icecream"
+      }
+     },
+     {
+      "text": "pan",
+      "picture": {
+       "icon": "bread"
+      }
+     },
+     {
+      "text": "sopa",
+      "picture": {
+       "icon": "soup"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 3,
+    "explanation": "Helado. La oración dice: «El niño come helado.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_2_16",
+    "oracion_2_23"
+   ]
+  },
+  {
+   "id": "oracion_2_10",
+   "text": "La gallina pone huevos.",
+   "level": 2,
+   "families": [
+    "l",
+    "n",
+    "p"
+   ],
+   "words": [
+    {
+     "text": "La",
+     "clip": null
+    },
+    {
+     "text": "gallina",
+     "clip": null
+    },
+    {
+     "text": "pone",
+     "clip": null
+    },
+    {
+     "text": "huevos",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "jardin",
+    "items": [
+     {
+      "p": {
+       "drawing": "granja_gallina"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "egg"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_2_10.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué pone la gallina?",
+    "options": [
+     {
+      "text": "huevos",
+      "picture": {
+       "icon": "egg"
+      }
+     },
+     {
+      "text": "uvas",
+      "picture": {
+       "drawing": "fruta_uvas"
+      }
+     },
+     {
+      "text": "pan",
+      "picture": {
+       "icon": "bread"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 3,
+    "explanation": "Huevos. La oración dice: «La gallina pone huevos.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_2_17",
+    "oracion_3_04"
+   ]
+  },
+  {
+   "id": "oracion_2_11",
+   "text": "La vaca da leche.",
+   "level": 2,
+   "families": [
+    "c",
+    "l",
+    "d"
+   ],
+   "words": [
+    {
+     "text": "La",
+     "clip": null
+    },
+    {
+     "text": "vaca",
+     "clip": null
+    },
+    {
+     "text": "da",
+     "clip": null
+    },
+    {
+     "text": "leche",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "jardin",
+    "items": [
+     {
+      "p": {
+       "drawing": "granja_vaca"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_2_11.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué da la vaca?",
+    "options": [
+     {
+      "text": "leche",
+      "picture": {
+       "icon": "milk"
+      }
+     },
+     {
+      "text": "huevo",
+      "picture": {
+       "icon": "egg"
+      }
+     },
+     {
+      "text": "pan",
+      "picture": {
+       "icon": "bread"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 3,
+    "explanation": "Leche. La oración dice: «La vaca da leche.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_2_18",
+    "oracion_3_12"
+   ]
+  },
+  {
+   "id": "oracion_2_12",
+   "text": "Sofía está feliz.",
+   "level": 2,
+   "families": [
+    "f",
+    "l",
+    "s",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "Sofía",
+     "clip": null
+    },
+    {
+     "text": "está",
+     "clip": null
+    },
+    {
+     "text": "feliz",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "parque",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "girl": true,
+        "emotion": "feliz",
+        "shirt": "#EC407A"
+       }
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_2_12.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Cómo está Sofía?",
+    "options": [
+     {
+      "text": "feliz",
+      "picture": {
+       "emotion": "feliz"
+      }
+     },
+     {
+      "text": "triste",
+      "picture": {
+       "emotion": "triste"
+      }
+     },
+     {
+      "text": "enojado",
+      "picture": {
+       "emotion": "enojado"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 2,
+    "explanation": "Feliz. La oración dice: «Sofía está feliz.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_2_19",
+    "oracion_2_26"
+   ]
+  },
+  {
+   "id": "oracion_2_13",
+   "text": "Llueve mucho hoy.",
+   "level": 2,
+   "families": [
+    "c",
+    "l",
+    "m"
+   ],
+   "words": [
+    {
+     "text": "Llueve",
+     "clip": null
+    },
+    {
+     "text": "mucho",
+     "clip": null
+    },
+    {
+     "text": "hoy",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "lluvia",
+    "items": [
+     {
+      "p": {
+       "icon": "umbrella"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_2_13.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué pasa hoy?",
+    "options": [
+     {
+      "text": "lluvia",
+      "picture": {
+       "icon": "rain"
+      }
+     },
+     {
+      "text": "sol",
+      "picture": {
+       "icon": "sun"
+      }
+     },
+     {
+      "text": "nieve",
+      "picture": {
+       "icon": "snow"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 0,
+    "explanation": "Lluvia. La oración dice: «Llueve mucho hoy.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_2_20",
+    "oracion_3_07"
+   ]
+  },
+  {
+   "id": "oracion_2_14",
+   "text": "El bebé tiene sueño.",
+   "level": 2,
+   "families": [
+    "b",
+    "n",
+    "s",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "El",
+     "clip": null
+    },
+    {
+     "text": "bebé",
+     "clip": null
+    },
+    {
+     "text": "tiene",
+     "clip": null
+    },
+    {
+     "text": "sueño",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "dormitorio",
+    "items": [
+     {
+      "p": {
+       "icon": "child_care"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "crib"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_2_14.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué tiene el bebé?",
+    "options": [
+     {
+      "text": "sueño",
+      "picture": {
+       "icon": "bedtime"
+      }
+     },
+     {
+      "text": "hambre",
+      "picture": {
+       "icon": "restaurant"
+      }
+     },
+     {
+      "text": "frío",
+      "picture": {
+       "icon": "severe_cold"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 3,
+    "explanation": "Sueño. La oración dice: «El bebé tiene sueño.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_2_21",
+    "oracion_3_15"
+   ]
+  },
+  {
+   "id": "oracion_2_15",
+   "text": "Mi casa tiene ventanas.",
+   "level": 2,
+   "families": [
+    "n",
+    "t",
+    "c",
+    "m",
+    "s"
+   ],
+   "words": [
+    {
+     "text": "Mi",
+     "clip": null
+    },
+    {
+     "text": "casa",
+     "clip": null
+    },
+    {
+     "text": "tiene",
+     "clip": null
+    },
+    {
+     "text": "ventanas",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "jardin",
+    "items": [
+     {
+      "p": {
+       "icon": "home"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_2_15.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué tiene mi casa?",
+    "options": [
+     {
+      "text": "ventanas",
+      "picture": {
+       "icon": "window"
+      }
+     },
+     {
+      "text": "nube",
+      "picture": {
+       "icon": "cloud"
+      }
+     },
+     {
+      "text": "luna",
+      "picture": {
+       "icon": "moon"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 3,
+    "explanation": "Ventanas. La oración dice: «Mi casa tiene ventanas.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_2_22",
+    "oracion_3_02"
+   ]
+  },
+  {
+   "id": "oracion_2_16",
+   "text": "El barco navega.",
+   "level": 2,
+   "families": [
+    "b",
+    "c",
+    "n"
+   ],
+   "words": [
+    {
+     "text": "El",
+     "clip": null
+    },
+    {
+     "text": "barco",
+     "clip": null
+    },
+    {
+     "text": "navega",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "playa",
+    "items": [
+     {
+      "p": {
+       "drawing": "vehiculo_barco"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_2_16.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué navega?",
+    "options": [
+     {
+      "text": "barco",
+      "picture": {
+       "drawing": "vehiculo_barco"
+      }
+     },
+     {
+      "text": "carro",
+      "picture": {
+       "drawing": "vehiculo_automovil"
+      }
+     },
+     {
+      "text": "autobús",
+      "picture": {
+       "drawing": "vehiculo_autobus"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 1,
+    "explanation": "Barco. La oración dice: «El barco navega.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_2_23",
+    "oracion_3_03"
+   ]
+  },
+  {
+   "id": "oracion_2_17",
+   "text": "El avión vuela alto.",
+   "level": 2,
+   "families": [
+    "l",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "El",
+     "clip": null
+    },
+    {
+     "text": "avión",
+     "clip": null
+    },
+    {
+     "text": "vuela",
+     "clip": null
+    },
+    {
+     "text": "alto",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "cielo",
+    "items": [
+     {
+      "p": {
+       "drawing": "vehiculo_avion"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_2_17.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué vuela alto?",
+    "options": [
+     {
+      "text": "avión",
+      "picture": {
+       "drawing": "vehiculo_avion"
+      }
+     },
+     {
+      "text": "barco",
+      "picture": {
+       "drawing": "vehiculo_barco"
+      }
+     },
+     {
+      "text": "carro",
+      "picture": {
+       "drawing": "vehiculo_automovil"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 1,
+    "explanation": "Avión. La oración dice: «El avión vuela alto.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_2_24",
+    "oracion_3_04"
+   ]
+  },
+  {
+   "id": "oracion_2_18",
+   "text": "Tengo un perro.",
+   "level": 2,
+   "families": [
+    "p",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "Tengo",
+     "clip": null
+    },
+    {
+     "text": "un",
+     "clip": null
+    },
+    {
+     "text": "perro",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "casa",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_perro"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_2_18.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué tengo?",
+    "options": [
+     {
+      "text": "perro",
+      "picture": {
+       "drawing": "animal_perro"
+      }
+     },
+     {
+      "text": "gato",
+      "picture": {
+       "drawing": "animal_gato"
+      }
+     },
+     {
+      "text": "pato",
+      "picture": {
+       "drawing": "granja_patito"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 2,
+    "explanation": "Perro. La oración dice: «Tengo un perro.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_2_25",
+    "oracion_3_12"
+   ]
+  },
+  {
+   "id": "oracion_2_19",
+   "text": "La jirafa come hojas.",
+   "level": 2,
+   "families": [
+    "c",
+    "f",
+    "l",
+    "m"
+   ],
+   "words": [
+    {
+     "text": "La",
+     "clip": null
+    },
+    {
+     "text": "jirafa",
+     "clip": null
+    },
+    {
+     "text": "come",
+     "clip": null
+    },
+    {
+     "text": "hojas",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "bosque",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_jirafa"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_2_19.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Quién come hojas?",
+    "options": [
+     {
+      "text": "jirafa",
+      "picture": {
+       "drawing": "animal_jirafa"
+      }
+     },
+     {
+      "text": "elefante",
+      "picture": {
+       "drawing": "animal_elefante"
+      }
+     },
+     {
+      "text": "mono",
+      "picture": {
+       "drawing": "animal_mono"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 1,
+    "explanation": "Jirafa. La oración dice: «La jirafa come hojas.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_2_26",
+    "oracion_3_13"
+   ]
+  },
+  {
+   "id": "oracion_2_20",
+   "text": "Papá lee un cuento.",
+   "level": 2,
+   "families": [
+    "p",
+    "c",
+    "l",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "Papá",
+     "clip": null
+    },
+    {
+     "text": "lee",
+     "clip": null
+    },
+    {
+     "text": "un",
+     "clip": null
+    },
+    {
+     "text": "cuento",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "dormitorio",
+    "items": [
+     {
+      "p": {
+       "icon": "man"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "auto_stories"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_2_20.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué lee papá?",
+    "options": [
+     {
+      "text": "cuento",
+      "picture": {
+       "icon": "auto_stories"
+      }
+     },
+     {
+      "text": "pelota",
+      "picture": {
+       "icon": "ball"
+      }
+     },
+     {
+      "text": "sopa",
+      "picture": {
+       "icon": "soup"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 3,
+    "explanation": "Cuento. La oración dice: «Papá lee un cuento.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_3_07",
+    "oracion_3_14"
+   ]
+  },
+  {
+   "id": "oracion_2_21",
+   "text": "Ana se lava los dientes.",
+   "level": 2,
+   "families": [
+    "l",
+    "d",
+    "n",
+    "s",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "Ana",
+     "clip": null
+    },
+    {
+     "text": "se",
+     "clip": null
+    },
+    {
+     "text": "lava",
+     "clip": null
+    },
+    {
+     "text": "los",
+     "clip": null
+    },
+    {
+     "text": "dientes",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "casa",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "girl": true,
+        "emotion": "feliz",
+        "shirt": "#EC407A"
+       }
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "tooth"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_2_21.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué se lava Ana?",
+    "options": [
+     {
+      "text": "dientes",
+      "picture": {
+       "icon": "tooth"
+      }
+     },
+     {
+      "text": "pies",
+      "picture": {
+       "body": "pies"
+      }
+     },
+     {
+      "text": "pelo",
+      "picture": {
+       "body": "pelo"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 4,
+    "explanation": "Dientes. La oración dice: «Ana se lava los dientes.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_3_01",
+    "oracion_3_15"
+   ]
+  },
+  {
+   "id": "oracion_2_22",
+   "text": "El sol calienta.",
+   "level": 2,
+   "families": [
+    "c",
+    "l",
+    "s",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "El",
+     "clip": null
+    },
+    {
+     "text": "sol",
+     "clip": null
+    },
+    {
+     "text": "calienta",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "cielo",
+    "items": [
+     {
+      "p": {
+       "icon": "sun"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_2_22.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué calienta?",
+    "options": [
+     {
+      "text": "sol",
+      "picture": {
+       "icon": "sun"
+      }
+     },
+     {
+      "text": "luna",
+      "picture": {
+       "icon": "moon"
+      }
+     },
+     {
+      "text": "nube",
+      "picture": {
+       "icon": "cloud"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 1,
+    "explanation": "Sol. La oración dice: «El sol calienta.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_3_02",
+    "oracion_3_23"
+   ]
+  },
+  {
+   "id": "oracion_2_23",
+   "text": "Me gusta la sandía.",
+   "level": 2,
+   "families": [
+    "d",
+    "l",
+    "m",
+    "s",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "Me",
+     "clip": null
+    },
+    {
+     "text": "gusta",
+     "clip": null
+    },
+    {
+     "text": "la",
+     "clip": null
+    },
+    {
+     "text": "sandía",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "cocina",
+    "items": [
+     {
+      "p": {
+       "drawing": "fruta_sandia"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_2_23.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué me gusta?",
+    "options": [
+     {
+      "text": "sandía",
+      "picture": {
+       "drawing": "fruta_sandia"
+      }
+     },
+     {
+      "text": "manzana",
+      "picture": {
+       "drawing": "fruta_manzana"
+      }
+     },
+     {
+      "text": "uvas",
+      "picture": {
+       "drawing": "fruta_uvas"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 3,
+    "explanation": "Sandía. La oración dice: «Me gusta la sandía.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_3_03",
+    "oracion_3_17"
+   ]
+  },
+  {
+   "id": "oracion_2_24",
+   "text": "La mariposa es bonita.",
+   "level": 2,
+   "families": [
+    "b",
+    "l",
+    "m",
+    "n",
+    "p",
+    "s",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "La",
+     "clip": null
+    },
+    {
+     "text": "mariposa",
+     "clip": null
+    },
+    {
+     "text": "es",
+     "clip": null
+    },
+    {
+     "text": "bonita",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "jardin",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_mariposa"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_2_24.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué es bonita?",
+    "options": [
+     {
+      "text": "mariposa",
+      "picture": {
+       "drawing": "animal_mariposa"
+      }
+     },
+     {
+      "text": "abeja",
+      "picture": {
+       "drawing": "animal_abeja"
+      }
+     },
+     {
+      "text": "oruga",
+      "picture": {
+       "drawing": "animal_oruga"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 1,
+    "explanation": "Mariposa. La oración dice: «La mariposa es bonita.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_3_04",
+    "oracion_3_11"
+   ]
+  },
+  {
+   "id": "oracion_2_25",
+   "text": "El conejo salta.",
+   "level": 2,
+   "families": [
+    "c",
+    "n",
+    "s",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "El",
+     "clip": null
+    },
+    {
+     "text": "conejo",
+     "clip": null
+    },
+    {
+     "text": "salta",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "jardin",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_conejo"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_2_25.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Quién salta?",
+    "options": [
+     {
+      "text": "conejo",
+      "picture": {
+       "drawing": "animal_conejo"
+      }
+     },
+     {
+      "text": "tortuga",
+      "picture": {
+       "drawing": "animal_tortuga"
+      }
+     },
+     {
+      "text": "oso",
+      "picture": {
+       "drawing": "animal_oso"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 1,
+    "explanation": "Conejo. La oración dice: «El conejo salta.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_3_12",
+    "oracion_3_26"
+   ]
+  },
+  {
+   "id": "oracion_2_26",
+   "text": "La tortuga camina lento.",
+   "level": 2,
+   "families": [
+    "t",
+    "l",
+    "c",
+    "m",
+    "n"
+   ],
+   "words": [
+    {
+     "text": "La",
+     "clip": null
+    },
+    {
+     "text": "tortuga",
+     "clip": null
+    },
+    {
+     "text": "camina",
+     "clip": null
+    },
+    {
+     "text": "lento",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "playa",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_tortuga"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_2_26.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Quién camina lento?",
+    "options": [
+     {
+      "text": "tortuga",
+      "picture": {
+       "drawing": "animal_tortuga"
+      }
+     },
+     {
+      "text": "conejo",
+      "picture": {
+       "drawing": "animal_conejo"
+      }
+     },
+     {
+      "text": "perro",
+      "picture": {
+       "drawing": "animal_perro"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 1,
+    "explanation": "Tortuga. La oración dice: «La tortuga camina lento.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_3_06",
+    "oracion_3_13"
+   ]
+  },
+  {
+   "id": "oracion_2_27",
+   "text": "Juan duerme en su cama.",
+   "level": 2,
+   "families": [
+    "m",
+    "c",
+    "d",
+    "s"
+   ],
+   "words": [
+    {
+     "text": "Juan",
+     "clip": null
+    },
+    {
+     "text": "duerme",
+     "clip": null
+    },
+    {
+     "text": "en",
+     "clip": null
+    },
+    {
+     "text": "su",
+     "clip": null
+    },
+    {
+     "text": "cama",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "dormitorio",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "girl": false,
+        "emotion": "feliz"
+       }
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "bed"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_2_27.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Dónde duerme Juan?",
+    "options": [
+     {
+      "text": "cama",
+      "picture": {
+       "icon": "bed"
+      }
+     },
+     {
+      "text": "mesa",
+      "picture": {
+       "icon": "table"
+      }
+     },
+     {
+      "text": "silla",
+      "picture": {
+       "icon": "chair"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 4,
+    "explanation": "Cama. La oración dice: «Juan duerme en su cama.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_3_07",
+    "oracion_3_14"
+   ]
+  },
+  {
+   "id": "oracion_3_01",
+   "text": "El gato café duerme en la cama.",
+   "level": 3,
+   "families": [
+    "c",
+    "m",
+    "d",
+    "f",
+    "l",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "El",
+     "clip": null
+    },
+    {
+     "text": "gato",
+     "clip": null
+    },
+    {
+     "text": "café",
+     "clip": null
+    },
+    {
+     "text": "duerme",
+     "clip": null
+    },
+    {
+     "text": "en",
+     "clip": null
+    },
+    {
+     "text": "la",
+     "clip": null
+    },
+    {
+     "text": "cama",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "dormitorio",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_gato"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "bed"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_3_01.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿De qué color es el gato?",
+    "options": [
+     {
+      "text": "café",
+      "picture": {
+       "swatch": "#795548"
+      }
+     },
+     {
+      "text": "rosa",
+      "picture": {
+       "swatch": "#F48FB1"
+      }
+     },
+     {
+      "text": "azul",
+      "picture": {
+       "swatch": "#1E88E5"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 2,
+    "explanation": "Café. La oración dice: «El gato café duerme en la cama.»"
+   },
+   "order": false,
+   "listen": true,
+   "listen_options": [
+    "oracion_3_08",
+    "oracion_3_22"
+   ]
+  },
+  {
+   "id": "oracion_3_02",
+   "text": "La niña tiene un vestido rosa.",
+   "level": 3,
+   "families": [
+    "n",
+    "t",
+    "d",
+    "l",
+    "s"
+   ],
+   "words": [
+    {
+     "text": "La",
+     "clip": null
+    },
+    {
+     "text": "niña",
+     "clip": null
+    },
+    {
+     "text": "tiene",
+     "clip": null
+    },
+    {
+     "text": "un",
+     "clip": null
+    },
+    {
+     "text": "vestido",
+     "clip": null
+    },
+    {
+     "text": "rosa",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "parque",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "girl": true,
+        "emotion": "feliz",
+        "shirt": "#EC407A"
+       }
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_3_02.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿De qué color es el vestido?",
+    "options": [
+     {
+      "text": "rosa",
+      "picture": {
+       "swatch": "#F48FB1"
+      }
+     },
+     {
+      "text": "azul",
+      "picture": {
+       "swatch": "#1E88E5"
+      }
+     },
+     {
+      "text": "verde",
+      "picture": {
+       "swatch": "#43A047"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 5,
+    "explanation": "Rosa. La oración dice: «La niña tiene un vestido rosa.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_3_09",
+    "oracion_3_23"
+   ]
+  },
+  {
+   "id": "oracion_3_03",
+   "text": "El perro pequeño juega en el parque.",
+   "level": 3,
+   "families": [
+    "p",
+    "c"
+   ],
+   "words": [
+    {
+     "text": "El",
+     "clip": null
+    },
+    {
+     "text": "perro",
+     "clip": null
+    },
+    {
+     "text": "pequeño",
+     "clip": null
+    },
+    {
+     "text": "juega",
+     "clip": null
+    },
+    {
+     "text": "en",
+     "clip": null
+    },
+    {
+     "text": "el",
+     "clip": null
+    },
+    {
+     "text": "parque",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "parque",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_perro"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "ball"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_3_03.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Dónde juega el perro?",
+    "options": [
+     {
+      "text": "parque",
+      "picture": {
+       "scene": "parque"
+      }
+     },
+     {
+      "text": "playa",
+      "picture": {
+       "scene": "playa"
+      }
+     },
+     {
+      "text": "escuela",
+      "picture": {
+       "scene": "escuela"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 6,
+    "explanation": "Parque. La oración dice: «El perro pequeño juega en el parque.»"
+   },
+   "order": false,
+   "listen": true,
+   "listen_options": [
+    "oracion_3_10",
+    "oracion_3_17"
+   ]
+  },
+  {
+   "id": "oracion_3_04",
+   "text": "Mi abuelo tiene un gorro de color azul.",
+   "level": 3,
+   "families": [
+    "l",
+    "b",
+    "c",
+    "d",
+    "m",
+    "n",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "Mi",
+     "clip": null
+    },
+    {
+     "text": "abuelo",
+     "clip": null
+    },
+    {
+     "text": "tiene",
+     "clip": null
+    },
+    {
+     "text": "un",
+     "clip": null
+    },
+    {
+     "text": "gorro",
+     "clip": null
+    },
+    {
+     "text": "de",
+     "clip": null
+    },
+    {
+     "text": "color",
+     "clip": null
+    },
+    {
+     "text": "azul",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "casa",
+    "items": [
+     {
+      "p": {
+       "icon": "elderly"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_3_04.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿De qué color es el gorro?",
+    "options": [
+     {
+      "text": "azul",
+      "picture": {
+       "swatch": "#1E88E5"
+      }
+     },
+     {
+      "text": "rojo",
+      "picture": {
+       "swatch": "#E53935"
+      }
+     },
+     {
+      "text": "amarillo",
+      "picture": {
+       "swatch": "#FDD835"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 7,
+    "explanation": "Azul. La oración dice: «Mi abuelo tiene un gorro de color azul.»"
+   },
+   "order": false,
+   "listen": true,
+   "listen_options": [
+    "oracion_3_11",
+    "oracion_3_25"
+   ]
+  },
+  {
+   "id": "oracion_3_05",
+   "text": "La mariposa amarilla vuela en el jardín.",
+   "level": 3,
+   "families": [
+    "l",
+    "m",
+    "d",
+    "p",
+    "s"
+   ],
+   "words": [
+    {
+     "text": "La",
+     "clip": null
+    },
+    {
+     "text": "mariposa",
+     "clip": null
+    },
+    {
+     "text": "amarilla",
+     "clip": null
+    },
+    {
+     "text": "vuela",
+     "clip": null
+    },
+    {
+     "text": "en",
+     "clip": null
+    },
+    {
+     "text": "el",
+     "clip": null
+    },
+    {
+     "text": "jardín",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "jardin",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_mariposa"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_3_05.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿De qué color es la mariposa?",
+    "options": [
+     {
+      "text": "amarilla",
+      "picture": {
+       "swatch": "#FDD835"
+      }
+     },
+     {
+      "text": "morada",
+      "picture": {
+       "swatch": "#8E24AA"
+      }
+     },
+     {
+      "text": "verde",
+      "picture": {
+       "swatch": "#43A047"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 2,
+    "explanation": "Amarilla. La oración dice: «La mariposa amarilla vuela en el jardín.»"
+   },
+   "order": false,
+   "listen": true,
+   "listen_options": [
+    "oracion_3_12",
+    "oracion_3_26"
+   ]
+  },
+  {
+   "id": "oracion_3_06",
+   "text": "El elefante tiene una nariz muy larga.",
+   "level": 3,
+   "families": [
+    "n",
+    "l",
+    "t",
+    "f",
+    "m"
+   ],
+   "words": [
+    {
+     "text": "El",
+     "clip": null
+    },
+    {
+     "text": "elefante",
+     "clip": null
+    },
+    {
+     "text": "tiene",
+     "clip": null
+    },
+    {
+     "text": "una",
+     "clip": null
+    },
+    {
+     "text": "nariz",
+     "clip": null
+    },
+    {
+     "text": "muy",
+     "clip": null
+    },
+    {
+     "text": "larga",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "bosque",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_elefante"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_3_06.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Quién tiene la nariz larga?",
+    "options": [
+     {
+      "text": "elefante",
+      "picture": {
+       "drawing": "animal_elefante"
+      }
+     },
+     {
+      "text": "jirafa",
+      "picture": {
+       "drawing": "animal_jirafa"
+      }
+     },
+     {
+      "text": "mono",
+      "picture": {
+       "drawing": "animal_mono"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 1,
+    "explanation": "Elefante. La oración dice: «El elefante tiene una nariz muy larga.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_3_13",
+    "oracion_3_20"
+   ]
+  },
+  {
+   "id": "oracion_3_07",
+   "text": "La jirafa tiene el cuello muy largo.",
+   "level": 3,
+   "families": [
+    "l",
+    "c",
+    "f",
+    "m",
+    "n",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "La",
+     "clip": null
+    },
+    {
+     "text": "jirafa",
+     "clip": null
+    },
+    {
+     "text": "tiene",
+     "clip": null
+    },
+    {
+     "text": "el",
+     "clip": null
+    },
+    {
+     "text": "cuello",
+     "clip": null
+    },
+    {
+     "text": "muy",
+     "clip": null
+    },
+    {
+     "text": "largo",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "bosque",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_jirafa"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_3_07.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Quién tiene el cuello largo?",
+    "options": [
+     {
+      "text": "jirafa",
+      "picture": {
+       "drawing": "animal_jirafa"
+      }
+     },
+     {
+      "text": "elefante",
+      "picture": {
+       "drawing": "animal_elefante"
+      }
+     },
+     {
+      "text": "oso",
+      "picture": {
+       "drawing": "animal_oso"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 1,
+    "explanation": "Jirafa. La oración dice: «La jirafa tiene el cuello muy largo.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_3_14",
+    "oracion_3_21"
+   ]
+  },
+  {
+   "id": "oracion_3_08",
+   "text": "Hay una pelota roja debajo de la mesa.",
+   "level": 3,
+   "families": [
+    "d",
+    "l",
+    "b",
+    "m",
+    "n",
+    "p",
+    "s",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "Hay",
+     "clip": null
+    },
+    {
+     "text": "una",
+     "clip": null
+    },
+    {
+     "text": "pelota",
+     "clip": null
+    },
+    {
+     "text": "roja",
+     "clip": null
+    },
+    {
+     "text": "debajo",
+     "clip": null
+    },
+    {
+     "text": "de",
+     "clip": null
+    },
+    {
+     "text": "la",
+     "clip": null
+    },
+    {
+     "text": "mesa",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "casa",
+    "items": [
+     {
+      "p": {
+       "icon": "ball"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "table"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_3_08.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Debajo de qué está la pelota?",
+    "options": [
+     {
+      "text": "mesa",
+      "picture": {
+       "icon": "table"
+      }
+     },
+     {
+      "text": "cama",
+      "picture": {
+       "icon": "bed"
+      }
+     },
+     {
+      "text": "silla",
+      "picture": {
+       "icon": "chair"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 7,
+    "explanation": "Mesa. La oración dice: «Hay una pelota roja debajo de la mesa.»"
+   },
+   "order": false,
+   "listen": true,
+   "listen_options": [
+    "oracion_3_22",
+    "oracion_4_03"
+   ]
+  },
+  {
+   "id": "oracion_3_09",
+   "text": "El sol calienta la arena del mar.",
+   "level": 3,
+   "families": [
+    "l",
+    "c",
+    "d",
+    "m",
+    "n",
+    "s",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "El",
+     "clip": null
+    },
+    {
+     "text": "sol",
+     "clip": null
+    },
+    {
+     "text": "calienta",
+     "clip": null
+    },
+    {
+     "text": "la",
+     "clip": null
+    },
+    {
+     "text": "arena",
+     "clip": null
+    },
+    {
+     "text": "del",
+     "clip": null
+    },
+    {
+     "text": "mar",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "playa",
+    "items": [
+     {
+      "p": {
+       "icon": "sun"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_3_09.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué calienta el sol?",
+    "options": [
+     {
+      "text": "arena",
+      "picture": {
+       "scene": "playa"
+      }
+     },
+     {
+      "text": "escuela",
+      "picture": {
+       "scene": "escuela"
+      }
+     },
+     {
+      "text": "bosque",
+      "picture": {
+       "scene": "bosque"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 4,
+    "explanation": "Arena. La oración dice: «El sol calienta la arena del mar.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_3_23",
+    "oracion_4_04"
+   ]
+  },
+  {
+   "id": "oracion_3_10",
+   "text": "Ana come una manzana roja y dulce.",
+   "level": 3,
+   "families": [
+    "n",
+    "c",
+    "m",
+    "d"
+   ],
+   "words": [
+    {
+     "text": "Ana",
+     "clip": null
+    },
+    {
+     "text": "come",
+     "clip": null
+    },
+    {
+     "text": "una",
+     "clip": null
+    },
+    {
+     "text": "manzana",
+     "clip": null
+    },
+    {
+     "text": "roja",
+     "clip": null
+    },
+    {
+     "text": "y",
+     "clip": null
+    },
+    {
+     "text": "dulce",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "cocina",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "girl": true,
+        "emotion": "feliz",
+        "shirt": "#EC407A"
+       }
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "drawing": "fruta_manzana"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_3_10.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué come Ana?",
+    "options": [
+     {
+      "text": "manzana",
+      "picture": {
+       "drawing": "fruta_manzana"
+      }
+     },
+     {
+      "text": "plátano",
+      "picture": {
+       "drawing": "fruta_platano"
+      }
+     },
+     {
+      "text": "uvas",
+      "picture": {
+       "drawing": "fruta_uvas"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 3,
+    "explanation": "Manzana. La oración dice: «Ana come una manzana roja y dulce.»"
+   },
+   "order": false,
+   "listen": true,
+   "listen_options": [
+    "oracion_3_17",
+    "oracion_3_24"
+   ]
+  },
+  {
+   "id": "oracion_3_11",
+   "text": "El barco azul navega en el mar.",
+   "level": 3,
+   "families": [
+    "b",
+    "c",
+    "m",
+    "n"
+   ],
+   "words": [
+    {
+     "text": "El",
+     "clip": null
+    },
+    {
+     "text": "barco",
+     "clip": null
+    },
+    {
+     "text": "azul",
+     "clip": null
+    },
+    {
+     "text": "navega",
+     "clip": null
+    },
+    {
+     "text": "en",
+     "clip": null
+    },
+    {
+     "text": "el",
+     "clip": null
+    },
+    {
+     "text": "mar",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "playa",
+    "items": [
+     {
+      "p": {
+       "drawing": "vehiculo_barco"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_3_11.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿De qué color es el barco?",
+    "options": [
+     {
+      "text": "azul",
+      "picture": {
+       "swatch": "#1E88E5"
+      }
+     },
+     {
+      "text": "rojo",
+      "picture": {
+       "swatch": "#E53935"
+      }
+     },
+     {
+      "text": "verde",
+      "picture": {
+       "swatch": "#43A047"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 2,
+    "explanation": "Azul. La oración dice: «El barco azul navega en el mar.»"
+   },
+   "order": false,
+   "listen": true,
+   "listen_options": [
+    "oracion_3_18",
+    "oracion_3_25"
+   ]
+  },
+  {
+   "id": "oracion_3_12",
+   "text": "Mi mamá cocina una sopa caliente.",
+   "level": 3,
+   "families": [
+    "c",
+    "m",
+    "n",
+    "l",
+    "p",
+    "s",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "Mi",
+     "clip": null
+    },
+    {
+     "text": "mamá",
+     "clip": null
+    },
+    {
+     "text": "cocina",
+     "clip": null
+    },
+    {
+     "text": "una",
+     "clip": null
+    },
+    {
+     "text": "sopa",
+     "clip": null
+    },
+    {
+     "text": "caliente",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "cocina",
+    "items": [
+     {
+      "p": {
+       "icon": "woman"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "soup"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_3_12.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué cocina mamá?",
+    "options": [
+     {
+      "text": "sopa",
+      "picture": {
+       "icon": "soup"
+      }
+     },
+     {
+      "text": "pizza",
+      "picture": {
+       "icon": "pizza"
+      }
+     },
+     {
+      "text": "helado",
+      "picture": {
+       "icon": "icecream"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 4,
+    "explanation": "Sopa. La oración dice: «Mi mamá cocina una sopa caliente.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_3_19",
+    "oracion_3_26"
+   ]
+  },
+  {
+   "id": "oracion_3_13",
+   "text": "La luna sale cuando es de noche.",
+   "level": 3,
+   "families": [
+    "l",
+    "c",
+    "d",
+    "n",
+    "s"
+   ],
+   "words": [
+    {
+     "text": "La",
+     "clip": null
+    },
+    {
+     "text": "luna",
+     "clip": null
+    },
+    {
+     "text": "sale",
+     "clip": null
+    },
+    {
+     "text": "cuando",
+     "clip": null
+    },
+    {
+     "text": "es",
+     "clip": null
+    },
+    {
+     "text": "de",
+     "clip": null
+    },
+    {
+     "text": "noche",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "noche",
+    "items": [
+     {
+      "p": {
+       "icon": "moon"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_3_13.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Cuándo sale la luna?",
+    "options": [
+     {
+      "text": "de noche",
+      "picture": {
+       "scene": "noche"
+      }
+     },
+     {
+      "text": "de día",
+      "picture": {
+       "icon": "wb_sunny"
+      }
+     },
+     {
+      "text": "con lluvia",
+      "picture": {
+       "scene": "lluvia"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 6,
+    "explanation": "De noche. La oración dice: «La luna sale cuando es de noche.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_3_20",
+    "oracion_4_01"
+   ]
+  },
+  {
+   "id": "oracion_3_14",
+   "text": "El conejo come una zanahoria naranja.",
+   "level": 3,
+   "families": [
+    "n",
+    "c",
+    "m"
+   ],
+   "words": [
+    {
+     "text": "El",
+     "clip": null
+    },
+    {
+     "text": "conejo",
+     "clip": null
+    },
+    {
+     "text": "come",
+     "clip": null
+    },
+    {
+     "text": "una",
+     "clip": null
+    },
+    {
+     "text": "zanahoria",
+     "clip": null
+    },
+    {
+     "text": "naranja",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "jardin",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_conejo"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "carrot"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_3_14.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué come el conejo?",
+    "options": [
+     {
+      "text": "zanahoria",
+      "picture": {
+       "icon": "carrot"
+      }
+     },
+     {
+      "text": "manzana",
+      "picture": {
+       "drawing": "fruta_manzana"
+      }
+     },
+     {
+      "text": "pan",
+      "picture": {
+       "icon": "bread"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 4,
+    "explanation": "Zanahoria. La oración dice: «El conejo come una zanahoria naranja.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_3_21",
+    "oracion_4_09"
+   ]
+  },
+  {
+   "id": "oracion_3_15",
+   "text": "Los niños juegan con la pelota en el patio.",
+   "level": 3,
+   "families": [
+    "l",
+    "p",
+    "t",
+    "c",
+    "n"
+   ],
+   "words": [
+    {
+     "text": "Los",
+     "clip": null
+    },
+    {
+     "text": "niños",
+     "clip": null
+    },
+    {
+     "text": "juegan",
+     "clip": null
+    },
+    {
+     "text": "con",
+     "clip": null
+    },
+    {
+     "text": "la",
+     "clip": null
+    },
+    {
+     "text": "pelota",
+     "clip": null
+    },
+    {
+     "text": "en",
+     "clip": null
+    },
+    {
+     "text": "el",
+     "clip": null
+    },
+    {
+     "text": "patio",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "escuela",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "girl": false,
+        "emotion": "feliz"
+       }
+      },
+      "x": 0.22,
+      "y": 0.62,
+      "s": 0.3
+     },
+     {
+      "p": {
+       "kid": {
+        "girl": true,
+        "emotion": "feliz",
+        "shirt": "#EC407A"
+       }
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.3
+     },
+     {
+      "p": {
+       "icon": "ball"
+      },
+      "x": 0.78,
+      "y": 0.62,
+      "s": 0.3
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_3_15.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Con qué juegan los niños?",
+    "options": [
+     {
+      "text": "pelota",
+      "picture": {
+       "icon": "ball"
+      }
+     },
+     {
+      "text": "robot",
+      "picture": {
+       "drawing": "fantasia_robot"
+      }
+     },
+     {
+      "text": "mochila",
+      "picture": {
+       "icon": "backpack"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 5,
+    "explanation": "Pelota. La oración dice: «Los niños juegan con la pelota en el patio.»"
+   },
+   "order": false,
+   "listen": true,
+   "listen_options": [
+    "oracion_4_03",
+    "oracion_4_10"
+   ]
+  },
+  {
+   "id": "oracion_3_16",
+   "text": "El gallo canta cuando sale el sol.",
+   "level": 3,
+   "families": [
+    "c",
+    "l",
+    "s",
+    "d",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "El",
+     "clip": null
+    },
+    {
+     "text": "gallo",
+     "clip": null
+    },
+    {
+     "text": "canta",
+     "clip": null
+    },
+    {
+     "text": "cuando",
+     "clip": null
+    },
+    {
+     "text": "sale",
+     "clip": null
+    },
+    {
+     "text": "el",
+     "clip": null
+    },
+    {
+     "text": "sol",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "jardin",
+    "items": [
+     {
+      "p": {
+       "drawing": "granja_gallo"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "sun"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_3_16.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Quién canta?",
+    "options": [
+     {
+      "text": "gallo",
+      "picture": {
+       "drawing": "granja_gallo"
+      }
+     },
+     {
+      "text": "gallina",
+      "picture": {
+       "drawing": "granja_gallina"
+      }
+     },
+     {
+      "text": "pato",
+      "picture": {
+       "drawing": "granja_patito"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 1,
+    "explanation": "Gallo. La oración dice: «El gallo canta cuando sale el sol.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_3_23",
+    "oracion_4_04"
+   ]
+  },
+  {
+   "id": "oracion_3_17",
+   "text": "La abeja vuela cerca de la casa.",
+   "level": 3,
+   "families": [
+    "c",
+    "l",
+    "b",
+    "d",
+    "s"
+   ],
+   "words": [
+    {
+     "text": "La",
+     "clip": null
+    },
+    {
+     "text": "abeja",
+     "clip": null
+    },
+    {
+     "text": "vuela",
+     "clip": null
+    },
+    {
+     "text": "cerca",
+     "clip": null
+    },
+    {
+     "text": "de",
+     "clip": null
+    },
+    {
+     "text": "la",
+     "clip": null
+    },
+    {
+     "text": "casa",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "jardin",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_abeja"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "home"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_3_17.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Quién vuela cerca de la casa?",
+    "options": [
+     {
+      "text": "abeja",
+      "picture": {
+       "drawing": "animal_abeja"
+      }
+     },
+     {
+      "text": "oruga",
+      "picture": {
+       "drawing": "animal_oruga"
+      }
+     },
+     {
+      "text": "tortuga",
+      "picture": {
+       "drawing": "animal_tortuga"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 1,
+    "explanation": "Abeja. La oración dice: «La abeja vuela cerca de la casa.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_3_24",
+    "oracion_4_05"
+   ]
+  },
+  {
+   "id": "oracion_3_18",
+   "text": "Mi perro tiene las orejas muy largas.",
+   "level": 3,
+   "families": [
+    "l",
+    "m",
+    "n",
+    "p",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "Mi",
+     "clip": null
+    },
+    {
+     "text": "perro",
+     "clip": null
+    },
+    {
+     "text": "tiene",
+     "clip": null
+    },
+    {
+     "text": "las",
+     "clip": null
+    },
+    {
+     "text": "orejas",
+     "clip": null
+    },
+    {
+     "text": "muy",
+     "clip": null
+    },
+    {
+     "text": "largas",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "casa",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_perro"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_3_18.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué tiene largas el perro?",
+    "options": [
+     {
+      "text": "orejas",
+      "picture": {
+       "body": "orejas"
+      }
+     },
+     {
+      "text": "pies",
+      "picture": {
+       "body": "pies"
+      }
+     },
+     {
+      "text": "boca",
+      "picture": {
+       "body": "boca"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 4,
+    "explanation": "Orejas. La oración dice: «Mi perro tiene las orejas muy largas.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_3_25",
+    "oracion_4_06"
+   ]
+  },
+  {
+   "id": "oracion_3_19",
+   "text": "La oveja tiene la lana muy suave.",
+   "level": 3,
+   "families": [
+    "l",
+    "n",
+    "m",
+    "s",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "La",
+     "clip": null
+    },
+    {
+     "text": "oveja",
+     "clip": null
+    },
+    {
+     "text": "tiene",
+     "clip": null
+    },
+    {
+     "text": "la",
+     "clip": null
+    },
+    {
+     "text": "lana",
+     "clip": null
+    },
+    {
+     "text": "muy",
+     "clip": null
+    },
+    {
+     "text": "suave",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "jardin",
+    "items": [
+     {
+      "p": {
+       "drawing": "granja_oveja"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_3_19.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Quién tiene la lana suave?",
+    "options": [
+     {
+      "text": "oveja",
+      "picture": {
+       "drawing": "granja_oveja"
+      }
+     },
+     {
+      "text": "vaca",
+      "picture": {
+       "drawing": "granja_vaca"
+      }
+     },
+     {
+      "text": "cerdito",
+      "picture": {
+       "drawing": "granja_cerdito"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 1,
+    "explanation": "Oveja. La oración dice: «La oveja tiene la lana muy suave.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_3_26",
+    "oracion_4_07"
+   ]
+  },
+  {
+   "id": "oracion_3_20",
+   "text": "El niño se pone la camisa azul.",
+   "level": 3,
+   "families": [
+    "n",
+    "s",
+    "c",
+    "l",
+    "m",
+    "p"
+   ],
+   "words": [
+    {
+     "text": "El",
+     "clip": null
+    },
+    {
+     "text": "niño",
+     "clip": null
+    },
+    {
+     "text": "se",
+     "clip": null
+    },
+    {
+     "text": "pone",
+     "clip": null
+    },
+    {
+     "text": "la",
+     "clip": null
+    },
+    {
+     "text": "camisa",
+     "clip": null
+    },
+    {
+     "text": "azul",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "dormitorio",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "girl": false,
+        "emotion": "feliz"
+       }
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "shirt"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_3_20.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué se pone el niño?",
+    "options": [
+     {
+      "text": "camisa",
+      "picture": {
+       "icon": "shirt"
+      }
+     },
+     {
+      "text": "zapatos",
+      "picture": {
+       "icon": "shoes"
+      }
+     },
+     {
+      "text": "lentes",
+      "picture": {
+       "icon": "glasses"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 5,
+    "explanation": "Camisa. La oración dice: «El niño se pone la camisa azul.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_4_01",
+    "oracion_4_08"
+   ]
+  },
+  {
+   "id": "oracion_3_21",
+   "text": "Hay muchas nubes en el cielo hoy.",
+   "level": 3,
+   "families": [
+    "c",
+    "b",
+    "l",
+    "m",
+    "n"
+   ],
+   "words": [
+    {
+     "text": "Hay",
+     "clip": null
+    },
+    {
+     "text": "muchas",
+     "clip": null
+    },
+    {
+     "text": "nubes",
+     "clip": null
+    },
+    {
+     "text": "en",
+     "clip": null
+    },
+    {
+     "text": "el",
+     "clip": null
+    },
+    {
+     "text": "cielo",
+     "clip": null
+    },
+    {
+     "text": "hoy",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "cielo",
+    "items": [
+     {
+      "p": {
+       "icon": "cloud"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_3_21.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué hay en el cielo?",
+    "options": [
+     {
+      "text": "nubes",
+      "picture": {
+       "icon": "cloud"
+      }
+     },
+     {
+      "text": "pelota",
+      "picture": {
+       "icon": "ball"
+      }
+     },
+     {
+      "text": "mesa",
+      "picture": {
+       "icon": "table"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 2,
+    "explanation": "Nubes. La oración dice: «Hay muchas nubes en el cielo hoy.»"
+   },
+   "order": false,
+   "listen": true,
+   "listen_options": [
+    "oracion_4_02",
+    "oracion_4_09"
+   ]
+  },
+  {
+   "id": "oracion_3_22",
+   "text": "El autobús amarillo lleva a los niños.",
+   "level": 3,
+   "families": [
+    "l",
+    "b",
+    "m",
+    "n",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "El",
+     "clip": null
+    },
+    {
+     "text": "autobús",
+     "clip": null
+    },
+    {
+     "text": "amarillo",
+     "clip": null
+    },
+    {
+     "text": "lleva",
+     "clip": null
+    },
+    {
+     "text": "a",
+     "clip": null
+    },
+    {
+     "text": "los",
+     "clip": null
+    },
+    {
+     "text": "niños",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "escuela",
+    "items": [
+     {
+      "p": {
+       "drawing": "vehiculo_autobus"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_3_22.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué lleva a los niños?",
+    "options": [
+     {
+      "text": "autobús",
+      "picture": {
+       "drawing": "vehiculo_autobus"
+      }
+     },
+     {
+      "text": "barco",
+      "picture": {
+       "drawing": "vehiculo_barco"
+      }
+     },
+     {
+      "text": "avión",
+      "picture": {
+       "drawing": "vehiculo_avion"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 1,
+    "explanation": "Autobús. La oración dice: «El autobús amarillo lleva a los niños.»"
+   },
+   "order": false,
+   "listen": true,
+   "listen_options": [
+    "oracion_4_03",
+    "oracion_4_10"
+   ]
+  },
+  {
+   "id": "oracion_3_23",
+   "text": "La gata duerme junto a la ventana.",
+   "level": 3,
+   "families": [
+    "t",
+    "l",
+    "d",
+    "m",
+    "n"
+   ],
+   "words": [
+    {
+     "text": "La",
+     "clip": null
+    },
+    {
+     "text": "gata",
+     "clip": null
+    },
+    {
+     "text": "duerme",
+     "clip": null
+    },
+    {
+     "text": "junto",
+     "clip": null
+    },
+    {
+     "text": "a",
+     "clip": null
+    },
+    {
+     "text": "la",
+     "clip": null
+    },
+    {
+     "text": "ventana",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "casa",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_gato"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "window"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_3_23.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Dónde duerme la gata?",
+    "options": [
+     {
+      "text": "ventana",
+      "picture": {
+       "icon": "window"
+      }
+     },
+     {
+      "text": "puerta",
+      "picture": {
+       "icon": "door"
+      }
+     },
+     {
+      "text": "mesa",
+      "picture": {
+       "icon": "table"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 6,
+    "explanation": "Ventana. La oración dice: «La gata duerme junto a la ventana.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_4_04",
+    "oracion_4_11"
+   ]
+  },
+  {
+   "id": "oracion_3_24",
+   "text": "Papá lava el carro con agua y jabón.",
+   "level": 3,
+   "families": [
+    "c",
+    "p",
+    "b",
+    "l"
+   ],
+   "words": [
+    {
+     "text": "Papá",
+     "clip": null
+    },
+    {
+     "text": "lava",
+     "clip": null
+    },
+    {
+     "text": "el",
+     "clip": null
+    },
+    {
+     "text": "carro",
+     "clip": null
+    },
+    {
+     "text": "con",
+     "clip": null
+    },
+    {
+     "text": "agua",
+     "clip": null
+    },
+    {
+     "text": "y",
+     "clip": null
+    },
+    {
+     "text": "jabón",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "casa",
+    "items": [
+     {
+      "p": {
+       "icon": "man"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "drawing": "vehiculo_automovil"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_3_24.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué lava papá?",
+    "options": [
+     {
+      "text": "carro",
+      "picture": {
+       "drawing": "vehiculo_automovil"
+      }
+     },
+     {
+      "text": "barco",
+      "picture": {
+       "drawing": "vehiculo_barco"
+      }
+     },
+     {
+      "text": "avión",
+      "picture": {
+       "drawing": "vehiculo_avion"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 3,
+    "explanation": "Carro. La oración dice: «Papá lava el carro con agua y jabón.»"
+   },
+   "order": false,
+   "listen": true,
+   "listen_options": [
+    "oracion_4_05",
+    "oracion_1_07"
+   ]
+  },
+  {
+   "id": "oracion_3_25",
+   "text": "Un pájaro canta en la rama del árbol.",
+   "level": 3,
+   "families": [
+    "b",
+    "c",
+    "d",
+    "l",
+    "m",
+    "p",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "Un",
+     "clip": null
+    },
+    {
+     "text": "pájaro",
+     "clip": null
+    },
+    {
+     "text": "canta",
+     "clip": null
+    },
+    {
+     "text": "en",
+     "clip": null
+    },
+    {
+     "text": "la",
+     "clip": null
+    },
+    {
+     "text": "rama",
+     "clip": null
+    },
+    {
+     "text": "del",
+     "clip": null
+    },
+    {
+     "text": "árbol",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "bosque",
+    "items": [
+     {
+      "p": {
+       "icon": "bird"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "tree"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_3_25.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Quién canta en la rama?",
+    "options": [
+     {
+      "text": "pájaro",
+      "picture": {
+       "icon": "bird"
+      }
+     },
+     {
+      "text": "gato",
+      "picture": {
+       "drawing": "animal_gato"
+      }
+     },
+     {
+      "text": "perro",
+      "picture": {
+       "drawing": "animal_perro"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 1,
+    "explanation": "Pájaro. La oración dice: «Un pájaro canta en la rama del árbol.»"
+   },
+   "order": false,
+   "listen": true,
+   "listen_options": [
+    "oracion_4_06",
+    "oracion_4_13"
+   ]
+  },
+  {
+   "id": "oracion_3_26",
+   "text": "El delfín salta muy alto en el mar.",
+   "level": 3,
+   "families": [
+    "m",
+    "t",
+    "d",
+    "f",
+    "s"
+   ],
+   "words": [
+    {
+     "text": "El",
+     "clip": null
+    },
+    {
+     "text": "delfín",
+     "clip": null
+    },
+    {
+     "text": "salta",
+     "clip": null
+    },
+    {
+     "text": "muy",
+     "clip": null
+    },
+    {
+     "text": "alto",
+     "clip": null
+    },
+    {
+     "text": "en",
+     "clip": null
+    },
+    {
+     "text": "el",
+     "clip": null
+    },
+    {
+     "text": "mar",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "playa",
+    "items": [
+     {
+      "p": {
+       "drawing": "mar_delfin"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_3_26.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Quién salta en el mar?",
+    "options": [
+     {
+      "text": "delfín",
+      "picture": {
+       "drawing": "mar_delfin"
+      }
+     },
+     {
+      "text": "pulpo",
+      "picture": {
+       "drawing": "mar_pulpo"
+      }
+     },
+     {
+      "text": "cangrejo",
+      "picture": {
+       "drawing": "mar_cangrejo"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 1,
+    "explanation": "Delfín. La oración dice: «El delfín salta muy alto en el mar.»"
+   },
+   "order": false,
+   "listen": true,
+   "listen_options": [
+    "oracion_4_07",
+    "oracion_4_14"
+   ]
+  },
+  {
+   "id": "oracion_4_01",
+   "text": "El conejo blanco come una zanahoria.",
+   "level": 4,
+   "families": [
+    "c",
+    "n",
+    "b",
+    "m"
+   ],
+   "words": [
+    {
+     "text": "El",
+     "clip": null
+    },
+    {
+     "text": "conejo",
+     "clip": null
+    },
+    {
+     "text": "blanco",
+     "clip": null
+    },
+    {
+     "text": "come",
+     "clip": null
+    },
+    {
+     "text": "una",
+     "clip": null
+    },
+    {
+     "text": "zanahoria",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "jardin",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_conejo"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "carrot"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_4_01.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿De qué color es el conejo?",
+    "options": [
+     {
+      "text": "blanco",
+      "picture": {
+       "swatch": "#FFFFFF"
+      }
+     },
+     {
+      "text": "negro",
+      "picture": {
+       "swatch": "#212121"
+      }
+     },
+     {
+      "text": "rojo",
+      "picture": {
+       "swatch": "#E53935"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 2,
+    "explanation": "Blanco. La oración dice: «El conejo blanco come una zanahoria.»"
+   },
+   "order": false,
+   "listen": true,
+   "listen_options": [
+    "oracion_4_08",
+    "oracion_4_22"
+   ]
+  },
+  {
+   "id": "oracion_4_02",
+   "text": "La mariposa vuela sobre las flores.",
+   "level": 4,
+   "families": [
+    "l",
+    "s",
+    "b",
+    "f",
+    "m",
+    "p"
+   ],
+   "words": [
+    {
+     "text": "La",
+     "clip": null
+    },
+    {
+     "text": "mariposa",
+     "clip": null
+    },
+    {
+     "text": "vuela",
+     "clip": null
+    },
+    {
+     "text": "sobre",
+     "clip": null
+    },
+    {
+     "text": "las",
+     "clip": null
+    },
+    {
+     "text": "flores",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "jardin",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_mariposa"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "flower"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_4_02.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Sobre qué vuela la mariposa?",
+    "options": [
+     {
+      "text": "flores",
+      "picture": {
+       "icon": "flower"
+      }
+     },
+     {
+      "text": "casa",
+      "picture": {
+       "icon": "home"
+      }
+     },
+     {
+      "text": "mesa",
+      "picture": {
+       "icon": "table"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 5,
+    "explanation": "Flores. La oración dice: «La mariposa vuela sobre las flores.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_4_09",
+    "oracion_4_23"
+   ]
+  },
+  {
+   "id": "oracion_4_03",
+   "text": "El elefante tiene una trompa larga.",
+   "level": 4,
+   "families": [
+    "t",
+    "l",
+    "n",
+    "f",
+    "p"
+   ],
+   "words": [
+    {
+     "text": "El",
+     "clip": null
+    },
+    {
+     "text": "elefante",
+     "clip": null
+    },
+    {
+     "text": "tiene",
+     "clip": null
+    },
+    {
+     "text": "una",
+     "clip": null
+    },
+    {
+     "text": "trompa",
+     "clip": null
+    },
+    {
+     "text": "larga",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "bosque",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_elefante"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_4_03.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Quién tiene una trompa larga?",
+    "options": [
+     {
+      "text": "elefante",
+      "picture": {
+       "drawing": "animal_elefante"
+      }
+     },
+     {
+      "text": "jirafa",
+      "picture": {
+       "drawing": "animal_jirafa"
+      }
+     },
+     {
+      "text": "cebra",
+      "picture": {
+       "drawing": "animal_cebra"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 1,
+    "explanation": "Elefante. La oración dice: «El elefante tiene una trompa larga.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_4_10",
+    "oracion_4_17"
+   ]
+  },
+  {
+   "id": "oracion_4_04",
+   "text": "El tren pasa por el puente.",
+   "level": 4,
+   "families": [
+    "p",
+    "t",
+    "s"
+   ],
+   "words": [
+    {
+     "text": "El",
+     "clip": null
+    },
+    {
+     "text": "tren",
+     "clip": null
+    },
+    {
+     "text": "pasa",
+     "clip": null
+    },
+    {
+     "text": "por",
+     "clip": null
+    },
+    {
+     "text": "el",
+     "clip": null
+    },
+    {
+     "text": "puente",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "parque",
+    "items": [
+     {
+      "p": {
+       "drawing": "vehiculo_tren"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_4_04.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué pasa por el puente?",
+    "options": [
+     {
+      "text": "tren",
+      "picture": {
+       "drawing": "vehiculo_tren"
+      }
+     },
+     {
+      "text": "barco",
+      "picture": {
+       "drawing": "vehiculo_barco"
+      }
+     },
+     {
+      "text": "avión",
+      "picture": {
+       "drawing": "vehiculo_avion"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 1,
+    "explanation": "Tren. La oración dice: «El tren pasa por el puente.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_4_11",
+    "oracion_4_18"
+   ]
+  },
+  {
+   "id": "oracion_4_05",
+   "text": "Mi primo come una fresa.",
+   "level": 4,
+   "families": [
+    "m",
+    "c",
+    "f",
+    "n",
+    "p",
+    "s"
+   ],
+   "words": [
+    {
+     "text": "Mi",
+     "clip": null
+    },
+    {
+     "text": "primo",
+     "clip": null
+    },
+    {
+     "text": "come",
+     "clip": null
+    },
+    {
+     "text": "una",
+     "clip": null
+    },
+    {
+     "text": "fresa",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "cocina",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "girl": false,
+        "emotion": "feliz"
+       }
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "drawing": "fruta_fresa"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_4_05.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué come mi primo?",
+    "options": [
+     {
+      "text": "fresa",
+      "picture": {
+       "drawing": "fruta_fresa"
+      }
+     },
+     {
+      "text": "uvas",
+      "picture": {
+       "drawing": "fruta_uvas"
+      }
+     },
+     {
+      "text": "pan",
+      "picture": {
+       "icon": "bread"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 4,
+    "explanation": "Fresa. La oración dice: «Mi primo come una fresa.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_1_07",
+    "oracion_1_14"
+   ]
+  },
+  {
+   "id": "oracion_4_06",
+   "text": "Leo un libro en la clase.",
+   "level": 4,
+   "families": [
+    "l",
+    "b",
+    "c",
+    "s"
+   ],
+   "words": [
+    {
+     "text": "Leo",
+     "clip": null
+    },
+    {
+     "text": "un",
+     "clip": null
+    },
+    {
+     "text": "libro",
+     "clip": null
+    },
+    {
+     "text": "en",
+     "clip": null
+    },
+    {
+     "text": "la",
+     "clip": null
+    },
+    {
+     "text": "clase",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "escuela",
+    "items": [
+     {
+      "p": {
+       "icon": "book"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_4_06.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué leo?",
+    "options": [
+     {
+      "text": "libro",
+      "picture": {
+       "icon": "book"
+      }
+     },
+     {
+      "text": "mapa",
+      "picture": {
+       "icon": "map"
+      }
+     },
+     {
+      "text": "pelota",
+      "picture": {
+       "icon": "ball"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 2,
+    "explanation": "Libro. La oración dice: «Leo un libro en la clase.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_4_13",
+    "oracion_4_20"
+   ]
+  },
+  {
+   "id": "oracion_4_07",
+   "text": "El dragón vuela sobre el castillo.",
+   "level": 4,
+   "families": [
+    "l",
+    "b",
+    "c",
+    "d",
+    "s",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "El",
+     "clip": null
+    },
+    {
+     "text": "dragón",
+     "clip": null
+    },
+    {
+     "text": "vuela",
+     "clip": null
+    },
+    {
+     "text": "sobre",
+     "clip": null
+    },
+    {
+     "text": "el",
+     "clip": null
+    },
+    {
+     "text": "castillo",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "cielo",
+    "items": [
+     {
+      "p": {
+       "drawing": "fantasia_dragon"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_4_07.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Quién vuela sobre el castillo?",
+    "options": [
+     {
+      "text": "dragón",
+      "picture": {
+       "drawing": "fantasia_dragon"
+      }
+     },
+     {
+      "text": "hada",
+      "picture": {
+       "drawing": "fantasia_hada"
+      }
+     },
+     {
+      "text": "unicornio",
+      "picture": {
+       "drawing": "fantasia_unicornio"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 1,
+    "explanation": "Dragón. La oración dice: «El dragón vuela sobre el castillo.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_4_14",
+    "oracion_4_21"
+   ]
+  },
+  {
+   "id": "oracion_4_08",
+   "text": "Hace frío y está nevando.",
+   "level": 4,
+   "families": [
+    "c",
+    "d",
+    "f",
+    "n",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "Hace",
+     "clip": null
+    },
+    {
+     "text": "frío",
+     "clip": null
+    },
+    {
+     "text": "y",
+     "clip": null
+    },
+    {
+     "text": "está",
+     "clip": null
+    },
+    {
+     "text": "nevando",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "noche",
+    "items": [
+     {
+      "p": {
+       "icon": "snow"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_4_08.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué tiempo hace?",
+    "options": [
+     {
+      "text": "nieve",
+      "picture": {
+       "icon": "snow"
+      }
+     },
+     {
+      "text": "sol",
+      "picture": {
+       "icon": "sun"
+      }
+     },
+     {
+      "text": "lluvia",
+      "picture": {
+       "icon": "rain"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 4,
+    "explanation": "Nieve. La oración dice: «Hace frío y está nevando.»"
+   },
+   "order": false,
+   "listen": true,
+   "listen_options": [
+    "oracion_4_15",
+    "oracion_1_03"
+   ]
+  },
+  {
+   "id": "oracion_4_09",
+   "text": "La cebra tiene rayas negras y blancas.",
+   "level": 4,
+   "families": [
+    "b",
+    "c",
+    "n",
+    "l",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "La",
+     "clip": null
+    },
+    {
+     "text": "cebra",
+     "clip": null
+    },
+    {
+     "text": "tiene",
+     "clip": null
+    },
+    {
+     "text": "rayas",
+     "clip": null
+    },
+    {
+     "text": "negras",
+     "clip": null
+    },
+    {
+     "text": "y",
+     "clip": null
+    },
+    {
+     "text": "blancas",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "bosque",
+    "items": [
+     {
+      "p": {
+       "drawing": "animal_cebra"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_4_09.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Quién tiene rayas?",
+    "options": [
+     {
+      "text": "cebra",
+      "picture": {
+       "drawing": "animal_cebra"
+      }
+     },
+     {
+      "text": "jirafa",
+      "picture": {
+       "drawing": "animal_jirafa"
+      }
+     },
+     {
+      "text": "elefante",
+      "picture": {
+       "drawing": "animal_elefante"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 1,
+    "explanation": "Cebra. La oración dice: «La cebra tiene rayas negras y blancas.»"
+   },
+   "order": false,
+   "listen": true,
+   "listen_options": [
+    "oracion_4_23",
+    "oracion_1_11"
+   ]
+  },
+  {
+   "id": "oracion_4_10",
+   "text": "El cangrejo camina por la playa.",
+   "level": 4,
+   "families": [
+    "c",
+    "p",
+    "l",
+    "m",
+    "n"
+   ],
+   "words": [
+    {
+     "text": "El",
+     "clip": null
+    },
+    {
+     "text": "cangrejo",
+     "clip": null
+    },
+    {
+     "text": "camina",
+     "clip": null
+    },
+    {
+     "text": "por",
+     "clip": null
+    },
+    {
+     "text": "la",
+     "clip": null
+    },
+    {
+     "text": "playa",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "playa",
+    "items": [
+     {
+      "p": {
+       "drawing": "mar_cangrejo"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_4_10.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Quién camina por la playa?",
+    "options": [
+     {
+      "text": "cangrejo",
+      "picture": {
+       "drawing": "mar_cangrejo"
+      }
+     },
+     {
+      "text": "pulpo",
+      "picture": {
+       "drawing": "mar_pulpo"
+      }
+     },
+     {
+      "text": "ballena",
+      "picture": {
+       "drawing": "mar_ballena"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 1,
+    "explanation": "Cangrejo. La oración dice: «El cangrejo camina por la playa.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_4_17",
+    "oracion_4_24"
+   ]
+  },
+  {
+   "id": "oracion_4_11",
+   "text": "Mi abuela planta flores en el jardín.",
+   "level": 4,
+   "families": [
+    "b",
+    "d",
+    "f",
+    "l",
+    "m",
+    "p",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "Mi",
+     "clip": null
+    },
+    {
+     "text": "abuela",
+     "clip": null
+    },
+    {
+     "text": "planta",
+     "clip": null
+    },
+    {
+     "text": "flores",
+     "clip": null
+    },
+    {
+     "text": "en",
+     "clip": null
+    },
+    {
+     "text": "el",
+     "clip": null
+    },
+    {
+     "text": "jardín",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "jardin",
+    "items": [
+     {
+      "p": {
+       "icon": "elderly_woman"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "flower"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_4_11.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué planta la abuela?",
+    "options": [
+     {
+      "text": "flores",
+      "picture": {
+       "icon": "flower"
+      }
+     },
+     {
+      "text": "libro",
+      "picture": {
+       "icon": "book"
+      }
+     },
+     {
+      "text": "pelota",
+      "picture": {
+       "icon": "ball"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 3,
+    "explanation": "Flores. La oración dice: «Mi abuela planta flores en el jardín.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_4_18",
+    "oracion_1_06"
+   ]
+  },
+  {
+   "id": "oracion_4_12",
+   "text": "Pablo come un plátano.",
+   "level": 4,
+   "families": [
+    "p",
+    "b",
+    "c",
+    "m",
+    "n",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "Pablo",
+     "clip": null
+    },
+    {
+     "text": "come",
+     "clip": null
+    },
+    {
+     "text": "un",
+     "clip": null
+    },
+    {
+     "text": "plátano",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "cocina",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "girl": false,
+        "emotion": "feliz",
+        "shirt": "#42A5F5"
+       }
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "drawing": "fruta_platano"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_4_12.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué come Pablo?",
+    "options": [
+     {
+      "text": "plátano",
+      "picture": {
+       "drawing": "fruta_platano"
+      }
+     },
+     {
+      "text": "manzana",
+      "picture": {
+       "drawing": "fruta_manzana"
+      }
+     },
+     {
+      "text": "fresa",
+      "picture": {
+       "drawing": "fruta_fresa"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 3,
+    "explanation": "Plátano. La oración dice: «Pablo come un plátano.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_4_26",
+    "oracion_1_07"
+   ]
+  },
+  {
+   "id": "oracion_4_13",
+   "text": "La ballena nada en el mar profundo.",
+   "level": 4,
+   "families": [
+    "d",
+    "l",
+    "n",
+    "b",
+    "f",
+    "m",
+    "p"
+   ],
+   "words": [
+    {
+     "text": "La",
+     "clip": null
+    },
+    {
+     "text": "ballena",
+     "clip": null
+    },
+    {
+     "text": "nada",
+     "clip": null
+    },
+    {
+     "text": "en",
+     "clip": null
+    },
+    {
+     "text": "el",
+     "clip": null
+    },
+    {
+     "text": "mar",
+     "clip": null
+    },
+    {
+     "text": "profundo",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "playa",
+    "items": [
+     {
+      "p": {
+       "drawing": "mar_ballena"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_4_13.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Quién nada en el mar profundo?",
+    "options": [
+     {
+      "text": "ballena",
+      "picture": {
+       "drawing": "mar_ballena"
+      }
+     },
+     {
+      "text": "gato",
+      "picture": {
+       "drawing": "animal_gato"
+      }
+     },
+     {
+      "text": "perro",
+      "picture": {
+       "drawing": "animal_perro"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 1,
+    "explanation": "Ballena. La oración dice: «La ballena nada en el mar profundo.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_4_20",
+    "oracion_1_01"
+   ]
+  },
+  {
+   "id": "oracion_4_14",
+   "text": "Las estrellas brillan en la noche.",
+   "level": 4,
+   "families": [
+    "l",
+    "b",
+    "c",
+    "n",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "Las",
+     "clip": null
+    },
+    {
+     "text": "estrellas",
+     "clip": null
+    },
+    {
+     "text": "brillan",
+     "clip": null
+    },
+    {
+     "text": "en",
+     "clip": null
+    },
+    {
+     "text": "la",
+     "clip": null
+    },
+    {
+     "text": "noche",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "noche",
+    "items": [
+     {
+      "p": {
+       "icon": "star"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "moon"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_4_14.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué brilla en la noche?",
+    "options": [
+     {
+      "text": "estrellas",
+      "picture": {
+       "icon": "star"
+      }
+     },
+     {
+      "text": "sol",
+      "picture": {
+       "icon": "sun"
+      }
+     },
+     {
+      "text": "nube",
+      "picture": {
+       "icon": "cloud"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 1,
+    "explanation": "Estrellas. La oración dice: «Las estrellas brillan en la noche.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_4_21",
+    "oracion_1_09"
+   ]
+  },
+  {
+   "id": "oracion_4_15",
+   "text": "Mi hermana dibuja un árbol grande.",
+   "level": 4,
+   "families": [
+    "b",
+    "d",
+    "m",
+    "n"
+   ],
+   "words": [
+    {
+     "text": "Mi",
+     "clip": null
+    },
+    {
+     "text": "hermana",
+     "clip": null
+    },
+    {
+     "text": "dibuja",
+     "clip": null
+    },
+    {
+     "text": "un",
+     "clip": null
+    },
+    {
+     "text": "árbol",
+     "clip": null
+    },
+    {
+     "text": "grande",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "jardin",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "girl": true,
+        "emotion": "feliz",
+        "shirt": "#EC407A"
+       }
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "tree"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_4_15.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué dibuja mi hermana?",
+    "options": [
+     {
+      "text": "árbol",
+      "picture": {
+       "icon": "tree"
+      }
+     },
+     {
+      "text": "casa",
+      "picture": {
+       "icon": "home"
+      }
+     },
+     {
+      "text": "sol",
+      "picture": {
+       "icon": "sun"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 4,
+    "explanation": "Árbol. La oración dice: «Mi hermana dibuja un árbol grande.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_1_03",
+    "oracion_1_10"
+   ]
+  },
+  {
+   "id": "oracion_4_16",
+   "text": "El niño trepa al árbol.",
+   "level": 4,
+   "families": [
+    "b",
+    "n",
+    "p",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "El",
+     "clip": null
+    },
+    {
+     "text": "niño",
+     "clip": null
+    },
+    {
+     "text": "trepa",
+     "clip": null
+    },
+    {
+     "text": "al",
+     "clip": null
+    },
+    {
+     "text": "árbol",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "bosque",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "girl": false,
+        "emotion": "feliz"
+       }
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "tree"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_4_16.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿A dónde trepa el niño?",
+    "options": [
+     {
+      "text": "árbol",
+      "picture": {
+       "icon": "tree"
+      }
+     },
+     {
+      "text": "mesa",
+      "picture": {
+       "icon": "table"
+      }
+     },
+     {
+      "text": "carro",
+      "picture": {
+       "drawing": "vehiculo_automovil"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 4,
+    "explanation": "Árbol. La oración dice: «El niño trepa al árbol.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_4_23",
+    "oracion_1_11"
+   ]
+  },
+  {
+   "id": "oracion_4_17",
+   "text": "Tengo una bicicleta nueva.",
+   "level": 4,
+   "families": [
+    "c",
+    "n",
+    "t",
+    "b"
+   ],
+   "words": [
+    {
+     "text": "Tengo",
+     "clip": null
+    },
+    {
+     "text": "una",
+     "clip": null
+    },
+    {
+     "text": "bicicleta",
+     "clip": null
+    },
+    {
+     "text": "nueva",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "parque",
+    "items": [
+     {
+      "p": {
+       "icon": "bike"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_4_17.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué tengo?",
+    "options": [
+     {
+      "text": "bicicleta",
+      "picture": {
+       "icon": "bike"
+      }
+     },
+     {
+      "text": "carro",
+      "picture": {
+       "drawing": "vehiculo_automovil"
+      }
+     },
+     {
+      "text": "tren",
+      "picture": {
+       "drawing": "vehiculo_tren"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 2,
+    "explanation": "Bicicleta. La oración dice: «Tengo una bicicleta nueva.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_4_24",
+    "oracion_1_05"
+   ]
+  },
+  {
+   "id": "oracion_4_18",
+   "text": "El pulpo tiene ocho brazos.",
+   "level": 4,
+   "families": [
+    "p",
+    "b",
+    "c",
+    "n",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "El",
+     "clip": null
+    },
+    {
+     "text": "pulpo",
+     "clip": null
+    },
+    {
+     "text": "tiene",
+     "clip": null
+    },
+    {
+     "text": "ocho",
+     "clip": null
+    },
+    {
+     "text": "brazos",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "playa",
+    "items": [
+     {
+      "p": {
+       "drawing": "mar_pulpo"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_4_18.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Quién tiene ocho brazos?",
+    "options": [
+     {
+      "text": "pulpo",
+      "picture": {
+       "drawing": "mar_pulpo"
+      }
+     },
+     {
+      "text": "cangrejo",
+      "picture": {
+       "drawing": "mar_cangrejo"
+      }
+     },
+     {
+      "text": "ballena",
+      "picture": {
+       "drawing": "mar_ballena"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 1,
+    "explanation": "Pulpo. La oración dice: «El pulpo tiene ocho brazos.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_4_25",
+    "oracion_1_06"
+   ]
+  },
+  {
+   "id": "oracion_4_19",
+   "text": "Mi madre prepara el desayuno.",
+   "level": 4,
+   "families": [
+    "d",
+    "m",
+    "p",
+    "n",
+    "s"
+   ],
+   "words": [
+    {
+     "text": "Mi",
+     "clip": null
+    },
+    {
+     "text": "madre",
+     "clip": null
+    },
+    {
+     "text": "prepara",
+     "clip": null
+    },
+    {
+     "text": "el",
+     "clip": null
+    },
+    {
+     "text": "desayuno",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "cocina",
+    "items": [
+     {
+      "p": {
+       "icon": "woman"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "icon": "local_cafe"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_4_19.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Quién prepara el desayuno?",
+    "options": [
+     {
+      "text": "madre",
+      "picture": {
+       "icon": "woman"
+      }
+     },
+     {
+      "text": "papá",
+      "picture": {
+       "icon": "man"
+      }
+     },
+     {
+      "text": "abuelo",
+      "picture": {
+       "icon": "elderly"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 1,
+    "explanation": "Madre. La oración dice: «Mi madre prepara el desayuno.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_4_26",
+    "oracion_1_07"
+   ]
+  },
+  {
+   "id": "oracion_4_20",
+   "text": "El granjero ordeña la vaca.",
+   "level": 4,
+   "families": [
+    "c",
+    "d",
+    "l"
+   ],
+   "words": [
+    {
+     "text": "El",
+     "clip": null
+    },
+    {
+     "text": "granjero",
+     "clip": null
+    },
+    {
+     "text": "ordeña",
+     "clip": null
+    },
+    {
+     "text": "la",
+     "clip": null
+    },
+    {
+     "text": "vaca",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "jardin",
+    "items": [
+     {
+      "p": {
+       "icon": "elderly"
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "drawing": "granja_vaca"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_4_20.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué ordeña el granjero?",
+    "options": [
+     {
+      "text": "vaca",
+      "picture": {
+       "drawing": "granja_vaca"
+      }
+     },
+     {
+      "text": "oveja",
+      "picture": {
+       "drawing": "granja_oveja"
+      }
+     },
+     {
+      "text": "gallina",
+      "picture": {
+       "drawing": "granja_gallina"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 4,
+    "explanation": "Vaca. La oración dice: «El granjero ordeña la vaca.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_1_01",
+    "oracion_1_08"
+   ]
+  },
+  {
+   "id": "oracion_4_21",
+   "text": "El cocinero prepara una pizza.",
+   "level": 4,
+   "families": [
+    "p",
+    "c",
+    "n"
+   ],
+   "words": [
+    {
+     "text": "El",
+     "clip": null
+    },
+    {
+     "text": "cocinero",
+     "clip": null
+    },
+    {
+     "text": "prepara",
+     "clip": null
+    },
+    {
+     "text": "una",
+     "clip": null
+    },
+    {
+     "text": "pizza",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "cocina",
+    "items": [
+     {
+      "p": {
+       "icon": "pizza"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_4_21.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué prepara el cocinero?",
+    "options": [
+     {
+      "text": "pizza",
+      "picture": {
+       "icon": "pizza"
+      }
+     },
+     {
+      "text": "sopa",
+      "picture": {
+       "icon": "soup"
+      }
+     },
+     {
+      "text": "helado",
+      "picture": {
+       "icon": "icecream"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 4,
+    "explanation": "Pizza. La oración dice: «El cocinero prepara una pizza.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_1_09",
+    "oracion_1_16"
+   ]
+  },
+  {
+   "id": "oracion_4_22",
+   "text": "Clara toma leche con pan.",
+   "level": 4,
+   "families": [
+    "c",
+    "l",
+    "m",
+    "p",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "Clara",
+     "clip": null
+    },
+    {
+     "text": "toma",
+     "clip": null
+    },
+    {
+     "text": "leche",
+     "clip": null
+    },
+    {
+     "text": "con",
+     "clip": null
+    },
+    {
+     "text": "pan",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "cocina",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "girl": true,
+        "emotion": "feliz",
+        "shirt": "#EC407A"
+       }
+      },
+      "x": 0.22,
+      "y": 0.62,
+      "s": 0.3
+     },
+     {
+      "p": {
+       "icon": "milk"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.3
+     },
+     {
+      "p": {
+       "icon": "bread"
+      },
+      "x": 0.78,
+      "y": 0.62,
+      "s": 0.3
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_4_22.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué toma Clara?",
+    "options": [
+     {
+      "text": "leche",
+      "picture": {
+       "icon": "milk"
+      }
+     },
+     {
+      "text": "sopa",
+      "picture": {
+       "icon": "soup"
+      }
+     },
+     {
+      "text": "helado",
+      "picture": {
+       "icon": "icecream"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 2,
+    "explanation": "Leche. La oración dice: «Clara toma leche con pan.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_1_03",
+    "oracion_1_10"
+   ]
+  },
+  {
+   "id": "oracion_4_23",
+   "text": "Bruno juega con su tren.",
+   "level": 4,
+   "families": [
+    "b",
+    "c",
+    "n",
+    "s",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "Bruno",
+     "clip": null
+    },
+    {
+     "text": "juega",
+     "clip": null
+    },
+    {
+     "text": "con",
+     "clip": null
+    },
+    {
+     "text": "su",
+     "clip": null
+    },
+    {
+     "text": "tren",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "casa",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "girl": false,
+        "emotion": "feliz",
+        "shirt": "#42A5F5"
+       }
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "drawing": "vehiculo_tren"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_4_23.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Con qué juega Bruno?",
+    "options": [
+     {
+      "text": "tren",
+      "picture": {
+       "drawing": "vehiculo_tren"
+      }
+     },
+     {
+      "text": "pelota",
+      "picture": {
+       "icon": "ball"
+      }
+     },
+     {
+      "text": "robot",
+      "picture": {
+       "drawing": "fantasia_robot"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 4,
+    "explanation": "Tren. La oración dice: «Bruno juega con su tren.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_1_11",
+    "oracion_1_18"
+   ]
+  },
+  {
+   "id": "oracion_4_24",
+   "text": "El cielo está nublado y gris.",
+   "level": 4,
+   "families": [
+    "b",
+    "c",
+    "d",
+    "l",
+    "n",
+    "t"
+   ],
+   "words": [
+    {
+     "text": "El",
+     "clip": null
+    },
+    {
+     "text": "cielo",
+     "clip": null
+    },
+    {
+     "text": "está",
+     "clip": null
+    },
+    {
+     "text": "nublado",
+     "clip": null
+    },
+    {
+     "text": "y",
+     "clip": null
+    },
+    {
+     "text": "gris",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "lluvia",
+    "items": [
+     {
+      "p": {
+       "icon": "cloud"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_4_24.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Cómo está el cielo?",
+    "options": [
+     {
+      "text": "nublado",
+      "picture": {
+       "icon": "cloud"
+      }
+     },
+     {
+      "text": "soleado",
+      "picture": {
+       "icon": "sun"
+      }
+     },
+     {
+      "text": "con estrellas",
+      "picture": {
+       "icon": "star"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 3,
+    "explanation": "Nublado. La oración dice: «El cielo está nublado y gris.»"
+   },
+   "order": false,
+   "listen": true,
+   "listen_options": [
+    "oracion_1_05",
+    "oracion_1_12"
+   ]
+  },
+  {
+   "id": "oracion_4_25",
+   "text": "La flor es de color rosa.",
+   "level": 4,
+   "families": [
+    "l",
+    "c",
+    "d",
+    "f",
+    "s"
+   ],
+   "words": [
+    {
+     "text": "La",
+     "clip": null
+    },
+    {
+     "text": "flor",
+     "clip": null
+    },
+    {
+     "text": "es",
+     "clip": null
+    },
+    {
+     "text": "de",
+     "clip": null
+    },
+    {
+     "text": "color",
+     "clip": null
+    },
+    {
+     "text": "rosa",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "jardin",
+    "items": [
+     {
+      "p": {
+       "icon": "flower"
+      },
+      "x": 0.5,
+      "y": 0.62,
+      "s": 0.5
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_4_25.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿De qué color es la flor?",
+    "options": [
+     {
+      "text": "rosa",
+      "picture": {
+       "swatch": "#F48FB1"
+      }
+     },
+     {
+      "text": "azul",
+      "picture": {
+       "swatch": "#1E88E5"
+      }
+     },
+     {
+      "text": "verde",
+      "picture": {
+       "swatch": "#43A047"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 5,
+    "explanation": "Rosa. La oración dice: «La flor es de color rosa.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_1_06",
+    "oracion_1_13"
+   ]
+  },
+  {
+   "id": "oracion_4_26",
+   "text": "Mi hermano pinta un tren grande.",
+   "level": 4,
+   "families": [
+    "m",
+    "t",
+    "d",
+    "n",
+    "p"
+   ],
+   "words": [
+    {
+     "text": "Mi",
+     "clip": null
+    },
+    {
+     "text": "hermano",
+     "clip": null
+    },
+    {
+     "text": "pinta",
+     "clip": null
+    },
+    {
+     "text": "un",
+     "clip": null
+    },
+    {
+     "text": "tren",
+     "clip": null
+    },
+    {
+     "text": "grande",
+     "clip": null
+    }
+   ],
+   "scene": {
+    "bg": "casa",
+    "items": [
+     {
+      "p": {
+       "kid": {
+        "girl": false,
+        "emotion": "feliz"
+       }
+      },
+      "x": 0.32,
+      "y": 0.62,
+      "s": 0.4
+     },
+     {
+      "p": {
+       "drawing": "vehiculo_tren"
+      },
+      "x": 0.68,
+      "y": 0.62,
+      "s": 0.4
+     }
+    ]
+   },
+   "image": "assets/images/aprendo_leer/oraciones/oracion_4_26.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "word_ms": null
+   },
+   "question": {
+    "text": "¿Qué pinta mi hermano?",
+    "options": [
+     {
+      "text": "tren",
+      "picture": {
+       "drawing": "vehiculo_tren"
+      }
+     },
+     {
+      "text": "flor",
+      "picture": {
+       "icon": "flower"
+      }
+     },
+     {
+      "text": "sol",
+      "picture": {
+       "icon": "sun"
+      }
+     }
+    ],
+    "answer": 0,
+    "hint_word": 4,
+    "explanation": "Tren. La oración dice: «Mi hermano pinta un tren grande.»"
+   },
+   "order": true,
+   "listen": true,
+   "listen_options": [
+    "oracion_1_07",
+    "oracion_1_14"
+   ]
+  }
+ ]
+}

@@ -2,6 +2,7 @@ import 'dart:js_interop';
 
 import 'package:web/web.dart' as web;
 
+import 'app_audio.dart';
 import 'web_speech.dart';
 
 SpeechEngine? createBrowserSpeechEngine() {
@@ -38,6 +39,7 @@ class _BrowserSpeechEngine implements SpeechEngine {
     required double pitch,
     required double volume,
     required void Function(String? error) onDone,
+    WordBoundary? onBoundary,
   }) {
     final u = web.SpeechSynthesisUtterance(text)
       ..lang = voice.lang
@@ -60,6 +62,12 @@ class _BrowserSpeechEngine implements SpeechEngine {
 
     u.onend = ((web.Event _) => done(null)).toJS;
     u.onerror = ((web.SpeechSynthesisErrorEvent e) => done(e.error)).toJS;
+    if (onBoundary != null) {
+      // Solo las voces que lo saben hacer avisan del inicio de cada palabra.
+      u.onboundary = ((web.SpeechSynthesisEvent e) {
+        if (!reported && e.name == 'word') onBoundary(e.charIndex);
+      }).toJS;
+    }
     _alive.add(u);
     try {
       _synth.speak(u);
