@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:fake_async/fake_async.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:pequenos_artistas/audio/app_audio.dart';
 import 'package:pequenos_artistas/audio/web_speech.dart';
 
 /// Imita a Chrome: cancelar avisa «interrupted» un instante después, una frase
@@ -34,6 +35,7 @@ class ChromeLikeEngine implements SpeechEngine {
     required double pitch,
     required double volume,
     required void Function(String? error) onDone,
+    WordBoundary? onBoundary,
   }) {
     usedVoices.add(voice.name);
     if (voice.name == failVoice) {
@@ -168,6 +170,7 @@ class _SilentEngine extends ChromeLikeEngine {
     required double pitch,
     required double volume,
     required void Function(String? error) onDone,
+    WordBoundary? onBoundary,
   }) {
     spoken.add(text);
   }

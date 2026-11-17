@@ -67,6 +67,8 @@ abstract final class AppRoutes {
   static const readingWords = '/leer/completa';
   static const readingWordsGame = '/leer/completa/juego';
   static const readingSentences = '/leer/oraciones';
+  static const readingSentencesRead = '/leer/oraciones/leer';
+  static const readingSentencesGame = '/leer/oraciones/juego';
   static const readingDictation = '/leer/dictado';
 
   static const aac = '/quiero-decir';

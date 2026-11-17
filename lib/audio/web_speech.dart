@@ -25,6 +25,7 @@ abstract interface class SpeechEngine {
     required double pitch,
     required double volume,
     required void Function(String? error) onDone,
+    WordBoundary? onBoundary,
   });
   void cancel();
   bool get speaking;
@@ -134,7 +135,7 @@ class WebSpeechNarrator implements Narrator {
   }
 
   @override
-  Future<void> speak(String text, {bool slow = false}) async {
+  Future<void> speak(String text, {bool slow = false, WordBoundary? onBoundary}) async {
     if (text.trim().isEmpty) return;
     if (!(await voice()).available) return;
     final turn = ++_turn;
@@ -148,7 +149,16 @@ class WebSpeechNarrator implements Narrator {
     while (true) {
       final voice = _voice;
       if (voice == null) return;
-      final error = await _say(text, voice, slow ? rate * DeviceTtsNarrator.slowFactor : rate);
+      final error = await _say(
+        text,
+        voice,
+        slow ? rate * DeviceTtsNarrator.slowFactor : rate,
+        onBoundary == null
+            ? null
+            : (i) {
+                if (turn == _turn) onBoundary(i);
+              },
+      );
       if (turn != _turn || error == null || !voiceErrors.contains(error) || ++tries > 2) return;
       // La voz no funciona (por ejemplo, una voz en línea sin conexión): otra.
       _badVoices.add(voice.name);
@@ -159,7 +169,7 @@ class WebSpeechNarrator implements Narrator {
     }
   }
 
-  Future<String?> _say(String text, EngineVoice voice, double rate) {
+  Future<String?> _say(String text, EngineVoice voice, double rate, WordBoundary? onBoundary) {
     final done = _current = Completer<void>();
     String? error;
     Timer? alive;
@@ -182,6 +192,7 @@ class WebSpeechNarrator implements Narrator {
         error = e;
         if (!done.isCompleted) done.complete();
       },
+      onBoundary: onBoundary,
     );
     return done.future
         .whenComplete(() {

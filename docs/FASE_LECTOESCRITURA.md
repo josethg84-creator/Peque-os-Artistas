@@ -8,7 +8,7 @@ Módulo nuevo para niños de 4 a 7 años, hecho por fases. Cada fase llega en su
 | **B · Diseño visual y navegación** | **Hecha** (este documento) |
 | **C · Motor de audio y sílabas** | **Hecha, con la voz del dispositivo; faltan grabaciones e imágenes** (ver abajo) |
 | **D · Completa las palabras** | **Hecha**: 100 de 118 palabras jugables; 18 esperan su ilustración |
-| E · Lectura guiada | Pendiente |
+| **E · Lectura guiada de oraciones** | **Hecha**: 105 oraciones con voz del dispositivo y escenas provisionales; faltan ilustraciones 3D y grabaciones |
 | F · Dictados | Pendiente |
 | G · Progreso y recompensas | Pendiente |
 | H · Pruebas, optimización y despliegue | Pendiente |
@@ -23,7 +23,9 @@ Menú principal → «Aprendo a Hablar» → sección **«Aprendo a leer»** →
 | `/leer` | Principal: Lolo, «¡Vamos a aprender juntos!», progreso y las 4 tarjetas |
 | `/leer/silabas` | A · Aprendo las sílabas: familia, sílabas, palabra de ejemplo, audio y navegación |
 | `/leer/completa` | B · Completo palabras: imagen, palabra con hueco, opciones, «Comprobar» y «Continuar» |
-| `/leer/oraciones` | C · Leo oraciones: ilustración, oración grande, «Leer», «Despacio», tocar palabras y «Siguiente oración» |
+| `/leer/oraciones` | C · Leo mis primeras oraciones: nivel, progreso y actividades (Fase E) |
+| `/leer/oraciones/leer` | Lector: ilustración, oración con resaltado, Normal/Lento, Escuchar, Repetir, Escuchar palabra, Parar, Anterior/Siguiente |
+| `/leer/oraciones/juego` | «¿Qué entendiste?», «Ordena la oración» y «Escucha y elige» |
 | `/leer/dictado` | D · Escucho y escribo: nivel, «Escuchar», formar con tarjetas, borrar y «Comprobar» |
 
 ## Código
@@ -168,3 +170,82 @@ Además:
   - las acertadas a la primera y las hechas con pista;
   - las respuestas correctas y los intentos.
 - El nivel alcanzado y los ejercicios pendientes se calculan a partir de esos datos.
+
+## Fase E · Lectura guiada de oraciones
+
+### Catálogo (`assets/reading/sentences.json`)
+
+Lo genera y valida `python3 tools/reading/sentences.py`. Las pantallas solo leen datos.
+
+- **105 oraciones**: 26 de nivel 1, 27 de nivel 2, 26 de nivel 3 y 26 de nivel 4.
+- Cada una tiene:
+  - id, texto, nivel y familias silábicas que usa;
+  - palabras (y grabación de cada palabra, si existe);
+  - escena provisional e ilustración 3D (pendiente);
+  - audio (grabación y tiempos por palabra, si existen; si no, voz del dispositivo);
+  - pregunta, 3 opciones con imagen, respuesta, palabra-pista y explicación sencilla;
+  - si vale para «Ordena» y las dos escenas de «Escucha y elige».
+- **El nivel lo calculan reglas fijas** (si no coincide con el bloque donde está escrita, el
+  generador falla):
+  - **Nivel 1**: todas las sílabas se pueden leer con lo enseñado en la Fase C (vocales, familias
+    M P S L T N D F C·Q B e inversas el, es, un…). Sin r, g, j, v, z, ñ, ll, ch, h, diptongos ni
+    sílabas trabadas.
+  - **Nivel 4**: alguna palabra con grupo consonántico (bl, tr, pr, fl…).
+  - **Nivel 3**: sin grupos y 6 palabras o más (descriptivas).
+  - **Nivel 2**: el resto (cortas, de todos los días).
+  - Por eso «El conejo blanco…», «La mariposa vuela sobre las flores» o «trompa» están en el nivel
+    4, y no en los primeros: «blanco», «flores» y «trompa» tienen grupos consonánticos.
+- Validaciones:
+  - separación silábica (la misma que comprueba la app);
+  - 3 opciones distintas con imagen; la respuesta está en la oración y las falsas no;
+  - «Ordena»: 3 a 7 palabras, sin «y» y sin adjetivos que puedan ir delante del nombre; la
+    mayúscula inicial y el punto final se mantienen como pistas, y se acepta cualquier orden que
+    forme exactamente la oración;
+  - «Escucha y elige»: las otras dos escenas no comparten fondo ni dibujos con la correcta.
+
+### Audio y resaltado (`ReadingVoice.playSentence`)
+
+Se usa el motor de las fases anteriores (no hay otro). Las palabras se resaltan así, por orden:
+
+1. **Grabación con tiempos medidos** (`assets/audio/reading/oraciones/<id>.json`): se resalta según
+   la posición real del audio.
+2. **Lento**: palabra por palabra. Cada palabra se dice sola y se resalta mientras suena.
+3. **Voz del dispositivo que avisa de cada palabra**: Android (`setProgressHandler`) y navegadores
+   con voces que lanzan `onboundary`. Se resalta cuando la voz avisa.
+4. **Si la voz no avisa**: se lee entera sin resaltar y la pantalla lo explica (con «Lento» sí se
+   resalta). Nunca se simula con temporizadores.
+
+Cada sonido nuevo corta el anterior. Tocar una palabra la dice sola. No se usa el micrófono.
+
+### Actividades
+
+- **Lector**: ilustración, oración grande, Normal/Lento, «Escuchar», «Repetir», «Escuchar
+  palabra», «Parar», «Anterior», «Siguiente» y «Responder la pregunta».
+- **¿Qué entendiste?**: la oración (sin la ilustración, que daría la respuesta), la pregunta y 3
+  tarjetas con imagen. Al fallar: la tarjeta se atenúa con una cruz, «¡Casi!», «Escuchar» y
+  «Pista» (resalta y dice la palabra que responde). Al acertar: marca verde con ✓, ilustración y
+  explicación. Sin castigos.
+- **Ordena la oración**: tocar o arrastrar las palabras; tocar una colocada la devuelve; «Pista»
+  coloca la siguiente correcta; «Comprobar».
+- **Escucha y elige**: suena la oración y se elige entre 3 escenas claramente distintas.
+- 8 oraciones por partida, primero las que aún no se han hecho.
+- **Niveles**: el 2, 3 y 4 se abren al acertar 8 preguntas del anterior.
+
+### Progreso (`reading.v1.state`, compatible con lo guardado antes)
+
+- oraciones escuchadas enteras;
+- oraciones **leídas sin ayuda**: se acertó su pregunta sin haberla escuchado ni tocado sus
+  palabras antes (escuchar no cuenta como leer);
+- palabras tocadas;
+- preguntas respondidas y acertadas;
+- intentos;
+- actividades hechas con pista y a la primera;
+- nivel de oraciones alcanzado.
+
+### Pendiente
+
+- **105 ilustraciones 3D**: lista en `assets/images/aprendo_leer/oraciones/README.md`. Mientras
+  tanto se ve una escena provisional con dibujos de la app, marcada «Ilustración provisional».
+- **105 grabaciones** (y sus tiempos por palabra): lista en `assets/audio/reading/oraciones/README.md`.
+- Probar en dispositivos reales qué voces avisan de las palabras (en Chrome, las voces «Google» en
+  línea no suelen avisar; las del sistema sí).

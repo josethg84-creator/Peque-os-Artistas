@@ -16,9 +16,21 @@ class ReadingProgress {
     Set<String>? withHints,
     this.correctAnswers = 0,
     this.attempts = 0,
+    Set<String>? sentencesHeard,
+    Set<String>? sentencesReadAlone,
+    Set<String>? wordsPlayed,
+    Set<String>? questionsAnswered,
+    Set<String>? questionsCorrect,
+    this.sentenceAttempts = 0,
+    this.sentenceLevel = 1,
   }) : completed = completed ?? {},
        firstTry = firstTry ?? {},
-       withHints = withHints ?? {};
+       withHints = withHints ?? {},
+       sentencesHeard = sentencesHeard ?? {},
+       sentencesReadAlone = sentencesReadAlone ?? {},
+       wordsPlayed = wordsPlayed ?? {},
+       questionsAnswered = questionsAnswered ?? {},
+       questionsCorrect = questionsCorrect ?? {};
 
   /// Ejercicio → modos en que se completó («elige», «arrastra», «ordena»).
   final Map<String, Set<String>> completed;
@@ -33,6 +45,28 @@ class ReadingProgress {
   int correctAnswers;
   int attempts;
 
+  // ------------------------------------------------ oraciones (Fase 5)
+
+  /// Oraciones escuchadas enteras con «Escuchar».
+  final Set<String> sentencesHeard;
+
+  /// Oraciones LEÍDAS sin ayuda: se respondió bien su pregunta sin haber
+  /// escuchado antes la oración. Escuchar no cuenta como leer.
+  final Set<String> sentencesReadAlone;
+
+  /// Palabras distintas que se han tocado para oírlas.
+  final Set<String> wordsPlayed;
+
+  /// Preguntas de comprensión respondidas y acertadas (por oración).
+  final Set<String> questionsAnswered;
+  final Set<String> questionsCorrect;
+
+  /// Intentos en las actividades de oraciones (cada respuesta o «Comprobar»).
+  int sentenceAttempts;
+
+  /// Nivel de oraciones más alto abierto.
+  int sentenceLevel;
+
   static String key(String mode, String exerciseId) => '$mode:$exerciseId';
 
   Map<String, dynamic> toJson() => {
@@ -44,6 +78,13 @@ class ReadingProgress {
     'with_hints': withHints.toList()..sort(),
     'correct_answers': correctAnswers,
     'attempts': attempts,
+    'sentences_heard': sentencesHeard.toList()..sort(),
+    'sentences_read_alone': sentencesReadAlone.toList()..sort(),
+    'words_played': wordsPlayed.toList()..sort(),
+    'questions_answered': questionsAnswered.toList()..sort(),
+    'questions_correct': questionsCorrect.toList()..sort(),
+    'sentence_attempts': sentenceAttempts,
+    'sentence_level': sentenceLevel,
   };
 
   static ReadingProgress fromJson(Map<String, dynamic> json) {
@@ -58,6 +99,17 @@ class ReadingProgress {
       withHints: strings(json['with_hints']),
       correctAnswers: count(json['correct_answers']),
       attempts: count(json['attempts']),
+      // Campos de la Fase 5: si faltan (progreso guardado antes), empiezan vacíos.
+      sentencesHeard: strings(json['sentences_heard']),
+      sentencesReadAlone: strings(json['sentences_read_alone']),
+      wordsPlayed: strings(json['words_played']),
+      questionsAnswered: strings(json['questions_answered']),
+      questionsCorrect: strings(json['questions_correct']),
+      sentenceAttempts: count(json['sentence_attempts']),
+      sentenceLevel: switch (json['sentence_level']) {
+        final int l when l >= 1 && l <= 4 => l,
+        _ => 1,
+      },
     );
   }
 }
@@ -140,6 +192,63 @@ class ReadingController extends ChangeNotifier {
     if (firstTry) _progress.firstTry.add(k);
     if (usedHints) _progress.withHints.add(k);
     _changed();
+  }
+
+  // ------------------------------------------------ oraciones (Fase 5)
+
+  /// Una oración escuchada entera.
+  void recordSentenceHeard(String sentenceId) {
+    if (_progress.sentencesHeard.add(sentenceId)) _changed();
+  }
+
+  /// Una palabra tocada para oírla.
+  void recordWordPlayed(String word) {
+    if (_progress.wordsPlayed.add(word.toLowerCase())) _changed();
+  }
+
+  /// Un intento en una actividad de oraciones.
+  void recordSentenceAttempt() {
+    _progress.sentenceAttempts++;
+    _changed();
+  }
+
+  /// Se respondió (bien o no) la pregunta de una oración.
+  void recordQuestionAnswered(String sentenceId) {
+    if (_progress.questionsAnswered.add(sentenceId)) _changed();
+  }
+
+  /// La pregunta de una oración se respondió bien. Si la oración no se había
+  /// escuchado antes ([listenedFirst] falso), cuenta como leída sin ayuda.
+  void recordQuestionSolved(
+    String sentenceId, {
+    required bool firstTry,
+    required bool usedHints,
+    required bool listenedFirst,
+  }) {
+    _progress.questionsAnswered.add(sentenceId);
+    _progress.questionsCorrect.add(sentenceId);
+    if (!listenedFirst) _progress.sentencesReadAlone.add(sentenceId);
+    recordCompleted(sentenceId, sentenceQuestionMode, firstTry: firstTry, usedHints: usedHints);
+  }
+
+  /// Modos de las actividades de oraciones (para [completed]).
+  static const sentenceQuestionMode = 'comprende';
+  static const sentenceOrderMode = 'ordena_oracion';
+  static const sentenceListenMode = 'escucha';
+
+  /// Oraciones de un nivel con la pregunta resuelta.
+  int sentencesDone(Iterable<String> sentenceIds) => completedIn(sentenceIds, sentenceQuestionMode);
+
+  /// Un nivel de oraciones está abierto: el 1 siempre; los demás, al resolver
+  /// [unlockAfter] preguntas del anterior.
+  bool sentenceLevelOpen(int level, Iterable<String> Function(int level) idsOf) {
+    if (level <= 1) return true;
+    final open = sentencesDone(idsOf(level - 1)) >= unlockAfter && sentenceLevelOpen(level - 1, idsOf);
+    if (open && level > _progress.sentenceLevel) {
+      _progress.sentenceLevel = level;
+      unawaited(_save());
+    }
+    return open;
   }
 
   bool isCompleted(String exerciseId, String mode) =>

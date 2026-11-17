@@ -84,6 +84,8 @@ flutter:
     - assets/audio/reading/silabas/
     - assets/audio/reading/palabras/
     - assets/audio/reading/letras/
+    - assets/audio/reading/oraciones/
+    - assets/images/aprendo_leer/oraciones/
     - assets/speech/
     - assets/aac/
     - assets/catalog/catalog.json

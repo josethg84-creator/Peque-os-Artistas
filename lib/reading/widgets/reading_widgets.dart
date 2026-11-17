@@ -323,10 +323,16 @@ class ReadingStepNav extends StatelessWidget {
           onPressed: onPrevious,
         ),
         const SizedBox(width: 16),
-        Semantics(
-          label: '${index + 1} de $total',
-          excludeSemantics: true,
-          child: Text('${index + 1} de $total', style: fredoka(20, color: AppColors.ink)),
+        Flexible(
+          child: Semantics(
+            label: '${index + 1} de $total',
+            excludeSemantics: true,
+            child: Text(
+              '${index + 1} de $total',
+              style: fredoka(20, color: AppColors.ink),
+              textAlign: TextAlign.center,
+            ),
+          ),
         ),
         const SizedBox(width: 16),
         KidIconButton(

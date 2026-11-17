@@ -5,9 +5,27 @@ import 'package:flutter/foundation.dart';
 
 import '../../audio/app_audio.dart';
 import '../reading_content.dart';
+import '../sentences.dart';
 
 /// Velocidad de reproducción.
 enum ReadingSpeed { normal, slow }
+
+/// Cómo se resaltaron las palabras de la última oración.
+enum SentenceHighlight {
+  /// Grabación con los tiempos de cada palabra medidos sobre ella.
+  recordedTimes,
+
+  /// La voz del dispositivo avisó de verdad de cada palabra que empezaba.
+  voiceEvents,
+
+  /// Lectura lenta palabra por palabra: cada palabra se dice por separado y se
+  /// resalta mientras suena.
+  wordByWord,
+
+  /// Sin resaltado sincronizado (la voz no avisa de las palabras y no hay
+  /// tiempos medidos). No se simula con temporizadores.
+  none,
+}
 
 /// En qué está la voz de lectura (para que la pantalla lo muestre).
 enum ReadingVoiceStatus {
@@ -24,7 +42,13 @@ enum ReadingVoiceStatus {
 /// Reproduce archivos de audio (grabaciones validadas de sílabas y palabras).
 abstract interface class ClipPlayer {
   /// Termina cuando acaba el audio; lanza un error si no se puede reproducir.
-  Future<void> play(String assetPath, {required double rate, required double volume});
+  /// [onPosition] recibe la posición de la grabación mientras suena.
+  Future<void> play(
+    String assetPath, {
+    required double rate,
+    required double volume,
+    void Function(Duration position)? onPosition,
+  });
   Future<void> stop();
   Future<void> dispose();
 }
@@ -34,16 +58,26 @@ class AudioPlayersClipPlayer implements ClipPlayer {
   AudioPlayer? _player;
   Completer<void>? _done;
 
-  static const maxLength = Duration(seconds: 8);
+  static const maxLength = Duration(seconds: 15);
 
   @override
-  Future<void> play(String assetPath, {required double rate, required double volume}) async {
+  Future<void> play(
+    String assetPath, {
+    required double rate,
+    required double volume,
+    void Function(Duration position)? onPosition,
+  }) async {
     final player = _player ??= AudioPlayer()..setReleaseMode(ReleaseMode.stop);
     await stop();
     final done = _done = Completer<void>();
     final sub = player.onPlayerComplete.listen((_) {
       if (!done.isCompleted) done.complete();
     });
+    final pos = onPosition == null
+        ? null
+        : player.onPositionChanged.listen((p) {
+            if (!done.isCompleted) onPosition(p);
+          });
     try {
       await player.setPlaybackRate(rate);
       // AssetSource ya antepone «assets/».
@@ -51,6 +85,7 @@ class AudioPlayersClipPlayer implements ClipPlayer {
       await done.future.timeout(maxLength, onTimeout: () {});
     } finally {
       await sub.cancel();
+      await pos?.cancel();
     }
   }
 
@@ -159,6 +194,104 @@ class ReadingVoice extends ChangeNotifier {
     return turn == _turn;
   }
 
+  /// Cómo se resaltó la última oración (para explicarlo en pantalla).
+  SentenceHighlight? lastHighlight;
+
+  /// Lee una oración completa resaltando cada palabra mientras suena, por este
+  /// orden de preferencia:
+  /// 1. grabación con los tiempos de cada palabra medidos sobre ella;
+  /// 2. lento: palabra por palabra (cada palabra suena sola y se resalta);
+  /// 3. la voz del dispositivo, si avisa de verdad de cada palabra;
+  /// 4. si no avisa, se lee sin resaltar ([SentenceHighlight.none]).
+  ///
+  /// [onWord] recibe la palabra que suena (o `null` al terminar). Devuelve
+  /// `true` si la oración sonó entera (sin cortarla ni quedarse sin voz).
+  Future<bool> playSentence(
+    ReadingSentence sentence, {
+    ReadingSpeed speed = ReadingSpeed.normal,
+    required void Function(int? word) onWord,
+  }) async {
+    final turn = ++_turn;
+    await _stopSources();
+    if (_audio.voiceVolume <= 0) {
+      _set(
+        ReadingVoiceStatus.muted,
+        why: 'El sonido está apagado. Un adulto puede encenderlo en los ajustes.',
+      );
+      return false;
+    }
+    _set(ReadingVoiceStatus.playing);
+    final slow = speed == ReadingSpeed.slow;
+    var ok = false;
+    void word(int? i) {
+      if (turn == _turn && !_disposed) onWord(i);
+    }
+
+    try {
+      final clip = sentence.clip;
+      var played = false;
+      if (clip != null && (!slow || sentence.wordMs != null)) {
+        try {
+          final times = sentence.wordMs;
+          lastHighlight = times == null ? SentenceHighlight.none : SentenceHighlight.recordedTimes;
+          await _clips.play(
+            clip,
+            rate: slow ? slowRate : 1.0,
+            volume: _audio.voiceVolume,
+            onPosition: times == null ? null : (p) => word(sentence.wordAtMs(p.inMilliseconds)),
+          );
+          played = true;
+          ok = turn == _turn;
+        } catch (e) {
+          lastClipError = e; // se usa la voz del dispositivo
+        }
+      }
+      if (!played && slow) {
+        lastHighlight = SentenceHighlight.wordByWord;
+        for (final (i, w) in sentence.words.indexed) {
+          if (turn != _turn) return false;
+          word(i);
+          final c = w.clip;
+          var done = false;
+          if (c != null) {
+            try {
+              await _clips.play(c, rate: slowRate, volume: _audio.voiceVolume);
+              done = true;
+            } catch (e) {
+              lastClipError = e;
+            }
+          }
+          if (!done && !await _speak(w.audio.tts, slow: true, turn: turn)) return false;
+        }
+        ok = turn == _turn;
+      } else if (!played) {
+        final info = await _audio.voiceInfo();
+        if (turn != _turn) return false;
+        if (!info.available) {
+          _set(ReadingVoiceStatus.noVoice, why: info.description);
+          return false;
+        }
+        var events = 0;
+        await _audio.say(
+          sentence.text,
+          onBoundary: (c) {
+            if (turn != _turn) return;
+            events++;
+            word(sentence.wordAt(c));
+          },
+        );
+        if (turn == _turn) {
+          lastHighlight = events > 0 ? SentenceHighlight.voiceEvents : SentenceHighlight.none;
+          ok = true;
+        }
+      }
+      return ok;
+    } finally {
+      word(null);
+      if (turn == _turn && _status == ReadingVoiceStatus.playing) _set(ReadingVoiceStatus.idle);
+    }
+  }
+
   /// Dice una frase de ánimo o instrucción («¡Muy bien!») con la voz.
   Future<void> sayText(String text) => playAll([ReadingAudio(tts: text)]);
 
@@ -195,10 +328,24 @@ class FakeClipPlayer implements ClipPlayer {
   int stops = 0;
   bool disposed = false;
 
+  /// Posiciones que se anuncian mientras «suena» una grabación.
+  List<Duration> positions = const [];
+
   @override
-  Future<void> play(String assetPath, {required double rate, required double volume}) async {
+  Future<void> play(
+    String assetPath, {
+    required double rate,
+    required double volume,
+    void Function(Duration position)? onPosition,
+  }) async {
     if (fail) throw StateError('no se pudo reproducir $assetPath');
     played.add((assetPath, rate));
+    if (onPosition != null) {
+      for (final p in positions) {
+        onPosition(p);
+        await Future<void>.delayed(Duration.zero);
+      }
+    }
   }
 
   @override
