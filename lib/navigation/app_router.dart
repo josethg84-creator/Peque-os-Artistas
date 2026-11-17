@@ -1,6 +1,7 @@
 import '../reading/screens/reading_dictation_screen.dart';
 import '../reading/screens/reading_hub_screen.dart';
 import '../reading/screens/reading_sentences_screen.dart';
+import '../reading/screens/reading_syllable_games.dart';
 import '../reading/screens/reading_syllables_screen.dart';
 import '../reading/screens/reading_words_screen.dart';
 
@@ -68,6 +69,14 @@ abstract final class AppRouter {
       AppRoutes.speech => const SpeechHubScreen(),
       AppRoutes.reading => const ReadingHubScreen(),
       AppRoutes.readingSyllables => const ReadingSyllablesScreen(),
+      AppRoutes.readingListenFind => SyllableGameScreen(
+        game: SyllableGame.listenFind,
+        args: args is ReadingGameArgs ? args : const ReadingGameArgs(),
+      ),
+      AppRoutes.readingMatchWord => SyllableGameScreen(
+        game: SyllableGame.matchWord,
+        args: args is ReadingGameArgs ? args : const ReadingGameArgs(),
+      ),
       AppRoutes.readingWords => const ReadingWordsScreen(),
       AppRoutes.readingSentences => const ReadingSentencesScreen(),
       AppRoutes.readingDictation => const ReadingDictationScreen(),
@@ -131,6 +140,8 @@ abstract final class AppRouter {
   /// innecesarios), una más suave al colorear y silencio en los juegos y al
   /// aprender palabras y frases, para oír bien la voz.
   static MusicTrack? musicFor(String? route, Widget page) {
+    // «Aprendo a leer»: silencio en las actividades, para oír bien cada sílaba.
+    if (route != null && route.startsWith('${AppRoutes.reading}/')) return null;
     if (page is LearningGameScreen ||
         page is WordsScreen ||
         page is PhrasesScreen ||

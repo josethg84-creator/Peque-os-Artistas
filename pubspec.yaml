@@ -79,6 +79,11 @@ flutter:
     - assets/images/quiero_decir/
     - assets/images/palabras/
     - assets/images/mi_historia/
+    - assets/reading/
+    - assets/images/aprendo_leer/palabras/
+    - assets/audio/reading/silabas/
+    - assets/audio/reading/palabras/
+    - assets/audio/reading/letras/
     - assets/speech/
     - assets/aac/
     - assets/catalog/catalog.json
