@@ -1,3 +1,9 @@
+import '../reading/screens/reading_dictation_screen.dart';
+import '../reading/screens/reading_hub_screen.dart';
+import '../reading/screens/reading_sentences_screen.dart';
+import '../reading/screens/reading_syllables_screen.dart';
+import '../reading/screens/reading_words_screen.dart';
+
 import 'package:flutter/material.dart';
 
 import '../aac/screens/aac_builder_screen.dart';
@@ -60,6 +66,11 @@ abstract final class AppRouter {
       AppRoutes.adultZone when args is AdultZoneArgs => const AdultZoneScreen(),
       AppRoutes.soundSettings => const SoundSettingsScreen(),
       AppRoutes.speech => const SpeechHubScreen(),
+      AppRoutes.reading => const ReadingHubScreen(),
+      AppRoutes.readingSyllables => const ReadingSyllablesScreen(),
+      AppRoutes.readingWords => const ReadingWordsScreen(),
+      AppRoutes.readingSentences => const ReadingSentencesScreen(),
+      AppRoutes.readingDictation => const ReadingDictationScreen(),
       AppRoutes.speechWordGroups => const WordGroupsScreen(),
       AppRoutes.speechWords when args is SpeechWordsArgs => WordsScreen(categoryId: args.categoryId),
       AppRoutes.speechPhrases => const PhrasesScreen(),

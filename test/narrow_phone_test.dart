@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:pequenos_artistas/aac/widgets/aac_widgets.dart';
 import 'package:pequenos_artistas/learning/learning_level.dart';
+import 'package:pequenos_artistas/widgets/big_action_button.dart';
 import 'package:pequenos_artistas/navigation/app_routes.dart';
 import 'package:pequenos_artistas/widgets/fitted_title.dart';
 
@@ -95,4 +96,30 @@ void main() {
       }
     }
   });
+
+  for (final route in [AppRoutes.readingWords, AppRoutes.readingSentences, AppRoutes.readingDictation]) {
+    testWidgets('360 dp: los botones grandes de $route no parten palabras', (tester) async {
+      setScreenSize(tester, const Size(360, 720));
+      await pumpApp(tester);
+      tester.state<NavigatorState>(find.byType(Navigator)).pushNamed(route);
+      await tester.pumpAndSettle();
+      final texts = find.descendant(of: find.byType(BigActionButton), matching: find.byType(RichText));
+      expect(texts, findsWidgets);
+      for (final p in tester.renderObjectList<RenderParagraph>(texts)) {
+        final label = p.text.toPlainText();
+        for (final word in label.split(' ')) {
+          final painter = TextPainter(
+            text: TextSpan(text: word, style: p.text.style),
+            textDirection: TextDirection.ltr,
+            textScaler: p.textScaler,
+          )..layout();
+          expect(
+            painter.width,
+            lessThanOrEqualTo(p.size.width + 0.5),
+            reason: '«$word» de «$label» cabe entera',
+          );
+        }
+      }
+    });
+  }
 }

@@ -59,6 +59,13 @@ abstract final class AppRoutes {
   static const speechMyStory = '/hablar/mi-historia';
 
   // Fase 5: «Quiero decir» (comunicación aumentativa).
+  // «Aprendo a leer» (lectoescritura).
+  static const reading = '/leer';
+  static const readingSyllables = '/leer/silabas';
+  static const readingWords = '/leer/completa';
+  static const readingSentences = '/leer/oraciones';
+  static const readingDictation = '/leer/dictado';
+
   static const aac = '/quiero-decir';
   static const aacCategory = '/quiero-decir/categoria';
   static const aacQuick = '/quiero-decir/rapido';
