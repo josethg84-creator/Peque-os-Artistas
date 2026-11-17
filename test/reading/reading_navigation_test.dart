@@ -106,7 +106,12 @@ void main() {
       for (final a in ReadingActivities.all) {
         await tapAndSettle(tester, find.bySemanticsLabel(RegExp('^${RegExp.escape(a.title)}')));
         expect(find.byType(screens[a.route]!), findsOneWidget, reason: a.title);
-        expect(find.byType(DemoBadge), findsOneWidget, reason: '${a.title} avisa de que es demostración');
+        // «Aprendo las sílabas» ya usa el contenido real (Fase 3); las demás, demostración.
+        expect(
+          find.byType(DemoBadge),
+          a == ReadingActivities.syllables ? findsNothing : findsOneWidget,
+          reason: '${a.title}: distintivo de demostración',
+        );
         await tapAndSettle(tester, find.byTooltip('Volver'));
         expect(find.byType(ReadingHubScreen), findsOneWidget, reason: 'vuelve desde ${a.title}');
       }
@@ -127,20 +132,23 @@ void main() {
   });
 
   group('pantallas', () {
-    testWidgets('sílabas: elegir familia y sílaba se escucha y cambia la palabra de ejemplo', (tester) async {
+    testWidgets('sílabas (contenido real): familia, sílaba, siguiente y despacio', (tester) async {
       setScreenSize(tester, const Size(420, 900));
       await pumpApp(tester);
       await push(tester, AppRoutes.readingSyllables);
-      expect(find.text('MAMÁ'), findsNothing); // por sílabas: MA · MÁ
+      await tapAndSettle(tester, find.bySemanticsLabel('Familia de la M'));
+      expect(
+        spoken.last,
+        'eme. ma. me. mi. mo. mu',
+        reason: 'nombre de la letra y sus sílabas, en minúsculas',
+      );
       await tapAndSettle(tester, find.bySemanticsLabel('Sílaba me'));
       expect(spoken.last, 'me');
       expect(find.bySemanticsLabel(RegExp('^Palabra por sílabas: me - sa')), findsOneWidget);
-      await tapAndSettle(tester, find.bySemanticsLabel('Familia de la P'));
-      expect(spoken.last, 'La p: pa, pe, pi, po, pu.');
       await tapAndSettle(tester, find.bySemanticsLabel('Siguiente'));
-      expect(spoken.last, 'pe');
-      await tapAndSettle(tester, find.bySemanticsLabel('Despacio').first);
-      expect(lastNarrator!.slow.last, 'pe');
+      expect(spoken.last, 'mi');
+      await tapAndSettle(tester, find.bySemanticsLabel('Despacio la sílaba'));
+      expect(lastNarrator!.slow.last, 'mi');
     });
 
     testWidgets('completar: una sílaba equivocada anima; la correcta felicita y se continúa', (tester) async {
@@ -196,10 +204,10 @@ void main() {
       setScreenSize(tester, const Size(420, 900));
       await pumpApp(tester);
       await push(tester, AppRoutes.readingSyllables);
-      final ma = tester.getRect(find.bySemanticsLabel('Sílaba ma'));
-      final me = tester.getRect(find.bySemanticsLabel('Sílaba me'));
-      expect(ma.width, lessThan(140));
-      expect(me.top, ma.top, reason: 'MA y ME en la misma fila');
+      final a = tester.getRect(find.bySemanticsLabel('Sílaba a'));
+      final e = tester.getRect(find.bySemanticsLabel('Sílaba e'));
+      expect(a.width, lessThan(140));
+      expect(e.top, a.top, reason: 'A y E en la misma fila');
       await push(tester, AppRoutes.readingWords);
       final pa = tester.getRect(find.bySemanticsLabel('Sílaba pa'));
       final sa = tester.getRect(find.bySemanticsLabel('Sílaba sa'));

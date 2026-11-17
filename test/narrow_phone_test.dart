@@ -97,7 +97,12 @@ void main() {
     }
   });
 
-  for (final route in [AppRoutes.readingWords, AppRoutes.readingSentences, AppRoutes.readingDictation]) {
+  for (final route in [
+    AppRoutes.readingSyllables,
+    AppRoutes.readingWords,
+    AppRoutes.readingSentences,
+    AppRoutes.readingDictation,
+  ]) {
     testWidgets('360 dp: los botones grandes de $route no parten palabras', (tester) async {
       setScreenSize(tester, const Size(360, 720));
       await pumpApp(tester);

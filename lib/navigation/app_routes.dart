@@ -62,6 +62,8 @@ abstract final class AppRoutes {
   // «Aprendo a leer» (lectoescritura).
   static const reading = '/leer';
   static const readingSyllables = '/leer/silabas';
+  static const readingListenFind = '/leer/silabas/escucha';
+  static const readingMatchWord = '/leer/silabas/une';
   static const readingWords = '/leer/completa';
   static const readingSentences = '/leer/oraciones';
   static const readingDictation = '/leer/dictado';

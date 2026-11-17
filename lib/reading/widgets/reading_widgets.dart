@@ -8,7 +8,10 @@ import '../../speech/widgets/speech_widgets.dart';
 import '../../theme/app_colors.dart';
 import '../../widgets/kid_icon_button.dart';
 import '../../widgets/motion/celebration.dart';
+import '../../widgets/motion/delayed_loading.dart';
+import '../audio/reading_voice.dart';
 import '../reading_activities.dart';
+import '../reading_content.dart';
 
 /// Componentes de «Aprendo a leer». Reutilizan los de la app (tarjetas del
 /// menú, botones de acción, Lolo, confeti) y añaden solo lo propio de la
@@ -461,4 +464,205 @@ class ReadingLolo extends StatelessWidget {
     alignment: Alignment.centerLeft,
     child: LoloBubble(text: text, size: size),
   );
+}
+
+/// Carga el contenido real de «Aprendo a leer» y lo pasa a [builder].
+class ReadingContentBuilder extends StatefulWidget {
+  const ReadingContentBuilder({super.key, required this.builder});
+
+  final Widget Function(BuildContext context, ReadingContent content) builder;
+
+  @override
+  State<ReadingContentBuilder> createState() => _ReadingContentBuilderState();
+}
+
+class _ReadingContentBuilderState extends State<ReadingContentBuilder> {
+  Future<ReadingContent>? _future;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _future ??= ReadingContent.load(DefaultAssetBundle.of(context));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<ReadingContent>(
+      future: _future,
+      builder: (context, snapshot) {
+        final content = snapshot.data;
+        if (content != null) return widget.builder(context, content);
+        if (snapshot.hasError) {
+          return const Center(child: Text('No pudimos abrir las sílabas. Inténtalo de nuevo más tarde.'));
+        }
+        return const DelayedLoading(message: 'Preparando las sílabas…', color: ReadingActivities.accent);
+      },
+    );
+  }
+}
+
+/// La imagen de una palabra: su ilustración 3D (si ya está), el dibujo de la
+/// app que la representa o, si aún no hay ninguno, un marcador «Imagen
+/// pendiente» bien visible (nunca una imagen que pueda confundir).
+class ReadingWordPicture extends StatelessWidget {
+  const ReadingWordPicture({super.key, required this.word, required this.color});
+
+  final ReadingWord word;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    final picture = word.picture;
+    final Widget child;
+    if (word.imageReady) {
+      child = ClipRRect(
+        borderRadius: BorderRadius.circular(24),
+        child: Image.asset(word.image, fit: BoxFit.contain, excludeFromSemantics: true),
+      );
+    } else if (picture != null) {
+      child = SpeechPictureView(picture: picture, tint: color);
+    } else {
+      child = _PendingImage(word: word.text, color: color);
+    }
+    return Semantics(
+      label: word.hasPicture ? 'Dibujo: ${word.text}' : 'Imagen pendiente de ${word.text}',
+      excludeSemantics: true,
+      child: AspectRatio(aspectRatio: 1, child: child),
+    );
+  }
+}
+
+class _PendingImage extends StatelessWidget {
+  const _PendingImage({required this.word, required this.color});
+
+  final String word;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Color.lerp(color, Colors.white, 0.85),
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(
+          color: Color.lerp(color, Colors.white, 0.3)!,
+          width: 3,
+          strokeAlign: BorderSide.strokeAlignInside,
+        ),
+      ),
+      padding: const EdgeInsets.all(10),
+      child: FittedBox(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.image_outlined, size: 48, color: Color.lerp(color, Colors.black, 0.3)),
+            Text(word.toUpperCase(), style: fredoka(26, color: AppColors.ink)),
+            Text(
+              'Imagen pendiente',
+              style: fredoka(14, weight: FontWeight.w600, color: AppColors.inkSoft),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// «Escuchar» (velocidad normal) y «Despacio», conectados al motor de audio.
+class ReadingPlayButtons extends StatelessWidget {
+  const ReadingPlayButtons({
+    super.key,
+    required this.onPlay,
+    this.listenLabel = 'Escuchar',
+    this.slowLabel = 'Despacio',
+    this.semanticSuffix = '',
+    this.color = AppColors.sky,
+  });
+
+  final void Function(ReadingSpeed speed) onPlay;
+  final String listenLabel;
+  final String slowLabel;
+
+  /// Para los lectores de pantalla («Escuchar la sílaba»).
+  final String semanticSuffix;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Wrap(
+      alignment: WrapAlignment.center,
+      spacing: 12,
+      runSpacing: 12,
+      children: [
+        SizedBox(
+          width: 132,
+          child: SpeechActionButton(
+            icon: Icons.volume_up_rounded,
+            label: listenLabel,
+            semanticLabel: '$listenLabel$semanticSuffix',
+            color: color,
+            onPressed: () => onPlay(ReadingSpeed.normal),
+          ),
+        ),
+        SizedBox(
+          width: 132,
+          child: SpeechActionButton(
+            icon: Icons.slow_motion_video_rounded,
+            label: slowLabel,
+            semanticLabel: '$slowLabel$semanticSuffix',
+            color: AppColors.grape,
+            onPressed: () => onPlay(ReadingSpeed.slow),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+/// Aviso cuando no se puede oír nada (sonido apagado o sin voz en español):
+/// la actividad sigue funcionando con la vista.
+class ReadingVoiceNotice extends StatelessWidget {
+  const ReadingVoiceNotice({super.key, required this.voice});
+
+  final ReadingVoice voice;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListenableBuilder(
+      listenable: voice,
+      builder: (context, _) {
+        final status = voice.status;
+        if (status != ReadingVoiceStatus.noVoice && status != ReadingVoiceStatus.muted) {
+          return const SizedBox.shrink();
+        }
+        final text = voice.message ?? 'No se puede reproducir el sonido en este dispositivo.';
+        return Semantics(
+          liveRegion: true,
+          label: text,
+          excludeSemantics: true,
+          child: Container(
+            margin: const EdgeInsets.only(bottom: 10),
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: const Color(0xFFFFF3E0),
+              borderRadius: BorderRadius.circular(18),
+              border: Border.all(color: const Color(0xFFFFB74D), width: 2),
+            ),
+            child: Row(
+              children: [
+                Icon(
+                  status == ReadingVoiceStatus.muted
+                      ? Icons.volume_off_rounded
+                      : Icons.record_voice_over_outlined,
+                  color: const Color(0xFFEF6C00),
+                ),
+                const SizedBox(width: 10),
+                Expanded(child: Text(text, style: Theme.of(context).textTheme.bodyMedium)),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
 }
