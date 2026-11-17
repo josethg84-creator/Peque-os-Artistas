@@ -140,6 +140,13 @@ class SpeechHubScreen extends StatefulWidget {
       image: '${SpeechActivity.imageFolder}mi_historia.webp',
     ),
     SpeechActivity(
+      'Aprendo a leer',
+      '¡Sílabas, palabras y oraciones!',
+      Icons.auto_stories_rounded,
+      Color(0xFF8FCBFF),
+      AppRoutes.reading,
+    ),
+    SpeechActivity(
       'Quiero decir',
       '¡Tablero con dibujos y voz!',
       Icons.grid_view_rounded,
@@ -163,6 +170,7 @@ class SpeechHubScreen extends StatefulWidget {
       Icons.abc_rounded,
       ['Mis primeras palabras', 'Aprendo frases', 'Juegos de palabras'],
     ),
+    ('Aprendo a leer', Icons.auto_stories_rounded, ['Aprendo a leer']),
     (
       'Formo oraciones',
       Icons.view_week_rounded,
