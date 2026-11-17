@@ -1,0 +1,4522 @@
+{
+ "format_version": 1,
+ "words": [
+  {
+   "id": "pato",
+   "text": "pato",
+   "syllables": [
+    "pa",
+    "to"
+   ],
+   "level": 1,
+   "category": "animales",
+   "picture": {
+    "drawing": "granja_patito"
+   },
+   "image": "assets/images/aprendo_leer/palabras/pato.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "pato"
+   }
+  },
+  {
+   "id": "sapo",
+   "text": "sapo",
+   "syllables": [
+    "sa",
+    "po"
+   ],
+   "level": 1,
+   "category": "animales",
+   "picture": null,
+   "image": "assets/images/aprendo_leer/palabras/sapo.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "sapo"
+   }
+  },
+  {
+   "id": "gato",
+   "text": "gato",
+   "syllables": [
+    "ga",
+    "to"
+   ],
+   "level": 1,
+   "category": "animales",
+   "picture": {
+    "drawing": "animal_gato"
+   },
+   "image": "assets/images/aprendo_leer/palabras/gato.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "gato"
+   }
+  },
+  {
+   "id": "puma",
+   "text": "puma",
+   "syllables": [
+    "pu",
+    "ma"
+   ],
+   "level": 1,
+   "category": "animales",
+   "picture": null,
+   "image": "assets/images/aprendo_leer/palabras/puma.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "puma"
+   }
+  },
+  {
+   "id": "mono",
+   "text": "mono",
+   "syllables": [
+    "mo",
+    "no"
+   ],
+   "level": 1,
+   "category": "animales",
+   "picture": {
+    "drawing": "animal_mono"
+   },
+   "image": "assets/images/aprendo_leer/palabras/mono.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "mono"
+   }
+  },
+  {
+   "id": "vaca",
+   "text": "vaca",
+   "syllables": [
+    "va",
+    "ca"
+   ],
+   "level": 1,
+   "category": "animales",
+   "picture": {
+    "drawing": "granja_vaca"
+   },
+   "image": "assets/images/aprendo_leer/palabras/vaca.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "vaca"
+   }
+  },
+  {
+   "id": "poni",
+   "text": "poni",
+   "syllables": [
+    "po",
+    "ni"
+   ],
+   "level": 1,
+   "category": "animales",
+   "picture": {
+    "drawing": "granja_poni"
+   },
+   "image": "assets/images/aprendo_leer/palabras/poni.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "poni"
+   }
+  },
+  {
+   "id": "oso",
+   "text": "oso",
+   "syllables": [
+    "o",
+    "so"
+   ],
+   "level": 1,
+   "category": "animales",
+   "picture": {
+    "drawing": "animal_oso"
+   },
+   "image": "assets/images/aprendo_leer/palabras/oso.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "oso"
+   }
+  },
+  {
+   "id": "foca",
+   "text": "foca",
+   "syllables": [
+    "fo",
+    "ca"
+   ],
+   "level": 1,
+   "category": "animales",
+   "picture": null,
+   "image": "assets/images/aprendo_leer/palabras/foca.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "foca"
+   }
+  },
+  {
+   "id": "loro",
+   "text": "loro",
+   "syllables": [
+    "lo",
+    "ro"
+   ],
+   "level": 1,
+   "category": "animales",
+   "picture": {
+    "lolo": true
+   },
+   "image": "assets/images/aprendo_leer/palabras/loro.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "loro"
+   }
+  },
+  {
+   "id": "perro",
+   "text": "perro",
+   "syllables": [
+    "pe",
+    "rro"
+   ],
+   "level": 1,
+   "category": "animales",
+   "picture": {
+    "drawing": "animal_perro"
+   },
+   "image": "assets/images/aprendo_leer/palabras/perro.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "perro"
+   }
+  },
+  {
+   "id": "gallo",
+   "text": "gallo",
+   "syllables": [
+    "ga",
+    "llo"
+   ],
+   "level": 1,
+   "category": "animales",
+   "picture": {
+    "drawing": "granja_gallo"
+   },
+   "image": "assets/images/aprendo_leer/palabras/gallo.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "gallo"
+   }
+  },
+  {
+   "id": "burro",
+   "text": "burro",
+   "syllables": [
+    "bu",
+    "rro"
+   ],
+   "level": 1,
+   "category": "animales",
+   "picture": null,
+   "image": "assets/images/aprendo_leer/palabras/burro.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "burro"
+   }
+  },
+  {
+   "id": "abeja",
+   "text": "abeja",
+   "syllables": [
+    "a",
+    "be",
+    "ja"
+   ],
+   "level": 2,
+   "category": "animales",
+   "picture": {
+    "drawing": "animal_abeja"
+   },
+   "image": "assets/images/aprendo_leer/palabras/abeja.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "abeja"
+   }
+  },
+  {
+   "id": "conejo",
+   "text": "conejo",
+   "syllables": [
+    "co",
+    "ne",
+    "jo"
+   ],
+   "level": 2,
+   "category": "animales",
+   "picture": {
+    "drawing": "animal_conejo"
+   },
+   "image": "assets/images/aprendo_leer/palabras/conejo.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "conejo"
+   }
+  },
+  {
+   "id": "jirafa",
+   "text": "jirafa",
+   "syllables": [
+    "ji",
+    "ra",
+    "fa"
+   ],
+   "level": 2,
+   "category": "animales",
+   "picture": {
+    "drawing": "animal_jirafa"
+   },
+   "image": "assets/images/aprendo_leer/palabras/jirafa.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "jirafa"
+   }
+  },
+  {
+   "id": "oruga",
+   "text": "oruga",
+   "syllables": [
+    "o",
+    "ru",
+    "ga"
+   ],
+   "level": 2,
+   "category": "animales",
+   "picture": {
+    "drawing": "animal_oruga"
+   },
+   "image": "assets/images/aprendo_leer/palabras/oruga.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "oruga"
+   }
+  },
+  {
+   "id": "oveja",
+   "text": "oveja",
+   "syllables": [
+    "o",
+    "ve",
+    "ja"
+   ],
+   "level": 2,
+   "category": "animales",
+   "picture": {
+    "drawing": "granja_oveja"
+   },
+   "image": "assets/images/aprendo_leer/palabras/oveja.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "oveja"
+   }
+  },
+  {
+   "id": "gallina",
+   "text": "gallina",
+   "syllables": [
+    "ga",
+    "lli",
+    "na"
+   ],
+   "level": 2,
+   "category": "animales",
+   "picture": {
+    "drawing": "granja_gallina"
+   },
+   "image": "assets/images/aprendo_leer/palabras/gallina.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "gallina"
+   }
+  },
+  {
+   "id": "ballena",
+   "text": "ballena",
+   "syllables": [
+    "ba",
+    "lle",
+    "na"
+   ],
+   "level": 2,
+   "category": "animales",
+   "picture": {
+    "drawing": "mar_ballena"
+   },
+   "image": "assets/images/aprendo_leer/palabras/ballena.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "ballena"
+   }
+  },
+  {
+   "id": "elefante",
+   "text": "elefante",
+   "syllables": [
+    "e",
+    "le",
+    "fan",
+    "te"
+   ],
+   "level": 2,
+   "category": "animales",
+   "picture": {
+    "drawing": "animal_elefante"
+   },
+   "image": "assets/images/aprendo_leer/palabras/elefante.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "elefante"
+   }
+  },
+  {
+   "id": "mariposa",
+   "text": "mariposa",
+   "syllables": [
+    "ma",
+    "ri",
+    "po",
+    "sa"
+   ],
+   "level": 2,
+   "category": "animales",
+   "picture": {
+    "drawing": "animal_mariposa"
+   },
+   "image": "assets/images/aprendo_leer/palabras/mariposa.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "mariposa"
+   }
+  },
+  {
+   "id": "tortuga",
+   "text": "tortuga",
+   "syllables": [
+    "tor",
+    "tu",
+    "ga"
+   ],
+   "level": 2,
+   "category": "animales",
+   "picture": {
+    "drawing": "animal_tortuga"
+   },
+   "image": "assets/images/aprendo_leer/palabras/tortuga.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "tortuga"
+   }
+  },
+  {
+   "id": "cebra",
+   "text": "cebra",
+   "syllables": [
+    "ce",
+    "bra"
+   ],
+   "level": 3,
+   "category": "animales",
+   "picture": {
+    "drawing": "animal_cebra"
+   },
+   "image": "assets/images/aprendo_leer/palabras/cebra.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "cebra"
+   }
+  },
+  {
+   "id": "pulpo",
+   "text": "pulpo",
+   "syllables": [
+    "pul",
+    "po"
+   ],
+   "level": 3,
+   "category": "animales",
+   "picture": {
+    "drawing": "mar_pulpo"
+   },
+   "image": "assets/images/aprendo_leer/palabras/pulpo.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "pulpo"
+   }
+  },
+  {
+   "id": "delfin",
+   "text": "delfín",
+   "syllables": [
+    "del",
+    "fín"
+   ],
+   "level": 3,
+   "category": "animales",
+   "picture": {
+    "drawing": "mar_delfin"
+   },
+   "image": "assets/images/aprendo_leer/palabras/delfin.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "delfín"
+   }
+  },
+  {
+   "id": "cangrejo",
+   "text": "cangrejo",
+   "syllables": [
+    "can",
+    "gre",
+    "jo"
+   ],
+   "level": 3,
+   "category": "animales",
+   "picture": {
+    "drawing": "mar_cangrejo"
+   },
+   "image": "assets/images/aprendo_leer/palabras/cangrejo.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "cangrejo"
+   }
+  },
+  {
+   "id": "cerdito",
+   "text": "cerdito",
+   "syllables": [
+    "cer",
+    "di",
+    "to"
+   ],
+   "level": 2,
+   "category": "animales",
+   "picture": {
+    "drawing": "granja_cerdito"
+   },
+   "image": "assets/images/aprendo_leer/palabras/cerdito.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "cerdito"
+   }
+  },
+  {
+   "id": "dinosaurio",
+   "text": "dinosaurio",
+   "syllables": [
+    "di",
+    "no",
+    "sau",
+    "rio"
+   ],
+   "level": 3,
+   "category": "animales",
+   "picture": {
+    "drawing": "dinosaurio_01"
+   },
+   "image": "assets/images/aprendo_leer/palabras/dinosaurio.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "dinosaurio"
+   }
+  },
+  {
+   "id": "dragon",
+   "text": "dragón",
+   "syllables": [
+    "dra",
+    "gón"
+   ],
+   "level": 3,
+   "category": "fantasía",
+   "picture": {
+    "drawing": "fantasia_dragon"
+   },
+   "image": "assets/images/aprendo_leer/palabras/dragon.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "dragón"
+   }
+  },
+  {
+   "id": "hada",
+   "text": "hada",
+   "syllables": [
+    "ha",
+    "da"
+   ],
+   "level": 1,
+   "category": "fantasía",
+   "picture": {
+    "drawing": "fantasia_hada"
+   },
+   "image": "assets/images/aprendo_leer/palabras/hada.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "hada"
+   }
+  },
+  {
+   "id": "robot",
+   "text": "robot",
+   "syllables": [
+    "ro",
+    "bot"
+   ],
+   "level": 3,
+   "category": "juguetes",
+   "picture": {
+    "drawing": "fantasia_robot"
+   },
+   "image": "assets/images/aprendo_leer/palabras/robot.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "robot"
+   }
+  },
+  {
+   "id": "unicornio",
+   "text": "unicornio",
+   "syllables": [
+    "u",
+    "ni",
+    "cor",
+    "nio"
+   ],
+   "level": 3,
+   "category": "fantasía",
+   "picture": {
+    "drawing": "fantasia_unicornio"
+   },
+   "image": "assets/images/aprendo_leer/palabras/unicornio.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "unicornio"
+   }
+  },
+  {
+   "id": "pina",
+   "text": "piña",
+   "syllables": [
+    "pi",
+    "ña"
+   ],
+   "level": 1,
+   "category": "comida",
+   "picture": {
+    "drawing": "fruta_pina"
+   },
+   "image": "assets/images/aprendo_leer/palabras/pina.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "piña"
+   }
+  },
+  {
+   "id": "uvas",
+   "text": "uvas",
+   "syllables": [
+    "u",
+    "vas"
+   ],
+   "level": 3,
+   "category": "comida",
+   "picture": {
+    "drawing": "fruta_uvas"
+   },
+   "image": "assets/images/aprendo_leer/palabras/uvas.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "uvas"
+   }
+  },
+  {
+   "id": "fresa",
+   "text": "fresa",
+   "syllables": [
+    "fre",
+    "sa"
+   ],
+   "level": 3,
+   "category": "comida",
+   "picture": {
+    "drawing": "fruta_fresa"
+   },
+   "image": "assets/images/aprendo_leer/palabras/fresa.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "fresa"
+   }
+  },
+  {
+   "id": "manzana",
+   "text": "manzana",
+   "syllables": [
+    "man",
+    "za",
+    "na"
+   ],
+   "level": 2,
+   "category": "comida",
+   "picture": {
+    "drawing": "fruta_manzana"
+   },
+   "image": "assets/images/aprendo_leer/palabras/manzana.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "manzana"
+   }
+  },
+  {
+   "id": "naranja",
+   "text": "naranja",
+   "syllables": [
+    "na",
+    "ran",
+    "ja"
+   ],
+   "level": 2,
+   "category": "comida",
+   "picture": {
+    "drawing": "fruta_naranja"
+   },
+   "image": "assets/images/aprendo_leer/palabras/naranja.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "naranja"
+   }
+  },
+  {
+   "id": "platano",
+   "text": "plátano",
+   "syllables": [
+    "plá",
+    "ta",
+    "no"
+   ],
+   "level": 3,
+   "category": "comida",
+   "picture": {
+    "drawing": "fruta_platano"
+   },
+   "image": "assets/images/aprendo_leer/palabras/platano.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "plátano"
+   }
+  },
+  {
+   "id": "sandia",
+   "text": "sandía",
+   "syllables": [
+    "san",
+    "dí",
+    "a"
+   ],
+   "level": 2,
+   "category": "comida",
+   "picture": {
+    "drawing": "fruta_sandia"
+   },
+   "image": "assets/images/aprendo_leer/palabras/sandia.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "sandía"
+   }
+  },
+  {
+   "id": "cereza",
+   "text": "cereza",
+   "syllables": [
+    "ce",
+    "re",
+    "za"
+   ],
+   "level": 2,
+   "category": "comida",
+   "picture": {
+    "drawing": "fruta_cerezas"
+   },
+   "image": "assets/images/aprendo_leer/palabras/cereza.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "cereza"
+   }
+  },
+  {
+   "id": "helado",
+   "text": "helado",
+   "syllables": [
+    "he",
+    "la",
+    "do"
+   ],
+   "level": 2,
+   "category": "comida",
+   "picture": {
+    "icon": "icecream"
+   },
+   "image": "assets/images/aprendo_leer/palabras/helado.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "helado"
+   }
+  },
+  {
+   "id": "huevo",
+   "text": "huevo",
+   "syllables": [
+    "hue",
+    "vo"
+   ],
+   "level": 3,
+   "category": "comida",
+   "picture": {
+    "icon": "egg"
+   },
+   "image": "assets/images/aprendo_leer/palabras/huevo.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "huevo"
+   }
+  },
+  {
+   "id": "galleta",
+   "text": "galleta",
+   "syllables": [
+    "ga",
+    "lle",
+    "ta"
+   ],
+   "level": 2,
+   "category": "comida",
+   "picture": {
+    "icon": "cookie"
+   },
+   "image": "assets/images/aprendo_leer/palabras/galleta.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "galleta"
+   }
+  },
+  {
+   "id": "pizza",
+   "text": "pizza",
+   "syllables": [
+    "piz",
+    "za"
+   ],
+   "level": 3,
+   "category": "comida",
+   "picture": {
+    "icon": "pizza"
+   },
+   "image": "assets/images/aprendo_leer/palabras/pizza.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "pizza"
+   }
+  },
+  {
+   "id": "sopa",
+   "text": "sopa",
+   "syllables": [
+    "so",
+    "pa"
+   ],
+   "level": 1,
+   "category": "comida",
+   "picture": {
+    "icon": "soup"
+   },
+   "image": "assets/images/aprendo_leer/palabras/sopa.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "sopa"
+   }
+  },
+  {
+   "id": "queso",
+   "text": "queso",
+   "syllables": [
+    "que",
+    "so"
+   ],
+   "level": 1,
+   "category": "comida",
+   "picture": null,
+   "image": "assets/images/aprendo_leer/palabras/queso.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "queso"
+   }
+  },
+  {
+   "id": "tomate",
+   "text": "tomate",
+   "syllables": [
+    "to",
+    "ma",
+    "te"
+   ],
+   "level": 2,
+   "category": "comida",
+   "picture": null,
+   "image": "assets/images/aprendo_leer/palabras/tomate.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "tomate"
+   }
+  },
+  {
+   "id": "fruta",
+   "text": "fruta",
+   "syllables": [
+    "fru",
+    "ta"
+   ],
+   "level": 3,
+   "category": "comida",
+   "picture": null,
+   "image": "assets/images/aprendo_leer/palabras/fruta.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "fruta"
+   }
+  },
+  {
+   "id": "pan",
+   "text": "pan",
+   "syllables": [
+    "pan"
+   ],
+   "level": 3,
+   "category": "comida",
+   "picture": {
+    "icon": "bread"
+   },
+   "image": "assets/images/aprendo_leer/palabras/pan.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "pan"
+   }
+  },
+  {
+   "id": "mesa",
+   "text": "mesa",
+   "syllables": [
+    "me",
+    "sa"
+   ],
+   "level": 1,
+   "category": "casa",
+   "picture": {
+    "icon": "table"
+   },
+   "image": "assets/images/aprendo_leer/palabras/mesa.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "mesa"
+   }
+  },
+  {
+   "id": "casa",
+   "text": "casa",
+   "syllables": [
+    "ca",
+    "sa"
+   ],
+   "level": 1,
+   "category": "casa",
+   "picture": {
+    "icon": "home"
+   },
+   "image": "assets/images/aprendo_leer/palabras/casa.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "casa"
+   }
+  },
+  {
+   "id": "cama",
+   "text": "cama",
+   "syllables": [
+    "ca",
+    "ma"
+   ],
+   "level": 1,
+   "category": "casa",
+   "picture": {
+    "icon": "bed"
+   },
+   "image": "assets/images/aprendo_leer/palabras/cama.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "cama"
+   }
+  },
+  {
+   "id": "silla",
+   "text": "silla",
+   "syllables": [
+    "si",
+    "lla"
+   ],
+   "level": 1,
+   "category": "casa",
+   "picture": {
+    "icon": "chair"
+   },
+   "image": "assets/images/aprendo_leer/palabras/silla.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "silla"
+   }
+  },
+  {
+   "id": "taza",
+   "text": "taza",
+   "syllables": [
+    "ta",
+    "za"
+   ],
+   "level": 1,
+   "category": "casa",
+   "picture": {
+    "icon": "local_cafe"
+   },
+   "image": "assets/images/aprendo_leer/palabras/taza.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "taza"
+   }
+  },
+  {
+   "id": "vaso",
+   "text": "vaso",
+   "syllables": [
+    "va",
+    "so"
+   ],
+   "level": 1,
+   "category": "casa",
+   "picture": {
+    "icon": "glass"
+   },
+   "image": "assets/images/aprendo_leer/palabras/vaso.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "vaso"
+   }
+  },
+  {
+   "id": "cuna",
+   "text": "cuna",
+   "syllables": [
+    "cu",
+    "na"
+   ],
+   "level": 1,
+   "category": "casa",
+   "picture": {
+    "icon": "crib"
+   },
+   "image": "assets/images/aprendo_leer/palabras/cuna.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "cuna"
+   }
+  },
+  {
+   "id": "foco",
+   "text": "foco",
+   "syllables": [
+    "fo",
+    "co"
+   ],
+   "level": 1,
+   "category": "casa",
+   "picture": {
+    "icon": "lamp"
+   },
+   "image": "assets/images/aprendo_leer/palabras/foco.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "foco"
+   }
+  },
+  {
+   "id": "llave",
+   "text": "llave",
+   "syllables": [
+    "lla",
+    "ve"
+   ],
+   "level": 1,
+   "category": "casa",
+   "picture": {
+    "icon": "key"
+   },
+   "image": "assets/images/aprendo_leer/palabras/llave.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "llave"
+   }
+  },
+  {
+   "id": "ducha",
+   "text": "ducha",
+   "syllables": [
+    "du",
+    "cha"
+   ],
+   "level": 1,
+   "category": "casa",
+   "picture": {
+    "icon": "shower"
+   },
+   "image": "assets/images/aprendo_leer/palabras/ducha.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "ducha"
+   }
+  },
+  {
+   "id": "puerta",
+   "text": "puerta",
+   "syllables": [
+    "puer",
+    "ta"
+   ],
+   "level": 3,
+   "category": "casa",
+   "picture": {
+    "icon": "door"
+   },
+   "image": "assets/images/aprendo_leer/palabras/puerta.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "puerta"
+   }
+  },
+  {
+   "id": "ventana",
+   "text": "ventana",
+   "syllables": [
+    "ven",
+    "ta",
+    "na"
+   ],
+   "level": 2,
+   "category": "casa",
+   "picture": {
+    "icon": "window"
+   },
+   "image": "assets/images/aprendo_leer/palabras/ventana.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "ventana"
+   }
+  },
+  {
+   "id": "reloj",
+   "text": "reloj",
+   "syllables": [
+    "re",
+    "loj"
+   ],
+   "level": 3,
+   "category": "casa",
+   "picture": {
+    "icon": "clock"
+   },
+   "image": "assets/images/aprendo_leer/palabras/reloj.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "reloj"
+   }
+  },
+  {
+   "id": "tijera",
+   "text": "tijera",
+   "syllables": [
+    "ti",
+    "je",
+    "ra"
+   ],
+   "level": 2,
+   "category": "casa",
+   "picture": {
+    "icon": "content_cut"
+   },
+   "image": "assets/images/aprendo_leer/palabras/tijera.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "tijera"
+   }
+  },
+  {
+   "id": "telefono",
+   "text": "teléfono",
+   "syllables": [
+    "te",
+    "lé",
+    "fo",
+    "no"
+   ],
+   "level": 2,
+   "category": "casa",
+   "picture": {
+    "icon": "phone"
+   },
+   "image": "assets/images/aprendo_leer/palabras/telefono.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "teléfono"
+   }
+  },
+  {
+   "id": "camara",
+   "text": "cámara",
+   "syllables": [
+    "cá",
+    "ma",
+    "ra"
+   ],
+   "level": 2,
+   "category": "casa",
+   "picture": {
+    "icon": "camera"
+   },
+   "image": "assets/images/aprendo_leer/palabras/camara.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "cámara"
+   }
+  },
+  {
+   "id": "maleta",
+   "text": "maleta",
+   "syllables": [
+    "ma",
+    "le",
+    "ta"
+   ],
+   "level": 2,
+   "category": "casa",
+   "picture": null,
+   "image": "assets/images/aprendo_leer/palabras/maleta.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "maleta"
+   }
+  },
+  {
+   "id": "moneda",
+   "text": "moneda",
+   "syllables": [
+    "mo",
+    "ne",
+    "da"
+   ],
+   "level": 2,
+   "category": "casa",
+   "picture": null,
+   "image": "assets/images/aprendo_leer/palabras/moneda.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "moneda"
+   }
+  },
+  {
+   "id": "plato",
+   "text": "plato",
+   "syllables": [
+    "pla",
+    "to"
+   ],
+   "level": 3,
+   "category": "casa",
+   "picture": null,
+   "image": "assets/images/aprendo_leer/palabras/plato.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "plato"
+   }
+  },
+  {
+   "id": "cuchara",
+   "text": "cuchara",
+   "syllables": [
+    "cu",
+    "cha",
+    "ra"
+   ],
+   "level": 2,
+   "category": "casa",
+   "picture": null,
+   "image": "assets/images/aprendo_leer/palabras/cuchara.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "cuchara"
+   }
+  },
+  {
+   "id": "libro",
+   "text": "libro",
+   "syllables": [
+    "li",
+    "bro"
+   ],
+   "level": 3,
+   "category": "escuela",
+   "picture": {
+    "icon": "book"
+   },
+   "image": "assets/images/aprendo_leer/palabras/libro.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "libro"
+   }
+  },
+  {
+   "id": "lapiz",
+   "text": "lápiz",
+   "syllables": [
+    "lá",
+    "piz"
+   ],
+   "level": 3,
+   "category": "escuela",
+   "picture": {
+    "icon": "pencil"
+   },
+   "image": "assets/images/aprendo_leer/palabras/lapiz.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "lápiz"
+   }
+  },
+  {
+   "id": "mochila",
+   "text": "mochila",
+   "syllables": [
+    "mo",
+    "chi",
+    "la"
+   ],
+   "level": 2,
+   "category": "escuela",
+   "picture": {
+    "icon": "backpack"
+   },
+   "image": "assets/images/aprendo_leer/palabras/mochila.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "mochila"
+   }
+  },
+  {
+   "id": "escuela",
+   "text": "escuela",
+   "syllables": [
+    "es",
+    "cue",
+    "la"
+   ],
+   "level": 3,
+   "category": "escuela",
+   "picture": {
+    "icon": "school"
+   },
+   "image": "assets/images/aprendo_leer/palabras/escuela.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "escuela"
+   }
+  },
+  {
+   "id": "mapa",
+   "text": "mapa",
+   "syllables": [
+    "ma",
+    "pa"
+   ],
+   "level": 1,
+   "category": "escuela",
+   "picture": {
+    "icon": "map"
+   },
+   "image": "assets/images/aprendo_leer/palabras/mapa.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "mapa"
+   }
+  },
+  {
+   "id": "pelota",
+   "text": "pelota",
+   "syllables": [
+    "pe",
+    "lo",
+    "ta"
+   ],
+   "level": 2,
+   "category": "juguetes",
+   "picture": {
+    "icon": "ball"
+   },
+   "image": "assets/images/aprendo_leer/palabras/pelota.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "pelota"
+   }
+  },
+  {
+   "id": "globo",
+   "text": "globo",
+   "syllables": [
+    "glo",
+    "bo"
+   ],
+   "level": 3,
+   "category": "juguetes",
+   "picture": null,
+   "image": "assets/images/aprendo_leer/palabras/globo.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "globo"
+   }
+  },
+  {
+   "id": "regalo",
+   "text": "regalo",
+   "syllables": [
+    "re",
+    "ga",
+    "lo"
+   ],
+   "level": 2,
+   "category": "juguetes",
+   "picture": {
+    "icon": "gift"
+   },
+   "image": "assets/images/aprendo_leer/palabras/regalo.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "regalo"
+   }
+  },
+  {
+   "id": "bicicleta",
+   "text": "bicicleta",
+   "syllables": [
+    "bi",
+    "ci",
+    "cle",
+    "ta"
+   ],
+   "level": 3,
+   "category": "juguetes",
+   "picture": {
+    "icon": "bike"
+   },
+   "image": "assets/images/aprendo_leer/palabras/bicicleta.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "bicicleta"
+   }
+  },
+  {
+   "id": "moto",
+   "text": "moto",
+   "syllables": [
+    "mo",
+    "to"
+   ],
+   "level": 1,
+   "category": "transporte",
+   "picture": null,
+   "image": "assets/images/aprendo_leer/palabras/moto.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "moto"
+   }
+  },
+  {
+   "id": "tren",
+   "text": "tren",
+   "syllables": [
+    "tren"
+   ],
+   "level": 3,
+   "category": "transporte",
+   "picture": {
+    "drawing": "vehiculo_tren"
+   },
+   "image": "assets/images/aprendo_leer/palabras/tren.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "tren"
+   }
+  },
+  {
+   "id": "barco",
+   "text": "barco",
+   "syllables": [
+    "bar",
+    "co"
+   ],
+   "level": 3,
+   "category": "transporte",
+   "picture": {
+    "drawing": "vehiculo_barco"
+   },
+   "image": "assets/images/aprendo_leer/palabras/barco.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "barco"
+   }
+  },
+  {
+   "id": "avion",
+   "text": "avión",
+   "syllables": [
+    "a",
+    "vión"
+   ],
+   "level": 3,
+   "category": "transporte",
+   "picture": {
+    "drawing": "vehiculo_avion"
+   },
+   "image": "assets/images/aprendo_leer/palabras/avion.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "avión"
+   }
+  },
+  {
+   "id": "carro",
+   "text": "carro",
+   "syllables": [
+    "ca",
+    "rro"
+   ],
+   "level": 1,
+   "category": "transporte",
+   "picture": {
+    "drawing": "vehiculo_automovil"
+   },
+   "image": "assets/images/aprendo_leer/palabras/carro.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "carro"
+   }
+  },
+  {
+   "id": "autobus",
+   "text": "autobús",
+   "syllables": [
+    "au",
+    "to",
+    "bús"
+   ],
+   "level": 3,
+   "category": "transporte",
+   "picture": {
+    "drawing": "vehiculo_autobus"
+   },
+   "image": "assets/images/aprendo_leer/palabras/autobus.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "autobús"
+   }
+  },
+  {
+   "id": "helicoptero",
+   "text": "helicóptero",
+   "syllables": [
+    "he",
+    "li",
+    "cóp",
+    "te",
+    "ro"
+   ],
+   "level": 2,
+   "category": "transporte",
+   "picture": {
+    "drawing": "vehiculo_helicoptero"
+   },
+   "image": "assets/images/aprendo_leer/palabras/helicoptero.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "helicóptero"
+   }
+  },
+  {
+   "id": "semaforo",
+   "text": "semáforo",
+   "syllables": [
+    "se",
+    "má",
+    "fo",
+    "ro"
+   ],
+   "level": 2,
+   "category": "transporte",
+   "picture": {
+    "icon": "traffic"
+   },
+   "image": "assets/images/aprendo_leer/palabras/semaforo.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "semáforo"
+   }
+  },
+  {
+   "id": "luna",
+   "text": "luna",
+   "syllables": [
+    "lu",
+    "na"
+   ],
+   "level": 1,
+   "category": "naturaleza",
+   "picture": {
+    "icon": "moon"
+   },
+   "image": "assets/images/aprendo_leer/palabras/luna.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "luna"
+   }
+  },
+  {
+   "id": "sol",
+   "text": "sol",
+   "syllables": [
+    "sol"
+   ],
+   "level": 3,
+   "category": "naturaleza",
+   "picture": {
+    "icon": "sun"
+   },
+   "image": "assets/images/aprendo_leer/palabras/sol.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "sol"
+   }
+  },
+  {
+   "id": "nube",
+   "text": "nube",
+   "syllables": [
+    "nu",
+    "be"
+   ],
+   "level": 1,
+   "category": "naturaleza",
+   "picture": {
+    "icon": "cloud"
+   },
+   "image": "assets/images/aprendo_leer/palabras/nube.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "nube"
+   }
+  },
+  {
+   "id": "flor",
+   "text": "flor",
+   "syllables": [
+    "flor"
+   ],
+   "level": 3,
+   "category": "naturaleza",
+   "picture": {
+    "icon": "flower"
+   },
+   "image": "assets/images/aprendo_leer/palabras/flor.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "flor"
+   }
+  },
+  {
+   "id": "arbol",
+   "text": "árbol",
+   "syllables": [
+    "ár",
+    "bol"
+   ],
+   "level": 3,
+   "category": "naturaleza",
+   "picture": {
+    "icon": "tree"
+   },
+   "image": "assets/images/aprendo_leer/palabras/arbol.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "árbol"
+   }
+  },
+  {
+   "id": "montana",
+   "text": "montaña",
+   "syllables": [
+    "mon",
+    "ta",
+    "ña"
+   ],
+   "level": 2,
+   "category": "naturaleza",
+   "picture": {
+    "icon": "mountain"
+   },
+   "image": "assets/images/aprendo_leer/palabras/montana.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "montaña"
+   }
+  },
+  {
+   "id": "paraguas",
+   "text": "paraguas",
+   "syllables": [
+    "pa",
+    "ra",
+    "guas"
+   ],
+   "level": 2,
+   "category": "naturaleza",
+   "picture": {
+    "icon": "umbrella"
+   },
+   "image": "assets/images/aprendo_leer/palabras/paraguas.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "paraguas"
+   }
+  },
+  {
+   "id": "estrella",
+   "text": "estrella",
+   "syllables": [
+    "es",
+    "tre",
+    "lla"
+   ],
+   "level": 3,
+   "category": "naturaleza",
+   "picture": {
+    "icon": "star"
+   },
+   "image": "assets/images/aprendo_leer/palabras/estrella.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "estrella"
+   }
+  },
+  {
+   "id": "corazon",
+   "text": "corazón",
+   "syllables": [
+    "co",
+    "ra",
+    "zón"
+   ],
+   "level": 2,
+   "category": "naturaleza",
+   "picture": {
+    "icon": "heart"
+   },
+   "image": "assets/images/aprendo_leer/palabras/corazon.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "corazón"
+   }
+  },
+  {
+   "id": "boca",
+   "text": "boca",
+   "syllables": [
+    "bo",
+    "ca"
+   ],
+   "level": 1,
+   "category": "cuerpo",
+   "picture": {
+    "body": "boca"
+   },
+   "image": "assets/images/aprendo_leer/palabras/boca.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "boca"
+   }
+  },
+  {
+   "id": "pelo",
+   "text": "pelo",
+   "syllables": [
+    "pe",
+    "lo"
+   ],
+   "level": 1,
+   "category": "cuerpo",
+   "picture": {
+    "body": "pelo"
+   },
+   "image": "assets/images/aprendo_leer/palabras/pelo.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "pelo"
+   }
+  },
+  {
+   "id": "nariz",
+   "text": "nariz",
+   "syllables": [
+    "na",
+    "riz"
+   ],
+   "level": 3,
+   "category": "cuerpo",
+   "picture": {
+    "body": "nariz"
+   },
+   "image": "assets/images/aprendo_leer/palabras/nariz.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "nariz"
+   }
+  },
+  {
+   "id": "cabeza",
+   "text": "cabeza",
+   "syllables": [
+    "ca",
+    "be",
+    "za"
+   ],
+   "level": 2,
+   "category": "cuerpo",
+   "picture": {
+    "body": "cabeza"
+   },
+   "image": "assets/images/aprendo_leer/palabras/cabeza.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "cabeza"
+   }
+  },
+  {
+   "id": "brazo",
+   "text": "brazo",
+   "syllables": [
+    "bra",
+    "zo"
+   ],
+   "level": 3,
+   "category": "cuerpo",
+   "picture": {
+    "body": "brazos"
+   },
+   "image": "assets/images/aprendo_leer/palabras/brazo.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "brazo"
+   }
+  },
+  {
+   "id": "pie",
+   "text": "pie",
+   "syllables": [
+    "pie"
+   ],
+   "level": 3,
+   "category": "cuerpo",
+   "picture": {
+    "body": "pies"
+   },
+   "image": "assets/images/aprendo_leer/palabras/pie.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "pie"
+   }
+  },
+  {
+   "id": "mano",
+   "text": "mano",
+   "syllables": [
+    "ma",
+    "no"
+   ],
+   "level": 1,
+   "category": "cuerpo",
+   "picture": null,
+   "image": "assets/images/aprendo_leer/palabras/mano.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "mano"
+   }
+  },
+  {
+   "id": "rojo",
+   "text": "rojo",
+   "syllables": [
+    "ro",
+    "jo"
+   ],
+   "level": 1,
+   "category": "colores",
+   "picture": {
+    "swatch": "#E53935"
+   },
+   "image": "assets/images/aprendo_leer/palabras/rojo.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "rojo"
+   }
+  },
+  {
+   "id": "rosa",
+   "text": "rosa",
+   "syllables": [
+    "ro",
+    "sa"
+   ],
+   "level": 1,
+   "category": "colores",
+   "picture": {
+    "swatch": "#F48FB1"
+   },
+   "image": "assets/images/aprendo_leer/palabras/rosa.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "rosa"
+   }
+  },
+  {
+   "id": "azul",
+   "text": "azul",
+   "syllables": [
+    "a",
+    "zul"
+   ],
+   "level": 3,
+   "category": "colores",
+   "picture": {
+    "swatch": "#1E88E5"
+   },
+   "image": "assets/images/aprendo_leer/palabras/azul.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "azul"
+   }
+  },
+  {
+   "id": "verde",
+   "text": "verde",
+   "syllables": [
+    "ver",
+    "de"
+   ],
+   "level": 3,
+   "category": "colores",
+   "picture": {
+    "swatch": "#43A047"
+   },
+   "image": "assets/images/aprendo_leer/palabras/verde.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "verde"
+   }
+  },
+  {
+   "id": "negro",
+   "text": "negro",
+   "syllables": [
+    "ne",
+    "gro"
+   ],
+   "level": 3,
+   "category": "colores",
+   "picture": {
+    "swatch": "#212121"
+   },
+   "image": "assets/images/aprendo_leer/palabras/negro.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "negro"
+   }
+  },
+  {
+   "id": "blanco",
+   "text": "blanco",
+   "syllables": [
+    "blan",
+    "co"
+   ],
+   "level": 3,
+   "category": "colores",
+   "picture": {
+    "swatch": "#FFFFFF"
+   },
+   "image": "assets/images/aprendo_leer/palabras/blanco.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "blanco"
+   }
+  },
+  {
+   "id": "morado",
+   "text": "morado",
+   "syllables": [
+    "mo",
+    "ra",
+    "do"
+   ],
+   "level": 2,
+   "category": "colores",
+   "picture": {
+    "swatch": "#8E24AA"
+   },
+   "image": "assets/images/aprendo_leer/palabras/morado.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "morado"
+   }
+  },
+  {
+   "id": "amarillo",
+   "text": "amarillo",
+   "syllables": [
+    "a",
+    "ma",
+    "ri",
+    "llo"
+   ],
+   "level": 2,
+   "category": "colores",
+   "picture": {
+    "swatch": "#FDD835"
+   },
+   "image": "assets/images/aprendo_leer/palabras/amarillo.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "amarillo"
+   }
+  },
+  {
+   "id": "nino",
+   "text": "niño",
+   "syllables": [
+    "ni",
+    "ño"
+   ],
+   "level": 1,
+   "category": "personas",
+   "picture": {
+    "kid": {
+     "girl": false,
+     "emotion": "feliz"
+    }
+   },
+   "image": "assets/images/aprendo_leer/palabras/nino.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "niño"
+   }
+  },
+  {
+   "id": "nina",
+   "text": "niña",
+   "syllables": [
+    "ni",
+    "ña"
+   ],
+   "level": 1,
+   "category": "personas",
+   "picture": {
+    "kid": {
+     "girl": true,
+     "emotion": "feliz",
+     "shirt": "#EC407A"
+    }
+   },
+   "image": "assets/images/aprendo_leer/palabras/nina.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "niña"
+   }
+  },
+  {
+   "id": "bebe",
+   "text": "bebé",
+   "syllables": [
+    "be",
+    "bé"
+   ],
+   "level": 1,
+   "category": "personas",
+   "picture": {
+    "icon": "child_care"
+   },
+   "image": "assets/images/aprendo_leer/palabras/bebe.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "bebé"
+   }
+  },
+  {
+   "id": "mama",
+   "text": "mamá",
+   "syllables": [
+    "ma",
+    "má"
+   ],
+   "level": 1,
+   "category": "personas",
+   "picture": null,
+   "image": "assets/images/aprendo_leer/palabras/mama.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "mamá"
+   }
+  },
+  {
+   "id": "papa",
+   "text": "papá",
+   "syllables": [
+    "pa",
+    "pá"
+   ],
+   "level": 1,
+   "category": "personas",
+   "picture": null,
+   "image": "assets/images/aprendo_leer/palabras/papa.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "papá"
+   }
+  },
+  {
+   "id": "zapato",
+   "text": "zapato",
+   "syllables": [
+    "za",
+    "pa",
+    "to"
+   ],
+   "level": 2,
+   "category": "ropa",
+   "picture": null,
+   "image": "assets/images/aprendo_leer/palabras/zapato.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "zapato"
+   }
+  },
+  {
+   "id": "camisa",
+   "text": "camisa",
+   "syllables": [
+    "ca",
+    "mi",
+    "sa"
+   ],
+   "level": 2,
+   "category": "ropa",
+   "picture": null,
+   "image": "assets/images/aprendo_leer/palabras/camisa.webp",
+   "image_ready": false,
+   "audio": {
+    "clip": null,
+    "tts": "camisa"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "id": "completa_pato",
+   "word": "pato",
+   "level": 1,
+   "category": "animales",
+   "syllables": [
+    "pa",
+    "to"
+   ],
+   "missing": 0,
+   "answer": "pa",
+   "options": [
+    "sa",
+    "ta",
+    "pa"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_sapo",
+   "word": "sapo",
+   "level": 1,
+   "category": "animales",
+   "syllables": [
+    "sa",
+    "po"
+   ],
+   "missing": 1,
+   "answer": "po",
+   "options": [
+    "po",
+    "co",
+    "ro"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_gato",
+   "word": "gato",
+   "level": 1,
+   "category": "animales",
+   "syllables": [
+    "ga",
+    "to"
+   ],
+   "missing": 0,
+   "answer": "ga",
+   "options": [
+    "ta",
+    "ba",
+    "ga"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_puma",
+   "word": "puma",
+   "level": 1,
+   "category": "animales",
+   "syllables": [
+    "pu",
+    "ma"
+   ],
+   "missing": 1,
+   "answer": "ma",
+   "options": [
+    "sa",
+    "ma",
+    "na"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_mono",
+   "word": "mono",
+   "level": 1,
+   "category": "animales",
+   "syllables": [
+    "mo",
+    "no"
+   ],
+   "missing": 0,
+   "answer": "mo",
+   "options": [
+    "jo",
+    "mo",
+    "do"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_vaca",
+   "word": "vaca",
+   "level": 1,
+   "category": "animales",
+   "syllables": [
+    "va",
+    "ca"
+   ],
+   "missing": 1,
+   "answer": "ca",
+   "options": [
+    "ca",
+    "sa",
+    "da"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_poni",
+   "word": "poni",
+   "level": 1,
+   "category": "animales",
+   "syllables": [
+    "po",
+    "ni"
+   ],
+   "missing": 0,
+   "answer": "po",
+   "options": [
+    "bo",
+    "ro",
+    "po"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_oso",
+   "word": "oso",
+   "level": 1,
+   "category": "animales",
+   "syllables": [
+    "o",
+    "so"
+   ],
+   "missing": 1,
+   "answer": "so",
+   "options": [
+    "jo",
+    "co",
+    "so"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_foca",
+   "word": "foca",
+   "level": 1,
+   "category": "animales",
+   "syllables": [
+    "fo",
+    "ca"
+   ],
+   "missing": 0,
+   "answer": "fo",
+   "options": [
+    "fo",
+    "co",
+    "mo"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_loro",
+   "word": "loro",
+   "level": 1,
+   "category": "animales",
+   "syllables": [
+    "lo",
+    "ro"
+   ],
+   "missing": 1,
+   "answer": "ro",
+   "options": [
+    "ro",
+    "to",
+    "fo"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_perro",
+   "word": "perro",
+   "level": 1,
+   "category": "animales",
+   "syllables": [
+    "pe",
+    "rro"
+   ],
+   "missing": 0,
+   "answer": "pe",
+   "options": [
+    "se",
+    "le",
+    "pe"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_gallo",
+   "word": "gallo",
+   "level": 1,
+   "category": "animales",
+   "syllables": [
+    "ga",
+    "llo"
+   ],
+   "missing": 1,
+   "answer": "llo",
+   "options": [
+    "lo",
+    "llo",
+    "no"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_burro",
+   "word": "burro",
+   "level": 1,
+   "category": "animales",
+   "syllables": [
+    "bu",
+    "rro"
+   ],
+   "missing": 0,
+   "answer": "bu",
+   "options": [
+    "nu",
+    "mu",
+    "bu"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_abeja",
+   "word": "abeja",
+   "level": 2,
+   "category": "animales",
+   "syllables": [
+    "a",
+    "be",
+    "ja"
+   ],
+   "missing": 1,
+   "answer": "be",
+   "options": [
+    "se",
+    "pe",
+    "ne",
+    "be"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_conejo",
+   "word": "conejo",
+   "level": 2,
+   "category": "animales",
+   "syllables": [
+    "co",
+    "ne",
+    "jo"
+   ],
+   "missing": 2,
+   "answer": "jo",
+   "options": [
+    "do",
+    "fo",
+    "jo",
+    "mo"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_jirafa",
+   "word": "jirafa",
+   "level": 2,
+   "category": "animales",
+   "syllables": [
+    "ji",
+    "ra",
+    "fa"
+   ],
+   "missing": 0,
+   "answer": "ji",
+   "options": [
+    "ji",
+    "di",
+    "pi",
+    "ti"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_oruga",
+   "word": "oruga",
+   "level": 2,
+   "category": "animales",
+   "syllables": [
+    "o",
+    "ru",
+    "ga"
+   ],
+   "missing": 1,
+   "answer": "ru",
+   "options": [
+    "ru",
+    "gu",
+    "cu",
+    "du"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_oveja",
+   "word": "oveja",
+   "level": 2,
+   "category": "animales",
+   "syllables": [
+    "o",
+    "ve",
+    "ja"
+   ],
+   "missing": 2,
+   "answer": "ja",
+   "options": [
+    "ja",
+    "ra",
+    "da",
+    "pa"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_gallina",
+   "word": "gallina",
+   "level": 2,
+   "category": "animales",
+   "syllables": [
+    "ga",
+    "lli",
+    "na"
+   ],
+   "missing": 0,
+   "answer": "ga",
+   "options": [
+    "sa",
+    "la",
+    "ga",
+    "ca"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_ballena",
+   "word": "ballena",
+   "level": 2,
+   "category": "animales",
+   "syllables": [
+    "ba",
+    "lle",
+    "na"
+   ],
+   "missing": 1,
+   "answer": "lle",
+   "options": [
+    "be",
+    "lle",
+    "me",
+    "se"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_elefante",
+   "word": "elefante",
+   "level": 2,
+   "category": "animales",
+   "syllables": [
+    "e",
+    "le",
+    "fan",
+    "te"
+   ],
+   "missing": 0,
+   "answer": "e",
+   "options": [
+    "u",
+    "o",
+    "a",
+    "e"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_mariposa",
+   "word": "mariposa",
+   "level": 2,
+   "category": "animales",
+   "syllables": [
+    "ma",
+    "ri",
+    "po",
+    "sa"
+   ],
+   "missing": 1,
+   "answer": "ri",
+   "options": [
+    "ri",
+    "ti",
+    "ji",
+    "li"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_tortuga",
+   "word": "tortuga",
+   "level": 2,
+   "category": "animales",
+   "syllables": [
+    "tor",
+    "tu",
+    "ga"
+   ],
+   "missing": 1,
+   "answer": "tu",
+   "options": [
+    "ru",
+    "lu",
+    "du",
+    "tu"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_cebra",
+   "word": "cebra",
+   "level": 3,
+   "category": "animales",
+   "syllables": [
+    "ce",
+    "bra"
+   ],
+   "missing": 1,
+   "answer": "bra",
+   "options": [
+    "bra",
+    "dra",
+    "fla",
+    "cla"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_pulpo",
+   "word": "pulpo",
+   "level": 3,
+   "category": "animales",
+   "syllables": [
+    "pul",
+    "po"
+   ],
+   "missing": 0,
+   "answer": "pul",
+   "options": [
+    "sul",
+    "pul",
+    "rul",
+    "jul"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_delfin",
+   "word": "delfin",
+   "level": 3,
+   "category": "animales",
+   "syllables": [
+    "del",
+    "fín"
+   ],
+   "missing": 1,
+   "answer": "fín",
+   "options": [
+    "rin",
+    "fín",
+    "sin",
+    "pin"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_cangrejo",
+   "word": "cangrejo",
+   "level": 3,
+   "category": "animales",
+   "syllables": [
+    "can",
+    "gre",
+    "jo"
+   ],
+   "missing": 1,
+   "answer": "gre",
+   "options": [
+    "gre",
+    "gle",
+    "pre",
+    "tre"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_cerdito",
+   "word": "cerdito",
+   "level": 2,
+   "category": "animales",
+   "syllables": [
+    "cer",
+    "di",
+    "to"
+   ],
+   "missing": 0,
+   "answer": "cer",
+   "options": [
+    "cer",
+    "mer",
+    "per",
+    "rer"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_dinosaurio",
+   "word": "dinosaurio",
+   "level": 3,
+   "category": "animales",
+   "syllables": [
+    "di",
+    "no",
+    "sau",
+    "rio"
+   ],
+   "missing": 2,
+   "answer": "sau",
+   "options": [
+    "fau",
+    "sau",
+    "jau",
+    "lau"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_dragon",
+   "word": "dragon",
+   "level": 3,
+   "category": "fantasía",
+   "syllables": [
+    "dra",
+    "gón"
+   ],
+   "missing": 0,
+   "answer": "dra",
+   "options": [
+    "bla",
+    "tra",
+    "cla",
+    "dra"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_hada",
+   "word": "hada",
+   "level": 1,
+   "category": "fantasía",
+   "syllables": [
+    "ha",
+    "da"
+   ],
+   "missing": 0,
+   "answer": "ha",
+   "options": [
+    "ra",
+    "ha",
+    "ma"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_robot",
+   "word": "robot",
+   "level": 3,
+   "category": "juguetes",
+   "syllables": [
+    "ro",
+    "bot"
+   ],
+   "missing": 1,
+   "answer": "bot",
+   "options": [
+    "bot",
+    "fot",
+    "got",
+    "rot"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_unicornio",
+   "word": "unicornio",
+   "level": 3,
+   "category": "fantasía",
+   "syllables": [
+    "u",
+    "ni",
+    "cor",
+    "nio"
+   ],
+   "missing": 3,
+   "answer": "nio",
+   "options": [
+    "bio",
+    "tio",
+    "rio",
+    "nio"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_pina",
+   "word": "pina",
+   "level": 1,
+   "category": "comida",
+   "syllables": [
+    "pi",
+    "ña"
+   ],
+   "missing": 1,
+   "answer": "ña",
+   "options": [
+    "fa",
+    "ña",
+    "ba"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_uvas",
+   "word": "uvas",
+   "level": 3,
+   "category": "comida",
+   "syllables": [
+    "u",
+    "vas"
+   ],
+   "missing": 0,
+   "answer": "u",
+   "options": [
+    "u",
+    "i",
+    "o",
+    "e"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_fresa",
+   "word": "fresa",
+   "level": 3,
+   "category": "comida",
+   "syllables": [
+    "fre",
+    "sa"
+   ],
+   "missing": 0,
+   "answer": "fre",
+   "options": [
+    "cre",
+    "fle",
+    "gle",
+    "fre"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_manzana",
+   "word": "manzana",
+   "level": 2,
+   "category": "comida",
+   "syllables": [
+    "man",
+    "za",
+    "na"
+   ],
+   "missing": 0,
+   "answer": "man",
+   "options": [
+    "ran",
+    "ban",
+    "man",
+    "fan"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_naranja",
+   "word": "naranja",
+   "level": 2,
+   "category": "comida",
+   "syllables": [
+    "na",
+    "ran",
+    "ja"
+   ],
+   "missing": 1,
+   "answer": "ran",
+   "options": [
+    "ran",
+    "san",
+    "man",
+    "tan"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_platano",
+   "word": "platano",
+   "level": 3,
+   "category": "comida",
+   "syllables": [
+    "plá",
+    "ta",
+    "no"
+   ],
+   "missing": 0,
+   "answer": "plá",
+   "options": [
+    "plá",
+    "gla",
+    "cra",
+    "fra"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_sandia",
+   "word": "sandia",
+   "level": 2,
+   "category": "comida",
+   "syllables": [
+    "san",
+    "dí",
+    "a"
+   ],
+   "missing": 0,
+   "answer": "san",
+   "options": [
+    "can",
+    "jan",
+    "gan",
+    "san"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_cereza",
+   "word": "cereza",
+   "level": 2,
+   "category": "comida",
+   "syllables": [
+    "ce",
+    "re",
+    "za"
+   ],
+   "missing": 1,
+   "answer": "re",
+   "options": [
+    "fe",
+    "re",
+    "se",
+    "ne"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_helado",
+   "word": "helado",
+   "level": 2,
+   "category": "comida",
+   "syllables": [
+    "he",
+    "la",
+    "do"
+   ],
+   "missing": 2,
+   "answer": "do",
+   "options": [
+    "mo",
+    "bo",
+    "po",
+    "do"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_huevo",
+   "word": "huevo",
+   "level": 3,
+   "category": "comida",
+   "syllables": [
+    "hue",
+    "vo"
+   ],
+   "missing": 0,
+   "answer": "hue",
+   "options": [
+    "due",
+    "bue",
+    "hue",
+    "nue"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_galleta",
+   "word": "galleta",
+   "level": 2,
+   "category": "comida",
+   "syllables": [
+    "ga",
+    "lle",
+    "ta"
+   ],
+   "missing": 1,
+   "answer": "lle",
+   "options": [
+    "pe",
+    "be",
+    "lle",
+    "re"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_pizza",
+   "word": "pizza",
+   "level": 3,
+   "category": "comida",
+   "syllables": [
+    "piz",
+    "za"
+   ],
+   "missing": 0,
+   "answer": "piz",
+   "options": [
+    "niz",
+    "biz",
+    "piz",
+    "tiz"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_sopa",
+   "word": "sopa",
+   "level": 1,
+   "category": "comida",
+   "syllables": [
+    "so",
+    "pa"
+   ],
+   "missing": 1,
+   "answer": "pa",
+   "options": [
+    "ba",
+    "ga",
+    "pa"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_queso",
+   "word": "queso",
+   "level": 1,
+   "category": "comida",
+   "syllables": [
+    "que",
+    "so"
+   ],
+   "missing": 0,
+   "answer": "que",
+   "options": [
+    "que",
+    "se",
+    "me"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_tomate",
+   "word": "tomate",
+   "level": 2,
+   "category": "comida",
+   "syllables": [
+    "to",
+    "ma",
+    "te"
+   ],
+   "missing": 2,
+   "answer": "te",
+   "options": [
+    "te",
+    "le",
+    "me",
+    "de"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_fruta",
+   "word": "fruta",
+   "level": 3,
+   "category": "comida",
+   "syllables": [
+    "fru",
+    "ta"
+   ],
+   "missing": 0,
+   "answer": "fru",
+   "options": [
+    "plu",
+    "pru",
+    "fru",
+    "bru"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_pan",
+   "word": "pan",
+   "level": 3,
+   "category": "comida",
+   "syllables": [
+    "pan"
+   ],
+   "missing": 0,
+   "answer": "pan",
+   "options": [
+    "lan",
+    "gan",
+    "pan",
+    "can"
+   ],
+   "order": false
+  },
+  {
+   "id": "completa_mesa",
+   "word": "mesa",
+   "level": 1,
+   "category": "casa",
+   "syllables": [
+    "me",
+    "sa"
+   ],
+   "missing": 0,
+   "answer": "me",
+   "options": [
+    "te",
+    "me",
+    "je"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_casa",
+   "word": "casa",
+   "level": 1,
+   "category": "casa",
+   "syllables": [
+    "ca",
+    "sa"
+   ],
+   "missing": 1,
+   "answer": "sa",
+   "options": [
+    "sa",
+    "ra",
+    "ba"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_cama",
+   "word": "cama",
+   "level": 1,
+   "category": "casa",
+   "syllables": [
+    "ca",
+    "ma"
+   ],
+   "missing": 0,
+   "answer": "ca",
+   "options": [
+    "pa",
+    "ca",
+    "sa"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_silla",
+   "word": "silla",
+   "level": 1,
+   "category": "casa",
+   "syllables": [
+    "si",
+    "lla"
+   ],
+   "missing": 1,
+   "answer": "lla",
+   "options": [
+    "ja",
+    "pa",
+    "lla"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_taza",
+   "word": "taza",
+   "level": 1,
+   "category": "casa",
+   "syllables": [
+    "ta",
+    "za"
+   ],
+   "missing": 0,
+   "answer": "ta",
+   "options": [
+    "na",
+    "la",
+    "ta"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_vaso",
+   "word": "vaso",
+   "level": 1,
+   "category": "casa",
+   "syllables": [
+    "va",
+    "so"
+   ],
+   "missing": 1,
+   "answer": "so",
+   "options": [
+    "jo",
+    "so",
+    "to"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_cuna",
+   "word": "cuna",
+   "level": 1,
+   "category": "casa",
+   "syllables": [
+    "cu",
+    "na"
+   ],
+   "missing": 0,
+   "answer": "cu",
+   "options": [
+    "nu",
+    "ju",
+    "cu"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_foco",
+   "word": "foco",
+   "level": 1,
+   "category": "casa",
+   "syllables": [
+    "fo",
+    "co"
+   ],
+   "missing": 1,
+   "answer": "co",
+   "options": [
+    "co",
+    "mo",
+    "po"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_llave",
+   "word": "llave",
+   "level": 1,
+   "category": "casa",
+   "syllables": [
+    "lla",
+    "ve"
+   ],
+   "missing": 0,
+   "answer": "lla",
+   "options": [
+    "na",
+    "ma",
+    "lla"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_ducha",
+   "word": "ducha",
+   "level": 1,
+   "category": "casa",
+   "syllables": [
+    "du",
+    "cha"
+   ],
+   "missing": 1,
+   "answer": "cha",
+   "options": [
+    "ga",
+    "cha",
+    "ta"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_puerta",
+   "word": "puerta",
+   "level": 3,
+   "category": "casa",
+   "syllables": [
+    "puer",
+    "ta"
+   ],
+   "missing": 0,
+   "answer": "puer",
+   "options": [
+    "puer",
+    "nuer",
+    "fuer",
+    "duer"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_ventana",
+   "word": "ventana",
+   "level": 2,
+   "category": "casa",
+   "syllables": [
+    "ven",
+    "ta",
+    "na"
+   ],
+   "missing": 1,
+   "answer": "ta",
+   "options": [
+    "ba",
+    "la",
+    "ta",
+    "da"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_reloj",
+   "word": "reloj",
+   "level": 3,
+   "category": "casa",
+   "syllables": [
+    "re",
+    "loj"
+   ],
+   "missing": 0,
+   "answer": "re",
+   "options": [
+    "re",
+    "je",
+    "fe",
+    "le"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_tijera",
+   "word": "tijera",
+   "level": 2,
+   "category": "casa",
+   "syllables": [
+    "ti",
+    "je",
+    "ra"
+   ],
+   "missing": 0,
+   "answer": "ti",
+   "options": [
+    "mi",
+    "ri",
+    "ti",
+    "fi"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_telefono",
+   "word": "telefono",
+   "level": 2,
+   "category": "casa",
+   "syllables": [
+    "te",
+    "lé",
+    "fo",
+    "no"
+   ],
+   "missing": 0,
+   "answer": "te",
+   "options": [
+    "te",
+    "de",
+    "re",
+    "ne"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_camara",
+   "word": "camara",
+   "level": 2,
+   "category": "casa",
+   "syllables": [
+    "cá",
+    "ma",
+    "ra"
+   ],
+   "missing": 2,
+   "answer": "ra",
+   "options": [
+    "da",
+    "pa",
+    "ra",
+    "fa"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_maleta",
+   "word": "maleta",
+   "level": 2,
+   "category": "casa",
+   "syllables": [
+    "ma",
+    "le",
+    "ta"
+   ],
+   "missing": 0,
+   "answer": "ma",
+   "options": [
+    "ma",
+    "ga",
+    "fa",
+    "ra"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_moneda",
+   "word": "moneda",
+   "level": 2,
+   "category": "casa",
+   "syllables": [
+    "mo",
+    "ne",
+    "da"
+   ],
+   "missing": 1,
+   "answer": "ne",
+   "options": [
+    "fe",
+    "se",
+    "ne",
+    "be"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_plato",
+   "word": "plato",
+   "level": 3,
+   "category": "casa",
+   "syllables": [
+    "pla",
+    "to"
+   ],
+   "missing": 0,
+   "answer": "pla",
+   "options": [
+    "cra",
+    "pla",
+    "gla",
+    "fla"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_cuchara",
+   "word": "cuchara",
+   "level": 2,
+   "category": "casa",
+   "syllables": [
+    "cu",
+    "cha",
+    "ra"
+   ],
+   "missing": 0,
+   "answer": "cu",
+   "options": [
+    "cu",
+    "su",
+    "bu",
+    "pu"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_libro",
+   "word": "libro",
+   "level": 3,
+   "category": "escuela",
+   "syllables": [
+    "li",
+    "bro"
+   ],
+   "missing": 1,
+   "answer": "bro",
+   "options": [
+    "glo",
+    "fro",
+    "plo",
+    "bro"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_lapiz",
+   "word": "lapiz",
+   "level": 3,
+   "category": "escuela",
+   "syllables": [
+    "lá",
+    "piz"
+   ],
+   "missing": 1,
+   "answer": "piz",
+   "options": [
+    "fiz",
+    "piz",
+    "tiz",
+    "diz"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_mochila",
+   "word": "mochila",
+   "level": 2,
+   "category": "escuela",
+   "syllables": [
+    "mo",
+    "chi",
+    "la"
+   ],
+   "missing": 0,
+   "answer": "mo",
+   "options": [
+    "mo",
+    "fo",
+    "do",
+    "no"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_escuela",
+   "word": "escuela",
+   "level": 3,
+   "category": "escuela",
+   "syllables": [
+    "es",
+    "cue",
+    "la"
+   ],
+   "missing": 1,
+   "answer": "cue",
+   "options": [
+    "lue",
+    "cue",
+    "rue",
+    "sue"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_mapa",
+   "word": "mapa",
+   "level": 1,
+   "category": "escuela",
+   "syllables": [
+    "ma",
+    "pa"
+   ],
+   "missing": 0,
+   "answer": "ma",
+   "options": [
+    "ra",
+    "ga",
+    "ma"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_pelota",
+   "word": "pelota",
+   "level": 2,
+   "category": "juguetes",
+   "syllables": [
+    "pe",
+    "lo",
+    "ta"
+   ],
+   "missing": 0,
+   "answer": "pe",
+   "options": [
+    "le",
+    "pe",
+    "de",
+    "ne"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_globo",
+   "word": "globo",
+   "level": 3,
+   "category": "juguetes",
+   "syllables": [
+    "glo",
+    "bo"
+   ],
+   "missing": 0,
+   "answer": "glo",
+   "options": [
+    "flo",
+    "glo",
+    "pro",
+    "gro"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_regalo",
+   "word": "regalo",
+   "level": 2,
+   "category": "juguetes",
+   "syllables": [
+    "re",
+    "ga",
+    "lo"
+   ],
+   "missing": 2,
+   "answer": "lo",
+   "options": [
+    "co",
+    "jo",
+    "mo",
+    "lo"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_bicicleta",
+   "word": "bicicleta",
+   "level": 3,
+   "category": "juguetes",
+   "syllables": [
+    "bi",
+    "ci",
+    "cle",
+    "ta"
+   ],
+   "missing": 2,
+   "answer": "cle",
+   "options": [
+    "cle",
+    "gre",
+    "fre",
+    "cre"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_moto",
+   "word": "moto",
+   "level": 1,
+   "category": "transporte",
+   "syllables": [
+    "mo",
+    "to"
+   ],
+   "missing": 1,
+   "answer": "to",
+   "options": [
+    "to",
+    "go",
+    "po"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_tren",
+   "word": "tren",
+   "level": 3,
+   "category": "transporte",
+   "syllables": [
+    "tren"
+   ],
+   "missing": 0,
+   "answer": "tren",
+   "options": [
+    "dren",
+    "blen",
+    "tren",
+    "flen"
+   ],
+   "order": false
+  },
+  {
+   "id": "completa_barco",
+   "word": "barco",
+   "level": 3,
+   "category": "transporte",
+   "syllables": [
+    "bar",
+    "co"
+   ],
+   "missing": 1,
+   "answer": "co",
+   "options": [
+    "go",
+    "co",
+    "so",
+    "bo"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_avion",
+   "word": "avion",
+   "level": 3,
+   "category": "transporte",
+   "syllables": [
+    "a",
+    "vión"
+   ],
+   "missing": 1,
+   "answer": "vión",
+   "options": [
+    "sion",
+    "vión",
+    "dion",
+    "jion"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_carro",
+   "word": "carro",
+   "level": 1,
+   "category": "transporte",
+   "syllables": [
+    "ca",
+    "rro"
+   ],
+   "missing": 1,
+   "answer": "rro",
+   "options": [
+    "do",
+    "rro",
+    "jo"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_autobus",
+   "word": "autobus",
+   "level": 3,
+   "category": "transporte",
+   "syllables": [
+    "au",
+    "to",
+    "bús"
+   ],
+   "missing": 0,
+   "answer": "au",
+   "options": [
+    "au",
+    "ei",
+    "eu",
+    "ai"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_helicoptero",
+   "word": "helicoptero",
+   "level": 2,
+   "category": "transporte",
+   "syllables": [
+    "he",
+    "li",
+    "cóp",
+    "te",
+    "ro"
+   ],
+   "missing": 0,
+   "answer": "he",
+   "options": [
+    "pe",
+    "re",
+    "he",
+    "de"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_semaforo",
+   "word": "semaforo",
+   "level": 2,
+   "category": "transporte",
+   "syllables": [
+    "se",
+    "má",
+    "fo",
+    "ro"
+   ],
+   "missing": 2,
+   "answer": "fo",
+   "options": [
+    "bo",
+    "so",
+    "lo",
+    "fo"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_luna",
+   "word": "luna",
+   "level": 1,
+   "category": "naturaleza",
+   "syllables": [
+    "lu",
+    "na"
+   ],
+   "missing": 1,
+   "answer": "na",
+   "options": [
+    "ja",
+    "na",
+    "ga"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_sol",
+   "word": "sol",
+   "level": 3,
+   "category": "naturaleza",
+   "syllables": [
+    "sol"
+   ],
+   "missing": 0,
+   "answer": "sol",
+   "options": [
+    "bol",
+    "sol",
+    "mol",
+    "tol"
+   ],
+   "order": false
+  },
+  {
+   "id": "completa_nube",
+   "word": "nube",
+   "level": 1,
+   "category": "naturaleza",
+   "syllables": [
+    "nu",
+    "be"
+   ],
+   "missing": 1,
+   "answer": "be",
+   "options": [
+    "be",
+    "se",
+    "pe"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_flor",
+   "word": "flor",
+   "level": 3,
+   "category": "naturaleza",
+   "syllables": [
+    "flor"
+   ],
+   "missing": 0,
+   "answer": "flor",
+   "options": [
+    "cror",
+    "bror",
+    "pror",
+    "flor"
+   ],
+   "order": false
+  },
+  {
+   "id": "completa_arbol",
+   "word": "arbol",
+   "level": 3,
+   "category": "naturaleza",
+   "syllables": [
+    "ár",
+    "bol"
+   ],
+   "missing": 1,
+   "answer": "bol",
+   "options": [
+    "fol",
+    "col",
+    "nol",
+    "bol"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_montana",
+   "word": "montana",
+   "level": 2,
+   "category": "naturaleza",
+   "syllables": [
+    "mon",
+    "ta",
+    "ña"
+   ],
+   "missing": 2,
+   "answer": "ña",
+   "options": [
+    "ca",
+    "sa",
+    "ña",
+    "da"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_paraguas",
+   "word": "paraguas",
+   "level": 2,
+   "category": "naturaleza",
+   "syllables": [
+    "pa",
+    "ra",
+    "guas"
+   ],
+   "missing": 0,
+   "answer": "pa",
+   "options": [
+    "ta",
+    "ca",
+    "pa",
+    "na"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_estrella",
+   "word": "estrella",
+   "level": 3,
+   "category": "naturaleza",
+   "syllables": [
+    "es",
+    "tre",
+    "lla"
+   ],
+   "missing": 1,
+   "answer": "tre",
+   "options": [
+    "ble",
+    "tre",
+    "fre",
+    "gre"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_corazon",
+   "word": "corazon",
+   "level": 2,
+   "category": "naturaleza",
+   "syllables": [
+    "co",
+    "ra",
+    "zón"
+   ],
+   "missing": 2,
+   "answer": "zón",
+   "options": [
+    "jon",
+    "bon",
+    "zón",
+    "don"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_boca",
+   "word": "boca",
+   "level": 1,
+   "category": "cuerpo",
+   "syllables": [
+    "bo",
+    "ca"
+   ],
+   "missing": 0,
+   "answer": "bo",
+   "options": [
+    "no",
+    "bo",
+    "go"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_pelo",
+   "word": "pelo",
+   "level": 1,
+   "category": "cuerpo",
+   "syllables": [
+    "pe",
+    "lo"
+   ],
+   "missing": 1,
+   "answer": "lo",
+   "options": [
+    "do",
+    "go",
+    "lo"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_nariz",
+   "word": "nariz",
+   "level": 3,
+   "category": "cuerpo",
+   "syllables": [
+    "na",
+    "riz"
+   ],
+   "missing": 0,
+   "answer": "na",
+   "options": [
+    "ta",
+    "na",
+    "pa",
+    "fa"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_cabeza",
+   "word": "cabeza",
+   "level": 2,
+   "category": "cuerpo",
+   "syllables": [
+    "ca",
+    "be",
+    "za"
+   ],
+   "missing": 0,
+   "answer": "ca",
+   "options": [
+    "na",
+    "ta",
+    "la",
+    "ca"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_brazo",
+   "word": "brazo",
+   "level": 3,
+   "category": "cuerpo",
+   "syllables": [
+    "bra",
+    "zo"
+   ],
+   "missing": 0,
+   "answer": "bra",
+   "options": [
+    "bla",
+    "cla",
+    "gla",
+    "bra"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_pie",
+   "word": "pie",
+   "level": 3,
+   "category": "cuerpo",
+   "syllables": [
+    "pie"
+   ],
+   "missing": 0,
+   "answer": "pie",
+   "options": [
+    "bie",
+    "tie",
+    "pie",
+    "mie"
+   ],
+   "order": false
+  },
+  {
+   "id": "completa_mano",
+   "word": "mano",
+   "level": 1,
+   "category": "cuerpo",
+   "syllables": [
+    "ma",
+    "no"
+   ],
+   "missing": 0,
+   "answer": "ma",
+   "options": [
+    "ja",
+    "la",
+    "ma"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_rojo",
+   "word": "rojo",
+   "level": 1,
+   "category": "colores",
+   "syllables": [
+    "ro",
+    "jo"
+   ],
+   "missing": 1,
+   "answer": "jo",
+   "options": [
+    "co",
+    "jo",
+    "bo"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_rosa",
+   "word": "rosa",
+   "level": 1,
+   "category": "colores",
+   "syllables": [
+    "ro",
+    "sa"
+   ],
+   "missing": 0,
+   "answer": "ro",
+   "options": [
+    "po",
+    "ro",
+    "do"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_azul",
+   "word": "azul",
+   "level": 3,
+   "category": "colores",
+   "syllables": [
+    "a",
+    "zul"
+   ],
+   "missing": 1,
+   "answer": "zul",
+   "options": [
+    "pul",
+    "ful",
+    "cul",
+    "zul"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_verde",
+   "word": "verde",
+   "level": 3,
+   "category": "colores",
+   "syllables": [
+    "ver",
+    "de"
+   ],
+   "missing": 0,
+   "answer": "ver",
+   "options": [
+    "ver",
+    "jer",
+    "ler",
+    "ner"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_negro",
+   "word": "negro",
+   "level": 3,
+   "category": "colores",
+   "syllables": [
+    "ne",
+    "gro"
+   ],
+   "missing": 1,
+   "answer": "gro",
+   "options": [
+    "tro",
+    "gro",
+    "cro",
+    "clo"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_blanco",
+   "word": "blanco",
+   "level": 3,
+   "category": "colores",
+   "syllables": [
+    "blan",
+    "co"
+   ],
+   "missing": 0,
+   "answer": "blan",
+   "options": [
+    "blan",
+    "glan",
+    "gran",
+    "cran"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_morado",
+   "word": "morado",
+   "level": 2,
+   "category": "colores",
+   "syllables": [
+    "mo",
+    "ra",
+    "do"
+   ],
+   "missing": 1,
+   "answer": "ra",
+   "options": [
+    "pa",
+    "ga",
+    "la",
+    "ra"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_amarillo",
+   "word": "amarillo",
+   "level": 2,
+   "category": "colores",
+   "syllables": [
+    "a",
+    "ma",
+    "ri",
+    "llo"
+   ],
+   "missing": 2,
+   "answer": "ri",
+   "options": [
+    "bi",
+    "li",
+    "ri",
+    "fi"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_nino",
+   "word": "nino",
+   "level": 1,
+   "category": "personas",
+   "syllables": [
+    "ni",
+    "ño"
+   ],
+   "missing": 1,
+   "answer": "ño",
+   "options": [
+    "jo",
+    "ño",
+    "so"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_nina",
+   "word": "nina",
+   "level": 1,
+   "category": "personas",
+   "syllables": [
+    "ni",
+    "ña"
+   ],
+   "missing": 0,
+   "answer": "ni",
+   "options": [
+    "ni",
+    "ti",
+    "li"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_bebe",
+   "word": "bebe",
+   "level": 1,
+   "category": "personas",
+   "syllables": [
+    "be",
+    "bé"
+   ],
+   "missing": 1,
+   "answer": "bé",
+   "options": [
+    "te",
+    "fe",
+    "bé"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_mama",
+   "word": "mama",
+   "level": 1,
+   "category": "personas",
+   "syllables": [
+    "ma",
+    "má"
+   ],
+   "missing": 0,
+   "answer": "ma",
+   "options": [
+    "la",
+    "pa",
+    "ma"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_papa",
+   "word": "papa",
+   "level": 1,
+   "category": "personas",
+   "syllables": [
+    "pa",
+    "pá"
+   ],
+   "missing": 1,
+   "answer": "pá",
+   "options": [
+    "pá",
+    "ra",
+    "ta"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_zapato",
+   "word": "zapato",
+   "level": 2,
+   "category": "ropa",
+   "syllables": [
+    "za",
+    "pa",
+    "to"
+   ],
+   "missing": 2,
+   "answer": "to",
+   "options": [
+    "ro",
+    "fo",
+    "jo",
+    "to"
+   ],
+   "order": true
+  },
+  {
+   "id": "completa_camisa",
+   "word": "camisa",
+   "level": 2,
+   "category": "ropa",
+   "syllables": [
+    "ca",
+    "mi",
+    "sa"
+   ],
+   "missing": 0,
+   "answer": "ca",
+   "options": [
+    "ra",
+    "pa",
+    "ca",
+    "ma"
+   ],
+   "order": true
+  }
+ ]
+}

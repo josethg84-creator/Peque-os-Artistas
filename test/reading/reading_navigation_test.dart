@@ -109,7 +109,7 @@ void main() {
         // «Aprendo las sílabas» ya usa el contenido real (Fase 3); las demás, demostración.
         expect(
           find.byType(DemoBadge),
-          a == ReadingActivities.syllables ? findsNothing : findsOneWidget,
+          a == ReadingActivities.syllables || a == ReadingActivities.words ? findsNothing : findsOneWidget,
           reason: '${a.title}: distintivo de demostración',
         );
         await tapAndSettle(tester, find.byTooltip('Volver'));
@@ -149,22 +149,6 @@ void main() {
       expect(spoken.last, 'mi');
       await tapAndSettle(tester, find.bySemanticsLabel('Despacio la sílaba'));
       expect(lastNarrator!.slow.last, 'mi');
-    });
-
-    testWidgets('completar: una sílaba equivocada anima; la correcta felicita y se continúa', (tester) async {
-      setScreenSize(tester, const Size(420, 900));
-      await pumpApp(tester);
-      await push(tester, AppRoutes.readingWords);
-      expect(find.bySemanticsLabel(RegExp('^Palabra por sílabas: hueco - to')), findsOneWidget);
-      await tapAndSettle(tester, find.bySemanticsLabel('Sílaba ma'));
-      await tapAndSettle(tester, find.bySemanticsLabel('Comprobar'));
-      expect(find.byType(ReadingTryAgain), findsOneWidget);
-      await tapAndSettle(tester, find.bySemanticsLabel('Sílaba pa'));
-      await tapAndSettle(tester, find.bySemanticsLabel('Comprobar'));
-      expect(find.byType(ReadingCelebration), findsOneWidget);
-      expect(spoken.last, '¡Muy bien! pato.');
-      await tapAndSettle(tester, find.bySemanticsLabel('Continuar'));
-      expect(find.bySemanticsLabel(RegExp('^Palabra por sílabas: hueco - lo - ta')), findsOneWidget);
     });
 
     testWidgets('oraciones: leer, despacio, tocar una palabra y pasar a la siguiente', (tester) async {
@@ -208,11 +192,6 @@ void main() {
       final e = tester.getRect(find.bySemanticsLabel('Sílaba e'));
       expect(a.width, lessThan(140));
       expect(e.top, a.top, reason: 'A y E en la misma fila');
-      await push(tester, AppRoutes.readingWords);
-      final pa = tester.getRect(find.bySemanticsLabel('Sílaba pa'));
-      final sa = tester.getRect(find.bySemanticsLabel('Sílaba sa'));
-      expect(pa.width, lessThan(140));
-      expect(sa.top, pa.top);
     });
 
     for (final (size, scale) in const [

@@ -1,3 +1,4 @@
+import '../reading/screens/complete_words_game_screen.dart';
 import '../reading/screens/reading_dictation_screen.dart';
 import '../reading/screens/reading_hub_screen.dart';
 import '../reading/screens/reading_sentences_screen.dart';
@@ -78,6 +79,7 @@ abstract final class AppRouter {
         args: args is ReadingGameArgs ? args : const ReadingGameArgs(),
       ),
       AppRoutes.readingWords => const ReadingWordsScreen(),
+      AppRoutes.readingWordsGame when args is CompleteGameArgs => CompleteWordsGameScreen(args: args),
       AppRoutes.readingSentences => const ReadingSentencesScreen(),
       AppRoutes.readingDictation => const ReadingDictationScreen(),
       AppRoutes.speechWordGroups => const WordGroupsScreen(),

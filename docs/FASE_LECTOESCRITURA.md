@@ -7,7 +7,7 @@ Módulo nuevo para niños de 4 a 7 años, hecho por fases. Cada fase llega en su
 | A · Auditoría y arquitectura | Hecha (en el chat) |
 | **B · Diseño visual y navegación** | **Hecha** (este documento) |
 | **C · Motor de audio y sílabas** | **Hecha, con la voz del dispositivo; faltan grabaciones e imágenes** (ver abajo) |
-| D · Completar palabras | Pendiente |
+| **D · Completa las palabras** | **Hecha**: 100 de 118 palabras jugables; 18 esperan su ilustración |
 | E · Lectura guiada | Pendiente |
 | F · Dictados | Pendiente |
 | G · Progreso y recompensas | Pendiente |
@@ -119,3 +119,52 @@ Además:
   que **hay que escuchar en dispositivos reales**: en este entorno no se puede oír.
 - **Ilustraciones de palabras:** faltan 19. La lista está en
   `assets/images/aprendo_leer/palabras/README.md`.
+
+## Fase D · Completa las palabras
+
+### Catálogo (`assets/reading/complete_words.json`)
+
+- Lo genera `tools/reading/words.py`.
+- **118 palabras** en 9 categorías, repartidas por nivel:
+  - nivel 1 (dos sílabas directas): 42;
+  - nivel 2 (tres o más sílabas): 38;
+  - nivel 3 (trabadas, diptongos o una sílaba): 38.
+- El nivel lo calculan reglas fijas, no se pone a mano.
+- La separación la validan los dos silabeadores (Python y Dart).
+- **Un ejercicio por palabra**, con id, palabra, sílabas, sílaba que falta, posición, opciones,
+  respuesta, imagen, audio, nivel y categoría.
+- Las opciones falsas cumplen estas reglas:
+  - tienen la **misma forma** que la respuesta: directa con directa, trabada con trabada, vocal
+    con vocal;
+  - **no suenan igual** que la respuesta en español latinoamericano (SA/ZA, BA/VA, LLA/YA);
+  - **no forman otra palabra conocida** (PA-TO / GA-TO);
+  - no están ya en la palabra.
+- Todo esto se comprueba al generar el catálogo y otra vez en las pruebas.
+- **100 palabras tienen imagen** y se juegan. 18 esperan su ilustración y no entran en los juegos.
+  La lista está en `assets/images/aprendo_leer/palabras/README.md`.
+
+### Juego (`/leer/completa` y `/leer/completa/juego`)
+
+- **Tres modos:**
+  - **Elige la sílaba**;
+  - **Arrastra la sílaba**: se arrastra al hueco, o se toca;
+  - **Ordena la palabra**: se tocan las tarjetas en orden y se puede quitar la última.
+- Hay 8 palabras por partida; primero las que aún no se han hecho.
+- **Pistas:**
+  - escuchar la palabra despacio;
+  - escuchar la sílaba que falta (o la primera);
+  - la primera letra en el hueco y, si se vuelve a pedir, se resalta la respuesta.
+  - Tras dos intentos fallidos se quita una opción.
+- Al fallar no hay castigo: «¡Casi! Escucha otra vez y prueba de nuevo». No se avanza sin acertar.
+- Al acertar se oye la palabra completa y «¡Muy bien!».
+- **Niveles:** el 2 y el 3 se abren al completar 8 palabras del anterior.
+
+### Progreso (`reading.v1.state`)
+
+- Es una clave propia, con checksum y copia de seguridad, el mismo método que el resto de la app.
+  No toca el progreso de otros módulos.
+- Guarda:
+  - las palabras completadas en cada modo;
+  - las acertadas a la primera y las hechas con pista;
+  - las respuestas correctas y los intentos.
+- El nivel alcanzado y los ejercicios pendientes se calculan a partir de esos datos.
