@@ -106,13 +106,8 @@ void main() {
       for (final a in ReadingActivities.all) {
         await tapAndSettle(tester, find.bySemanticsLabel(RegExp('^${RegExp.escape(a.title)}')));
         expect(find.byType(screens[a.route]!), findsOneWidget, reason: a.title);
-        // Sílabas (Fase 3), palabras (Fase 4) y oraciones (Fase 5) usan contenido
-        // real; el dictado aún es demostración.
-        expect(
-          find.byType(DemoBadge),
-          a == ReadingActivities.dictation ? findsOneWidget : findsNothing,
-          reason: '${a.title}: distintivo de demostración',
-        );
+        // Todas las actividades usan ya contenido real (Fases 3 a 6).
+        expect(find.byType(DemoBadge), findsNothing, reason: '${a.title}: distintivo de demostración');
         await tapAndSettle(tester, find.byTooltip('Volver'));
         expect(find.byType(ReadingHubScreen), findsOneWidget, reason: 'vuelve desde ${a.title}');
       }
@@ -166,21 +161,13 @@ void main() {
       expect(spoken.last, 'Papá toma sopa.');
     });
 
-    testWidgets('dictado: escuchar, formar «mesa» con tarjetas, borrar y comprobar', (tester) async {
+    testWidgets('dictado (contenido real): elegir nivel 1 con tarjetas y oír el dictado', (tester) async {
       setScreenSize(tester, const Size(420, 900));
       await pumpApp(tester);
       await push(tester, AppRoutes.readingDictation);
-      await tapAndSettle(tester, find.bySemanticsLabel('Nivel 2: Palabras'));
-      await tapAndSettle(tester, find.bySemanticsLabel('Escuchar'));
-      expect(spoken.last, 'mesa');
-      await tapAndSettle(tester, find.bySemanticsLabel('Sílaba pa'));
-      await tapAndSettle(tester, find.bySemanticsLabel('Borrar la última'));
-      expect(find.bySemanticsLabel('Tu respuesta: vacía'), findsOneWidget);
-      await tapAndSettle(tester, find.bySemanticsLabel('Sílaba me'));
-      await tapAndSettle(tester, find.bySemanticsLabel('Sílaba sa'));
-      expect(find.bySemanticsLabel('Tu respuesta: mesa'), findsOneWidget);
-      await tapAndSettle(tester, find.bySemanticsLabel('Comprobar'));
-      expect(find.byType(ReadingCelebration), findsOneWidget);
+      expect(find.bySemanticsLabel(RegExp(r'^Nivel 2: .*Se abre')), findsOneWidget);
+      await tapAndSettle(tester, find.bySemanticsLabel('Tocar tarjetas'));
+      expect(spoken.last, startsWith('Escucha y toca la sílaba que oyes'));
     });
   });
 

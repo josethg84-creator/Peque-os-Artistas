@@ -1,231 +1,294 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 
+import '../../navigation/app_routes.dart';
 import '../../screens/home/home_widgets.dart';
 import '../../services/app_services.dart';
 import '../../theme/app_colors.dart';
 import '../../theme/app_dimens.dart';
 import '../../widgets/big_action_button.dart';
-import '../../widgets/kid_icon_button.dart';
 import '../../widgets/kid_scaffold.dart';
+import '../dictation.dart';
 import '../reading_activities.dart';
-import '../reading_demo.dart';
+import '../reading_progress.dart';
 import '../widgets/reading_widgets.dart';
 
-/// Pantalla D · «Escucho y escribo»: nivel, escuchar y formar la respuesta con
-/// tarjetas. (Fase 2: un ejemplo por nivel; el teclado propio, la corrección de
-/// ortografía y tildes y los 30 dictados llegan en la Fase F.)
+/// Partida de dictados: nivel y modo de respuesta.
+class DictationArgs {
+  const DictationArgs({required this.level, required this.mode});
+  final int level;
+  final DictationMode mode;
+}
+
+/// Carga el catálogo de dictados.
+class DictationCatalogBuilder extends StatefulWidget {
+  const DictationCatalogBuilder({super.key, required this.builder});
+
+  final Widget Function(BuildContext context, DictationCatalog catalog) builder;
+
+  @override
+  State<DictationCatalogBuilder> createState() => _DictationCatalogBuilderState();
+}
+
+class _DictationCatalogBuilderState extends State<DictationCatalogBuilder> {
+  Future<DictationCatalog>? _future;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _future ??= DictationCatalog.load(DefaultAssetBundle.of(context));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<DictationCatalog>(
+      future: _future,
+      builder: (context, snapshot) {
+        final catalog = snapshot.data;
+        if (catalog != null) return widget.builder(context, catalog);
+        if (snapshot.hasError) return const Center(child: Text('No pudimos abrir los dictados.'));
+        return const Center(child: CircularProgressIndicator());
+      },
+    );
+  }
+}
+
+/// Modos de respuesta de cada nivel: en sílabas y palabras, tarjetas o
+/// teclado; en oraciones, ordenar o teclado. El teclado nunca es obligatorio.
+List<DictationMode> modesForLevel(int level) => level == 3
+    ? const [DictationMode.order, DictationMode.keyboard]
+    : const [DictationMode.cards, DictationMode.keyboard];
+
+bool dictationLevelOpen(DictationCatalog catalog, ReadingController progress, int level) =>
+    progress.dictationLevelOpen(level, (l) => catalog.ofLevel(l).map((d) => d.id));
+
+/// Pantalla D · «Escucho y escribo»: elegir nivel y cómo responder.
 class ReadingDictationScreen extends StatefulWidget {
   const ReadingDictationScreen({super.key});
+
+  static const title = 'Escucho y escribo';
+  static const color = Color(0xFF3DBE8B);
 
   @override
   State<ReadingDictationScreen> createState() => _ReadingDictationScreenState();
 }
 
 class _ReadingDictationScreenState extends State<ReadingDictationScreen> {
-  static const color = Color(0xFF3DBE8B);
-  int _level = 0;
-  final _built = <int>[]; // índices de las tarjetas usadas, en orden
-  bool? _right;
+  int _level = 1;
+  static const color = ReadingDictationScreen.color;
 
-  DemoDictation get item => ReadingDemo.dictations[_level];
-
-  void _say(String text, {bool slow = false}) =>
-      unawaited(AppServices.of(context).audio.say(text, slow: slow));
-
-  void _pickLevel(int i) {
-    setState(() {
-      _level = i;
-      _built.clear();
-      _right = null;
-    });
-  }
-
-  void _add(int card) {
-    setState(() {
-      _built.add(card);
-      _right = null;
-    });
-    _say(item.cards[card].replaceAll('.', ''));
-  }
-
-  void _undo() {
-    if (_built.isEmpty) return;
-    setState(() {
-      _built.removeLast();
-      _right = null;
-    });
-  }
-
-  void _verify() {
-    final answer = [for (final i in _built) item.cards[i]];
-    final right = answer.join(item.joiner) == item.pieces.join(item.joiner);
-    setState(() => _right = right);
-    _say(right ? '¡Muy bien!' : '¡Casi! Escucha otra vez y prueba de nuevo.');
-  }
+  static const _levelIcons = [Icons.abc_rounded, Icons.spellcheck_rounded, Icons.notes_rounded];
 
   @override
   Widget build(BuildContext context) {
-    final answer = [for (final i in _built) item.cards[i]];
+    final progress = AppServices.of(context).reading;
     return KidScaffold(
-      title: ReadingActivities.dictation.title,
-      titleIcon: Icons.edit_rounded,
+      title: ReadingDictationScreen.title,
+      titleIcon: ReadingActivities.dictation.icon,
       accent: color,
-      badge: const DemoBadge(),
       trailing: const ReadingHomeButton(),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.fromLTRB(
-          AppDimens.pagePadding,
-          0,
-          AppDimens.pagePadding,
-          AppDimens.pagePadding,
-        ),
-        child: Center(
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 820),
-            child: Column(
-              children: [
-                _LevelPicker(selected: _level, onPick: _pickLevel, color: color),
-                const SizedBox(height: 14),
-                SizedBox(
-                  height: 150,
-                  child: ReadingArt(
-                    image: ReadingActivities.dictation.image,
-                    fallbackIcon: Icons.hearing_rounded,
-                    color: color,
+      body: DictationCatalogBuilder(
+        builder: (context, catalog) => ListenableBuilder(
+          listenable: progress,
+          builder: (context, _) {
+            final records = progress.progress.dictations;
+            final ids = catalog.dictations.map((d) => d.id).toSet();
+            final done = records.keys.where(ids.contains).length;
+            final correct = records.entries.where((e) => ids.contains(e.key) && e.value.correct).length;
+            final alone = records.entries.where((e) => ids.contains(e.key) && e.value.independent).length;
+            final open = dictationLevelOpen(catalog, progress, _level);
+            return SingleChildScrollView(
+              padding: const EdgeInsets.fromLTRB(
+                AppDimens.pagePadding,
+                0,
+                AppDimens.pagePadding,
+                AppDimens.pagePadding,
+              ),
+              child: Center(
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 900),
+                  child: Column(
+                    children: [
+                      const ReadingLolo(text: 'Escucha con atención y escribe lo que oyes.'),
+                      const SizedBox(height: 12),
+                      ReadingProgressBar(
+                        done: correct,
+                        total: catalog.dictations.length,
+                        label: 'Dictados acertados',
+                        color: color,
+                      ),
+                      const SizedBox(height: 8),
+                      Wrap(
+                        alignment: WrapAlignment.center,
+                        spacing: 10,
+                        runSpacing: 8,
+                        children: [
+                          _Stat(icon: Icons.edit_note_rounded, text: 'Hechos: $done'),
+                          _Stat(icon: Icons.star_rounded, text: 'Sin pistas: $alone'),
+                        ],
+                      ),
+                      const SizedBox(height: 18),
+                      Text('Elige un nivel', style: fredoka(22, color: AppColors.ink)),
+                      const SizedBox(height: 10),
+                      Wrap(
+                        alignment: WrapAlignment.center,
+                        spacing: 12,
+                        runSpacing: 12,
+                        children: [
+                          for (final level in DictationCatalog.levels)
+                            _LevelCard(
+                              level: level,
+                              icon: _levelIcons[level - 1],
+                              name: catalog.levelNames[level] ?? '',
+                              selected: level == _level,
+                              unlocked: dictationLevelOpen(catalog, progress, level),
+                              done: progress.dictationsCorrect(catalog.ofLevel(level).map((d) => d.id)),
+                              total: catalog.ofLevel(level).length,
+                              onTap: () => setState(() => _level = level),
+                            ),
+                        ],
+                      ),
+                      const SizedBox(height: 22),
+                      Text('Elige cómo responder', style: fredoka(22, color: AppColors.ink)),
+                      const SizedBox(height: 10),
+                      Wrap(
+                        alignment: WrapAlignment.center,
+                        spacing: 12,
+                        runSpacing: 12,
+                        children: [
+                          for (final mode in modesForLevel(_level))
+                            SizedBox(
+                              width: 270,
+                              child: BigActionButton(
+                                label: mode.title,
+                                icon: switch (mode) {
+                                  DictationMode.cards => Icons.touch_app_rounded,
+                                  DictationMode.order => Icons.sort_rounded,
+                                  DictationMode.keyboard => Icons.keyboard_rounded,
+                                },
+                                color: mode == DictationMode.keyboard ? AppColors.grape : AppColors.sky,
+                                onPressed: open
+                                    ? () => Navigator.of(context).pushNamed(
+                                        AppRoutes.readingDictationGame,
+                                        arguments: DictationArgs(level: _level, mode: mode),
+                                      )
+                                    : null,
+                              ),
+                            ),
+                        ],
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        'Si todavía no conoces bien las letras, usa las tarjetas.',
+                        style: Theme.of(context).textTheme.bodyMedium,
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
                   ),
                 ),
-                const SizedBox(height: 12),
-                ReadingAudioButtons(text: item.spoken, color: color),
-                const SizedBox(height: 16),
-                Text('Forma lo que escuchaste:', style: Theme.of(context).textTheme.titleLarge),
-                const SizedBox(height: 10),
-                _AnswerArea(pieces: answer, joiner: item.joiner, color: color),
-                const SizedBox(height: 14),
-                Wrap(
-                  alignment: WrapAlignment.center,
-                  spacing: 10,
-                  runSpacing: 10,
-                  children: [
-                    for (final (i, c) in item.cards.indexed)
-                      SyllableCard(
-                        text: c,
-                        color: color,
-                        size: 72,
-                        onTap: _built.contains(i) || _right == true ? null : () => _add(i),
-                        selected: _built.contains(i),
-                      ),
-                  ],
-                ),
-                const SizedBox(height: 14),
-                if (_right == true)
-                  const ReadingCelebration(text: '¡Muy bien! ¡Lo escribiste!')
-                else if (_right == false)
-                  const ReadingTryAgain(text: '¡Casi! Escucha otra vez y prueba de nuevo.'),
-                const SizedBox(height: 14),
-                Wrap(
-                  alignment: WrapAlignment.center,
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  spacing: 12,
-                  runSpacing: 12,
-                  children: [
-                    KidIconButton(
-                      icon: Icons.backspace_rounded,
-                      label: 'Borrar la última',
-                      color: AppColors.coral,
-                      onPressed: _built.isEmpty || _right == true ? null : _undo,
-                    ),
-                    SizedBox(
-                      width: 260,
-                      child: BigActionButton(
-                        label: 'Comprobar',
-                        icon: Icons.check_rounded,
-                        color: AppColors.leaf,
-                        onPressed: _built.isEmpty || _right == true ? null : _verify,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
+              ),
+            );
+          },
         ),
       ),
     );
   }
 }
 
-class _LevelPicker extends StatelessWidget {
-  const _LevelPicker({required this.selected, required this.onPick, required this.color});
-
-  final int selected;
-  final ValueChanged<int> onPick;
-  final Color color;
+class _Stat extends StatelessWidget {
+  const _Stat({required this.icon, required this.text});
+  final IconData icon;
+  final String text;
 
   @override
-  Widget build(BuildContext context) {
-    return Wrap(
-      alignment: WrapAlignment.center,
-      spacing: 10,
-      runSpacing: 10,
+  Widget build(BuildContext context) => Container(
+    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+    decoration: BoxDecoration(color: const Color(0xFFE6F7EF), borderRadius: BorderRadius.circular(16)),
+    child: Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
-        for (final (i, d) in ReadingDemo.dictations.indexed)
-          Semantics(
-            button: true,
-            selected: i == selected,
-            label: 'Nivel ${d.level}: ${d.levelName}',
-            excludeSemantics: true,
-            onTap: () => onPick(i),
-            child: ChoiceChip(
-              label: Text(
-                'Nivel ${d.level} · ${d.levelName}',
-                style: fredoka(17, color: i == selected ? Colors.white : AppColors.ink),
-              ),
-              selected: i == selected,
-              selectedColor: color,
-              backgroundColor: Colors.white,
-              showCheckmark: false,
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-              shape: StadiumBorder(side: BorderSide(color: color.withValues(alpha: 0.6), width: 2)),
-              onSelected: (_) => onPick(i),
-            ),
-          ),
+        Icon(icon, size: 20, color: ReadingDictationScreen.color),
+        const SizedBox(width: 6),
+        Flexible(child: Text(text, style: Theme.of(context).textTheme.bodyMedium)),
       ],
-    );
-  }
+    ),
+  );
 }
 
-/// Lo que el niño va formando.
-class _AnswerArea extends StatelessWidget {
-  const _AnswerArea({required this.pieces, required this.joiner, required this.color});
+class _LevelCard extends StatelessWidget {
+  const _LevelCard({
+    required this.level,
+    required this.icon,
+    required this.name,
+    required this.selected,
+    required this.unlocked,
+    required this.done,
+    required this.total,
+    required this.onTap,
+  });
 
-  final List<String> pieces;
-  final String joiner;
-  final Color color;
+  final int level;
+  final IconData icon;
+  final String name;
+  final bool selected;
+  final bool unlocked;
+  final int done;
+  final int total;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
+    const color = ReadingDictationScreen.color;
+    final label = unlocked
+        ? 'Nivel $level: $name. $done de $total acertados.'
+        : 'Nivel $level: $name. Se abre al acertar ${ReadingController.unlockAfter} dictados del nivel ${level - 1}.';
     return Semantics(
-      label: pieces.isEmpty ? 'Tu respuesta: vacía' : 'Tu respuesta: ${pieces.join(joiner)}',
+      button: true,
+      selected: selected,
+      enabled: unlocked,
+      label: label,
       excludeSemantics: true,
-      child: Container(
-        width: double.infinity,
-        constraints: const BoxConstraints(minHeight: 84),
-        padding: const EdgeInsets.all(12),
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(24),
-          border: Border.all(color: color, width: 3),
-        ),
-        child: pieces.isEmpty
-            ? Text('Toca las tarjetas', style: fredoka(22, color: AppColors.inkSoft))
-            : Text(
-                pieces.join(joiner).toUpperCase(),
-                style: fredoka(38, color: AppColors.ink),
-                textAlign: TextAlign.center,
+      onTap: unlocked ? onTap : null,
+      child: GestureDetector(
+        onTap: unlocked ? onTap : null,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          width: 250,
+          padding: const EdgeInsets.all(14),
+          decoration: BoxDecoration(
+            color: !unlocked
+                ? const Color(0xFFF1EEF8)
+                : selected
+                ? Color.lerp(color, Colors.white, 0.7)
+                : Colors.white,
+            borderRadius: BorderRadius.circular(24),
+            border: Border.all(color: unlocked ? color : const Color(0xFFD1C4E9), width: selected ? 4 : 2),
+          ),
+          child: Row(
+            children: [
+              Icon(
+                unlocked ? (selected ? Icons.check_circle_rounded : icon) : Icons.lock_rounded,
+                color: unlocked ? color : AppColors.inkSoft,
+                size: 34,
               ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Nivel $level', style: fredoka(20, color: AppColors.ink)),
+                    Text(name, style: Theme.of(context).textTheme.bodyMedium),
+                    Text(
+                      unlocked
+                          ? '$done de $total'
+                          : 'Acierta ${ReadingController.unlockAfter} del nivel ${level - 1}',
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
