@@ -11,7 +11,7 @@ Módulo nuevo para niños de 4 a 7 años, hecho por fases. Cada fase llega en su
 | **E · Lectura guiada de oraciones** | **Hecha**: 105 oraciones con voz del dispositivo y escenas provisionales; faltan ilustraciones 3D y grabaciones |
 | **F · Dictados (Escucho y escribo)** | **Hecha**: 200 dictados con voz del dispositivo; faltan grabaciones |
 | **G · Progreso, recompensas y seguimiento** | **Hecha**: estrellas, 12 medallas, «Mis logros», camino y panel para adultos; faltan ilustraciones 3D de medallas |
-| H · Pruebas, optimización y despliegue | Pendiente |
+| **H · Pruebas, optimización y preparación** | **Hecha** (informe: `docs/FASE8_INFORME_CALIDAD.md`); APTO CON OBSERVACIONES |
 
 ## Navegación
 
@@ -32,8 +32,7 @@ Menú principal → «Aprendo a Hablar» → sección **«Aprendo a leer»** →
 ## Código
 
 - `lib/reading/reading_activities.dart`: las 4 actividades (título, color, ruta, imagen).
-- `lib/reading/reading_demo.dart`: **datos de demostración**. Las pantallas lo indican con el
-  distintivo «Demostración». El contenido real irá en `assets/reading/*.json` (Fase C y siguientes).
+- (Los datos de demostración de la Fase B se retiraron en la Fase 8: todas las actividades usan contenido real.)
 - `lib/reading/widgets/reading_widgets.dart`, componentes:
   - tarjeta de actividad e ilustración;
   - barra de progreso;

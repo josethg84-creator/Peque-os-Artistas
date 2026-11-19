@@ -2662,7 +2662,7 @@
     "word_ms": null
    },
    "question": {
-    "text": "¿Qué hace hoy?",
+    "text": "¿Qué tiempo hace hoy?",
     "options": [
      {
       "text": "sol",

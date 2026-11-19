@@ -228,12 +228,12 @@ def main():
     ids = [d["id"] for d in dictations]
     assert len(ids) == len(set(ids))
     for d in dictations:
-        d["criteria"] = CRITERIA
         # Las tarjetas contienen exactamente lo necesario para la respuesta.
         for piece in d["target"]:
             assert d["cards"].count(piece) >= d["target"].count(piece), d["id"]
         assert d["audio"]["tts"], d["id"]
-    data = {"format_version": 1, "levels": LEVELS, "dictations": dictations}
+    # Los criterios de evaluación son comunes a todos los dictados: una sola vez.
+    data = {"format_version": 1, "levels": LEVELS, "criteria": CRITERIA, "dictations": dictations}
     out = ROOT / "assets/reading/dictations.json"
     out.write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     count = {t: sum(1 for d in dictations if d["type"] == t) for t in ("silaba", "palabra", "oracion")}

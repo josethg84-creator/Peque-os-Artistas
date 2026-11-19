@@ -58,7 +58,7 @@ class BigActionButton extends StatelessWidget {
                         label,
                         textAlign: TextAlign.center,
                         style: Theme.of(context).textTheme.headlineSmall
-                            ?.copyWith(color: Colors.white, fontWeight: FontWeight.w900),
+                            ?.copyWith(color: AppColors.onColor(color), fontWeight: FontWeight.w900),
                       ),
                     ),
                   ],

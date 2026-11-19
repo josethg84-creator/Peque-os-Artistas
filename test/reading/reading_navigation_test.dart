@@ -4,16 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:pequenos_artistas/navigation/app_routes.dart';
 import 'package:pequenos_artistas/reading/reading_activities.dart';
-import 'package:pequenos_artistas/reading/reading_demo.dart';
 import 'package:pequenos_artistas/reading/screens/reading_dictation_screen.dart';
 import 'package:pequenos_artistas/reading/screens/reading_hub_screen.dart';
 import 'package:pequenos_artistas/reading/screens/reading_sentences_screen.dart';
 import 'package:pequenos_artistas/reading/screens/reading_syllables_screen.dart';
 import 'package:pequenos_artistas/reading/screens/reading_words_screen.dart';
-import 'package:pequenos_artistas/reading/widgets/reading_widgets.dart';
 import 'package:pequenos_artistas/screens/home_screen.dart';
 import 'package:pequenos_artistas/speech/screens/speech_hub_screen.dart';
-import 'package:pequenos_artistas/speech/speech_content.dart';
 
 import '../test_helpers.dart';
 
@@ -50,48 +47,11 @@ const screens = {
 };
 
 void main() {
-  group('datos de demostración', () {
-    test('las sílabas de cada palabra forman la palabra y empiezan por su sílaba', () {
-      for (final f in ReadingDemo.families) {
-        expect(f.syllables, hasLength(5), reason: f.letter);
-        for (final s in f.syllables) {
-          expect(s.example.syllables.join(), s.example.text, reason: s.example.text);
-          expect(plain(s.example.syllables.first), s.text, reason: '${s.example.text} empieza por ${s.text}');
-          expect(plain(s.text).startsWith(f.letter.toLowerCase()), isTrue, reason: s.text);
-        }
-      }
-      for (final w in ReadingDemo.words) {
-        expect(w.word.syllables.join(), w.word.text, reason: w.word.text);
-        expect(
-          w.options.where((o) => o == w.answer),
-          hasLength(1),
-          reason: '${w.word.text}: una sola respuesta',
-        );
-        expect(w.options.length, inInclusiveRange(3, 4));
-      }
-      for (final d in ReadingDemo.dictations) {
-        expect(d.pieces.join(d.joiner), d.spoken, reason: d.spoken);
-        for (final p in d.pieces) {
-          expect(d.cards, contains(p));
-        }
-      }
-    });
-
-    test('todas las imágenes de la demostración existen (ninguna sale como estrella de reserva)', () {
-      final pictures = [
-        for (final f in ReadingDemo.families)
-          for (final s in f.syllables) s.example.pictureJson,
-        for (final w in ReadingDemo.words) w.word.pictureJson,
-        for (final s in ReadingDemo.sentences) s.pictureJson,
-      ];
-      for (final json in pictures) {
-        expect(SpeechPicture.fromJson(json), isNotNull, reason: '$json');
-      }
-      for (final a in ReadingActivities.all) {
-        expect(File(a.image).existsSync(), isTrue, reason: a.image);
-        expect(a.plannedImage, startsWith(ReadingActivities.folder));
-      }
-    });
+  test('las imágenes de las 4 actividades existen', () {
+    for (final a in ReadingActivities.all) {
+      expect(File(a.image).existsSync(), isTrue, reason: a.image);
+      expect(a.plannedImage, startsWith(ReadingActivities.folder));
+    }
   });
 
   group('navegación', () {
@@ -107,7 +67,6 @@ void main() {
         await tapAndSettle(tester, find.bySemanticsLabel(RegExp('^${RegExp.escape(a.title)}')));
         expect(find.byType(screens[a.route]!), findsOneWidget, reason: a.title);
         // Todas las actividades usan ya contenido real (Fases 3 a 6).
-        expect(find.byType(DemoBadge), findsNothing, reason: '${a.title}: distintivo de demostración');
         await tapAndSettle(tester, find.byTooltip('Volver'));
         expect(find.byType(ReadingHubScreen), findsOneWidget, reason: 'vuelve desde ${a.title}');
       }

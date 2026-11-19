@@ -167,7 +167,7 @@ L2 = [
     ("Ana lleva su mochila.", ("escuela", ["ana", "mochila"]), "¿Qué lleva Ana?",
      ["mochila", "pelota", "paraguas"], 0, {}),
     ("El perro corre.", ("parque", ["perro"]), "¿Quién corre?", ["perro", "gato", "pato"], 0, {}),
-    ("Hoy hace sol.", ("cielo", ["sol"]), "¿Qué hace hoy?", ["sol", "lluvia", "nieve"], 0, {}),
+    ("Hoy hace sol.", ("cielo", ["sol"]), "¿Qué tiempo hace hoy?", ["sol", "lluvia", "nieve"], 0, {}),
     ("Me lavo las manos.", ("casa", ["manos"]), "¿Qué me lavo?", ["manos", "pies", "pelo"], 0, {}),
     ("Mi abuela hace galletas.", ("cocina", ["abuela", "galleta"]), "¿Qué hace la abuela?",
      [("galleta", "galletas"), "pizza", "sopa"], 0, {}),

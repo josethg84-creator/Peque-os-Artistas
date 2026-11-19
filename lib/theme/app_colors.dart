@@ -18,4 +18,22 @@ abstract final class AppColors {
   /// Colores sobrios de la zona para adultos (distinta del área infantil).
   static const adultBackground = Color(0xFFF2F3F5);
   static const adultAccent = Color(0xFF4A5568);
+
+  /// Color de texto legible sobre [background]: blanco si contrasta al menos
+  /// 3:1 (texto grande, WCAG); si no, la tinta oscura de la app.
+  static Color onColor(Color background) {
+    double l(Color c) => c.computeLuminance();
+    final white = 1.05 / (l(background) + 0.05);
+    return white >= 3 ? Colors.white : ink;
+  }
+
+  /// [color] oscurecido lo justo para que un texto blanco grande contraste
+  /// al menos 3:1 (WCAG). Si ya contrasta, se devuelve igual.
+  static Color forWhiteText(Color color) {
+    var c = color;
+    for (var i = 0; i < 20 && 1.05 / (c.computeLuminance() + 0.05) < 3; i++) {
+      c = Color.lerp(c, Colors.black, 0.05)!;
+    }
+    return c;
+  }
 }

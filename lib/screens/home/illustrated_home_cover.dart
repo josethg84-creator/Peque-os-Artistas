@@ -486,12 +486,16 @@ class _ZoneState extends State<_Zone> {
     return Positioned.fill(
       child: LayoutBuilder(
         builder: (context, box) {
-          final r = Rect.fromLTWH(
+          var r = Rect.fromLTWH(
             box.maxWidth * w.rect.left,
             box.maxHeight * w.rect.top,
             box.maxWidth * w.rect.width,
             box.maxHeight * w.rect.height,
           );
+          // Zona táctil de 48 × 48 como mínimo (accesibilidad), sin mover el dibujo.
+          if (interactive && (r.width < 48 || r.height < 48)) {
+            r = Rect.fromCenter(center: r.center, width: max(48, r.width), height: max(48, r.height));
+          }
           final radius = switch (w.shape) {
             _Shape.circle => r.shortestSide / 2,
             _Shape.pill => r.height / 2,
@@ -512,6 +516,8 @@ class _ZoneState extends State<_Zone> {
             zone = MouseRegion(
               cursor: SystemMouseCursors.click,
               child: GestureDetector(
+                // La zona ya tiene su propio nodo accesible (con etiqueta y acciones).
+                excludeFromSemantics: true,
                 behavior: HitTestBehavior.opaque,
                 onTapDown: (_) => _press(true),
                 onTapUp: (_) => _press(false),

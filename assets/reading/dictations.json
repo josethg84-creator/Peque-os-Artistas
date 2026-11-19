@@ -17,6 +17,18 @@
    "type": "oracion"
   }
  ],
+ "criteria": {
+  "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
+  "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
+  "errors": [
+   "tilde",
+   "letra",
+   "sílaba",
+   "espacios",
+   "palabra",
+   "orden"
+  ]
+ },
  "dictations": [
   {
    "id": "dictado_silaba_ma",
@@ -56,18 +68,6 @@
     "spaces": "ignore_edges",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -110,18 +110,6 @@
     "spaces": "ignore_edges",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -162,18 +150,6 @@
     "spaces": "ignore_edges",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -216,18 +192,6 @@
     "spaces": "ignore_edges",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -268,18 +232,6 @@
     "spaces": "ignore_edges",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -322,18 +274,6 @@
     "spaces": "ignore_edges",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -376,18 +316,6 @@
     "spaces": "ignore_edges",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -428,18 +356,6 @@
     "spaces": "ignore_edges",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -480,18 +396,6 @@
     "spaces": "ignore_edges",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -532,18 +436,6 @@
     "spaces": "ignore_edges",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -585,18 +477,6 @@
     "final_period": "none",
     "alternatives": [
      "za"
-    ]
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
     ]
    }
   },
@@ -642,18 +522,6 @@
     "alternatives": [
      "ce"
     ]
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -697,18 +565,6 @@
     "final_period": "none",
     "alternatives": [
      "ci"
-    ]
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
     ]
    }
   },
@@ -754,18 +610,6 @@
     "alternatives": [
      "zo"
     ]
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -807,18 +651,6 @@
     "final_period": "none",
     "alternatives": [
      "zu"
-    ]
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
     ]
    }
   },
@@ -862,18 +694,6 @@
     "spaces": "ignore_edges",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -916,18 +736,6 @@
     "spaces": "ignore_edges",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -970,18 +778,6 @@
     "spaces": "ignore_edges",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -1024,18 +820,6 @@
     "spaces": "ignore_edges",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -1078,18 +862,6 @@
     "spaces": "ignore_edges",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -1132,18 +904,6 @@
     "spaces": "ignore_edges",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -1186,18 +946,6 @@
     "spaces": "ignore_edges",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -1240,18 +988,6 @@
     "spaces": "ignore_edges",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -1292,18 +1028,6 @@
     "spaces": "ignore_edges",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -1344,18 +1068,6 @@
     "spaces": "ignore_edges",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -1398,18 +1110,6 @@
     "spaces": "ignore_edges",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -1452,18 +1152,6 @@
     "spaces": "ignore_edges",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -1510,18 +1198,6 @@
     "spaces": "ignore_edges",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -1562,18 +1238,6 @@
     "spaces": "ignore_edges",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -1616,18 +1280,6 @@
     "spaces": "ignore_edges",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -1668,18 +1320,6 @@
     "spaces": "ignore_edges",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -1720,18 +1360,6 @@
     "spaces": "ignore_edges",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -1774,18 +1402,6 @@
     "spaces": "ignore_edges",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -1826,18 +1442,6 @@
     "spaces": "ignore_edges",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -1880,18 +1484,6 @@
     "spaces": "ignore_edges",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -1934,18 +1526,6 @@
     "spaces": "ignore_edges",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -1988,18 +1568,6 @@
     "spaces": "ignore_edges",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -2040,18 +1608,6 @@
     "spaces": "ignore_edges",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -2094,18 +1650,6 @@
     "spaces": "ignore_edges",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -2146,18 +1690,6 @@
     "spaces": "ignore_edges",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -2201,18 +1733,6 @@
     "final_period": "none",
     "alternatives": [
      "ka"
-    ]
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
     ]
    }
   },
@@ -2258,18 +1778,6 @@
     "alternatives": [
      "ko"
     ]
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -2314,18 +1822,6 @@
     "alternatives": [
      "ku"
     ]
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -2367,18 +1863,6 @@
     "final_period": "none",
     "alternatives": [
      "ke"
-    ]
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
     ]
    }
   },
@@ -2424,18 +1908,6 @@
     "alternatives": [
      "ki"
     ]
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -2479,18 +1951,6 @@
     "final_period": "none",
     "alternatives": [
      "va"
-    ]
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
     ]
    }
   },
@@ -2536,18 +1996,6 @@
     "alternatives": [
      "ve"
     ]
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -2591,18 +2039,6 @@
     "final_period": "none",
     "alternatives": [
      "vi"
-    ]
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
     ]
    }
   },
@@ -2648,18 +2084,6 @@
     "alternatives": [
      "vo"
     ]
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -2702,18 +2126,6 @@
     "alternatives": [
      "vu"
     ]
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -2755,18 +2167,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -2808,18 +2208,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -2861,18 +2249,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -2914,18 +2290,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -2967,18 +2331,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -3020,18 +2372,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -3073,18 +2413,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -3126,18 +2454,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -3179,18 +2495,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -3232,18 +2536,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -3285,18 +2577,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -3338,18 +2618,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -3391,18 +2659,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -3444,18 +2700,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -3497,18 +2741,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -3550,18 +2782,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -3603,18 +2823,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -3660,18 +2868,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -3716,18 +2912,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -3769,18 +2953,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -3822,18 +2994,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -3875,18 +3035,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -3928,18 +3076,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -3981,18 +3117,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -4034,18 +3158,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -4087,18 +3199,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -4140,18 +3240,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -4193,18 +3281,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -4246,18 +3322,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -4299,18 +3363,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -4352,18 +3404,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -4405,18 +3445,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -4458,18 +3486,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -4514,18 +3530,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -4570,18 +3574,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -4626,18 +3618,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -4682,18 +3662,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -4738,18 +3706,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -4794,18 +3750,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -4850,18 +3794,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -4906,18 +3838,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -4962,18 +3882,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -5018,18 +3926,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -5074,18 +3970,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -5130,18 +4014,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -5186,18 +4058,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -5242,18 +4102,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -5298,18 +4146,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -5354,18 +4190,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -5410,18 +4234,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -5466,18 +4278,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -5522,18 +4322,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -5578,18 +4366,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -5634,18 +4410,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -5690,18 +4454,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -5746,18 +4498,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -5802,18 +4542,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -5858,18 +4586,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -5914,18 +4630,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -5972,18 +4676,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -6030,18 +4722,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -6088,18 +4768,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -6146,18 +4814,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -6204,18 +4860,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -6264,18 +4908,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -6316,18 +4948,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -6368,18 +4988,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -6420,18 +5028,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -6472,18 +5068,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -6524,18 +5108,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -6578,18 +5150,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -6632,18 +5192,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -6686,18 +5234,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -6740,18 +5276,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -6794,18 +5318,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -6848,18 +5360,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -6902,18 +5402,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -6956,18 +5444,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -7010,18 +5486,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -7064,18 +5528,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -7118,18 +5570,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -7172,18 +5612,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -7226,18 +5654,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -7280,18 +5696,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -7334,18 +5738,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -7388,18 +5780,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -7442,18 +5822,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -7496,18 +5864,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -7550,18 +5906,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -7604,18 +5948,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -7658,18 +5990,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -7712,18 +6032,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -7768,18 +6076,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -7824,18 +6120,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -7880,18 +6164,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -7936,18 +6208,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -7992,18 +6252,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -8050,18 +6298,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -8108,18 +6344,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -8166,18 +6390,6 @@
     "spaces": "required",
     "final_period": "none",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -8244,18 +6456,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -8316,18 +6516,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -8380,18 +6568,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -8460,18 +6636,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -8524,18 +6688,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -8604,18 +6756,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -8668,18 +6808,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -8742,18 +6870,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -8820,18 +6936,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -8898,18 +7002,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -8964,18 +7056,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -9038,18 +7118,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -9116,18 +7184,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -9194,18 +7250,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -9274,18 +7318,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -9354,18 +7386,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -9428,18 +7448,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -9506,18 +7514,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -9570,18 +7566,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -9634,18 +7618,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -9700,18 +7672,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -9774,18 +7734,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -9840,18 +7788,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -9920,18 +7856,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -9997,18 +7921,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -10071,18 +7983,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -10137,18 +8037,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -10205,18 +8093,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -10269,18 +8145,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -10343,18 +8207,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -10409,18 +8261,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -10473,18 +8313,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -10547,18 +8375,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -10619,18 +8435,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -10691,18 +8495,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -10763,18 +8555,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -10841,18 +8621,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -10913,18 +8681,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -10991,18 +8747,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -11071,18 +8815,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -11149,18 +8881,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -11219,18 +8939,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -11289,18 +8997,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -11368,18 +9064,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -11438,18 +9122,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -11508,18 +9180,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -11578,18 +9238,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -11658,18 +9306,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -11736,18 +9372,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   },
   {
@@ -11808,18 +9432,6 @@
     "spaces": "required",
     "final_period": "optional",
     "alternatives": []
-   },
-   "criteria": {
-    "correct": "La respuesta coincide con el texto correcto (sin contar mayúsculas ni espacios de más) o con una alternativa aceptada.",
-    "independent": "Acierto sin pistas: se registra aparte de los aciertos con ayuda.",
-    "errors": [
-     "tilde",
-     "letra",
-     "sílaba",
-     "espacios",
-     "palabra",
-     "orden"
-    ]
    }
   }
  ]

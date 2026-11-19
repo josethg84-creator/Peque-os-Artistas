@@ -447,7 +447,12 @@ class AacShortcut extends StatelessWidget {
           child: Ink(
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
             decoration: BoxDecoration(
-              gradient: LinearGradient(colors: [Color.lerp(color, Colors.white, 0.35)!, color]),
+              gradient: LinearGradient(
+                colors: [
+                  AppColors.forWhiteText(color),
+                  Color.lerp(AppColors.forWhiteText(color), Colors.black, 0.12)!,
+                ],
+              ),
               borderRadius: BorderRadius.circular(24),
               border: Border.all(color: Colors.white, width: 3),
               boxShadow: [
