@@ -9,7 +9,7 @@ Módulo nuevo para niños de 4 a 7 años, hecho por fases. Cada fase llega en su
 | **C · Motor de audio y sílabas** | **Hecha, con la voz del dispositivo; faltan grabaciones e imágenes** (ver abajo) |
 | **D · Completa las palabras** | **Hecha**: 100 de 118 palabras jugables; 18 esperan su ilustración |
 | **E · Lectura guiada de oraciones** | **Hecha**: 105 oraciones con voz del dispositivo y escenas provisionales; faltan ilustraciones 3D y grabaciones |
-| F · Dictados | Pendiente |
+| **F · Dictados (Escucho y escribo)** | **Hecha**: 200 dictados con voz del dispositivo; faltan grabaciones |
 | G · Progreso y recompensas | Pendiente |
 | H · Pruebas, optimización y despliegue | Pendiente |
 
@@ -26,7 +26,8 @@ Menú principal → «Aprendo a Hablar» → sección **«Aprendo a leer»** →
 | `/leer/oraciones` | C · Leo mis primeras oraciones: nivel, progreso y actividades (Fase E) |
 | `/leer/oraciones/leer` | Lector: ilustración, oración con resaltado, Normal/Lento, Escuchar, Repetir, Escuchar palabra, Parar, Anterior/Siguiente |
 | `/leer/oraciones/juego` | «¿Qué entendiste?», «Ordena la oración» y «Escucha y elige» |
-| `/leer/dictado` | D · Escucho y escribo: nivel, «Escuchar», formar con tarjetas, borrar y «Comprobar» |
+| `/leer/dictado` | D · Escucho y escribo: nivel (sílabas, palabras, oraciones) y modo de respuesta (Fase F) |
+| `/leer/dictado/juego` | Dictado: escuchar, lento, parar, tarjetas / teclado / ordenar, pistas y corrección |
 
 ## Código
 
@@ -249,3 +250,74 @@ Cada sonido nuevo corta el anterior. Tocar una palabra la dice sola. No se usa e
 - **105 grabaciones** (y sus tiempos por palabra): lista en `assets/audio/reading/oraciones/README.md`.
 - Probar en dispositivos reales qué voces avisan de las palabras (en Chrome, las voces «Google» en
   línea no suelen avisar; las del sistema sí).
+
+## Fase F · Dictados («Escucho y escribo»)
+
+### Catálogo (`assets/reading/dictations.json`)
+
+Lo genera y valida `python3 tools/reading/dictations.py` **a partir del contenido de las fases
+anteriores** (no hay datos nuevos que puedan contradecirlos):
+
+| Nivel | Dictados | De dónde salen |
+|---|---|---|
+| 1 · Escucho sílabas | 50 | Las 10 familias de la Fase C (M, P, S, L, T primero; luego N, D, F, C·Q, B) |
+| 2 · Escucho palabras | 100 | Las 100 palabras con imagen de la Fase D, de fáciles a difíciles |
+| 3 · Escucho oraciones | 50 | Oraciones de la Fase E con un único orden posible (16 + 16 + 8 + 10 por nivel) |
+
+Cada dictado tiene id, tipo, nivel, dificultad, texto correcto, audio, imagen, tarjetas, pistas,
+reglas de validación y criterios de evaluación.
+
+- **Solución única**: en las tarjetas nunca hay dos que suenen igual (seseo, b/v, c/k/qu).
+- **Alternativas explícitas**: en una sílaba aislada, SA/ZA, SE/CE, SI/CI, BA/VA, CA/KA, QUE/KE…
+  suenan exactamente igual, así que con el teclado se aceptan y se dice cuál se practica
+  («ZA suena igual. Hoy practicamos SA»). En palabras y oraciones no hay alternativas: la imagen
+  deja claro qué palabra es (VACA, no BACA).
+
+### Modos de respuesta
+
+- **Tocar tarjetas** (sílabas y palabras) y **Ordenar palabras** (oraciones): todo táctil; tocar
+  una tarjeta colocada la quita. Recomendado si el niño aún no conoce bien las letras.
+- **Escribir con teclado**: el teclado del dispositivo (sin autocorrección ni sugerencias) y
+  teclas grandes para «á é í ó ú ñ». Nunca es obligatorio.
+
+### Audio
+
+El motor de siempre (`ReadingVoice`): grabación si existe; si no, la voz del dispositivo, y la
+pantalla lo indica («Sin grabación: se oye con la voz del dispositivo»). Escuchar, lento, parar,
+instrucción por voz al empezar, pistas habladas y «Escuchar la respuesta» al terminar. Nunca
+suenan dos cosas a la vez. No se usa el micrófono.
+
+### Corrección (`DictationChecker`)
+
+- Se normalizan las mayúsculas y los espacios de los extremos o repetidos. Las tildes y las
+  letras **sí** cuentan.
+- Tipos de error que se distinguen y se explican: **tilde** (falta, sobra o va en otra letra),
+  **letra** (falta, sobra o hay que cambiar una), **sílaba** (cuáles, o cuántas faltan),
+  **espacios** (palabras juntas o separadas), **palabra** (en oraciones: cuáles, faltan o sobran)
+  y **orden**.
+- En oraciones, la mayúscula inicial y el punto final no cuentan como error pero se recuerdan.
+- Acierto: «¡Excelente trabajo!», felicitación hablada, la respuesta resaltada con ✓ y confeti.
+- Error: «Vamos a intentarlo otra vez», el motivo, las partes marcadas (borde, subrayado e icono,
+  no solo color) y se puede escuchar otra vez, pedir pistas y corregir sin borrar lo escrito.
+
+### Pistas progresivas
+
+1. Repetir el audio despacio.
+2. Cuántas sílabas (letras en una sílaba, palabras en una oración), con casillas.
+3. La primera sílaba (letra, o palabra); en tarjetas se coloca la primera (salvo en sílabas, donde
+   sería la respuesta entera).
+4. Ayuda visual: modelo para copiar (y la palabra de ejemplo en las sílabas).
+
+Un acierto con pistas se guarda como acierto **con ayuda**, no como acierto sin ayuda.
+
+### Progreso (`reading.v1.state`, campo `dictations`)
+
+Por dictado: tipo, nivel, último modo, intentos, si se acertó, si se acertó sin pistas, máximo de
+pistas, fecha (AAAA-MM-DD) y errores por tipo. Los niveles 2 y 3 se abren al acertar 8 dictados
+del anterior. No toca nada de otros módulos ni de las otras actividades.
+
+### Pendiente
+
+- Grabaciones: los dictados usan las de sílabas, palabras y oraciones de las fases anteriores (aún
+  no hay ninguna). Hay que **comprobar en dispositivos reales** que la voz del sistema pronuncia
+  bien las sílabas sueltas.

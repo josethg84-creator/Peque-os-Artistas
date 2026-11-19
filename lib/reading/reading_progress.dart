@@ -23,7 +23,9 @@ class ReadingProgress {
     Set<String>? questionsCorrect,
     this.sentenceAttempts = 0,
     this.sentenceLevel = 1,
-  }) : completed = completed ?? {},
+    Map<String, DictationRecord>? dictations,
+  }) : dictations = dictations ?? {},
+       completed = completed ?? {},
        firstTry = firstTry ?? {},
        withHints = withHints ?? {},
        sentencesHeard = sentencesHeard ?? {},
@@ -67,6 +69,11 @@ class ReadingProgress {
   /// Nivel de oraciones más alto abierto.
   int sentenceLevel;
 
+  // ------------------------------------------------ dictados (Fase 6)
+
+  /// Dictado → cómo fue (el último resultado y lo acumulado).
+  final Map<String, DictationRecord> dictations;
+
   static String key(String mode, String exerciseId) => '$mode:$exerciseId';
 
   Map<String, dynamic> toJson() => {
@@ -85,6 +92,10 @@ class ReadingProgress {
     'questions_correct': questionsCorrect.toList()..sort(),
     'sentence_attempts': sentenceAttempts,
     'sentence_level': sentenceLevel,
+    'dictations': {
+      for (final e in (dictations.entries.toList()..sort((a, b) => a.key.compareTo(b.key))))
+        e.key: e.value.toJson(),
+    },
   };
 
   static ReadingProgress fromJson(Map<String, dynamic> json) {
@@ -109,6 +120,83 @@ class ReadingProgress {
       sentenceLevel: switch (json['sentence_level']) {
         final int l when l >= 1 && l <= 4 => l,
         _ => 1,
+      },
+      dictations: {
+        if (json['dictations'] case final Map<String, dynamic> m)
+          for (final e in m.entries) e.key: ?DictationRecord.fromJson(e.value),
+      },
+    );
+  }
+}
+
+/// Cómo le fue a un dictado. Un acierto con pistas NO cuenta como acierto
+/// sin ayuda ([independent]).
+class DictationRecord {
+  DictationRecord({
+    required this.type,
+    required this.level,
+    required this.mode,
+    this.attempts = 0,
+    this.correct = false,
+    this.independent = false,
+    this.hints = 0,
+    this.date = '',
+    Map<String, int>? errors,
+  }) : errors = errors ?? {};
+
+  /// «silaba», «palabra» u «oracion».
+  final String type;
+  final int level;
+
+  /// Último modo usado («tarjetas», «teclado», «ordenar»).
+  String mode;
+
+  /// Comprobaciones hechas en total.
+  int attempts;
+
+  /// Se acertó alguna vez.
+  bool correct;
+
+  /// Se acertó alguna vez sin pistas.
+  bool independent;
+
+  /// Máximo de pistas usadas en un mismo intento (0 a 4).
+  int hints;
+
+  /// Última vez (AAAA-MM-DD).
+  String date;
+
+  /// Errores por tipo («accent», «letter»…).
+  final Map<String, int> errors;
+
+  Map<String, dynamic> toJson() => {
+    'type': type,
+    'level': level,
+    'mode': mode,
+    'attempts': attempts,
+    'correct': correct,
+    'independent': independent,
+    'hints': hints,
+    'date': date,
+    'errors': {for (final k in (errors.keys.toList()..sort())) k: errors[k]},
+  };
+
+  static DictationRecord? fromJson(Object? json) {
+    if (json is! Map<String, dynamic> || json['type'] is! String) return null;
+    int n(Object? v) => v is int && v >= 0 ? v : 0;
+    return DictationRecord(
+      type: json['type'] as String,
+      level: n(json['level']),
+      mode: json['mode'] is String ? json['mode'] as String : '',
+      attempts: n(json['attempts']),
+      correct: json['correct'] == true,
+      independent: json['independent'] == true,
+      hints: n(json['hints']),
+      date: json['date'] is String ? json['date'] as String : '',
+      errors: {
+        if (json['errors'] case final Map<String, dynamic> m)
+          for (final e in m.entries)
+            if (e.value is int) e.key: e.value as int,
       },
     );
   }
@@ -159,9 +247,10 @@ class ReadingStore {
 
 /// Lleva el progreso de «Aprendo a leer» y lo guarda al momento.
 class ReadingController extends ChangeNotifier {
-  ReadingController(this._store);
+  ReadingController(this._store, {DateTime Function()? clock}) : _clock = clock ?? DateTime.now;
 
   final ReadingStore _store;
+  final DateTime Function() _clock;
   ReadingProgress _progress = ReadingProgress();
   ReadingProgress get progress => _progress;
 
@@ -250,6 +339,44 @@ class ReadingController extends ChangeNotifier {
     }
     return open;
   }
+
+  // ------------------------------------------------ dictados (Fase 6)
+
+  /// Una comprobación de un dictado (acertada o no).
+  void recordDictation(
+    String id, {
+    required String type,
+    required int level,
+    required String mode,
+    required bool correct,
+    required int hints,
+    String? error,
+  }) {
+    final r = _progress.dictations[id] ??= DictationRecord(type: type, level: level, mode: mode);
+    final now = _clock();
+    r
+      ..mode = mode
+      ..attempts += 1
+      ..hints = hints > r.hints ? hints : r.hints
+      ..date =
+          '${now.year.toString().padLeft(4, '0')}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}';
+    if (correct) {
+      r.correct = true;
+      if (hints == 0) r.independent = true;
+    }
+    if (error != null) r.errors[error] = (r.errors[error] ?? 0) + 1;
+    _changed();
+  }
+
+  /// Dictados acertados de [ids].
+  int dictationsCorrect(Iterable<String> ids) =>
+      ids.where((id) => _progress.dictations[id]?.correct ?? false).length;
+
+  /// Un nivel de dictado está abierto: el 1 siempre; los demás al acertar
+  /// [unlockAfter] dictados del anterior.
+  bool dictationLevelOpen(int level, Iterable<String> Function(int level) idsOf) =>
+      level <= 1 ||
+      (dictationsCorrect(idsOf(level - 1)) >= unlockAfter && dictationLevelOpen(level - 1, idsOf));
 
   bool isCompleted(String exerciseId, String mode) =>
       _progress.completed[exerciseId]?.contains(mode) ?? false;
