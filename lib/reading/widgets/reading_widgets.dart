@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import '../../screens/home/home_widgets.dart';
-import '../../services/app_services.dart';
 import '../../speech/widgets/speech_widgets.dart';
 import '../../theme/app_colors.dart';
 import '../../widgets/kid_icon_button.dart';
@@ -247,53 +246,6 @@ class SyllableWord extends StatelessWidget {
   }
 }
 
-/// «Escuchar» y «Despacio». En esta fase usan la voz de la app; el motor de
-/// audio de lectura (con grabaciones de sílabas) llega en la Fase C.
-class ReadingAudioButtons extends StatelessWidget {
-  const ReadingAudioButtons({
-    super.key,
-    required this.text,
-    this.listenLabel = 'Escuchar',
-    this.slowLabel = 'Despacio',
-    this.color = AppColors.sky,
-  });
-
-  final String text;
-  final String listenLabel;
-  final String slowLabel;
-  final Color color;
-
-  @override
-  Widget build(BuildContext context) {
-    void say({bool slow = false}) => unawaited(AppServices.of(context).audio.say(text, slow: slow));
-    return Wrap(
-      alignment: WrapAlignment.center,
-      spacing: 12,
-      runSpacing: 12,
-      children: [
-        SizedBox(
-          width: 132,
-          child: SpeechActionButton(
-            icon: Icons.volume_up_rounded,
-            label: listenLabel,
-            color: color,
-            onPressed: say,
-          ),
-        ),
-        SizedBox(
-          width: 132,
-          child: SpeechActionButton(
-            icon: Icons.slow_motion_video_rounded,
-            label: slowLabel,
-            color: AppColors.grape,
-            onPressed: () => say(slow: true),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
 /// «Anterior» / «Siguiente» con el número de la actividad.
 class ReadingStepNav extends StatelessWidget {
   const ReadingStepNav({
@@ -416,27 +368,6 @@ class ReadingTryAgain extends StatelessWidget {
               child: Text(text, style: fredoka(19, color: AppColors.ink)),
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-/// Distintivo que avisa de que la pantalla usa datos de demostración.
-class DemoBadge extends StatelessWidget {
-  const DemoBadge({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Semantics(
-      label: 'Demostración: contenido de ejemplo',
-      excludeSemantics: true,
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-        decoration: BoxDecoration(color: const Color(0xFFFFE0B2), borderRadius: BorderRadius.circular(12)),
-        child: Text(
-          'Demostración',
-          style: fredoka(13, weight: FontWeight.w600, color: AppColors.ink),
         ),
       ),
     );

@@ -262,7 +262,10 @@ class _VoiceStatusState extends State<_VoiceStatus> {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: OutlinedButton.icon(
-                    style: OutlinedButton.styleFrom(minimumSize: const Size(160, 52)),
+                    style: OutlinedButton.styleFrom(
+                      minimumSize: const Size(160, 52),
+                      foregroundColor: AppColors.ink,
+                    ),
                     onPressed: () => unawaited(widget.audio.sayOneOf(Phrases.welcome)),
                     icon: const Icon(Icons.play_arrow_rounded, size: 28),
                     label: const Text('Probar la voz'),

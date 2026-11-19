@@ -288,7 +288,7 @@ class _GameViewState extends State<_GameView> {
           if (_solved)
             SyllableWord(syllables: word.syllables, highlight: 0, color: color, size: 52)
           else
-            Text('?', style: fredoka(40, color: strong)),
+            Text('?', style: fredoka(40, color: AppColors.ink)),
           const SizedBox(height: 8),
         ],
         ReadingPlayButtons(

@@ -32,8 +32,7 @@ Menú principal → «Aprendo a Hablar» → sección **«Aprendo a leer»** →
 ## Código
 
 - `lib/reading/reading_activities.dart`: las 4 actividades (título, color, ruta, imagen).
-- `lib/reading/reading_demo.dart`: **datos de demostración**. Las pantallas lo indican con el
-  distintivo «Demostración». El contenido real irá en `assets/reading/*.json` (Fase C y siguientes).
+- (Los datos de demostración de la Fase B se retiraron en la Fase 8: todas las actividades usan contenido real.)
 - `lib/reading/widgets/reading_widgets.dart`, componentes:
   - tarjeta de actividad e ilustración;
   - barra de progreso;
