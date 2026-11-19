@@ -228,9 +228,14 @@ class SyllableWord extends StatelessWidget {
                     ? (filled == null ? Colors.white : Color.lerp(color, Colors.white, 0.6))
                     : (i == highlight ? Color.lerp(color, Colors.white, 0.45) : Colors.white),
                 borderRadius: BorderRadius.circular(size * 0.28),
+                // La sílaba resaltada lleva además un borde grueso (no solo color).
                 border: Border.all(
-                  color: i == missing ? color : Color.lerp(color, Colors.white, 0.4)!,
-                  width: i == missing ? 3.5 : 2,
+                  color: i == highlight
+                      ? Color.lerp(color, Colors.black, 0.3)!
+                      : i == missing
+                      ? color
+                      : Color.lerp(color, Colors.white, 0.4)!,
+                  width: i == highlight ? 4.5 : (i == missing ? 3.5 : 2),
                   strokeAlign: BorderSide.strokeAlignInside,
                 ),
               ),
@@ -514,9 +519,13 @@ class ReadingPlayButtons extends StatelessWidget {
     this.slowLabel = 'Despacio',
     this.semanticSuffix = '',
     this.color = AppColors.sky,
+    this.onSpell,
   });
 
   final void Function(ReadingSpeed speed) onPlay;
+
+  /// Si se da, aparece «Por sílabas»: la palabra dicha sílaba a sílaba.
+  final VoidCallback? onSpell;
   final String listenLabel;
   final String slowLabel;
 
@@ -551,6 +560,17 @@ class ReadingPlayButtons extends StatelessWidget {
             onPressed: () => onPlay(ReadingSpeed.slow),
           ),
         ),
+        if (onSpell != null)
+          SizedBox(
+            width: 132,
+            child: SpeechActionButton(
+              icon: Icons.view_week_rounded,
+              label: 'Por sílabas',
+              semanticLabel: 'Por sílabas$semanticSuffix',
+              color: AppColors.ocean,
+              onPressed: onSpell,
+            ),
+          ),
       ],
     );
   }

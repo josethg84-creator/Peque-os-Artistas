@@ -80,6 +80,9 @@ class _GameViewState extends State<_GameView> {
   final _tried = <String>{}; // opciones falladas en esta pregunta
   bool _solved = false;
   int _firstTry = 0;
+
+  /// Sílaba que suena al decir la palabra por sílabas (tras acertar).
+  int? _spelling;
   bool _finished = false;
 
   @override
@@ -286,7 +289,7 @@ class _GameViewState extends State<_GameView> {
           ),
           const SizedBox(height: 8),
           if (_solved)
-            SyllableWord(syllables: word.syllables, highlight: 0, color: color, size: 52)
+            SyllableWord(syllables: word.syllables, highlight: _spelling ?? 0, color: color, size: 52)
           else
             Text('?', style: fredoka(40, color: AppColors.ink)),
           const SizedBox(height: 8),
@@ -296,6 +299,17 @@ class _GameViewState extends State<_GameView> {
           listenLabel: word == null ? 'Escuchar' : 'Palabra',
           semanticSuffix: word == null ? ' otra vez' : ' la palabra',
           color: strong,
+          // Por sílabas solo después de acertar: antes diría la respuesta.
+          onSpell: word != null && _solved
+              ? () => unawaited(
+                  _voice!.playSyllables(
+                    [for (final s in word.syllables) ReadingAudio(tts: s)],
+                    onSyllable: (i) {
+                      if (mounted) setState(() => _spelling = i);
+                    },
+                  ),
+                )
+              : null,
         ),
         const SizedBox(height: 18),
         Wrap(

@@ -157,6 +157,22 @@ class _GameState extends State<_Game> {
     _listen(ReadingSpeed.slow);
   }
 
+  /// Sílaba que suena al decir la palabra por sílabas.
+  int? _spelling;
+
+  /// La palabra sílaba a sílaba. Deja oír la sílaba que falta: cuenta como pista.
+  void _spell() {
+    if (!_round.solved) _hint(() {});
+    unawaited(
+      _voice!.playSyllables(
+        [for (final s in _round.exercise.syllables) ReadingAudio(tts: s)],
+        onSyllable: (i) {
+          if (mounted) setState(() => _spelling = i);
+        },
+      ),
+    );
+  }
+
   void _hearMissing() {
     _hint(() {});
     final s = mode == CompleteMode.order ? _round.exercise.syllables.first : _round.exercise.answer;
@@ -343,6 +359,7 @@ class _GameState extends State<_Game> {
           onPlay: (speed) => speed == ReadingSpeed.slow ? _slow() : _listen(),
           semanticSuffix: ' la palabra',
           color: color,
+          onSpell: _spell,
         ),
         const SizedBox(height: 14),
         _wordRow(color),
@@ -426,6 +443,7 @@ class _GameState extends State<_Game> {
       final built = r.solved ? syllables : r.built;
       return SyllableWord(
         syllables: [for (var i = 0; i < syllables.length; i++) i < built.length ? built[i] : '?'],
+        highlight: _spelling,
         color: color,
         size: 58,
       );
@@ -437,6 +455,7 @@ class _GameState extends State<_Game> {
       syllables: syllables,
       missing: r.exercise.missing,
       filled: filled,
+      highlight: _spelling,
       color: color,
       size: 58,
     );

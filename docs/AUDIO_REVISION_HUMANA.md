@@ -104,3 +104,13 @@ Solo se resalta cuando la voz avisa de verdad de cada palabra (Android 8+, voces
 
 Sin grabaciones no se puede medir la uniformidad del volumen: depende de la voz del sistema. Al grabar, normalizar a −16 LUFS (ver `assets/audio/reading/README.md`).
 
+
+## «Por sílabas» (palabras dichas sílaba a sílaba)
+
+En «Aprendo a Hablar» (palabras), «Aprendo las sílabas» (palabra de ejemplo), «Une sílaba y
+palabra» (tras acertar) y «Completo palabras», el botón «Por sílabas» dice cada sílaba por
+separado con la voz del dispositivo. Algunas sílabas sueltas no son palabras y pueden sonar raras
+o deletrearse: escuchar sobre todo las que empiezan por **rr** (rro, rra), **ll** (lla, llo),
+**ch**, **qu** / **gu** (que, gui), **gr/tr/bl…** (tren, bro, bla), las que llevan tilde (bús, plá,
+vión) y las trabadas (man, ven, sol). Si alguna suena mal, la solución es grabarla
+(`assets/audio/reading/silabas/`).

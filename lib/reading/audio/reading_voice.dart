@@ -292,6 +292,53 @@ class ReadingVoice extends ChangeNotifier {
     }
   }
 
+  /// Dice una palabra sílaba a sílaba («pe… lo… ta»): cada sílaba suena por
+  /// separado (grabación si la hay; si no, la voz del dispositivo en
+  /// minúsculas) y [onSyllable] recibe la que suena (o `null` al terminar).
+  /// Devuelve `true` si sonaron todas (sin cortarla).
+  Future<bool> playSyllables(
+    List<ReadingAudio> syllables, {
+    ReadingSpeed speed = ReadingSpeed.normal,
+    void Function(int? syllable)? onSyllable,
+  }) async {
+    if (syllables.isEmpty) return false;
+    final turn = ++_turn;
+    await _stopSources();
+    if (_audio.voiceVolume <= 0) {
+      _set(
+        ReadingVoiceStatus.muted,
+        why: 'El sonido está apagado. Un adulto puede encenderlo en los ajustes.',
+      );
+      return false;
+    }
+    _set(ReadingVoiceStatus.playing);
+    final slow = speed == ReadingSpeed.slow;
+    void mark(int? i) {
+      if (turn == _turn && !_disposed) onSyllable?.call(i);
+    }
+
+    try {
+      for (final (i, s) in syllables.indexed) {
+        if (turn != _turn) return false;
+        mark(i);
+        var done = false;
+        if (s.clip case final clip?) {
+          try {
+            await _clips.play(clip, rate: slow ? slowRate : 1.0, volume: _audio.voiceVolume);
+            done = true;
+          } catch (e) {
+            lastClipError = e;
+          }
+        }
+        if (!done && !await _speak(s.tts.toLowerCase(), slow: slow, turn: turn)) return false;
+      }
+      return turn == _turn;
+    } finally {
+      mark(null);
+      if (turn == _turn && _status == ReadingVoiceStatus.playing) _set(ReadingVoiceStatus.idle);
+    }
+  }
+
   /// Dice una frase de ánimo o instrucción («¡Muy bien!») con la voz.
   Future<void> sayText(String text) => playAll([ReadingAudio(tts: text)]);
 
