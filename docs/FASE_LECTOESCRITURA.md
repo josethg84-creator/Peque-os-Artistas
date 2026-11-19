@@ -10,7 +10,7 @@ Módulo nuevo para niños de 4 a 7 años, hecho por fases. Cada fase llega en su
 | **D · Completa las palabras** | **Hecha**: 100 de 118 palabras jugables; 18 esperan su ilustración |
 | **E · Lectura guiada de oraciones** | **Hecha**: 105 oraciones con voz del dispositivo y escenas provisionales; faltan ilustraciones 3D y grabaciones |
 | **F · Dictados (Escucho y escribo)** | **Hecha**: 200 dictados con voz del dispositivo; faltan grabaciones |
-| G · Progreso y recompensas | Pendiente |
+| **G · Progreso, recompensas y seguimiento** | **Hecha**: estrellas, 12 medallas, «Mis logros», camino y panel para adultos; faltan ilustraciones 3D de medallas |
 | H · Pruebas, optimización y despliegue | Pendiente |
 
 ## Navegación
@@ -321,3 +321,103 @@ del anterior. No toca nada de otros módulos ni de las otras actividades.
 - Grabaciones: los dictados usan las de sílabas, palabras y oraciones de las fases anteriores (aún
   no hay ninguna). Hay que **comprobar en dispositivos reales** que la voz del sistema pronuncia
   bien las sílabas sueltas.
+
+## Fase G · Progreso, recompensas, medallas y seguimiento
+
+### Auditoría
+
+- No hay cuentas ni perfiles: todo se guarda solo en el dispositivo. No se añade autenticación.
+- Las fases D, E y F ya guardaban su progreso en `reading.v1.state`. **La Fase C (sílabas) no
+  guardaba nada**: ahora se registran las sílabas tocadas y cada respuesta de sus dos juegos.
+- La zona para adultos ya existía (verificación con una multiplicación). El seguimiento de lectura
+  se abre desde ahí.
+
+### Modelo de datos (`reading.v1.state`, formato 2)
+
+Se amplía el mismo registro (no hay datos duplicados en otro sitio):
+
+- `schema`: 1 = datos de antes; 2 = actual.
+- `achievements`:
+  - `profile`: apodo opcional (solo letras, máximo 16), avatar de la app y si suena la felicitación;
+  - `syllables_heard` y `syllable_stats` (intentos, aciertos y aciertos a la primera por sílaba);
+  - `rewards`: clave única → estrellas, motivo y fecha (registro de eventos idempotente);
+  - `medals`: medalla → fecha;
+  - `days`: día → módulo → acciones (máximo 120 días);
+  - `last_activity` por módulo;
+  - `overcome`: ejercicios resueltos tras 2 errores o más.
+
+**Migración segura**: al abrir datos del formato 1 se guarda antes una copia intacta
+(`reading.v1.state.formato1`); después se calculan, una sola vez y sin celebraciones, las estrellas y
+medallas ya ganadas. Nada se borra. Desde el panel para adultos se puede recuperar esa copia. Si el
+registro se daña, se usa la copia de seguridad (`.bak`), como antes.
+
+### Estrellas (`StarRules`)
+
+| Motivo | Estrellas | Límite |
+|---|---|---|
+| Completar una actividad por primera vez | 1 | una vez por actividad |
+| Resolverla sin pistas | +2 | una vez por actividad |
+| Terminar una partida completa | 1 | 3 al día |
+| Acertar algo que antes se falló (esfuerzo) | 1 | una vez al día por actividad |
+
+Cada estrella tiene una clave (`hecho:elige:completa_pato`, `solo:…`, `serie:día:n`,
+`esfuerzo:día:módulo`); la misma clave nunca suma dos veces. No hay clasificaciones.
+
+### Medallas (`Medals`)
+
+| Medalla | Condición |
+|---|---|
+| Mi primera sílaba | 1 sílaba acertada en los juegos de sílabas |
+| Explorador de letras | sílabas escuchadas o acertadas de 5 familias |
+| Maestro de sílabas | 40 sílabas distintas acertadas |
+| Completo mis palabras | 20 palabras completadas |
+| Mi primera oración | 1 oración escuchada entera o 1 pregunta acertada |
+| Gran lector | 10 oraciones leídas sin ayuda |
+| Comprendo lo que leo | 10 preguntas acertadas |
+| Mi primer dictado | 1 dictado acertado |
+| Buen escritor | 10 dictados acertados sin pistas |
+| Aprendo cada día | práctica en 5 días distintos |
+| Superé un desafío | 1 ejercicio resuelto tras 2 errores o más |
+| Pequeño gran artista | algo logrado en las 4 actividades |
+
+Se consiguen una sola vez y guardan la fecha. Ilustraciones 3D pendientes:
+`assets/images/aprendo_leer/medallas/README.md`.
+
+### Pantallas
+
+- **Mis logros** (`/leer/logros`): avatar y apodo, etapa del camino, estrellas, medallas,
+  actividades bien hechas, progreso de cada actividad, un mensaje que anima y una sugerencia.
+- **Mis medallas** (`/leer/logros/medallas`): conseguidas (con fecha) y bloqueadas (con lo que falta).
+- **Mi camino** (`/leer/logros/camino`): 6 etapas (vocales, sílabas, palabras, oraciones, comprensión,
+  dictados) con su avance real. Ninguna se bloquea.
+- **Celebración**: al conseguir una medalla, encima de cualquier pantalla: la medalla, qué se consiguió
+  y «Continuar aprendiendo». La animación se quita con «Reducir animaciones»; la felicitación hablada
+  se puede apagar.
+- **Seguimiento para adultos** (`/adultos/lectura`, solo desde la zona para adultos): resumen, cada
+  actividad (disponibles, realizadas, bien hechas, sin ayuda, nivel, última vez, pendientes, para
+  practicar), áreas para reforzar y sugerencias con su motivo, evolución por fechas (con 2 días o
+  más), estrellas y medallas, perfil, recuperar la copia y borrar el progreso de lectura.
+
+### Progreso por actividad
+
+«Bien hechas» = completadas correctamente alguna vez. «Sin ayuda» = sin pistas (sílabas: acertadas a la
+primera 2 veces o más con un 80 % de aciertos; oraciones: leídas antes de escucharlas). Completar no es
+lo mismo que dominar. Todo se calcula con lo registrado; sin datos, todo es 0.
+
+### Sugerencias (reglas fijas, sin inteligencia artificial)
+
+1. Familia de sílabas con 3 errores o más y menos del 60 % de aciertos → repasar esa familia.
+2. 3 dictados o más con errores sin resolver sin ayuda → escuchar y formar con tarjetas.
+3. 3 errores de tilde o más → practicar las tildes.
+4. 3 preguntas o más con pistas o sin acertar → releer despacio.
+5. 5 oraciones escuchadas o más y ninguna leída sin ayuda → leer antes de escuchar.
+6. 8 palabras o más sin pistas y menos de 5 oraciones → pasar a oraciones sencillas.
+7. Sin actividad → empezar por las vocales. 8. Si no hay otra → seguir la etapa actual.
+
+Cada sugerencia muestra al adulto los datos que la activaron.
+
+### Privacidad
+
+Solo se guarda lo necesario, solo en el dispositivo; sin cuentas, sin Internet, sin publicidad,
+sin clasificaciones ni perfiles públicos. El panel adulto está separado y verificado. Se puede borrar
+el progreso de lectura sin tocar lo demás. No es un diagnóstico.

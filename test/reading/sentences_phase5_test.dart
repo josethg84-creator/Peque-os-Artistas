@@ -54,7 +54,7 @@ Future<void> open(WidgetTester tester, Widget screen) async {
 }
 
 ReadingController newProgress([KeyValueBackend? backend]) =>
-    ReadingController(ReadingStore(backend ?? MemoryBackend()))..load();
+    ReadingController(ReadingStore(backend ?? MemoryBackend()), celebrations: false)..load();
 
 String plain(String s) => s
     .toLowerCase()

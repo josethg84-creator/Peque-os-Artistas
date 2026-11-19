@@ -13,6 +13,7 @@ import '../../widgets/big_action_button.dart';
 import '../../widgets/kid_icon_button.dart';
 import '../../widgets/kid_scaffold.dart';
 import '../audio/reading_voice.dart';
+import '../achievement_data.dart';
 import '../reading_progress.dart';
 import '../sentences.dart';
 import '../widgets/reading_widgets.dart';
@@ -186,7 +187,7 @@ class _GameState extends State<_Game> {
     }());
   }
 
-  void _solvedNow({required bool firstTry, required bool usedHints}) {
+  void _solvedNow({required bool firstTry, required bool usedHints, int mistakes = 0}) {
     if (firstTry) _firstTry++;
     final s = sentence;
     if (activity == SentenceActivity.question) {
@@ -195,9 +196,16 @@ class _GameState extends State<_Game> {
         firstTry: firstTry,
         usedHints: usedHints,
         listenedFirst: _listened,
+        mistakes: mistakes,
       );
     } else {
-      _progress.recordCompleted(s.id, activity.mode, firstTry: firstTry, usedHints: usedHints);
+      _progress.recordCompleted(
+        s.id,
+        activity.mode,
+        firstTry: firstTry,
+        usedHints: usedHints,
+        mistakes: mistakes,
+      );
     }
     unawaited(_voice!.sayText(SentenceGameScreen.praise));
   }
@@ -211,7 +219,7 @@ class _GameState extends State<_Game> {
     final right = q.choose(i);
     setState(() => _wrong = !right);
     if (right) {
-      _solvedNow(firstTry: q.firstTry, usedHints: q.usedHint);
+      _solvedNow(firstTry: q.firstTry, usedHints: q.usedHint, mistakes: q.wrongAttempts);
     } else {
       unawaited(_voice!.sayText(SentenceGameScreen.tryAgain));
     }
@@ -254,7 +262,7 @@ class _GameState extends State<_Game> {
       _orderSolved = right;
     });
     if (right) {
-      _solvedNow(firstTry: o.firstTry, usedHints: o.usedHint);
+      _solvedNow(firstTry: o.firstTry, usedHints: o.usedHint, mistakes: o.wrongAttempts);
       _listen();
     } else {
       unawaited(_voice!.sayText('¡Casi! Escucha la oración y ordénala otra vez.'));
@@ -276,7 +284,7 @@ class _GameState extends State<_Game> {
     final right = p.choose(i);
     setState(() => _wrong = !right);
     if (right) {
-      _solvedNow(firstTry: p.firstTry, usedHints: p.wrongAttempts > 0);
+      _solvedNow(firstTry: p.firstTry, usedHints: p.wrongAttempts > 0, mistakes: p.wrongAttempts);
     } else {
       unawaited(_voice!.sayText('Esa no es. Escucha otra vez.'));
     }
@@ -286,6 +294,7 @@ class _GameState extends State<_Game> {
     unawaited(_voice!.stop());
     if (_index == _list.length - 1) {
       setState(() => _finished = true);
+      _progress.recordSeries(ReadingModule.sentences);
       unawaited(_voice!.sayText('¡Terminaste! ¡Qué bien lo has hecho!'));
       return;
     }

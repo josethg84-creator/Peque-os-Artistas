@@ -7,6 +7,7 @@ import 'reading/reading_progress.dart';
 import 'learning/audio/learning_audio.dart';
 import 'learning/learning_controller.dart';
 import 'navigation/app_router.dart';
+import 'reading/widgets/medal_celebration.dart';
 import 'navigation/app_routes.dart';
 import 'services/app_services.dart';
 import 'services/catalog_service.dart';
@@ -73,7 +74,11 @@ class PequenosArtistasApp extends StatelessWidget {
               final reduce = learningController.settings.reduceMotion || mq.disableAnimations;
               return MediaQuery(
                 data: mq.copyWith(disableAnimations: reduce),
-                child: MediaQuery.withClampedTextScaling(maxScaleFactor: maxTextScale, child: child!),
+                child: MediaQuery.withClampedTextScaling(
+                  maxScaleFactor: maxTextScale,
+                  // Celebración de medallas de «Aprendo a leer», encima de cualquier pantalla.
+                  child: MedalCelebrationHost(child: child!),
+                ),
               );
             },
           ),

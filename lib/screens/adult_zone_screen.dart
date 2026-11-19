@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../navigation/app_router.dart';
+import '../navigation/app_routes.dart';
 import '../learning/learning_controller.dart';
 import '../learning/learning_level.dart';
 import '../persistence/creation.dart';
@@ -66,6 +67,7 @@ class AdultZoneScreen extends StatelessWidget {
                 const _OverviewSection(),
                 _LearningSection(learning: AppServices.of(context).learning),
                 _SpeechSection(speech: AppServices.of(context).speech),
+                const _ReadingSection(),
                 const AacSettingsPanel(),
                 const _Section(
                   icon: Icons.shield_outlined,
@@ -103,6 +105,25 @@ class AdultZoneScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+/// Acceso al seguimiento de «Aprendo a leer» (Fase 7).
+class _ReadingSection extends StatelessWidget {
+  const _ReadingSection();
+
+  @override
+  Widget build(BuildContext context) => Card(
+    margin: const EdgeInsets.only(bottom: 12),
+    child: ListTile(
+      leading: const Icon(Icons.auto_stories_rounded),
+      title: const Text('Seguimiento de «Aprendo a leer»'),
+      subtitle: const Text('Progreso por actividad, estrellas, medallas, sugerencias y datos.'),
+      trailing: const Icon(Icons.chevron_right_rounded),
+      onTap: () =>
+          Navigator.of(context)
+              .pushNamed(AppRoutes.readingTracking, arguments: const AdultZoneArgs.verified()),
+    ),
+  );
 }
 
 class _Section extends StatelessWidget {

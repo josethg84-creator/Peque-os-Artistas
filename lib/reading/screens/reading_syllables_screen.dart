@@ -85,6 +85,7 @@ class _SyllablesViewState extends State<_SyllablesView> {
       _syllable = i;
       _picked = true;
     });
+    AppServices.of(context).reading.recordSyllableHeard(syllable.id);
     _play(syllable.audio);
   }
 

@@ -11,7 +11,9 @@ import '../../theme/app_dimens.dart';
 import '../../widgets/big_action_button.dart';
 import '../../widgets/kid_scaffold.dart';
 import '../audio/reading_voice.dart';
+import '../achievement_data.dart';
 import '../reading_content.dart';
+import '../reading_progress.dart';
 import '../syllable_games.dart';
 import '../widgets/reading_widgets.dart';
 import 'reading_syllables_screen.dart';
@@ -70,6 +72,7 @@ class _GameView extends StatefulWidget {
 
 class _GameViewState extends State<_GameView> {
   ReadingVoice? _voice;
+  late ReadingController _progress;
   late Random _random;
   late List<Object> _questions; // ListenFindQuestion o MatchWordQuestion
   String? _scope; // familia con la que se juega (null = todas)
@@ -91,6 +94,7 @@ class _GameViewState extends State<_GameView> {
     super.didChangeDependencies();
     if (_voice == null) {
       _voice = ReadingVoice(AppServices.of(context).audio);
+      _progress = AppServices.of(context).reading;
       // La primera pregunta se oye al entrar.
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (mounted) _playQuestion();
@@ -149,6 +153,14 @@ class _GameViewState extends State<_GameView> {
 
   void _choose(ReadingSyllable s) {
     if (_solved) return;
+    final game = widget.game == SyllableGame.listenFind ? 'escucha_encuentra' : 'une_palabra';
+    _progress.recordSyllableAnswer(
+      _answer.id,
+      game: game,
+      correct: s.id == _answer.id,
+      firstTry: _tried.isEmpty,
+      mistakes: _tried.length,
+    );
     if (s.id == _answer.id) {
       setState(() {
         _solved = true;
@@ -170,6 +182,7 @@ class _GameViewState extends State<_GameView> {
   void _next() {
     if (_index == _questions.length - 1) {
       setState(() => _finished = true);
+      _progress.recordSeries(ReadingModule.syllables);
       unawaited(_voice!.sayText('¡Terminaste! ¡Qué bien lo has hecho!'));
       return;
     }

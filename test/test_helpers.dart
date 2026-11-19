@@ -105,7 +105,8 @@ Future<void> pumpApp(
           (SpeechController(SpeechStore(MemoryBackend()), recorder: () => lastRecorder = FakeVoiceRecorder())
             ..load()),
       aacController: aac ?? (AacController(AacStore(MemoryBackend()))..load()),
-      readingController: reading ?? (ReadingController(ReadingStore(MemoryBackend()))..load()),
+      readingController:
+          reading ?? (ReadingController(ReadingStore(MemoryBackend()), celebrations: false)..load()),
       learningAudio: LearningAudio(
         effects: sounds,
         narrator: narrator,
