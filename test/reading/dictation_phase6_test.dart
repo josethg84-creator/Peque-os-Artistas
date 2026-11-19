@@ -37,8 +37,11 @@ Future<void> tapAndSettle(WidgetTester tester, Finder finder) async {
 
 List<String> get spoken => lastNarrator!.spoken;
 
-ReadingController newProgress([KeyValueBackend? backend]) =>
-    ReadingController(ReadingStore(backend ?? MemoryBackend()), clock: () => DateTime(2026, 11, 17))..load();
+ReadingController newProgress([KeyValueBackend? backend]) => ReadingController(
+  ReadingStore(backend ?? MemoryBackend()),
+  clock: () => DateTime(2026, 11, 17),
+  celebrations: false,
+)..load();
 
 /// El primer dictado de la partida (misma lógica que la pantalla, sin progreso).
 Dictation firstOf(int level, int seed) {

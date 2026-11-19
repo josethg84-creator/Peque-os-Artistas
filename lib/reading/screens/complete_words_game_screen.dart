@@ -14,6 +14,7 @@ import '../../widgets/kid_scaffold.dart';
 import '../audio/reading_voice.dart';
 import '../complete_words.dart';
 import '../reading_content.dart';
+import '../achievement_data.dart';
 import '../reading_progress.dart';
 import '../widgets/reading_widgets.dart';
 
@@ -203,7 +204,13 @@ class _GameState extends State<_Game> {
     if (right) {
       final firstTry = _round.wrongAttempts == 0;
       if (firstTry) _firstTry++;
-      _progress.recordCompleted(_round.exercise.id, mode.id, firstTry: firstTry, usedHints: _round.usedHints);
+      _progress.recordCompleted(
+        _round.exercise.id,
+        mode.id,
+        firstTry: firstTry,
+        usedHints: _round.usedHints,
+        mistakes: _round.wrongAttempts,
+      );
       unawaited(() async {
         await _voice!.play(word.audio); // la palabra completa
         await _voice!.sayText(CompleteWordsGameScreen.praise);
@@ -216,6 +223,7 @@ class _GameState extends State<_Game> {
   void _next() {
     if (_index == _exercises.length - 1) {
       setState(() => _finished = true);
+      _progress.recordSeries(ReadingModule.words);
       unawaited(_voice!.sayText('¡Terminaste! ¡Qué bien lo has hecho!'));
       return;
     }

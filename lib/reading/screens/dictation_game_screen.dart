@@ -16,6 +16,7 @@ import '../../widgets/kid_scaffold.dart';
 import '../audio/reading_voice.dart';
 import '../dictation.dart';
 import '../reading_content.dart';
+import '../achievement_data.dart';
 import '../reading_progress.dart';
 import '../syllabifier.dart';
 import '../widgets/reading_widgets.dart';
@@ -197,6 +198,7 @@ class _GameState extends State<_Game> {
     unawaited(_voice!.stop());
     if (_index == _list.length - 1) {
       setState(() => _finished = true);
+      _progress.recordSeries(ReadingModule.dictation);
       unawaited(_voice!.sayText('¡Terminaste! ¡Qué bien lo has hecho!'));
       return;
     }

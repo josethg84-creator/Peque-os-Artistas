@@ -74,7 +74,8 @@ Future<ReadingController> openGame(
   ReadingController? reading,
 }) async {
   setScreenSize(tester, const Size(420, 900));
-  final controller = reading ?? (ReadingController(ReadingStore(MemoryBackend()))..load());
+  final controller =
+      reading ?? (ReadingController(ReadingStore(MemoryBackend()), celebrations: false)..load());
   await pumpApp(tester, reading: controller);
   tester
       .state<NavigatorState>(find.byType(Navigator))
@@ -246,14 +247,14 @@ void main() {
   group('progreso', () {
     test('se guarda con su propia clave, sobrevive a reiniciar y se recupera de la copia', () async {
       final backend = MemoryBackend();
-      final c = ReadingController(ReadingStore(backend));
+      final c = ReadingController(ReadingStore(backend), celebrations: false);
       await c.load();
       c.recordAttempt(correct: false);
       c.recordAttempt(correct: true);
       c.recordCompleted('completa_pato', 'elige', firstTry: false, usedHints: true);
       c.recordCompleted('completa_gato', 'arrastra', firstTry: true, usedHints: false);
       await c.flush();
-      final again = ReadingController(ReadingStore(backend));
+      final again = ReadingController(ReadingStore(backend), celebrations: false);
       await again.load();
       expect(again.progress.attempts, 2);
       expect(again.progress.correctAnswers, 1);
@@ -276,7 +277,7 @@ void main() {
     });
 
     test('el nivel siguiente se abre al completar ${ReadingController.unlockAfter} del anterior', () async {
-      final c = ReadingController(ReadingStore(MemoryBackend()));
+      final c = ReadingController(ReadingStore(MemoryBackend()), celebrations: false);
       expect(levelUnlocked(content, c, 1), isTrue);
       expect(levelUnlocked(content, c, 2), isFalse);
       final level1 = content.playable(1, CompleteMode.choose);
@@ -398,7 +399,7 @@ void main() {
         tester,
         1,
         CompleteMode.choose,
-        reading: ReadingController(ReadingStore(backend))..load(),
+        reading: ReadingController(ReadingStore(backend), celebrations: false)..load(),
       );
       final s = sessionFor(1, CompleteMode.choose, 3);
       expect(s, hasLength(8));
@@ -410,7 +411,7 @@ void main() {
       expect(find.bySemanticsLabel('Acertaste 8 de 8 a la primera'), findsOneWidget);
       expect(find.bySemanticsLabel('Siguiente nivel'), findsOneWidget);
       await reading.flush();
-      final restarted = ReadingController(ReadingStore(backend));
+      final restarted = ReadingController(ReadingStore(backend), celebrations: false);
       await restarted.load();
       expect(restarted.completedIn(s.map((e) => e.id), 'elige'), 8);
       expect(levelUnlocked(content, restarted, 2), isTrue);

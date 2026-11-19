@@ -71,6 +71,12 @@ abstract final class AppRoutes {
   static const readingSentencesGame = '/leer/oraciones/juego';
   static const readingDictation = '/leer/dictado';
   static const readingDictationGame = '/leer/dictado/juego';
+  static const readingAchievements = '/leer/logros';
+  static const readingMedals = '/leer/logros/medallas';
+  static const readingPath = '/leer/logros/camino';
+
+  /// Seguimiento de lectura para adultos (solo desde la zona para adultos).
+  static const readingTracking = '/adultos/lectura';
 
   static const aac = '/quiero-decir';
   static const aacCategory = '/quiero-decir/categoria';
