@@ -11,7 +11,7 @@ Módulo nuevo para niños de 4 a 7 años, hecho por fases. Cada fase llega en su
 | **E · Lectura guiada de oraciones** | **Hecha**: 105 oraciones con voz del dispositivo y escenas provisionales; faltan ilustraciones 3D y grabaciones |
 | **F · Dictados (Escucho y escribo)** | **Hecha**: 200 dictados con voz del dispositivo; faltan grabaciones |
 | **G · Progreso, recompensas y seguimiento** | **Hecha**: estrellas, 12 medallas, «Mis logros», camino y panel para adultos; faltan ilustraciones 3D de medallas |
-| H · Pruebas, optimización y despliegue | Pendiente |
+| **H · Pruebas, optimización y preparación** | **Hecha** (informe: `docs/FASE8_INFORME_CALIDAD.md`); APTO CON OBSERVACIONES |
 
 ## Navegación
 
