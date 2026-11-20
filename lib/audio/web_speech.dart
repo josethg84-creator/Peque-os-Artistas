@@ -49,7 +49,7 @@ class WebSpeechNarrator implements Narrator {
   WebSpeechNarrator(
     this._engine, {
     this.voicesWait = const Duration(seconds: 3),
-    this.pauseAfterCancel = const Duration(milliseconds: 80),
+    this.pauseAfterCancel = const Duration(milliseconds: 150),
     this.keepAliveEvery = const Duration(seconds: 10),
   });
 
@@ -139,7 +139,11 @@ class WebSpeechNarrator implements Narrator {
     if (text.trim().isEmpty) return;
     if (!(await voice()).available) return;
     final turn = ++_turn;
-    if (_current != null || _engine.speaking) {
+    // Solo se corta una frase NUESTRA que aún suena. Si la anterior ya terminó
+    // (aunque el navegador siga marcando «hablando» un instante, como Chrome en
+    // Android), la nueva se pone en cola: cortar y hablar enseguida hacía que
+    // se repitiera un trozo o se perdiera la frase nueva («e-le-fan-…» sin «te»).
+    if (_current != null) {
       _finishCurrent();
       _engine.cancel();
       await Future<void>.delayed(pauseAfterCancel);
@@ -174,7 +178,8 @@ class WebSpeechNarrator implements Narrator {
     String? error;
     Timer? alive;
     // Seguridad: la espera termina aunque el navegador no avise nunca.
-    final limit = Timer(Duration(seconds: 4 + text.length ~/ 6), () {
+    // (Más tiempo cuanto más despacio se habla.)
+    final limit = Timer(Duration(milliseconds: ((4000 + text.length * 170) / rate).round()), () {
       if (!done.isCompleted) done.complete();
     });
     if (!voice.local) {
@@ -212,7 +217,8 @@ class WebSpeechNarrator implements Narrator {
   @override
   Future<void> stop() async {
     _turn++;
-    if (_current == null && !_engine.speaking) return;
+    // Igual que al hablar: solo se corta si una frase nuestra sigue sonando.
+    if (_current == null) return;
     _finishCurrent();
     _engine.cancel();
   }
