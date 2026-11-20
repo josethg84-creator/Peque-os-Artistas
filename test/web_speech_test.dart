@@ -83,6 +83,40 @@ void main() {
     });
   });
 
+  test('por sílabas en Chrome de Android: no se pierde la última ni se repite ninguna', () {
+    fakeAsync((async) {
+      final engine = _AndroidLikeEngine();
+      final n = WebSpeechNarrator(engine);
+      // Igual que «Por sílabas»: cada sílaba espera a que termine la anterior.
+      Future<void> spell() async {
+        for (final s in ['e', 'le', 'fan', 'te']) {
+          await n.speak(s);
+        }
+      }
+
+      var finished = false;
+      spell().then((_) => finished = true);
+      async.elapse(const Duration(seconds: 10));
+      expect(engine.heard, ['e', 'le', 'fan', 'te'], reason: 'todas, una vez y en orden');
+      expect(engine.cancels, 0, reason: 'no se corta una sílaba que ya terminó');
+      expect(finished, isTrue);
+    });
+  });
+
+  test('tras una palabra, decir otra cosa no corta el final de la palabra', () {
+    fakeAsync((async) {
+      final engine = _AndroidLikeEngine();
+      final n = WebSpeechNarrator(engine);
+      n.speak('elefante').then((_) async {
+        await n.stop(); // como hace la app antes de decir «¡Muy bien!»
+        await n.speak('¡Muy bien!');
+      });
+      async.elapse(const Duration(seconds: 10));
+      expect(engine.heard, ['elefante', '¡Muy bien!']);
+      expect(engine.cancels, 0);
+    });
+  });
+
   test('elige la mejor voz en español y no una inglesa', () {
     fakeAsync((async) {
       final engine = ChromeLikeEngine();
@@ -153,7 +187,7 @@ void main() {
       final n = WebSpeechNarrator(engine);
       var done = false;
       n.speak('x' * 120).then((_) => done = true);
-      async.elapse(const Duration(seconds: 25));
+      async.elapse(const Duration(seconds: 30));
       expect(engine.keepAlives, greaterThan(0));
       expect(done, isTrue, reason: 'aunque el navegador no avise nunca, la espera termina');
     });
@@ -177,4 +211,51 @@ class _SilentEngine extends ChromeLikeEngine {
 
   @override
   bool get speaking => true;
+}
+
+/// Imita a Chrome en Android: avisa del final un poco antes de que acabe de
+/// sonar («speaking» sigue en true 300 ms; cortar entonces corta el final) y,
+/// si se pide otra frase justo después de cortar, la descarta. Anota lo que de
+/// verdad se oye entero.
+class _AndroidLikeEngine extends ChromeLikeEngine {
+  final heard = <String>[];
+  int cancels = 0;
+  Timer? _ending;
+  bool _justCancelled = false;
+
+  @override
+  void speak(
+    String text, {
+    required EngineVoice voice,
+    required double rate,
+    required double pitch,
+    required double volume,
+    required void Function(String? error) onDone,
+    WordBoundary? onBoundary,
+  }) {
+    if (_justCancelled) {
+      // Pedida justo después de cortar: Chrome de Android la descarta.
+      Timer(const Duration(milliseconds: 50), () => onDone(null));
+      return;
+    }
+    Timer(const Duration(milliseconds: 400), () {
+      onDone(null); // avisa antes de terminar de sonar…
+      _ending = Timer(const Duration(milliseconds: 300), () {
+        _ending = null;
+        heard.add(text); // …y aquí termina de verdad
+      });
+    });
+  }
+
+  @override
+  void cancel() {
+    cancels++;
+    _ending?.cancel(); // se pierde el final de lo que sonaba
+    _ending = null;
+    _justCancelled = true;
+    Timer(const Duration(milliseconds: 300), () => _justCancelled = false);
+  }
+
+  @override
+  bool get speaking => _ending != null;
 }
