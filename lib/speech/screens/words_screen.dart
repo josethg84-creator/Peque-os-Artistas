@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import '../../screens/home/home_widgets.dart';
@@ -6,6 +8,7 @@ import '../../services/app_services.dart';
 import '../../theme/app_colors.dart';
 import '../../theme/app_dimens.dart';
 import '../../widgets/kid_scaffold.dart';
+import '../../reading/syllabifier.dart';
 import '../speech_content.dart';
 import '../widgets/practice_sheet.dart';
 import '../widgets/speech_widgets.dart';
@@ -51,6 +54,10 @@ class _WordsPagerState extends State<_WordsPager> {
   int _index = 0;
   bool _finished = false;
 
+  /// Sílaba que suena al decir la palabra por sílabas (o `null`).
+  int? _spelling;
+  int _spellTurn = 0;
+
   List<SpeechWord> get _words => widget.category.words;
 
   @override
@@ -67,7 +74,32 @@ class _WordsPagerState extends State<_WordsPager> {
     super.dispose();
   }
 
+  /// Las sílabas de una palabra: las del contenido o, si no las trae, las del
+  /// silabeador de «Aprendo a leer».
+  static List<String> syllablesOf(SpeechWord word) => word.syllables.isNotEmpty
+      ? word.syllables
+      : [for (final w in word.text.split(RegExp(r'\s+'))) ...Syllabifier.split(w)];
+
+  /// Dice la palabra sílaba a sílaba («ma… ri… po… sa») para ayudar a
+  /// pronunciarla, resaltando la sílaba que suena. Otro sonido la corta.
+  Future<void> _spell() async {
+    final turn = ++_spellTurn;
+    final services = AppServices.of(context);
+    final word = _words[_index];
+    final parts = syllablesOf(word);
+    final slow = services.speech.progress.preferences.slowVoice;
+    services.speech.markWordHeard(word.id);
+    for (final (i, part) in parts.indexed) {
+      if (!mounted || turn != _spellTurn) return;
+      setState(() => _spelling = i);
+      await services.audio.say(part.toLowerCase(), slow: slow);
+    }
+    if (mounted && turn == _spellTurn) setState(() => _spelling = null);
+  }
+
   void _say({required bool slow}) {
+    _spellTurn++;
+    if (_spelling != null) setState(() => _spelling = null);
     final word = _words[_index];
     speak(context, word.text, slow: slow);
     AppServices.of(context).speech.markWordHeard(word.id);
@@ -193,6 +225,10 @@ class _WordsPagerState extends State<_WordsPager> {
       itemBuilder: (context, i) => _WordCard(
         word: _words[i],
         color: c.color,
+        spelling: i == _index ? _spelling : null,
+        onSpell: () {
+          if (i == _index) unawaited(_spell());
+        },
         onTap: () {
           if (i == _index) _say(slow: false);
         },
@@ -257,11 +293,21 @@ class _WordsPagerState extends State<_WordsPager> {
 
 /// La tarjeta de una palabra: ilustración grande y la palabra en mayúsculas.
 class _WordCard extends StatelessWidget {
-  const _WordCard({required this.word, required this.color, required this.onTap});
+  const _WordCard({
+    required this.word,
+    required this.color,
+    required this.onTap,
+    required this.onSpell,
+    this.spelling,
+  });
 
   final SpeechWord word;
   final Color color;
   final VoidCallback onTap;
+
+  /// «Por sílabas» y la sílaba que suena ahora.
+  final VoidCallback onSpell;
+  final int? spelling;
 
   @override
   Widget build(BuildContext context) {
@@ -272,7 +318,8 @@ class _WordCard extends StatelessWidget {
         button: true,
         label: word.text,
         hint: 'Toca para escuchar la palabra',
-        excludeSemantics: true,
+        // Las sílabas y «Por sílabas» son nodos propios (accesibles aparte).
+        explicitChildNodes: true,
         onTap: onTap,
         child: GestureDetector(
           onTap: onTap,
@@ -293,28 +340,94 @@ class _WordCard extends StatelessWidget {
             child: Column(
               children: [
                 Expanded(
-                  child: Center(
-                    child: SpeechPictureView(picture: word.picture, tint: color),
+                  child: ExcludeSemantics(
+                    child: Center(
+                      child: SpeechPictureView(picture: word.picture, tint: color),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 8),
-                FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child: Text(word.text.toUpperCase(), style: fredoka(56, color: ink)),
+                ExcludeSemantics(
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(word.text.toUpperCase(), style: fredoka(56, color: ink)),
+                  ),
                 ),
-                // Fase 4: cómo se pronuncia, por sílabas.
-                if (word.pronunciation != null)
+                // Cómo se pronuncia, por sílabas (la que suena, resaltada).
+                if (word.pronunciation != null || spelling != null)
                   Semantics(
-                    label: 'Sílabas: ${word.syllables.join(', ')}',
+                    container: true,
+                    label: 'Sílabas: ${_WordsPagerState.syllablesOf(word).join(', ')}',
                     excludeSemantics: true,
                     child: FittedBox(
                       fit: BoxFit.scaleDown,
-                      child: Text(
-                        word.syllables.join(' · '),
-                        style: fredoka(24, color: ink.withValues(alpha: 0.7)),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          for (final (i, s) in _WordsPagerState.syllablesOf(word).indexed) ...[
+                            if (i > 0) Text(' · ', style: fredoka(24, color: ink.withValues(alpha: 0.5))),
+                            AnimatedContainer(
+                              duration: const Duration(milliseconds: 120),
+                              padding: const EdgeInsets.symmetric(horizontal: 6),
+                              decoration: BoxDecoration(
+                                color: i == spelling ? const Color(0xFFFFF1A8) : Colors.transparent,
+                                borderRadius: BorderRadius.circular(10),
+                                // Además del color, un subrayado grueso.
+                                border: Border(
+                                  bottom: BorderSide(
+                                    color: i == spelling ? ink : Colors.transparent,
+                                    width: 4,
+                                  ),
+                                ),
+                              ),
+                              child: Text(
+                                s,
+                                style: fredoka(
+                                  i == spelling ? 30 : 24,
+                                  weight: i == spelling ? FontWeight.w700 : FontWeight.w500,
+                                  color: i == spelling ? ink : ink.withValues(alpha: 0.7),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ],
                       ),
                     ),
                   ),
+                const SizedBox(height: 6),
+                Semantics(
+                  container: true,
+                  button: true,
+                  label: 'Por sílabas: ${word.text}',
+                  excludeSemantics: true,
+                  onTap: onSpell,
+                  child: Material(
+                    color: Color.lerp(color, Colors.white, 0.8),
+                    borderRadius: BorderRadius.circular(26),
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(26),
+                      onTap: onSpell,
+                      child: ConstrainedBox(
+                        constraints: const BoxConstraints(minHeight: 52, minWidth: 52),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
+                          // Se encoge si la tarjeta es estrecha (móvil pequeño o texto grande).
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(Icons.view_week_rounded, color: ink),
+                                const SizedBox(width: 8),
+                                Text('Por sílabas', style: fredoka(20, color: ink)),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

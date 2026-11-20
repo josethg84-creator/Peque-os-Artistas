@@ -50,6 +50,9 @@ class _SyllablesViewState extends State<_SyllablesView> {
   int _syllable = 0;
   bool _picked = false;
 
+  /// Sílaba de la palabra de ejemplo que suena al decirla por sílabas.
+  int? _spelling;
+
   ReadingContent get content => widget.content;
   SyllableFamily get family => content.families[_family];
   List<ReadingSyllable> get syllables => content.syllablesOf(family);
@@ -87,6 +90,24 @@ class _SyllablesViewState extends State<_SyllablesView> {
     });
     AppServices.of(context).reading.recordSyllableHeard(syllable.id);
     _play(syllable.audio);
+  }
+
+  /// La palabra de ejemplo, sílaba a sílaba (con la grabación de cada sílaba
+  /// si existe).
+  void _spell(ReadingWord word) {
+    final parts = [
+      for (final s in word.syllables)
+        content.syllables.values.where((x) => x.text == s.toLowerCase()).firstOrNull?.audio ??
+            ReadingAudio(tts: s),
+    ];
+    unawaited(
+      _voice!.playSyllables(
+        parts,
+        onSyllable: (i) {
+          if (mounted) setState(() => _spelling = i);
+        },
+      ),
+    );
   }
 
   void _openGame(String route) =>
@@ -152,6 +173,8 @@ class _SyllablesViewState extends State<_SyllablesView> {
           onWord: (speed) {
             if (word != null) _play(word.audio, speed);
           },
+          spelling: _spelling,
+          onSpell: word == null ? null : () => _spell(word),
         );
         return SingleChildScrollView(
           padding: const EdgeInsets.fromLTRB(
@@ -236,8 +259,12 @@ class _ExampleCard extends StatelessWidget {
     required this.color,
     required this.onSyllable,
     required this.onWord,
+    this.spelling,
+    this.onSpell,
   });
 
+  final int? spelling;
+  final VoidCallback? onSpell;
   final ReadingSyllable syllable;
   final ReadingWord? word;
   final Color color;
@@ -271,7 +298,7 @@ class _ExampleCard extends StatelessWidget {
               child: ReadingWordPicture(word: w, color: color),
             ),
             const SizedBox(height: 10),
-            SyllableWord(syllables: w.syllables, highlight: 0, color: color, size: 50),
+            SyllableWord(syllables: w.syllables, highlight: spelling ?? 0, color: color, size: 50),
             if (w.note case final note?) ...[
               const SizedBox(height: 6),
               Text(note, style: Theme.of(context).textTheme.bodySmall, textAlign: TextAlign.center),
@@ -282,6 +309,7 @@ class _ExampleCard extends StatelessWidget {
               listenLabel: 'Palabra',
               semanticSuffix: ' la palabra ${w.text}',
               color: AppColors.leaf,
+              onSpell: onSpell,
             ),
           ],
         ],

@@ -211,7 +211,7 @@ void main() {
       await openApp(tester);
       await push(tester, AppRoutes.speechWords, const SpeechWordsArgs('transporte'));
       expect(spoken.last, 'autobús');
-      expect(find.text('au · to · bús'), findsOneWidget);
+      expect(find.bySemanticsLabel('Sílabas: au, to, bús'), findsOneWidget);
       await tapAndSettle(tester, find.bySemanticsLabel('En una frase'));
       expect(spoken.last, 'Vamos a la escuela en autobús.');
     });
