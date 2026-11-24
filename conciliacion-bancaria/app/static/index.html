@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Conciliación Bancaria</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">CB</div>
+        <div>
+          <div class="brand-title">Conciliación</div>
+          <div class="brand-sub">Bancaria · Cuenta 10</div>
+        </div>
+      </div>
+      <nav id="nav">
+        <div class="nav-group">General</div>
+        <a href="#/panel" data-ruta="panel">Panel</a>
+        <div class="nav-group">Operación</div>
+        <a href="#/importar" data-ruta="importar">Importar archivos</a>
+        <a href="#/movimientos" data-ruta="movimientos">Movimientos</a>
+        <a href="#/importaciones" data-ruta="importaciones">Historial de importaciones</a>
+        <a class="disabled" title="Fase 2">Conciliar <span class="tag">Fase 2</span></a>
+        <a class="disabled" title="Fase 3">Asientos de regularización <span class="tag">Fase 3</span></a>
+        <a class="disabled" title="Fase 5">Reportes <span class="tag">Fase 5</span></a>
+        <div class="nav-group">Configuración</div>
+        <a href="#/empresas" data-ruta="empresas">Empresas</a>
+        <a href="#/cuentas" data-ruta="cuentas">Cuentas bancarias</a>
+        <a href="#/auditoria" data-ruta="auditoria">Auditoría</a>
+      </nav>
+      <div class="sidebar-foot">v<span id="version">0.1.0</span> · <a href="/api/docs" target="_blank">API</a></div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <div class="topbar-left">
+          <label class="lbl-inline">Empresa</label>
+          <select id="sel-empresa"></select>
+        </div>
+        <div class="topbar-right">
+          <label class="lbl-inline">Usuario</label>
+          <input id="inp-usuario" maxlength="80" placeholder="su.usuario">
+        </div>
+      </header>
+      <main id="vista" class="vista"></main>
+    </div>
+  </div>
+
+  <div id="modal" class="modal" hidden>
+    <div class="modal-caja">
+      <div class="modal-cab"><h3 id="modal-titulo"></h3><button class="btn-x" data-cerrar>&times;</button></div>
+      <div id="modal-cuerpo" class="modal-cuerpo"></div>
+    </div>
+  </div>
+  <div id="toasts" class="toasts"></div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
