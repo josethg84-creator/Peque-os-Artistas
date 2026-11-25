@@ -9,5 +9,5 @@ DATA_DIR = Path(os.getenv("CONCILIACION_DATA_DIR", BASE_DIR / "data"))
 DATABASE_URL = os.getenv("DATABASE_URL", f"sqlite:///{DATA_DIR / 'conciliacion.db'}")
 
 MAX_UPLOAD_MB = int(os.getenv("MAX_UPLOAD_MB", "20"))
-APP_NAME = "Conciliación Bancaria"
-APP_VERSION = "0.1.0"
+APP_NAME = "Analizador Contable Inteligente"
+APP_VERSION = "0.2.0"

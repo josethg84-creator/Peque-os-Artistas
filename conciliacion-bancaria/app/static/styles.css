@@ -164,3 +164,42 @@ pre.json { background: #f6f8fa; padding: 10px; border-radius: 8px; font-size: 12
   .vista { padding: 16px; }
   .pasos { flex-direction: column; }
 }
+
+/* ---------- Analizador contable (fase 2) ---------- */
+.asistente { list-style: none; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; padding: 0; margin: 0 0 16px; }
+.asistente li { display: flex; align-items: center; gap: 8px; padding: 9px 10px; border-radius: 8px; background: var(--card); border: 1px solid var(--line); color: var(--muted); font-size: 12px; line-height: 1.25; min-width: 0; }
+.asistente li .n { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; background: #eef0f3; font-weight: 700; font-size: 11px; }
+.asistente li.activo { border-color: var(--accent); color: var(--text); box-shadow: 0 0 0 2px rgba(29,111,216,.15); }
+.asistente li.activo .n { background: var(--accent); color: #fff; }
+.asistente li.hecho { cursor: pointer; color: var(--text); }
+.asistente li.hecho .n { background: var(--ok-bg); color: var(--ok); }
+.asistente li.hecho:hover { border-color: #b8e5d2; }
+.progreso { height: 10px; border-radius: 6px; background: #e8ecf2; overflow: hidden; margin-top: 12px; }
+.progreso-barra { height: 100%; background: linear-gradient(90deg, var(--accent), #18b39b); transition: width .25s ease; }
+.progreso-txt { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-top: 6px; }
+.tipos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+.tipo-card { text-align: left; font: inherit; color: var(--text); background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px; cursor: pointer; display: flex; flex-direction: column; gap: 6px; }
+.tipo-card:hover { border-color: #b7d2f6; box-shadow: var(--shadow); }
+.tipo-card.activo { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(29,111,216,.15); }
+.tipo-card span { color: var(--muted); font-size: 13px; }
+.tipo-card small { color: var(--muted); font-size: 11px; }
+.tabla-cruda td, .tabla-cruda th { white-space: nowrap; font-size: 12px; padding: 5px 8px; max-width: 260px; overflow: hidden; text-overflow: ellipsis; }
+.tabla-cruda th { position: sticky; left: 0; background: #f8f9fb; color: var(--muted); }
+.tabla-cruda tr { cursor: pointer; }
+.tabla-cruda tr.fila-enc td { background: var(--info-bg) !important; font-weight: 600; }
+.tabla-cruda tr.fila-previa td { color: #98a2b3; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font: inherit; font-size: 13px; border: 1px solid var(--line); background: #fff; border-radius: 16px; padding: 4px 12px; cursor: pointer; }
+.chip.activo { box-shadow: 0 0 0 2px rgba(29,111,216,.35); }
+.sev-c { background: #fdecea; color: #a4231c; border-color: #f5c2bf; }
+.sev-a { background: #fff1e6; color: #a6510a; border-color: #f8d0ae; }
+.sev-m { background: #fff9db; color: #7a5d00; border-color: #f1e2a0; }
+.sev-i { background: #eaf2fd; color: #1d5bb5; border-color: #c6dbf7; }
+.tabla-obs td { font-size: 12.5px; }
+.tabla-obs code, .tabla code { font-size: 11.5px; background: #f2f4f7; padding: 1px 4px; border-radius: 4px; }
+.pestanas { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+.kpi-btn { font: inherit; text-align: left; cursor: pointer; color: var(--text); }
+.kpi-btn.activo { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(29,111,216,.15); }
+details.card > summary { cursor: pointer; }
+@media (max-width: 1100px) { .asistente { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 900px) { .asistente { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

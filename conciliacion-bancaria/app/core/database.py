@@ -38,9 +38,30 @@ def configurar(url: str) -> None:
     SessionLocal.configure(bind=engine)
 
 
+BASE_FASE_1 = "0001"
+
+
 def init_db() -> None:
+    """Lleva el esquema a la última migración.
+
+    - Base nueva: aplica todas las migraciones.
+    - Base creada en la fase 1 (sin tabla alembic_version): se marca en la línea base
+      0001 y luego se aplican las migraciones posteriores, sin tocar los datos existentes.
+    """
+    from alembic import command
+    from alembic.config import Config
+    from sqlalchemy import inspect
+
     import app.models  # noqa: F401  registra los modelos
-    Base.metadata.create_all(bind=engine)
+
+    cfg = Config(str(config.BASE_DIR / "alembic.ini"))
+    cfg.set_main_option("script_location", str(config.BASE_DIR / "migraciones"))
+    with engine.begin() as conexion:
+        cfg.attributes["connection"] = conexion
+        tablas = set(inspect(conexion).get_table_names())
+        if "alembic_version" not in tablas and "empresas" in tablas:
+            command.stamp(cfg, BASE_FASE_1)
+        command.upgrade(cfg, "head")
 
 
 def get_db() -> Iterator[Session]:

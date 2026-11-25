@@ -2,9 +2,8 @@
 import re
 import unicodedata
 from datetime import date, datetime, timedelta
-from decimal import Decimal, InvalidOperation
+from decimal import ROUND_HALF_UP, Decimal, InvalidOperation
 
-from app.core.utils import redondear
 
 MESES = {
     "ENE": 1, "FEB": 2, "MAR": 3, "ABR": 4, "MAY": 5, "JUN": 6, "JUL": 7,
@@ -30,9 +29,10 @@ def es_vacio(valor) -> bool:
     return str(valor).strip() in {"", "-", "nan", "NaN", "None"}
 
 
-def parse_fecha(valor, anio_por_defecto: int | None = None) -> date | None:
+def parse_fecha(valor, anio_por_defecto: int | None = None, orden: str = "DMY") -> date | None:
     """Convierte la fecha a `date`. Acepta date/datetime, serial de Excel y textos
-    dd/mm/aaaa, dd-mm-aa, aaaa-mm-dd, dd/mm (con año por defecto), 15-ENE-2026, 15ENE."""
+    dd/mm/aaaa, dd-mm-aa, dd.mm.aaaa, aaaa-mm-dd, aaaammdd, dd/mm (con año por defecto),
+    15-ENE-2026, 15ENE. `orden` (DMY | MDY | YMD | AUTO) resuelve las fechas numéricas ambiguas."""
     if es_vacio(valor):
         return None
     if isinstance(valor, datetime):
@@ -42,6 +42,8 @@ def parse_fecha(valor, anio_por_defecto: int | None = None) -> date | None:
     if isinstance(valor, (int, float)) and not isinstance(valor, bool):
         if 20000 < float(valor) < 80000:  # serial de Excel (1954–2119)
             return date(1899, 12, 30) + timedelta(days=int(valor))
+        if 19000101 <= int(valor) <= 21001231:  # aaaammdd numérico
+            return _crear(int(valor) // 10000, int(valor) // 100 % 100, int(valor) % 100)
         return None
 
     s = normalizar_texto(valor)
@@ -53,7 +55,14 @@ def parse_fecha(valor, anio_por_defecto: int | None = None) -> date | None:
 
     m = re.match(r"^(\d{1,2})[-/.](\d{1,2})[-/.](\d{2,4})\b", s)
     if m:
-        return _crear(_anio(m[3]), int(m[2]), int(m[1]))
+        a, b = int(m[1]), int(m[2])
+        if orden == "MDY" or (orden == "AUTO" and b > 12 >= a):
+            return _crear(_anio(m[3]), a, b)
+        return _crear(_anio(m[3]), b, a)
+
+    m = re.match(r"^(\d{4})(\d{2})(\d{2})$", s)
+    if m:
+        return _crear(int(m[1]), int(m[2]), int(m[3]))
 
     m = re.match(r"^(\d{1,2})[-/.\s]?([A-Z]{3})[A-Z]*[-/.\s]?(\d{2,4})?\b", s)
     if m and m[2] in MESES:
@@ -79,21 +88,25 @@ def _crear(anio: int | None, mes: int, dia: int) -> date | None:
 
 
 _RE_NUM = re.compile(r"[^\d,.\-]")
+_RE_MONEDA = re.compile(r"S/\.?|US\$|USD|PEN|EUR|SOLES|DOLARES|€|\$")
 
 
-def parse_importe(valor) -> Decimal | None:
+def parse_importe(valor, decimal: str = "AUTO", decimales: int = 2) -> Decimal | None:
     """Convierte importes con formatos diversos a Decimal con 2 decimales.
 
     Soporta: 1,234.56 · 1.234,56 · S/ 1,234.56 · US$ 10 · (500.00) · 500.00- ·
     -500 · 500.00 CR · 500.00 DB · 1 234,56.
+    `decimal`: AUTO (deduce), PUNTO (1,234.56) o COMA (1.234,56). `decimales`: precisión
+    del resultado (2 para importes, 3–6 para tipos de cambio).
     """
+    cuanto = Decimal(1).scaleb(-decimales)
     if es_vacio(valor):
         return None
     if isinstance(valor, bool):
         return None
     if isinstance(valor, (int, float, Decimal)):
         try:
-            return redondear(Decimal(str(valor)))
+            return Decimal(str(valor)).quantize(cuanto, rounding=ROUND_HALF_UP)
         except InvalidOperation:
             return None
 
@@ -106,6 +119,11 @@ def parse_importe(valor) -> Decimal | None:
     s = re.sub(r"\b(CR|DB|D|C|DEBITO|CREDITO|CARGO|ABONO)$", "", s).strip()
     if s.endswith("-"):
         negativo, s = True, s[:-1]
+    # Solo se toleran símbolos de moneda; cualquier otra letra hace el valor no procesable
+    # (p. ej. «1,2a0.00» no debe convertirse silenciosamente en 120.00).
+    s = _RE_MONEDA.sub("", s)
+    if re.search(r"[A-Z]", s):
+        return None
     s = _RE_NUM.sub("", s.replace(" ", ""))
     if s.startswith("-"):
         negativo, s = True, s[1:]
@@ -113,7 +131,11 @@ def parse_importe(valor) -> Decimal | None:
     if not s or not any(ch.isdigit() for ch in s):
         return None
 
-    if "," in s and "." in s:
+    if decimal == "PUNTO":
+        s = s.replace(",", "")
+    elif decimal == "COMA":
+        s = s.replace(".", "").replace(",", ".")
+    elif "," in s and "." in s:
         if s.rfind(",") > s.rfind("."):  # 1.234,56
             s = s.replace(".", "").replace(",", ".")
         else:  # 1,234.56
@@ -128,7 +150,7 @@ def parse_importe(valor) -> Decimal | None:
     elif s.count(".") > 1:  # 1.234.567
         s = s.replace(".", "")
     try:
-        numero = redondear(Decimal(s))
+        numero = Decimal(s).quantize(cuanto, rounding=ROUND_HALF_UP)
     except InvalidOperation:
         return None
     return -numero if negativo else numero

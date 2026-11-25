@@ -3,29 +3,35 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Conciliación Bancaria</title>
+  <title>Analizador Contable</title>
   <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
   <div class="app">
     <aside class="sidebar">
       <div class="brand">
-        <div class="brand-mark">CB</div>
+        <div class="brand-mark">AC</div>
         <div>
-          <div class="brand-title">Conciliación</div>
-          <div class="brand-sub">Bancaria · Cuenta 10</div>
+          <div class="brand-title">Analizador Contable</div>
+          <div class="brand-sub">PCGE · Conciliación bancaria</div>
         </div>
       </div>
       <nav id="nav">
         <div class="nav-group">General</div>
         <a href="#/panel" data-ruta="panel">Panel</a>
-        <div class="nav-group">Operación</div>
-        <a href="#/importar" data-ruta="importar">Importar archivos</a>
+        <div class="nav-group">Analizador contable</div>
+        <a href="#/contable-importar" data-ruta="contable-importar">Importar información contable</a>
+        <a href="#/contable-lotes" data-ruta="contable-lotes">Lotes y observaciones</a>
+        <a href="#/contable-maestros" data-ruta="contable-maestros">Datos contables</a>
+        <a href="#/contable-plantillas" data-ruta="contable-plantillas">Plantillas de homologación</a>
+        <a href="#/contable-reglas" data-ruta="contable-reglas">Reglas contables</a>
+        <div class="nav-group">Conciliación bancaria</div>
+        <a href="#/importar" data-ruta="importar">Importar estados de cuenta</a>
         <a href="#/movimientos" data-ruta="movimientos">Movimientos</a>
         <a href="#/importaciones" data-ruta="importaciones">Historial de importaciones</a>
-        <a class="disabled" title="Fase 2">Conciliar <span class="tag">Fase 2</span></a>
-        <a class="disabled" title="Fase 3">Asientos de regularización <span class="tag">Fase 3</span></a>
-        <a class="disabled" title="Fase 5">Reportes <span class="tag">Fase 5</span></a>
+        <a class="disabled" title="Fase 3">Conciliar <span class="tag">Fase 3</span></a>
+        <a class="disabled" title="Fase 4">Asientos de regularización <span class="tag">Fase 4</span></a>
+        <a class="disabled" title="Fase 6">Reportes y anexos <span class="tag">Fase 6</span></a>
         <div class="nav-group">Configuración</div>
         <a href="#/empresas" data-ruta="empresas">Empresas</a>
         <a href="#/cuentas" data-ruta="cuentas">Cuentas bancarias</a>
@@ -58,5 +64,6 @@
   <div id="toasts" class="toasts"></div>
 
   <script src="/static/app.js"></script>
+  <script src="/static/app_contable.js"></script>
 </body>
 </html>

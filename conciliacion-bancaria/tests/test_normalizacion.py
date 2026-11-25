@@ -13,13 +13,13 @@ from app.importers.normalizacion import clasificar_movimiento, limpiar_codigo, p
     ("US$ 10", "10.00"), ("(500.00)", "-500.00"), ("500.00-", "-500.00"), ("-500", "-500.00"),
     ("500.00 CR", "500.00"), ("500.00 DB", "-500.00"), ("1 234,56", "1234.56"), ("1234,5", "1234.50"),
     ("1,234", "1234.00"), ("1.234.567", "1234567.00"), (1500.255, "1500.26"), (0, "0.00"),
-    ("S/ -1,200.00", "-1200.00"),
+    ("S/ -1,200.00", "-1200.00"), ("USD 1,500.00", "1500.00"), ("S/. 99.90", "99.90"), ("PEN 10", "10.00"),
 ])
 def test_parse_importe(texto, esperado):
     assert parse_importe(texto) == Decimal(esperado)
 
 
-@pytest.mark.parametrize("vacio", [None, "", "-", "  ", float("nan"), "abc"])
+@pytest.mark.parametrize("vacio", [None, "", "-", "  ", float("nan"), "abc", "1,2a0.00", "12O.00", "N/A"])
 def test_parse_importe_vacio(vacio):
     assert parse_importe(vacio) is None
 

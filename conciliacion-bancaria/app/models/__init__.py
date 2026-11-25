@@ -8,3 +8,12 @@ __all__ = [
     "EstadoConciliacion", "EstadoImportacion", "Importacion", "MovimientoBanco",
     "MovimientoLibro", "TipoOrigen",
 ]
+from app.models.contable import (CentroCosto, ConfiguracionContable, CuentaContable, DocumentoRegistro,  # noqa: E402
+                                 LineaDiario, LoteContable, ObservacionImportacion, PlantillaImportacion,
+                                 ReglaDestino, SaldoCuenta, Severidad, Tercero, TipoCambio, TipoInformacion)
+
+__all__ += [
+    "CentroCosto", "ConfiguracionContable", "CuentaContable", "DocumentoRegistro", "LineaDiario", "LoteContable",
+    "ObservacionImportacion", "PlantillaImportacion", "ReglaDestino", "SaldoCuenta", "Severidad", "Tercero",
+    "TipoCambio", "TipoInformacion",
+]

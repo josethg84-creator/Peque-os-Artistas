@@ -1,4 +1,8 @@
-# Plan de desarrollo — Sistema de Conciliación Bancaria Inteligente
+# Plan de desarrollo — Analizador Contable Inteligente
+
+> El proyecto nació como sistema de conciliación bancaria (fase 1) y se amplió en la fase 2 a
+> un analizador contable con motor de importación y validación. El motor de conciliación
+> pasó de la fase 2 a la 3 y las fases siguientes se renumeraron.
 
 Contexto normativo: Plan Contable General Empresarial (PCGE) — cuenta 10
 *Efectivo y equivalentes de efectivo* (104 Cuentas corrientes en instituciones
@@ -15,7 +19,8 @@ conciliacion-bancaria/
 │   ├── schemas/       contratos de la API (Pydantic v2)
 │   ├── importers/     lectura de Excel/CSV/PDF, normalización, mapeo de columnas
 │   ├── services/      lógica de negocio (importación, duplicados, catálogo)
-│   ├── engine/        (fase 2) motor de conciliación por reglas y confianza
+│   ├── contable/      (fase 2) importación, homologación y validación contable
+│   ├── engine/        (fase 3) motor de conciliación por reglas y confianza
 │   ├── api/           routers REST (FastAPI)
 │   └── static/        interfaz web (SPA sin build)
 ├── tests/             pruebas automatizadas (pytest)
@@ -61,7 +66,26 @@ debe en la cuenta 10); negativo = sale (cargo en el banco / haber en la 10).
   consulta de movimientos, historial y auditoría.
 - Pruebas automatizadas y datos de ejemplo.
 
-## Fase 2 — Motor de conciliación por reglas y niveles de confianza
+## Fase 2 — Motor de importación y validación contable ✅
+
+- Migraciones con Alembic (línea base 0001 = esquema de la fase 1; las bases existentes se
+  adoptan sin perder datos) y 12 tablas nuevas (0002).
+- 13 tipos de información: libro diario, libro mayor, balance de comprobación, registros de
+  compras y ventas, plan de cuentas, clientes, proveedores, centros de costo, saldos
+  iniciales, tipos de cambio, cuentas por cobrar y por pagar.
+- Formatos XLSX, XLS, CSV y TXT estructurado (delimitado, con o sin encabezado, estilo PLE).
+- Asistente de 7 pasos con arrastrar y soltar, progreso real de carga y de procesamiento,
+  selección de hoja y fila de encabezado (incluso encabezados en dos filas), detección de
+  filas vacías y de subtotales/totales, separador decimal y formato de fecha configurables.
+- Motor de homologación con sinónimos de SAP, Starsoft, Proficont, CONCAR y genéricos,
+  nivel de confianza por campo y plantillas reutilizables por empresa · sistema · tipo.
+- Modelo normalizado del diario con los 34 campos requeridos (MN/ME, TC, centro de costo,
+  proyecto, activo, OC/OS, detracción, retención, trazabilidad a archivo/hoja/fila).
+- Motor de validación con 50+ reglas clasificadas (crítico/alto/medio/informativo), incluidas
+  las de clases 6, 7 y 9 configurables por empresa. Ver `docs/VALIDACIONES.md`.
+- Lotes con anulación/reemplazo, exportación de observaciones a CSV y auditoría.
+
+## Fase 3 — Motor de conciliación por reglas y niveles de confianza
 
 - Reglas en cascada con puntaje 0–100: n.º de operación exacto + importe
   (100), importe + fecha exacta (90), importe + fecha dentro de tolerancia
@@ -74,7 +98,7 @@ debe en la cuenta 10); negativo = sale (cargo en el banco / haber en la 10).
 - Auto-confirmación solo por encima del umbral configurado y sin ambigüedad.
 - Bandeja de propuestas: aceptar, rechazar, ver evidencias de cada regla.
 
-## Fase 3 — Partidas no registradas y asientos de regularización
+## Fase 4 — Partidas no registradas y asientos de regularización
 
 - Identificación de comisiones, ITF, intereses, portes, retenciones y abonos
   no registrados en libros; validación del ITF calculado (0.005 %).
@@ -85,7 +109,7 @@ debe en la cuenta 10); negativo = sale (cargo en el banco / haber en la 10).
 - Depósitos en tránsito, cheques girados no cobrados, transferencias
   pendientes.
 
-## Fase 4 — Conciliación manual, aprobaciones y períodos
+## Fase 5 — Conciliación manual, aprobaciones y períodos
 
 - Pantalla de conciliación manual lado a lado (selección múltiple, suma en
   vivo, diferencia).
@@ -95,16 +119,16 @@ debe en la cuenta 10); negativo = sale (cargo en el banco / haber en la 10).
   anteriores con antigüedad (aging) y alertas.
 - Desconciliar con motivo obligatorio y registro en auditoría.
 
-## Fase 5 — Reportes
+## Fase 6 — Reportes y anexos contables
 
 - Conciliación bancaria formal (saldo según banco ± partidas = saldo según
   libros) en PDF y Excel, firmas de preparó/revisó/aprobó.
 - Detalle de partidas pendientes, aging, movimientos conciliados, asientos
   propuestos, indicadores por empresa/banco/moneda.
 
-## Fase 6 — Seguridad, multiusuario y despliegue
+## Fase 7 — Seguridad, multiusuario y despliegue
 
 - Autenticación, usuarios, roles y permisos por empresa.
-- Migraciones con Alembic, PostgreSQL en producción, respaldos.
+- PostgreSQL en producción, respaldos, cola de trabajos para varios nodos.
 - Docker, configuración de entorno, endurecimiento y pruebas de carga.
-- Perfiles de importación guardados por banco/cuenta (plantillas de mapeo).
+- Perfiles de importación de estados de cuenta guardados por banco/cuenta.
