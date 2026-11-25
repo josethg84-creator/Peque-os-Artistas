@@ -302,7 +302,7 @@ def confirmar(db: Session, p: Parametros, usuario: str, avance, *, confirmar_cri
                  f"{len(ex.registros)} registros · obs C{sev['CRITICO']}/A{sev['ALTO']}/M{sev['MEDIO']}/I{sev['INFORMATIVO']}"
                  + (f" · importado con críticos: {motivo_criticos.strip()}" if sev["CRITICO"] else "")))
     db.commit()
-    archivos.descartar(p.token)
+    archivos.archivar(p.token, lote.id)  # se conserva para la consulta de la línea original
     return lote_dict(lote)
 
 
@@ -372,7 +372,7 @@ def _persistir(db: Session, lote: LoteContable, p: Parametros, regs: list[dict],
     elif t == "CENTROS_COSTO":
         _upsert(db, CentroCosto, {"empresa_id": p.empresa_id}, "codigo", [
             {"codigo": r["centro_costo"], "descripcion": (r.get("descripcion") or "")[:255],
-             "cuenta_destino": r.get("cuenta_destino"),
+             "cuenta_destino": r.get("cuenta_destino"), "unidad_negocio": r.get("unidad_negocio"),
              "activo": r.get("activa") if r.get("activa") is not None else True, "lote_id": lote.id} for r in regs])
     elif t == "TIPOS_CAMBIO":
         existentes = {(x.fecha, x.moneda): x for x in db.scalars(select(TipoCambio).where(TipoCambio.empresa_id == p.empresa_id))}

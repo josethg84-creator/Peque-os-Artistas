@@ -18,7 +18,10 @@ def ejemplos():
 
 @pytest.fixture()
 def cliente(tmp_path):
-    from app.core import database
+    from app.core import config, database
+    from app.analisis import saldos
+    config.DATA_DIR = tmp_path / "datos"  # archivos, lotes y adjuntos aislados por prueba
+    saldos.limpiar_cache()
     database.configurar(f"sqlite:///{tmp_path / 'prueba.db'}")
     from app.main import crear_app
     with TestClient(crear_app(), headers={"X-Usuario": "tesorero.prueba"}) as c:

@@ -10,4 +10,4 @@ DATABASE_URL = os.getenv("DATABASE_URL", f"sqlite:///{DATA_DIR / 'conciliacion.d
 
 MAX_UPLOAD_MB = int(os.getenv("MAX_UPLOAD_MB", "20"))
 APP_NAME = "Analizador Contable Inteligente"
-APP_VERSION = "0.2.0"
+APP_VERSION = "0.3.0"

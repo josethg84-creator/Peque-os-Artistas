@@ -17,3 +17,10 @@ __all__ += [
     "ObservacionImportacion", "PlantillaImportacion", "ReglaDestino", "SaldoCuenta", "Severidad", "Tercero",
     "TipoCambio", "TipoInformacion",
 ]
+from app.models.analisis import (AdjuntoAnalisis, AnalisisEjecucion, AnalisisResultado, AuditoriaAnalisis,  # noqa: E402
+                                 ComentarioAnalisis, ConfiguracionAntiguedad, ExcepcionAnalisis, Hallazgo, PapelTrabajo,
+                                 ReglaAnalisis, ReglaDistribucion, ResultadoDestino, RevisionAnalisis, SaldoSnapshot)
+
+__all__ += ["AdjuntoAnalisis", "AnalisisEjecucion", "AnalisisResultado", "AuditoriaAnalisis", "ComentarioAnalisis",
+            "ConfiguracionAntiguedad", "ExcepcionAnalisis", "Hallazgo", "PapelTrabajo", "ReglaAnalisis",
+            "ReglaDistribucion", "ResultadoDestino", "RevisionAnalisis", "SaldoSnapshot"]

@@ -140,6 +140,7 @@ class CentroCosto(Base):
     codigo: Mapped[str] = mapped_column(String(30))
     descripcion: Mapped[str] = mapped_column(String(255))
     cuenta_destino: Mapped[str | None] = mapped_column(String(20))
+    unidad_negocio: Mapped[str | None] = mapped_column(String(60))
     activo: Mapped[bool] = mapped_column(Boolean, default=True)
     lote_id: Mapped[int | None] = mapped_column(ForeignKey("lotes_contables.id"))
 

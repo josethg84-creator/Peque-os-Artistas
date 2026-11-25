@@ -1,12 +1,16 @@
 # Analizador Contable Inteligente
 
-Plataforma de análisis contable para empresas peruanas (PCGE): importación, homologación y
-validación de información de cualquier ERP, y conciliación bancaria de la **cuenta 10**.
+**Accounting Intelligence 360.** Plataforma de análisis contable para empresas peruanas (PCGE):
+importación, homologación y validación de información de cualquier ERP, análisis de cuentas
+(saldos, navegación hasta el asiento, antigüedad, origen–destino, reglas, papeles de trabajo) y
+conciliación bancaria de la **cuenta 10**.
 
 > Módulo independiente dentro de este repositorio. No comparte código con la app Flutter.
 
-**Estado: fases 1 y 2 de 7 completadas.** Plan completo en [`docs/PLAN.md`](docs/PLAN.md);
-catálogo de validaciones en [`docs/VALIDACIONES.md`](docs/VALIDACIONES.md).
+**Estado: fases 1, 2 y 3 completadas.** Plan en [`docs/PLAN.md`](docs/PLAN.md) · validaciones de
+importación en [`docs/VALIDACIONES.md`](docs/VALIDACIONES.md) · reglas de análisis en
+[`docs/REGLAS_ANALISIS.md`](docs/REGLAS_ANALISIS.md) · **manual de uso del análisis** en
+[`docs/MANUAL_ANALISIS.md`](docs/MANUAL_ANALISIS.md).
 
 ## Puesta en marcha
 
@@ -27,6 +31,14 @@ uvicorn app.main:app --reload
   automáticamente en la revisión 0001 y se actualiza sin perder datos.
 
 Pruebas: `python -m pytest -q`
+
+### Recorrido de demostración — análisis de cuentas (fase 3)
+
+Con la información contable importada (ver el recorrido de la fase 2), abra **Dashboard de
+análisis**, elija el periodo y pulse **Ejecutar análisis**. Luego: **Explorador de cuentas** (clic en
+una cuenta → panel lateral → *Navegar movimientos* → tercero → documento → clic en una línea para
+ver el asiento y la fila original), **Origen y destino**, **Antigüedad**, **Comparativos**,
+**Observaciones** (revisión profesional), **Reglas de análisis** y **Papeles de trabajo**.
 
 ### Recorrido de demostración — analizador contable (fase 2)
 
@@ -53,6 +65,22 @@ en este orden (los maestros primero, porque las validaciones los usan):
 3. **Importar archivos** → los 3 estados de cuenta de `ejemplos/` y el libro mayor
    (el mismo Excel sirve para las tres subcuentas: se filtra por subcuenta).
 4. **Movimientos** → filtrar «Solo posibles duplicados» y resolver la fila repetida del BCP.
+
+## Fase 3 — motor inteligente de análisis de cuentas
+
+| Área | Detalle |
+|---|---|
+| Saldos | Árbol PCGE sin doble conteo, apertura sin duplicar, cuadre exacto con las líneas de origen, precisión en céntimos enteros |
+| Navegación | Balance → cuenta → subcuenta → tercero → documento → asiento (con contrapartidas) → fila original del archivo |
+| Elementos 0–9 | Perfiles de análisis: cartera, existencias, cuenta 23 por proyecto, activo vs depreciación, pasivos, patrimonio, gastos, ingresos vs transferencias (78/79), intermediarios, analítica, orden |
+| Origen–destino | 6 / 79 / 9 / 78 por periodo, CC, destino, origen y asiento; reglas de distribución con %, vigencia y exclusiones |
+| Antigüedad | Tramos configurables, emisión o vencimiento, libros o cartera del ERP, resultados preliminares |
+| Comparativos | Mes anterior, mismo mes año anterior, acumulado; por cuenta, CC, proyecto, unidad, moneda, tercero |
+| Reglas | 21 reglas iniciales + reglas de umbral propias, versionadas, por grupo, con excepciones autorizadas |
+| Revisión | Estados, responsable, comentarios e historial que persisten entre ejecuciones |
+| Papeles de trabajo | Composición preliminar, conclusión, adjuntos, flujo hasta aprobación (aprobador distinto) |
+| Exportación | Excel (numérico, filtros, totales) y PDF de 10 reportes |
+| Rendimiento | Asíncrono, cancelable, caché invalidada por versión de datos; 100 200 movimientos: balance 0.4 s, análisis 5 s |
 
 ## Fase 2 — motor de importación y validación contable
 
@@ -95,8 +123,9 @@ app/
   contable/    fase 2: archivos, campos, homologación, validación, analítica 6/7/9, trabajos
   api/         routers FastAPI
   static/      interfaz web (HTML/CSS/JS sin build)
-migraciones/   Alembic (0001 fase 1 · 0002 fase 2)
-tests/         85 pruebas (normalización, lectores, API end-to-end, analizador contable)
+  analisis/    fase 3: pcge, saldos, navegación, antigüedad, comparativo, destino, reglas, motor, papeles, exportar
+migraciones/   Alembic (0001 fase 1 · 0002 fase 2 · 0003 fase 3)
+tests/         103 pruebas (incluye 18 de análisis de cuentas y una de 100 200 movimientos)
 ```
 
 Importes en `Decimal` / `NUMERIC(18,2)`; nunca `float`.
@@ -107,11 +136,12 @@ Importes en `Decimal` / `NUMERIC(18,2)`; nunca `float`.
 - PDF escaneados (imagen) no se procesan; se requiere PDF con texto.
 - Los formatos de cada banco cambian con el tiempo; los sinónimos cubren los
   encabezados habituales y el mapeo manual cubre el resto. Conviene validar con
-  exportaciones reales de cada banco (en la fase 7 se guardarán plantillas de mapeo).
+  exportaciones reales de cada banco (en la fase 6 se guardarán plantillas de mapeo).
 - El usuario se toma de la cabecera `X-Usuario` (campo «Usuario» de la interfaz);
-  la autenticación real llega en la fase 7.
+  la autenticación real llega en la fase 6.
 - Los trabajos en segundo plano corren en hilos del mismo proceso (un solo servidor); para
-  varios nodos se usará una cola en la fase 7.
+  varios nodos se usará una cola en la fase 6.
+- La línea original del archivo (nivel 7) está disponible para lotes importados desde la fase 3.
 - Los sinónimos de ERP se basan en encabezados habituales, no en exportaciones verificadas de
   cada versión: valide con archivos reales y guarde plantillas.
 - Los maestros (plan, terceros, centros, TC) se actualizan registro a registro y no se anulan

@@ -90,6 +90,37 @@ def contenido(token: str) -> bytes:
     return (_ruta(token) / "archivo").read_bytes()
 
 
+def dir_lotes() -> Path:
+    d = config.DATA_DIR / "lotes"
+    d.mkdir(parents=True, exist_ok=True)
+    return d
+
+
+def _dir_lote(lote_id: int, hash_archivo: str) -> Path:
+    # id + huella: un lote solo puede leer SU archivo aunque se reutilicen identificadores
+    return dir_lotes() / f"{int(lote_id)}-{re.sub(r'[^0-9a-f]', '', hash_archivo)[:16]}"
+
+
+def archivar(token: str, lote_id: int) -> None:
+    """Conserva el archivo original del lote confirmado para poder consultar la fila de origen."""
+    origen = _ruta(token)
+    destino = _dir_lote(lote_id, meta(token)["hash"])
+    if destino.exists():
+        destino = destino.with_name(destino.name + "-" + token[:8])
+    shutil.move(str(origen), str(destino))
+
+
+def archivo_de_lote(lote_id: int, hash_archivo: str) -> tuple[dict, bytes] | None:
+    candidatos = sorted(dir_lotes().glob(_dir_lote(lote_id, hash_archivo).name + "*"))
+    ruta = next((c for c in candidatos if (c / "meta.json").exists()
+                 and json.loads((c / "meta.json").read_text()).get("hash") == hash_archivo), None)
+    if ruta is None:
+        return None
+    if not (ruta / "archivo").exists():
+        return None
+    return json.loads((ruta / "meta.json").read_text()), (ruta / "archivo").read_bytes()
+
+
 def descartar(token: str) -> None:
     try:
         shutil.rmtree(_ruta(token), ignore_errors=True)

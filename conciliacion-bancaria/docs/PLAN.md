@@ -1,8 +1,8 @@
 # Plan de desarrollo — Analizador Contable Inteligente
 
-> El proyecto nació como sistema de conciliación bancaria (fase 1) y se amplió en la fase 2 a
-> un analizador contable con motor de importación y validación. El motor de conciliación
-> pasó de la fase 2 a la 3 y las fases siguientes se renumeraron.
+> El proyecto nació como sistema de conciliación bancaria (fase 1), se amplió en la fase 2 con el
+> motor de importación y validación contable y en la fase 3 con el motor de análisis de cuentas.
+> El motor de conciliación/compensación pasó a la fase 4 y los anexos conciliados a la fase 5.
 
 Contexto normativo: Plan Contable General Empresarial (PCGE) — cuenta 10
 *Efectivo y equivalentes de efectivo* (104 Cuentas corrientes en instituciones
@@ -20,7 +20,7 @@ conciliacion-bancaria/
 │   ├── importers/     lectura de Excel/CSV/PDF, normalización, mapeo de columnas
 │   ├── services/      lógica de negocio (importación, duplicados, catálogo)
 │   ├── contable/      (fase 2) importación, homologación y validación contable
-│   ├── engine/        (fase 3) motor de conciliación por reglas y confianza
+│   ├── analisis/      (fase 3) saldos, navegación, antigüedad, comparativos, origen-destino, reglas, papeles
 │   ├── api/           routers REST (FastAPI)
 │   └── static/        interfaz web (SPA sin build)
 ├── tests/             pruebas automatizadas (pytest)
@@ -85,50 +85,41 @@ debe en la cuenta 10); negativo = sale (cargo en el banco / haber en la 10).
   las de clases 6, 7 y 9 configurables por empresa. Ver `docs/VALIDACIONES.md`.
 - Lotes con anulación/reemplazo, exportación de observaciones a CSV y auditoría.
 
-## Fase 3 — Motor de conciliación por reglas y niveles de confianza
+## Fase 3 — Motor inteligente de análisis de cuentas ✅
 
-- Reglas en cascada con puntaje 0–100: n.º de operación exacto + importe
-  (100), importe + fecha exacta (90), importe + fecha dentro de tolerancia
-  (70–85 decreciente por días), importe dentro de tolerancia (penaliza), texto
-  similar en glosa/descripción (bonificación).
-- Conciliación **1 a 1, 1 a N y N a 1** (búsqueda de subconjuntos acotada por
-  ventana de fechas y tamaño máximo de combinación).
-- Detección de ambigüedad: si un movimiento tiene más de un candidato con
-  puntaje cercano, queda como *propuesta ambigua* y exige decisión manual.
-- Auto-confirmación solo por encima del umbral configurado y sin ambigüedad.
-- Bandeja de propuestas: aceptar, rechazar, ver evidencias de cada regla.
+- Migración 0003: 14 tablas (`account_analysis_runs`, `account_balance_snapshots`,
+  `account_analysis_results`, `account_analysis_rules`, `account_analysis_findings`,
+  `account_analysis_exceptions`, `account_analysis_comments`, `account_analysis_reviews`,
+  `account_analysis_attachments`, `destination_mapping_rules`, `destination_analysis_results`,
+  `aging_configurations`, `accounting_workpapers`, `analysis_audit_logs`) y `unidad_negocio` en
+  centros de costo. Los movimientos originales no se duplican ni se modifican.
+- Explorador jerárquico PCGE (elemento → analítica) con saldos, naturaleza, terceros, variación,
+  observaciones y cuadre exacto con el origen; perfiles de análisis por elemento (0–9).
+- Navegación en 7 niveles hasta el asiento con contrapartidas y la fila original del archivo.
+- Origen–destino (6 / 79 / 9 / 78) con reglas de distribución por cuenta, CC, proyecto, unidad,
+  maquinaria, porcentaje y vigencia.
+- Antigüedad configurable (emisión / vencimiento, libros / cartera) con resultados preliminares.
+- Comparativos por periodo y dimensión; 21 reglas configurables y versionadas + reglas de umbral;
+  excepciones; revisión profesional con arrastre entre ejecuciones; dashboard; papeles de trabajo
+  preliminares con flujo de aprobación; exportación Excel/PDF; procesamiento asíncrono cancelable
+  con caché invalidable y tiempos por etapa (100 000+ movimientos en segundos).
 
-## Fase 4 — Partidas no registradas y asientos de regularización
+## Fase 4 — Motor de compensación y conciliación de partidas
 
-- Identificación de comisiones, ITF, intereses, portes, retenciones y abonos
-  no registrados en libros; validación del ITF calculado (0.005 %).
-- Propuesta de asientos: p. ej. comisiones → 6391 *Gastos bancarios* /
-  104x; ITF → 6411 *Impuesto a las transacciones financieras* / 104x;
-  intereses → 104x / 7721 *Intereses sobre depósitos*; diferencia de cambio →
-  676 / 776. Exportación en formato importable (Excel/CSV) para el ERP.
-- Depósitos en tránsito, cheques girados no cobrados, transferencias
-  pendientes.
+- Compensación de documentos (facturas, pagos, notas de crédito, anticipos) por tercero, con
+  reglas y niveles de confianza; las coincidencias ambiguas nunca se confirman solas.
+- Conciliación bancaria por reglas (1 a 1, 1 a N, N a 1) sobre los movimientos de la fase 1.
+- Partidas no registradas (comisiones, ITF, intereses) y propuesta de asientos de regularización.
+- Conciliación manual con aprobación; arrastre de partidas pendientes entre periodos.
 
-## Fase 5 — Conciliación manual, aprobaciones y períodos
+## Fase 5 — Anexos conciliados y reportes definitivos
 
-- Pantalla de conciliación manual lado a lado (selección múltiple, suma en
-  vivo, diferencia).
-- Flujo de estados: borrador → en revisión → aprobada → cerrada, con roles
-  (preparador / revisor / aprobador) y comentarios.
-- Cierre mensual por cuenta; **arrastre de partidas pendientes** de meses
-  anteriores con antigüedad (aging) y alertas.
-- Desconciliar con motivo obligatorio y registro en auditoría.
+- Anexos por cuenta conciliados (a partir de los papeles de trabajo aprobados), conciliación
+  bancaria formal, reportes con firmas de preparó / revisó / aprobó.
 
-## Fase 6 — Reportes y anexos contables
+## Fase 6 — Seguridad, multiusuario y despliegue
 
-- Conciliación bancaria formal (saldo según banco ± partidas = saldo según
-  libros) en PDF y Excel, firmas de preparó/revisó/aprobó.
-- Detalle de partidas pendientes, aging, movimientos conciliados, asientos
-  propuestos, indicadores por empresa/banco/moneda.
-
-## Fase 7 — Seguridad, multiusuario y despliegue
-
-- Autenticación, usuarios, roles y permisos por empresa.
-- PostgreSQL en producción, respaldos, cola de trabajos para varios nodos.
-- Docker, configuración de entorno, endurecimiento y pruebas de carga.
+- Autenticación, usuarios, roles y permisos por empresa (hoy la seguridad multiempresa es por
+  aislamiento de datos en cada consulta; el usuario se toma de la cabecera `X-Usuario`).
+- PostgreSQL en producción, respaldos, cola de trabajos para varios nodos, Docker.
 - Perfiles de importación de estados de cuenta guardados por banco/cuenta.
