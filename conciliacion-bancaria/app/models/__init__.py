@@ -24,3 +24,13 @@ from app.models.analisis import (AdjuntoAnalisis, AnalisisEjecucion, AnalisisRes
 __all__ += ["AdjuntoAnalisis", "AnalisisEjecucion", "AnalisisResultado", "AuditoriaAnalisis", "ComentarioAnalisis",
             "ConfiguracionAntiguedad", "ExcepcionAnalisis", "Hallazgo", "PapelTrabajo", "ReglaAnalisis",
             "ReglaDistribucion", "ResultadoDestino", "RevisionAnalisis", "SaldoSnapshot"]
+from app.models.compensacion import (AdjuntoCompensacion, Aplicacion, AprobacionCompensacion,  # noqa: E402
+                                     AuditoriaCompensacion, CandidatoCompensacion, ComentarioCompensacion,
+                                     EjecucionCompensacion, ExcepcionCompensacion, GrupoCompensacion, PartidaAbierta,
+                                     PartidaFuente, ReglaCompensacion, ReversionCompensacion, RolUsuario,
+                                     SnapshotCompensacion)
+
+__all__ += ["AdjuntoCompensacion", "Aplicacion", "AprobacionCompensacion", "AuditoriaCompensacion",
+            "CandidatoCompensacion", "ComentarioCompensacion", "EjecucionCompensacion", "ExcepcionCompensacion",
+            "GrupoCompensacion", "PartidaAbierta", "PartidaFuente", "ReglaCompensacion", "ReversionCompensacion",
+            "RolUsuario", "SnapshotCompensacion"]

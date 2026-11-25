@@ -2,7 +2,8 @@
 
 > El proyecto nació como sistema de conciliación bancaria (fase 1), se amplió en la fase 2 con el
 > motor de importación y validación contable y en la fase 3 con el motor de análisis de cuentas.
-> El motor de conciliación/compensación pasó a la fase 4 y los anexos conciliados a la fase 5.
+> En la fase 4 se incorporó el motor de compensación analítica de partidas. Los anexos conciliados
+> quedan para la fase 5.
 
 Contexto normativo: Plan Contable General Empresarial (PCGE) — cuenta 10
 *Efectivo y equivalentes de efectivo* (104 Cuentas corrientes en instituciones
@@ -21,6 +22,7 @@ conciliacion-bancaria/
 │   ├── services/      lógica de negocio (importación, duplicados, catálogo)
 │   ├── contable/      (fase 2) importación, homologación y validación contable
 │   ├── analisis/      (fase 3) saldos, navegación, antigüedad, comparativos, origen-destino, reglas, papeles
+│   ├── compensacion/  (fase 4) partidas abiertas, clasificación, motor de coincidencias, servicio, consultas
 │   ├── api/           routers REST (FastAPI)
 │   └── static/        interfaz web (SPA sin build)
 ├── tests/             pruebas automatizadas (pytest)
@@ -104,13 +106,33 @@ debe en la cuenta 10); negativo = sale (cargo en el banco / haber en la 10).
   preliminares con flujo de aprobación; exportación Excel/PDF; procesamiento asíncrono cancelable
   con caché invalidable y tiempos por etapa (100 000+ movimientos en segundos).
 
-## Fase 4 — Motor de compensación y conciliación de partidas
+## Fase 4 — Motor inteligente de compensación automática de partidas ✅
 
-- Compensación de documentos (facturas, pagos, notas de crédito, anticipos) por tercero, con
-  reglas y niveles de confianza; las coincidencias ambiguas nunca se confirman solas.
-- Conciliación bancaria por reglas (1 a 1, 1 a N, N a 1) sobre los movimientos de la fase 1.
-- Partidas no registradas (comisiones, ITF, intereses) y propuesta de asientos de regularización.
-- Conciliación manual con aprobación; arrastre de partidas pendientes entre periodos.
+Detalle y manual en [`MANUAL_COMPENSACION.md`](MANUAL_COMPENSACION.md).
+
+- Migración 0004: 15 tablas (`open_items`, `open_item_sources`, `settlement_runs`,
+  `settlement_rules`, `settlement_candidates`, `settlement_groups`, `settlement_allocations`,
+  `settlement_approvals`, `settlement_reversals`, `settlement_exceptions`, `settlement_comments`,
+  `settlement_attachments`, `settlement_balance_snapshots`, `settlement_audit_logs`,
+  `roles_usuario`). Los asientos originales no se modifican.
+- Partidas abiertas idempotentes desde el diario (o mayor), apertura documental o «pendiente de
+  desagregación», clasificación en 20 clases con confianza y motivo.
+- Motor de 5 niveles (documento, referencias, importe/combinaciones acotadas, fecha solo como
+  puntuación, FIFO solo autorizado) con puntuación 0–100 y casos ambiguos para decisión humana.
+- Modalidades 1:1, 1:N, N:1, N:N, parciales, entre ejercicios y manuales; entre cuentas o entre
+  monedas solo con regla autorizada; entre terceros solo manual con autorización y sustento.
+- Detracciones, retenciones y percepciones con tasas y vigencias configurables; notas de crédito;
+  anticipos; moneda extranjera evaluada en la moneda de la obligación con diferencia de cambio
+  identificada (sin asiento).
+- Integridad: CHECK, índice único parcial, UPDATE condicional con versión, transacciones, rechazo de
+  ejecuciones concurrentes; aprobación con separación de funciones; reversión sin borrado; roles.
+- Composición histórica a cualquier fecha de corte, fotografías por ejecución, conciliación con el
+  saldo contable sin ajustes, antigüedad real integrada a la fase 3 (fuente `COMPENSACION`),
+  dashboard CxC/CxP y 14 reportes Excel/PDF.
+- 180 000 líneas (90 000 partidas) compensadas en ≈ 49 s.
+
+Pendiente para una fase posterior (requiere autorización): asientos automáticos de regularización
+y conciliación por reglas de los movimientos bancarios de la fase 1 contra el libro.
 
 ## Fase 5 — Anexos conciliados y reportes definitivos
 

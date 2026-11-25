@@ -7,10 +7,11 @@ conciliación bancaria de la **cuenta 10**.
 
 > Módulo independiente dentro de este repositorio. No comparte código con la app Flutter.
 
-**Estado: fases 1, 2 y 3 completadas.** Plan en [`docs/PLAN.md`](docs/PLAN.md) · validaciones de
+**Estado: fases 1, 2, 3 y 4 completadas.** Plan en [`docs/PLAN.md`](docs/PLAN.md) · validaciones de
 importación en [`docs/VALIDACIONES.md`](docs/VALIDACIONES.md) · reglas de análisis en
 [`docs/REGLAS_ANALISIS.md`](docs/REGLAS_ANALISIS.md) · **manual de uso del análisis** en
-[`docs/MANUAL_ANALISIS.md`](docs/MANUAL_ANALISIS.md).
+[`docs/MANUAL_ANALISIS.md`](docs/MANUAL_ANALISIS.md) · **manual de compensación de partidas** en
+[`docs/MANUAL_COMPENSACION.md`](docs/MANUAL_COMPENSACION.md).
 
 ## Puesta en marcha
 
@@ -31,6 +32,15 @@ uvicorn app.main:app --reload
   automáticamente en la revisión 0001 y se actualiza sin perder datos.
 
 Pruebas: `python -m pytest -q`
+
+### Recorrido de demostración — compensación de partidas (fase 4)
+
+Con el diario importado, abra **Reglas y roles** (opcional: regla entre cuentas 4212↔4221 para
+anticipos, reglas de detracción/retención con su tasa). En **Dashboard de compensación** elija la
+fecha de corte y pulse **Ejecutar motor**. Revise **Propuestas y aprobaciones** (y la pestaña
+*Ambiguas*), complete lo pendiente en **Compensación manual** (doble panel con vista previa) y
+verifique **Conciliación y observaciones**: las partidas abiertas deben explicar el saldo contable.
+La prueba `tests/test_compensacion.py` contiene un juego de datos con los 18 casos contables.
 
 ### Recorrido de demostración — análisis de cuentas (fase 3)
 
@@ -65,6 +75,19 @@ en este orden (los maestros primero, porque las validaciones los usan):
 3. **Importar archivos** → los 3 estados de cuenta de `ejemplos/` y el libro mayor
    (el mismo Excel sirve para las tres subcuentas: se filtra por subcuenta).
 4. **Movimientos** → filtrar «Solo posibles duplicados» y resolver la fila repetida del BCP.
+
+## Fase 4 — motor inteligente de compensación automática de partidas
+
+| Área | Detalle |
+|---|---|
+| Partidas abiertas | Desde el diario/mayor, idempotentes, con líneas de origen; apertura documental o «pendiente de desagregación» (nunca se inventan documentos) |
+| Clasificación | 20 clases (factura, pago, NC, anticipo, detracción, retención…) con confianza y motivo; las ambiguas quedan por revisar |
+| Coincidencias | 5 niveles, puntuación 0–100 (calidad, no probabilidad), combinaciones acotadas, ambiguas siempre a decisión humana |
+| Modalidades | 1:1, 1:N, N:1, N:N, parcial, entre ejercicios, manual; entre cuentas/monedas con regla autorizada; entre terceros solo manual autorizado |
+| Tributos y ME | Detracción/retención/percepción con tasas y vigencias configurables; ME evaluada en la moneda de la obligación, diferencia de cambio identificada sin asiento |
+| Control | Aprobación (automática solo con política ≥ 95), separación de funciones, reversión sin borrado, roles, auditoría, control optimista e índices únicos |
+| Resultados | Composición a cualquier fecha de corte, conciliación con el saldo contable, antigüedad real, anticipos, tributos, dashboard CxC/CxP, 14 reportes Excel/PDF |
+| Rendimiento | 180 000 líneas / 90 000 partidas en ≈ 49 s, asíncrono, cancelable, idempotente |
 
 ## Fase 3 — motor inteligente de análisis de cuentas
 
@@ -124,8 +147,9 @@ app/
   api/         routers FastAPI
   static/      interfaz web (HTML/CSS/JS sin build)
   analisis/    fase 3: pcge, saldos, navegación, antigüedad, comparativo, destino, reglas, motor, papeles, exportar
-migraciones/   Alembic (0001 fase 1 · 0002 fase 2 · 0003 fase 3)
-tests/         103 pruebas (incluye 18 de análisis de cuentas y una de 100 200 movimientos)
+  compensacion/ fase 4: clasificacion, partidas, motor, servicio, consultas
+migraciones/   Alembic (0001 fase 1 · 0002 fase 2 · 0003 fase 3 · 0004 fase 4)
+tests/         126 pruebas (incluye 23 de compensación con los 18 casos contables obligatorios y dos de volumen)
 ```
 
 Importes en `Decimal` / `NUMERIC(18,2)`; nunca `float`.
@@ -146,3 +170,5 @@ Importes en `Decimal` / `NUMERIC(18,2)`; nunca `float`.
   cada versión: valide con archivos reales y guarde plantillas.
 - Los maestros (plan, terceros, centros, TC) se actualizan registro a registro y no se anulan
   por lote.
+- Compensación (fase 4): no se generan asientos de regularización; las percepciones siempre van a
+  revisión; con cientos de miles de partidas una página de consulta tarda algunos segundos.

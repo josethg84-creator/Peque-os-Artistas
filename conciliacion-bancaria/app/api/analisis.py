@@ -192,8 +192,12 @@ def origen(linea_id: int, db: DB, empresa_id: int):
 def antiguedad(db: DB, empresa_id: int, ejercicio: int, fecha_corte: date, base: str | None = None,
                fuente: str = "LIBROS", cuentas: str | None = None, config_id: int | None = None, tercero: str | None = None):
     _empresa(db, empresa_id)
-    if base not in (None, "EMISION", "VENCIMIENTO") or fuente not in ("LIBROS", "CARTERA"):
+    if base not in (None, "EMISION", "VENCIMIENTO") or fuente not in ("LIBROS", "CARTERA", "COMPENSACION"):
         raise HTTPException(422, "Base o fuente no válida")
+    if fuente == "COMPENSACION":  # fase 4: saldos realmente pendientes tras las compensaciones aprobadas al corte
+        from app.compensacion import consultas as comp_consultas
+        return _jsonable(comp_consultas.antiguedad(db, empresa_id, fecha_corte, base=base or "VENCIMIENTO", cuentas=cuentas,
+                                                   config_id=config_id, tercero=tercero))
     try:
         return _jsonable(ant_mod.calcular(db, empresa_id, ejercicio, fecha_corte, base=base, fuente=fuente, cuentas=cuentas,
                                           config_id=config_id, tercero=tercero))

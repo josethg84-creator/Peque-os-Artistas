@@ -6,7 +6,7 @@ from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
-from app.api import analisis, contable, importaciones, maestros, movimientos, panel
+from app.api import analisis, compensacion, contable, importaciones, maestros, movimientos, panel
 from app.core import config
 from app.core.database import SessionLocal, init_db
 from app.services.catalogo import sembrar
@@ -25,7 +25,7 @@ async def ciclo_vida(_: FastAPI):
 def crear_app() -> FastAPI:
     app = FastAPI(title=config.APP_NAME, version=config.APP_VERSION, lifespan=ciclo_vida,
                   docs_url="/api/docs", openapi_url="/api/openapi.json")
-    for r in (maestros.router, importaciones.router, movimientos.router, panel.router, contable.router, analisis.router):
+    for r in (maestros.router, importaciones.router, movimientos.router, panel.router, contable.router, analisis.router, compensacion.router):
         app.include_router(r, prefix="/api")
 
     @app.get("/api/salud", tags=["Sistema"])

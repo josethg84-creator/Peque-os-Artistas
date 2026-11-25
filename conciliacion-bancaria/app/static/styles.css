@@ -258,3 +258,13 @@ details.card > summary { cursor: pointer; }
 .hb-cero { position: absolute; top: -3px; bottom: -3px; width: 1px; background: #98a2b3; }
 .hb-val { text-align: right; font-variant-numeric: tabular-nums; color: #344054; }
 .tabla code { white-space: nowrap; }
+
+/* Fase 4 — compensación */
+.fila-click { cursor: pointer; }
+.fila-click:hover td { background: rgba(37, 125, 224, .06); }
+.inp-imp { text-align: right; }
+.inp-imp:disabled { opacity: .45; }
+.modal-cuerpo h3 { margin: 16px 0 8px; font-size: 14px; }
+@media (max-width: 760px) {
+  .grid-2 > .card .tabla-wrap { max-height: 50vh; }
+}
