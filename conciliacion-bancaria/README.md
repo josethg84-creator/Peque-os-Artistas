@@ -7,11 +7,12 @@ conciliación bancaria de la **cuenta 10**.
 
 > Módulo independiente dentro de este repositorio. No comparte código con la app Flutter.
 
-**Estado: fases 1, 2, 3 y 4 completadas.** Plan en [`docs/PLAN.md`](docs/PLAN.md) · validaciones de
+**Estado: fases 1 a 5 completadas.** Plan en [`docs/PLAN.md`](docs/PLAN.md) · validaciones de
 importación en [`docs/VALIDACIONES.md`](docs/VALIDACIONES.md) · reglas de análisis en
 [`docs/REGLAS_ANALISIS.md`](docs/REGLAS_ANALISIS.md) · **manual de uso del análisis** en
 [`docs/MANUAL_ANALISIS.md`](docs/MANUAL_ANALISIS.md) · **manual de compensación de partidas** en
-[`docs/MANUAL_COMPENSACION.md`](docs/MANUAL_COMPENSACION.md).
+[`docs/MANUAL_COMPENSACION.md`](docs/MANUAL_COMPENSACION.md) · **manual de anexos contables** en
+[`docs/MANUAL_ANEXOS.md`](docs/MANUAL_ANEXOS.md).
 
 ## Puesta en marcha
 
@@ -32,6 +33,15 @@ uvicorn app.main:app --reload
   automáticamente en la revisión 0001 y se actualiza sin perder datos.
 
 Pruebas: `python -m pytest -q`
+
+### Recorrido de demostración — anexos contables (fase 5)
+
+Importe el diario y, si corresponde, apruebe compensaciones (fase 4). En **Registros auxiliares**
+cargue el registro de activos, cronogramas, gastos anticipados o servicios en proceso (CSV/XLSX). En
+**Dashboard de anexos** pulse **Generar anexos de todo el balance**; abra un anexo desde el **Centro
+de anexos** para ver su detalle (clic en una fila → asiento original), conciliación, observaciones,
+documentación, revisión y versiones. Exporte en Excel o PDF, o genere el expediente de cierre en
+**Exportaciones**. `tests/test_anexos.py` contiene un juego de datos con los 21 casos obligatorios.
 
 ### Recorrido de demostración — compensación de partidas (fase 4)
 
@@ -75,6 +85,18 @@ en este orden (los maestros primero, porque las validaciones los usan):
 3. **Importar archivos** → los 3 estados de cuenta de `ejemplos/` y el libro mayor
    (el mismo Excel sirve para las tres subcuentas: se filtra por subcuenta).
 4. **Movimientos** → filtrar «Solo posibles duplicados» y resolver la fila repetida del BCP.
+
+## Fase 5 — generador inteligente de anexos contables
+
+| Área | Detalle |
+|---|---|
+| Centro de anexos | Explorador jerárquico con plantilla y estado por cuenta; anexos individuales, seleccionados, por elemento, rango o balance completo; filtros por centro de costo, proyecto, unidad y moneda |
+| Plantillas | 73 del catálogo (elementos 0–9, 19 especialidades) + diseñador: columnas, agrupación, subtotales, filtros, campos calculados con motor seguro, reglas, rangos, encabezado, orientación, logotipo |
+| Conciliación | Saldo final = inicial + debe − haber (signo natural); detalle sustentado / sin documento / sin detalle / por clasificar; balance importado; cuadrado, con observaciones, parcialmente sustentado, descuadrado o información insuficiente |
+| Especializados | Efectivo con estado bancario, cartera con compensaciones de la fase 4, entregas a rendir, devengo de gastos anticipados, servicios en proceso (23), activos fijos y depreciación financiera/tributaria, tributos, remuneraciones, obligaciones financieras con cronograma, patrimonio, gastos, ingresos, origen–destino |
+| Control | 10 estados, separación de funciones, versiones inmutables al aprobar, reapertura autorizada, comparación histórica, adjuntos, permisos por empresa / rol / cuenta, datos personales enmascarados, auditoría |
+| Exportación | Excel con fórmulas verificables y libro masivo con índice; PDF y expediente de cierre |
+| Rendimiento | 1 200 cuentas y 100 000 líneas: generación ≈ 20 s, libro Excel de 1 206 hojas ≈ 21 s |
 
 ## Fase 4 — motor inteligente de compensación automática de partidas
 
@@ -148,8 +170,9 @@ app/
   static/      interfaz web (HTML/CSS/JS sin build)
   analisis/    fase 3: pcge, saldos, navegación, antigüedad, comparativo, destino, reglas, motor, papeles, exportar
   compensacion/ fase 4: clasificacion, partidas, motor, servicio, consultas
-migraciones/   Alembic (0001 fase 1 · 0002 fase 2 · 0003 fase 3 · 0004 fase 4)
-tests/         126 pruebas (incluye 23 de compensación con los 18 casos contables obligatorios y dos de volumen)
+  anexos/      fase 5: catalogo, datos, constructores, generador, flujo, expresiones, render, comparar, exportar
+migraciones/   Alembic (0001 fase 1 · 0002 fase 2 · 0003 fase 3 · 0004 fase 4 · 0005 fase 5)
+tests/         148 pruebas (incluye 22 de anexos con los 21 casos obligatorios y tres de volumen)
 ```
 
 Importes en `Decimal` / `NUMERIC(18,2)`; nunca `float`.
@@ -170,5 +193,7 @@ Importes en `Decimal` / `NUMERIC(18,2)`; nunca `float`.
   cada versión: valide con archivos reales y guarde plantillas.
 - Los maestros (plan, terceros, centros, TC) se actualizan registro a registro y no se anulan
   por lote.
+- Anexos (fase 5): sin conciliaciones externas (fase 6); los registros auxiliares se importan (no hay
+  integración en línea con el ERP); el libro Excel masivo no lleva logotipo.
 - Compensación (fase 4): no se generan asientos de regularización; las percepciones siempre van a
   revisión; con cientos de miles de partidas una página de consulta tarda algunos segundos.

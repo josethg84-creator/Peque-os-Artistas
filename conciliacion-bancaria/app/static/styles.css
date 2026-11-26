@@ -268,3 +268,31 @@ details.card > summary { cursor: pointer; }
 @media (max-width: 760px) {
   .grid-2 > .card .tabla-wrap { max-height: 50vh; }
 }
+
+/* Fase 5 — anexos contables */
+.tabla-fija tfoot td { position: sticky; bottom: 0; background: #eef2f8; border-top: 2px solid var(--line); }
+.tabla-fija thead th { position: sticky; top: 0; z-index: 1; }
+.hoja-impresion { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; max-width: 1400px; }
+.hoja-impresion.vertical { max-width: 900px; }
+.hoja-impresion h1 { font-size: 17px; margin: 12px 0 4px; }
+.imp-cab { display: flex; gap: 16px; align-items: center; border-bottom: 2px solid #0f2742; padding-bottom: 8px; }
+.imp-cab img { max-height: 48px; }
+.imp-ref { margin-left: auto; text-align: right; font-size: 12px; color: var(--muted); }
+.imp-res td { font-size: 12px; }
+.imp-det td, .imp-det th { font-size: 11px; padding: 4px 6px; }
+.imp-det tr.sub-total td { background: #e8edf5; font-weight: 600; }
+.imp-firmas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+.imp-firmas div { border-top: 1px solid #98a2b3; padding-top: 6px; display: flex; flex-direction: column; font-size: 12px; }
+@media print {
+  .sidebar, .topbar, .no-imprimir, .toasts { display: none !important; }
+  .app, .main, .vista { display: block; padding: 0; margin: 0; }
+  .hoja-impresion { border: 0; padding: 0; max-width: none; }
+  .imp-det thead { display: table-header-group; }
+  .imp-det tr { page-break-inside: avoid; }
+  @page { size: A4 landscape; margin: 10mm; }
+}
+.hoja-impresion { overflow-x: auto; }
+.hoja-impresion .tabla tfoot td, .hoja-impresion .tabla thead th { position: static; }
+.imp-det { font-size: 10.5px; }
+.imp-det td { max-width: 220px; white-space: normal; }
+@media print { .hoja-impresion { overflow: visible; } }

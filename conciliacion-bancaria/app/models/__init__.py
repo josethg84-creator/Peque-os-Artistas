@@ -34,3 +34,12 @@ __all__ += ["AdjuntoCompensacion", "Aplicacion", "AprobacionCompensacion", "Audi
             "CandidatoCompensacion", "ComentarioCompensacion", "EjecucionCompensacion", "ExcepcionCompensacion",
             "GrupoCompensacion", "PartidaAbierta", "PartidaFuente", "ReglaCompensacion", "ReversionCompensacion",
             "RolUsuario", "SnapshotCompensacion"]
+from app.models.anexos import (AdjuntoAnexo, Anexo, AprobacionAnexo, AsignacionAnexo, AuditoriaAnexo,  # noqa: E402
+                               ColumnaPlantilla, ComentarioAnexo, ConciliacionAnexo, ConfiguracionAnexos, DetalleAnexo,
+                               ExportacionAnexos, FormulaPlantilla, GeneracionAnexos, HallazgoAnexo, PlantillaAnexo,
+                               RegistroAuxiliar, ReglaPlantilla, RevisionAnexo, VersionAnexo)
+
+__all__ += ["AdjuntoAnexo", "Anexo", "AprobacionAnexo", "AsignacionAnexo", "AuditoriaAnexo", "ColumnaPlantilla",
+            "ComentarioAnexo", "ConciliacionAnexo", "ConfiguracionAnexos", "DetalleAnexo", "ExportacionAnexos",
+            "FormulaPlantilla", "GeneracionAnexos", "HallazgoAnexo", "PlantillaAnexo", "RegistroAuxiliar",
+            "ReglaPlantilla", "RevisionAnexo", "VersionAnexo"]

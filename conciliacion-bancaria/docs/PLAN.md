@@ -2,8 +2,8 @@
 
 > El proyecto nació como sistema de conciliación bancaria (fase 1), se amplió en la fase 2 con el
 > motor de importación y validación contable y en la fase 3 con el motor de análisis de cuentas.
-> En la fase 4 se incorporó el motor de compensación analítica de partidas. Los anexos conciliados
-> quedan para la fase 5.
+> En la fase 4 se incorporó el motor de compensación analítica de partidas y en la fase 5 el generador de
+> anexos contables. Las conciliaciones externas quedan para la fase 6.
 
 Contexto normativo: Plan Contable General Empresarial (PCGE) — cuenta 10
 *Efectivo y equivalentes de efectivo* (104 Cuentas corrientes en instituciones
@@ -23,6 +23,7 @@ conciliacion-bancaria/
 │   ├── contable/      (fase 2) importación, homologación y validación contable
 │   ├── analisis/      (fase 3) saldos, navegación, antigüedad, comparativos, origen-destino, reglas, papeles
 │   ├── compensacion/  (fase 4) partidas abiertas, clasificación, motor de coincidencias, servicio, consultas
+│   ├── anexos/        (fase 5) catálogo, datos, constructores, generador, flujo, expresiones, render, exportar
 │   ├── api/           routers REST (FastAPI)
 │   └── static/        interfaz web (SPA sin build)
 ├── tests/             pruebas automatizadas (pytest)
@@ -134,12 +135,31 @@ Detalle y manual en [`MANUAL_COMPENSACION.md`](MANUAL_COMPENSACION.md).
 Pendiente para una fase posterior (requiere autorización): asientos automáticos de regularización
 y conciliación por reglas de los movimientos bancarios de la fase 1 contra el libro.
 
-## Fase 5 — Anexos conciliados y reportes definitivos
+## Fase 5 — Generador inteligente de anexos contables ✅
 
-- Anexos por cuenta conciliados (a partir de los papeles de trabajo aprobados), conciliación
-  bancaria formal, reportes con firmas de preparó / revisó / aprobó.
+Detalle y manual en [`MANUAL_ANEXOS.md`](MANUAL_ANEXOS.md).
 
-## Fase 6 — Seguridad, multiusuario y despliegue
+- Migración 0005: 19 tablas (`annex_templates`, `annex_template_columns`, `annex_template_rules`,
+  `annex_template_formulas`, `annex_generation_runs`, `accounting_annexes`, `accounting_annex_details`,
+  `annex_reconciliations`, `annex_findings`, `annex_versions`, `annex_reviews`, `annex_approvals`,
+  `annex_comments`, `annex_attachments`, `annex_assignments`, `annex_export_jobs`, `annex_audit_logs`,
+  `annex_support_records`, `annex_settings`).
+- Catálogo de 73 plantillas para los elementos 0–9 con 19 constructores especializados y uno genérico;
+  diseñador de plantillas con motor seguro de expresiones.
+- Conciliación de cada anexo con el libro (y el balance importado) con cinco resultados; cuadre
+  matemático y sustento documental separados; diferencias explícitas sin ajustes.
+- Generación individual, seleccionada, por elemento, rango o balance completo; asíncrona, cancelable,
+  idempotente; versiones inmutables al aprobar; comparación histórica.
+- Flujo de revisión de 10 estados con separación de funciones; documentación sustentatoria;
+  permisos por empresa, rol y cuenta; datos personales protegidos; auditoría.
+- Exportación Excel (fórmulas verificables, libro masivo con índice) y PDF (expediente de cierre).
+- 1 200 cuentas / 100 000 líneas: generación masiva ≈ 20 s.
+
+## Fase 6 — Conciliaciones externas, seguridad, multiusuario y despliegue
+
+- Conciliaciones externas (bancaria formal partida por partida, confirmaciones de terceros, SUNAT).
+- Asientos de regularización y conciliación por reglas de los movimientos bancarios de la fase 1
+  (pendientes desde la fase 4, sujetos a autorización).
 
 - Autenticación, usuarios, roles y permisos por empresa (hoy la seguridad multiempresa es por
   aislamiento de datos en cada consulta; el usuario se toma de la cabecera `X-Usuario`).
