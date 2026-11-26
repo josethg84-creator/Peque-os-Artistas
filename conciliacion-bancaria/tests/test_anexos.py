@@ -5,7 +5,6 @@ de la fase 4; los registros auxiliares (activos, cronogramas, contratos, servici
 CSV. Cada prueba verifica que los importes del anexo coincidan con la información contable original.
 """
 import io
-import json
 import time
 from datetime import date
 from decimal import Decimal
