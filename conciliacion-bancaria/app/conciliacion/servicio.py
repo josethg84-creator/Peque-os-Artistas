@@ -21,7 +21,7 @@ from app.models import (AdjuntoConciliacion, AprobacionConciliacion, AsignacionC
                         MatchConciliacion, PlantillaConciliacion, RegistroFuente, ReversionConciliacion, RevisionConciliacion,
                         TipoConciliacion, ToleranciaConciliacion, VersionConciliacion)
 
-TODOS = {"ADMINISTRADOR", "SUPERVISOR", "CONTADOR", "ANALISTA", "AUDITOR", "CONSULTA", "TESORERO", "PLANILLAS"}
+TODOS = {"ADMINISTRADOR", "SUPERVISOR", "CONTADOR", "ANALISTA", "AUDITOR", "CONSULTA", "TESORERO", "PLANILLAS", "AUDITOR_EXTERNO", "GERENCIA"}
 BASE_OPERAR = {"ADMINISTRADOR", "SUPERVISOR", "CONTADOR", "ANALISTA"}
 PERMISOS = {"consultar": TODOS, "exportar": TODOS, "operar": BASE_OPERAR, "incidencias": BASE_OPERAR,
             "revisar": {"ADMINISTRADOR", "SUPERVISOR", "CONTADOR", "AUDITOR"}, "aprobar": {"ADMINISTRADOR", "SUPERVISOR", "CONTADOR"},

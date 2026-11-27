@@ -55,6 +55,16 @@ class Linea:
     proyecto: str | None
     maquinaria: str | None
     glosa: str | None
+    # campos complementarios (fase 7: auditoría); opcionales para las pseudo-líneas de apertura
+    fecha_emision: date | None = None
+    fecha_vencimiento: date | None = None
+    tipo_cambio: Decimal | None = None
+    referencia: str | None = None
+    codigo_detraccion: str | None = None
+    constancia: str | None = None
+    usuario_registro: str | None = None
+    fecha_registro: date | None = None
+    origen_asiento: str | None = None
 
     @property
     def doc(self) -> str | None:
@@ -71,7 +81,9 @@ _COLS = (LineaDiario.id, LineaDiario.lote_id, LineaDiario.periodo, LineaDiario.f
          LineaDiario.numero_asiento, LineaDiario.cuenta, LineaDiario.documento_tercero, LineaDiario.razon_social,
          LineaDiario.tipo_documento, LineaDiario.serie, LineaDiario.numero_documento, LineaDiario.debe_mn,
          LineaDiario.haber_mn, LineaDiario.debe_me, LineaDiario.haber_me, LineaDiario.moneda, LineaDiario.centro_costo,
-         LineaDiario.proyecto, LineaDiario.activo_maquinaria, LineaDiario.glosa)
+         LineaDiario.proyecto, LineaDiario.activo_maquinaria, LineaDiario.glosa, LineaDiario.fecha_emision,
+         LineaDiario.fecha_vencimiento, LineaDiario.tipo_cambio, LineaDiario.documento_referencia, LineaDiario.codigo_detraccion,
+         LineaDiario.constancia_detraccion, LineaDiario.usuario_registro, LineaDiario.fecha_registro, LineaDiario.origen_asiento)
 
 
 def _d(v) -> Decimal:
@@ -82,7 +94,7 @@ def cargar_lineas(db: Session, filtro) -> list[Linea]:
     out = []
     for r in db.execute(select(*_COLS).where(filtro).order_by(LineaDiario.id)).yield_per(5000):
         out.append(Linea(r[0], r[1], r[2], r[3], r[4], r[5], r[6], r[7], r[8], r[9], r[10], r[11], _d(r[12]), _d(r[13]),
-                         _d(r[14]), _d(r[15]), r[16] or "PEN", r[17], r[18], r[19], r[20]))
+                         _d(r[14]), _d(r[15]), r[16] or "PEN", r[17], r[18], r[19], r[20], *r[21:]))
     return out
 
 
@@ -169,8 +181,9 @@ def _limpiar(db, run_id):
     db.commit()
 
 
-def _ejecutar(db: Session, run: AnalisisEjecucion, paso) -> dict:
-    e, ej, desde, hasta = run.empresa_id, run.ejercicio, run.periodo_desde, run.periodo_hasta
+def preparar_contexto(db: Session, e: int, ej: int, desde: int, hasta: int, paso=lambda p, t: None) -> tuple:
+    """Fuentes, árbol de saldos, movimientos, antigüedad y origen-destino listos para evaluar reglas.
+    Lo usan el análisis de cuentas (fase 3) y el auditor contable (fase 7). Devuelve (ctx, fuentes, control)."""
     paso(5, "Identificando fuentes y saldos")
     f = saldos.fuentes(db, e, ej)
     plan = saldos.plan_de(db, e)
@@ -184,8 +197,6 @@ def _ejecutar(db: Session, run: AnalisisEjecucion, paso) -> dict:
             for c, nd in nodos.items():
                 nd.anterior = previo[c].sf if c in previo else 0
     control = saldos.control_cuadre(db, f, desde, hasta, nodos)
-    run.fuentes = json.dumps({"por_periodo": {str(k): v for k, v in f.por_periodo.items()}, "apertura": f.apertura,
-                              "lotes_apertura": f.lotes_apertura})
 
     paso(20, "Cargando movimientos")
     lineas = cargar_lineas(db, f.filtro_lineas(desde, hasta))
@@ -212,7 +223,6 @@ def _ejecutar(db: Session, run: AnalisisEjecucion, paso) -> dict:
     paso(45, "Análisis de origen y destino")
     od = destino.analizar(db, e, lineas, ej, hasta)
 
-    paso(55, "Aplicando reglas")
     cfg = db.scalar(select(ConfiguracionContable).where(ConfiguracionContable.empresa_id == e))
     restringidas = [p.strip() for p in ((cfg.prefijos_sin_movimiento if cfg else "") or "").split(",") if p.strip()]
     ctx = reglas.Contexto(e, ej, desde, hasta, nodos, lineas, plan, restringidas, aging=aging, destino=od,
@@ -221,6 +231,17 @@ def _ejecutar(db: Session, run: AnalisisEjecucion, paso) -> dict:
                                                         .where(LoteContable.empresa_id == e)).all()))
     ctx.lineas_hasta_corte = hasta_corte
     ctx.saldos_me, ctx.tipo_cambio_cierre = _moneda_extranjera(db, e, hasta_corte, corte)
+    return ctx, f, control
+
+
+def _ejecutar(db: Session, run: AnalisisEjecucion, paso) -> dict:
+    e, ej, desde, hasta = run.empresa_id, run.ejercicio, run.periodo_desde, run.periodo_hasta
+    ctx, f, control = preparar_contexto(db, e, ej, desde, hasta, paso)
+    nodos, lineas, aging, od = ctx.nodos, ctx.lineas, ctx.aging, ctx.destino
+    corte = _fin_periodo(ej, hasta)
+    run.fuentes = json.dumps({"por_periodo": {str(k): v for k, v in f.por_periodo.items()}, "apertura": f.apertura,
+                              "lotes_apertura": f.lotes_apertura})
+    paso(55, "Aplicando reglas")
     filtro = json.loads(run.reglas_snapshot or "{}")
     lista = [r for r in db.scalars(select(ReglaAnalisis).where(ReglaAnalisis.empresa_id == e).order_by(ReglaAnalisis.codigo))
              if reglas.vigente(r, corte)

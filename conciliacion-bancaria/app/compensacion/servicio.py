@@ -24,7 +24,7 @@ from app.models import (AdjuntoCompensacion, Aplicacion, AprobacionCompensacion,
                         ReversionCompensacion, RolUsuario)
 
 PERMISOS = {
-    "consultar": {"ADMINISTRADOR", "CONTADOR", "ANALISTA", "AUDITOR", "SUPERVISOR", "CONSULTA", "TESORERO", "PLANILLAS"},
+    "consultar": {"ADMINISTRADOR", "CONTADOR", "ANALISTA", "AUDITOR", "SUPERVISOR", "CONSULTA", "TESORERO", "PLANILLAS", "AUDITOR_EXTERNO", "GERENCIA"},
     "ejecutar": {"ADMINISTRADOR", "CONTADOR", "ANALISTA", "SUPERVISOR"},
     "proponer": {"ADMINISTRADOR", "CONTADOR", "ANALISTA", "SUPERVISOR"},
     "aprobar": {"ADMINISTRADOR", "CONTADOR", "SUPERVISOR"},

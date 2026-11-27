@@ -201,6 +201,9 @@ class LineaDiario(Base):
     codigo_detraccion: Mapped[str | None] = mapped_column(String(10))
     constancia_detraccion: Mapped[str | None] = mapped_column(String(30))
     retencion: Mapped[str | None] = mapped_column(String(60))
+    usuario_registro: Mapped[str | None] = mapped_column(String(80))   # fase 7: solo si el ERP lo exporta
+    fecha_registro: Mapped[date | None] = mapped_column(Date)
+    origen_asiento: Mapped[str | None] = mapped_column(String(20))      # MANUAL | AUTOMATICO | módulo de origen
     hoja: Mapped[str | None] = mapped_column(String(120))
     fila_origen: Mapped[int | None] = mapped_column(Integer)
 

@@ -179,13 +179,26 @@ Detalle y manual en [`MANUAL_CONCILIACIONES.md`](MANUAL_CONCILIACIONES.md).
 - Exportación Excel (8 hojas + reporte especializado con fórmulas) y PDF; reportes globales.
 - 109 000 registros: conciliación ≈ 12 s.
 
-## Fase 7 — Auditoría (pendiente de autorización)
+## Fase 7 — Auditor contable inteligente 360 ✅
 
-- Recibe las incidencias de la fase 6 (estados, causas, acciones correctivas, evidencias y continuidad).
+Detalle y manual en [`MANUAL_AUDITORIA.md`](MANUAL_AUDITORIA.md).
+
+- Migración 0007: 23 tablas `audit_*` (encargos, alcance, categorías, reglas y versiones, ejecuciones y resultados por
+  regla, hallazgos, evidencias, grupos, matriz de riesgos, materialidad, muestras y elementos, papeles de trabajo,
+  planes de acción, asignaciones, revisiones, aprobaciones, informes y versiones, bitácora inmutable encadenada,
+  configuraciones del ERP), columnas opcionales de registro del ERP en `lineas_diario` y roles AUDITOR_EXTERNO y GERENCIA.
+- 167 reglas en 18 categorías que reutilizan las fases 2–6 (contexto de análisis, partidas abiertas, registros
+  auxiliares, conciliaciones en memoria o guardadas); reglas configurables sin código con vista previa.
+- Riesgo 5×5, materialidad aprobada, hallazgos con huella única, grupos de exposición, reincidencias, 11 estados con
+  separación de funciones, planes de acción y bandeja de regularización (sin asientos).
+- Reglas tributarias normativas validables (no se ejecutan sin validación; sin datos → pendiente de evaluación).
+- Muestras reproducibles, papeles de trabajo, 6 informes de 16 secciones y 12 exportaciones Excel/PDF.
+- Volumen real: 100 000 / 500 000 / 1 000 000 movimientos en 19,8 / 107,5 / 214,2 s; incremental < 0,5 s.
 
 ## Fase 8 — Asientos de regularización (pendiente de autorización)
 
-- Propuestas de asiento a partir de las incidencias «pendientes de regularización» (fase 6) y de las
+- Propuestas de asiento a partir de la bandeja de regularización de la auditoría (fase 7), de las incidencias
+  «pendientes de regularización» (fase 6) y de las
   compensaciones (fase 4), siempre sujetas a aprobación.
 
 ## Fases posteriores

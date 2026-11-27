@@ -120,6 +120,13 @@ CAMPOS: dict[str, Campo] = {c.clave: c for c in [
        "NRO CONSTANCIA DETRACCION", "CONSTANCIA"),
     _c("retencion", "Información de retención", "texto", "RETENCION", "IMPORTE RETENCION", "COMPROBANTE RETENCION",
        "NRO RETENCION", "RETENCION IGV", "MARCA RETENCION"),
+    # Trazabilidad del registro en el ERP (fase 7): solo si el sistema de origen la exporta
+    _c("usuario_registro", "Usuario que registró", "texto", "USUARIO", "USUARIO REGISTRO", "REGISTRADO POR", "DIGITADOR",
+       "USUARIO CREACION", "CREADO POR"),
+    _c("fecha_registro", "Fecha real de registro", "fecha", "FECHA REGISTRO", "FECHA DE REGISTRO", "FECHA DIGITACION",
+       "FECHA CREACION", "FECHA SISTEMA"),
+    _c("origen_asiento", "Origen del asiento (manual / automático)", "codigo", "ORIGEN", "ORIGEN ASIENTO", "TIPO REGISTRO",
+       "MANUAL AUTOMATICO", "MODULO ORIGEN"),
     # Registros de compras y ventas / cuentas por cobrar y pagar
     _c("cuo", "CUO / n.º de registro", "codigo", "CUO", "CODIGO UNICO DE OPERACION", "NRO REGISTRO",
        "CORRELATIVO", "VOUCHER", "NRO VOUCHER", "ASIENTO"),
@@ -199,7 +206,7 @@ _LINEA = ("ejercicio", "periodo", "fecha_contable", "fecha_emision", "fecha_venc
           "numero_documento", "tipo_documento_identidad", "documento_tercero", "razon_social", "moneda",
           "tipo_cambio", "debe_mn", "haber_mn", "debe_me", "haber_me", "importe_mn", "importe_me", "indicador_dh",
           "centro_costo", "proyecto", "activo_maquinaria", "documento_referencia", "orden_compra_servicio",
-          "codigo_detraccion", "constancia_detraccion", "retencion")
+          "codigo_detraccion", "constancia_detraccion", "retencion", "usuario_registro", "fecha_registro", "origen_asiento")
 _REGISTRO = ("periodo", "cuo", "fecha_emision", "fecha_vencimiento", "tipo_documento", "serie", "numero_documento",
              "tipo_documento_identidad", "documento_tercero", "razon_social", "base_imponible", "igv", "no_gravado",
              "otros_tributos", "total", "moneda", "tipo_cambio", "cuenta", "glosa", "documento_referencia",

@@ -54,3 +54,13 @@ __all__ += ["AdjuntoConciliacion", "AprobacionConciliacion", "AsignacionConcilia
             "MapeoColumnas", "MatchConciliacion", "PlantillaConciliacion", "RegistroFuente", "ReglaConciliacion",
             "ReversionConciliacion", "RevisionConciliacion", "TipoConciliacion", "ToleranciaConciliacion",
             "VersionConciliacion"]
+from app.models.auditoria360 import (AlcanceAuditoria, AprobacionAuditoria, AsignacionAuditoria, CategoriaRegla,  # noqa: E402
+                                     ConfiguracionImportada, EjecucionAuditoria, EncargoAuditoria, EventoAuditoria,
+                                     EvidenciaHallazgo, GrupoHallazgos, HallazgoAuditoria, InformeAuditoria, ItemMuestra,
+                                     Materialidad, MatrizRiesgo, MuestraAuditoria, PapelAuditoria, PlanAccion, ReglaAuditoria,
+                                     ResultadoRegla, RevisionAuditoria, VersionInforme, VersionRegla)
+
+__all__ += ["AlcanceAuditoria", "AprobacionAuditoria", "AsignacionAuditoria", "CategoriaRegla", "ConfiguracionImportada",
+            "EjecucionAuditoria", "EncargoAuditoria", "EventoAuditoria", "EvidenciaHallazgo", "GrupoHallazgos", "HallazgoAuditoria",
+            "InformeAuditoria", "ItemMuestra", "Materialidad", "MatrizRiesgo", "MuestraAuditoria", "PapelAuditoria", "PlanAccion",
+            "ReglaAuditoria", "ResultadoRegla", "RevisionAuditoria", "VersionInforme", "VersionRegla"]

@@ -35,6 +35,14 @@ uvicorn app.main:app --reload
 
 Pruebas: `python -m pytest -q`
 
+### Recorrido de demostración — auditor contable 360 (fase 7)
+
+Con la información de las fases anteriores importada, abra **Auditor contable 360 → Centro de ejecución**, cree un
+encargo (tipo, corte, alcance) y pulse **Auditoría completa**. Revise el **dashboard**, abra los hallazgos en el
+**explorador** (evidencias, asiento original, cambio de estado con separación de funciones, planes de acción), la
+**matriz de riesgos**, los **papeles de trabajo** y genere los **informes** en PDF o Excel. `tests/test_auditoria.py`
+cubre los 28 escenarios obligatorios con datos sintéticos; `scripts/benchmark_auditoria.py N` mide el volumen.
+
 ### Recorrido de demostración — conciliaciones contables (fase 6)
 
 Importe el diario (fase 2) y el estado de cuenta (fase 1). En **Centro de conciliaciones** pulse **Nueva
@@ -95,6 +103,21 @@ en este orden (los maestros primero, porque las validaciones los usan):
 3. **Importar archivos** → los 3 estados de cuenta de `ejemplos/` y el libro mayor
    (el mismo Excel sirve para las tres subcuentas: se filtra por subcuenta).
 4. **Movimientos** → filtrar «Solo posibles duplicados» y resolver la fila repetida del BCP.
+
+## Fase 7 — auditor contable inteligente 360
+
+Herramienta de apoyo al contador y al auditor: no emite dictámenes, no declara fraude ni modifica asientos.
+Manual completo en [`docs/MANUAL_AUDITORIA.md`](docs/MANUAL_AUDITORIA.md).
+
+| Área | Detalle |
+|---|---|
+| Reglas | 167 reglas en 18 categorías (integridad, asientos, duplicidades, CxC, CxP, tesorería, gastos, origen–destino, parametrización del ERP, ingresos, servicios, activos, inventarios, planillas, tributaria preventiva, devengos y corte, estadística, configurables) que reutilizan las fases 1–6 |
+| Hallazgos | Condición, criterio, causa, efecto, impacto, recomendación y evidencia; huella única (sin duplicar), grupos de exposición sin superposición, reincidencias; 11 estados con separación de funciones e historial inmutable |
+| Riesgo | Matriz 5×5 editable, materialidad definida y aprobada por el responsable (sin porcentajes por defecto), ajuste manual justificado |
+| Normativa | Reglas tributarias con norma, fuente oficial, vigencia y responsable; sin validación no se ejecutan; sin datos → «pendiente de evaluación» |
+| Trabajo | Encargos con alcance, ejecución completa/módulo/cuenta/reglas, incremental, muestras con semilla, papeles de trabajo, planes de acción, bandeja de regularización (fase 8, sin asientos) |
+| Informes | 6 versiones de 16 secciones (versionadas con hash) y 12 exportaciones en Excel y PDF |
+| Rendimiento | 100 000 / 500 000 / 1 000 000 movimientos: 19,8 s / 107,5 s / 214,2 s; re-ejecución incremental < 0,5 s |
 
 ## Fase 6 — motor inteligente de conciliaciones contables automáticas
 
@@ -194,8 +217,10 @@ app/
   compensacion/ fase 4: clasificacion, partidas, motor, servicio, consultas
   anexos/      fase 5: catalogo, datos, constructores, generador, flujo, expresiones, render, comparar, exportar
   conciliacion/ fase 6: esquemas, catalogo, fuentes, motor, clasificar, servicio, consultas, disenador, exportar
-migraciones/   Alembic (0001 fase 1 · 0002 fase 2 · 0003 fase 3 · 0004 fase 4 · 0005 fase 5 · 0006 fase 6)
-tests/         172 pruebas (incluye 24 de conciliaciones con los 28 escenarios obligatorios y cuatro de volumen)
+  auditoria/   fase 7: base, reglas por módulo (r_*), estadistica, configurables, catalogo, riesgo, motor, servicio, papeles, informes, consultas
+migraciones/   Alembic (0001 fase 1 · 0002 fase 2 · 0003 fase 3 · 0004 fase 4 · 0005 fase 5 · 0006 fase 6 · 0007 fase 7)
+tests/         188 pruebas (incluye 16 de auditoría con los 28 escenarios obligatorios de la fase 7 y una de volumen)
+scripts/       benchmark_auditoria.py (rendimiento con datos sintéticos)
 ```
 
 Importes en `Decimal` / `NUMERIC(18,2)`; nunca `float`.
@@ -221,5 +246,8 @@ Importes en `Decimal` / `NUMERIC(18,2)`; nunca `float`.
   Excel masivo no lleva logotipo.
 - Conciliaciones (fase 6): las programadas no se ejecutan solas (sin planificador); no se generan asientos de
   regularización (fase 8) ni se integra con SUNAT/SIRE; ver [`docs/MANUAL_CONCILIACIONES.md`](docs/MANUAL_CONCILIACIONES.md).
+- Auditoría (fase 7): las reglas tributarias normativas se entregan sin norma ni tasas y pendientes de validación; las
+  recurrentes se programan con un botón (sin planificador); con 1 M de movimientos la auditoría completa usa ≈ 5,3 GB
+  de memoria; no se generan asientos de regularización (fase 8). Ver [`docs/MANUAL_AUDITORIA.md`](docs/MANUAL_AUDITORIA.md).
 - Compensación (fase 4): no se generan asientos de regularización; las percepciones siempre van a
   revisión; con cientos de miles de partidas una página de consulta tarda algunos segundos.
