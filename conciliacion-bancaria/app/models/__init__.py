@@ -43,3 +43,14 @@ __all__ += ["AdjuntoAnexo", "Anexo", "AprobacionAnexo", "AsignacionAnexo", "Audi
             "ComentarioAnexo", "ConciliacionAnexo", "ConfiguracionAnexos", "DetalleAnexo", "ExportacionAnexos",
             "FormulaPlantilla", "GeneracionAnexos", "HallazgoAnexo", "PlantillaAnexo", "RegistroAuxiliar",
             "ReglaPlantilla", "RevisionAnexo", "VersionAnexo"]
+from app.models.conciliacion import (AdjuntoConciliacion, AprobacionConciliacion, AsignacionConciliacion,  # noqa: E402
+                                     AsignacionRegistro, AuditoriaConciliacion, Conciliacion, DiferenciaConciliacion,
+                                     FuenteConciliacion, GrupoConciliacion, MapeoColumnas, MatchConciliacion,
+                                     PlantillaConciliacion, RegistroFuente, ReglaConciliacion, ReversionConciliacion,
+                                     RevisionConciliacion, TipoConciliacion, ToleranciaConciliacion, VersionConciliacion)
+
+__all__ += ["AdjuntoConciliacion", "AprobacionConciliacion", "AsignacionConciliacion", "AsignacionRegistro",
+            "AuditoriaConciliacion", "Conciliacion", "DiferenciaConciliacion", "FuenteConciliacion", "GrupoConciliacion",
+            "MapeoColumnas", "MatchConciliacion", "PlantillaConciliacion", "RegistroFuente", "ReglaConciliacion",
+            "ReversionConciliacion", "RevisionConciliacion", "TipoConciliacion", "ToleranciaConciliacion",
+            "VersionConciliacion"]

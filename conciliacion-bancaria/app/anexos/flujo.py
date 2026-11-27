@@ -15,7 +15,7 @@ from app.models import (AdjuntoAnexo, Anexo, AprobacionAnexo, AsignacionAnexo, C
                         HallazgoAnexo, RevisionAnexo, VersionAnexo)
 from app.models.anexos import CATEGORIAS_ADJUNTO
 
-TODOS = {"ADMINISTRADOR", "SUPERVISOR", "CONTADOR", "ANALISTA", "AUDITOR", "CONSULTA"}
+TODOS = {"ADMINISTRADOR", "SUPERVISOR", "CONTADOR", "ANALISTA", "AUDITOR", "CONSULTA", "TESORERO", "PLANILLAS"}
 PERMISOS = {
     "consultar": TODOS, "exportar": TODOS,
     "generar": {"ADMINISTRADOR", "SUPERVISOR", "CONTADOR", "ANALISTA"},

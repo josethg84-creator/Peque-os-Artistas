@@ -348,7 +348,8 @@ def _persistir(db: Session, lote: LoteContable, p: Parametros, regs: list[dict],
                   "total": r.get("total") or CERO, "importe_me": r.get("saldo_pendiente_me"),
                   "saldo_pendiente": r.get("saldo_pendiente"), "cuenta": r.get("cuenta"), "glosa": r.get("glosa"),
                   "codigo_detraccion": r.get("codigo_detraccion"), "constancia_detraccion": r.get("constancia_detraccion"),
-                  "retencion": r.get("retencion"), "hoja": hoja, "fila_origen": r["_fila"]} for r in regs]
+                  "retencion": r.get("retencion"),
+                  "documento_referencia": (str(r["documento_referencia"])[:60] if r.get("documento_referencia") else None), "hoja": hoja, "fila_origen": r["_fila"]} for r in regs]
         _insertar_lotes(db, DocumentoRegistro, filas, avance)
     elif t == "PLAN_CUENTAS":
         def nat(v):

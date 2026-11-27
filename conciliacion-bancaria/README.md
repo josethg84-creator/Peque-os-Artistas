@@ -7,12 +7,13 @@ conciliación bancaria de la **cuenta 10**.
 
 > Módulo independiente dentro de este repositorio. No comparte código con la app Flutter.
 
-**Estado: fases 1 a 5 completadas.** Plan en [`docs/PLAN.md`](docs/PLAN.md) · validaciones de
+**Estado: fases 1 a 6 completadas.** Plan en [`docs/PLAN.md`](docs/PLAN.md) · validaciones de
 importación en [`docs/VALIDACIONES.md`](docs/VALIDACIONES.md) · reglas de análisis en
 [`docs/REGLAS_ANALISIS.md`](docs/REGLAS_ANALISIS.md) · **manual de uso del análisis** en
 [`docs/MANUAL_ANALISIS.md`](docs/MANUAL_ANALISIS.md) · **manual de compensación de partidas** en
 [`docs/MANUAL_COMPENSACION.md`](docs/MANUAL_COMPENSACION.md) · **manual de anexos contables** en
-[`docs/MANUAL_ANEXOS.md`](docs/MANUAL_ANEXOS.md).
+[`docs/MANUAL_ANEXOS.md`](docs/MANUAL_ANEXOS.md) · **manual de conciliaciones** en
+[`docs/MANUAL_CONCILIACIONES.md`](docs/MANUAL_CONCILIACIONES.md).
 
 ## Puesta en marcha
 
@@ -33,6 +34,15 @@ uvicorn app.main:app --reload
   automáticamente en la revisión 0001 y se actualiza sin perder datos.
 
 Pruebas: `python -m pytest -q`
+
+### Recorrido de demostración — conciliaciones contables (fase 6)
+
+Importe el diario (fase 2) y el estado de cuenta (fase 1). En **Centro de conciliaciones** pulse **Nueva
+conciliación** (p. ej. bancaria de la cuenta BCP al cierre del mes), importe las fuentes de archivo que pida la
+plantilla (planilla, kardex, constancias…) y pulse **Ejecutar conciliación**. Revise el reporte, confirme o
+rechace coincidencias, concilie lo pendiente en el **panel dual**, gestione las diferencias en el **Centro de
+incidencias** y envíe a revisión y aprobación. `tests/test_conciliaciones.py` contiene los 28 escenarios
+obligatorios con datos sintéticos.
 
 ### Recorrido de demostración — anexos contables (fase 5)
 
@@ -85,6 +95,18 @@ en este orden (los maestros primero, porque las validaciones los usan):
 3. **Importar archivos** → los 3 estados de cuenta de `ejemplos/` y el libro mayor
    (el mismo Excel sirve para las tres subcuentas: se filtra por subcuenta).
 4. **Movimientos** → filtrar «Solo posibles duplicados» y resolver la fila repetida del BCP.
+
+## Fase 6 — motor inteligente de conciliaciones contables automáticas
+
+| Área | Detalle |
+|---|---|
+| Motor universal | 2 a 4 fuentes normalizadas; reglas por clave, importe y fecha, combinación (1:N, N:1), agregado, exclusión y clasificación; 1:1, 1:N, N:1, N:N y parciales; duplicados por fuente; ambiguas nunca automáticas; decisiones manuales re-aplicadas |
+| Tipos | Bancaria, compras, ventas, planillas, activos fijos, inventarios, servicios y costos en proceso, obligaciones financieras, detracciones, retenciones y percepciones, tributos y aportes, intercompañía, origen–destino, auxiliares vs mayor y personalizada |
+| Diferencias | 11 clasificaciones y 5 prioridades con evidencia, regla, explicación y recomendación; tolerancias por tipo, cuenta y moneda (visibles); incidencias con 9 estados y continuidad entre periodos |
+| Control | Panel dual de conciliación manual, versiones inmutables al aprobar, separación de funciones, reversión autorizada, historial a una fecha, datos de planilla protegidos, auditoría |
+| Diseñador | Asistente de 10 pasos sin SQL ni código, prueba en memoria y autorización por otro usuario |
+| Exportación | Excel (8 hojas + reporte especializado con fórmulas) y PDF; reportes globales |
+| Rendimiento | 109 000 registros conciliados en ≈ 12 s |
 
 ## Fase 5 — generador inteligente de anexos contables
 
@@ -171,8 +193,9 @@ app/
   analisis/    fase 3: pcge, saldos, navegación, antigüedad, comparativo, destino, reglas, motor, papeles, exportar
   compensacion/ fase 4: clasificacion, partidas, motor, servicio, consultas
   anexos/      fase 5: catalogo, datos, constructores, generador, flujo, expresiones, render, comparar, exportar
-migraciones/   Alembic (0001 fase 1 · 0002 fase 2 · 0003 fase 3 · 0004 fase 4 · 0005 fase 5)
-tests/         148 pruebas (incluye 22 de anexos con los 21 casos obligatorios y tres de volumen)
+  conciliacion/ fase 6: esquemas, catalogo, fuentes, motor, clasificar, servicio, consultas, disenador, exportar
+migraciones/   Alembic (0001 fase 1 · 0002 fase 2 · 0003 fase 3 · 0004 fase 4 · 0005 fase 5 · 0006 fase 6)
+tests/         172 pruebas (incluye 24 de conciliaciones con los 28 escenarios obligatorios y cuatro de volumen)
 ```
 
 Importes en `Decimal` / `NUMERIC(18,2)`; nunca `float`.
@@ -183,17 +206,20 @@ Importes en `Decimal` / `NUMERIC(18,2)`; nunca `float`.
 - PDF escaneados (imagen) no se procesan; se requiere PDF con texto.
 - Los formatos de cada banco cambian con el tiempo; los sinónimos cubren los
   encabezados habituales y el mapeo manual cubre el resto. Conviene validar con
-  exportaciones reales de cada banco (en la fase 6 se guardarán plantillas de mapeo).
+  exportaciones reales de cada banco (las homologaciones de fuentes de conciliación se guardan desde la fase 6;
+  los perfiles de estados de cuenta por banco quedan para una fase posterior).
 - El usuario se toma de la cabecera `X-Usuario` (campo «Usuario» de la interfaz);
-  la autenticación real llega en la fase 6.
+  la autenticación real queda para una fase posterior.
 - Los trabajos en segundo plano corren en hilos del mismo proceso (un solo servidor); para
-  varios nodos se usará una cola en la fase 6.
+  varios nodos se usará una cola en una fase posterior.
 - La línea original del archivo (nivel 7) está disponible para lotes importados desde la fase 3.
 - Los sinónimos de ERP se basan en encabezados habituales, no en exportaciones verificadas de
   cada versión: valide con archivos reales y guarde plantillas.
 - Los maestros (plan, terceros, centros, TC) se actualizan registro a registro y no se anulan
   por lote.
-- Anexos (fase 5): sin conciliaciones externas (fase 6); los registros auxiliares se importan (no hay
-  integración en línea con el ERP); el libro Excel masivo no lleva logotipo.
+- Anexos (fase 5): los registros auxiliares se importan (no hay integración en línea con el ERP); el libro
+  Excel masivo no lleva logotipo.
+- Conciliaciones (fase 6): las programadas no se ejecutan solas (sin planificador); no se generan asientos de
+  regularización (fase 8) ni se integra con SUNAT/SIRE; ver [`docs/MANUAL_CONCILIACIONES.md`](docs/MANUAL_CONCILIACIONES.md).
 - Compensación (fase 4): no se generan asientos de regularización; las percepciones siempre van a
   revisión; con cientos de miles de partidas una página de consulta tarda algunos segundos.

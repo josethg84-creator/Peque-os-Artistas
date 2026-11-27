@@ -25,7 +25,7 @@ Tasa = Numeric(12, 6)
 CLASES = ("FACTURA", "BOLETA", "RECIBO_HONORARIOS", "NOTA_CREDITO", "NOTA_DEBITO", "PAGO", "COBRANZA", "ANTICIPO",
           "ENTREGA_RENDIR", "RENDICION", "PRESTAMO", "AMORTIZACION", "DETRACCION", "RETENCION", "PERCEPCION",
           "DIFERENCIA_CAMBIO", "RECLASIFICACION", "EXTORNO", "SALDO_INICIAL", "OTRO")
-ROLES = ("ADMINISTRADOR", "CONTADOR", "ANALISTA", "AUDITOR", "SUPERVISOR", "CONSULTA")
+ROLES = ("ADMINISTRADOR", "CONTADOR", "ANALISTA", "AUDITOR", "SUPERVISOR", "CONSULTA", "TESORERO", "PLANILLAS")
 
 
 class PartidaAbierta(Base):
@@ -354,7 +354,7 @@ class RolUsuario(Base):
     opera en «modo abierto» (todos administradores) y lo advierte en pantalla."""
     __tablename__ = "roles_usuario"
     __table_args__ = (UniqueConstraint("empresa_id", "usuario"),
-                      CheckConstraint("rol IN ('ADMINISTRADOR','CONTADOR','ANALISTA','AUDITOR','SUPERVISOR','CONSULTA')",
+                      CheckConstraint("rol IN ('ADMINISTRADOR','CONTADOR','ANALISTA','AUDITOR','SUPERVISOR','CONSULTA','TESORERO','PLANILLAS')",
                                       name="ck_rol_valido"))
 
     id: Mapped[int] = mapped_column(primary_key=True)

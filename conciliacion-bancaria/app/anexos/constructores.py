@@ -675,8 +675,12 @@ def financieras(ctx: Ctx, cuenta: str, plantilla: dict, res: Resultado) -> None:
         generico(ctx, cuenta, plantilla, res)
         return
     cuotas = defaultdict(list)
+    ultima = defaultdict(int)  # cronogramas versionados (fase 6): solo la última versión de cada contrato
     for q in ctx.registros("CUOTA_FINANCIERA"):
-        cuotas[str(q.get("contrato"))].append(q)
+        ultima[str(q.get("contrato"))] = max(ultima[str(q.get("contrato"))], int(q.get("version") or 1))
+    for q in ctx.registros("CUOTA_FINANCIERA"):
+        if int(q.get("version") or 1) == ultima[str(q.get("contrato"))]:
+            cuotas[str(q.get("contrato"))].append(q)
     lineas = ctx.de(cuenta)
     usadas = set()
     asignado_ap = 0

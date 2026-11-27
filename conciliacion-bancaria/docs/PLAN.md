@@ -155,13 +155,41 @@ Detalle y manual en [`MANUAL_ANEXOS.md`](MANUAL_ANEXOS.md).
 - Exportación Excel (fórmulas verificables, libro masivo con índice) y PDF (expediente de cierre).
 - 1 200 cuentas / 100 000 líneas: generación masiva ≈ 20 s.
 
-## Fase 6 — Conciliaciones externas, seguridad, multiusuario y despliegue
+## Fase 6 — Motor inteligente de conciliaciones contables automáticas ✅
 
-- Conciliaciones externas (bancaria formal partida por partida, confirmaciones de terceros, SUNAT).
-- Asientos de regularización y conciliación por reglas de los movimientos bancarios de la fase 1
-  (pendientes desde la fase 4, sujetos a autorización).
+Detalle y manual en [`MANUAL_CONCILIACIONES.md`](MANUAL_CONCILIACIONES.md).
 
-- Autenticación, usuarios, roles y permisos por empresa (hoy la seguridad multiempresa es por
-  aislamiento de datos en cada consulta; el usuario se toma de la cabecera `X-Usuario`).
+- Migración 0006: 19 tablas (`reconciliation_types`, `reconciliation_templates`, `reconciliation_sources`,
+  `reconciliation_source_records`, `reconciliation_column_mappings`, `reconciliation_rules`,
+  `reconciliation_tolerances`, `reconciliation_runs`, `reconciliation_matches`, `reconciliation_match_groups`,
+  `reconciliation_allocations`, `reconciliation_differences`, `reconciliation_reviews`, `reconciliation_approvals`,
+  `reconciliation_reversals`, `reconciliation_attachments`, `reconciliation_assignments`, `reconciliation_versions`,
+  `reconciliation_audit_logs`), roles TESORERO y PLANILLAS y referencia de NC/ND en los registros de compras y ventas.
+- Motor universal (2 a 4 fuentes, comparaciones por partidas o agregadas, signo igual u opuesto): reglas por clave,
+  importe y fecha (índice con búsqueda binaria), combinaciones acotadas (1:N, N:1), agregados, exclusiones y
+  clasificaciones con el motor seguro de expresiones de la fase 5; duplicados por fuente; ambiguas nunca automáticas.
+- 15 tipos de conciliación con plantilla: bancaria, compras, ventas, planillas, activos fijos, inventarios, servicios
+  y costos en proceso, obligaciones financieras, detracciones, retenciones y percepciones, tributos y aportes,
+  intercompañía, origen–destino, auxiliares vs mayor y personalizada (diseñador de 10 pasos).
+- 11 clasificaciones de diferencias y 5 prioridades; tolerancias por empresa, tipo, cuenta y moneda; continuidad
+  mensual de incidencias (traslado sin duplicar, subsanación automática de lo que ya no se reproduce).
+- Conciliación manual (panel dual, parciales), confirmación, rechazo y reversión de coincidencias; flujo
+  Ejecutada → En revisión → Revisada → Aprobada → Cerrada con separación de funciones, versiones inmutables y
+  reapertura autorizada; historial a una fecha.
+- Exportación Excel (8 hojas + reporte especializado con fórmulas) y PDF; reportes globales.
+- 109 000 registros: conciliación ≈ 12 s.
+
+## Fase 7 — Auditoría (pendiente de autorización)
+
+- Recibe las incidencias de la fase 6 (estados, causas, acciones correctivas, evidencias y continuidad).
+
+## Fase 8 — Asientos de regularización (pendiente de autorización)
+
+- Propuestas de asiento a partir de las incidencias «pendientes de regularización» (fase 6) y de las
+  compensaciones (fase 4), siempre sujetas a aprobación.
+
+## Fases posteriores
+
+- Autenticación real, usuarios y permisos (hoy el usuario se toma de la cabecera `X-Usuario`).
 - PostgreSQL en producción, respaldos, cola de trabajos para varios nodos, Docker.
-- Perfiles de importación de estados de cuenta guardados por banco/cuenta.
+- Integración SIRE/SUNAT (fase 12) sobre los registros de compras y ventas ya conciliados.

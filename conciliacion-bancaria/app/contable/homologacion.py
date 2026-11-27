@@ -10,7 +10,7 @@ from dataclasses import dataclass, field
 from decimal import Decimal
 
 from app.contable.archivos import valor_texto
-from app.contable.campos import CAMPOS, TIPOS, clave_encabezado, sinonimos_de
+from app.contable.campos import CAMPOS, clave_encabezado, sinonimos_de, tipo_def
 from app.contable.observaciones import Obs
 from app.importers.analizador import normalizar_moneda
 from app.importers.normalizacion import es_vacio, normalizar_texto, parse_fecha, parse_importe
@@ -22,7 +22,7 @@ CERO = Decimal("0")
 def sugerir_mapeo(tipo: str, encabezados: list[str], plantilla_mapeo: dict | None = None) -> dict[str, dict]:
     """{campo: {"columna": idx, "origen": "PLANTILLA|EXACTA|PARCIAL", "confianza": 0-100}}"""
     claves = [clave_encabezado(h) for h in encabezados]
-    campos = TIPOS[tipo].campos
+    campos = tipo_def(tipo).campos
     resultado: dict[str, dict] = {}
     usadas: set[int] = set()
 
@@ -195,7 +195,7 @@ def _es_total(textos: list[str]) -> tuple[bool, bool]:
 
 def extraer(tipo: str, filas: list[list], inicio: int, mapeo: dict[str, int], op: OpcionesLectura) -> Extraccion:
     ex = Extraccion()
-    tdef = TIPOS[tipo]
+    tdef = tipo_def(tipo)
     lineas = tipo in ("DIARIO", "MAYOR", "SALDOS_INICIALES")
     clave_principal = {"DIARIO": "cuenta", "MAYOR": "cuenta", "SALDOS_INICIALES": "cuenta", "BALANCE": "cuenta",
                        "PLAN_CUENTAS": "cuenta", "CENTROS_COSTO": "centro_costo", "TIPOS_CAMBIO": "fecha",

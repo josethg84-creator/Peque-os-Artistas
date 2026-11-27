@@ -22,7 +22,7 @@ ESPEC = {
                      "ajustes_depreciacion", "depreciacion_bajas", "tasa_tributaria"], "cuenta", None),
     "CONTRATO_FINANCIERO": (["contrato"], ["contrato", "cuenta", "capital"], ["fecha_desembolso"], ["capital", "tasa", "saldo_inicial"],
                             "cuenta", None),
-    "CUOTA_FINANCIERA": (["contrato", "numero"], ["contrato", "numero", "fecha_vencimiento", "capital"], ["fecha_vencimiento"],
+    "CUOTA_FINANCIERA": (["contrato", "version", "numero"], ["contrato", "numero", "fecha_vencimiento", "capital"], ["fecha_vencimiento"],
                          ["capital", "interes", "comision", "otros"], None, None),
     "GASTO_ANTICIPADO": (["codigo"], ["codigo", "cuenta", "importe", "fecha_inicio", "fecha_fin"],
                          ["fecha_documento", "fecha_inicio", "fecha_fin"], ["importe"], "cuenta", None),
@@ -30,7 +30,7 @@ ESPEC = {
                          "cuenta", None),
     "INVENTARIO": (["codigo", "almacen"], ["codigo", "cuenta", "fecha_corte"], ["fecha_corte"], ["cantidad", "valor"], "cuenta", "fecha_corte"),
 }
-SINONIMOS = {"codigo_activo": "codigo", "cod": "codigo", "n_contrato": "contrato", "nro_contrato": "contrato", "cuota": "numero",
+SINONIMOS = {"codigo_activo": "codigo", "cod": "codigo", "n_contrato": "contrato", "nro_contrato": "contrato", "cuota": "numero", "version_cronograma": "version", "n_version": "version",
              "n_cuota": "numero", "vencimiento": "fecha_vencimiento", "amortizacion": "capital", "intereses": "interes",
              "comisiones": "comision", "vida_util": "vida_util_meses", "costo": "costo_inicial", "inicio": "fecha_inicio",
              "fin": "fecha_fin", "termino": "fecha_fin", "fecha_termino": "fecha_fin", "monto": "importe", "orden_de_servicio": "orden_servicio",
@@ -95,7 +95,7 @@ def importar(db: Session, empresa_id: int, usuario: str, tipo: str, nombre: str,
         if falta:
             errores.append(f"Fila {i}: sin {', '.join(falta)}")
             continue
-        clave = "-".join(str(d.get(c, "")) for c in claves).strip("-")[:80]
+        clave = "-".join(str(d[c]) for c in claves if d.get(c) not in (None, ""))[:80]  # componente opcional (versión) omitido si falta
         ref = parse_fecha(d[campo_ref]) if campo_ref else None
         cuenta = (d.get(campo_cuenta) or "").strip() or None if campo_cuenta else None
         x = existentes.get((clave, ref))

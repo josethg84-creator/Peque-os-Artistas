@@ -259,6 +259,24 @@ TIPOS: dict[str, TipoDef] = {t.clave: t for t in [
             (frozenset({"documento_tercero"}), frozenset({"numero_documento"}), frozenset({"saldo_pendiente"}))),
 ]}
 
+# Diseños adicionales registrados por otros módulos (p. ej. fuentes de conciliación de la fase 6). No se
+# muestran en el asistente de importación contable, pero reutilizan la homologación, la detección de
+# encabezados y la conversión de valores de esta fase.
+TIPOS_EXTRA: dict[str, TipoDef] = {}
+
+
+def tipo_def(tipo: str) -> TipoDef:
+    return TIPOS[tipo] if tipo in TIPOS else TIPOS_EXTRA[tipo]
+
+
+def registrar_tipo(tdef: TipoDef, campos: list[Campo]) -> None:
+    for c in campos:
+        if c.clave in CAMPOS and CAMPOS[c.clave].tipo != c.tipo:
+            raise ValueError(f"El campo {c.clave} ya existe con otro tipo")
+        CAMPOS.setdefault(c.clave, c)
+    TIPOS_EXTRA[tdef.clave] = tdef
+
+
 _ABREV_NUMERO = {"NUMERO", "NUM", "NRO", "NO", "N", "NÚMERO"}
 
 
@@ -270,20 +288,20 @@ def clave_encabezado(texto) -> str:
 
 
 def sinonimos_de(tipo: str, campo: str) -> list[str]:
-    t = TIPOS[tipo]
+    t = tipo_def(tipo)
     return [clave_encabezado(s) for s in (*t.extra.get(campo, ()), *CAMPOS[campo].sinonimos)]
 
 
 def es_obligatorio(tipo: str, campo: str) -> bool:
-    return any(campo in g and len(g) == 1 for g in TIPOS[tipo].requeridos)
+    return any(campo in g and len(g) == 1 for g in tipo_def(tipo).requeridos)
 
 
 def grupos_faltantes(tipo: str, mapeados: set[str]) -> list[frozenset]:
-    return [g for g in TIPOS[tipo].requeridos if not (g & mapeados)]
+    return [g for g in tipo_def(tipo).requeridos if not (g & mapeados)]
 
 
 def describir_tipo(tipo: str) -> dict:
-    t = TIPOS[tipo]
+    t = tipo_def(tipo)
     alternativos = {c for g in t.requeridos if len(g) > 1 for c in g}
     return {
         "clave": t.clave, "nombre": t.nombre, "descripcion": t.descripcion,

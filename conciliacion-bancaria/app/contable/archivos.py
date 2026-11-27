@@ -17,7 +17,7 @@ from datetime import date, datetime
 from pathlib import Path
 
 from app.core import config
-from app.contable.campos import CAMPOS, TIPOS, clave_encabezado, sinonimos_de
+from app.contable.campos import CAMPOS, clave_encabezado, sinonimos_de, tipo_def
 from app.importers.lectores import ErrorImportacion
 
 FORMATOS = {"xlsx": "XLSX", "xlsm": "XLSX", "xls": "XLS", "csv": "CSV", "txt": "TXT", "tsv": "CSV"}
@@ -259,7 +259,7 @@ def _texto(v) -> str:
 def puntaje_encabezado(nombres: list, tipo: str) -> float:
     claves = {clave_encabezado(n) for n in nombres if _texto(n)}
     puntos = 0.0
-    for campo in TIPOS[tipo].campos:
+    for campo in tipo_def(tipo).campos:
         sins = set(sinonimos_de(tipo, campo))
         if claves & sins:
             puntos += 1

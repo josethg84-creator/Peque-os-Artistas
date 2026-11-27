@@ -239,6 +239,7 @@ class DocumentoRegistro(Base):
     codigo_detraccion: Mapped[str | None] = mapped_column(String(10))
     constancia_detraccion: Mapped[str | None] = mapped_column(String(30))
     retencion: Mapped[str | None] = mapped_column(String(60))
+    documento_referencia: Mapped[str | None] = mapped_column(String(60))  # NC/ND: comprobante que modifica (fase 6)
     hoja: Mapped[str | None] = mapped_column(String(120))
     fila_origen: Mapped[int | None] = mapped_column(Integer)
 
